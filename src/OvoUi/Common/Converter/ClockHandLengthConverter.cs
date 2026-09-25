@@ -1,0 +1,20 @@
+﻿using System.Globalization;
+
+namespace OvoUi.Common.Converter;
+
+public class ClockHandLengthConverter(double ratio) : MarkupValueConverter
+{
+    public static ClockHandLengthConverter Hour { get; } = new(1 - 0.618);
+    public static ClockHandLengthConverter Minute { get; } = new(0.618);
+    public static ClockHandLengthConverter Second { get; } = new(1);
+
+    public override object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        if (value is double d)
+        {
+            return d * ratio / 2;
+        }
+
+        return 0.0;
+    }
+}
