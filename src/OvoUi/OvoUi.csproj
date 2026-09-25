@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Controls\" />
       <Folder Include="Theme\Animations\" />
     </ItemGroup>
 
