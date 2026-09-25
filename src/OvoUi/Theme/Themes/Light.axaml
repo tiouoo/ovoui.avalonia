@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+
+            <Color x:Key="ForegroundColor">#282637</Color>
+            <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ForegroundBrush" />
+
+            <Color x:Key="InnerForegroundColor">#777282</Color>
+            <SolidColorBrush Color="{DynamicResource InnerForegroundColor}" x:Key="InnerForegroundBrush" />
+
+            <Color x:Key="BackgroundColor">
+                #f8f9fa
+            </Color>
+            <SolidColorBrush Color="{DynamicResource BackgroundColor}" x:Key="BackgroundBrush" />
+
+            <Color x:Key="LineColor">#e9e6ef</Color>
+            <SolidColorBrush
+                Color="{DynamicResource LineColor}"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="LineBrush" />
+
+
+
+            <SolidColorBrush
+                Color="#e7eaed"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="SelectionNormal" />
+            <SolidColorBrush
+                Color="#f5f5f5"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="PanelBackgroundColor" />
+            <SolidColorBrush
+                Color="#eef0f2"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="PanelBorderBrush" />
+            <SolidColorBrush
+                Color="#ffffff"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="PopupBackgroundColor" />
+            <SolidColorBrush
+                Color="#eaedf0"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="PopupBorderBrush" />
+            <SolidColorBrush
+                Color="#ffffff"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="TranslucentBackgroundColor" />
+            <SolidColorBrush
+                Color="#eaedf0"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="TranslucentBorderBrush" />
+            <SolidColorBrush
+                Color="#f1f1f1"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="TitleBarBackgroundColor" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

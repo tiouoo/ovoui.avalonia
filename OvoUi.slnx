@@ -1,3 +1,15 @@
 <Solution>
+  <Folder Name="/Demo/">
+    <Project Path="src/Demo/OvoUi.Demo.Android/OvoUi.Demo.Android.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="src/Demo/OvoUi.Demo.Browser/OvoUi.Demo.Browser.csproj" />
+    <Project Path="src/Demo/OvoUi.Demo.Desktop/OvoUi.Demo.Desktop.csproj" />
+    <Project Path="src/Demo/OvoUi.Demo.iOS/OvoUi.Demo.iOS.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="src/Demo/OvoUi.Demo/OvoUi.Demo.csproj" />
+  </Folder>
+  <Project Path="src/OvoUi.Test/OvoUi.Test.csproj" />
   <Project Path="src/OvoUi/OvoUi.csproj" />
 </Solution>
