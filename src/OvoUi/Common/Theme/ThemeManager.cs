@@ -1,5 +1,7 @@
 using System.ComponentModel;
+using Avalonia;
 using Avalonia.Media;
+using Avalonia.Styling;
 
 namespace OvoUi.Common.Theme;
 
@@ -39,5 +41,16 @@ public class ThemeManager : INotifyPropertyChanged
         {
             Instance.CurrentColor = color;
         }
+    }
+    
+    public static void ToggleTheme(Themes theme)
+    {
+        Application.Current.RequestedThemeVariant = theme switch
+        {
+            Themes.Light => ThemeVariant.Light,
+            Themes.Dark => ThemeVariant.Dark,
+            Themes.System => ThemeVariant.Default,
+            _ => Application.Current.RequestedThemeVariant
+        };
     }
 }

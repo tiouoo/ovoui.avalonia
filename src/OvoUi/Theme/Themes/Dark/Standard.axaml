@@ -1,37 +1,65 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
 
-    <SolidColorBrush
-        Color="#191d21"
-        Opacity="{DynamicResource SolidOpacity}"
-        x:Key="TitleBarBackgroundColor" />
+            <SolidColorBrush
+                Color="#191d21"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="TitleBarBackgroundColor" />
 
-    <SolidColorBrush
-        Color="White"
-        Opacity="0.08"
-        x:Key="ItemPointeroverBackground" />
-    <SolidColorBrush
-        Color="White"
-        Opacity="0.12"
-        x:Key="ItemSelectedBackground" />
+            <SolidColorBrush
+                Color="White"
+                Opacity="0.08"
+                x:Key="ItemPointeroverBackground" />
+            <SolidColorBrush
+                Color="White"
+                Opacity="0.12"
+                x:Key="ItemSelectedBackground" />
 
-    <SolidColorBrush
-        Color="#F9F9F9"
-        Opacity="0.35"
-        x:Key="DisabledForegroundBrush" />
+            <SolidColorBrush
+                Color="#F9F9F9"
+                Opacity="0.35"
+                x:Key="DisabledForegroundBrush" />
 
-    <SolidColorBrush
-        Color="#FFFFFF"
-        Opacity="0.12"
-        x:Key="ControlBackground" />
-    <SolidColorBrush
-        Color="#FFFFFF"
-        Opacity="0.16"
-        x:Key="ControlPointeroverBackground" />
-    <SolidColorBrush
-        Color="#FFFFFF"
-        Opacity="0.20"
-        x:Key="ControlPressedBackground" />
+            <SolidColorBrush
+                Color="#FFFFFF"
+                Opacity="0.12"
+                x:Key="ControlBackground" />
+            <SolidColorBrush
+                Color="#FFFFFF"
+                Opacity="0.16"
+                x:Key="ControlPointeroverBackground" />
+            <SolidColorBrush
+                Color="#FFFFFF"
+                Opacity="0.20"
+                x:Key="ControlPressedBackground" />
 
-    <BoxShadows x:Key="PopupBoxShadow">0 0 8 1 #28000000</BoxShadows>
+            <BoxShadows x:Key="PopupBoxShadow">0 0 8 1 #28000000</BoxShadows>
 
+            <!--  Info  -->
+            <Color x:Key="InfoColor">#3D9BFF</Color>
+            <Color x:Key="InfoPointeroverColor">#66B3FF</Color>
+            <Color x:Key="InfoPressedColor">#1976D2</Color>
+            <Color x:Key="InfoDisabledColor">#285F91</Color>
+
+            <!--  Warning  -->
+            <Color x:Key="WarnColor">#F5A623</Color>
+            <Color x:Key="WarnPointeroverColor">#FFB83D</Color>
+            <Color x:Key="WarnPressedColor">#D88712</Color>
+            <Color x:Key="WarnDisabledColor">#8F641F</Color>
+
+            <!--  Success  -->
+            <Color x:Key="SuccessColor">#16C94E</Color>
+            <Color x:Key="SuccessPointeroverColor">#35E663</Color>
+            <Color x:Key="SuccessPressedColor">#0FA63E</Color>
+            <Color x:Key="SuccessDisabledColor">#287A3D</Color>
+
+            <!--  Error  -->
+            <Color x:Key="ErrorColor">#FF5964</Color>
+            <Color x:Key="ErrorPointeroverColor">#FF747D</Color>
+            <Color x:Key="ErrorPressedColor">#D93B45</Color>
+            <Color x:Key="ErrorDisabledColor">#8F363C</Color>
+
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

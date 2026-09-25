@@ -1,48 +1,12 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
-
             <Color x:Key="ForegroundColor">#282637</Color>
-            <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ForegroundBrush" />
-
             <Color x:Key="InnerForegroundColor">#777282</Color>
-            <SolidColorBrush Color="{DynamicResource InnerForegroundColor}" x:Key="InnerForegroundBrush" />
-
             <Color x:Key="BackgroundColor">#f8f9fa</Color>
-            <SolidColorBrush Color="{DynamicResource BackgroundColor}" x:Key="BackgroundBrush" />
-
             <Color x:Key="LineColor">#e9e6ef</Color>
-            <SolidColorBrush
-                Color="{DynamicResource LineColor}"
-                Opacity="{DynamicResource SolidOpacity}"
-                x:Key="LineBrush" />
-
             <Color x:Key="PanelBackgroundColor">#f5f5f5</Color>
-            <SolidColorBrush
-                Color="{DynamicResource PanelBackgroundColor}"
-                Opacity="{DynamicResource SolidOpacity}"
-                x:Key="PanelBackgroundBrush" />
-
             <Color x:Key="PopupBackgroundColor">#ffffff</Color>
-            <SolidColorBrush
-                Color="{DynamicResource PopupBackgroundColor}"
-                Opacity="{DynamicResource SolidOpacity}"
-                x:Key="PopupBackgroundBrush" />
-
-
-            <SolidColorBrush
-                Color="{DynamicResource LineColor}"
-                Opacity="{DynamicResource TranslucentOpacity}"
-                x:Key="TranslucentLineBrush" />
-            <SolidColorBrush
-                Color="{DynamicResource PanelBackgroundColor}"
-                Opacity="{DynamicResource TranslucentOpacity}"
-                x:Key="TranslucentPanelBackgroundBrush" />
-            <SolidColorBrush
-                Color="{DynamicResource PopupBackgroundColor}"
-                Opacity="{DynamicResource TranslucentOpacity}"
-                x:Key="TranslucentPopupBackgroundBrush" />
-
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

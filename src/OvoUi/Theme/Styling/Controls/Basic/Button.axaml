@@ -1,3 +1,205 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--  Add Resources Here  -->
+    <Design.PreviewWith>
+        <StackPanel
+            Margin="16"
+            Orientation="Horizontal"
+            Spacing="16">
+            <Button Classes="accent" Content="Click Me" />
+            <Button Content="Click Me" IsEnabled="False" />
+            <Button Content="Click Me" Theme="{StaticResource BackgroundButtonTheme}" />
+            <Button
+                Content="Click Me"
+                IsEnabled="False"
+                Theme="{StaticResource BackgroundButtonTheme}" />
+            <Button
+                Classes="info"
+                Content="Click Me"
+                Theme="{StaticResource BackgroundButtonTheme}" />
+            <Button
+                Classes="success"
+                Content="Click Me"
+                Theme="{StaticResource BackgroundButtonTheme}" />
+            <Button
+                Classes="warn"
+                Content="Click Me"
+                Theme="{StaticResource BackgroundButtonTheme}" />
+            <Button
+                Classes="error"
+                Content="Click Me"
+                Theme="{StaticResource BackgroundButtonTheme}" />
+
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="Button" x:Key="BasicButtonTheme">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Duration="0:0:0.05" Property="Background" />
+                <BrushTransition Duration="0:0:0.05" Property="Foreground" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <ContentPresenter
+                    BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    TextElement.FontSize="{TemplateBinding FontSize}"
+                    TextElement.FontWeight="{TemplateBinding FontWeight}"
+                    UseLayoutRounding="False"
+                    VerticalAlignment="Stretch"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{TemplateBinding Background}" />
+            <Setter Property="BorderBrush" Value="{TemplateBinding BorderBrush}" />
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+
+        <Style Selector="^.accent">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.info">
+            <Setter Property="Background" Value="{DynamicResource InfoColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource InfoColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource InfoPointeroverColor}" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource InfoPressedColor}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.success">
+            <Setter Property="BorderBrush" Value="{DynamicResource SuccessColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="{DynamicResource SuccessColor}" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource SuccessPointeroverColor}" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource SuccessPressedColor}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.warn">
+            <Setter Property="BorderBrush" Value="{DynamicResource WarnColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="{DynamicResource WarnColor}" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource WarnPointeroverColor}" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource WarnPressedColor}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.error">
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="{DynamicResource ErrorColor}" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource ErrorPointeroverColor}" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource ErrorPressedColor}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource BasicButtonTheme}"
+        TargetType="Button"
+        x:Key="StandardButtonTheme">
+        <Setter Property="BorderThickness" Value="1.2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Padding" Value="20, 8" />
+
+        <Style Selector="^.accent /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="^.info /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="^.success /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="^.warn /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="^.error /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardButtonTheme}"
+        TargetType="Button"
+        x:Key="BackgroundButtonTheme">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+
+        <Style Selector="^:pointerover:not(.accent):not(.info):not(.success):not(.warn):not(.error) /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+
+        <Style Selector="^:pressed:not(.accent):not(.info):not(.success):not(.warn):not(.error) /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardButtonTheme}"
+        TargetType="Button"
+        x:Key="{x:Type Button}" />
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardButtonTheme}"
+        TargetType="RepeatButton"
+        x:Key="{x:Type RepeatButton}" />
 </ResourceDictionary>

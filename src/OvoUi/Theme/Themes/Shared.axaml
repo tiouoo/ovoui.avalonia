@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ForegroundBrush" />
+    <SolidColorBrush Color="{DynamicResource InnerForegroundColor}" x:Key="InnerForegroundBrush" />
+    <SolidColorBrush Color="{DynamicResource BackgroundColor}" x:Key="BackgroundBrush" />
+    <SolidColorBrush
+        Color="{DynamicResource LineColor}"
+        Opacity="{DynamicResource SolidOpacity}"
+        x:Key="LineBrush" />
+    <SolidColorBrush
+        Color="{DynamicResource PanelBackgroundColor}"
+        Opacity="{DynamicResource SolidOpacity}"
+        x:Key="PanelBackgroundBrush" />
+    <SolidColorBrush
+        Color="{DynamicResource PopupBackgroundColor}"
+        Opacity="{DynamicResource SolidOpacity}"
+        x:Key="PopupBackgroundBrush" />
+
+    <SolidColorBrush
+        Color="{DynamicResource LineColor}"
+        Opacity="{DynamicResource TranslucentOpacity}"
+        x:Key="TranslucentLineBrush" />
+    <SolidColorBrush
+        Color="{DynamicResource PanelBackgroundColor}"
+        Opacity="{DynamicResource TranslucentOpacity}"
+        x:Key="TranslucentPanelBackgroundBrush" />
+    <SolidColorBrush
+        Color="{DynamicResource PopupBackgroundColor}"
+        Opacity="{DynamicResource TranslucentOpacity}"
+        x:Key="TranslucentPopupBackgroundBrush" />
+
+</ResourceDictionary>

@@ -2,5 +2,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="Light/Main.axaml" />
         <ResourceInclude Source="Light/Standard.axaml" />
+        <ResourceInclude Source="Dark/Main.axaml" />
+        <ResourceInclude Source="Dark/Standard.axaml" />
+        <ResourceInclude Source="Shared.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

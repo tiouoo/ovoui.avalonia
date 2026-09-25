@@ -17,17 +17,15 @@
     </ItemGroup>
     
     <ItemGroup>
-      <AvaloniaResource Include="Assets\**"/>
-      <EmbeddedResource Include="..\..\assets\iconfont.ttf">
+      <AvaloniaResource Include="..\..\assets\iconfont.ttf">
         <Link>Assets\iconfont.ttf</Link>
-      </EmbeddedResource>
-      <EmbeddedResource Include="..\..\assets\AlimamaFangYuanTi-Regular.ttf">
+      </AvaloniaResource>
+      <AvaloniaResource Include="..\..\assets\AlimamaFangYuanTi-Regular.ttf">
         <Link>Assets\AlimamaFangYuanTi-Regular.ttf</Link>
-      </EmbeddedResource>
-      <EmbeddedResource Include="..\..\assets\AlimamaFangYuanTi-Bold.ttf">
+      </AvaloniaResource>
+      <AvaloniaResource Include="..\..\assets\AlimamaFangYuanTi-Bold.ttf">
         <Link>Assets\AlimamaFangYuanTi-Bold.ttf</Link>
-      </EmbeddedResource>
+      </AvaloniaResource>
     </ItemGroup>    
     
-
 </Project>
