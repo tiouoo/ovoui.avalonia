@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using HotAvalonia;
 
 namespace OvoUi.Test;
 
@@ -18,6 +19,7 @@ class Program
             .UsePlatformDetect()
 #if DEBUG
             .WithDeveloperTools()
+            .UseHotReload()
 #endif
             .WithInterFont()
             .LogToTrace();
