@@ -43,7 +43,6 @@ public static class ThemeHelper
         {
             Themes.Light => ThemeVariant.Light,
             Themes.Dark => ThemeVariant.Dark,
-            Themes.Mirage => ThemeVariants.Mirage,
             Themes.System => ThemeVariant.Default,
             _ => Application.Current.RequestedThemeVariant
         };

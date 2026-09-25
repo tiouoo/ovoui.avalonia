@@ -1,13 +1,13 @@
 <Styles
-    x:Class="OvoUi.OvoUiTheme"
     xmlns="https://github.com/avaloniaui"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="/Shared/@Shared.axaml" />
+                <ResourceInclude Source="Controls/OvoUi/@OvoUi.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
-    <StyleInclude Source="/Theme/Styling/@Index.axaml" />
+    <StyleInclude Source="Styles/@Styles.axaml" />
 </Styles>

@@ -1,0 +1,15 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="Themes/@Themes.axaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <FontWeight x:Key="OvoFontWeight">DemiBold</FontWeight>
+    <system:Double x:Key="OvoFontSize">14</system:Double>
+    <CornerRadius x:Key="OvoCornerRadius">10</CornerRadius>
+    <FontFamily x:Key="OvoFontFamily">avares://OvoUi/Assets#AlimamaFangYuanTi</FontFamily>
+    <FontFamily x:Key="OvoIconFontFamily">avares://OvoUi/Assets#iconfont</FontFamily>
+</ResourceDictionary>

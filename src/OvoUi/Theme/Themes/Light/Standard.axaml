@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush
+        Color="#f1f1f1"
+        Opacity="{DynamicResource SolidOpacity}"
+        x:Key="TitleBarBackgroundColor" />
+
+    <SolidColorBrush
+        Color="#2E3238"
+        Opacity="0.05"
+        x:Key="ItemPointeroverBackground" />
+
+    <SolidColorBrush
+        Color="#2E3238"
+        Opacity="0.09"
+        x:Key="ItemSelectedBackground" />
+
+    <BoxShadows x:Key="PopupBoxShadow">0 0 8 1 #18000000</BoxShadows>
+
+</ResourceDictionary>
