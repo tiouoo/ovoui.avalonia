@@ -21,15 +21,23 @@
                     Width="{TemplateBinding Width}">
                     <TextBlock
                         FontFamily="{DynamicResource OvoIconFontFamily}"
+                        FontSize="16"
+                        FontWeight="Light"
                         Foreground="{DynamicResource InnerForegroundBrush}"
+                        HorizontalAlignment="Center"
                         IsVisible="{TemplateBinding IsChecked,
                                                     Converter={x:Static BoolConverters.Not}}"
-                        Text="{DynamicResource NoEye}" />
+                        Text="&#xe642;"
+                        VerticalAlignment="Center" />
                     <TextBlock
                         FontFamily="{DynamicResource OvoIconFontFamily}"
+                        FontSize="16"
+                        FontWeight="Light"
                         Foreground="{DynamicResource InnerForegroundBrush}"
+                        HorizontalAlignment="Center"
                         IsVisible="{TemplateBinding IsChecked}"
-                        Text="{DynamicResource Eye}" />
+                        Text="&#xe63f;"
+                        VerticalAlignment="Center" />
                 </Panel>
             </ControlTemplate>
         </Setter>

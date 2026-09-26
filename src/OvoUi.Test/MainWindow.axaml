@@ -13,6 +13,7 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
+            <ToggleButton Theme="{StaticResource InputToggleButtonTheme}" />
             <TextBox MinWidth="200" PlaceholderText="Input" />
             <TextBox
                 Classes="clear"
@@ -36,7 +37,10 @@
                 PlaceholderText="Input" />
             <TextBox Classes="text_area" PlaceholderText="Input" />
             <TextBox PlaceholderText="Input" Theme="{StaticResource LooklessTextBoxTheme}" />
-            <TextBox PlaceholderText="Input" Theme="{StaticResource BorderTextBoxTheme}" />
+            <TextBox
+                Classes="reveal_password"
+                PlaceholderText="Input"
+                Theme="{StaticResource BorderTextBoxTheme}" />
             <TextBox MinWidth="200" PlaceholderText="Input" />
         </StackPanel>
         <StackPanel
