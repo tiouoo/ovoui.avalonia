@@ -7,7 +7,7 @@ riderModule.iml
 .vs/
 .idea/
 
-TioUI.sln.DotSettings.user
+*.DotSettings.user
 
 bin/
 obj/
@@ -19,4 +19,5 @@ obj/
 promet.md
 
 /.claude
-/Pages
+
+/import
