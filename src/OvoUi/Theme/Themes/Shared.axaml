@@ -29,4 +29,49 @@
         Opacity="{DynamicResource TranslucentOpacity}"
         x:Key="TranslucentPopupBackgroundBrush" />
 
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.1"
+        x:Key="SystemAccentColorOpacity01" />
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.2"
+        x:Key="SystemAccentColorOpacity02" />
+
+    <SolidColorBrush
+        Color="{DynamicResource InfoColor}"
+        Opacity="0.1"
+        x:Key="InfoColorOpacity01" />
+    <SolidColorBrush
+        Color="{DynamicResource InfoColor}"
+        Opacity="0.2"
+        x:Key="InfoColorOpacity02" />
+
+    <SolidColorBrush
+        Color="{DynamicResource SuccessColor}"
+        Opacity="0.1"
+        x:Key="SuccessColorOpacity01" />
+    <SolidColorBrush
+        Color="{DynamicResource SuccessColor}"
+        Opacity="0.2"
+        x:Key="SuccessColorOpacity02" />
+
+    <SolidColorBrush
+        Color="{DynamicResource WarnColor}"
+        Opacity="0.1"
+        x:Key="WarnColorOpacity01" />
+    <SolidColorBrush
+        Color="{DynamicResource WarnColor}"
+        Opacity="0.2"
+        x:Key="WarnColorOpacity02" />
+
+    <SolidColorBrush
+        Color="{DynamicResource ErrorColor}"
+        Opacity="0.1"
+        x:Key="ErrorColorOpacity01" />
+    <SolidColorBrush
+        Color="{DynamicResource ErrorColor}"
+        Opacity="0.2"
+        x:Key="ErrorColorOpacity02" />
+
 </ResourceDictionary>
