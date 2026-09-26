@@ -33,6 +33,10 @@
                 Color="#2E3238"
                 Opacity="0.13"
                 x:Key="ControlPressedBackground" />
+            <SolidColorBrush
+                Color="#1C1F23"
+                Opacity="0.02"
+                x:Key="ControlDisabledBackground" />
 
             <BoxShadows x:Key="PopupBoxShadow">0 0 8 1 #18000000</BoxShadows>
 
@@ -59,6 +63,15 @@
             <Color x:Key="ErrorPointeroverColor">#FF6B73</Color>
             <Color x:Key="ErrorPressedColor">#D9363E</Color>
             <Color x:Key="ErrorDisabledColor">#FFA39E</Color>
+
+            <SolidColorBrush Color="#FEF2ED" x:Key="DataValidationErrorsBackground" />
+            <SolidColorBrush Color="#FEDDD2" x:Key="DataValidationErrorsPointeroverBackground" />
+            <SolidColorBrush Color="#FDB7A5" x:Key="DataValidationErrorsPressedBackground" />
+            <SolidColorBrush Color="#FEF2ED" x:Key="DataValidationErrorsSelectedBackground" />
+            <SolidColorBrush Color="#F93920" x:Key="DataValidationErrorsSelectedBorderBrush" />
+            <SolidColorBrush Color="#FFECE8" x:Key="DataValidationErrorsBorderBrush" />
+            <SolidColorBrush Color="#FFE2D9" x:Key="DataValidationErrorsPointeroverBorderBrush" />
+            <SolidColorBrush Color="#FFD9CE" x:Key="DataValidationErrorsPressedBorderBrush" />
 
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>

@@ -1,8 +1,8 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
-    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="Themes/@Themes.axaml" />
     </ResourceDictionary.MergedDictionaries>

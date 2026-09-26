@@ -1,0 +1,76 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <MenuFlyout Placement="Bottom" x:Key="DefaultTextBoxContextFlyout">
+        <MenuItem
+            Command="{Binding $parent[TextBox].SelectAll}"
+            Header="{DynamicResource Lang.SelectAll}"
+            InputGesture="Ctrl+A">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe636;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[TextBox].Cut}"
+            Header="{DynamicResource Lang.Cut}"
+            InputGesture="{x:Static TextBox.CutGesture}"
+            IsEnabled="{Binding $parent[TextBox].CanCut}">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe624;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[TextBox].Copy}"
+            Header="{DynamicResource Lang.Copy}"
+            InputGesture="{x:Static TextBox.CopyGesture}"
+            IsEnabled="{Binding $parent[TextBox].CanCopy}">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe63e;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[TextBox].Paste}"
+            Header="{DynamicResource Lang.Paste}"
+            InputGesture="{x:Static TextBox.PasteGesture}"
+            IsEnabled="{Binding $parent[TextBox].CanPaste}">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe635;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <Separator />
+        <MenuItem
+            Command="{Binding $parent[TextBox].Undo}"
+            Header="{DynamicResource Lang.Undo}"
+            InputGesture="Ctrl + Z"
+            IsEnabled="{Binding $parent[TextBox].CanUndo}">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe63d;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[TextBox].Redo}"
+            Header="{DynamicResource Lang.Redo}"
+            InputGesture="Ctrl + Y"
+            IsEnabled="{Binding $parent[TextBox].CanRedo}">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe63a;" />
+            </MenuItem.Icon>
+        </MenuItem>
+    </MenuFlyout>
+</ResourceDictionary>

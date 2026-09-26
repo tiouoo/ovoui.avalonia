@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel HorizontalAlignment="Left" Spacing="16">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <ToggleButton Theme="{StaticResource InputToggleButtonTheme}" />
+            </WrapPanel>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="ToggleButton" x:Key="InputToggleButtonTheme">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerForeground}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ToggleButton">
+                <Panel
+                    Background="{TemplateBinding Background}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                    <TextBlock
+                        FontFamily="{DynamicResource OvoIconFontFamily}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        IsVisible="{TemplateBinding IsChecked,
+                                                    Converter={x:Static BoolConverters.Not}}"
+                        Text="{DynamicResource NoEye}" />
+                    <TextBlock
+                        FontFamily="{DynamicResource OvoIconFontFamily}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        IsVisible="{TemplateBinding IsChecked}"
+                        Text="{DynamicResource Eye}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
