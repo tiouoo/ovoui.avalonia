@@ -10,6 +10,7 @@
         <ResourceInclude Source="Border.axaml" />
         <ResourceInclude Source="ButtonSpinner.axaml" />
         <ResourceInclude Source="CheckBox.axaml" />
+        <ResourceInclude Source="FlyoutPresenter.axaml" />
         <ResourceInclude Source="DataValidationErrors.axaml" />
         <ResourceInclude Source="Calendar.axaml" />
         <ResourceInclude Source="EmbeddableControlRoot.axaml" />
