@@ -4,23 +4,35 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
-using Avalonia.VisualTree;
 
 namespace OvoUi.Controls;
 
 public sealed class PopupContentExpander : ContentExpander
 {
-    private static readonly TimeSpan ExpandDuration = TimeSpan.FromMilliseconds(280);
-    private static readonly TimeSpan FadeDuration = TimeSpan.FromMilliseconds(160);
+    private static readonly TimeSpan ExpandDuration = TimeSpan.FromMilliseconds(360);
+    private static readonly TimeSpan FadeDuration = TimeSpan.FromMilliseconds(210);
     private int _animationVersion;
 
     public static readonly StyledProperty<bool> ExpandUpProperty =
         AvaloniaProperty.Register<PopupContentExpander, bool>(nameof(ExpandUp));
 
+    public static readonly AttachedProperty<bool> DisableAnimationProperty =
+        AvaloniaProperty.RegisterAttached<PopupContentExpander, Control, bool>("DisableAnimation");
+
     public bool ExpandUp
     {
         get => GetValue(ExpandUpProperty);
         set => SetValue(ExpandUpProperty, value);
+    }
+
+    public static bool GetDisableAnimation(Control element)
+    {
+        return element.GetValue(DisableAnimationProperty);
+    }
+
+    public static void SetDisableAnimation(Control element, bool value)
+    {
+        element.SetValue(DisableAnimationProperty, value);
     }
 
     public PopupContentExpander()
@@ -35,6 +47,14 @@ public sealed class PopupContentExpander : ContentExpander
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
+
+        if (GetDisableAnimation(this))
+        {
+            Multiplier = 1;
+            Opacity = 1;
+            Transitions = null;
+            return;
+        }
 
         var animationVersion = ++_animationVersion;
         Dispatcher.UIThread.Post(() =>

@@ -19,7 +19,8 @@
                         <VisualLayerManager Name="PART_VisualLayerManager">
                             <ovo:PopupContentExpander
                                 ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}"
-                                Name="PART_LayoutTransform">
+                                Name="PART_LayoutTransform"
+                                DisableAnimation="{Binding $parent[Popup].(ovo:PopupContentExpander.DisableAnimation)}">
                                 <ContentPresenter
                                     Background="{TemplateBinding Background}"
                                     Content="{TemplateBinding Content}"

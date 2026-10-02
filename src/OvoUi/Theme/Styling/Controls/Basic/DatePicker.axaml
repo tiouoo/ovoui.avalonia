@@ -1,4 +1,7 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Height="300" Padding="20">
             <DatePicker Classes="border_focus" VerticalAlignment="Center" />
@@ -266,6 +269,7 @@
                             Name="PART_Popup"
                             Placement="BottomEdgeAlignedRight"
                             PlacementTarget="PART_Background"
+                            ovo:PopupContentExpander.DisableAnimation="True"
                             WindowManagerAddShadowHint="False">
                             <DatePickerPresenter
                                 HorizontalAlignment="Right"
