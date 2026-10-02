@@ -1,5 +1,6 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
+    xmlns:converter="using:OvoUi.Common.Converter"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
@@ -13,6 +14,8 @@
     <CornerRadius x:Key="OvoBigCornerRadius">16</CornerRadius>
     <FontFamily x:Key="OvoFontFamily">avares://OvoUi/Assets#AlimamaFangYuanTi</FontFamily>
     <FontFamily x:Key="OvoIconFontFamily">avares://OvoUi/Assets#iconfont</FontFamily>
+
+    <converter:ClassesContainsConverter x:Key="ClassesContainsConverter" />
 
     <system:Double x:Key="SolidOpacity">1</system:Double>
     <system:Double x:Key="TranslucentOpacity">1</system:Double>

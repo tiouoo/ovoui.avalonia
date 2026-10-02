@@ -1,4 +1,7 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Margin="20" Spacing="20">
             <AutoCompleteBox PlaceholderText="12" Width="200" />
@@ -7,6 +10,16 @@
                 Theme="{StaticResource LooklessAutoCompleteBoxTheme}"
                 Width="200" />
             <AutoCompleteBox
+                PlaceholderText="12"
+                Theme="{StaticResource BorderAutoCompleteBoxTheme}"
+                Width="200" />
+            <AutoCompleteBox
+                Classes="clear"
+                PlaceholderText="12"
+                Theme="{StaticResource BorderAutoCompleteBoxTheme}"
+                Width="200" />
+            <AutoCompleteBox
+                Classes="text_area"
                 PlaceholderText="12"
                 Theme="{StaticResource BorderAutoCompleteBoxTheme}"
                 Width="200" />
@@ -23,6 +36,8 @@
                     <Panel>
                         <TextBox
                             Classes="no_error"
+                            Classes.clear="{Binding $parent[AutoCompleteBox].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=clear}"
+                            Classes.text_area="{Binding $parent[AutoCompleteBox].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=text_area}"
                             DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
                             InnerLeftContent="{TemplateBinding InnerLeftContent}"
                             InnerRightContent="{TemplateBinding InnerRightContent}"
@@ -67,6 +82,9 @@
         x:Key="LooklessAutoCompleteBoxTheme">
         <Style Selector="^ /template/ TextBox#PART_TextBox">
             <Setter Property="Theme" Value="{StaticResource LooklessTextBoxTheme}" />
+        </Style>
+        <Style Selector="^.text_area /template/ TextBox#PART_TextBox">
+            <Setter Property="Padding" Value="10,5,8,5" />
         </Style>
     </ControlTheme>
 

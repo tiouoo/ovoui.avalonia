@@ -10,14 +10,14 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        AutoCompleteBox.ItemsSource = new List<string> { "Apple", "Banana", "Cherry", "Date" };
+        AutoCompleteBox.ItemsSource = new List<string> { "Apple", "Banana", "Balalala", "Cherry", "Date" };
     }
 
     private void Dark(object? sender, RoutedEventArgs e)
     {
         ThemeManager.ToggleTheme(Themes.Dark);
     }
-    
+
     private void Light(object? sender, RoutedEventArgs e)
     {
         ThemeManager.ToggleTheme(Themes.Light);

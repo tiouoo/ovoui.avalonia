@@ -22,7 +22,7 @@
                 <ComboBoxItem Content="Date" />
             </ComboBox>
 
-            <AutoCompleteBox Name="AutoCompleteBox" />
+            <AutoCompleteBox Classes="clear" Name="AutoCompleteBox" />
 
         </StackPanel>
         <StackPanel

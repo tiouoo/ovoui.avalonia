@@ -15,6 +15,7 @@
         <ResourceInclude Source="Calendar.axaml" />
         <ResourceInclude Source="DatePicker.axaml" />
         <ResourceInclude Source="EmbeddableControlRoot.axaml" />
+        <ResourceInclude Source="AutoCompleteBox.axaml" />
         <ResourceInclude Source="CalendarDatePicker.axaml" />
         <ResourceInclude Source="Expander.axaml" />
         <ResourceInclude Source="Popup.axaml" />
