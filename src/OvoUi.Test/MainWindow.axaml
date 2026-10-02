@@ -13,9 +13,8 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <TextBox Classes="clear" Width="300" />
-            <TextBox Classes="reveal_password" Width="300" />
-            <TextBox Classes="clear reveal_password" Width="300" />
+            <DatePicker Classes="border_focus" />
+
 
         </StackPanel>
         <StackPanel

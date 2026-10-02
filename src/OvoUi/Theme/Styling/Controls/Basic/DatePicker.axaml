@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20">
-            <!-- <DatePickerPresenter YearVisible="False" /> -->
             <DatePickerPresenter Classes="border_focus" />
         </Border>
     </Design.PreviewWith>
@@ -103,11 +102,14 @@
                                     Padding="0,6"
                                     Theme="{StaticResource DatePickerButtonTheme}"
                                     VerticalAlignment="Stretch">
-                                    <PathIcon
-                                        Data="{DynamicResource Check}"
+                                    <TextBlock
+                                        FontFamily="{DynamicResource OvoIconFontFamily}"
+                                        FontSize="19"
+                                        FontWeight="Light"
                                         Foreground="{DynamicResource InnerForegroundBrush}"
-                                        Height="15"
-                                        Width="12" />
+                                        HorizontalAlignment="Center"
+                                        Text="&#xe61a;"
+                                        VerticalAlignment="Center" />
                                 </Button>
                                 <Rectangle
                                     Fill="{DynamicResource LineBrush}"
@@ -124,11 +126,14 @@
                                     Padding="0,6"
                                     Theme="{StaticResource DatePickerButtonTheme}"
                                     VerticalAlignment="Stretch">
-                                    <PathIcon
-                                        Data="{DynamicResource Close}"
+                                    <TextBlock
+                                        FontFamily="{DynamicResource OvoIconFontFamily}"
+                                        FontSize="18"
+                                        FontWeight="Light"
                                         Foreground="{DynamicResource InnerForegroundBrush}"
-                                        Height="15"
-                                        Width="15" />
+                                        HorizontalAlignment="Center"
+                                        Text="&#xe609;"
+                                        VerticalAlignment="Center" />
                                 </Button>
                                 <Rectangle
                                     Fill="{DynamicResource LineBrush}"
@@ -407,10 +412,14 @@
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0,4" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="6,4" />
         <Style Selector="^:selected">
             <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
         </Style>
         <Style Selector="^:selected /template/ Rectangle#SelectionIndicator">
             <Setter Property="IsVisible" Value="False" />
