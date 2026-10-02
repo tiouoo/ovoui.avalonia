@@ -27,7 +27,7 @@
         <Setter Property="ContextFlyout" Value="{DynamicResource DefaultTextBoxContextFlyout}" />
         <Setter Property="TextWrapping" Value="Wrap" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource SystemAccentColorOpacity02}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBrush}" />
         <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
         <Setter Property="CaretBrush" Value="{DynamicResource TextBoxTextCaretBrush}" />

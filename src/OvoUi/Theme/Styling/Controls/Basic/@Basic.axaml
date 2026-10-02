@@ -27,5 +27,8 @@
         <ResourceInclude Source="Popup.axaml" />
         <ResourceInclude Source="ToggleSwitch.axaml" />
         <ResourceInclude Source="Tooltip.axaml" />
+        <ResourceInclude Source="TransitioningContentControl.axaml" />
+        <ResourceInclude Source="Separator.axaml" />
+        <ResourceInclude Source="SelectableTextBlock.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

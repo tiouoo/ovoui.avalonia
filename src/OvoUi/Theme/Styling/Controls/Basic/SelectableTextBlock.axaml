@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <MenuFlyout Placement="Bottom" x:Key="SelectableTextBlockContextFlyout">
+        <MenuItem
+            Command="{Binding $parent[TextBox].Copy}"
+            Header="{DynamicResource Lang.Copy}"
+            InputGesture="{x:Static TextBox.CopyGesture}"
+            IsEnabled="{Binding $parent[TextBox].CanCopy}">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe63e;" />
+            </MenuItem.Icon>
+        </MenuItem>
+    </MenuFlyout>
+
+    <ControlTheme TargetType="SelectableTextBlock" x:Key="{x:Type SelectableTextBlock}">
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="Cursor" Value="Ibeam" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBrush}" />
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition
+                    Duration="0:0:0.3"
+                    Easing="CircularEaseOut"
+                    Property="Foreground" />
+            </Transitions>
+        </Setter>
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+
+        <Style Selector="^.h1">
+            <Setter Property="FontSize" Value="32" />
+        </Style>
+        <Style Selector="^.h2">
+            <Setter Property="FontSize" Value="28" />
+        </Style>
+        <Style Selector="^.h3">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+        <Style Selector="^.h4">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style Selector="^.h5">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style Selector="^.h6">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style Selector="^.success">
+            <Setter Property="Foreground" Value="{DynamicResource SuccessColor}" />
+        </Style>
+        <Style Selector="^.info">
+            <Setter Property="Foreground" Value="{DynamicResource InfoColor}" />
+        </Style>
+        <Style Selector="^.warn">
+            <Setter Property="Foreground" Value="{DynamicResource WarnColor}" />
+        </Style>
+        <Style Selector="^.danger,^.error">
+            <Setter Property="Foreground" Value="{DynamicResource ErrorColor}" />
+        </Style>
+        <Style Selector="^.accent">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+
+        <Style Selector="^[IsEnabled=True]">
+            <Setter Property="ContextFlyout" Value="{StaticResource SelectableTextBlockContextFlyout}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

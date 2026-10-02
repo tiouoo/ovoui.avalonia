@@ -46,6 +46,7 @@
         Opacity="0.4"
         x:Key="SystemAccentColorOpacity04" />
 
+    <DynamicResource ResourceKey="SystemAccentColorOpacity02" x:Key="TextSelectionBrush" />
 
     <SolidColorBrush
         Color="{DynamicResource InfoColor}"
