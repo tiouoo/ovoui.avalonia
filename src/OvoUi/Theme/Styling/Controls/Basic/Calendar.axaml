@@ -310,7 +310,7 @@
         </Style>
 
         <Style Selector="^:inactive /template/ ContentPresenter">
-            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
     </ControlTheme>
 
@@ -366,7 +366,7 @@
         </Style>
 
         <Style Selector="^:inactive /template/ ContentPresenter">
-            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
 
         <Style Selector="^:blackout /template/ ContentPresenter">
