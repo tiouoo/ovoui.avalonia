@@ -13,8 +13,10 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <Calendar />
-            <Calendar SelectionMode="SingleRange" />
+            <TextBox Classes="clear" Width="300" />
+            <TextBox Classes="reveal_password" Width="300" />
+            <TextBox Classes="clear reveal_password" Width="300" />
+
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

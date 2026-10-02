@@ -118,22 +118,11 @@
                             Name="ClearButton"
                             Theme="{DynamicResource BasicButtonTheme}"
                             Width="{DynamicResource ComboBoxIconWidth}">
-                            <TextBlock
-                                FontFamily="{DynamicResource OvoIconFontFamily}"
-                                FontSize="17"
-                                FontWeight="Light"
-                                Foreground="{DynamicResource InnerForegroundBrush}"
-                                HorizontalAlignment="Center"
-                                Text="&#xe643;"
-                                VerticalAlignment="Center" />
+                            <Button Theme="{DynamicResource InputClearIcon}" />
                         </Button>
 
 
-                        <TextBlock
-                            FontFamily="{DynamicResource OvoIconFontFamily}"
-                            FontSize="19"
-                            FontWeight="Light"
-                            Foreground="{DynamicResource InnerForegroundBrush}"
+                        <Button
                             Grid.Column="1"
                             HorizontalAlignment="Center"
                             IsHitTestVisible="False"
@@ -141,7 +130,7 @@
                             Name="DropDownGlyph"
                             RenderTransform="translate(0px, 0px) rotate(0deg)"
                             RenderTransformOrigin="50%,50%"
-                            Text="&#xe623;"
+                            Theme="{DynamicResource InputDropDownIcon}"
                             UseLayoutRounding="False"
                             VerticalAlignment="Center" />
 
@@ -189,22 +178,22 @@
             <Style Selector="^:pointerover /template/ Button#ClearButton">
                 <Setter Property="IsVisible" Value="{Binding $parent[ComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
             </Style>
-            <Style Selector="^:pointerover /template/ PathIcon#DropDownGlyph">
+            <Style Selector="^:pointerover /template/ Button#DropDownGlyph">
                 <Setter Property="IsVisible" Value="{Binding $parent[ComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
             </Style>
         </Style>
 
-        <Style Selector="^ /template/ TextBlock#DropDownGlyph">
+        <Style Selector="^ /template/ Button#DropDownGlyph">
             <Setter Property="Transitions">
                 <Transitions>
                     <TransformOperationsTransition Duration="0:0:0.12" Property="RenderTransform" />
                 </Transitions>
             </Setter>
         </Style>
-        <Style Selector="^:dropdownopen /template/ TextBlock#DropDownGlyph">
+        <Style Selector="^:dropdownopen /template/ Button#DropDownGlyph">
             <Setter Property="RenderTransform" Value="translate(0px, 0px) rotate(180deg)" />
         </Style>
-        <Style Selector="^:pressed /template/ TextBlock#DropDownGlyph">
+        <Style Selector="^:pressed /template/ Button#DropDownGlyph">
             <Setter Property="RenderTransform" Value="translate(0px, 2px) rotate(0deg)" />
         </Style>
 
@@ -461,38 +450,38 @@
                         Margin="5,0,10,0"
                         VerticalAlignment="Center"
                         Width="12" />
-                        <Popup
-                            Grid.Column="0"
-                            Grid.ColumnSpan="3"
+                    <Popup
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
                         InheritsTransform="True"
                         IsLightDismissEnabled="True"
                         IsOpen="{TemplateBinding IsDropDownOpen,
                                                  Mode=TwoWay}"
                         MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                            Name="PART_Popup"
-                            PlacementTarget="{TemplateBinding}"
-                            WindowManagerAddShadowHint="False">
-                            <LayoutTransformControl Name="PART_PopupTransform">
-                                <ovo:PopupContentExpander ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static converters:PlacementToExpandUpConverter.Instance}}">
-                                    <Border
-                                        Background="{DynamicResource PopupBackgroundBrush}"
-                                        BorderBrush="{DynamicResource LineBrush}"
-                                        BorderThickness="1"
-                                        BoxShadow="{DynamicResource PopupBoxShadow}"
-                                        CornerRadius="{DynamicResource OvoCornerRadius}"
-                                        HorizontalAlignment="Stretch"
-                                        Margin="4"
-                                        MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Padding="0,-2">
-                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                            <Border Margin="4">
-                                                <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                                            </Border>
-                                        </ScrollViewer>
-                                    </Border>
-                                </ovo:PopupContentExpander>
-                            </LayoutTransformControl>
-                        </Popup>
+                        Name="PART_Popup"
+                        PlacementTarget="{TemplateBinding}"
+                        WindowManagerAddShadowHint="False">
+                        <LayoutTransformControl Name="PART_PopupTransform">
+                            <ovo:PopupContentExpander ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static converters:PlacementToExpandUpConverter.Instance}}">
+                                <Border
+                                    Background="{DynamicResource PopupBackgroundBrush}"
+                                    BorderBrush="{DynamicResource LineBrush}"
+                                    BorderThickness="1"
+                                    BoxShadow="{DynamicResource PopupBoxShadow}"
+                                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="4"
+                                    MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Padding="0,-2">
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                        <Border Margin="4">
+                                            <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
+                                        </Border>
+                                    </ScrollViewer>
+                                </Border>
+                            </ovo:PopupContentExpander>
+                        </LayoutTransformControl>
+                    </Popup>
                 </Grid>
             </ControlTemplate>
         </Setter>

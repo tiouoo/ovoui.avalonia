@@ -1,6 +1,4 @@
-<ResourceDictionary
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel
             Height="400"
@@ -86,14 +84,7 @@
                             Name="ClearButton"
                             Theme="{DynamicResource BasicButtonTheme}"
                             Width="24">
-                            <TextBlock
-                                FontFamily="{DynamicResource OvoIconFontFamily}"
-                                FontSize="17"
-                                FontWeight="Light"
-                                Foreground="{DynamicResource InnerForegroundBrush}"
-                                HorizontalAlignment="Center"
-                                Text="&#xe643;"
-                                VerticalAlignment="Center" />
+                            <Button Theme="{DynamicResource InputClearIcon}" />
                         </Button>
                         <Button
                             Focusable="False"
@@ -102,14 +93,7 @@
                             Name="PART_Button"
                             Theme="{DynamicResource BasicButtonTheme}"
                             Width="28">
-                            <TextBlock
-                                FontFamily="{DynamicResource OvoIconFontFamily}"
-                                FontSize="18"
-                                FontWeight="Light"
-                                Foreground="{DynamicResource InnerForegroundBrush}"
-                                HorizontalAlignment="Center"
-                                Text="&#xe623;"
-                                VerticalAlignment="Center" />
+                            <Button Theme="{DynamicResource InputDropDownIcon}" />
                         </Button>
                         <Popup
                             Grid.Column="0"
