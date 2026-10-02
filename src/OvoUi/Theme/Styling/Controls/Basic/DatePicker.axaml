@@ -4,14 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Height="300" Padding="20">
-            <DatePicker Classes="border_focus" VerticalAlignment="Center" />
+            <DatePickerPresenter Classes="border_focus" VerticalAlignment="Center" />
         </Border>
     </Design.PreviewWith>
 
     <ControlTheme TargetType="DatePickerPresenter" x:Key="{x:Type DatePickerPresenter}">
         <Setter Property="Width" Value="296" />
         <Setter Property="MinWidth" Value="296" />
-        <Setter Property="MaxHeight" Value="304" />
+        <Setter Property="MaxHeight" Value="316" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
@@ -32,7 +32,11 @@
                     Name="Background"
                     Padding="0">
                     <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid Name="ContentPanel" RowDefinitions="*,Auto">
+                        <Grid
+                            Margin="4,0"
+                            Name="ContentPanel"
+                            RowDefinitions="*,Auto"
+                            RowSpacing="0">
                             <Grid ColumnDefinitions="*,1,*,1,*" Name="PART_PickerContainer">
 
                                 <Grid.Styles>
@@ -42,10 +46,7 @@
                                 </Grid.Styles>
 
                                 <Panel Name="PART_MonthHost">
-                                    <Border
-                                        BorderBrush="{DynamicResource LineBrush}"
-                                        BorderThickness="0"
-                                        Name="PART_MonthBorder">
+                                    <Border Name="PART_MonthBorder">
                                         <Panel>
                                             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
                                                 <DateTimePickerPanel
@@ -58,9 +59,14 @@
                                     </Border>
                                 </Panel>
 
+                                <Rectangle
+                                    Fill="{DynamicResource LineBrush}"
+                                    Grid.Column="1"
+                                    Margin="2,10"
+                                    Width="1" />
 
                                 <Panel Grid.Column="2" Name="PART_DayHost">
-                                    <Border BorderBrush="{DynamicResource LineBrush}">
+                                    <Border>
                                         <Panel>
                                             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
                                                 <DateTimePickerPanel
@@ -73,11 +79,15 @@
                                     </Border>
                                 </Panel>
 
+                                <Rectangle
+                                    Fill="{DynamicResource LineBrush}"
+                                    Grid.Column="3"
+                                    Margin="2,10"
+                                    Width="1" />
+
+
                                 <Panel Grid.Column="4" Name="PART_YearHost">
-                                    <Border
-                                        BorderBrush="{DynamicResource LineBrush}"
-                                        BorderThickness="0"
-                                        Name="PART_YearBorder">
+                                    <Border Name="PART_YearBorder">
                                         <Panel>
                                             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
                                                 <DateTimePickerPanel
@@ -92,10 +102,12 @@
                             </Grid>
 
                             <Grid
-                                ColumnDefinitions="*,Auto,*"
+                                ColumnDefinitions="*,*"
                                 Grid.Row="1"
+                                Margin="4,0,4,4"
                                 Name="AcceptDismissGrid">
                                 <Button
+                                    Classes="accent"
                                     CornerRadius="{DynamicResource OvoCornerRadius}"
                                     Grid.Column="0"
                                     Height="30"
@@ -103,47 +115,35 @@
                                     Margin="3,4,3,3"
                                     Name="PART_AcceptButton"
                                     Padding="0,6"
-                                    Theme="{StaticResource DatePickerButtonTheme}"
                                     VerticalAlignment="Stretch">
                                     <TextBlock
                                         FontFamily="{DynamicResource OvoIconFontFamily}"
                                         FontSize="19"
                                         FontWeight="Light"
-                                        Foreground="{DynamicResource InnerForegroundBrush}"
+                                        Foreground="#fff"
                                         HorizontalAlignment="Center"
                                         Text="&#xe61a;"
                                         VerticalAlignment="Center" />
                                 </Button>
-                                <Rectangle
-                                    Fill="{DynamicResource LineBrush}"
-                                    Grid.Column="1"
-                                    Margin="-2,0,0,0"
-                                    Width="1" />
                                 <Button
+                                    Classes="warn"
                                     CornerRadius="{DynamicResource OvoCornerRadius}"
-                                    Grid.Column="2"
+                                    Grid.Column="1"
                                     Height="30"
                                     HorizontalAlignment="Stretch"
                                     Margin="3,4,3,3"
                                     Name="PART_DismissButton"
                                     Padding="0,6"
-                                    Theme="{StaticResource DatePickerButtonTheme}"
                                     VerticalAlignment="Stretch">
                                     <TextBlock
                                         FontFamily="{DynamicResource OvoIconFontFamily}"
                                         FontSize="18"
                                         FontWeight="Light"
-                                        Foreground="{DynamicResource InnerForegroundBrush}"
+                                        Foreground="#fff"
                                         HorizontalAlignment="Center"
                                         Text="&#xe609;"
                                         VerticalAlignment="Center" />
                                 </Button>
-                                <Rectangle
-                                    Fill="{DynamicResource LineBrush}"
-                                    Grid.Column="0"
-                                    Grid.ColumnSpan="3"
-                                    Height="1"
-                                    VerticalAlignment="Top" />
                             </Grid>
                         </Grid>
                     </Border>
@@ -413,35 +413,5 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="Button" x:Key="DatePickerButtonTheme">
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Padding" Value="0,3" />
-        <Setter Property="CornerRadius" Value="0" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Template">
-            <ControlTemplate TargetType="Button">
-                <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
-                    <ContentPresenter
-                        Background="{TemplateBinding Background}"
-                        Content="{TemplateBinding Content}"
-                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Foreground="{TemplateBinding Foreground}"
-                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        Name="ContentPresenter"
-                        Padding="{TemplateBinding Padding}"
-                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                </Border>
-            </ControlTemplate>
-        </Setter>
-        <Style Selector="^:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
-        </Style>
-        <Style Selector="^:pressed /template/ ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
-        </Style>
-    </ControlTheme>
 
 </ResourceDictionary>
