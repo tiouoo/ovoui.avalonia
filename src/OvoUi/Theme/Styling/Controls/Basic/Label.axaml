@@ -1,0 +1,66 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="Label" x:Key="{x:Type Label}">
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Label">
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    FontSize="{TemplateBinding FontSize}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    RecognizesAccessKey="True"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="Transitions">
+            <ovo:OvoTransitions />
+        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Style Selector="^.h1">
+            <Setter Property="FontSize" Value="32" />
+        </Style>
+        <Style Selector="^.h2">
+            <Setter Property="FontSize" Value="28" />
+        </Style>
+        <Style Selector="^.h3">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+        <Style Selector="^.h4">
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <Style Selector="^.h5">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style Selector="^.h6">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style Selector="^.success">
+            <Setter Property="Foreground" Value="{DynamicResource SuccessColor}" />
+        </Style>
+        <Style Selector="^.info">
+            <Setter Property="Foreground" Value="{DynamicResource InfoColor}" />
+        </Style>
+        <Style Selector="^.warn">
+            <Setter Property="Foreground" Value="{DynamicResource WarnColor}" />
+        </Style>
+        <Style Selector="^.danger,^.error">
+            <Setter Property="Foreground" Value="{DynamicResource ErrorColor}" />
+        </Style>
+        <Style Selector="^.accent">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
