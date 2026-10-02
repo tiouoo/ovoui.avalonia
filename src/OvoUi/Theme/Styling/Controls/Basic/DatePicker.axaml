@@ -264,7 +264,7 @@
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
                             Name="PART_Popup"
-                            Placement="Bottom"
+                            Placement="BottomEdgeAlignedLeft"
                             PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
                             <DatePickerPresenter Name="PART_PickerPresenter" />

@@ -144,30 +144,26 @@
                             Name="PART_Popup"
                             PlacementTarget="Background"
                             WindowManagerAddShadowHint="False">
-                            <LayoutTransformControl Name="PART_PopupTransform">
-                                <ovo:PopupContentExpander ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static converters:PlacementToExpandUpConverter.Instance}}">
-                                    <Border
-                                        Background="{DynamicResource PopupBackgroundBrush}"
-                                        BorderBrush="{DynamicResource LineBrush}"
-                                        BorderThickness="1"
-                                        BoxShadow="{DynamicResource PopupBoxShadow}"
-                                        CornerRadius="{DynamicResource OvoCornerRadius}"
-                                        HorizontalAlignment="Stretch"
-                                        Margin="4"
-                                        MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Name="PopupBorder"
-                                        Padding="0,-2">
-                                        <ScrollViewer
-                                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                            IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                            <Border Margin="4">
-                                                <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                                            </Border>
-                                        </ScrollViewer>
+                            <Border
+                                Background="{DynamicResource PopupBackgroundBrush}"
+                                BorderBrush="{DynamicResource LineBrush}"
+                                BorderThickness="1"
+                                BoxShadow="{DynamicResource PopupBoxShadow}"
+                                CornerRadius="{DynamicResource OvoCornerRadius}"
+                                HorizontalAlignment="Stretch"
+                                Margin="4"
+                                MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                                Name="PopupBorder"
+                                Padding="0,-2">
+                                <ScrollViewer
+                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                    IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                    <Border Margin="4">
+                                        <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                                     </Border>
-                                </ovo:PopupContentExpander>
-                            </LayoutTransformControl>
+                                </ScrollViewer>
+                            </Border>
                         </Popup>
                     </Grid>
                 </DataValidationErrors>
@@ -461,26 +457,23 @@
                         Name="PART_Popup"
                         PlacementTarget="{TemplateBinding}"
                         WindowManagerAddShadowHint="False">
-                        <LayoutTransformControl Name="PART_PopupTransform">
-                            <ovo:PopupContentExpander ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static converters:PlacementToExpandUpConverter.Instance}}">
-                                <Border
-                                    Background="{DynamicResource PopupBackgroundBrush}"
-                                    BorderBrush="{DynamicResource LineBrush}"
-                                    BorderThickness="1"
-                                    BoxShadow="{DynamicResource PopupBoxShadow}"
-                                    CornerRadius="{DynamicResource OvoCornerRadius}"
-                                    HorizontalAlignment="Stretch"
-                                    Margin="4"
-                                    MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Padding="0,-2">
-                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                        <Border Margin="4">
-                                            <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                                        </Border>
-                                    </ScrollViewer>
+                        <Border
+                            Background="{DynamicResource PopupBackgroundBrush}"
+                            BorderBrush="{DynamicResource LineBrush}"
+                            BorderThickness="1"
+                            BoxShadow="{DynamicResource PopupBoxShadow}"
+                            CornerRadius="{DynamicResource OvoCornerRadius}"
+                            HorizontalAlignment="Stretch"
+                            Margin="4"
+                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                            Padding="0,-2">
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                <Border Margin="4">
+                                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                                 </Border>
-                            </ovo:PopupContentExpander>
-                        </LayoutTransformControl>
+                            </ScrollViewer>
+                        </Border>
+
                     </Popup>
                 </Grid>
             </ControlTemplate>

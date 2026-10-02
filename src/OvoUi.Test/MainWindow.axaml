@@ -14,6 +14,13 @@
             Spacing="10"
             VerticalAlignment="Center">
             <DatePicker Classes="border_focus" />
+            <CalendarDatePicker Classes="border_focus" HorizontalAlignment="Stretch" />
+            <ComboBox Classes="border_focus" HorizontalAlignment="Stretch">
+                <ComboBoxItem Content="Apple" />
+                <ComboBoxItem Content="Banana" />
+                <ComboBoxItem Content="Cherry" />
+                <ComboBoxItem Content="Date" />
+            </ComboBox>
 
 
         </StackPanel>

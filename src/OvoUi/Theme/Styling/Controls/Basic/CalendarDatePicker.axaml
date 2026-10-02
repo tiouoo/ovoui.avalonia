@@ -103,7 +103,7 @@
                                 BorderThickness="1"
                                 BoxShadow="{DynamicResource PopupBoxShadow}"
                                 CornerRadius="{DynamicResource OvoCornerRadius}"
-                                HorizontalAlignment="Stretch"
+                                HorizontalAlignment="Left"
                                 Margin="4"
                                 MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
                                 Name="PopupBorder">

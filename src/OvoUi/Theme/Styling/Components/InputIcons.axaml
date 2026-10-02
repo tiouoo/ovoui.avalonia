@@ -49,8 +49,8 @@
         BasedOn="{StaticResource InputIconButtonTheme}"
         TargetType="Button"
         x:Key="InputStandardIcon">
-        <Setter Property="FontSize" Value="19" />
-        <Setter Property="Margin" Value="8,0,6,0" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Margin" Value="8,0,7,0" />
     </ControlTheme>
 
     <ControlTheme
