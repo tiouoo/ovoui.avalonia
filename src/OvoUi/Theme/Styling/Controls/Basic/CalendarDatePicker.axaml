@@ -91,6 +91,7 @@
                         <Popup
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
                             Name="PART_Popup"
                             Placement="Bottom"
                             PlacementTarget="{TemplateBinding}"

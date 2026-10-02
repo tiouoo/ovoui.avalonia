@@ -3,8 +3,11 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Height="300" Padding="20">
-            <DatePickerPresenter Classes="border_focus" VerticalAlignment="Center" />
+        <Border Height="500" Padding="20">
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <DatePickerPresenter VerticalAlignment="Center" />
+                <DatePickerPresenter Classes="connect" VerticalAlignment="Center" />
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
@@ -37,74 +40,123 @@
                             Name="ContentPanel"
                             RowDefinitions="*,Auto"
                             RowSpacing="0">
-                            <Grid ColumnDefinitions="*,1,*,1,*" Name="PART_PickerContainer">
+                            <Panel>
+                                <Border
+                                    Background="{DynamicResource SystemAccentColorOpacity02}"
+                                    BorderBrush="{DynamicResource SystemAccentColorOpacity04}"
+                                    BorderThickness="1"
+                                    CornerRadius="9"
+                                    Height="32"
+                                    IsVisible="False"
+                                    Margin="3,0"
+                                    Name="PART_Connect" />
+                                <Grid
+                                    Classes.connect="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                    ColumnDefinitions="*,1,*,1,*"
+                                    Name="PART_PickerContainer">
+                                    <Grid.Styles>
+                                        <Style Selector="Grid#PART_PickerContainer DateTimePickerPanel &gt; ListBoxItem">
+                                            <Setter Property="Theme" Value="{StaticResource DatePickerItemTheme}" />
+                                        </Style>
+                                        <Style Selector="Grid#PART_PickerContainer.connect DateTimePickerPanel &gt; ListBoxItem">
+                                            <Setter Property="Theme" Value="{StaticResource DatePickerItemConnectTheme}" />
+                                        </Style>
+                                    </Grid.Styles>
+                                    <Panel Name="PART_MonthHost">
+                                        <Border Name="PART_MonthBorder">
+                                            <Panel>
+                                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                                    <DateTimePickerPanel
+                                                        ItemHeight="36"
+                                                        Name="PART_MonthSelector"
+                                                        PanelType="Month"
+                                                        ShouldLoop="True" />
+                                                </ScrollViewer>
+                                            </Panel>
+                                        </Border>
+                                    </Panel>
 
-                                <Grid.Styles>
-                                    <Style Selector="DateTimePickerPanel &gt; ListBoxItem">
-                                        <Setter Property="Theme" Value="{StaticResource DatePickerItemTheme}" />
-                                    </Style>
-                                </Grid.Styles>
+                                    <Panel Grid.Column="1">
+                                        <Rectangle
+                                            Fill="{DynamicResource LineBrush}"
+                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
+                                            Margin="2,10"
+                                            Width="1" />
+                                        <Grid
+                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                            RowDefinitions="*,*"
+                                            RowSpacing="36">
+                                            <Rectangle
+                                                Fill="{DynamicResource LineBrush}"
+                                                Grid.Row="0"
+                                                Margin="2,10"
+                                                Width="1" />
+                                            <Rectangle
+                                                Fill="{DynamicResource LineBrush}"
+                                                Grid.Row="1"
+                                                Margin="2,10"
+                                                Width="1" />
+                                        </Grid>
+                                    </Panel>
 
-                                <Panel Name="PART_MonthHost">
-                                    <Border Name="PART_MonthBorder">
-                                        <Panel>
-                                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                                                <DateTimePickerPanel
-                                                    ItemHeight="36"
-                                                    Name="PART_MonthSelector"
-                                                    PanelType="Month"
-                                                    ShouldLoop="True" />
-                                            </ScrollViewer>
-                                        </Panel>
-                                    </Border>
-                                </Panel>
+                                    <Panel Grid.Column="2" Name="PART_DayHost">
+                                        <Border>
+                                            <Panel>
+                                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                                    <DateTimePickerPanel
+                                                        ItemHeight="36"
+                                                        Name="PART_DaySelector"
+                                                        PanelType="Day"
+                                                        ShouldLoop="True" />
+                                                </ScrollViewer>
+                                            </Panel>
+                                        </Border>
+                                    </Panel>
 
-                                <Rectangle
-                                    Fill="{DynamicResource LineBrush}"
-                                    Grid.Column="1"
-                                    Margin="2,10"
-                                    Width="1" />
-
-                                <Panel Grid.Column="2" Name="PART_DayHost">
-                                    <Border>
-                                        <Panel>
-                                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                                                <DateTimePickerPanel
-                                                    ItemHeight="36"
-                                                    Name="PART_DaySelector"
-                                                    PanelType="Day"
-                                                    ShouldLoop="True" />
-                                            </ScrollViewer>
-                                        </Panel>
-                                    </Border>
-                                </Panel>
-
-                                <Rectangle
-                                    Fill="{DynamicResource LineBrush}"
-                                    Grid.Column="3"
-                                    Margin="2,10"
-                                    Width="1" />
+                                    <Panel Grid.Column="3">
+                                        <Rectangle
+                                            Fill="{DynamicResource LineBrush}"
+                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
+                                            Margin="2,10"
+                                            Width="1" />
+                                        <Grid
+                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                            RowDefinitions="*,*"
+                                            RowSpacing="36">
+                                            <Rectangle
+                                                Fill="{DynamicResource LineBrush}"
+                                                Grid.Row="0"
+                                                Margin="2,10"
+                                                Width="1" />
+                                            <Rectangle
+                                                Fill="{DynamicResource LineBrush}"
+                                                Grid.Row="1"
+                                                Margin="2,10"
+                                                Width="1" />
+                                        </Grid>
+                                    </Panel>
 
 
-                                <Panel Grid.Column="4" Name="PART_YearHost">
-                                    <Border Name="PART_YearBorder">
-                                        <Panel>
-                                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                                                <DateTimePickerPanel
-                                                    ItemHeight="36"
-                                                    Name="PART_YearSelector"
-                                                    PanelType="Year"
-                                                    ShouldLoop="False" />
-                                            </ScrollViewer>
-                                        </Panel>
-                                    </Border>
-                                </Panel>
-                            </Grid>
+                                    <Panel Grid.Column="4" Name="PART_YearHost">
+                                        <Border Name="PART_YearBorder">
+                                            <Panel>
+                                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                                    <DateTimePickerPanel
+                                                        ItemHeight="36"
+                                                        Name="PART_YearSelector"
+                                                        PanelType="Year"
+                                                        ShouldLoop="False" />
+                                                </ScrollViewer>
+                                            </Panel>
+                                        </Border>
+                                    </Panel>
+                                </Grid>
+                            </Panel>
 
                             <Grid
                                 ColumnDefinitions="*,*"
                                 Grid.Row="1"
-                                Margin="4,0,4,4"
+                                Margin="4,0,4,6"
                                 Name="AcceptDismissGrid">
                                 <Button
                                     Classes="accent"
@@ -155,6 +207,9 @@
             <Style Selector="^:pointerover RepeatButton">
                 <Setter Property="IsVisible" Value="True" />
             </Style>
+        </Style>
+        <Style Selector="^.connect /template/ Border#PART_Connect">
+            <Setter Property="IsVisible" Value="True" />
         </Style>
 
         <Style Selector="^[DayVisible=True] /template/ Border#PART_MonthBorder">
@@ -259,9 +314,9 @@
                             Placement="Bottom"
                             PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
-                            <ovo:PopupRenderContent
-                                ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
+                            <ovo:PopupRenderContent ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
                                 <DatePickerPresenter
+                                    Classes.connect="{Binding $parent[DatePicker].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
                                     Name="PART_PickerPresenter"
                                     VerticalAlignment="Top" />
                             </ovo:PopupRenderContent>
@@ -415,6 +470,15 @@
         </Style>
         <Style Selector="^:not(:selected) /template/ Rectangle#SelectionIndicator">
             <Setter Property="IsVisible" Value="False" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource DatePickerItemTheme}"
+        TargetType="ListBoxItem"
+        x:Key="DatePickerItemConnectTheme">
+        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
         </Style>
     </ControlTheme>
 
