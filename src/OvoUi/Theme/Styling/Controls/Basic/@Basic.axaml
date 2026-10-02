@@ -25,5 +25,6 @@
         <ResourceInclude Source="ThemeVariantScope.axaml" />
         <ResourceInclude Source="HyperlinkButton.axaml" />
         <ResourceInclude Source="Popup.axaml" />
+        <ResourceInclude Source="ToggleSwitch.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

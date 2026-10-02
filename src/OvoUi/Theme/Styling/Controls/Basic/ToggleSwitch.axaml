@@ -1,0 +1,397 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Background="{DynamicResource SemiBackground0Color}" Spacing="8">
+            <StackPanel Orientation="Horizontal">
+                <ToggleSwitch />
+                <ToggleSwitch IsChecked="True" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ToggleSwitch
+                    OffContent="否"
+                    OnContent="是"
+                    Theme="{DynamicResource SimpleToggleSwitch}" />
+                <ToggleSwitch
+                    IsChecked="True"
+                    OffContent="否"
+                    OnContent="是"
+                    Theme="{DynamicResource SimpleToggleSwitch}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ToggleSwitch
+                    OffContent="否"
+                    OnContent="是"
+                    Theme="{DynamicResource ButtonToggleSwitch}" />
+                <ToggleSwitch
+                    IsChecked="True"
+                    OffContent="No"
+                    OnContent="Yes"
+                    Theme="{DynamicResource ButtonToggleSwitch}" />
+            </StackPanel>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ovo:BooleansToOpacityConverter x:Key="BooleansToOpacityConverter" />
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush
+                Color="#000000"
+                Opacity="0.09"
+                x:Key="ToggleSwitchContainerUnCheckedDisabledBorderBrush" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush
+                Color="White"
+                Opacity="0.16"
+                x:Key="ToggleSwitchContainerUnCheckedDisabledBorderBrush" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <ControlTheme TargetType="ToggleSwitch" x:Key="{x:Type ToggleSwitch}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="OffContent" Value="{DynamicResource Lang.Off}" />
+        <Setter Property="OnContent" Value="{DynamicResource Lang.On}" />
+        <Setter Property="FocusAdorner">
+            <FocusAdornerTemplate>
+                <Border CornerRadius="100" />
+            </FocusAdornerTemplate>
+        </Setter>
+        <Setter Property="KnobTransitions">
+            <Transitions>
+                <DoubleTransition
+                    Duration="0:0:0.2"
+                    Easing="CubicEaseOut"
+                    Property="Canvas.Left" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ToggleSwitch">
+                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, *">
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        IsVisible="{TemplateBinding Content,
+                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="8,4"
+                        Name="PART_ContentPresenter"
+                        VerticalAlignment="Top" />
+
+                    <Border
+                        BackgroundSizing="OuterBorderEdge"
+                        BorderBrush="Transparent"
+                        BorderThickness="1"
+                        CornerRadius="{DynamicResource OvoCornerRadius}"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Height="20"
+                        Name="SwitchBackgroundBorder"
+                        TemplatedControl.IsTemplateFocusTarget="True"
+                        Width="40">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="0:0:0.2" Property="Background" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Canvas
+                            Height="12"
+                            HorizontalAlignment="Left"
+                            Margin="3,0,0,0"
+                            Name="PART_SwitchKnob"
+                            Width="20">
+                            <Panel
+                                Height="12"
+                                Margin="0"
+                                Name="PART_MovingKnobs"
+                                Width="12">
+                                <Border
+                                    Background="White"
+                                    CornerRadius="100"
+                                    Name="SwitchKnobIndicator" />
+                            </Panel>
+                        </Canvas>
+                    </Border>
+
+                    <ContentPresenter
+                        Content="{TemplateBinding OnContent}"
+                        ContentTemplate="{TemplateBinding OnContentTemplate}"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        Margin="8,4"
+                        Name="PART_OnContentPresenter"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                    <ContentPresenter
+                        Content="{TemplateBinding OffContent}"
+                        ContentTemplate="{TemplateBinding OffContentTemplate}"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        Margin="8,4"
+                        Name="PART_OffContentPresenter"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter:empty">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+
+        <Style Selector="^:unchecked">
+            <Style Selector="^ /template/ ContentPresenter#PART_OnContentPresenter">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_OffContentPresenter">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+            </Style>
+            <Style Selector="^:disabled /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ToggleSwitchContainerUnCheckedDisabledBorderBrush}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ ContentPresenter#PART_OnContentPresenter">
+                <Setter Property="Opacity" Value="1" />
+            </Style>
+            <Style Selector="^ /template/ ContentPresenter#PART_OffContentPresenter">
+                <Setter Property="Opacity" Value="0" />
+            </Style>
+            <Style Selector="^ /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled /template/ Border#SwitchBackgroundBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource {x:Type ToggleSwitch}}"
+        TargetType="ToggleSwitch"
+        x:Key="SimpleToggleSwitch">
+        <Setter Property="OnContent" Value="{x:Null}" />
+        <Setter Property="OffContent" Value="{x:Null}" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Content" Value="{x:Null}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ToggleSwitch">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BackgroundSizing="OuterBorderEdge"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Height="20"
+                    Name="SwitchBackgroundBorder"
+                    Width="40">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Duration="0:0:0.2" Property="Background" />
+                        </Transitions>
+                    </Border.Transitions>
+                    <Grid ColumnDefinitions="*,*">
+                        <Canvas
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Height="12"
+                            HorizontalAlignment="Left"
+                            Margin="3,0,0,0"
+                            Name="PART_SwitchKnob"
+                            Width="20">
+                            <Panel
+                                Height="12"
+                                Margin="0"
+                                Name="PART_MovingKnobs"
+                                Width="12">
+                                <Border
+                                    Background="White"
+                                    CornerRadius="100"
+                                    Name="SwitchKnobIndicator" />
+                            </Panel>
+                        </Canvas>
+                        <ContentPresenter
+                            Content="{TemplateBinding OnContent}"
+                            ContentTemplate="{TemplateBinding OnContentTemplate}"
+                            FontSize="12"
+                            Foreground="White"
+                            Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            Margin="2,0,0,0"
+                            Name="PART_OnContentPresenter"
+                            VerticalAlignment="Center" />
+                        <ContentPresenter
+                            Content="{TemplateBinding OffContent}"
+                            ContentTemplate="{TemplateBinding OffContentTemplate}"
+                            FontSize="12"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            Margin="0,0,2,0"
+                            Name="PART_OffContentPresenter"
+                            VerticalAlignment="Center" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:unchecked">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+        <Style Selector="^:checked">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ToggleSwitch" x:Key="ButtonToggleSwitch">
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource TioCornerRadius}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="RenderTransform" Value="none" />
+        <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
+
+        <Setter Property="OnContent" Value="{x:Null}" />
+        <Setter Property="OffContent" Value="{x:Null}" />
+        <Setter Property="Content" Value="{x:Null}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ToggleSwitch">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="Background"
+                    Padding="{TemplateBinding Padding}">
+                    <Panel>
+                        <Panel Name="PART_SwitchKnob" />
+                        <Panel Name="PART_MovingKnobs" />
+                        <ContentPresenter
+                            Content="{TemplateBinding OnContent}"
+                            ContentTemplate="{TemplateBinding OnContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            HorizontalAlignment="Center"
+                            Name="PART_OnContentPresenter"
+                            Opacity="{TemplateBinding IsChecked,
+                                                      Converter={StaticResource BooleansToOpacityConverter}}"
+                            VerticalAlignment="Center" />
+                        <ContentPresenter
+                            Content="{TemplateBinding OffContent}"
+                            ContentTemplate="{TemplateBinding OffContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            HorizontalAlignment="Center"
+                            Name="PART_OffContentPresenter"
+                            Opacity="{TemplateBinding IsChecked,
+                                                      Converter={StaticResource BooleansToOpacityConverter},
+                                                      ConverterParameter='!'}"
+                            VerticalAlignment="Center" />
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Name="PART_ContentPresenter">
+                            <ContentPresenter.IsVisible>
+                                <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                    <TemplateBinding Converter="{x:Static ObjectConverters.IsNotNull}" Property="Content" />
+                                    <TemplateBinding Converter="{x:Static ObjectConverters.IsNull}" Property="OnContent" />
+                                    <TemplateBinding Converter="{x:Static ObjectConverters.IsNull}" Property="OffContent" />
+                                </MultiBinding>
+                            </ContentPresenter.IsVisible>
+                        </ContentPresenter>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            <Setter Property="Cursor" Value="No" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource ButtonToggleSwitch}"
+        TargetType="ToggleSwitch"
+        x:Key="IconBorderlessToggleSwitch">
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="OnContentTemplate">
+            <DataTemplate DataType="Geometry">
+                <PathIcon Data="{Binding}" />
+            </DataTemplate>
+        </Setter>
+        <Setter Property="OffContentTemplate">
+            <DataTemplate DataType="Geometry">
+                <PathIcon Data="{Binding}" />
+            </DataTemplate>
+        </Setter>
+        <Setter Property="ContentTemplate">
+            <DataTemplate DataType="Geometry">
+                <PathIcon Data="{Binding}" />
+            </DataTemplate>
+        </Setter>
+    </ControlTheme>
+
+
+</ResourceDictionary>

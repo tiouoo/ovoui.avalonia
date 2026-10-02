@@ -28,6 +28,34 @@
             <HyperlinkButton Classes="underline_focus" Content="Hello" />
             <HyperlinkButton Classes="del" Content="Hello" />
 
+            <StackPanel Background="{DynamicResource SemiBackground0Color}" Spacing="8">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleSwitch />
+                    <ToggleSwitch IsChecked="True" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleSwitch
+                        OffContent="否"
+                        OnContent="是"
+                        Theme="{DynamicResource SimpleToggleSwitch}" />
+                    <ToggleSwitch
+                        IsChecked="True"
+                        OffContent="否"
+                        OnContent="是"
+                        Theme="{DynamicResource SimpleToggleSwitch}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleSwitch
+                        OffContent="否"
+                        OnContent="是"
+                        Theme="{DynamicResource ButtonToggleSwitch}" />
+                    <ToggleSwitch
+                        IsChecked="True"
+                        OffContent="No"
+                        OnContent="Yes"
+                        Theme="{DynamicResource ButtonToggleSwitch}" />
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"
