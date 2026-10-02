@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using OvoUi.Common.Theme;
@@ -9,6 +10,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        AutoCompleteBox.ItemsSource = new List<string> { "Apple", "Banana", "Cherry", "Date" };
     }
 
     private void Dark(object? sender, RoutedEventArgs e)

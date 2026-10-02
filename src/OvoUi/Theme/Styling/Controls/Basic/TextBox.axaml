@@ -37,7 +37,7 @@
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
         <Setter Property="Template">
             <ControlTemplate TargetType="TextBox">
-                <DataValidationErrors>
+                <DataValidationErrors Name="PART_DataValidationErrors">
                     <Border
                         Background="{TemplateBinding Background}"
                         BackgroundSizing="{TemplateBinding BackgroundSizing}"
@@ -142,6 +142,10 @@
             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
 
+        <Style Selector="^.no_error /template/ DataValidationErrors#PART_DataValidationErrors">
+            <Setter Property="Theme" Value="{StaticResource SilentDataValidationErrors}" />
+        </Style>
+
         <Style Selector="^.clear">
             <Style Selector="^[AcceptsReturn=False][IsReadOnly=False]:not(:empty)">
                 <Style Selector="^:pointerover,^:focus">
@@ -183,7 +187,6 @@
                 </Style>
             </Style>
         </Style>
-
     </ControlTheme>
 
     <ControlTheme
@@ -194,7 +197,7 @@
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Padding" Value="10,0,8,0" />
         <Setter Property="Margin" Value="0" />
-        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="32" />
 
         <Style Selector="^.text_area">
@@ -207,7 +210,6 @@
         BasedOn="{StaticResource LooklessTextBoxTheme}"
         TargetType="TextBox"
         x:Key="SolidTextBoxTheme">
-        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Padding" Value="10,0,8,0" />
         <Setter Property="Margin" Value="0" />

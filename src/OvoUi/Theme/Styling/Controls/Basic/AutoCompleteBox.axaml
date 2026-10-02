@@ -1,0 +1,96 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="20">
+            <AutoCompleteBox PlaceholderText="12" Width="200" />
+            <AutoCompleteBox
+                PlaceholderText="12"
+                Theme="{StaticResource LooklessAutoCompleteBoxTheme}"
+                Width="200" />
+            <AutoCompleteBox
+                PlaceholderText="12"
+                Theme="{StaticResource BorderAutoCompleteBoxTheme}"
+                Width="200" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="AutoCompleteBox" x:Key="BasicAutoCompleteBox">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="MaxDropDownHeight" Value="200" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="AutoCompleteBox">
+                <DataValidationErrors>
+                    <Panel>
+                        <TextBox
+                            Classes="no_error"
+                            DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
+                            InnerLeftContent="{TemplateBinding InnerLeftContent}"
+                            InnerRightContent="{TemplateBinding InnerRightContent}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            Name="PART_TextBox"
+                            PlaceholderText="{TemplateBinding PlaceholderText}"
+                            VerticalAlignment="Stretch" />
+                        <Popup
+                            InheritsTransform="True"
+                            IsLightDismissEnabled="True"
+                            MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                            Name="PART_Popup"
+                            PlacementTarget="{TemplateBinding}">
+                            <Border
+                                Background="{DynamicResource PopupBackgroundBrush}"
+                                BorderBrush="{DynamicResource LineBrush}"
+                                BorderThickness="1"
+                                CornerRadius="{DynamicResource OvoCornerRadius}"
+                                HorizontalAlignment="Stretch"
+                                Margin="4"
+                                MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ScrollViewer>
+                                    <ListBox
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ItemTemplate="{TemplateBinding ItemTemplate}"
+                                        Margin="4,2"
+                                        Name="PART_SelectingItemsControl"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Panel>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource BasicAutoCompleteBox}"
+        TargetType="AutoCompleteBox"
+        x:Key="LooklessAutoCompleteBoxTheme">
+        <Style Selector="^ /template/ TextBox#PART_TextBox">
+            <Setter Property="Theme" Value="{StaticResource LooklessTextBoxTheme}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource LooklessAutoCompleteBoxTheme}"
+        TargetType="AutoCompleteBox"
+        x:Key="SolidAutoCompleteBoxTheme">
+        <Style Selector="^ /template/ TextBox#PART_TextBox">
+            <Setter Property="Theme" Value="{StaticResource SolidTextBoxTheme}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource LooklessAutoCompleteBoxTheme}"
+        TargetType="AutoCompleteBox"
+        x:Key="BorderAutoCompleteBoxTheme">
+        <Style Selector="^ /template/ TextBox#PART_TextBox">
+            <Setter Property="Theme" Value="{StaticResource BorderTextBoxTheme}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource SolidAutoCompleteBoxTheme}"
+        TargetType="AutoCompleteBox"
+        x:Key="{x:Type AutoCompleteBox}" />
+
+</ResourceDictionary>
