@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
-            <Color x:Key="ForegroundColor">#282637</Color>
+            <Color x:Key="ForegroundColor">#494c4f</Color>
             <Color x:Key="InnerForegroundColor">#777282</Color>
             <Color x:Key="BackgroundColor">#f8f9fa</Color>
             <Color x:Key="LineColor">#e9e6ef</Color>
