@@ -32,5 +32,8 @@
         <ResourceInclude Source="SelectableTextBlock.axaml" />
         <ResourceInclude Source="RefreshContainer.axaml" />
         <ResourceInclude Source="PathIcon.axaml" />
+        <ResourceInclude Source="TabControl.axaml" />
+        <ResourceInclude Source="TabItem.axaml" />
+        <ResourceInclude Source="TabStrip.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
