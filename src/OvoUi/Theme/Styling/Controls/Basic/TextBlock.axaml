@@ -4,8 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTheme TargetType="TextBlock" x:Key="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="Transitions">
             <ovo:OvoTransitions />
         </Setter>
@@ -24,7 +22,6 @@
                 </TextDecorationCollection>
             </Setter>
         </Style>
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Style Selector="^.h1">
             <Setter Property="FontSize" Value="32" />
         </Style>
