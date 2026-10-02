@@ -30,5 +30,7 @@
         <ResourceInclude Source="TransitioningContentControl.axaml" />
         <ResourceInclude Source="Separator.axaml" />
         <ResourceInclude Source="SelectableTextBlock.axaml" />
+        <ResourceInclude Source="RefreshContainer.axaml" />
+        <ResourceInclude Source="PathIcon.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

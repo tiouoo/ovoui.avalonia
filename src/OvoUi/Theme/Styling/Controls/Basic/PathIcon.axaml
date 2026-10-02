@@ -1,0 +1,51 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="PathIcon" x:Key="{x:Type PathIcon}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Height" Value="{DynamicResource IconElementThemeHeight}" />
+        <Setter Property="Width" Value="{DynamicResource IconElementThemeWidth}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="PathIcon">
+                <Border Background="{TemplateBinding Background}">
+                    <Viewbox Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Path
+                            Data="{TemplateBinding Data}"
+                            Fill="{TemplateBinding Foreground}"
+                            Name="PART_Path"
+                            Stretch="Uniform" />
+                    </Viewbox>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.active /template/ Path#PART_Path">
+            <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="PathIcon" x:Key="InnerPathIcon">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Foreground" Value="{DynamicResource InnerForegroundBrush}" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="PathIcon">
+                <Border Background="{TemplateBinding Background}">
+                    <Viewbox Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Path
+                            Data="{TemplateBinding Data}"
+                            Fill="{TemplateBinding Foreground}"
+                            Height="24"
+                            Name="PART_Path"
+                            Width="24" />
+                    </Viewbox>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.active /template/ Path#PART_Path">
+            <Setter Property="Fill" Value="{TemplateBinding BorderBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
