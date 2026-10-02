@@ -36,5 +36,6 @@
         <ResourceInclude Source="TabControl.axaml" />
         <ResourceInclude Source="TabItem.axaml" />
         <ResourceInclude Source="TabStrip.axaml" />
+        <ResourceInclude Source="ContentPage.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

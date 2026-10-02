@@ -1,0 +1,36 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <ContentPage
+            Background="White"
+            Height="300"
+            Width="400">
+            <TextBlock
+                HorizontalAlignment="Center"
+                Text="ContentPage"
+                VerticalAlignment="Center" />
+        </ContentPage>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="ContentPage" x:Key="{x:Type ContentPage}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ContentPage">
+                <DockPanel>
+                    <ContentPresenter DockPanel.Dock="Top" Name="PART_TopCommandBar" />
+                    <ContentPresenter DockPanel.Dock="Bottom" Name="PART_BottomCommandBar" />
+                    <ContentPresenter
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Name="PART_ContentPresenter"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
