@@ -1,0 +1,58 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <converters:MarginMultiplierConverter
+        Indent="1"
+        Top="True"
+        x:Key="SeparatorBorderMultiplier" />
+
+    <ControlTheme TargetType="HeaderedContentControl" x:Key="{x:Type HeaderedContentControl}">
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid RowDefinitions="Auto,*">
+                        <ContentPresenter
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontStyle="{TemplateBinding FontStyle}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Grid.Row="0"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_HeaderPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontStyle="{TemplateBinding FontStyle}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Grid.Row="1"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

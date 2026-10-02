@@ -1,0 +1,292 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converter="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel Spacing="20">
+            <Carousel
+                Classes.Center="{Binding #CenterButton.IsChecked}"
+                Classes.Columnar="{Binding #ColumnarButton.IsChecked}"
+                Classes.Dot="{Binding #DotButton.IsChecked}"
+                Classes.Left="{Binding #LeftButton.IsChecked}"
+                Classes.Line="{Binding #LineButton.IsChecked}"
+                Classes.Right="{Binding #RightButton.IsChecked}"
+                Height="200"
+                Theme="{DynamicResource FullCarousel}"
+                Width="300">
+                <Border Background="#EAF5FF">
+                    <TextBlock Text="Text 1" />
+                </Border>
+                <Border Background="#F9F9F9">
+                    <TextBlock Text="Text 2" />
+                </Border>
+                <Border Background="#FFF8EA">
+                    <TextBlock Text="Text 3" />
+                </Border>
+                <Border Background="#FEF2ED">
+                    <TextBlock Text="Text 4" />
+                </Border>
+            </Carousel>
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="Type" VerticalAlignment="Center" />
+                <Border Theme="{DynamicResource RadioButtonGroupBorder}">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton
+                            Content="Dot"
+                            IsChecked="True"
+                            Name="DotButton" />
+                        <RadioButton Content="Columnar" Name="ColumnarButton" />
+                        <RadioButton Content="Line" Name="LineButton" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="Position" VerticalAlignment="Center" />
+                <Border Theme="{DynamicResource RadioButtonGroupBorder}">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton
+                            Content="Left"
+                            IsChecked="True"
+                            Name="LeftButton" />
+                        <RadioButton Content="Center" Name="CenterButton" />
+                        <RadioButton Content="Right" Name="RightButton" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush
+                Color="Black"
+                Opacity="0.7"
+                x:Key="CarouselIndicatorPointeroverForeground" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush
+                Color="Black"
+                Opacity="0.7"
+                x:Key="CarouselIndicatorPointeroverForeground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <ControlTheme TargetType="Carousel" x:Key="{x:Type Carousel}">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ScrollViewer
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BringIntoViewOnFocusChange="True"
+                    HorizontalScrollBarVisibility="Hidden"
+                    Name="PART_ScrollViewer"
+                    VerticalScrollBarVisibility="Hidden">
+                    <ItemsPresenter
+                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                        Margin="{TemplateBinding Padding}"
+                        Name="PART_ItemsPresenter" />
+                </ScrollViewer>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ListBoxItem" x:Key="CarouselIndicatorDotListBoxItem">
+        <Setter Property="Foreground" Value="{DynamicResource InnerForegroundBrush}" />
+        <Setter Property="Margin" Value="4 0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Ellipse
+                    Fill="{TemplateBinding Foreground}"
+                    Height="8"
+                    Name="Container"
+                    Width="8">
+                    <Ellipse.Transitions>
+                        <Transitions>
+                            <BrushTransition Duration="0:0:0.2" Property="Fill" />
+                        </Transitions>
+                    </Ellipse.Transitions>
+                </Ellipse>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource CarouselIndicatorPointeroverForeground}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
+        <Style Selector="^:selected">
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource CarouselIndicatorDotListBoxItem}"
+        TargetType="ListBoxItem"
+        x:Key="CarouselIndicatorLineListBoxItem">
+        <Setter Property="Margin" Value="2 0" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Foreground}"
+                    CornerRadius="99"
+                    Height="4"
+                    Name="Container">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Duration="0:0:0.2" Property="Background" />
+                        </Transitions>
+                    </Border.Transitions>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource CarouselIndicatorDotListBoxItem}"
+        TargetType="ListBoxItem"
+        x:Key="CarouselIndicatorColumnarListBoxItem">
+        <Setter Property="Width" Value="4" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Margin" Value="2 0" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Foreground}"
+                    CornerRadius="99"
+                    Height="12"
+                    Name="Container"
+                    VerticalAlignment="Bottom"
+                    Width="4">
+                    <Border.Transitions>
+                        <Transitions>
+                            <DoubleTransition Duration="0:0:0.2" Property="Height" />
+                            <BrushTransition Duration="0:0:0.2" Property="Background" />
+                        </Transitions>
+                    </Border.Transitions>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:selected /template/ Border#Container">
+            <Setter Property="Height" Value="20" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="Button" x:Key="CarouselButton">
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Foreground" Value="{DynamicResource InnerForegroundBrush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="44"
+                    FontWeight="Light"
+                    HorizontalAlignment="Center"
+                    Name="Glyph"
+                    Text="&#xe646;"
+                    VerticalAlignment="Center" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource CarouselIndicatorPointeroverForeground}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="Carousel" x:Key="FullCarousel">
+        <Setter Property="PageTransition">
+            <PageSlide Duration="0.3" Orientation="Horizontal" />
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Carousel">
+                <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="*, Auto">
+                    <ScrollViewer
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        HorizontalScrollBarVisibility="Hidden"
+                        Name="PART_ScrollViewer"
+                        VerticalScrollBarVisibility="Hidden">
+                        <ItemsPresenter
+                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                            Margin="{TemplateBinding Padding}"
+                            Name="PART_ItemsPresenter" />
+                    </ScrollViewer>
+                    <ListBox
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        IsVisible="{TemplateBinding ItemCount,
+                                                    Converter={x:Static ovo:ItemConverter.ItemVisibleConverter}}"
+                        ItemContainerTheme="{DynamicResource CarouselIndicatorDotListBoxItem}"
+                        ItemsSource="{TemplateBinding ItemCount,
+                                                      Converter={x:Static ovo:ItemConverter.ItemToObjectConverter}}"
+                        Margin="16"
+                        Name="PART_ItemsPresenter2"
+                        SelectedIndex="{TemplateBinding SelectedIndex,
+                                                        Mode=TwoWay}"
+                        VerticalAlignment="Center">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                    <Button
+                        Command="{Binding $parent[Carousel].Previous}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        IsVisible="{TemplateBinding ItemCount,
+                                                    Converter={x:Static ovo:ItemConverter.ItemVisibleConverter}}"
+                        Margin="20"
+                        Theme="{DynamicResource CarouselButton}" />
+                    <Button
+                        Command="{Binding $parent[Carousel].Next}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        IsVisible="{TemplateBinding ItemCount,
+                                                    Converter={x:Static ovo:ItemConverter.ItemVisibleConverter}}"
+                        Margin="20"
+                        RenderTransform="rotate(180deg)"
+                        Theme="{DynamicResource CarouselButton}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.Line /template/ ListBox#PART_ItemsPresenter2">
+            <Setter Property="ItemContainerTheme" Value="{DynamicResource CarouselIndicatorLineListBoxItem}" />
+            <Setter Property="ItemsPanel">
+                <ItemsPanelTemplate>
+                    <UniformGrid
+                        Columns="{TemplateBinding ItemCount}"
+                        Rows="1"
+                        Width="240" />
+                </ItemsPanelTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="^.Columnar /template/ ListBox#PART_ItemsPresenter2">
+            <Setter Property="ItemContainerTheme" Value="{DynamicResource CarouselIndicatorColumnarListBoxItem}" />
+        </Style>
+        <Style Selector="^.Left /template/ ListBox#PART_ItemsPresenter2">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style Selector="^.Center /template/ ListBox#PART_ItemsPresenter2">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="^.Right /template/ ListBox#PART_ItemsPresenter2">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
