@@ -34,10 +34,10 @@
                     CornerRadius="{TemplateBinding CornerRadius}">
                     <DockPanel>
                         <Panel DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+                            <Border Name="PART_BorderSeparator" />
                             <ItemsPresenter
                                 Name="PART_ItemsPresenter"
                                 ItemsPanel="{TemplateBinding ItemsPanel}" />
-                            <Border Name="PART_BorderSeparator" />
                         </Panel>
                         <ContentPresenter
                             Name="PART_SelectedContentHost"
@@ -60,7 +60,7 @@
         </Style>
 
         <Style Selector="^ /template/ Border#PART_BorderSeparator">
-            <Setter Property="Background" Value="{DynamicResource OvoTabSeparatorBrush}" />
+            <Setter Property="Background" Value="{DynamicResource LineBrush}" />
         </Style>
 
         <Style Selector="^[TabStripPlacement=Top] /template/ Border#PART_BorderSeparator">
@@ -196,6 +196,7 @@
                     CornerRadius="{TemplateBinding CornerRadius}">
                     <DockPanel>
                         <Panel DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+                            <Border Name="PART_BorderSeparator" />
                             <ScrollViewer
                                 Name="PART_ScrollViewer"
                                 HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
@@ -204,7 +205,6 @@
                                     Name="PART_ItemsPresenter"
                                     ItemsPanel="{TemplateBinding ItemsPanel}" />
                             </ScrollViewer>
-                            <Border Name="PART_BorderSeparator" />
                         </Panel>
                         <ContentPresenter
                             Name="PART_SelectedContentHost"
@@ -219,7 +219,7 @@
         </Setter>
 
         <Style Selector="^ /template/ Border#PART_BorderSeparator">
-            <Setter Property="Background" Value="{DynamicResource OvoTabSeparatorBrush}" />
+            <Setter Property="Background" Value="{DynamicResource LineBrush}" />
         </Style>
 
         <Style Selector="^[TabStripPlacement=Left], ^[TabStripPlacement=Right]">

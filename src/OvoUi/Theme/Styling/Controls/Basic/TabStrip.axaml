@@ -35,7 +35,7 @@
         </Setter>
 
         <Style Selector="^ /template/ Border#PART_BorderSeparator">
-            <Setter Property="Background" Value="{DynamicResource OvoTabSeparatorBrush}" />
+            <Setter Property="Background" Value="{DynamicResource LineBrush}" />
             <Setter Property="Height" Value="1" />
             <Setter Property="VerticalAlignment" Value="Bottom" />
         </Style>
@@ -103,7 +103,7 @@
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="Foreground" Value="{DynamicResource OvoTabHeaderForeground}" />
-        <Setter Property="Background" Value="{DynamicResource OvoTabHeaderBackground}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <ControlTemplate TargetType="TabStripItem">
                 <ContentPresenter
@@ -161,10 +161,10 @@
 
         <Style Selector="^:not(:selected)">
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="BorderBrush" Value="{DynamicResource OvoTabHeaderPointerOverBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="BorderBrush" Value="{DynamicResource OvoTabHeaderPressedBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlPressedBackground}" />
             </Style>
         </Style>
     </ControlTheme>
@@ -182,10 +182,10 @@
 
         <Style Selector="^:not(:selected)">
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="BorderBrush" Value="{DynamicResource OvoTabHeaderPointerOverBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="BorderBrush" Value="{DynamicResource OvoTabHeaderPressedBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlPressedBackground}" />
             </Style>
         </Style>
     </ControlTheme>
@@ -202,18 +202,18 @@
         <Setter Property="BorderThickness" Value="1 1 1 0" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Style Selector="^:selected">
-            <Setter Property="BorderBrush" Value="{DynamicResource OvoTabSeparatorBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         </Style>
         <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource OvoTabCardHeaderSelectedBackground}" />
+            <Setter Property="Background" Value="{DynamicResource PopupBackgroundColor}" />
         </Style>
 
         <Style Selector="^:not(:selected)">
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource OvoTabCardHeaderPointerOverBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource OvoTabCardHeaderPressedBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
             </Style>
         </Style>
     </ControlTheme>
@@ -235,10 +235,10 @@
 
         <Style Selector="^:not(:selected)">
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource OvoTabButtonHeaderPointerOverBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource OvoTabButtonHeaderPressedBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
             </Style>
         </Style>
     </ControlTheme>
@@ -251,7 +251,7 @@
         <Setter Property="Padding" Value="12 0" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{DynamicResource OvoTabBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="TabStripItem">
                 <Border
@@ -296,10 +296,10 @@
         <Style Selector="^:not(:selected)">
             <Setter Property="Cursor" Value="Hand" />
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource OvoTabButtonHeaderPointerOverBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource OvoTabButtonHeaderPressedBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
             </Style>
         </Style>
     </ControlTheme>
