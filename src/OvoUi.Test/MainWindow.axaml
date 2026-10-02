@@ -14,6 +14,7 @@
             Spacing="10"
             VerticalAlignment="Center">
             <DatePicker Classes="border_focus clear" />
+            <DatePicker Classes="connect clear" />
             <CalendarDatePicker Classes="border_focus clear" HorizontalAlignment="Stretch" />
             <ComboBox Classes="border_focus" HorizontalAlignment="Stretch">
                 <ComboBoxItem Content="Apple" />
@@ -56,6 +57,9 @@
                         Theme="{DynamicResource ButtonToggleSwitch}" />
                 </StackPanel>
             </StackPanel>
+
+            <TimePicker />
+            <TimePicker Classes="connect" />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

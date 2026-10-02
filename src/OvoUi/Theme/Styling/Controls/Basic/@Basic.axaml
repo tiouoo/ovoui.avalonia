@@ -14,6 +14,7 @@
         <ResourceInclude Source="DataValidationErrors.axaml" />
         <ResourceInclude Source="Calendar.axaml" />
         <ResourceInclude Source="DatePicker.axaml" />
+        <ResourceInclude Source="TimePicker.axaml" />
         <ResourceInclude Source="EmbeddableControlRoot.axaml" />
         <ResourceInclude Source="AutoCompleteBox.axaml" />
         <ResourceInclude Source="CalendarDatePicker.axaml" />

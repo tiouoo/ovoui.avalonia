@@ -5,13 +5,13 @@
     <Design.PreviewWith>
         <Border Height="500" Padding="20">
             <StackPanel Orientation="Horizontal" Spacing="20">
-                <DatePicker VerticalAlignment="Center" />
-                <DatePicker Classes="connect" VerticalAlignment="Center" />
+                <TimePicker VerticalAlignment="Center" />
+                <TimePicker Classes="connect clear" VerticalAlignment="Center" />
             </StackPanel>
         </Border>
     </Design.PreviewWith>
 
-    <ControlTheme TargetType="DatePickerPresenter" x:Key="{x:Type DatePickerPresenter}">
+    <ControlTheme TargetType="TimePickerPresenter" x:Key="{x:Type TimePickerPresenter}">
         <Setter Property="Width" Value="296" />
         <Setter Property="MinWidth" Value="296" />
         <Setter Property="MaxHeight" Value="316" />
@@ -23,7 +23,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="DatePickerPresenter">
+            <ControlTemplate TargetType="TimePickerPresenter">
                 <Border
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -50,40 +50,34 @@
                                     IsVisible="False"
                                     Margin="3,0"
                                     Name="PART_Connect" />
-                                <Grid
-                                    Classes.connect="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
-                                    ColumnDefinitions="*,1,*,1,*"
-                                    Name="PART_PickerContainer">
+                                <Grid Classes.connect="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}" Name="PART_PickerContainer">
                                     <Grid.Styles>
                                         <Style Selector="Grid#PART_PickerContainer DateTimePickerPanel &gt; ListBoxItem">
-                                            <Setter Property="Theme" Value="{StaticResource DatePickerItemTheme}" />
+                                            <Setter Property="Theme" Value="{StaticResource TimePickerItemTheme}" />
                                         </Style>
                                         <Style Selector="Grid#PART_PickerContainer.connect DateTimePickerPanel &gt; ListBoxItem">
-                                            <Setter Property="Theme" Value="{StaticResource DatePickerItemConnectTheme}" />
+                                            <Setter Property="Theme" Value="{StaticResource TimePickerItemConnectTheme}" />
                                         </Style>
                                     </Grid.Styles>
-                                    <Panel Name="PART_MonthHost">
-                                        <Border Name="PART_MonthBorder">
-                                            <Panel>
-                                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                                                    <DateTimePickerPanel
-                                                        ItemHeight="36"
-                                                        Name="PART_MonthSelector"
-                                                        PanelType="Month"
-                                                        ShouldLoop="True" />
-                                                </ScrollViewer>
-                                            </Panel>
-                                        </Border>
+
+                                    <Panel Grid.Column="0" Name="PART_HourHost">
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                            <DateTimePickerPanel
+                                                ItemHeight="36"
+                                                Name="PART_HourSelector"
+                                                PanelType="Hour"
+                                                ShouldLoop="True" />
+                                        </ScrollViewer>
                                     </Panel>
 
-                                    <Panel Grid.Column="1">
+                                    <Panel Grid.Column="1" Name="PART_FirstSpacer">
                                         <Rectangle
                                             Fill="{DynamicResource LineBrush}"
-                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
+                                            IsVisible="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
                                             Margin="2,10"
                                             Width="1" />
                                         <Grid
-                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                            IsVisible="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
                                             RowDefinitions="*,*"
                                             RowSpacing="36">
                                             <Rectangle
@@ -99,28 +93,24 @@
                                         </Grid>
                                     </Panel>
 
-                                    <Panel Grid.Column="2" Name="PART_DayHost">
-                                        <Border>
-                                            <Panel>
-                                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                                                    <DateTimePickerPanel
-                                                        ItemHeight="36"
-                                                        Name="PART_DaySelector"
-                                                        PanelType="Day"
-                                                        ShouldLoop="True" />
-                                                </ScrollViewer>
-                                            </Panel>
-                                        </Border>
+                                    <Panel Grid.Column="2" Name="PART_MinuteHost">
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                            <DateTimePickerPanel
+                                                ItemHeight="36"
+                                                Name="PART_MinuteSelector"
+                                                PanelType="Minute"
+                                                ShouldLoop="True" />
+                                        </ScrollViewer>
                                     </Panel>
 
-                                    <Panel Grid.Column="3">
+                                    <Panel Grid.Column="3" Name="PART_SecondSpacer">
                                         <Rectangle
                                             Fill="{DynamicResource LineBrush}"
-                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
+                                            IsVisible="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
                                             Margin="2,10"
                                             Width="1" />
                                         <Grid
-                                            IsVisible="{Binding $parent[DatePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                            IsVisible="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
                                             RowDefinitions="*,*"
                                             RowSpacing="36">
                                             <Rectangle
@@ -136,19 +126,47 @@
                                         </Grid>
                                     </Panel>
 
+                                    <Panel Grid.Column="4" Name="PART_SecondHost">
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                            <DateTimePickerPanel
+                                                ItemHeight="36"
+                                                Name="PART_SecondSelector"
+                                                PanelType="Second"
+                                                ShouldLoop="True" />
+                                        </ScrollViewer>
+                                    </Panel>
 
-                                    <Panel Grid.Column="4" Name="PART_YearHost">
-                                        <Border Name="PART_YearBorder">
-                                            <Panel>
-                                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                                                    <DateTimePickerPanel
-                                                        ItemHeight="36"
-                                                        Name="PART_YearSelector"
-                                                        PanelType="Year"
-                                                        ShouldLoop="False" />
-                                                </ScrollViewer>
-                                            </Panel>
-                                        </Border>
+                                    <Panel Grid.Column="5" Name="PART_ThirdSpacer">
+                                        <Rectangle
+                                            Fill="{DynamicResource LineBrush}"
+                                            IsVisible="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesNotContainsConverter.Instance}, ConverterParameter=connect}"
+                                            Margin="2,10"
+                                            Width="1" />
+                                        <Grid
+                                            IsVisible="{Binding $parent[TimePickerPresenter].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                            RowDefinitions="*,*"
+                                            RowSpacing="36">
+                                            <Rectangle
+                                                Fill="{DynamicResource LineBrush}"
+                                                Grid.Row="0"
+                                                Margin="2,10"
+                                                Width="1" />
+                                            <Rectangle
+                                                Fill="{DynamicResource LineBrush}"
+                                                Grid.Row="1"
+                                                Margin="2,10"
+                                                Width="1" />
+                                        </Grid>
+                                    </Panel>
+
+                                    <Panel Grid.Column="6" Name="PART_PeriodHost">
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                            <DateTimePickerPanel
+                                                ItemHeight="36"
+                                                Name="PART_PeriodSelector"
+                                                PanelType="TimePeriod"
+                                                ShouldLoop="False" />
+                                        </ScrollViewer>
                                     </Panel>
                                 </Grid>
                             </Panel>
@@ -203,27 +221,12 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^ /template/ Panel">
-            <Style Selector="^:pointerover RepeatButton">
-                <Setter Property="IsVisible" Value="True" />
-            </Style>
-        </Style>
         <Style Selector="^.connect /template/ Border#PART_Connect">
             <Setter Property="IsVisible" Value="True" />
         </Style>
-
-        <Style Selector="^[DayVisible=True] /template/ Border#PART_MonthBorder">
-            <Setter Property="BorderThickness" Value="0,0,1,0" />
-        </Style>
-        <Style Selector="^[DayVisible=True] /template/ Border#PART_YearBorder">
-            <Setter Property="BorderThickness" Value="0,0,1,0" />
-        </Style>
-        <Style Selector="^[MonthVisible=True] /template/ Border#PART_YearBorder">
-            <Setter Property="BorderThickness" Value="0,0,1,0" />
-        </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="DatePicker" x:Key="BasicDatePickerTheme">
+    <ControlTheme TargetType="TimePicker" x:Key="BasicTimePickerTheme">
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -236,10 +239,10 @@
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="DatePicker">
+            <ControlTemplate TargetType="TimePicker">
                 <DataValidationErrors>
                     <Grid
-                        ColumnDefinitions="*, Auto"
+                        ColumnDefinitions="*,Auto"
                         Margin="{TemplateBinding Padding}"
                         Name="LayoutRoot">
                         <Border Background="Transparent" Name="PART_Background" />
@@ -258,54 +261,69 @@
                             MinHeight="{TemplateBinding MinHeight}"
                             MinWidth="298"
                             Name="PART_FlyoutButton"
-                            Theme="{StaticResource DatePickerFlyoutButtonTheme}"
+                            Theme="{StaticResource TimePickerFlyoutButtonTheme}"
                             VerticalAlignment="Stretch"
                             Width="298">
                             <Grid ColumnDefinitions="*, Auto">
-                                <Grid
-                                    ColumnDefinitions="78*,Auto,132*,Auto,78*"
-                                    Grid.Column="0"
-                                    Name="PART_ButtonContentGrid">
-                                    <TextBlock
-                                        FontFamily="{TemplateBinding FontFamily}"
-                                        FontSize="{TemplateBinding FontSize}"
-                                        FontWeight="{TemplateBinding FontWeight}"
-                                        HorizontalAlignment="Center"
-                                        Name="PART_DayTextBlock"
-                                        Padding="12,0"
-                                        Text="{DynamicResource Lang.Day}"
-                                        VerticalAlignment="Center" />
-                                    <TextBlock
-                                        FontFamily="{TemplateBinding FontFamily}"
-                                        FontSize="{TemplateBinding FontSize}"
-                                        FontWeight="{TemplateBinding FontWeight}"
-                                        HorizontalAlignment="Center"
-                                        Name="PART_MonthTextBlock"
-                                        Padding="12,0"
-                                        Text="{DynamicResource Lang.Month}"
-                                        TextAlignment="Left"
-                                        VerticalAlignment="Center" />
-                                    <TextBlock
-                                        FontFamily="{TemplateBinding FontFamily}"
-                                        FontSize="{TemplateBinding FontSize}"
-                                        FontWeight="{TemplateBinding FontWeight}"
-                                        HorizontalAlignment="Center"
-                                        Name="PART_YearTextBlock"
-                                        Padding="12,0"
-                                        Text="{DynamicResource Lang.Year}"
-                                        VerticalAlignment="Center" />
+                                <Grid Name="PART_FlyoutButtonContentGrid">
+                                    <Border Grid.Column="0" Name="PART_FirstPickerHost">
+                                        <TextBlock
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            HorizontalAlignment="Center"
+                                            Name="PART_HourTextBlock"
+                                            Padding="12,0"
+                                            Text="{DynamicResource Lang.Hour}"
+                                            VerticalAlignment="Center" />
+                                    </Border>
                                     <Rectangle
                                         Fill="{DynamicResource LineBrush}"
                                         Grid.Column="1"
-                                        HorizontalAlignment="Center"
-                                        Name="PART_FirstSpacer"
+                                        Name="PART_FirstColumnDivider"
                                         Width="1" />
+                                    <Border Grid.Column="2" Name="PART_SecondPickerHost">
+                                        <TextBlock
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            HorizontalAlignment="Center"
+                                            Name="PART_MinuteTextBlock"
+                                            Padding="12,0"
+                                            Text="{DynamicResource Lang.Minute}"
+                                            VerticalAlignment="Center" />
+                                    </Border>
                                     <Rectangle
                                         Fill="{DynamicResource LineBrush}"
                                         Grid.Column="3"
-                                        HorizontalAlignment="Center"
-                                        Name="PART_SecondSpacer"
+                                        Name="PART_SecondColumnDivider"
                                         Width="1" />
+                                    <Border Grid.Column="4" Name="PART_ThirdPickerHost">
+                                        <TextBlock
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            HorizontalAlignment="Center"
+                                            Name="PART_SecondTextBlock"
+                                            Padding="12,0"
+                                            Text="{DynamicResource Lang.Second}"
+                                            VerticalAlignment="Center" />
+                                    </Border>
+                                    <Rectangle
+                                        Fill="{DynamicResource LineBrush}"
+                                        Grid.Column="5"
+                                        Name="PART_ThirdColumnDivider"
+                                        Width="1" />
+                                    <Border Grid.Column="6" Name="PART_FourthPickerHost">
+                                        <TextBlock
+                                            FontFamily="{TemplateBinding FontFamily}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            FontWeight="{TemplateBinding FontWeight}"
+                                            HorizontalAlignment="Center"
+                                            Name="PART_PeriodTextBlock"
+                                            Padding="12,0"
+                                            VerticalAlignment="Center" />
+                                    </Border>
                                 </Grid>
                                 <Button
                                     Content="&#xe64e;"
@@ -314,6 +332,7 @@
                                     Theme="{DynamicResource InputStandardIcon}" />
                             </Grid>
                         </Button>
+
                         <Popup
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
@@ -322,14 +341,14 @@
                             PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
                             <ovo:PopupRenderContent ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
-                                <DatePickerPresenter
-                                    Classes.connect="{Binding $parent[DatePicker].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                <TimePickerPresenter
+                                    Classes.connect="{Binding $parent[TimePicker].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
                                     Name="PART_PickerPresenter"
                                     VerticalAlignment="Top" />
                             </ovo:PopupRenderContent>
                         </Popup>
                         <Button
-                            Command="{Binding $parent[DatePicker].Clear}"
+                            Command="{Binding $parent[TimePicker].Clear}"
                             Grid.Column="1"
                             IsVisible="False"
                             Name="ClearButton"
@@ -340,6 +359,11 @@
         </Setter>
 
         <Style Selector="^.clear:pointerover">
+            <Style Selector="^:not(:hasnotime) /template/ Button#ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+        <Style Selector="^.clear:pointerover">
             <Style Selector="^:not(:hasnodate) /template/ Button#ClearButton">
                 <Setter Property="IsVisible" Value="True" />
             </Style>
@@ -347,15 +371,9 @@
                 <Setter Property="Opacity" Value="0" />
             </Style>
         </Style>
-
-        <Style Selector="^:disabled /template/ PathIcon#PART_Icon">
+        <Style Selector="^:hasnotime /template/ Button#PART_FlyoutButton TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
-
-        <Style Selector="^:hasnodate /template/ Button#PART_FlyoutButton TextBlock">
-            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
-        </Style>
-
         <Style Selector="^.border">
             <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -383,17 +401,17 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource BasicDatePickerTheme}"
-        TargetType="DatePicker"
-        x:Key="LooklessDatePickerTheme">
+        BasedOn="{StaticResource BasicTimePickerTheme}"
+        TargetType="TimePicker"
+        x:Key="LooklessTimePickerTheme">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource LooklessDatePickerTheme}"
-        TargetType="DatePicker"
-        x:Key="SolidDatePickerTheme">
+        BasedOn="{StaticResource LooklessTimePickerTheme}"
+        TargetType="TimePicker"
+        x:Key="SolidTimePickerTheme">
         <Style Selector="^:pointerover /template/ Button#PART_FlyoutButton">
             <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
         </Style>
@@ -406,9 +424,9 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource LooklessDatePickerTheme}"
-        TargetType="DatePicker"
-        x:Key="BorderDatePickerTheme">
+        BasedOn="{StaticResource LooklessTimePickerTheme}"
+        TargetType="TimePicker"
+        x:Key="BorderTimePickerTheme">
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Style Selector="^:pointerover /template/ Button#PART_FlyoutButton">
@@ -420,11 +438,11 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource SolidDatePickerTheme}"
-        TargetType="DatePicker"
-        x:Key="{x:Type DatePicker}" />
+        BasedOn="{StaticResource SolidTimePickerTheme}"
+        TargetType="TimePicker"
+        x:Key="{x:Type TimePicker}" />
 
-    <ControlTheme TargetType="Button" x:Key="DatePickerFlyoutButtonTheme">
+    <ControlTheme TargetType="Button" x:Key="TimePickerFlyoutButtonTheme">
         <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
@@ -458,7 +476,7 @@
     <ControlTheme
         BasedOn="{StaticResource {x:Type ListBoxItem}}"
         TargetType="ListBoxItem"
-        x:Key="DatePickerItemTheme">
+        x:Key="TimePickerItemTheme">
         <Setter Property="Margin" Value="4,2" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -481,13 +499,11 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource DatePickerItemTheme}"
+        BasedOn="{StaticResource TimePickerItemTheme}"
         TargetType="ListBoxItem"
-        x:Key="DatePickerItemConnectTheme">
+        x:Key="TimePickerItemConnectTheme">
         <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="Transparent" />
         </Style>
     </ControlTheme>
-
-
 </ResourceDictionary>
