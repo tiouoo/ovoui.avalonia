@@ -7,7 +7,7 @@
             <CalendarDatePicker Width="300" />
             <CalendarDatePicker Classes="border" Width="300" />
             <CalendarDatePicker Classes="border_focus" Width="300" />
-            <CalendarDatePicker Classes="clearButton" Width="300" />
+            <CalendarDatePicker Classes="clear" Width="300" />
         </StackPanel>
     </Design.PreviewWith>
 
@@ -82,19 +82,12 @@
                             Grid.Column="1"
                             IsVisible="False"
                             Name="ClearButton"
-                            Theme="{DynamicResource BasicButtonTheme}"
-                            Width="24">
-                            <Button Theme="{DynamicResource InputClearIcon}" />
-                        </Button>
+                            Theme="{DynamicResource InputStandardClearIcon}" />
                         <Button
-                            Focusable="False"
+                            Content="&#xe64e;"
                             Grid.Column="1"
-                            Margin="8,0,6,0"
                             Name="PART_Button"
-                            Theme="{DynamicResource BasicButtonTheme}"
-                            Width="28">
-                            <Button Theme="{DynamicResource InputDropDownIcon}" />
-                        </Button>
+                            Theme="{DynamicResource InputStandardIcon}" />
                         <Popup
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
@@ -132,7 +125,7 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^.clearButton, ^.ClearButton">
+        <Style Selector="^.clear">
             <Style Selector="^:pointerover /template/ Button#ClearButton">
                 <Setter Property="IsVisible" Value="{Binding $parent[CalendarDatePicker].SelectedDate, Converter={x:Static ObjectConverters.IsNotNull}}" />
             </Style>

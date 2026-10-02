@@ -45,4 +45,19 @@
         <Setter Property="FontSize" Value="19" />
     </ControlTheme>
 
+    <ControlTheme
+        BasedOn="{StaticResource InputIconButtonTheme}"
+        TargetType="Button"
+        x:Key="InputStandardIcon">
+        <Setter Property="FontSize" Value="19" />
+        <Setter Property="Margin" Value="8,0,6,0" />
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource InputStandardIcon}"
+        TargetType="Button"
+        x:Key="InputStandardClearIcon">
+        <Setter Property="Content" Value="&#xe643;" />
+    </ControlTheme>
+
 </ResourceDictionary>
