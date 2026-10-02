@@ -89,13 +89,11 @@
                             Name="PART_Button"
                             Theme="{DynamicResource InputStandardIcon}" />
                         <Popup
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
                             Name="PART_Popup"
-                            Placement="BottomEdgeAlignedRight"
-                            PlacementTarget="Background"
+                            Placement="Bottom"
+                            PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
                             <Border
                                 Background="{DynamicResource PopupBackgroundBrush}"

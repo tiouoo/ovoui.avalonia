@@ -260,19 +260,14 @@
                                     Theme="{DynamicResource InputStandardIcon}" />
                             </Grid>
                         </Button>
-                        <!--  TODO: 修复弹出位置  -->
                         <Popup
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
                             Name="PART_Popup"
-                            Placement="BottomEdgeAlignedRight"
-                            PlacementTarget="PART_Background"
-                            ovo:PopupContentExpander.DisableAnimation="True"
+                            Placement="Bottom"
+                            PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
                             <DatePickerPresenter
-                                HorizontalAlignment="Right"
                                 Name="PART_PickerPresenter"
                                 VerticalAlignment="Top" />
                         </Popup>

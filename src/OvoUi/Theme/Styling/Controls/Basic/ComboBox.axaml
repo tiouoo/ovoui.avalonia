@@ -135,35 +135,42 @@
                             VerticalAlignment="Center" />
 
                         <Popup
-                            Grid.Column="0"
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
                             IsOpen="{TemplateBinding IsDropDownOpen,
                                                      Mode=TwoWay}"
                             MaxHeight="{TemplateBinding MaxDropDownHeight}"
                             Name="PART_Popup"
-                            PlacementTarget="Background"
+                            PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
-                            <Border
-                                Background="{DynamicResource PopupBackgroundBrush}"
-                                BorderBrush="{DynamicResource LineBrush}"
-                                BorderThickness="1"
-                                BoxShadow="{DynamicResource PopupBoxShadow}"
-                                CornerRadius="{DynamicResource OvoCornerRadius}"
-                                HorizontalAlignment="Stretch"
+                            <Grid
+                                Background="Transparent"
                                 Margin="4"
                                 MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
-                                Name="PopupBorder"
-                                Padding="0,-2">
-                                <ScrollViewer
-                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                    IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                    <Border Margin="4">
-                                        <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                                    </Border>
-                                </ScrollViewer>
-                            </Border>
+                                Name="PopupRoot">
+                                <Border
+                                    Background="{DynamicResource PopupBackgroundBrush}"
+                                    BorderBrush="{DynamicResource LineBrush}"
+                                    BorderThickness="1"
+                                    BoxShadow="{DynamicResource PopupBoxShadow}"
+                                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                                    IsHitTestVisible="False"
+                                    Name="PopupBackground" />
+                                <Border
+                                    ClipToBounds="True"
+                                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                                    Name="PopupContent"
+                                    Padding="0,-2">
+                                    <ScrollViewer
+                                        HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                        IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                        VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                                        <Border Margin="4">
+                                            <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
+                                        </Border>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
                         </Popup>
                     </Grid>
                 </DataValidationErrors>
@@ -446,8 +453,6 @@
                         VerticalAlignment="Center"
                         Width="12" />
                     <Popup
-                        Grid.Column="0"
-                        Grid.ColumnSpan="3"
                         InheritsTransform="True"
                         IsLightDismissEnabled="True"
                         IsOpen="{TemplateBinding IsDropDownOpen,
@@ -456,23 +461,28 @@
                         Name="PART_Popup"
                         PlacementTarget="{TemplateBinding}"
                         WindowManagerAddShadowHint="False">
-                        <Border
-                            Background="{DynamicResource PopupBackgroundBrush}"
-                            BorderBrush="{DynamicResource LineBrush}"
-                            BorderThickness="1"
-                            BoxShadow="{DynamicResource PopupBoxShadow}"
-                            CornerRadius="{DynamicResource OvoCornerRadius}"
-                            HorizontalAlignment="Stretch"
+                        <Grid
+                            Background="Transparent"
                             Margin="4"
-                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
-                            Padding="0,-2">
-                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                <Border Margin="4">
-                                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                                </Border>
-                            </ScrollViewer>
-                        </Border>
-
+                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Border
+                                Background="{DynamicResource PopupBackgroundBrush}"
+                                BorderBrush="{DynamicResource LineBrush}"
+                                BorderThickness="1"
+                                BoxShadow="{DynamicResource PopupBoxShadow}"
+                                CornerRadius="{DynamicResource OvoCornerRadius}"
+                                IsHitTestVisible="False" />
+                            <Border
+                                ClipToBounds="True"
+                                CornerRadius="{DynamicResource OvoCornerRadius}"
+                                Padding="0,-2">
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <Border Margin="4">
+                                        <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
+                                    </Border>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
                     </Popup>
                 </Grid>
             </ControlTemplate>
