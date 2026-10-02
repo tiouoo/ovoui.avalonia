@@ -96,7 +96,6 @@
     <ControlTheme TargetType="ListBoxItem" x:Key="CarouselIndicatorDotListBoxItem">
         <Setter Property="Foreground" Value="{DynamicResource InnerForegroundBrush}" />
         <Setter Property="Margin" Value="4 0" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ListBoxItem">
                 <Ellipse
@@ -179,7 +178,6 @@
         <Setter Property="Width" Value="32" />
         <Setter Property="Height" Value="32" />
         <Setter Property="Foreground" Value="{DynamicResource InnerForegroundBrush}" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate TargetType="Button">
                 <TextBlock

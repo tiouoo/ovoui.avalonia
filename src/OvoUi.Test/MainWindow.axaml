@@ -13,8 +13,8 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <DatePicker Classes="border_focus" />
-            <CalendarDatePicker Classes="border_focus" HorizontalAlignment="Stretch" />
+            <DatePicker Classes="border_focus clear" />
+            <CalendarDatePicker Classes="border_focus clear" HorizontalAlignment="Stretch" />
             <ComboBox Classes="border_focus" HorizontalAlignment="Stretch">
                 <ComboBoxItem Content="Apple" />
                 <ComboBoxItem Content="Banana" />

@@ -422,7 +422,6 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="0" />
         <Setter Property="MinHeight" Value="0" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

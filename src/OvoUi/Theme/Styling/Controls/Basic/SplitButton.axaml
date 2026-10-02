@@ -44,7 +44,6 @@
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate TargetType="SplitButton">
                 <Border

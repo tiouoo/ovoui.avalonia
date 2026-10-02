@@ -42,7 +42,7 @@ public sealed class PopupContentExpander : ContentExpander
             if (animationVersion != _animationVersion)
                 return;
 
-            Multiplier = ExpandUp ? 1 : 0;
+            Multiplier = 0;
             Opacity = 0;
             var transitions = new Transitions
             {
@@ -65,8 +65,7 @@ public sealed class PopupContentExpander : ContentExpander
             }
 
             Transitions = transitions;
-            if (!ExpandUp)
-                Multiplier = 1;
+            Multiplier = 1;
             Opacity = 1;
         }, DispatcherPriority.Render);
     }
@@ -74,10 +73,16 @@ public sealed class PopupContentExpander : ContentExpander
     protected override Size ArrangeOverride(Size finalSize)
     {
         var result = base.ArrangeOverride(finalSize);
-        if (PreserveDesiredSize && ExpandUp && Multiplier < 1)
+        if (PreserveDesiredSize && Multiplier < 1)
         {
             Clip = new Avalonia.Media.RectangleGeometry(
-                new Rect(0, finalSize.Height * (1 - Multiplier), finalSize.Width, finalSize.Height * Multiplier));
+                ExpandUp
+                    ? new Rect(0, finalSize.Height * (1 - Multiplier), finalSize.Width, finalSize.Height * Multiplier)
+                    : new Rect(0, 0, finalSize.Width, finalSize.Height * Multiplier));
+        }
+        else
+        {
+            Clip = null;
         }
 
         return result;
