@@ -257,8 +257,10 @@
                                     Theme="{DynamicResource InputStandardIcon}" />
                             </Grid>
                         </Button>
-                        <!-- TODO: 修复弹出位置 -->
+                        <!--  TODO: 修复弹出位置  -->
                         <Popup
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
                             InheritsTransform="True"
                             IsLightDismissEnabled="True"
                             Name="PART_Popup"
