@@ -16,8 +16,7 @@ public abstract class OvoTransitionExtension : MarkupExtension
     protected virtual TimeSpan Duration =>
         TimeSpan.FromMilliseconds(100);
 
-    private static readonly Dictionary<Type, Func<TimeSpan, AvaloniaProperty, ITransition>>
-        TransitionFactories =
+    private static readonly Dictionary<Type, Func<TimeSpan, AvaloniaProperty, ITransition>> TransitionFactories =
         new()
         {
             {
@@ -28,7 +27,6 @@ public abstract class OvoTransitionExtension : MarkupExtension
                     Property = property
                 }
             },
-
             {
                 typeof(BoxShadows),
                 (duration, property) => new BoxShadowsTransition
@@ -39,21 +37,7 @@ public abstract class OvoTransitionExtension : MarkupExtension
             }
         };
 
-
-    public override object ProvideValue(IServiceProvider serviceProvider)
-    {
-        var transitions = new Transitions();
-
-        foreach (var property in Properties)
-        {
-            transitions.Add(CreateTransition(property));
-        }
-
-        return transitions;
-    }
-
-
-    private ITransition CreateTransition(AvaloniaProperty property)
+    protected ITransition CreateTransition(AvaloniaProperty property)
     {
         var propertyType = property.PropertyType;
 
@@ -69,52 +53,84 @@ public abstract class OvoTransitionExtension : MarkupExtension
             $"OvoTransition does not support property '{property.Name}' " +
             $"with type '{propertyType.Name}'.");
     }
+
+    private Transitions CreateTransitions()
+    {
+        var transitions = new Transitions();
+
+        foreach (var property in Properties)
+        {
+            transitions.Add(CreateTransition(property));
+        }
+
+        return transitions;
+    }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return CreateTransitions();
+    }
 }
 
-
-public class OvoTransitions : OvoTransitionExtension
+public sealed class OvoTransitions : OvoTransitionExtension
 {
     protected override IEnumerable<AvaloniaProperty> Properties =>
     [
         Border.BackgroundProperty,
         TextElement.ForegroundProperty,
         Border.BorderBrushProperty,
-        Border.BoxShadowProperty,
+        Border.BoxShadowProperty
     ];
 }
 
-
-public class OvoBackgroundTransitions : OvoTransitionExtension
+public sealed class OvoBackgroundTransition : OvoTransitionExtension
 {
     protected override IEnumerable<AvaloniaProperty> Properties =>
     [
         Border.BackgroundProperty
     ];
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return CreateTransition(Border.BackgroundProperty);
+    }
 }
 
-
-public class OvoBoxShadowTransitions : OvoTransitionExtension
+public sealed class OvoBoxShadowTransition : OvoTransitionExtension
 {
     protected override IEnumerable<AvaloniaProperty> Properties =>
     [
         Border.BoxShadowProperty
     ];
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return CreateTransition(Border.BoxShadowProperty);
+    }
 }
 
-
-public class OvoForegroundTransitions : OvoTransitionExtension
+public sealed class OvoForegroundTransition : OvoTransitionExtension
 {
     protected override IEnumerable<AvaloniaProperty> Properties =>
     [
         TextElement.ForegroundProperty
     ];
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return CreateTransition(TextElement.ForegroundProperty);
+    }
 }
 
-
-public class OvoBorderTransitions : OvoTransitionExtension
+public sealed class OvoBorderTransition : OvoTransitionExtension
 {
     protected override IEnumerable<AvaloniaProperty> Properties =>
     [
         Border.BorderBrushProperty
     ];
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return CreateTransition(Border.BorderBrushProperty);
+    }
 }

@@ -1,0 +1,205 @@
+<ResourceDictionary
+    x:CompileBindings="True"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="50">
+            <StackPanel Spacing="10">
+                <HyperlinkButton Content="Hello" />
+                <HyperlinkButton Classes="underline" Content="Hello" />
+                <HyperlinkButton Classes="underline_focus" Content="Hello" />
+                <HyperlinkButton Classes="del" Content="Hello" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="HyperlinkButton" x:Key="BasicHyperlinkButtonTheme">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Foreground="{TemplateBinding Foreground}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Name="ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    RecognizesAccessKey="True"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Inline.TextDecorations" Value="{x:Null}" />
+            <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+            <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+            <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+
+        <Style Selector="^.underline /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Inline.TextDecorations" Value="Underline" />
+        </Style>
+
+        <Style Selector="^.del /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Inline.TextDecorations" Value="Strikethrough" />
+        </Style>
+
+        <Style Selector="^.underline_focus:pointerover /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Inline.TextDecorations" Value="Underline" />
+        </Style>
+
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource BasicHyperlinkButtonTheme}"
+        TargetType="HyperlinkButton"
+        x:Key="SolidHyperlinkButtonTheme">
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="11,6,11,5" />
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource SolidHyperlinkButtonTheme}"
+        TargetType="HyperlinkButton"
+        x:Key="{x:Type HyperlinkButton}" />
+
+    <ControlTheme
+        BasedOn="{StaticResource BasicHyperlinkButtonTheme}"
+        TargetType="HyperlinkButton"
+        x:Key="UnderlineHyperlinkButton">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Border Background="{TemplateBinding Background}" CornerRadius="6,6,6,6">
+                        <Border.Transitions>
+                            <ovo:OvoTransitions />
+                        </Border.Transitions>
+                    </Border>
+                    <Border>
+                        <StackPanel Background="Transparent">
+                            <ContentPresenter
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Foreground="{TemplateBinding Foreground}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="2,0"
+                                Name="ContentPresenter"
+                                Padding="{TemplateBinding Padding}"
+                                RecognizesAccessKey="True"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                                <ContentPresenter.Transitions>
+                                    <ovo:OvoTransitions />
+                                </ContentPresenter.Transitions>
+                            </ContentPresenter>
+
+                            <Border
+                                Background="{DynamicResource SystemAccentColor}"
+                                CornerRadius="2"
+                                Height="2"
+                                HorizontalAlignment="Stretch"
+                                Margin="0"
+                                Name="PART_Line"
+                                VerticalAlignment="Bottom"
+                                ZIndex="-2">
+
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="0" Y="0" />
+                                </Border.RenderTransform>
+
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition Duration="0:0:0.1" Property="RenderTransform" />
+                                        <ovo:OvoBackgroundTransition />
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColorLight1}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource UnderlineHyperlinkButton}"
+        TargetType="HyperlinkButton"
+        x:Key="UnderlineMotionHyperlinkButton">
+
+        <Style Selector="^ /template/ Border#PART_Line">
+            <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#PART_Line">
+            <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#PART_Line">
+            <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+        </Style>
+
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource UnderlineMotionHyperlinkButton}"
+        TargetType="HyperlinkButton"
+        x:Key="UnderlineFillHyperlinkButton">
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Padding" Value="2,2,2,0" />
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Foreground" Value="#fff" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_Line">
+            <Setter Property="RenderTransform" Value="translate(0px, -4px)" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#PART_Line">
+            <Setter Property="RenderTransform" Value="translate(0px, -4px)" />
+            <Setter Property="Background" Value="Transparent" />
+
+        </Style>
+
+    </ControlTheme>
+
+</ResourceDictionary>

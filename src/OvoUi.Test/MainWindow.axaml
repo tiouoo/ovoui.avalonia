@@ -23,6 +23,10 @@
             </ComboBox>
 
             <AutoCompleteBox Classes="clear" Name="AutoCompleteBox" />
+            <HyperlinkButton Content="Hello" />
+            <HyperlinkButton Classes="underline" Content="Hello" />
+            <HyperlinkButton Classes="underline_focus" Content="Hello" />
+            <HyperlinkButton Classes="del" Content="Hello" />
 
         </StackPanel>
         <StackPanel

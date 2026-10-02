@@ -18,6 +18,8 @@
         <ResourceInclude Source="AutoCompleteBox.axaml" />
         <ResourceInclude Source="CalendarDatePicker.axaml" />
         <ResourceInclude Source="Expander.axaml" />
+        <ResourceInclude Source="GridSplitter.axaml" />
+        <ResourceInclude Source="HyperlinkButton.axaml" />
         <ResourceInclude Source="Popup.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
