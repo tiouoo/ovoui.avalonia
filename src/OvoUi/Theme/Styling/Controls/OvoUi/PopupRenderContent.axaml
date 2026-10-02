@@ -2,7 +2,9 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="ovo:ContentExpander" x:Key="ContentExpanderTheme">
+    <ControlTheme TargetType="ovo:PopupRenderContent" x:Key="{x:Type ovo:PopupRenderContent}">
+        <Setter Property="RenderTransformOrigin" Value="50%,0%" />
+        <Setter Property="RenderTransform" Value="scale(1, 1)" />
         <Setter Property="Template">
             <ControlTemplate>
                 <ContentPresenter
@@ -12,22 +14,10 @@
                     Content="{TemplateBinding Content}"
                     ContentTemplate="{TemplateBinding ContentTemplate}"
                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    Name="PART_ContentPresenter"
                     Padding="{TemplateBinding Padding}"
                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
             </ControlTemplate>
         </Setter>
-    </ControlTheme>
-
-    <ControlTheme
-        BasedOn="{StaticResource ContentExpanderTheme}"
-        TargetType="ovo:ContentExpander"
-        x:Key="{x:Type ovo:ContentExpander}" />
-
-    <ControlTheme
-        BasedOn="{StaticResource ContentExpanderTheme}"
-        TargetType="ovo:PopupContentExpander"
-        x:Key="{x:Type ovo:PopupContentExpander}">
     </ControlTheme>
 
 </ResourceDictionary>

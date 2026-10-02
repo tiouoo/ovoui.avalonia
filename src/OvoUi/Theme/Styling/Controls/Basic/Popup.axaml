@@ -18,9 +18,10 @@
                         <Border IsHitTestVisible="False" Name="PART_TransparencyFallback" />
                         <VisualLayerManager Name="PART_VisualLayerManager">
                             <ovo:PopupContentExpander
+                                DisableAnimation="{Binding $parent[Popup].(ovo:PopupContentExpander.DisableAnimation)}"
                                 ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}"
                                 Name="PART_LayoutTransform"
-                                DisableAnimation="{Binding $parent[Popup].(ovo:PopupContentExpander.DisableAnimation)}">
+                                Theme="{StaticResource {x:Type ovo:PopupContentExpander}}">
                                 <ContentPresenter
                                     Background="{TemplateBinding Background}"
                                     Content="{TemplateBinding Content}"

@@ -259,7 +259,12 @@
                             Placement="Bottom"
                             PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
-                            <DatePickerPresenter Name="PART_PickerPresenter" VerticalAlignment="Top" />
+                            <ovo:PopupRenderContent
+                                ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
+                                <DatePickerPresenter
+                                    Name="PART_PickerPresenter"
+                                    VerticalAlignment="Top" />
+                            </ovo:PopupRenderContent>
                         </Popup>
                         <Button
                             Command="{Binding $parent[DatePicker].Clear}"
