@@ -28,6 +28,7 @@
         <ResourceInclude Source="ThemeVariantScope.axaml" />
         <ResourceInclude Source="HyperlinkButton.axaml" />
         <ResourceInclude Source="Popup.axaml" />
+        <ResourceInclude Source="Slider.axaml" />
         <ResourceInclude Source="ToggleSwitch.axaml" />
         <ResourceInclude Source="Tooltip.axaml" />
         <ResourceInclude Source="TransitioningContentControl.axaml" />
