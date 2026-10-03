@@ -16,13 +16,13 @@
                     <Panel>
                         <Border
                             Background="{TemplateBinding Background}"
-                            BoxShadow="{DynamicResource PopupBoxShadow}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Margin="16" />
                         <Border
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
+                            BoxShadow="{DynamicResource PopupBoxShadow}"
                             ClipToBounds="True"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Margin="15">

@@ -101,17 +101,17 @@
 
                             <Border
                                 DockPanel.Dock="Right"
-                                Margin="10,0,0,0"
+                                Margin="10,0,8,0"
                                 Width="12">
-                                <PathIcon
-                                    Classes="Flippable"
-                                    Data="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+                                <TextBlock
+                                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                                    FontSize="16"
+                                    FontWeight="Light"
                                     Foreground="{DynamicResource ForegroundBrush}"
-                                    Height="8"
                                     HorizontalAlignment="Center"
                                     Name="PART_RightArrow"
-                                    VerticalAlignment="Center"
-                                    Width="8" />
+                                    Text="&#xe612;"
+                                    VerticalAlignment="Center" />
                             </Border>
 
 
@@ -156,11 +156,12 @@
                                         Background="{DynamicResource PopupBackgroundBrush}"
                                         BorderBrush="{DynamicResource LineBrush}"
                                         BorderThickness="1"
+                                        BoxShadow="{DynamicResource PopupBoxShadow}"
                                         ClipToBounds="True"
                                         CornerRadius="14"
                                         Margin="16,8,8,8"
                                         Name="PART_Border">
-                                        <Panel Margin="4">
+                                        <Panel Margin="6">
                                             <ScrollViewer>
                                                 <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                                             </ScrollViewer>
@@ -242,7 +243,7 @@
             <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
         </Style>
 
-        <Style Selector="^:empty /template/ PathIcon#PART_RightArrow">
+        <Style Selector="^:empty /template/ TextBlock#PART_RightArrow">
             <Setter Property="IsVisible" Value="False" />
         </Style>
 

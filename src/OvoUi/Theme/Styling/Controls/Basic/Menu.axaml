@@ -57,11 +57,12 @@
                                         Background="{DynamicResource PopupBackgroundColor}"
                                         BorderBrush="{DynamicResource LineBrush}"
                                         BorderThickness="1"
+                                        BoxShadow="{DynamicResource PopupBoxShadow}"
                                         ClipToBounds="True"
                                         CornerRadius="14"
                                         Margin="16,8,8,8"
                                         Name="PART_Border">
-                                        <Panel Margin="4">
+                                        <Panel Margin="6">
                                             <ScrollViewer>
                                                 <ItemsPresenter
                                                     Grid.IsSharedSizeScope="True"
