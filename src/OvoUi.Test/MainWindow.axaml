@@ -16,7 +16,8 @@
             Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:IPv4Box Width="200" />
+            <ovo:KeyGestureInput Width="200" />
+            <ovo:KeyGestureInput Classes="clear" Width="200" />
 
         </StackPanel>
         <StackPanel

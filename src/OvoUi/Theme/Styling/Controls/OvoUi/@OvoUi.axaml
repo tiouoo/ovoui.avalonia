@@ -13,5 +13,6 @@
         <ResourceInclude Source="EnumSelector.axaml" />
         <ResourceInclude Source="Form.axaml" />
         <ResourceInclude Source="IPv4Box.axaml" />
+        <ResourceInclude Source="KeyGestureInput.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

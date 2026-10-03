@@ -1,0 +1,85 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="using:Avalonia.Controls.Converters"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <converters:PlatformKeyGestureConverter x:Key="KeyGestureConverter" />
+
+    <ControlTheme TargetType="ovo:KeyGestureInput" x:Key="{x:Type ovo:KeyGestureInput}">
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:KeyGestureInput">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalAlignment="Stretch"
+                    Name="Background"
+                    VerticalAlignment="Stretch">
+                    <Panel Margin="{TemplateBinding Padding}" VerticalAlignment="Stretch">
+                        <Grid ColumnDefinitions="Auto, *,Auto">
+                            <ContentPresenter
+                                Content="{TemplateBinding InnerLeftContent}"
+                                DockPanel.Dock="Left"
+                                Foreground="{DynamicResource InnerForegroundBrush}"
+                                Grid.Column="0"
+                                IsVisible="{Binding Path=InnerLeftContent, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Padding="{TemplateBinding Padding,
+                                                          Converter={ovo:ThicknessMixerConverter Right}}"
+                                VerticalAlignment="Stretch"
+                                VerticalContentAlignment="Center" />
+                            <ContentPresenter
+                                Content="{TemplateBinding InnerRightContent}"
+                                DockPanel.Dock="Right"
+                                Foreground="{DynamicResource InnerForegroundBrush}"
+                                Grid.Column="2"
+                                IsVisible="{Binding Path=InnerRightContent, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Padding="{TemplateBinding Padding,
+                                                          Converter={ovo:ThicknessMixerConverter Left}}"
+                                VerticalAlignment="Stretch"
+                                VerticalContentAlignment="Center" />
+                            <SelectableTextBlock
+                                Grid.Column="1"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Text="{TemplateBinding Gesture,
+                                                       Converter={StaticResource KeyGestureConverter}}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
+                        <Button
+                            Command="{Binding $parent[ovo:KeyGestureInput].Clear}"
+                            Focusable="False"
+                            HorizontalAlignment="Right"
+                            IsVisible="False"
+                            Name="PART_ClearButton"
+                            Theme="{DynamicResource InputClearIcon}" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#Background" />
+        <Style Selector="^:focus-within /template/ Border#Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        <Style Selector="^:not(:empty).clear">
+            <Style Selector="^:focus /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
