@@ -13,53 +13,21 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <DatePicker Classes="border_focus clear" />
-            <DatePicker Classes="connect clear" />
-            <CalendarDatePicker Classes="border_focus clear" HorizontalAlignment="Stretch" />
-            <ComboBox Classes="border_focus" HorizontalAlignment="Stretch">
-                <ComboBoxItem Content="Apple" />
-                <ComboBoxItem Content="Banana" />
-                <ComboBoxItem Content="Cherry" />
-                <ComboBoxItem Content="Date" />
-            </ComboBox>
+            <Border Padding="20">
+                <TableView Height="200" Width="400">
+                    <TableView.Columns>
+                        <TableViewColumn Header="Name" Width="*" />
+                        <TableViewColumn Header="Value" Width="120" />
+                    </TableView.Columns>
+                </TableView>
+            </Border>
+            <TableView Height="200" Width="400">
+                <TableView.Columns>
+                    <TableViewColumn Header="Name" Width="*" />
+                    <TableViewColumn Header="Value" Width="120" />
+                </TableView.Columns>
+            </TableView>
 
-            <AutoCompleteBox Classes="clear" Name="AutoCompleteBox" />
-            <HyperlinkButton Content="Hello" />
-            <HyperlinkButton Classes="underline" Content="Hello" />
-            <HyperlinkButton Classes="underline_focus" Content="Hello" />
-            <HyperlinkButton Classes="del" Content="Hello" />
-
-            <StackPanel Background="{DynamicResource SemiBackground0Color}" Spacing="8">
-                <StackPanel Orientation="Horizontal">
-                    <ToggleSwitch />
-                    <ToggleSwitch IsChecked="True" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <ToggleSwitch
-                        OffContent="否"
-                        OnContent="是"
-                        Theme="{DynamicResource SimpleToggleSwitch}" />
-                    <ToggleSwitch
-                        IsChecked="True"
-                        OffContent="否"
-                        OnContent="是"
-                        Theme="{DynamicResource SimpleToggleSwitch}" />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <ToggleSwitch
-                        OffContent="否"
-                        OnContent="是"
-                        Theme="{DynamicResource ButtonToggleSwitch}" />
-                    <ToggleSwitch
-                        IsChecked="True"
-                        OffContent="No"
-                        OnContent="Yes"
-                        Theme="{DynamicResource ButtonToggleSwitch}" />
-                </StackPanel>
-            </StackPanel>
-
-            <TimePicker />
-            <TimePicker Classes="connect" />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

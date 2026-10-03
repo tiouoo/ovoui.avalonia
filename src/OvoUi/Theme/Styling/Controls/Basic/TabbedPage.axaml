@@ -1,0 +1,102 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <TabbedPage
+            Height="800"
+            TabPlacement="Bottom"
+            Theme="{StaticResource ButtonTabbedPage}"
+            Width="400">
+            <ContentPage Header="Home" Icon="A" />
+            <ContentPage Header="Search" Icon="B" />
+            <ContentPage Header="Settings" Icon="C" />
+        </TabbedPage>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="TabbedPage" x:Key="{x:Type TabbedPage}">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="TabbedPage">
+                <TabControl
+                    Background="{TemplateBinding Background}"
+                    Name="PART_TabControl"
+                    Theme="{StaticResource LineTabControl}">
+                    <TabControl.ItemContainerTheme>
+                        <ControlTheme BasedOn="{StaticResource LineTabItem}" TargetType="TabItem">
+                            <Style Selector="^[TabStripPlacement=Top], ^[TabStripPlacement=Bottom]">
+                                <Setter Property="TabItem.Margin" Value="0" />
+                                <Setter Property="TabItem.HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="TabItem.VerticalContentAlignment" Value="Center" />
+                                <Style Selector="^ /template/ ContentPresenter#PART_IconPresenter">
+                                    <Setter Property="DockPanel.Dock" Value="Top" />
+                                </Style>
+                            </Style>
+                        </ControlTheme>
+                    </TabControl.ItemContainerTheme>
+                    <TabControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="{Binding $parent[TabControl].ItemCount}" />
+                        </ItemsPanelTemplate>
+                    </TabControl.ItemsPanel>
+                </TabControl>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="TabbedPage" x:Key="CardTabbedPage">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="TabbedPage">
+                <TabControl
+                    Background="{TemplateBinding Background}"
+                    Name="PART_TabControl"
+                    Theme="{StaticResource CardTabControl}">
+                    <TabControl.ItemContainerTheme>
+                        <ControlTheme BasedOn="{StaticResource CardTabItem}" TargetType="TabItem">
+                            <Style Selector="^[TabStripPlacement=Top], ^[TabStripPlacement=Bottom]">
+                                <Setter Property="TabItem.Padding" Value="8" />
+                                <Setter Property="TabItem.Margin" Value="0" />
+                                <Setter Property="TabItem.HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="TabItem.VerticalContentAlignment" Value="Center" />
+                                <Style Selector="^ /template/ ContentPresenter#PART_IconPresenter">
+                                    <Setter Property="DockPanel.Dock" Value="Top" />
+                                </Style>
+                            </Style>
+                        </ControlTheme>
+                    </TabControl.ItemContainerTheme>
+                    <TabControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="{Binding $parent[TabControl].ItemCount}" />
+                        </ItemsPanelTemplate>
+                    </TabControl.ItemsPanel>
+                </TabControl>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="TabbedPage" x:Key="ButtonTabbedPage">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="TabbedPage">
+                <TabControl
+                    Background="{TemplateBinding Background}"
+                    Name="PART_TabControl"
+                    Theme="{StaticResource ButtonTabControl}">
+                    <TabControl.ItemContainerTheme>
+                        <ControlTheme BasedOn="{StaticResource ButtonTabItem}" TargetType="TabItem">
+                            <Style Selector="^[TabStripPlacement=Top], ^[TabStripPlacement=Bottom]">
+                                <Setter Property="TabItem.Padding" Value="12" />
+                                <Setter Property="TabItem.Margin" Value="0" />
+                                <Setter Property="TabItem.HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="TabItem.VerticalContentAlignment" Value="Center" />
+                                <Style Selector="^ /template/ ContentPresenter#PART_IconPresenter">
+                                    <Setter Property="DockPanel.Dock" Value="Top" />
+                                </Style>
+                            </Style>
+                        </ControlTheme>
+                    </TabControl.ItemContainerTheme>
+                    <TabControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="{Binding $parent[TabControl].ItemCount}" />
+                        </ItemsPanelTemplate>
+                    </TabControl.ItemsPanel>
+                </TabControl>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

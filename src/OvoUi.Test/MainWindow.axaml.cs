@@ -10,7 +10,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        AutoCompleteBox.ItemsSource = new List<string> { "Apple", "Banana", "Balalala", "Cherry", "Date" };
     }
 
     private void Dark(object? sender, RoutedEventArgs e)

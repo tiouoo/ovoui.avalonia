@@ -19,6 +19,7 @@
         <ResourceInclude Source="AutoCompleteBox.axaml" />
         <ResourceInclude Source="CalendarDatePicker.axaml" />
         <ResourceInclude Source="Expander.axaml" />
+        <ResourceInclude Source="TabbedPage.axaml" />
         <ResourceInclude Source="ItemsControl.axaml" />
         <ResourceInclude Source="GridSplitter.axaml" />
         <ResourceInclude Source="Label.axaml" />
@@ -38,6 +39,10 @@
         <ResourceInclude Source="TabStrip.axaml" />
         <ResourceInclude Source="ContentPage.axaml" />
         <ResourceInclude Source="CarouselPage.axaml" />
+        <ResourceInclude Source="Carousel.axaml" />
         <ResourceInclude Source="DrawerPage.axaml" />
+        <ResourceInclude Source="SplitButton.axaml" />
+        <ResourceInclude Source="TabbedPage.axaml" />
+        <ResourceInclude Source="TableView.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
