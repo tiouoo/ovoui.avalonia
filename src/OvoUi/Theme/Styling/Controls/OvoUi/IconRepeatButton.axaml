@@ -3,11 +3,134 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <DataTemplate x:Key="IconButtonPreviewIcon">
+        <TextBlock
+            FontFamily="{DynamicResource OvoIconFontFamily}"
+            FontSize="18"
+            FontWeight="Light"
+            HorizontalAlignment="Center"
+            Text="&#xe654;"
+            VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <Design.PreviewWith>
+        <ScrollViewer Width="720">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="16">
+                <ovo:IconRepeatButton
+                    Content="Solid"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="float"
+                    Content="Basic"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="border"
+                    Content="Border"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="colorless"
+                    Content="Colorless"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="info"
+                    Content="Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="accent"
+                    Content="Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="warn"
+                    Content="Warning"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="error"
+                    Content="Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="danger"
+                    Content="Danger"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="success"
+                    Content="Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="border accent"
+                    Content="Border Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="border info"
+                    Content="Border Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="border success"
+                    Content="Border Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="border running"
+                    Content="Border Running"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Classes="border error"
+                    Content="Border Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconRepeatButton
+                    Content="Disabled"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}"
+                    IsEnabled="False" />
+            </WrapPanel>
+        </ScrollViewer>
+    </Design.PreviewWith>
+
     <ControlTheme
         BasedOn="{StaticResource BaseIconButton}"
         TargetType="ovo:IconRepeatButton"
         x:Key="{x:Type ovo:IconRepeatButton}">
         <Setter Property="Template" Value="{StaticResource IconButtonTemplate}" />
+
+        <Style Selector="^.float /template/ ReversibleStackPanel#PART_RootPanel">
+            <Setter Property="Spacing" Value="0" />
+        </Style>
+        <Style Selector="^.float /template/ Panel#PART_IconRoot">
+            <Setter Property="Margin" Value="-21,0,4,0" />
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition
+                        Duration="0:0:0.2"
+                        Easing="CircularEaseOut"
+                        Property="Opacity" />
+                    <ThicknessTransition
+                        Duration="0:0:0.2"
+                        Easing="CircularEaseOut"
+                        Property="Margin" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^.float:pointerover /template/ Panel#PART_IconRoot">
+            <Setter Property="Margin" Value="0,0,8,0" />
+            <Setter Property="Opacity" Value="1" />
+        </Style>
     </ControlTheme>
 
 </ResourceDictionary>

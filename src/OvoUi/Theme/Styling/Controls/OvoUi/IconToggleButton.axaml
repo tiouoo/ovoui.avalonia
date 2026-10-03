@@ -1,56 +1,131 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
-    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <ScrollViewer Width="720">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="16">
+                <ovo:IconToggleButton
+                    Content="Solid"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="float"
+                    Content="Basic"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="border"
+                    Content="Border"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="colorless"
+                    Content="Colorless"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes=" accent"
+                    Content="Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes=" info"
+                    Content="Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes=" warn"
+                    Content="Warning"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes=" error"
+                    Content="Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes=" danger"
+                    Content="Danger"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes=" success"
+                    Content="Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="border accent"
+                    Content="Border Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="border info"
+                    Content="Border Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="border success"
+                    Content="Border Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="border running"
+                    Content="Border Running"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Classes="border error"
+                    Content="Border Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconToggleButton
+                    Content="Checked"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}"
+                    IsChecked="True" />
+                <ovo:IconToggleButton
+                    Classes="error"
+                    Content="Checked Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}"
+                    IsChecked="True" />
+                <ovo:IconToggleButton
+                    Content="Disabled"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}"
+                    IsEnabled="False" />
+            </WrapPanel>
+        </ScrollViewer>
+    </Design.PreviewWith>
 
     <ControlTheme
         BasedOn="{StaticResource BaseIconButton}"
         TargetType="ovo:IconToggleButton"
         x:Key="{x:Type ovo:IconToggleButton}">
         <Setter Property="Template" Value="{StaticResource IconButtonTemplate}" />
-        <Style Selector="^.Danger">
-            <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultDangerForeground}" />
-            <Setter Property="Background" Value="{DynamicResource ButtonDefaultBackground}" />
-            <Style Selector="^:pointerover">
-                <Setter Property="Background" Value="{DynamicResource ButtonDefaultPointeroverBackground}" />
-            </Style>
-
-            <Style Selector="^:pressed">
-                <Setter Property="Background" Value="{DynamicResource ButtonDefaultPressedBackground}" />
-            </Style>
-
-            <Style Selector="^:disabled">
-                <Setter Property="Foreground" Value="{DynamicResource ButtonDefaultDisabledForeground}" />
-            </Style>
-        </Style>
         <Style Selector="^:checked">
             <Setter Property="FocusAdorner">
                 <FocusAdornerTemplate>
-                    <Border Classes="Solid" Theme="{DynamicResource AdornerLayerBorder}" />
+                    <Border Classes="solid" Theme="{DynamicResource AdornerLayerBorder}" />
                 </FocusAdornerTemplate>
             </Setter>
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
             <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
-            <Style Selector="^.Danger">
-                <Setter Property="Background" Value="{DynamicResource DangerButtonDefaultBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerButtonDefaultBackground}" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}" />
             </Style>
-            <!-- <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter"> -->
-            <!--     <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}" /> -->
-            <!--     <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" /> -->
-            <!-- </Style> -->
-            <Style Selector="^ PathIcon">
-                <Setter Property="Foreground" Value="White" />
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}" />
             </Style>
-            <!-- <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter"> -->
-            <!--     <Setter Property="Foreground" Value="White" /> -->
-            <!--     <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}" /> -->
-            <!--     <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" /> -->
-            <!-- </Style> -->
-            <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Foreground" Value="{DynamicResource TButtonDefaultDisabledForeground}" />
+            <Style Selector="^.danger,^.error">
+                <Setter Property="Background" Value="{DynamicResource ErrorColor}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ErrorColor}" />
             </Style>
         </Style>
     </ControlTheme>

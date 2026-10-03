@@ -3,7 +3,94 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <ovo:BooleansToOpacityConverter x:Key="OpacityConverter" />
+    <DataTemplate x:Key="IconButtonPreviewIcon">
+        <TextBlock
+            FontFamily="{DynamicResource OvoIconFontFamily}"
+            FontSize="18"
+            FontWeight="Light"
+            HorizontalAlignment="Center"
+            Text="&#xe654;"
+            VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <Design.PreviewWith>
+        <ScrollViewer Width="720">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="16">
+                <ovo:IconDropDownButton
+                    Content="Solid"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="float"
+                    Content="Float"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="border"
+                    Content="Border"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="accent"
+                    Content="Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes=" info"
+                    Content="Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes=" warn"
+                    Content="Warning"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes=" error"
+                    Content="Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes=" danger"
+                    Content="Danger"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes=" success"
+                    Content="Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="border info"
+                    Content="Border Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="border success"
+                    Content="Border Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="border warn"
+                    Content="Border Warning"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Classes="border error"
+                    Content="Border Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconDropDownButton
+                    Content="Disabled"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}"
+                    IsEnabled="False" />
+            </WrapPanel>
+        </ScrollViewer>
+    </Design.PreviewWith>
 
     <ControlTemplate TargetType="ContentControl" x:Key="IconDropDownButtonTemplate">
         <Border
@@ -34,18 +121,10 @@
                         <ContentPresenter
                             Content="{TemplateBinding (ovo:IconButton.Icon)}"
                             ContentTemplate="{TemplateBinding (ovo:IconButton.IconTemplate)}"
-                            Foreground="{Binding #PART_ContentPresenter.Foreground}"
+                            Foreground="{TemplateBinding Foreground}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Opacity="{Binding !(ovo:IconButton.IsLoading), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource OpacityConverter}}"
+                            Opacity="{Binding !(ovo:IconButton.IsLoading), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource IconButtonOpacityConverter}}"
                             RecognizesAccessKey="True">
-                            <ContentPresenter.Styles>
-                                <Style Selector="PathIcon">
-                                    <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
-                                </Style>
-                                <Style Selector="ovo|IconDropDownButton.Danger PathIcon">
-                                    <Setter Property="Foreground" Value="White" />
-                                </Style>
-                            </ContentPresenter.Styles>
                             <ContentPresenter.DataTemplates>
                                 <DataTemplate DataType="Geometry">
                                     <PathIcon
@@ -56,8 +135,7 @@
                             </ContentPresenter.DataTemplates>
                         </ContentPresenter>
                         <ovo:LoadingIcon
-                            Classes="Small"
-                            Foreground="{Binding #PART_ContentPresenter.Foreground}"
+                            Foreground="{TemplateBinding Foreground}"
                             IsLoading="{TemplateBinding (ovo:IconButton.IsLoading)}"
                             IsVisible="{TemplateBinding (ovo:IconButton.IsLoading)}" />
                     </Panel>
@@ -76,19 +154,26 @@
                         VerticalAlignment="Stretch"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
                 </ReversibleStackPanel>
-                <PathIcon
-                    Data="{DynamicResource DropDownButtonIconGlyph}"
+                <TextBlock
+                    DockPanel.Dock="Right"
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="21"
+                    FontWeight="Light"
                     Foreground="{Binding #PART_ContentPresenter.Foreground}"
                     Grid.Column="1"
                     HorizontalAlignment="Right"
                     IsHitTestVisible="False"
+                    Margin="0,0,-4,0"
                     Name="DropDownGlyph"
                     RenderTransform="translate(0px, 0px) rotate(0deg)"
                     RenderTransformOrigin="50%,50%"
+                    Text="&#xe623;"
                     UseLayoutRounding="False"
-                    Width="12" />
+                    VerticalAlignment="Center" />
             </Grid>
         </Border>
+
+
     </ControlTemplate>
 
     <ControlTheme
@@ -96,22 +181,46 @@
         TargetType="ovo:IconDropDownButton"
         x:Key="{x:Type ovo:IconDropDownButton}">
         <Setter Property="Template" Value="{StaticResource IconDropDownButtonTemplate}" />
-        <Style Selector="^ /template/ PathIcon#DropDownGlyph">
+        <Style Selector="^ /template/ TextBlock#DropDownGlyph">
             <Setter Property="Transitions">
                 <Transitions>
                     <TransformOperationsTransition Duration="0:0:0.12" Property="RenderTransform" />
                 </Transitions>
             </Setter>
         </Style>
-        <Style Selector="^:flyout-open /template/ PathIcon#DropDownGlyph">
+        <Style Selector="^:flyout-open /template/ TextBlock#DropDownGlyph">
             <Setter Property="RenderTransform" Value="translate(0px, 0px) rotate(180deg)" />
         </Style>
-        <Style Selector="^:pressed /template/ PathIcon#DropDownGlyph">
+        <Style Selector="^:pressed /template/ TextBlock#DropDownGlyph">
             <Setter Property="RenderTransform" Value="translate(0px, 2px) rotate(0deg)" />
         </Style>
         <Style Selector="^:empty-content">
             <Setter Property="MinWidth" Value="0" />
-            <Setter Property="Padding" Value="{DynamicResource ButtonDefaultPadding}" />
+            <Setter Property="Padding" Value="20,8" />
+        </Style>
+
+        <Style Selector="^.float /template/ ReversibleStackPanel#PART_RootPanel">
+            <Setter Property="Spacing" Value="0" />
+        </Style>
+        <Style Selector="^.float /template/ Panel#PART_IconRoot">
+            <Setter Property="Margin" Value="-21,0,4,0" />
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition
+                        Duration="0:0:0.2"
+                        Easing="CircularEaseOut"
+                        Property="Opacity" />
+                    <ThicknessTransition
+                        Duration="0:0:0.2"
+                        Easing="CircularEaseOut"
+                        Property="Margin" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^.float:pointerover /template/ Panel#PART_IconRoot">
+            <Setter Property="Margin" Value="0,0,8,0" />
+            <Setter Property="Opacity" Value="1" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

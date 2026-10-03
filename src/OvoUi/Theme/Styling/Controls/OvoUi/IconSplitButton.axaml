@@ -3,6 +3,105 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <DataTemplate x:Key="IconButtonPreviewIcon">
+        <TextBlock
+            FontFamily="{DynamicResource OvoIconFontFamily}"
+            FontSize="18"
+            FontWeight="Light"
+            HorizontalAlignment="Center"
+            Text="&#xe654;"
+            VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <Design.PreviewWith>
+        <ScrollViewer Width="720">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="16">
+                <ovo:IconSplitButton
+                    Content="Solid"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="float"
+                    Content="Basic"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="border"
+                    Content="Border"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="colorless"
+                    Content="Colorless"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes=" accent"
+                    Content="Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes=" info"
+                    Content="Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes=" warn"
+                    Content="Warning"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes=" error"
+                    Content="Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes=" danger"
+                    Content="Danger"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes=" success"
+                    Content="Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="border accent"
+                    Content="Border Accent"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="border info"
+                    Content="Border Info"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="border success"
+                    Content="Border Success"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="border warn"
+                    Content="Border Warning"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Classes="border error"
+                    Content="Border Error"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}" />
+                <ovo:IconSplitButton
+                    Content="Disabled"
+                    Icon="icon"
+                    IconTemplate="{StaticResource IconButtonPreviewIcon}"
+                    IsEnabled="False" />
+            </WrapPanel>
+        </ScrollViewer>
+    </Design.PreviewWith>
+
     <ControlTemplate TargetType="SplitButton" x:Key="IconSplitButtonTemplate">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -36,22 +135,19 @@
                                                Converter={ovo:CornerRadiusMixerConverter Right}}"
                 Grid.Column="2"
                 IsEnabled="{TemplateBinding IsEnabled}"
+                Padding="12,0"
+                Theme="{StaticResource SplitButtonElementTheme}"
                 VerticalAlignment="Stretch"
                 ovo:ClassHelper.ClassSource="{TemplateBinding}"
                 x:Name="PART_SecondaryButton">
-                <PathIcon
-                    Data="{DynamicResource SplitButtonIconGlyph}"
-                    Name="SplitButtonIcon"
-                    Width="12">
-                    <PathIcon.Styles>
-                        <Style Selector="ovo|IconSplitButton PathIcon">
-                            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
-                        </Style>
-                        <Style Selector="ovo|IconSplitButton.Danger PathIcon">
-                            <Setter Property="Foreground" Value="White" />
-                        </Style>
-                    </PathIcon.Styles>
-                </PathIcon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="19"
+                    FontWeight="Light"
+                    Foreground="{Binding $parent[Button].Foreground}"
+                    HorizontalAlignment="Center"
+                    Text="&#xe623;"
+                    VerticalAlignment="Center" />
             </Button>
         </Grid>
     </ControlTemplate>
@@ -64,6 +160,8 @@
         <Style Selector="^ /template/ ovo|IconButton">
             <Setter Property="Theme" Value="{StaticResource {x:Type ovo:IconButton}}" />
         </Style>
+
+
     </ControlTheme>
 
 </ResourceDictionary>
