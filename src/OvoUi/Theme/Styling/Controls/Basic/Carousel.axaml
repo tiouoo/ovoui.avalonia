@@ -1,6 +1,5 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:converter="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
