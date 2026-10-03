@@ -11,6 +11,7 @@ public interface ILang
     public string Close { get; }
     public string Confirm { get; }
     public string Ok { get; }
+    public string NavSwitch { get; }
     public string ShowHiddenFiles { get; }
     public string FileAlreadyExists { get; }
     public string Day { get; }

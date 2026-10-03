@@ -37,5 +37,7 @@
         <ResourceInclude Source="TabItem.axaml" />
         <ResourceInclude Source="TabStrip.axaml" />
         <ResourceInclude Source="ContentPage.axaml" />
+        <ResourceInclude Source="CarouselPage.axaml" />
+        <ResourceInclude Source="DrawerPage.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

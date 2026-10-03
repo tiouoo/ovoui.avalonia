@@ -10,6 +10,7 @@ public class LangEnUs : ILang
     public string Cancel => "Cancel";
     public string Confirm => "Confirm";
     public string Ok => "Ok";
+    public string NavSwitch => "Switch Navigation";
     public string ShowHiddenFiles => "Show Hidden Files";
     public string FileAlreadyExists => "File Already Exists";
     public string Day => "day";
