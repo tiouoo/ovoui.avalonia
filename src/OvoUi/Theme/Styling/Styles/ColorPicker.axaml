@@ -1,0 +1,30 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="ColorPicker[ColorModel=Rgba]">
+        <Style Selector="^ /template/ NumericUpDown#Component1NumericUpDown">
+            <Setter Property="Tag" Value="R" />
+        </Style>
+        <Style Selector="^ /template/ NumericUpDown#Component2NumericUpDown">
+            <Setter Property="Tag" Value="G" />
+        </Style>
+        <Style Selector="^ /template/ NumericUpDown#Component3NumericUpDown">
+            <Setter Property="Tag" Value="B" />
+        </Style>
+        <Style Selector="^ /template/ NumericUpDown#AlphaComponentNumericUpDown">
+            <Setter Property="Tag" Value="A" />
+        </Style>
+    </Style>
+    <Style Selector="ColorPicker[ColorModel=Hsva]">
+        <Style Selector="^ /template/ NumericUpDown#Component1NumericUpDown">
+            <Setter Property="Tag" Value="H" />
+        </Style>
+        <Style Selector="^ /template/ NumericUpDown#Component2NumericUpDown">
+            <Setter Property="Tag" Value="S" />
+        </Style>
+        <Style Selector="^ /template/ NumericUpDown#Component3NumericUpDown">
+            <Setter Property="Tag" Value="V" />
+        </Style>
+        <Style Selector="^ /template/ NumericUpDown#AlphaComponentNumericUpDown">
+            <Setter Property="Tag" Value="A" />
+        </Style>
+    </Style>
+</Styles>

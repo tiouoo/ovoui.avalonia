@@ -3,4 +3,5 @@
     <StyleInclude Source="Popup.axaml" />
     <StyleInclude Source="PopupRenderContent.axaml" />
     <StyleInclude Source="ScrollViewer.axaml" />
+    <StyleInclude Source="ColorPicker.axaml" />
 </Styles>
