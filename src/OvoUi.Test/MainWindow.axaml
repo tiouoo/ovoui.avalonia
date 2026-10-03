@@ -15,10 +15,23 @@
             Orientation="Horizontal"
             Spacing="8"
             VerticalAlignment="Center">
-            <ColorPicker />
-            <ColorPicker Theme="{StaticResource HexColorPicker}" />
-            <ColorPicker Theme="{StaticResource SimpleColorPicker}" />
-            <ColorPicker Theme="{StaticResource HexSimpleColorPicker}" />
+            <ovo:OvoAutoCompleteBox
+                Margin="20"
+                Name="AutoCompleteBox"
+                Width="300" />
+            <AutoCompleteBox
+                Margin="20"
+                Name="AutoCompleteBox1"
+                Width="300" />
+            <ComboBox Width="200">
+                <ComboBoxItem>Hello World</ComboBoxItem>
+                <ComboBoxItem>Hello World</ComboBoxItem>
+                <ComboBoxItem>Hello World</ComboBoxItem>
+                <ComboBoxItem>Hello World</ComboBoxItem>
+                <ComboBoxItem>Hello World</ComboBoxItem>
+                <ComboBoxItem>Hello World</ComboBoxItem>
+            </ComboBox>
+
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

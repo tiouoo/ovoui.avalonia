@@ -12,6 +12,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        AutoCompleteBox.ItemsSource = new List<string> { "Apple", "Banana", "Cherry" };
+        AutoCompleteBox1.ItemsSource = new List<string> { "Apple", "Banana", "Cherry" };
     }
 
     private void Dark(object? sender, RoutedEventArgs e)

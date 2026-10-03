@@ -1,0 +1,79 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/OvoUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <ovo:OvoAutoCompleteBox Margin="20" Width="300" />
+    </Design.PreviewWith>
+
+    <x:Double x:Key="AutoCompleteBoxDefaultHeight">32</x:Double>
+    <x:Double x:Key="AutoCompleteMaxDropdownHeight">600</x:Double>
+    <Thickness x:Key="TextBoxContentPadding">8 0</Thickness>
+    <x:Double x:Key="SemiWidthIconMedium">16</x:Double>
+    <Thickness x:Key="SemiBorderThicknessControl">1</Thickness>
+    <Thickness x:Key="SemiThicknessExtraTight">4</Thickness>
+    <Thickness x:Key="AutoCompleteBoxPopupPadding">0 4</Thickness>
+    <ControlTheme TargetType="ovo:OvoAutoCompleteBox" x:Key="{x:Type ovo:OvoAutoCompleteBox}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="MinHeight" Value="{DynamicResource AutoCompleteBoxDefaultHeight}" />
+        <Setter Property="MaxDropDownHeight" Value="{DynamicResource AutoCompleteMaxDropdownHeight}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="AutoCompleteBox">
+                <Panel>
+                    <TextBox
+                        DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
+                        InnerLeftContent="{TemplateBinding InnerLeftContent}"
+                        InnerRightContent="{TemplateBinding InnerRightContent}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        Name="PART_TextBox"
+                        PlaceholderText="{TemplateBinding PlaceholderText}"
+                        VerticalAlignment="Stretch" />
+                    <Button
+                        Command="{Binding $parent[ovo:OvoAutoCompleteBox].Clear}"
+                        Focusable="False"
+                        HorizontalAlignment="Right"
+                        IsVisible="False"
+                        Margin="0,0,9,0"
+                        Name="PART_ClearButton"
+                        Theme="{DynamicResource InputStandardClearIcon}" />
+                    <Popup
+                        IsLightDismissEnabled="True"
+                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                        Name="PART_Popup"
+                        PlacementTarget="{TemplateBinding}">
+                        <Border
+                            Background="{DynamicResource PopupBackgroundBrush}"
+                            BorderBrush="{DynamicResource LineBrush}"
+                            BorderThickness="1"
+                            CornerRadius="{DynamicResource OvoCornerRadius}"
+                            HorizontalAlignment="Stretch"
+                            Margin="4"
+                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                            Padding="{DynamicResource AutoCompleteBoxPopupPadding}">
+                            <ScrollViewer>
+                                <ListBox
+                                    Foreground="{TemplateBinding Foreground}"
+                                    ItemTemplate="{TemplateBinding ItemTemplate}"
+                                    Margin="6,0"
+                                    Name="PART_SelectingItemsControl"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                    ScrollViewer.IsScrollChainingEnabled="False"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.clear">
+            <Style Selector="^:focus-within:not(:empty) /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^:pointerover:not(:empty) /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

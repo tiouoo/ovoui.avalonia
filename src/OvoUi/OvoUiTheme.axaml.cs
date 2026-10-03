@@ -44,15 +44,15 @@ public partial class OvoUiTheme :  Styles
 
         ThemeManager.SetThemeColor(ThemeColor);
 
-        this.GetObservable(ThemeColorProperty).Subscribe(ThemeManager.SetThemeColor);
+        ObservableExtension.Subscribe(this.GetObservable(ThemeColorProperty),ThemeManager.SetThemeColor);
 
-        this.GetObservable(LanguageProperty).Subscribe(lang =>
+        ObservableExtension.Subscribe(this.GetObservable(LanguageProperty), lang =>
         {
             if (lang.HasValue)
                 LangManager.SetLanguage(lang.Value);
         });
 
-        this.GetObservable(CustomLanguageProperty).Subscribe(customLang =>
+        ObservableExtension.Subscribe(this.GetObservable(CustomLanguageProperty), customLang =>
         {
             if (customLang != null)
                 LangManager.SetLanguage(customLang);

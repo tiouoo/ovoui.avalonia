@@ -3,6 +3,7 @@
         <ResourceInclude Source="ContentExpander.axaml" />
         <ResourceInclude Source="PopupRenderContent.axaml" />
         <ResourceInclude Source="Loading.axaml" />
+        <ResourceInclude Source="OvoAutoCompleteBox.axaml" />
         <ResourceInclude Source="GlassCard.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -145,18 +145,20 @@
         <Setter Property="Template">
             <ControlTemplate TargetType="ListBoxItem">
                 <Grid Margin="0,2">
-                    <ContentPresenter
+                    <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        Content="{TemplateBinding Content}"
-                        ContentTemplate="{TemplateBinding ContentTemplate}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        Foreground="{TemplateBinding Foreground}"
-                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        Name="PART_ContentPresenter"
-                        Padding="{TemplateBinding Padding}"
-                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
                     <Rectangle
                         Fill="{DynamicResource SystemAccentColor}"
                         Height="16"
@@ -193,6 +195,17 @@
         </Style>
         <Style Selector="^:pointerover">
             <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+        </Style>
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Duration="0:0:0.12" Property="RenderTransform" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RenderTransform" Value="translate(2px, 0px)" />
         </Style>
         <Style Selector="^:selected">
             <Setter Property="Background" Value="{DynamicResource ItemSelectedBackground}" />
