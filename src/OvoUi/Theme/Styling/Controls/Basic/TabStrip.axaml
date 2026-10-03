@@ -253,15 +253,17 @@
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="TabStripItem">
-                <Border
-                    BorderThickness="1"
-                    CornerRadius="{DynamicResource OvoCornerRadius}"
-                    Name="SelectBorder">
-                    <Border.Transitions>
-                        <Transitions>
-                            <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
-                        </Transitions>
-                    </Border.Transitions>
+                <Panel>
+                    <Border
+                        BorderThickness="2"
+                        CornerRadius="10"
+                        Name="SelectBorder">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
                     <ContentPresenter
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -276,7 +278,7 @@
                         Name="PART_ContentPresenter"
                         Padding="{TemplateBinding Padding}"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                </Border>
+                </Panel>
             </ControlTemplate>
         </Setter>
         <Setter Property="Transitions">
