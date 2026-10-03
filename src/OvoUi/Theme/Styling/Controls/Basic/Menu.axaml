@@ -43,7 +43,7 @@
                             </ContentPresenter.DataTemplates>
                         </ContentPresenter>
                         <Popup
-                            ClipToBounds="True"
+                            ClipToBounds="False"
                             IsLightDismissEnabled="True"
                             IsOpen="{TemplateBinding IsSubMenuOpen,
                                                      Mode=TwoWay}"
@@ -58,7 +58,7 @@
                                         BorderBrush="{DynamicResource LineBrush}"
                                         BorderThickness="1"
                                         BoxShadow="{DynamicResource PopupBoxShadow}"
-                                        ClipToBounds="True"
+                                        ClipToBounds="False"
                                         CornerRadius="14"
                                         Margin="16,8,8,8"
                                         Name="PART_Border">
@@ -124,9 +124,11 @@
             <ControlTemplate>
                 <LayoutTransformControl Name="PART_LayoutTransform" RenderTransformOrigin="50%, 0%">
                     <Border
-                        BorderBrush="{DynamicResource LineBrush}"
-                        BorderThickness="0"
-                        CornerRadius="{DynamicResource OvoCornerRadius}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="False"
+                        CornerRadius="{TemplateBinding CornerRadius}"
                         Height="45"
                         Padding="{TemplateBinding Padding}">
                         <ItemsPresenter

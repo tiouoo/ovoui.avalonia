@@ -1,9 +1,10 @@
-<Styles
-    xmlns="https://github.com/avaloniaui"
-    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
     <Style Selector="ovo|PopupRenderContent">
         <Style.Animations>
-            <Animation Duration="0:0:0.14" Easing="CubicEaseOut" FillMode="None">
+            <Animation
+                Duration="0:0:0.14"
+                Easing="CubicEaseOut"
+                FillMode="None">
                 <KeyFrame Cue="0%">
                     <Setter Property="ScaleTransform.ScaleY" Value="0" />
                 </KeyFrame>
@@ -13,9 +14,6 @@
             </Animation>
             <Animation Duration="0:0:0.14" FillMode="None">
                 <KeyFrame Cue="0%">
-                    <Setter Property="Opacity" Value="0" />
-                </KeyFrame>
-                <KeyFrame Cue="20%">
                     <Setter Property="Opacity" Value="0" />
                 </KeyFrame>
                 <KeyFrame Cue="100%">

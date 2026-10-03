@@ -65,6 +65,8 @@
                     </MenuItem>
                 </Menu>
             </Border>
+            <TimePicker />
+            <DatePicker />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

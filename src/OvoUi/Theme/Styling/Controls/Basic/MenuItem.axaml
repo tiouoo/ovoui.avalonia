@@ -141,7 +141,7 @@
                         </DockPanel>
 
                         <Popup
-                            ClipToBounds="True"
+                            ClipToBounds="False"
                             HorizontalOffset="-25"
                             IsLightDismissEnabled="False"
                             IsOpen="{TemplateBinding IsSubMenuOpen,
@@ -157,7 +157,7 @@
                                         BorderBrush="{DynamicResource LineBrush}"
                                         BorderThickness="1"
                                         BoxShadow="{DynamicResource PopupBoxShadow}"
-                                        ClipToBounds="True"
+                                        ClipToBounds="False"
                                         CornerRadius="14"
                                         Margin="16,8,8,8"
                                         Name="PART_Border">

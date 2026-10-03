@@ -38,8 +38,9 @@ public sealed class PopupContentExpander : ContentExpander
     public PopupContentExpander()
     {
         Orientation = Avalonia.Layout.Orientation.Vertical;
-        Multiplier = 1;
-        Opacity = 1;
+        // Keep the popup's measured size stable while it is being revealed.
+        Multiplier = 0;
+        Opacity = 0;
         ClipToBounds = true;
         PreserveDesiredSize = true;
     }
@@ -62,8 +63,6 @@ public sealed class PopupContentExpander : ContentExpander
             if (animationVersion != _animationVersion)
                 return;
 
-            Multiplier = 0;
-            Opacity = 0;
             var transitions = new Transitions
             {
                 new DoubleTransition
@@ -74,15 +73,12 @@ public sealed class PopupContentExpander : ContentExpander
                 }
             };
 
-            if (!ExpandUp)
+            transitions.Add(new DoubleTransition
             {
-                transitions.Add(new DoubleTransition
-                {
-                    Property = MultiplierProperty,
-                    Duration = ExpandDuration,
-                    Easing = new Avalonia.Animation.Easings.ExponentialEaseOut()
-                });
-            }
+                Property = MultiplierProperty,
+                Duration = ExpandDuration,
+                Easing = new Avalonia.Animation.Easings.ExponentialEaseOut()
+            });
 
             Transitions = transitions;
             Multiplier = 1;

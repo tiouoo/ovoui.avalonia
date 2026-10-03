@@ -340,12 +340,12 @@
                             Placement="Bottom"
                             PlacementTarget="{TemplateBinding}"
                             WindowManagerAddShadowHint="False">
-                            <ovo:PopupRenderContent ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
+                            <ovo:PopupContentExpander ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
                                 <TimePickerPresenter
                                     Classes.connect="{Binding Classes, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
                                     Name="PART_PickerPresenter"
                                     VerticalAlignment="Top" />
-                            </ovo:PopupRenderContent>
+                            </ovo:PopupContentExpander>
                         </Popup>
                         <Button
                             Command="{Binding $parent[TimePicker].Clear}"
