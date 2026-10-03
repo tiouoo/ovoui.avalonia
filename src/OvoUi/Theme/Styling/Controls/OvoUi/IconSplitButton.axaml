@@ -1,0 +1,69 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate TargetType="SplitButton" x:Key="IconSplitButtonTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition MinWidth="{DynamicResource SplitButtonSeparatorWidth}" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ovo:IconButton
+                Command="{TemplateBinding Command}"
+                CommandParameter="{TemplateBinding CommandParameter}"
+                Content="{TemplateBinding Content}"
+                ContentTemplate="{TemplateBinding ContentTemplate}"
+                CornerRadius="{TemplateBinding CornerRadius,
+                                               Converter={ovo:CornerRadiusMixerConverter Left}}"
+                FontFamily="{TemplateBinding FontFamily}"
+                FontSize="{TemplateBinding FontSize}"
+                FontWeight="{TemplateBinding FontWeight}"
+                Grid.Column="0"
+                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                Icon="{TemplateBinding (ovo:IconButton.Icon)}"
+                IconPlacement="{TemplateBinding (ovo:IconButton.IconPlacement)}"
+                IconTemplate="{TemplateBinding (ovo:IconButton.IconTemplate)}"
+                IsEnabled="{TemplateBinding IsEnabled}"
+                IsLoading="{TemplateBinding (ovo:IconButton.IsLoading)}"
+                Padding="{TemplateBinding Padding}"
+                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                ovo:ClassHelper.ClassSource="{TemplateBinding}"
+                x:Name="PART_PrimaryButton" />
+            <Button
+                CornerRadius="{TemplateBinding CornerRadius,
+                                               Converter={ovo:CornerRadiusMixerConverter Right}}"
+                Grid.Column="2"
+                IsEnabled="{TemplateBinding IsEnabled}"
+                VerticalAlignment="Stretch"
+                ovo:ClassHelper.ClassSource="{TemplateBinding}"
+                x:Name="PART_SecondaryButton">
+                <PathIcon
+                    Data="{DynamicResource SplitButtonIconGlyph}"
+                    Name="SplitButtonIcon"
+                    Width="12">
+                    <PathIcon.Styles>
+                        <Style Selector="ovo|IconSplitButton PathIcon">
+                            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+                        </Style>
+                        <Style Selector="ovo|IconSplitButton.Danger PathIcon">
+                            <Setter Property="Foreground" Value="White" />
+                        </Style>
+                    </PathIcon.Styles>
+                </PathIcon>
+            </Button>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTheme
+        BasedOn="{StaticResource BaseIconButton}"
+        TargetType="ovo:IconSplitButton"
+        x:Key="{x:Type ovo:IconSplitButton}">
+        <Setter Property="Template" Value="{StaticResource IconSplitButtonTemplate}" />
+        <Style Selector="^ /template/ ovo|IconButton">
+            <Setter Property="Theme" Value="{StaticResource {x:Type ovo:IconButton}}" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
