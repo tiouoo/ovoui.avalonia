@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using Avalonia.Dialogs;
 using HotAvalonia;
 
 namespace OvoUi.Test;
@@ -21,5 +22,6 @@ class Program
             .UseHotReload()
 #endif
             .WithInterFont()
+            .UseManagedSystemDialogs()
             .LogToTrace();
 }

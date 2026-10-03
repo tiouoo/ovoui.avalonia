@@ -86,14 +86,10 @@
                                 Name="PART_LineUpButton"
                                 Theme="{StaticResource ScrollBarRepeatButton}"
                                 VerticalAlignment="Center">
-                                <TextBlock
-                                    FontFamily="{DynamicResource OvoIconFontFamily}"
-                                    FontSize="12"
-                                    FontWeight="Light"
+                                <PathIcon
+                                    Data="M16.32 6.96v10.13a.5.5 0 0 1-.78.41l-7.6-5.06a.5.5 0 0 1 0-.83l7.6-5.07a.5.5 0 0 1 .78.42Z"
                                     Foreground="{DynamicResource ScrollBarThumbForeground}"
-                                    HorizontalAlignment="Center"
-                                    Text="&#xe646;"
-                                    VerticalAlignment="Center" />
+                                    Theme="{DynamicResource InnerPathIcon}" />
                             </RepeatButton>
                             <Track
                                 DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
@@ -135,8 +131,8 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center">
                                 <PathIcon
-                                    Classes="Large"
                                     Data="M9 17.07V6.93c0-.4.45-.63.78-.41l7.6 5.06c.3.2.3.64 0 .84l-7.6 5.06a.5.5 0 0 1-.78-.41Z"
+                                    Foreground="{DynamicResource ScrollBarThumbForeground}"
                                     Theme="{DynamicResource InnerPathIcon}" />
                             </RepeatButton>
                         </Grid>
@@ -160,8 +156,8 @@
                                 VerticalAlignment="Center"
                                 VerticalContentAlignment="Center">
                                 <PathIcon
-                                    Classes="Large"
                                     Data="M17.08 16.32H6.95a.5.5 0 0 1-.41-.78l5.06-7.6c.2-.3.64-.3.83 0l5.07 7.6a.5.5 0 0 1-.42.78Z"
+                                    Foreground="{DynamicResource ScrollBarThumbForeground}"
                                     Theme="{StaticResource InnerPathIcon}" />
                             </RepeatButton>
                             <Track
@@ -205,8 +201,8 @@
                                 Theme="{StaticResource ScrollBarRepeatButton}"
                                 VerticalContentAlignment="Center">
                                 <PathIcon
-                                    Classes="Large"
                                     Data="M6.95 7.72h10.13c.4 0 .64.45.42.78l-5.07 7.6a.5.5 0 0 1-.83 0L6.54 8.5a.5.5 0 0 1 .41-.78Z"
+                                    Foreground="{DynamicResource ScrollBarThumbForeground}"
                                     Theme="{StaticResource InnerPathIcon}" />
                             </RepeatButton>
                         </Grid>

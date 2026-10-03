@@ -40,12 +40,13 @@
                                 Name="PART_CompactPaneToggle"
                                 Theme="{DynamicResource DrawerPageToggleButton}">
                                 <Panel>
-                                    <!--  TODO  -->
-                                    <PathIcon
-                                        Data="{DynamicResource DrawerPageMenuGlyph}"
-                                        IsVisible="{TemplateBinding DrawerIcon,
-                                                                    Converter={x:Static ObjectConverters.IsNull}}"
-                                        Theme="{DynamicResource InnerPathIcon}" />
+                                    <TextBlock
+                                        FontFamily="{DynamicResource OvoIconFontFamily}"
+                                        FontSize="18"
+                                        FontWeight="Light"
+                                        HorizontalAlignment="Center"
+                                        Text="&#xe654;"
+                                        VerticalAlignment="Center" />
                                     <ContentPresenter
                                         Content="{TemplateBinding DrawerIcon}"
                                         ContentTemplate="{TemplateBinding DrawerIconTemplate}"
@@ -91,12 +92,13 @@
                                         Name="PART_PaneButton"
                                         Theme="{DynamicResource DrawerPageToggleButton}">
                                         <Panel>
-                                            <!--  TODO  -->
-                                            <PathIcon
-                                                Data="{DynamicResource DrawerPageMenuGlyph}"
-                                                IsVisible="{TemplateBinding DrawerIcon,
-                                                                            Converter={x:Static ObjectConverters.IsNull}}"
-                                                Theme="{DynamicResource InnerPathIcon}" />
+                                            <TextBlock
+                                                FontFamily="{DynamicResource OvoIconFontFamily}"
+                                                FontSize="18"
+                                                FontWeight="Light"
+                                                HorizontalAlignment="Center"
+                                                Text="&#xe654;"
+                                                VerticalAlignment="Center" />
                                             <ContentPresenter
                                                 Content="{TemplateBinding DrawerIcon}"
                                                 ContentTemplate="{TemplateBinding DrawerIconTemplate}"
@@ -130,12 +132,13 @@
                                         Name="PART_BottomPaneButton"
                                         Theme="{DynamicResource DrawerPageToggleButton}">
                                         <Panel>
-                                            <!--  TODO  -->
-                                            <PathIcon
-                                                Data="{DynamicResource DrawerPageMenuGlyph}"
-                                                IsVisible="{TemplateBinding DrawerIcon,
-                                                                            Converter={x:Static ObjectConverters.IsNull}}"
-                                                Theme="{DynamicResource InnerPathIcon}" />
+                                            <TextBlock
+                                                FontFamily="{DynamicResource OvoIconFontFamily}"
+                                                FontSize="18"
+                                                FontWeight="Light"
+                                                HorizontalAlignment="Center"
+                                                Text="&#xe654;"
+                                                VerticalAlignment="Center" />
                                             <ContentPresenter
                                                 Content="{TemplateBinding DrawerIcon}"
                                                 ContentTemplate="{TemplateBinding DrawerIconTemplate}"
