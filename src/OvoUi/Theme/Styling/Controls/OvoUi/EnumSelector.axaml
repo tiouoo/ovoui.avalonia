@@ -1,0 +1,35 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="ovo:EnumSelector" x:Key="{x:Type ovo:EnumSelector}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:EnumSelector">
+                <ComboBox
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    ItemsSource="{TemplateBinding Values}"
+                    Name="PART_ComboBox"
+                    SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedValue, Mode=TwoWay}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    Width="{TemplateBinding Width}"
+                    ovo:ClassHelper.ClassSource="{TemplateBinding}" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^[DisplayDescription=True] /template/ ComboBox">
+            <Setter Property="ItemTemplate">
+                <DataTemplate x:DataType="ovo:EnumItemTuple">
+                    <TextBlock Text="{Binding DisplayName}" />
+                </DataTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="^[DisplayDescription=False] /template/ ComboBox">
+            <Setter Property="ItemTemplate">
+                <DataTemplate x:DataType="ovo:EnumItemTuple">
+                    <TextBlock Text="{Binding Value}" />
+                </DataTemplate>
+            </Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
