@@ -2,4 +2,5 @@
     <StyleInclude Source="Basic.axaml" />
     <StyleInclude Source="Popup.axaml" />
     <StyleInclude Source="PopupRenderContent.axaml" />
+    <StyleInclude Source="ScrollViewer.axaml" />
 </Styles>

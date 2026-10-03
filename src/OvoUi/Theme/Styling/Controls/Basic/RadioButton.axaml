@@ -1,0 +1,229 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel Margin="16" Spacing="16">
+            <RadioButton Content="Click Me" Name="Radio" />
+            <RadioButton
+                Content="Click Me"
+                GroupName="Preview"
+                IsEnabled="False" />
+            <RadioButton
+                Content="Click Me"
+                GroupName="Preview"
+                Theme="{DynamicResource BasicRadioButtonTheme}" />
+            <RadioButton
+                Content="Click Me"
+                GroupName="Preview"
+                Theme="{DynamicResource CardRadioButtonTheme}" />
+            <RadioButton
+                Content="Click Me"
+                GroupName="Preview"
+                Theme="{DynamicResource PureCardRadioButtonTheme}" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="RadioButton" x:Key="StandardRadioButtonTheme">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="RootBorder"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Panel
+                            Grid.Column="0"
+                            Name="PART_GlyphPanel"
+                            TemplatedControl.IsTemplateFocusTarget="True"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Ellipse
+                                Fill="{DynamicResource ControlBackground}"
+                                Height="18"
+                                Name="NormalEllipse"
+                                Stroke="{DynamicResource LineBrush}"
+                                StrokeThickness="1"
+                                UseLayoutRounding="False"
+                                Width="18" />
+                            <Ellipse
+                                Fill="White"
+                                Height="8"
+                                Name="Glyph"
+                                Stroke="{DynamicResource SystemAccentColor}"
+                                UseLayoutRounding="False"
+                                Width="8" />
+                        </Panel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding Content,
+                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Margin="8,0,0,0"
+                            Name="PART_ContentPresenter"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+        <Style Selector="^:unchecked">
+            <Style Selector="^ /template/ Ellipse#Glyph">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Ellipse#NormalEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight1}" />
+                <Setter Property="Fill" Value="{DynamicResource ControlPointeroverBackground}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Ellipse#NormalEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorDark1}" />
+                <Setter Property="Fill" Value="{DynamicResource ControlPressedBackground}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Ellipse#NormalEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource LineBrush}" />
+                    <Setter Property="Fill" Value="{DynamicResource ControlDisabledBackground}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+        <Style Selector="^:checked">
+            <Style Selector="^ /template/ Ellipse#Glyph">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^ /template/ Ellipse#NormalEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColor}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Ellipse#NormalEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight1}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Ellipse#NormalEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorDark1}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Ellipse#NormalEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight2}" />
+                    <Setter Property="Fill" Value="{DynamicResource SystemAccentColorLight2}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ Panel#PART_GlyphPanel">
+                <Setter Property="Opacity" Value="0.75" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardRadioButtonTheme}"
+        TargetType="RadioButton"
+        x:Key="BasicRadioButtonTheme">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="RootBorder">
+                    <Panel Name="PART_GlyphPanel" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Ellipse
+                            Fill="{DynamicResource ControlBackground}"
+                            Height="18"
+                            Name="NormalEllipse"
+                            Stroke="{DynamicResource LineBrush}"
+                            StrokeThickness="1"
+                            Width="18" />
+                        <Ellipse
+                            Fill="{DynamicResource SystemAccentColor}"
+                            Height="8"
+                            Name="Glyph"
+                            Stroke="{DynamicResource SystemAccentColor}"
+                            Width="8" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardRadioButtonTheme}"
+        TargetType="RadioButton"
+        x:Key="CardRadioButtonTheme">
+        <Setter Property="Padding" Value="16,12" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource CardRadioButtonTheme}"
+        TargetType="RadioButton"
+        x:Key="PureCardRadioButtonTheme">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Foreground="{TemplateBinding Foreground}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    TextWrapping="Wrap"
+                    UseLayoutRounding="False"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="Border" x:Key="RadioButtonGroupBorder">
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardRadioButtonTheme}"
+        TargetType="RadioButton"
+        x:Key="{x:Type RadioButton}" />
+</ResourceDictionary>

@@ -13,16 +13,7 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <TreeView>
-                <TreeViewItem Header="Level 1">
-                    <TreeViewItem Header="Level 2" />
-                    <TreeViewItem Header="Level 2" />
-                    <TreeViewItem Header="Level 2">
-                        <TreeViewItem Header="Level 3" />
-                        <TreeViewItem Header="Level 3" />
-                    </TreeViewItem>
-                </TreeViewItem>
-            </TreeView>
+            <AutoCompleteBox Classes="clear" />
 
         </StackPanel>
         <StackPanel

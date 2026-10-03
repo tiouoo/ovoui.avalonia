@@ -10,6 +10,7 @@
         <ResourceInclude Source="Border.axaml" />
         <ResourceInclude Source="ButtonSpinner.axaml" />
         <ResourceInclude Source="CheckBox.axaml" />
+        <ResourceInclude Source="RadioButton.axaml" />
         <ResourceInclude Source="FlyoutPresenter.axaml" />
         <ResourceInclude Source="DataValidationErrors.axaml" />
         <ResourceInclude Source="Calendar.axaml" />
@@ -47,5 +48,7 @@
         <ResourceInclude Source="TabbedPage.axaml" />
         <ResourceInclude Source="TreeView.axaml" />
         <ResourceInclude Source="TableView.axaml" />
+        <ResourceInclude Source="ScrollViewer.axaml" />
+        <ResourceInclude Source="ProgressBar.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

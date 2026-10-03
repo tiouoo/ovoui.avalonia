@@ -1,39 +1,4 @@
 <Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style Selector="TextBlock">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
-    <Style Selector="TextBox">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
-    <Style Selector="AccessText">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
-    <Style Selector="Label">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
-    <Style Selector="ContentPresenter">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
-    <Style Selector="ScrollContentPresenter">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
-    <Style Selector="ContentControl">
-        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
-        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
-        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
-    </Style>
     <Style Selector="UserControl">
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
