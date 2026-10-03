@@ -1,6 +1,6 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:colorPicker="clr-namespace:TioUi.Theme.Controls.ColorPicker"
+    xmlns:colorPicker="clr-namespace:OvoUi.Theme.Styling.Controls.ColorPicker"
     xmlns:converters="using:Avalonia.Controls.Converters"
     xmlns:converters1="clr-namespace:Avalonia.Controls.Primitives.Converters;assembly=Avalonia.Controls.ColorPicker"
     xmlns:globalization="clr-namespace:System.Globalization;assembly=System.Runtime"

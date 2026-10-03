@@ -7,14 +7,67 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <StackPanel
-            HorizontalAlignment="Center"
-            Spacing="10"
-            VerticalAlignment="Center">
-            <Button Click="Button_OnClick" Content="Open" />
-            <ColorPicker />
+        <StackPanel Spacing="20">
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <ColorView ColorSpectrumShape="Ring" Name="Test" />
+                <ColorView ColorSpectrumShape="Box" />
+                <ColorView Palette="{DynamicResource TioLightColorPalette}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ColorView
+                    HsvColor="hsv(180,80%,70%)"
+                    IsAlphaVisible="True"
+                    Name="SimpleColorViewTest"
+                    Theme="{StaticResource SimpleColorView}" />
+                <StackPanel>
+                    <TextBlock Text="{Binding #SimpleColorViewTest.HsvColor}" />
+                    <TextBlock Text="{Binding #SimpleColorViewTest.Color}" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <ColorPicker ColorSpectrumShape="Ring">
+                    <ColorPicker.Palette>
+                        <FlatHalfColorPalette />
+                    </ColorPicker.Palette>
+                </ColorPicker>
+                <ColorPicker ColorSpectrumShape="Box">
+                    <ColorPicker.Palette>
+                        <ovo:TioColorLightPalette />
+                    </ColorPicker.Palette>
+                </ColorPicker>
+                <ColorPicker ColorSpectrumShape="Box" Theme="{DynamicResource HexColorPicker}">
+                    <ColorPicker.Palette>
+                        <ovo:TioColorDarkPalette />
+                    </ColorPicker.Palette>
+                </ColorPicker>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Use Style to customize button" />
+                <ColorPicker
+                    HsvColor="hsv(180,80%,70%)"
+                    Margin="8"
+                    MinWidth="32">
+                    <ColorPicker.Content>
+                        <Border CornerRadius="1" Margin="1" />
+                    </ColorPicker.Content>
+                    <ColorPicker.Styles>
+                        <Style Selector="DropDownButton">
+                            <Setter Property="Padding" Value="0" />
+                            <Style Selector="^ /template/ PathIcon">
+                                <Setter Property="IsVisible" Value="False" />
+                            </Style>
+                        </Style>
+                    </ColorPicker.Styles>
+                </ColorPicker>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <ColorPicker HsvColor="hsv(180,80%,70%)" Theme="{StaticResource SimpleColorPicker}" />
+                <ColorPicker HsvColor="hsv(180,80%,70%)" Theme="{StaticResource HexSimpleColorPicker}" />
+            </StackPanel>
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

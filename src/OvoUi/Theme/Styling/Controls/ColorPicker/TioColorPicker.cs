@@ -1,7 +1,6 @@
 using Avalonia;
-using Avalonia.Controls;
 
-namespace TioUi.Theme.Controls.ColorPicker;
+namespace OvoUi.Theme.Styling.Controls.ColorPicker;
 
 /// <summary>
 /// 扩展版 ColorPicker，支持设置默认选中的页面

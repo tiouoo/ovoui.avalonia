@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace TioUi.Theme.Controls.ColorPicker;
+namespace OvoUi.Theme.Styling.Controls.ColorPicker;
 
 public class TioColorLightPalette : IColorPalette
 {
