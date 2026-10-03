@@ -1,0 +1,930 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel
+            Margin="20"
+            Orientation="Horizontal"
+            Spacing="20">
+            <ListBox Width="300">
+                <ListBoxItem>Item 1</ListBoxItem>
+                <ListBoxItem>Item 2</ListBoxItem>
+                <ListBoxItem>Item 3</ListBoxItem>
+                <ListBoxItem IsEnabled="False" IsSelected="True">Item 3</ListBoxItem>
+                <ListBoxItem>Item 4</ListBoxItem>
+            </ListBox>
+            <StackPanel Spacing="20">
+                <StackPanel Spacing="10">
+                    <StackPanel Orientation="Horizontal">
+                        <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                            <ListBox Theme="{DynamicResource ButtonRadioGroupListBoxTheme}">
+                                <ListBoxItem Classes="small" IsSelected="True">Small 1</ListBoxItem>
+                                <ListBoxItem Classes="small">Small 2</ListBoxItem>
+                            </ListBox>
+                        </Border>
+                        <Border
+                            HorizontalAlignment="Left"
+                            Margin="8,0"
+                            Theme="{StaticResource RadioButtonGroupBorder}">
+                            <ListBox IsEnabled="False" Theme="{DynamicResource ButtonRadioGroupListBoxTheme}">
+                                <ListBoxItem Classes="small" IsSelected="True">Small 1</ListBoxItem>
+                                <ListBoxItem Classes="small">Small 2</ListBoxItem>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                            <ListBox Theme="{DynamicResource ButtonRadioGroupListBoxTheme}">
+                                <ListBoxItem IsSelected="True">Default 1</ListBoxItem>
+                                <ListBoxItem>Default 2</ListBoxItem>
+                            </ListBox>
+                        </Border>
+                        <Border
+                            HorizontalAlignment="Left"
+                            Margin="8,0"
+                            Theme="{StaticResource RadioButtonGroupBorder}">
+                            <ListBox IsEnabled="False" Theme="{DynamicResource ButtonRadioGroupListBoxTheme}">
+                                <ListBoxItem IsSelected="True">Default 1</ListBoxItem>
+                                <ListBoxItem>Default 2</ListBoxItem>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                            <ListBox Theme="{DynamicResource ButtonRadioGroupListBoxTheme}">
+                                <ListBoxItem Classes="large" IsSelected="True">Large 1</ListBoxItem>
+                                <ListBoxItem Classes="large">Large 2</ListBoxItem>
+                            </ListBox>
+                        </Border>
+                        <Border
+                            HorizontalAlignment="Left"
+                            Margin="8,0"
+                            Theme="{StaticResource RadioButtonGroupBorder}">
+                            <ListBox IsEnabled="False" Theme="{DynamicResource ButtonRadioGroupListBoxTheme}">
+                                <ListBoxItem Classes="large" IsSelected="True">Large 1</ListBoxItem>
+                                <ListBoxItem Classes="large">Large 2</ListBoxItem>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+                <ListBox Theme="{DynamicResource CardRadioGroupListBoxTheme}">
+                    <ListBoxItem>Item 1</ListBoxItem>
+                    <ListBoxItem>Item 2</ListBoxItem>
+                    <ListBoxItem>Item 3</ListBoxItem>
+                    <ListBoxItem IsEnabled="False" IsSelected="True">Item 3</ListBoxItem>
+                    <ListBoxItem>Item 4</ListBoxItem>
+                </ListBox>
+                <ListBox Theme="{DynamicResource PureCardRadioGroupListBoxTheme}">
+                    <ListBoxItem>Item 1</ListBoxItem>
+                    <ListBoxItem>Item 2</ListBoxItem>
+                    <ListBoxItem>Item 3</ListBoxItem>
+                    <ListBoxItem IsEnabled="False" IsSelected="True">Item 3</ListBoxItem>
+                    <ListBoxItem>Item 4</ListBoxItem>
+                </ListBox>
+                <ListBox Theme="{DynamicResource CheckGroupListBoxTheme}">
+                    <ListBoxItem>Item 1</ListBoxItem>
+                    <ListBoxItem>Item 2</ListBoxItem>
+                    <ListBoxItem>Item 3</ListBoxItem>
+                    <ListBoxItem IsEnabled="False" IsSelected="True">Item 3</ListBoxItem>
+                    <ListBoxItem>Item 4</ListBoxItem>
+                </ListBox>
+            </StackPanel>
+        </StackPanel>
+    </Design.PreviewWith>
+
+
+    <ControlTheme TargetType="ListBox" x:Key="{x:Type ListBox}">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBox">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="border">
+                    <ScrollViewer
+                        AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                        HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                        IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                        IsScrollInertiaEnabled="{TemplateBinding (ScrollViewer.IsScrollInertiaEnabled)}"
+                        Name="PART_ScrollViewer"
+                        VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                        <ItemsPresenter
+                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                            Margin="{TemplateBinding Padding}"
+                            Name="PART_ItemsPresenter" />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    <ControlTheme TargetType="ListBoxItem" x:Key="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Grid Margin="0,2">
+                    <ContentPresenter
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Foreground="{TemplateBinding Foreground}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Name="PART_ContentPresenter"
+                        Padding="{TemplateBinding Padding}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <Rectangle
+                        Fill="{DynamicResource SystemAccentColor}"
+                        Height="16"
+                        HorizontalAlignment="Left"
+                        IsVisible="True"
+                        Margin="0,4,-2,4"
+                        Name="SelectionIndicator"
+                        Opacity="0"
+                        RadiusX="2"
+                        RadiusY="2"
+                        RenderTransform="scaleY(0)"
+                        UseLayoutRounding="False"
+                        VerticalAlignment="Center"
+                        Width="3">
+                        <Rectangle.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition
+                                    Duration="00:00:00.167"
+                                    Easing="0,0 0,1"
+                                    Property="RenderTransform" />
+                                <DoubleTransition
+                                    Duration="00:00:00.167"
+                                    Easing="0,0 0,1"
+                                    Property="Opacity" />
+                            </Transitions>
+                        </Rectangle.Transitions>
+                    </Rectangle>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:selected">
+            <Setter Property="Background" Value="{DynamicResource ItemSelectedBackground}" />
+        </Style>
+        <Style Selector="^:selected /template/ Rectangle#SelectionIndicator">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="RenderTransform" Value="scaleY(1)" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ListBox" x:Key="RadioGroupListBoxTheme">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource RadioGroupListBoxItemTheme}" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBox">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Theme="{DynamicResource RadioGroupListBoxItemTheme}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    <ControlTheme TargetType="ListBoxItem" x:Key="RadioGroupListBoxItemTheme">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Margin="6,0"
+                    Name="RootBorder"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Panel
+                            Grid.Column="0"
+                            Name="PART_GlyphPanel"
+                            TemplatedControl.IsTemplateFocusTarget="True"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Ellipse
+                                Fill="{DynamicResource ControlBackground}"
+                                Height="18"
+                                Name="OuterEllipse"
+                                Stroke="{DynamicResource LineBrush}"
+                                StrokeThickness="1"
+                                UseLayoutRounding="False"
+                                Width="18" />
+
+                            <Ellipse
+                                Fill="White"
+                                Height="8"
+                                Name="CheckGlyph"
+                                Stroke="{DynamicResource SystemAccentColor}"
+                                UseLayoutRounding="False"
+                                Width="8" />
+                        </Panel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding Content,
+                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Margin="8,0,0,0"
+                            Name="PART_ContentPresenter"
+                            RecognizesAccessKey="True"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+
+        <Style Selector="^">
+            <Style Selector="^ /template/ Ellipse#CheckGlyph">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:pointerover /template/ Ellipse#OuterEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight1}" />
+                <Setter Property="Fill" Value="{DynamicResource ControlPointeroverBackground}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Ellipse#OuterEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorDark1}" />
+                <Setter Property="Fill" Value="{DynamicResource ControlPressedBackground}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource LineBrush}" />
+                    <Setter Property="Fill" Value="{DynamicResource ControlDisabledBackground}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ Ellipse#CheckGlyph">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColor}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Ellipse#OuterEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight1}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Ellipse#OuterEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorDark1}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight2}" />
+                    <Setter Property="Fill" Value="{DynamicResource SystemAccentColorLight2}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ Panel#PART_GlyphPanel">
+                <Setter Property="Opacity" Value="0.75" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource RadioGroupListBoxTheme}"
+        TargetType="ListBox"
+        x:Key="ButtonRadioGroupListBoxTheme">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource ButtonRadioGroupListBoxItemTheme}" />
+    </ControlTheme>
+    <ControlTheme TargetType="ListBoxItem" x:Key="ButtonRadioGroupListBoxItemTheme">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="16,4" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Margin="{TemplateBinding Margin}"
+                    Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    RecognizesAccessKey="True"
+                    TextElement.FontSize="{TemplateBinding FontSize}"
+                    TextElement.FontWeight="{TemplateBinding FontWeight}"
+                    UseLayoutRounding="False"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <ContentPresenter.Transitions>
+                        <ovo:OvoTransitions />
+                    </ContentPresenter.Transitions>
+                </ContentPresenter>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+        <Style Selector="^:selected">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity04}" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^.small">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="16,2" />
+        </Style>
+        <Style Selector="^.large">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="24,6" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource RadioGroupListBoxTheme}"
+        TargetType="ListBox"
+        x:Key="CardRadioGroupListBoxTheme">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource CardRadioGroupListBoxItemTheme}" />
+    </ControlTheme>
+    <ControlTheme TargetType="ListBoxItem" x:Key="CardRadioGroupListBoxItemTheme">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="16,12" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Margin="5,0"
+                    Name="RootBorder"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Panel
+                            Grid.Column="0"
+                            Margin="{DynamicResource RadioButtonIconMargin}"
+                            Name="PART_GlyphPanel"
+                            VerticalAlignment="Top">
+                            <Ellipse
+                                Fill="{DynamicResource ControlBackground}"
+                                Height="18"
+                                Name="OuterEllipse"
+                                Stroke="{DynamicResource LineBrush}"
+                                StrokeThickness="1"
+                                UseLayoutRounding="False"
+                                Width="18" />
+                            <Ellipse
+                                Fill="White"
+                                Height="8"
+                                Name="CheckGlyph"
+                                Stroke="{DynamicResource SystemAccentColor}"
+                                UseLayoutRounding="False"
+                                Width="8" />
+                        </Panel>
+
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding Content,
+                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Margin="8,0,0,0"
+                            Name="PART_ContentPresenter"
+                            RecognizesAccessKey="True"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^">
+            <Style Selector="^ /template/ Ellipse#CheckGlyph">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+
+            <Style Selector="^:pointerover">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight1}" />
+                    <Setter Property="Fill" Value="{DynamicResource ControlPointeroverBackground}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+                </Style>
+            </Style>
+            <Style Selector="^:pressed">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorDark1}" />
+                    <Setter Property="Fill" Value="{DynamicResource ControlPressedBackground}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource LineBrush}" />
+                    <Setter Property="Fill" Value="{DynamicResource ControlDisabledBackground}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ Ellipse#CheckGlyph">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+
+            <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                <Setter Property="Stroke" Value="{DynamicResource SystemAccentColor}" />
+                <Setter Property="Fill" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^ /template/ Border#RootBorder">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pointerover">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight1}" />
+                    <Setter Property="Fill" Value="{DynamicResource SystemAccentColorLight1}" />
+                </Style>
+            </Style>
+            <Style Selector="^:pressed">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorDark1}" />
+                    <Setter Property="Fill" Value="{DynamicResource SystemAccentColorDark1}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Ellipse#OuterEllipse">
+                    <Setter Property="Stroke" Value="{DynamicResource SystemAccentColorLight2}" />
+                    <Setter Property="Fill" Value="{DynamicResource SystemAccentColorLight2}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ Panel#PART_GlyphPanel">
+                <Setter Property="Opacity" Value="0.75" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource RadioGroupListBoxTheme}"
+        TargetType="ListBox"
+        x:Key="PureCardRadioGroupListBoxTheme">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource PureCardRadioGroupListBoxItemTheme}" />
+    </ControlTheme>
+    <ControlTheme
+        BasedOn="{StaticResource CardRadioGroupListBoxItemTheme}"
+        TargetType="ListBoxItem"
+        x:Key="PureCardRadioGroupListBoxItemTheme">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Margin="5,0"
+                    Name="RootBorder"
+                    Padding="{TemplateBinding Padding}">
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        FontSize="{TemplateBinding FontSize}"
+                        Foreground="{TemplateBinding Foreground}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        IsVisible="{TemplateBinding Content,
+                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="6,0"
+                        Name="PART_ContentPresenter"
+                        RecognizesAccessKey="True"
+                        TextWrapping="Wrap"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource RadioGroupListBoxTheme}"
+        TargetType="ListBox"
+        x:Key="CheckGroupListBoxTheme">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource CheckGroupListBoxItemTheme}" />
+    </ControlTheme>
+    <ControlTheme TargetType="ListBoxItem" x:Key="CheckGroupListBoxItemTheme">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Margin="5,0"
+                    Name="RootBorder">
+                    <Grid ColumnDefinitions="Auto,*">
+                        <Panel
+                            Grid.Column="0"
+                            Name="PART_GlyphPanel"
+                            TemplatedControl.IsTemplateFocusTarget="True"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Border
+                                Background="{DynamicResource ControlBackground}"
+                                BorderBrush="{DynamicResource LineBrush}"
+                                BorderThickness="1"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Height="18"
+                                Name="NormalRectangle"
+                                UseLayoutRounding="False"
+                                Width="18" />
+                            <TextBlock
+                                FontFamily="{DynamicResource OvoIconFontFamily}"
+                                FontWeight="Light"
+                                Foreground="#fff"
+                                HorizontalAlignment="Center"
+                                Name="CheckGlyph"
+                                VerticalAlignment="Center" />
+                        </Panel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Grid.Column="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding Content,
+                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Margin="8,0,0,0"
+                            Name="PART_ContentPresenter"
+                            RecognizesAccessKey="True"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^">
+            <Style Selector="^:pointerover /template/ Border#NormalRectangle">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#NormalRectangle">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ Border#NormalRectangle">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#NormalRectangle">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#NormalRectangle">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight2}" />
+                    <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight2}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:selected /template/ TextBlock#CheckGlyph">
+            <Setter Property="Text" Value="&#xe61a;" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ Panel#PART_GlyphPanel">
+                <Setter Property="Opacity" Value="0.75" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource RadioGroupListBoxTheme}"
+        TargetType="ListBox"
+        x:Key="CardCheckGroupListBox">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource CardCheckGroupListBoxItem}" />
+    </ControlTheme>
+    <ControlTheme TargetType="ListBoxItem" x:Key="CardCheckGroupListBoxItem">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="16,12" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="{DynamicResource CheckBoxCardBorderThickness}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Margin="5,0"
+                    Name="RootBorder"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid
+                        ColumnDefinitions="Auto,*"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <Panel
+                            Grid.Column="0"
+                            Margin="{DynamicResource CheckBoxBoxMargin}"
+                            Name="PART_GlyphPanel"
+                            VerticalAlignment="Top">
+                            <Border
+                                Background="{DynamicResource CheckBoxDefaultBackground}"
+                                BorderBrush="{DynamicResource CheckBoxDefaultBorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Height="18"
+                                Name="NormalRectangle"
+                                UseLayoutRounding="False"
+                                Width="18" />
+                            <PathIcon
+                                Foreground="{DynamicResource CheckBoxGlyphFill}"
+                                Height="12"
+                                HorizontalAlignment="Center"
+                                Name="CheckGlyph"
+                                VerticalAlignment="Center"
+                                Width="12" />
+                        </Panel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontSize="{TemplateBinding FontSize}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding Content,
+                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Margin="8,0,0,0"
+                            Name="PART_ContentPresenter"
+                            RecognizesAccessKey="True"
+                            TextWrapping="Wrap"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^">
+            <Style Selector="^:pointerover">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxPointeroverBorderBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="Background" Value="{DynamicResource CheckBoxCardPointeroverBackground}" />
+                </Style>
+            </Style>
+            <Style Selector="^:pressed">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxPressedBorderBrush}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="Background" Value="{DynamicResource CheckBoxCardPressedBackground}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxDefaultDisabledBorderBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource CheckBoxDefaultDisabledBackground}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource CheckBoxDisabledForeground}" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ Border#NormalRectangle">
+                <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckedDefaultBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource CheckBoxCheckedDefaultBackground}" />
+            </Style>
+            <Style Selector="^ /template/ Border#RootBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCardCheckedBorderBrush}" />
+            </Style>
+            <Style Selector="^:pointerover">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckedPointeroverBorderBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource CheckBoxCheckedPointeroverBackground}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCardCheckedPointeroverBorderBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:pressed">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckedPressedBorderBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource CheckBoxCheckedPressedBackground}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCardCheckedPressedBorderBrush}" />
+                </Style>
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Border#NormalRectangle">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCheckedDisabledBorderBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource CheckBoxCheckedDisabledBackground}" />
+                </Style>
+                <Style Selector="^ /template/ Border#RootBorder">
+                    <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxCardCheckedDisabledBorderBrush}" />
+                </Style>
+                <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                    <Setter Property="Foreground" Value="{DynamicResource CheckBoxDisabledForeground}" />
+                </Style>
+            </Style>
+
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Panel#PART_GlyphPanel">
+                    <Setter Property="Opacity" Value="0.75" />
+                </Style>
+            </Style>
+        </Style>
+
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ PathIcon#CheckGlyph">
+                <Setter Property="Data" Value="F1 M448,512z M0,0z M434.8,70.1C449.1,80.5,452.3,100.5,441.9,114.8L185.9,466.8C180.4,474.4 171.9,479.1 162.5,479.9 153.1,480.7 144,477.2 137.4,470.6L9.40000000000003,342.6C-3.09999999999997,330.1 -3.09999999999997,309.8 9.40000000000003,297.3 21.9,284.8 42.2,284.8 54.7,297.3L156.2,398.8 390.2,77.1C400.6,62.8,420.6,59.6,434.9,70z" />
+            </Style>
+            <Style Selector="^ /template/ Border#RootBorder">
+                <Setter Property="Background" Value="{DynamicResource CheckBoxCardCheckedBackground}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ListBoxItem" x:Key="BorderListBoxItem">
+        <Setter Property="Margin" Value="0 0 8 0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="MinHeight" Value="{DynamicResource TabItemCardDefaultHeight}" />
+        <Setter Property="Padding" Value="12 0" />
+        <Setter Property="CornerRadius" Value="9" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ListBoxItem">
+                <Border
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Name="SelectBorder">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
+                        </Transitions>
+                    </Border.Transitions>
+                    <ContentPresenter
+                        Background="{DynamicResource ComboBoxSelectorBackground}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding Foreground}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Name="PART_ContentPresenter"
+                        Padding="{TemplateBinding Padding}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
+            </Transitions>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource TabItemButtonHeaderPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:selected">
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Style Selector="^ Border#SelectBorder">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^:not(:selected)">
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource TabItemButtonHeaderPointeroverBackground}" />
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource TabItemButtonHeaderPressedBackground}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+    <ControlTheme
+        BasedOn="{StaticResource RadioGroupListBoxTheme}"
+        TargetType="ListBox"
+        x:Key="BorderListBox">
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource BorderListBoxItem}" />
+
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

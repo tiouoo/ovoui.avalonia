@@ -13,60 +13,7 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <Border
-                Margin="20"
-                MinHeight="400"
-                MinWidth="600">
-                <Menu VerticalAlignment="Top">
-                    <MenuItem Header="File">
-                        <MenuItem
-                            Header="Open"
-                            Icon="🗎"
-                            InputGesture="Ctrl + O">
-                            <MenuItem Header="Recent file 1" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 3" Icon="🗎" />
-                            <MenuItem Header="Recent file 4" Icon="🗎" />
-                            <Separator />
-                            <MenuItem
-                                Header="Clear recent files"
-                                Icon="🗙"
-                                InputGesture="Ctrl + Alt + O" />
-                        </MenuItem>
-                        <MenuItem
-                            Header="Save"
-                            Icon="💾"
-                            InputGesture="Ctrl + S" />
-                        <MenuItem
-                            Header="Fullscreen"
-                            HotKey="F11"
-                            Icon="⛶"
-                            InputGesture="F11" />
-                        <MenuItem
-                            Header="Close"
-                            Icon="🗙"
-                            InputGesture="Alt + F4" />
-                    </MenuItem>
-
-                    <MenuItem Header="View">
-                        <MenuItem Header="Grid options">
-                            <MenuItem Header="Show grid lines" />
-                            <MenuItem Header="Show grid separator" />
-                            <MenuItem Header="Show grid " />
-                        </MenuItem>
-                        <MenuItem Header="Title bar" />
-                    </MenuItem>
-
-                    <MenuItem Header="Help">
-                        <MenuItem Header="About" />
-                        <MenuItem Header="Website" />
-                        <MenuItem Header="Discussions" />
-                        <MenuItem Header="Donate" />
-                    </MenuItem>
-                </Menu>
-            </Border>
-            <TimePicker />
-            <DatePicker />
+            <Button Click="Button_OnClick" Content="Open" />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

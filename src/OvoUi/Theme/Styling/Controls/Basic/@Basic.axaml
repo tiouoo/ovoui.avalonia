@@ -53,6 +53,8 @@
         <ResourceInclude Source="ContextMenu.axaml" />
         <ResourceInclude Source="Menu.axaml" />
         <ResourceInclude Source="MenuFlyoutPresenter.axaml" />
+        <ResourceInclude Source="ManagedFileChooser.axaml" />
+        <ResourceInclude Source="ListBox.axaml" />
         <ResourceInclude Source="MenuItem.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
