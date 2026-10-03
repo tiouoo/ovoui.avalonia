@@ -13,20 +13,16 @@
             HorizontalAlignment="Center"
             Spacing="10"
             VerticalAlignment="Center">
-            <Border Padding="20">
-                <TableView Height="200" Width="400">
-                    <TableView.Columns>
-                        <TableViewColumn Header="Name" Width="*" />
-                        <TableViewColumn Header="Value" Width="120" />
-                    </TableView.Columns>
-                </TableView>
-            </Border>
-            <TableView Height="200" Width="400">
-                <TableView.Columns>
-                    <TableViewColumn Header="Name" Width="*" />
-                    <TableViewColumn Header="Value" Width="120" />
-                </TableView.Columns>
-            </TableView>
+            <TreeView>
+                <TreeViewItem Header="Level 1">
+                    <TreeViewItem Header="Level 2" />
+                    <TreeViewItem Header="Level 2" />
+                    <TreeViewItem Header="Level 2">
+                        <TreeViewItem Header="Level 3" />
+                        <TreeViewItem Header="Level 3" />
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
 
         </StackPanel>
         <StackPanel

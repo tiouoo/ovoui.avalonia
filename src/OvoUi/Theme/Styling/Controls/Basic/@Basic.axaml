@@ -44,6 +44,7 @@
         <ResourceInclude Source="DrawerPage.axaml" />
         <ResourceInclude Source="SplitButton.axaml" />
         <ResourceInclude Source="TabbedPage.axaml" />
+        <ResourceInclude Source="TreeView.axaml" />
         <ResourceInclude Source="TableView.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
