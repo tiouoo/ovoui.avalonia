@@ -342,7 +342,7 @@
                             WindowManagerAddShadowHint="False">
                             <ovo:PopupRenderContent ExpandUp="{Binding $parent[Popup].Placement, Converter={x:Static ovo:PlacementToExpandUpConverter.Instance}}">
                                 <TimePickerPresenter
-                                    Classes.connect="{Binding $parent[TimePicker].Classes, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
+                                    Classes.connect="{Binding Classes, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ovo:ClassesContainsConverter.Instance}, ConverterParameter=connect}"
                                     Name="PART_PickerPresenter"
                                     VerticalAlignment="Top" />
                             </ovo:PopupRenderContent>
