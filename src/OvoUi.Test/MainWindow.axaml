@@ -10,19 +10,12 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
-        <StackPanel Spacing="20">
-            <StackPanel
-                HorizontalAlignment="Center"
-                Orientation="Horizontal"
-                Spacing="8"
-                VerticalAlignment="Center">
-                <ColorPicker HsvColor="hsv(180,80%,70%)" Theme="{StaticResource SimpleColorPicker}" />
-                <ColorPicker HsvColor="hsv(180,80%,70%)" Theme="{StaticResource HexSimpleColorPicker}" />
-                <ovo:OvoColorPicker
-                    HsvColor="hsv(180,80%,70%)"
-                    SelectedIndex="1"
-                    Theme="{StaticResource HexSimpleColorPicker}" />
-            </StackPanel>
+        <StackPanel
+            HorizontalAlignment="Center"
+            Orientation="Horizontal"
+            Spacing="8"
+            VerticalAlignment="Center">
+            <ColorPicker />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

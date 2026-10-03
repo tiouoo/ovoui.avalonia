@@ -32,7 +32,7 @@
                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                     VerticalAlignment="{TemplateBinding VerticalAlignment}">
                     <DockPanel>
-                        <Panel DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+                        <Panel DockPanel.Dock="{TemplateBinding TabStripPlacement}" Name="PART_Panel">
                             <Border Name="PART_BorderSeparator" />
                             <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                         </Panel>

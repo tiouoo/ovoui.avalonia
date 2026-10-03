@@ -1,13 +1,13 @@
 using Avalonia;
 
-namespace OvoUi.Theme.Styling.Controls.ColorPicker;
+namespace OvoUi.Controls;
 
-public class OvoColorPicker : Avalonia.Controls.ColorPicker
+internal class OvoColorPicker : Avalonia.Controls.ColorPicker
 {
-    public new static readonly StyledProperty<int> SelectedIndexProperty =
+    private new static readonly StyledProperty<int> SelectedIndexProperty =
         AvaloniaProperty.Register<OvoColorPicker, int>(nameof(SelectedIndex), 0);
     
-    public new int SelectedIndex
+    private new int SelectedIndex
     {
         get => GetValue(SelectedIndexProperty);
         set => SetValue(SelectedIndexProperty, value);

@@ -9,6 +9,7 @@
     <CornerRadius x:Key="ColorSliderCornerRadius">6</CornerRadius>
     <Thickness x:Key="ColorSliderThumbBorderBrush">2</Thickness>
     <CornerRadius x:Key="ColorSliderThumbCornerRadius">9999</CornerRadius>
+
     <CornerRadius x:Key="ColorSpectrumCornerRadius">6</CornerRadius>
 
     <ResourceDictionary.ThemeDictionaries>
@@ -17,20 +18,20 @@
                 Color="#1C1F23"
                 Opacity="0.08"
                 x:Key="ColorSpectrumBorderBrush" />
-            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorSliderLightBorderBrush" />
-            <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ColorSliderDarkBorderBrush" />
-            <SolidColorBrush Color="{DynamicResource LineColor}" x:Key="ColorSliderDefaultBorderBrush" />
-            <BoxShadows x:Key="ColorSliderBoxShadow">0 0 2 1 #40000000</BoxShadows>
+            <SolidColorBrush Color="White" x:Key="ColorSliderLightBorderBrush" />
+            <SolidColorBrush Color="Black" x:Key="ColorSliderDarkBorderBrush" />
+            <SolidColorBrush Color="Black" x:Key="ColorSliderDefaultBorderBrush" />
+            <BoxShadows x:Key="ColorSliderBoxShadow">0 0 2 1 #FFFFFF</BoxShadows>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush
                 Color="White"
                 Opacity="0.08"
                 x:Key="ColorSpectrumBorderBrush" />
-            <SolidColorBrush Color="{DynamicResource LineColor}" x:Key="ColorSliderDefaultBorderBrush" />
-            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorSliderLightBorderBrush" />
-            <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ColorSliderDarkBorderBrush" />
-            <BoxShadows x:Key="ColorSliderBoxShadow">0 0 2 1 #40FFFFFF</BoxShadows>
+            <SolidColorBrush Color="Black" x:Key="ColorSliderDefaultBorderBrush" />
+            <SolidColorBrush Color="White" x:Key="ColorSliderLightBorderBrush" />
+            <SolidColorBrush Color="Black" x:Key="ColorSliderDarkBorderBrush" />
+            <BoxShadows x:Key="ColorSliderBoxShadow">0 0 2 1 #FFFFFF</BoxShadows>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 

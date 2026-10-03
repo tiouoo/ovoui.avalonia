@@ -7,7 +7,7 @@
     <converters:CornerRadiusToDoubleConverter Corner="BottomRight" x:Key="BottomRightCornerRadiusConverter" />
 
     <ControlTheme TargetType="ColorSpectrum" x:Key="{x:Type ColorSpectrum}">
-        <Setter Property="CornerRadius" Value="{DynamicResource ColorSpectrumCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="{x:Type ColorSpectrum}">
                 <Panel

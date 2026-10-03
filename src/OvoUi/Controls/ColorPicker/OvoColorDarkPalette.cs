@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace OvoUi.Theme.Styling.Controls.ColorPicker;
+namespace OvoUi.Controls;
 
 public class OvoColorDarkPalette : IColorPalette
 {
