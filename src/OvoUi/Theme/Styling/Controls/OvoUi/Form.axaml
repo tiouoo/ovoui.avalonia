@@ -1,0 +1,139 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  Non-theme resources  -->
+    <FontWeight x:Key="TextBlockTitleFontWeight">600</FontWeight>
+
+    <!--  Theme resources  -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush
+                Color="#000000"
+                Opacity="0.08"
+                x:Key="FormGroupForeground" />
+            <SolidColorBrush Color="#F53F3F" x:Key="FormAsteriskForeground" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush
+                Color="#FFFFFF"
+                Opacity="0.08"
+                x:Key="FormGroupForeground" />
+            <SolidColorBrush Color="#F53F3F" x:Key="FormAsteriskForeground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <ControlTheme TargetType="ovo:Form" x:Key="{x:Type ovo:Form}">
+        <Setter Property="Grid.IsSharedSizeScope" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:Form">
+                <DataValidationErrors>
+                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:fixed-width">
+            <Setter Property="Grid.IsSharedSizeScope" Value="True" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ovo:FormGroup" x:Key="{x:Type ovo:FormGroup}">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:FormGroup">
+                <StackPanel>
+                    <ContentPresenter
+                        Content="{TemplateBinding Header}"
+                        FontSize="18"
+                        FontWeight="{DynamicResource TextBlockTitleFontWeight}"
+                        IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Header, Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="0,28,0,0" />
+                    <Rectangle
+                        Fill="{DynamicResource FormGroupForeground}"
+                        Height="1"
+                        HorizontalAlignment="Stretch"
+                        IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Header, Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="0,8" />
+                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ovo:FormItem" x:Key="{x:Type ovo:FormItem}">
+        <Setter Property="Margin" Value="0 8" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:FormItem">
+                <StackPanel>
+                    <StackPanel
+                        HorizontalAlignment="{TemplateBinding LabelAlignment}"
+                        Margin="0,0,0,4"
+                        Name="PART_LabelPanel"
+                        Orientation="Horizontal">
+                        <Label
+                            Background="Transparent"
+                            Content="{TemplateBinding Label}"
+                            FontWeight="{DynamicResource TextBlockTitleFontWeight}"
+                            Name="PART_Label"
+                            Target="{Binding #PART_ContentPresenter.Content}" />
+                        <TextBlock
+                            Foreground="{DynamicResource FormAsteriskForeground}"
+                            IsVisible="{TemplateBinding IsRequired}"
+                            Text="*" />
+                    </StackPanel>
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Name="PART_ContentPresenter" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:not(:no-label):horizontal">
+            <Setter Property="Template">
+                <ControlTemplate TargetType="ovo:FormItem">
+                    <Grid RowDefinitions="*, *">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="Label" Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Width="{TemplateBinding LabelWidth}">
+                            <StackPanel
+                                HorizontalAlignment="{TemplateBinding LabelAlignment}"
+                                Margin="{Binding #PART_Label.Bounds.Height, Converter={x:Static ovo:FormContentHeightToMarginConverter.Instance}}"
+                                Name="PART_LabelPanel"
+                                Orientation="Horizontal"
+                                VerticalAlignment="{Binding #PART_ContentPresenter.Bounds.Height, Converter={x:Static ovo:FormContentHeightToAlignmentConverter.Instance}}">
+                                <Label
+                                    Background="Transparent"
+                                    Content="{TemplateBinding Label}"
+                                    FontWeight="{DynamicResource TextBlockTitleFontWeight}"
+                                    Name="PART_Label" />
+                                <TextBlock
+                                    Foreground="{DynamicResource FormAsteriskForeground}"
+                                    IsVisible="{TemplateBinding IsRequired}"
+                                    Text="*" />
+                            </StackPanel>
+                        </Border>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Name="PART_ContentPresenter"
+                            VerticalAlignment="Stretch"
+                            VerticalContentAlignment="Center" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="^:no-label">
+            <Setter Property="Template">
+                <ControlTemplate TargetType="ovo:FormItem">
+                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

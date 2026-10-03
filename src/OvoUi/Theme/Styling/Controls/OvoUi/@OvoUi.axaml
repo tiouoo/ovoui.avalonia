@@ -6,5 +6,6 @@
         <ResourceInclude Source="OvoAutoCompleteBox.axaml" />
         <ResourceInclude Source="GlassCard.axaml" />
         <ResourceInclude Source="EnumSelector.axaml" />
+        <ResourceInclude Source="Form.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
