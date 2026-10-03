@@ -248,7 +248,6 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            Cursor="Hand"
                             DataValidationErrors.Errors="{TemplateBinding (DataValidationErrors.Errors)}"
                             Foreground="{TemplateBinding Foreground}"
                             Grid.Column="0"

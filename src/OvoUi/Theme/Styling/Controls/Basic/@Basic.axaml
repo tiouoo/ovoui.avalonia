@@ -42,6 +42,7 @@
         <ResourceInclude Source="TabStrip.axaml" />
         <ResourceInclude Source="ContentPage.axaml" />
         <ResourceInclude Source="CarouselPage.axaml" />
+        <ResourceInclude Source="NumericUpDown.axaml" />
         <ResourceInclude Source="Carousel.axaml" />
         <ResourceInclude Source="DrawerPage.axaml" />
         <ResourceInclude Source="SplitButton.axaml" />

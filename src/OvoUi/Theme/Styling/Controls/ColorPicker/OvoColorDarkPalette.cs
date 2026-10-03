@@ -3,7 +3,7 @@ using Avalonia.Media;
 
 namespace OvoUi.Theme.Styling.Controls.ColorPicker;
 
-public class TioColorDarkPalette : IColorPalette
+public class OvoColorDarkPalette : IColorPalette
 {
     private static readonly Color[,] Colors = new Color[,]
     {

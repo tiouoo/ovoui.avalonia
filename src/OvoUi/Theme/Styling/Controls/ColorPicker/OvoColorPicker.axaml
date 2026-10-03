@@ -4,9 +4,8 @@
     xmlns:converters="using:Avalonia.Controls.Converters"
     xmlns:converters1="clr-namespace:Avalonia.Controls.Primitives.Converters;assembly=Avalonia.Controls.ColorPicker"
     xmlns:globalization="clr-namespace:System.Globalization;assembly=System.Runtime"
-    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="colorPicker:TioColorPicker" x:Key="{x:Type colorPicker:TioColorPicker}">
+    <ControlTheme TargetType="colorPicker:OvoColorPicker" x:Key="{x:Type colorPicker:OvoColorPicker}">
         <Setter Property="MinWidth" Value="64" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="{DynamicResource ColorPickerMinHeight}" />
@@ -30,13 +29,13 @@
             <FluentColorPalette />
         </Setter>
         <Setter Property="Template">
-            <ControlTemplate TargetType="{x:Type colorPicker:TioColorPicker}">
+            <ControlTemplate TargetType="{x:Type colorPicker:OvoColorPicker}">
                 <DropDownButton
                     ClipToBounds="True"
                     Content="{TemplateBinding Content}"
                     ContentTemplate="{TemplateBinding ContentTemplate}"
-                    CornerRadius="{DynamicResource TioCornerRadius}"
-                    Foreground="{DynamicResource InnerForegroundColor}"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Foreground="{DynamicResource InnerForegroundBrush}"
                     Height="{TemplateBinding Height}"
                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -79,13 +78,17 @@
                                     Name="PART_TabControl"
                                     Padding="0"
                                     SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                    Theme="{StaticResource ButtonTabControl}"
                                     VerticalAlignment="Stretch">
                                     <TabControl.Styles>
                                         <Style Selector="TabItem">
                                             <Setter Property="MinHeight" Value="32" />
                                         </Style>
                                         <Style Selector="TabItem:selected">
-                                            <Setter Property="Foreground" Value="{DynamicResource ColorViewTabItemSelectedForeground}" />
+                                            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+                                        </Style>
+                                        <Style Selector="Panel">
+                                            <Setter Property="Margin" Value="8,4,0,0 " />
                                         </Style>
                                     </TabControl.Styles>
                                     <TabControl.ItemsPanel>
@@ -261,15 +264,16 @@
                                                                                             ConverterParameter={x:Static ColorModel.Rgba},
                                                                                             Mode=TwoWay}"
                                                                 Name="RgbRadioButton"
-                                                                Theme="{DynamicResource ButtonRadioButton}" />
+                                                                Theme="{DynamicResource ButtonRadioButtonTheme}" />
                                                             <RadioButton
                                                                 Content="HSV"
                                                                 IsChecked="{TemplateBinding ColorModel,
                                                                                             Converter={StaticResource EnumToBoolConverter},
                                                                                             ConverterParameter={x:Static ColorModel.Hsva},
                                                                                             Mode=TwoWay}"
+                                                                Margin="-1,2,2,2"
                                                                 Name="HsvRadioButton"
-                                                                Theme="{DynamicResource ButtonRadioButton}" />
+                                                                Theme="{DynamicResource ButtonRadioButtonTheme}" />
                                                         </StackPanel>
                                                     </Border>
                                                 </Border>
@@ -446,8 +450,8 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource {x:Type colorPicker:TioColorPicker}}"
-        TargetType="colorPicker:TioColorPicker"
+        BasedOn="{StaticResource {x:Type colorPicker:OvoColorPicker}}"
+        TargetType="colorPicker:OvoColorPicker"
         x:Key="HexColorPicker">
         <Setter Property="MinWidth" Value="200" />
         <Setter Property="Content">
@@ -472,11 +476,11 @@
                         Width="{Binding $self.Bounds.Height}" />
                     <TextBlock
                         FontWeight="Regular"
-                        Foreground="{DynamicResource ForegroundColor}"
+                        Foreground="{DynamicResource ForegroundBrush}"
                         Grid.Column="1"
                         HorizontalAlignment="Left"
                         Margin="8,0,0,0"
-                        Text="{Binding $parent[colorPicker:TioColorPicker].Color}"
+                        Text="{Binding $parent[colorPicker:OvoColorPicker].Color}"
                         VerticalAlignment="Center" />
                 </Grid>
             </Template>
@@ -484,17 +488,17 @@
     </ControlTheme>
 
     <ControlTheme
-        BasedOn="{StaticResource {x:Type colorPicker:TioColorPicker}}"
-        TargetType="colorPicker:TioColorPicker"
+        BasedOn="{StaticResource {x:Type colorPicker:OvoColorPicker}}"
+        TargetType="colorPicker:OvoColorPicker"
         x:Key="SimpleColorPicker">
         <Setter Property="ColorSpectrumComponents" Value="SaturationValue" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="{x:Type colorPicker:TioColorPicker}">
+            <ControlTemplate TargetType="{x:Type colorPicker:OvoColorPicker}">
                 <DropDownButton
                     Content="{TemplateBinding Content}"
                     ContentTemplate="{TemplateBinding ContentTemplate}"
-                    CornerRadius="{DynamicResource TioCornerRadius}"
-                    Foreground="{DynamicResource InnerForegroundColor}"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Foreground="{DynamicResource InnerForegroundBrush}"
                     Height="{TemplateBinding Height}"
                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -658,7 +662,7 @@
 
     <ControlTheme
         BasedOn="{StaticResource SimpleColorPicker}"
-        TargetType="colorPicker:TioColorPicker"
+        TargetType="colorPicker:OvoColorPicker"
         x:Key="HexSimpleColorPicker">
         <Setter Property="MinWidth" Value="200" />
         <Setter Property="Content">
@@ -683,11 +687,11 @@
                         Width="{Binding $self.Bounds.Height}" />
                     <TextBlock
                         FontWeight="Regular"
-                        Foreground="{DynamicResource ForegroundColor}"
+                        Foreground="{DynamicResource ForegroundBrush}"
                         Grid.Column="1"
                         HorizontalAlignment="Left"
                         Margin="8,0,0,0"
-                        Text="{Binding $parent[colorPicker:TioColorPicker].Color}"
+                        Text="{Binding $parent[colorPicker:OvoColorPicker].Color}"
                         VerticalAlignment="Center" />
                 </Grid>
             </Template>

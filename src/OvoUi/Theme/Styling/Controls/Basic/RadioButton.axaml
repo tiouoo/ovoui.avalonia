@@ -22,6 +22,62 @@
         </StackPanel>
     </Design.PreviewWith>
 
+    <ControlTheme TargetType="RadioButton" x:Key="ButtonRadioButtonTheme">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="16,4" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="RadioButton">
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Margin="{TemplateBinding Margin}"
+                    Name="PART_ContentPresenter"
+                    Padding="{TemplateBinding Padding}"
+                    TextElement.FontSize="{TemplateBinding FontSize}"
+                    TextElement.FontWeight="{TemplateBinding FontWeight}"
+                    UseLayoutRounding="False"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+        <Style Selector="^:unchecked">
+            <Setter Property="Background" Value="Transparent" />
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Style Selector="^:disabled">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^.small">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="16,2" />
+        </Style>
+        <Style Selector="^.large">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="24,6" />
+        </Style>
+    </ControlTheme>
+
     <ControlTheme TargetType="RadioButton" x:Key="StandardRadioButtonTheme">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />

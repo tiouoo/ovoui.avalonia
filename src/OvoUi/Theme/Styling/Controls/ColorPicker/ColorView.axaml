@@ -4,7 +4,6 @@
     xmlns:globalization="using:System.Globalization"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pc="using:Avalonia.Controls.Primitives.Converters"
-    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <pc:ContrastBrushConverter x:Key="ContrastBrushConverter" />
     <converters:ColorToDisplayNameConverter x:Key="ColorToDisplayNameConverter" />
@@ -36,18 +35,11 @@
     <!--  Non-theme-specific resources  -->
     <Thickness x:Key="ColorViewRadioButtonPadding">16 4</Thickness>
     <x:Double x:Key="ColorViewNumericUpDownWidth">70</x:Double>
-    <x:Double x:Key="ColorPreviewerAccentSectionWidth">80</x:Double>
-    <x:Double x:Key="ColorPreviewerAccentSectionHeight">20</x:Double>
-    <x:Double x:Key="ColorPreviewerHeight">48</x:Double>
     <FontWeight x:Key="ColorViewRadioButtonFontWeight">600</FontWeight>
     <CornerRadius x:Key="ColorPreviewerCornerRadius">3</CornerRadius>
     <CornerRadius x:Key="ColorSpectrumCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="ColorSliderCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="ColorSliderThumbCornerRadius">9999</CornerRadius>
-    <Thickness x:Key="ColorSliderThumbBorderBrush">2</Thickness>
-    <x:Double x:Key="ColorSliderWidth">16</x:Double>
-    <x:Double x:Key="SemiWidthIconMedium">16</x:Double>
-    <CornerRadius x:Key="ControlCornerRadius">6</CornerRadius>
 
     <!--  Icon Glyphs  -->
     <StreamGeometry x:Key="ColorViewSpectrumIconGlyph">M1.22 20.77a4.24 4.24 0 0 1 .02-5.98l9.33-9.28-.94-.95a1.41 1.41 0 0 1 0-1.99 1.39 1.39 0 0 1 1.97 0l.95.97L14.9 1.2a4.16 4.16 0 0 1 5.89.02 4.24 4.24 0 0 1-.02 5.98l-2.3 2.28 1.02 1.02c.54.55.54 1.44 0 1.99-.55.55-1.43.55-1.97 0l-1.03-1.03-9.37 9.32a4.16 4.16 0 0 1-5.89-.02ZM12.54 7.49l1.97 1.99-9.35 9.3c-.55.55-1.42.55-1.97 0a1.41 1.41 0 0 1 .01-2l9.34-9.29Z</StreamGeometry>
@@ -60,40 +52,36 @@
         <!--  Light Theme  -->
         <ResourceDictionary x:Key="Light">
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ColorViewRadioButtonForeground" />
-            <SolidColorBrush Color="White" x:Key="ColorViewRadioButtonBackground" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorViewRadioButtonBackground" />
             <SolidColorBrush
-                Color="#2E3238"
+                Color="{DynamicResource ForegroundColor}"
                 Opacity="0.09"
                 x:Key="ColorViewRadioButtonPointeroverBackground" />
             <SolidColorBrush
-                Color="#2E3238"
+                Color="{DynamicResource ForegroundColor}"
                 Opacity="0.13"
                 x:Key="ColorViewRadioButtonPressedBackground" />
-            <SolidColorBrush Color="White" x:Key="ColorViewRadioButtonCheckedForeground" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorViewRadioButtonCheckedForeground" />
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ColorViewRadioButtonCheckedBackground" />
             <SolidColorBrush Color="{DynamicResource SystemAccentColorDark1}" x:Key="ColorViewRadioButtonCheckedPointeroverBackground" />
             <SolidColorBrush Color="{DynamicResource SystemAccentColorDark1}" x:Key="ColorViewRadioButtonCheckedPressedBackground" />
-            <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ColorViewTabItemSelectedForeground" />
-            <SolidColorBrush Color="Black" x:Key="ColorSliderDefaultBorderBrush" />
-            <SolidColorBrush Color="White" x:Key="ColorSliderLightBorderBrush" />
-            <SolidColorBrush Color="Black" x:Key="ColorSliderDarkBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource LineColor}" x:Key="ColorSliderDefaultBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorSliderLightBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ColorSliderDarkBorderBrush" />
             <SolidColorBrush
                 Color="#1C1F23"
                 Opacity="0.08"
                 x:Key="ColorSpectrumBorderBrush" />
             <BoxShadows x:Key="ColorPreviewerMainBoxShadow">0 0 1 #4A000000, 0 4 14 #1A000000</BoxShadows>
             <BoxShadows x:Key="ColorSliderBoxShadow">0 0 2 1 #FFFFFF</BoxShadows>
-            <SolidColorBrush Color="White" x:Key="ColorViewContentBackgroundBrush" />
-            <SolidColorBrush
-                Color="#1C1F23"
-                Opacity="0.08"
-                x:Key="ColorViewContentBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorViewContentBackgroundBrush" />
+            <SolidColorBrush Color="{DynamicResource LineColor}" x:Key="ColorViewContentBorderBrush" />
         </ResourceDictionary>
 
         <!--  Dark Theme  -->
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ColorViewRadioButtonForeground" />
-            <SolidColorBrush Color="#16161A" x:Key="ColorViewRadioButtonBackground" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorViewRadioButtonBackground" />
             <SolidColorBrush
                 Color="White"
                 Opacity="0.16"
@@ -102,25 +90,21 @@
                 Color="White"
                 Opacity="0.20"
                 x:Key="ColorViewRadioButtonPressedBackground" />
-            <SolidColorBrush Color="White" x:Key="ColorViewRadioButtonCheckedForeground" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorViewRadioButtonCheckedForeground" />
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ColorViewRadioButtonCheckedBackground" />
             <SolidColorBrush Color="{DynamicResource SystemAccentColorLight1}" x:Key="ColorViewRadioButtonCheckedPointeroverBackground" />
             <SolidColorBrush Color="{DynamicResource SystemAccentColorLight1}" x:Key="ColorViewRadioButtonCheckedPressedBackground" />
-            <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ColorViewTabItemSelectedForeground" />
-            <SolidColorBrush Color="Black" x:Key="ColorSliderDefaultBorderBrush" />
-            <SolidColorBrush Color="White" x:Key="ColorSliderLightBorderBrush" />
-            <SolidColorBrush Color="Black" x:Key="ColorSliderDarkBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource LineColor}" x:Key="ColorSliderDefaultBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorSliderLightBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource ForegroundColor}" x:Key="ColorSliderDarkBorderBrush" />
             <SolidColorBrush
                 Color="White"
                 Opacity="0.08"
                 x:Key="ColorSpectrumBorderBrush" />
             <BoxShadows x:Key="ColorPreviewerMainBoxShadow">inset 0 0 0 1 #1AFFFFFF, 0 4 14 #40000000</BoxShadows>
             <BoxShadows x:Key="ColorSliderBoxShadow">0 0 2 1 #FFFFFF</BoxShadows>
-            <SolidColorBrush Color="#16161A" x:Key="ColorViewContentBackgroundBrush" />
-            <SolidColorBrush
-                Color="White"
-                Opacity="0.08"
-                x:Key="ColorViewContentBorderBrush" />
+            <SolidColorBrush Color="{DynamicResource PopupBackgroundColor}" x:Key="ColorViewContentBackgroundBrush" />
+            <SolidColorBrush Color="{DynamicResource LineColor}" x:Key="ColorViewContentBorderBrush" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
@@ -221,7 +205,6 @@
     </ControlTheme>
 
     <ControlTheme TargetType="RadioButton" x:Key="ColorViewRadioButton">
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontWeight" Value="{DynamicResource ColorViewRadioButtonFontWeight}" />
         <Setter Property="Padding" Value="{DynamicResource ColorViewRadioButtonPadding}" />
         <Setter Property="Foreground" Value="{DynamicResource ColorViewRadioButtonForeground}" />
@@ -247,27 +230,27 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:checked">
-            <Setter Property="Background" Value="{DynamicResource ColorViewRadioButtonCheckedBackground}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
             <Setter Property="Foreground" Value="{DynamicResource ColorViewRadioButtonCheckedForeground}" />
             <Style Selector="^:pointerover">
-                <Setter Property="Background" Value="{DynamicResource ColorViewRadioButtonCheckedPointeroverBackground}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}" />
             </Style>
             <Style Selector="^:pressed">
-                <Setter Property="Background" Value="{DynamicResource ColorViewRadioButtonCheckedPressedBackground}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorDark1}" />
             </Style>
         </Style>
         <Style Selector="^:unchecked">
             <Style Selector="^:pointerover">
-                <Setter Property="Background" Value="{DynamicResource ColorViewRadioButtonPointeroverBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^:pressed">
-                <Setter Property="Background" Value="{DynamicResource ColorViewRadioButtonPressedBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
             </Style>
         </Style>
     </ControlTheme>
 
     <ControlTheme TargetType="ColorView" x:Key="{x:Type ColorView}">
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Width" Value="300" />
         <Setter Property="Height" Value="300" />
         <Setter Property="Palette">
@@ -280,7 +263,7 @@
                     <!--  TODO: Background="{DynamicResource ColorViewTabBackgroundBrush}"  -->
                     <Border
                         Background="{DynamicResource ColorViewContentBackgroundBrush}"
-                        BorderBrush="{DynamicResource LineColor}"
+                        BorderBrush="{DynamicResource LineBrush}"
                         BorderThickness="1"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         Grid.Row="0"
@@ -297,13 +280,17 @@
                         Name="PART_TabControl"
                         Padding="0"
                         SelectedIndex="{Binding SelectedIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                        Theme="{StaticResource ButtonTabControl}"
                         VerticalAlignment="Stretch">
                         <TabControl.Styles>
                             <Style Selector="TabItem">
                                 <Setter Property="MinHeight" Value="32" />
                             </Style>
                             <Style Selector="TabItem:selected">
-                                <Setter Property="Foreground" Value="{DynamicResource ColorViewTabItemSelectedForeground}" />
+                                <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+                            </Style>
+                            <Style Selector="Panel">
+                                <Setter Property="Margin" Value="8,4,0,0 " />
                             </Style>
                         </TabControl.Styles>
                         <TabControl.ItemsPanel>
@@ -451,15 +438,16 @@
                                                                                 ConverterParameter={x:Static ColorModel.Rgba},
                                                                                 Mode=TwoWay}"
                                                     Name="RgbRadioButton"
-                                                    Theme="{DynamicResource ButtonRadioButton}" />
+                                                    Theme="{DynamicResource ButtonRadioButtonTheme}" />
                                                 <RadioButton
                                                     Content="HSV"
                                                     IsChecked="{TemplateBinding ColorModel,
                                                                                 Converter={StaticResource EnumToBoolConverter},
                                                                                 ConverterParameter={x:Static ColorModel.Hsva},
                                                                                 Mode=TwoWay}"
+                                                    Margin="-1,2,2,2"
                                                     Name="HsvRadioButton"
-                                                    Theme="{DynamicResource ButtonRadioButton}" />
+                                                    Theme="{DynamicResource ButtonRadioButtonTheme}" />
                                             </StackPanel>
                                         </Border>
                                     </Border>
@@ -483,6 +471,7 @@
                                     IsVisible="{TemplateBinding IsComponentTextInputVisible}"
                                     Margin="0,0,12,0"
                                     Maximum="{Binding Maximum, ElementName=Component1Slider}"
+                                    MinHeight="27"
                                     Minimum="{Binding Minimum, ElementName=Component1Slider}"
                                     Name="Component1NumericUpDown"
                                     NumberFormat="{StaticResource ColorViewComponentNumberFormat}"
@@ -514,6 +503,7 @@
                                     IsVisible="{TemplateBinding IsComponentTextInputVisible}"
                                     Margin="0,0,12,0"
                                     Maximum="{Binding Maximum, ElementName=Component2Slider}"
+                                    MinHeight="27"
                                     Minimum="{Binding Minimum, ElementName=Component2Slider}"
                                     Name="Component2NumericUpDown"
                                     NumberFormat="{StaticResource ColorViewComponentNumberFormat}"
@@ -545,6 +535,7 @@
                                     IsVisible="{TemplateBinding IsComponentTextInputVisible}"
                                     Margin="0,0,12,0"
                                     Maximum="{Binding Maximum, ElementName=Component3Slider}"
+                                    MinHeight="27"
                                     Minimum="{Binding Minimum, ElementName=Component3Slider}"
                                     Name="Component3NumericUpDown"
                                     NumberFormat="{StaticResource ColorViewComponentNumberFormat}"
@@ -576,6 +567,7 @@
                                     IsEnabled="{TemplateBinding IsAlphaEnabled}"
                                     Margin="0,0,12,0"
                                     Maximum="{Binding Maximum, ElementName=AlphaComponentSlider}"
+                                    MinHeight="27"
                                     Minimum="{Binding Minimum, ElementName=AlphaComponentSlider}"
                                     Name="AlphaComponentNumericUpDown"
                                     NumberFormat="{StaticResource ColorViewComponentNumberFormat}"
@@ -658,7 +650,7 @@
 
     <ControlTheme TargetType="ColorView" x:Key="SimpleColorView">
         <Setter Property="Width" Value="280" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="ColorSpectrumComponents" Value="SaturationValue" />
         <Setter Property="Template">
             <ControlTemplate TargetType="{x:Type ColorView}">
