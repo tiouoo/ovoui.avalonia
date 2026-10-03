@@ -103,7 +103,6 @@
         </Style>
 
         <Style Selector="^:not(:selected)">
-            <Setter Property="Cursor" Value="Hand" />
             <Style Selector="^:pointerover /template/ ContentPresenter#PART_HeaderPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource OvoTabHeaderPointerOverForeground}" />
             </Style>
