@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
       <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
     </ItemGroup>
 </Project>

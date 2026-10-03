@@ -12,7 +12,7 @@
     <system:Double x:Key="OvoFontSize">14</system:Double>
     <CornerRadius x:Key="OvoCornerRadius">10</CornerRadius>
     <CornerRadius x:Key="OvoBigCornerRadius">16</CornerRadius>
-    <FontFamily x:Key="OvoFontFamily">avares://OvoUi/Assets#AlimamaFangYuanTi</FontFamily>
+    <!-- <FontFamily x:Key="OvoFontFamily" /> -->
     <FontFamily x:Key="OvoIconFontFamily">avares://OvoUi/Assets#iconfont</FontFamily>
 
     <converter:ClassesContainsConverter x:Key="ClassesContainsConverter" />

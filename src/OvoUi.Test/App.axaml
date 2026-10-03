@@ -7,5 +7,6 @@
     <Application.Styles>
         <FluentTheme />
         <ovo:OvoUiTheme />
+        <ovo:OvoUiFont />
     </Application.Styles>
 </Application>

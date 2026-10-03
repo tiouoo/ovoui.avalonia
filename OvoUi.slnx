@@ -10,6 +10,7 @@
     </Project>
     <Project Path="src/Demo/OvoUi.Demo/OvoUi.Demo.csproj" />
   </Folder>
+  <Project Path="src/OvoUi.Fonts/OvoUi.Fonts.csproj" />
   <Project Path="src/OvoUi.Test/OvoUi.Test.csproj" />
   <Project Path="src/OvoUi/OvoUi.csproj" />
 </Solution>

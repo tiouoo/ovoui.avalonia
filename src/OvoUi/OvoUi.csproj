@@ -20,12 +20,6 @@
       <AvaloniaResource Include="..\..\assets\iconfont.ttf">
         <Link>Assets\iconfont.ttf</Link>
       </AvaloniaResource>
-      <AvaloniaResource Include="..\..\assets\AlimamaFangYuanTi-Regular.ttf">
-        <Link>Assets\AlimamaFangYuanTi-Regular.ttf</Link>
-      </AvaloniaResource>
-      <AvaloniaResource Include="..\..\assets\AlimamaFangYuanTi-Bold.ttf">
-        <Link>Assets\AlimamaFangYuanTi-Bold.ttf</Link>
-      </AvaloniaResource>
     </ItemGroup>    
     
 </Project>
