@@ -1,0 +1,98 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="ovo:GlassCard" x:Key="StandardGlassCardTheme">
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Name="RootPanel" Opacity="0">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Name="PART_BorderCard"
+                        Opacity="{DynamicResource GlassOpacity}"
+                        RenderTransformOrigin="50%,50%">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition
+                                    Duration="0:0:0.5"
+                                    Easing="QuadraticEaseOut"
+                                    Property="Width" />
+                                <DoubleTransition
+                                    Duration="0:0:0.5"
+                                    Easing="QuadraticEaseOut"
+                                    Property="Height" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="0:0:0.15" Property="BorderBrush" />
+                                <DoubleTransition Duration="0:0:0.15" Property="Opacity" />
+                            </Transitions>
+                        </Border.Transitions>
+                    </Border>
+                    <Border
+                        Background="{DynamicResource SukiPrimaryColor0}"
+                        BorderBrush="{DynamicResource SukiPrimaryColor0}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Name="PART_ClipBorder">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="0:0:0.15" Property="BorderBrush" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            Margin="{TemplateBinding Padding}"
+                            Name="PART_CP" />
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.control">
+            <Setter Property="IsAnimated" Value="False" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style Selector="^.discrete">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiControlBorderBrush}" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style Selector="^.control /template/ Border#PART_BorderCard">
+            <Setter Property="Background" Value="{DynamicResource ControlSukiGlassCardBackground}" />
+            <Setter Property="Opacity" Value="{DynamicResource ControlGlassOpacity}" />
+        </Style>
+        <Style Selector="^.discrete /template/ Border#PART_BorderCard">
+            <Setter Property="Background" Value="{DynamicResource SukiGlassCardBackground}" />
+            <Setter Property="Opacity" Value="{DynamicResource DiscreteControlGlassOpacity}" />
+        </Style>
+        <Style Selector="^[IsOpaque=True] /template/ Border#PART_BorderCard">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="Background" Value="{DynamicResource SukiGlassCardOpaqueBackground}" />
+        </Style>
+        <Style Selector="^[IsInteractive=True]:pointerover /template/ Border#PART_ClipBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiPrimaryColor50}" />
+        </Style>
+        <Style Selector="^[IsInteractive=True]:pointerdown /template/ Border#PART_ClipBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiPrimaryColor}" />
+        </Style>
+        <Style Selector="^[IsVisible=True] /template/ Panel#RootPanel">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^[IsVisible=False] /template/ Panel#RootPanel">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+    </ControlTheme>
+    <ControlTheme
+        BasedOn="{StaticResource StandardGlassCardTheme}"
+        TargetType="ovo:GlassCard"
+        x:Key="{x:Type ovo:GlassCard}" />
+</ResourceDictionary>

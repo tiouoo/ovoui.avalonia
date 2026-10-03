@@ -34,7 +34,6 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate TargetType="RadioButton">
                 <Border

@@ -50,5 +50,9 @@
         <ResourceInclude Source="TableView.axaml" />
         <ResourceInclude Source="ScrollViewer.axaml" />
         <ResourceInclude Source="ProgressBar.axaml" />
+        <ResourceInclude Source="ContextMenu.axaml" />
+        <ResourceInclude Source="Menu.axaml" />
+        <ResourceInclude Source="MenuFlyoutPresenter.axaml" />
+        <ResourceInclude Source="MenuItem.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

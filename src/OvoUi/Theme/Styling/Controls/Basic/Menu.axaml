@@ -1,0 +1,272 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:system="clr-namespace:System;assembly=netstandard"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="MenuItem" x:Key="StandardTopLevelMenuItemTheme">
+        <Setter Property="FontWeight" Value="{DynamicResource TioFontWeight}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="10 0" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="0"
+                    CornerRadius="8"
+                    Margin="5,5"
+                    Name="root">
+                    <Panel>
+                        <ovo:GlassCard
+                            Classes="control"
+                            CornerRadius="{DynamicResource OvoCornerRadius}"
+                            Name="GlassMenuItemBackground"
+                            Opacity="0">
+                            <ovo:GlassCard.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Duration="0:0:0.15" Property="Opacity" />
+                                </Transitions>
+                            </ovo:GlassCard.Transitions>
+                        </ovo:GlassCard>
+                        <ContentPresenter
+                            Content="{TemplateBinding Header}"
+                            HorizontalContentAlignment="Left"
+                            Margin="{TemplateBinding Padding}"
+                            Name="PART_HeaderPresenter"
+                            VerticalContentAlignment="Center">
+                            <ContentPresenter.DataTemplates>
+                                <DataTemplate DataType="system:String">
+                                    <TextBlock FontWeight="{DynamicResource OvoFontWeight}" Text="{CompiledBinding}" />
+                                </DataTemplate>
+                            </ContentPresenter.DataTemplates>
+                        </ContentPresenter>
+                        <Popup
+                            ClipToBounds="True"
+                            IsLightDismissEnabled="True"
+                            IsOpen="{TemplateBinding IsSubMenuOpen,
+                                                     Mode=TwoWay}"
+                            Name="PART_Popup"
+                            Opacity="0"
+                            OverlayInputPassThroughElement="{Binding $parent[MenuItem]}"
+                            Placement="BottomEdgeAlignedLeft">
+                            <LayoutTransformControl Name="PART_LayoutTransform" RenderTransformOrigin="50%, 0%">
+                                <Grid Margin="-12,0,0,0">
+                                    <Border
+                                        Background="{DynamicResource PopupBackgroundColor}"
+                                        BorderBrush="{DynamicResource LineBrush}"
+                                        BorderThickness="1"
+                                        ClipToBounds="True"
+                                        CornerRadius="14"
+                                        Margin="16,8,8,8"
+                                        Name="PART_Border">
+                                        <Panel Margin="4">
+                                            <ScrollViewer>
+                                                <ItemsPresenter
+                                                    Grid.IsSharedSizeScope="True"
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                    Name="PART_ItemsPresenter" />
+                                            </ScrollViewer>
+                                        </Panel>
+                                    </Border>
+                                </Grid>
+                            </LayoutTransformControl>
+                        </Popup>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ ovo|GlassCard#GlassMenuItemBackground">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+
+        <!-- <Style Selector="^:open /template/ LayoutTransformControl#PART_LayoutTransform"> -->
+        <!--     <Style.Animations> -->
+        <!--  <Animation  -->
+        <!--  Duration="0:0:0.3"  -->
+        <!--  Easing="{StaticResource MenuEasing}"  -->
+        <!--  FillMode="Forward">  -->
+        <!--             <KeyFrame Cue="0%"> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleY" Value="0.88" /> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleX" Value="0.88" /> -->
+        <!--             </KeyFrame> -->
+        <!--             <KeyFrame Cue="100%"> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleY" Value="1" /> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleX" Value="1" /> -->
+        <!--             </KeyFrame> -->
+        <!--         </Animation> -->
+        <!--    -->
+        <!--         <Animation Duration="0:0:0.25" FillMode="Forward"> -->
+        <!--             <KeyFrame Cue="0%"> -->
+        <!--                 <Setter Property="Opacity" Value="0" /> -->
+        <!--             </KeyFrame> -->
+        <!--             <KeyFrame Cue="100%"> -->
+        <!--                 <Setter Property="Opacity" Value="1" /> -->
+        <!--             </KeyFrame> -->
+        <!--         </Animation> -->
+        <!--     </Style.Animations> -->
+        <!-- </Style> -->
+    </ControlTheme>
+
+    <ControlTheme TargetType="Menu" x:Key="StandardMenuTheme">
+        <Setter Property="ItemContainerTheme" Value="{StaticResource StandardTopLevelMenuItemTheme}" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundColor}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PopupBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <LayoutTransformControl Name="PART_LayoutTransform" RenderTransformOrigin="50%, 0%">
+                    <Border
+                        BorderBrush="{DynamicResource LineBrush}"
+                        BorderThickness="0"
+                        CornerRadius="{DynamicResource OvoCornerRadius}"
+                        Height="45"
+                        Padding="{TemplateBinding Padding}">
+                        <ItemsPresenter
+                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                            KeyboardNavigation.TabNavigation="Continue"
+                            Name="PART_ItemsPresenter" />
+                    </Border>
+                </LayoutTransformControl>
+            </ControlTemplate>
+        </Setter>
+        <!-- <Style Selector="^[IsEnabled=True] /template/ LayoutTransformControl#PART_LayoutTransform"> -->
+        <!--     <Style.Animations> -->
+        <!--         <Animation Duration="0.35" FillMode="Forward"> -->
+        <!--             <Animation.Easing> -->
+        <!--                 <tio:SukiEaseInOut /> -->
+        <!--             </Animation.Easing> -->
+        <!--             <KeyFrame Cue="0%"> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleY" Value="0.92" /> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleX" Value="0.92" /> -->
+        <!--                 <Setter Property="Opacity" Value="0" /> -->
+        <!--                 <Setter Property="IsVisible" Value="True" /> -->
+        <!--             </KeyFrame> -->
+        <!--             <KeyFrame Cue="100%"> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleY" Value="1" /> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleX" Value="1" /> -->
+        <!--                 <Setter Property="Opacity" Value="1" /> -->
+        <!--             </KeyFrame> -->
+        <!--         </Animation> -->
+        <!--     </Style.Animations> -->
+        <!-- </Style> -->
+        <!-- <Style Selector="^[IsEnabled=False] /template/ LayoutTransformControl#PART_LayoutTransform"> -->
+        <!--     <Style.Animations> -->
+        <!--         <Animation Duration="0.35" FillMode="Forward"> -->
+        <!--             <Animation.Easing> -->
+        <!--                 <tio:SukiEaseInOut /> -->
+        <!--             </Animation.Easing> -->
+        <!--             <KeyFrame Cue="0%"> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleY" Value="1" /> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleX" Value="1" /> -->
+        <!--                 <Setter Property="Opacity" Value="1" /> -->
+        <!--             </KeyFrame> -->
+        <!--             <KeyFrame Cue="100%"> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleY" Value="0.9" /> -->
+        <!--                 <Setter Property="ScaleTransform.ScaleX" Value="0.9" /> -->
+        <!--                 <Setter Property="Opacity" Value="0" /> -->
+        <!--                 <Setter Property="IsVisible" Value="False" /> -->
+        <!--             </KeyFrame> -->
+        <!--         </Animation> -->
+        <!--     </Style.Animations> -->
+        <!-- </Style> -->
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource StandardMenuTheme}"
+        TargetType="Menu"
+        x:Key="{x:Type Menu}" />
+
+    <ControlTheme TargetType="ScrollViewer" x:Key="MenuScrollViewer">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="False" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ScrollViewer">
+                <DockPanel>
+                    <DockPanel.Styles>
+                        <Style Selector="RepeatButton:pressed">
+                            <Setter Property="RenderTransform" Value="{x:Null}" />
+                        </Style>
+                    </DockPanel.Styles>
+                    <RepeatButton
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding LineUp, RelativeSource={RelativeSource TemplatedParent}}"
+                        CornerRadius="0"
+                        DockPanel.Dock="Top"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        MinHeight="0"
+                        Padding="0,4"
+                        RenderTransform="{x:Null}">
+                        <RepeatButton.IsVisible>
+                            <MultiBinding Converter="{x:Static converters:MenuScrollingVisibilityConverter.Instance}" ConverterParameter="0">
+                                <Binding Path="VerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Offset.Y" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Extent.Height" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Viewport.Height" RelativeSource="{RelativeSource TemplatedParent}" />
+                            </MultiBinding>
+                        </RepeatButton.IsVisible>
+                        <TextBlock
+                            FontFamily="{DynamicResource OvoIconFontFamily}"
+                            FontSize="19"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource ForegroundBrush}"
+                            HorizontalAlignment="Center"
+                            Text="&#xe655;"
+                            VerticalAlignment="Center" />
+                    </RepeatButton>
+                    <RepeatButton
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding LineDown, RelativeSource={RelativeSource TemplatedParent}}"
+                        CornerRadius="0"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        MinHeight="0"
+                        Padding="0,4"
+                        RenderTransform="{x:Null}">
+                        <RepeatButton.IsVisible>
+                            <MultiBinding Converter="{x:Static converters:MenuScrollingVisibilityConverter.Instance}" ConverterParameter="100">
+                                <Binding Path="VerticalScrollBarVisibility" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Offset.Y" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Extent.Height" RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Viewport.Height" RelativeSource="{RelativeSource TemplatedParent}" />
+                            </MultiBinding>
+                        </RepeatButton.IsVisible>
+                        <TextBlock
+                            FontFamily="{DynamicResource OvoIconFontFamily}"
+                            FontSize="19"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource ForegroundBrush}"
+                            HorizontalAlignment="Center"
+                            Text="&#xe655;"
+                            VerticalAlignment="Center" />
+                    </RepeatButton>
+                    <ScrollContentPresenter
+                        HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
+                        HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                        Margin="{TemplateBinding Padding}"
+                        Name="PART_ContentPresenter"
+                        VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
+                        VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}">
+                        <ScrollContentPresenter.GestureRecognizers>
+                            <ScrollGestureRecognizer
+                                CanHorizontallyScroll="{Binding CanHorizontallyScroll, ElementName=PART_ContentPresenter}"
+                                CanVerticallyScroll="{Binding CanVerticallyScroll, ElementName=PART_ContentPresenter}"
+                                IsScrollInertiaEnabled="{Binding IsScrollInertiaEnabled, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </ScrollContentPresenter.GestureRecognizers>
+                    </ScrollContentPresenter>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

@@ -3,5 +3,6 @@
         <ResourceInclude Source="ContentExpander.axaml" />
         <ResourceInclude Source="PopupRenderContent.axaml" />
         <ResourceInclude Source="Loading.axaml" />
+        <ResourceInclude Source="GlassCard.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

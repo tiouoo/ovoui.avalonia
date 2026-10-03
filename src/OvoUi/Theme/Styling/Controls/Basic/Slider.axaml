@@ -144,7 +144,6 @@
 
     <ControlTheme TargetType="Thumb" x:Key="SliderThumbTheme">
         <Setter Property="CornerRadius" Value="{DynamicResource SliderThumbCornerRadius}" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="{DynamicResource SliderThumbBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource SliderThumbBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource SliderThumbBorderThickness}" />
