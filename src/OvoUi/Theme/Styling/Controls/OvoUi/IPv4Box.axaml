@@ -1,0 +1,165 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20">
+            <TextBlock Text="Hello World" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <MenuFlyout x:Key="IPv4BoxMenuFlyout">
+        <MenuItem
+            Command="{Binding $parent[ovo:IPv4Box].Cut}"
+            Header="{DynamicResource Lang.Cut}"
+            InputGesture="{x:Static ovo:IPv4Box.CutKeyGesture}"
+            x:Name="TextBoxContextFlyoutCutItem">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe624;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[ovo:IPv4Box].Copy}"
+            Header="{DynamicResource Lang.Copy}"
+            InputGesture="{x:Static ovo:IPv4Box.CopyKeyGesture}"
+            x:Name="TextBoxContextFlyoutCopyItem">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe63e;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[ovo:IPv4Box].Paste}"
+            Header="{DynamicResource Lang.Paste}"
+            InputGesture="{x:Static ovo:IPv4Box.PasteKeyGesture}"
+            x:Name="TextBoxContextFlyoutPasteItem">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe635;" />
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem
+            Command="{Binding $parent[ovo:IPv4Box].Clear}"
+            Header="{DynamicResource Lang.Clear}"
+            x:Name="TextBoxContextFlyoutClearItem">
+            <MenuItem.Icon>
+                <TextBlock
+                    FontFamily="{DynamicResource OvoIconFontFamily}"
+                    FontSize="16"
+                    Text="&#xe640;" />
+            </MenuItem.Icon>
+        </MenuItem>
+    </MenuFlyout>
+
+    <ControlTheme TargetType="{x:Type ovo:IPv4Box}" x:Key="{x:Type ovo:IPv4Box}">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="ShowLeadingZero" Value="True" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="BorderThickness" Value="11" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBrush}" />
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="CaretBrush" Value="{DynamicResource TextBoxTextCaretBrush}" />
+        <Setter Property="ContextFlyout" Value="{DynamicResource IPv4BoxMenuFlyout}" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:IPv4Box">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="PART_Border">
+                    <Grid ColumnDefinitions="1*, Auto, 1*, Auto, 1*, Auto, 1*" Width="{TemplateBinding Width}">
+                        <TextPresenter
+                            CaretBrush="{TemplateBinding CaretBrush}"
+                            Cursor="IBeam"
+                            Grid.Column="0"
+                            MinWidth="8"
+                            Name="{x:Static ovo:IPv4Box.PART_FirstTextPresenter}"
+                            SelectionBrush="{TemplateBinding SelectionBrush}"
+                            SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                            TextAlignment="{TemplateBinding TextAlignment}"
+                            TextElement.Foreground="{TemplateBinding Foreground}"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            Focusable="False"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            Margin="0,4"
+                            Text="."
+                            VerticalAlignment="Center" />
+                        <TextPresenter
+                            CaretBrush="{TemplateBinding CaretBrush}"
+                            Cursor="IBeam"
+                            Grid.Column="2"
+                            MinWidth="8"
+                            Name="{x:Static ovo:IPv4Box.PART_SecondTextPresenter}"
+                            SelectionBrush="{TemplateBinding SelectionBrush}"
+                            SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                            TextAlignment="{TemplateBinding TextAlignment}"
+                            TextElement.Foreground="{TemplateBinding Foreground}"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="3"
+                            Margin="0,4"
+                            Text="."
+                            VerticalAlignment="Center" />
+                        <TextPresenter
+                            CaretBrush="{TemplateBinding CaretBrush}"
+                            Cursor="IBeam"
+                            Grid.Column="4"
+                            MinWidth="8"
+                            Name="{x:Static ovo:IPv4Box.PART_ThirdTextPresenter}"
+                            SelectionBrush="{TemplateBinding SelectionBrush}"
+                            SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                            TextAlignment="{TemplateBinding TextAlignment}"
+                            TextElement.Foreground="{TemplateBinding Foreground}"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="5"
+                            Margin="0,4"
+                            Text="."
+                            VerticalAlignment="Center" />
+                        <TextPresenter
+                            CaretBrush="{TemplateBinding CaretBrush}"
+                            Cursor="IBeam"
+                            Grid.Column="6"
+                            MinWidth="8"
+                            Name="{x:Static ovo:IPv4Box.PART_FourthTextPresenter}"
+                            SelectionBrush="{TemplateBinding SelectionBrush}"
+                            SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                            TextAlignment="{TemplateBinding TextAlignment}"
+                            TextElement.Foreground="{TemplateBinding Foreground}"
+                            VerticalAlignment="Center" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource CTRLPressedBackground}" />
+        </Style>
+        <Style Selector="^:focus-within /template/ Border#PART_Border" />
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -16,17 +16,7 @@
             Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:Form LabelPosition="Left" LabelWidth="*">
-                <TextBox
-                    Width="300"
-                    ovo:FormItem.IsRequired="True"
-                    ovo:FormItem.Label="Name" />
-                <TextBox Width="300" ovo:FormItem.Label="Email" />
-                <TextBox
-                    Classes="TextArea"
-                    Width="300"
-                    ovo:FormItem.Label="Message" />
-            </ovo:Form>
+            <ovo:IPv4Box Width="200" />
 
         </StackPanel>
         <StackPanel
