@@ -16,6 +16,9 @@
             Spacing="8"
             VerticalAlignment="Center">
             <ColorPicker />
+            <ColorPicker Theme="{StaticResource HexColorPicker}" />
+            <ColorPicker Theme="{StaticResource SimpleColorPicker}" />
+            <ColorPicker Theme="{StaticResource HexSimpleColorPicker}" />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"
