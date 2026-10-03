@@ -1,6 +1,7 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:converter="using:OvoUi.Common.Converter"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
@@ -19,5 +20,8 @@
 
     <system:Double x:Key="SolidOpacity">1</system:Double>
     <system:Double x:Key="TranslucentOpacity">1</system:Double>
+
+    <ovo:SukiEaseOutBack BounceIntensity="Soft" x:Key="MenuEasing" />
+
 
 </ResourceDictionary>

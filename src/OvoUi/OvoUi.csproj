@@ -13,7 +13,6 @@
 
     <ItemGroup>
       <Folder Include="Assets\" />
-      <Folder Include="Theme\Animations\" />
     </ItemGroup>
     
     <ItemGroup>

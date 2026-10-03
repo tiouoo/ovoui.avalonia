@@ -16,6 +16,7 @@ using OvoUi.Common.Theme;
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.Common.Interfaces")]
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.Common.Converter")]
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.Theme.MarkupExtensions")]
+[assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.Theme.Animations")]
 [assembly: XmlnsPrefix("https://github.com/tiouoo/ovoui.avalonia", "ovo")]
 
 namespace OvoUi;
