@@ -47,6 +47,7 @@
                             Background="{DynamicResource PopupBackgroundBrush}"
                             BorderBrush="{DynamicResource LineBrush}"
                             BorderThickness="1"
+                            BoxShadow="{DynamicResource PopupBoxShadow}"
                             CornerRadius="{DynamicResource OvoCornerRadius}"
                             HorizontalAlignment="Stretch"
                             Margin="4"
