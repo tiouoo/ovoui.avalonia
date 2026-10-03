@@ -24,6 +24,7 @@
         <ResourceInclude Source="GridSplitter.axaml" />
         <ResourceInclude Source="Label.axaml" />
         <ResourceInclude Source="TextBlock.axaml" />
+        <ResourceInclude Source="SplitView.axaml" />
         <ResourceInclude Source="ThemeVariantScope.axaml" />
         <ResourceInclude Source="HyperlinkButton.axaml" />
         <ResourceInclude Source="Popup.axaml" />
