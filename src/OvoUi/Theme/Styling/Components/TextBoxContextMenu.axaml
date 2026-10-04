@@ -19,7 +19,8 @@
             <MenuItem.Icon>
                 <TextBlock
                     FontFamily="{DynamicResource OvoIconFontFamily}"
-                    FontSize="16"
+                    FontSize="18"
+                    Margin="-1,-1,0,0"
                     Text="&#xe624;" />
             </MenuItem.Icon>
         </MenuItem>
@@ -31,7 +32,7 @@
             <MenuItem.Icon>
                 <TextBlock
                     FontFamily="{DynamicResource OvoIconFontFamily}"
-                    FontSize="16"
+                    FontSize="15"
                     Text="&#xe63e;" />
             </MenuItem.Icon>
         </MenuItem>
@@ -39,11 +40,12 @@
             Command="{Binding $parent[TextBox].Paste}"
             Header="{DynamicResource Lang.Paste}"
             InputGesture="{x:Static TextBox.PasteGesture}"
-            IsEnabled="{Binding $parent[TextBox].CanPaste}">
+            IsEnabled="{Binding $parent[TextBox].CanPaste}"
+            Margin="-2,-2,0,0">
             <MenuItem.Icon>
                 <TextBlock
                     FontFamily="{DynamicResource OvoIconFontFamily}"
-                    FontSize="16"
+                    FontSize="19"
                     Text="&#xe635;" />
             </MenuItem.Icon>
         </MenuItem>
@@ -56,7 +58,8 @@
             <MenuItem.Icon>
                 <TextBlock
                     FontFamily="{DynamicResource OvoIconFontFamily}"
-                    FontSize="16"
+                    FontSize="17"
+                    Margin="-1,0,0,0"
                     Text="&#xe63d;" />
             </MenuItem.Icon>
         </MenuItem>
@@ -68,7 +71,8 @@
             <MenuItem.Icon>
                 <TextBlock
                     FontFamily="{DynamicResource OvoIconFontFamily}"
-                    FontSize="16"
+                    FontSize="17"
+                    Margin="-1,0,0,0"
                     Text="&#xe63a;" />
             </MenuItem.Icon>
         </MenuItem>
