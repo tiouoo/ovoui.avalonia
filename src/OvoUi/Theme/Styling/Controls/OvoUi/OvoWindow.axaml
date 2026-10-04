@@ -71,29 +71,32 @@
                                 <Panel>
                                     <Border Name="PART_Root">
                                         <DockPanel>
-                                            <o:OvoTitleBar
-                                                CloseButtonIcon="{TemplateBinding o:OvoTitleBar.CloseButtonIcon}"
-                                                ControlButtonMargin="{TemplateBinding o:OvoTitleBar.ControlButtonMargin}"
+                                            <LayoutTransformControl
                                                 DockPanel.Dock="Top"
-                                                ExitFullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.ExitFullScreenButtonIcon}"
-                                                FullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.FullScreenButtonIcon}"
-                                                IsCloseButtonVisible="{TemplateBinding o:OvoTitleBar.IsCloseButtonVisible}"
-                                                IsFullScreenButtonVisible="{TemplateBinding o:OvoTitleBar.IsFullScreenButtonVisible}"
-                                                IsMaximizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMaximizeButtonVisible}"
-                                                IsMinimizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMinimizeButtonVisible}"
-                                                IsPinButtonVisible="{TemplateBinding o:OvoTitleBar.IsPinButtonVisible}"
-                                                IsVisible="{TemplateBinding IsTitleBarVisible}"
-                                                LeadingContent="{TemplateBinding o:OvoTitleBar.LeadingContent}"
-                                                MaximizeButtonIcon="{TemplateBinding o:OvoTitleBar.MaximizeButtonIcon}"
-                                                MinimizeButtonIcon="{TemplateBinding o:OvoTitleBar.MinimizeButtonIcon}"
-                                                Name="PART_TitleBar"
-                                                PinButtonIcon="{TemplateBinding o:OvoTitleBar.PinButtonIcon}"
-                                                RestoreButtonIcon="{TemplateBinding o:OvoTitleBar.RestoreButtonIcon}"
-                                                TitleBarHeight="{TemplateBinding o:OvoTitleBar.TitleBarHeight}"
-                                                TitleBarMargin="{TemplateBinding o:OvoTitleBar.TitleBarMargin}"
-                                                TitleBarPadding="{TemplateBinding o:OvoTitleBar.TitleBarPadding}"
-                                                TrailingContent="{TemplateBinding o:OvoTitleBar.TrailingContent}"
-                                                UnpinButtonIcon="{TemplateBinding o:OvoTitleBar.UnpinButtonIcon}" />
+                                                Name="PART_TitleBarAnimationHost"
+                                                RenderTransformOrigin="0%,0%">
+                                                <o:OvoTitleBar
+                                                    CloseButtonIcon="{TemplateBinding o:OvoTitleBar.CloseButtonIcon}"
+                                                    ControlButtonMargin="{TemplateBinding o:OvoTitleBar.ControlButtonMargin}"
+                                                    ExitFullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.ExitFullScreenButtonIcon}"
+                                                    FullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.FullScreenButtonIcon}"
+                                                    IsCloseButtonVisible="{TemplateBinding o:OvoTitleBar.IsCloseButtonVisible}"
+                                                    IsFullScreenButtonVisible="{TemplateBinding o:OvoTitleBar.IsFullScreenButtonVisible}"
+                                                    IsMaximizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMaximizeButtonVisible}"
+                                                    IsMinimizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMinimizeButtonVisible}"
+                                                    IsPinButtonVisible="{TemplateBinding o:OvoTitleBar.IsPinButtonVisible}"
+                                                    LeadingContent="{TemplateBinding o:OvoTitleBar.LeadingContent}"
+                                                    MaximizeButtonIcon="{TemplateBinding o:OvoTitleBar.MaximizeButtonIcon}"
+                                                    MinimizeButtonIcon="{TemplateBinding o:OvoTitleBar.MinimizeButtonIcon}"
+                                                    Name="PART_TitleBar"
+                                                    PinButtonIcon="{TemplateBinding o:OvoTitleBar.PinButtonIcon}"
+                                                    RestoreButtonIcon="{TemplateBinding o:OvoTitleBar.RestoreButtonIcon}"
+                                                    TitleBarHeight="{TemplateBinding o:OvoTitleBar.TitleBarHeight}"
+                                                    TitleBarMargin="{TemplateBinding o:OvoTitleBar.TitleBarMargin}"
+                                                    TitleBarPadding="{TemplateBinding o:OvoTitleBar.TitleBarPadding}"
+                                                    TrailingContent="{TemplateBinding o:OvoTitleBar.TrailingContent}"
+                                                    UnpinButtonIcon="{TemplateBinding o:OvoTitleBar.UnpinButtonIcon}" />
+                                            </LayoutTransformControl>
                                             <ContentPresenter
                                                 Content="{Binding $parent[o:OvoWindow].Content}"
                                                 ContentTemplate="{TemplateBinding ContentTemplate}"

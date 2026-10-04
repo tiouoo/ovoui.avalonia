@@ -15,7 +15,7 @@
         Margin="{Binding #RootControl.TitleBarMargin}"
         Padding="{Binding #RootControl.TitleBarPadding}"
         VerticalAlignment="Top">
-        <Panel Background="Transparent" cdp:WindowDecorationProperties.ElementRole="TitleBar">
+        <Panel Background="Transparent" Name="TitleBarPanel" cdp:WindowDecorationProperties.ElementRole="TitleBar">
             <Border
                 Background="Transparent"
                 BorderThickness="0"
@@ -26,6 +26,7 @@
             <DockPanel
                 Background="Transparent"
                 LastChildFill="True"
+                Name="TitleBarDockPanel"
                 cdp:WindowDecorationProperties.ElementRole="TitleBar">
                 <StackPanel
                     DockPanel.Dock="Right"
@@ -122,6 +123,7 @@
                     ColumnDefinitions="Auto,*"
                     ColumnSpacing="10"
                     KeyboardNavigation.TabNavigation="Local"
+                    Name="TitleBarContentGrid"
                     TabIndex="1"
                     VerticalAlignment="Center"
                     cdp:WindowDecorationProperties.ElementRole="TitleBar">

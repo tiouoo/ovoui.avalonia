@@ -45,8 +45,13 @@ public partial class OvoTitleBar : UserControl
         if (!e.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
         if (TopLevel.GetTopLevel(this) is not Window window) return;
 
-        if (e.ClickCount == 2 && IsMaximizeButtonVisible && window.CanResize &&
-            window.WindowState != WindowState.FullScreen)
+        if (window.WindowState == WindowState.FullScreen)
+        {
+            e.Handled = true;
+            return;
+        }
+
+        if (e.ClickCount == 2 && IsMaximizeButtonVisible && window.CanResize)
             ToggleMaximize(window);
         else
             window.BeginMoveDrag(e);
@@ -71,7 +76,11 @@ public partial class OvoTitleBar : UserControl
     private void FullScreenButton_Click(object? sender, RoutedEventArgs e)
     {
         if (TopLevel.GetTopLevel(this) is not Window window) return;
-        if (window is OvoWindow ovoWindow && ovoWindow.OnFullScreen()) return;
+        if (window is OvoWindow ovoWindow)
+        {
+            if (!ovoWindow.OnFullScreen()) ovoWindow.ToggleFullScreen();
+            return;
+        }
 
         if (window.WindowState == WindowState.FullScreen)
         {
@@ -83,6 +92,18 @@ public partial class OvoTitleBar : UserControl
             ? WindowState.Maximized
             : WindowState.Normal;
         window.WindowState = WindowState.FullScreen;
+    }
+
+    internal void SetFullScreenMode(bool isFullScreen)
+    {
+        var role = isFullScreen
+            ? WindowDecorationsElementRole.User
+            : WindowDecorationsElementRole.TitleBar;
+
+        Avalonia.Controls.Chrome.WindowDecorationProperties.SetElementRole(TitleBarPanel, role);
+        Avalonia.Controls.Chrome.WindowDecorationProperties.SetElementRole(MoveDragArea, role);
+        Avalonia.Controls.Chrome.WindowDecorationProperties.SetElementRole(TitleBarDockPanel, role);
+        Avalonia.Controls.Chrome.WindowDecorationProperties.SetElementRole(TitleBarContentGrid, role);
     }
 
     private void PinButton_Click(object? sender, RoutedEventArgs e)

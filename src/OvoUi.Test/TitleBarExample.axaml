@@ -1,23 +1,27 @@
 <ovo:OvoWindow
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
-    x:Class="OvoUi.Test.TitleBarExample"
+    Height="450"
+    IsFullScreenTransitionAnimationEnabled="False"
+    IsTitleBarVisible="False"
     Title="Custom Title Bar"
     Width="800"
-    Height="450"
-    IsTitleBarVisible="False"
+    ovo:OvoTitleBar.IsMinimizeButtonVisible="False"
     ovo:OvoTitleBar.TitleBarHeight="48"
-    ovo:OvoTitleBar.IsMinimizeButtonVisible="False">
+    x:Class="OvoUi.Test.TitleBarExample"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid RowDefinitions="*,Auto">
-        <TextBox Margin="16" AcceptsReturn="True" />
+        <TextBox AcceptsReturn="True" Margin="16" />
         <ovo:OvoTitleBar
-            Grid.Row="1"
-            TitleBarHeight="40"
             ControlButtonMargin="0,0,8,0"
-            IsMinimizeButtonVisible="True">
+            Grid.Row="1"
+            IsMinimizeButtonVisible="True"
+            TitleBarHeight="40">
             <ovo:OvoTitleBar.LeadingContent>
-                <TextBlock Margin="12,0" VerticalAlignment="Center" Text="Custom Title Bar" />
+                <TextBlock
+                    Margin="12,0"
+                    Text="Custom Title Bar"
+                    VerticalAlignment="Center" />
             </ovo:OvoTitleBar.LeadingContent>
         </ovo:OvoTitleBar>
     </Grid>
