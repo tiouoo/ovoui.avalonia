@@ -12,6 +12,8 @@
     <Border
         Background="Transparent"
         Height="{Binding #RootControl.TitleBarHeight}"
+        Margin="{Binding #RootControl.TitleBarMargin}"
+        Padding="{Binding #RootControl.TitleBarPadding}"
         VerticalAlignment="Top">
         <Panel Background="Transparent" cdp:WindowDecorationProperties.ElementRole="TitleBar">
             <Border
@@ -24,7 +26,6 @@
             <DockPanel
                 Background="Transparent"
                 LastChildFill="True"
-                Margin="12,9"
                 cdp:WindowDecorationProperties.ElementRole="TitleBar">
                 <StackPanel
                     DockPanel.Dock="Right"
@@ -126,6 +127,7 @@
                     <TextBlock
                         IsHitTestVisible="False"
                         IsVisible="{Binding #RootControl.LeadingContent, Converter={x:Static ObjectConverters.IsNull}}"
+                        Margin="15,0,0,0"
                         Text="{Binding Title, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                         TextTrimming="CharacterEllipsis"
                         VerticalAlignment="Center" />
@@ -134,7 +136,7 @@
                         IsVisible="{Binding #RootControl.LeadingContent, Converter={x:Static ObjectConverters.IsNotNull}}"
                         VerticalContentAlignment="Center"
                         cdp:WindowDecorationProperties.ElementRole="User" />
-                    <Border Grid.Column="1" Background="Transparent" />
+                    <Border Background="Transparent" Grid.Column="1" />
                 </Grid>
             </DockPanel>
         </Panel>
