@@ -13,16 +13,8 @@
         <Setter Property="FrameBorderBrush" Value="{DynamicResource PopupBorderBrush}" />
         <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
         <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
-        <Setter Property="WindowDecorations">
-            <OnPlatform>
-                <On Options="Default">
-                    <WindowDecorations>Full</WindowDecorations>
-                </On>
-                <On Options="Linux">
-                    <WindowDecorations>None</WindowDecorations>
-                </On>
-            </OnPlatform>
-        </Setter>
+        <Setter Property="WindowDecorationsTheme" Value="{DynamicResource OvoWindowDecorationsTheme}" />
+        <Setter Property="WindowDecorations" Value="{x:Static WindowDecorations.Full}" />
         <Setter Property="IsManagedResizerVisible">
             <OnPlatform>
                 <On Options="Default">
@@ -80,18 +72,18 @@
                                     <Border Name="PART_Root">
                                         <DockPanel>
                                             <o:OvoTitleBar
-                                                CloseIcon="{Binding $parent[o:OvoWindow].CloseIcon}"
-                                                ControlBtnMargin="{Binding $parent[o:OvoWindow].TitleBarControlBtnMargin}"
+                                                CloseIcon="{TemplateBinding CloseIcon}"
+                                                ControlBtnMargin="{TemplateBinding TitleBarControlBtnMargin}"
                                                 DockPanel.Dock="Top"
-                                                IsCloseBtnShow="{Binding $parent[o:OvoWindow].IsCloseBtnShow}"
-                                                IsMaxBtnShow="{Binding $parent[o:OvoWindow].IsMaxBtnShow}"
-                                                IsMinBtnShow="{Binding $parent[o:OvoWindow].IsMinBtnShow}"
-                                                LeftContent="{Binding $parent[o:OvoWindow].TitleBarLeftContent}"
-                                                MaximizeIcon="{Binding $parent[o:OvoWindow].MaximizeIcon}"
-                                                MinimizeIcon="{Binding $parent[o:OvoWindow].MinimizeIcon}"
+                                                IsCloseBtnShow="{TemplateBinding IsCloseBtnShow}"
+                                                IsMaxBtnShow="{TemplateBinding IsMaxBtnShow}"
+                                                IsMinBtnShow="{TemplateBinding IsMinBtnShow}"
+                                                LeftContent="{TemplateBinding TitleBarLeftContent}"
+                                                MaximizeIcon="{TemplateBinding MaximizeIcon}"
+                                                MinimizeIcon="{TemplateBinding MinimizeIcon}"
                                                 Name="PART_TitleBar"
-                                                RightContent="{Binding $parent[o:OvoWindow].TitleBarRightContent}"
-                                                TitleBarHeight="{Binding $parent[o:OvoWindow].TitleBarHeight}" />
+                                                RightContent="{TemplateBinding TitleBarRightContent}"
+                                                TitleBarHeight="{TemplateBinding TitleBarHeight}" />
                                             <ContentPresenter
                                                 Content="{Binding $parent[o:OvoWindow].Content}"
                                                 ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -122,5 +114,21 @@
                 <Setter Property="Background" Value="{DynamicResource TitleBarBackgroundColor}" />
             </Style>
         </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="WindowDrawnDecorations" x:Key="OvoWindowDecorationsTheme">
+        <Setter Property="DefaultTitleBarHeight" Value="36" />
+        <Setter Property="Template">
+            <WindowDrawnDecorationsTemplate>
+                <WindowDrawnDecorationsContent>
+                    <WindowDrawnDecorationsContent.Underlay>
+                        <Panel />
+                    </WindowDrawnDecorationsContent.Underlay>
+                    <WindowDrawnDecorationsContent.Overlay>
+                        <Panel />
+                    </WindowDrawnDecorationsContent.Overlay>
+                </WindowDrawnDecorationsContent>
+            </WindowDrawnDecorationsTemplate>
+        </Setter>
     </ControlTheme>
 </ResourceDictionary>

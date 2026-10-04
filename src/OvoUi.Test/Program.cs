@@ -18,6 +18,7 @@ class Program
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
             .UsePlatformDetect()
+            // .WithDeveloperTools()
 #if DEBUG
             .UseHotReload()
 #endif

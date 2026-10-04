@@ -139,7 +139,7 @@ public class OvoWindow : Window
     }
 
     public static readonly StyledProperty<bool> IsManagedResizerVisibleProperty =
-        AvaloniaProperty.Register<CustomDialogWindow, bool>(
+        AvaloniaProperty.Register<OvoWindow, bool>(
             nameof(IsManagedResizerVisible));
 
     public static readonly StyledProperty<Thickness> TitleBarControlBtnMarginProperty =

@@ -10,6 +10,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Styles>
+        <Style Selector="Button.window-caption">
+            <Setter Property="Width" Value="25" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="7" />
+            <Setter Property="Cursor" Value="Arrow" />
+            <Setter Property="ContentTemplate">
+                <DataTemplate x:DataType="Geometry">
+                    <PathIcon Width="10" Height="10" Data="{Binding}" />
+                </DataTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="Button.window-caption:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+        </Style>
+        <Style Selector="Button.window-caption.close:pointerover">
+            <Setter Property="Background" Value="Red" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+    </UserControl.Styles>
     <Border
         Background="Transparent"
         Height="{Binding #RootControl.TitleBarHeight}"
@@ -39,18 +60,20 @@
                     Orientation="Horizontal"
                     TabIndex="3">
                     <Button
-                        Classes="title-bar-button"
+                        Classes="window-caption"
+                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.MinimizeIcon}"
                         HorizontalAlignment="Right"
                         IsVisible="{Binding #RootControl.IsMinBtnShow}"
                         Name="MinimizeButton"
-                        Padding="0,9,0,0"
+                        Padding="0"
                         ToolTip.ShowDelay="900"
                         ToolTip.Tip="{DynamicResource Lang.Minimum}"
                         VerticalAlignment="Center"
                         cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
                     <Button
-                        Classes="title-bar-button"
+                        Classes="window-caption"
+                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.MaximizeIcon}"
                         HorizontalAlignment="Right"
                         Name="MaximizeButton"
@@ -66,7 +89,8 @@
                         </Button.IsVisible>
                     </Button>
                     <Button
-                        Classes="title-bar-button"
+                        Classes="window-caption"
+                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.RestoreIcon}"
                         HorizontalAlignment="Right"
                         Name="RestoreButton"
@@ -82,7 +106,8 @@
                         </Button.IsVisible>
                     </Button>
                     <Button
-                        Classes="title-bar-button close-button"
+                        Classes="window-caption close"
+                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.CloseIcon}"
                         HorizontalAlignment="Right"
                         IsVisible="{Binding #RootControl.IsCloseBtnShow}"

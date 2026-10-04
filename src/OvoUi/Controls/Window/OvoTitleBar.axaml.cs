@@ -13,7 +13,7 @@ public partial class OvoTitleBar : UserControl
     private DateTime? _lastClickTime;
 
     public static readonly StyledProperty<Thickness> ControlBtnMarginProperty =
-        AvaloniaProperty.Register<OvoWindow, Thickness>(nameof(ControlBtnMargin), new Thickness(0,0,5,0));
+        AvaloniaProperty.Register<OvoTitleBar, Thickness>(nameof(ControlBtnMargin), new Thickness(0, 0, 5, 0));
 
     public Thickness ControlBtnMargin
     {
@@ -113,7 +113,7 @@ public partial class OvoTitleBar : UserControl
     }
 
     public static readonly StyledProperty<double> TitleBarHeightProperty =
-        AvaloniaProperty.Register<OvoWindow, double>(nameof(TitleBarHeight), 36);
+        AvaloniaProperty.Register<OvoTitleBar, double>(nameof(TitleBarHeight), 36);
 
     public double TitleBarHeight
     {
