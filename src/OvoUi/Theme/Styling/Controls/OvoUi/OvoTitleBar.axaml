@@ -1,8 +1,114 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="Button" x:Key="OvoCaptionButton">
-        <Setter Property="Width" Value="25" />
-        <Setter Property="Height" Value="25" />
-        <Setter Property="CornerRadius" Value="7" />
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <ControlTheme TargetType="o:OvoTitleBar" x:Key="{x:Type o:OvoTitleBar}">
+        <Setter Property="Background" Value="{DynamicResource TitleBarBackgroundColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:OvoTitleBar">
+                <Border Background="{TemplateBinding Background}" Height="{TemplateBinding TitleBarHeight}">
+                    <Grid Background="Transparent" WindowDecorationProperties.ElementRole="TitleBar">
+                        <Panel
+                            Background="Transparent"
+                            Name="PART_MoveDragArea"
+                            WindowDecorationProperties.ElementRole="User" />
+                        <ContentControl
+                            Content="{TemplateBinding LeftContent}"
+                            HorizontalAlignment="Left"
+                            WindowDecorationProperties.ElementRole="DecorationsElement" />
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <ContentControl Content="{TemplateBinding RightContent}" WindowDecorationProperties.ElementRole="DecorationsElement" />
+                            <StackPanel Margin="{TemplateBinding ControlBtnMargin}" Orientation="Horizontal">
+                                <Button
+                                    Classes="caption"
+                                    IsVisible="{TemplateBinding IsMinBtnShow}"
+                                    Name="PART_MinimizeButton"
+                                    Theme="{StaticResource BasicButtonTheme}"
+                                    ToolTip.Tip="{DynamicResource Lang.Minimum}"
+                                    WindowDecorationProperties.ElementRole="DecorationsElement">
+                                    <Path
+                                        Data="{TemplateBinding MinimizeIcon}"
+                                        Fill="{TemplateBinding Foreground}"
+                                        Height="10"
+                                        Stretch="Uniform"
+                                        Width="10" />
+                                </Button>
+                                <Panel IsVisible="{TemplateBinding IsMaxBtnShow}">
+                                    <Button
+                                        Classes="caption"
+                                        Name="PART_MaximizeButton"
+                                        Theme="{StaticResource BasicButtonTheme}"
+                                        ToolTip.Tip="{DynamicResource Lang.Maximum}"
+                                        WindowDecorationProperties.ElementRole="MaximizeButton">
+                                        <Path
+                                            Data="{TemplateBinding MaximizeIcon}"
+                                            Fill="{TemplateBinding Foreground}"
+                                            Height="10"
+                                            Stretch="Uniform"
+                                            Width="10" />
+                                    </Button>
+                                    <Button
+                                        Classes="caption"
+                                        Name="PART_RestoreButton"
+                                        Theme="{StaticResource BasicButtonTheme}"
+                                        ToolTip.Tip="{DynamicResource Lang.Restore}"
+                                        WindowDecorationProperties.ElementRole="MaximizeButton">
+                                        <Path
+                                            Data="{TemplateBinding RestoreIcon}"
+                                            Fill="{TemplateBinding Foreground}"
+                                            Height="10"
+                                            Stretch="Uniform"
+                                            Width="10" />
+                                    </Button>
+                                </Panel>
+                                <Button
+                                    Classes="caption"
+                                    IsVisible="{TemplateBinding IsCloseBtnShow}"
+                                    Name="PART_CloseButton"
+                                    Theme="{StaticResource BasicButtonTheme}"
+                                    ToolTip.Tip="{DynamicResource Lang.Close}"
+                                    WindowDecorationProperties.ElementRole="DecorationsElement">
+                                    <Path
+                                        Data="{TemplateBinding CloseIcon}"
+                                        Fill="{TemplateBinding Foreground}"
+                                        Height="10"
+                                        Name="PART_CloseIcon"
+                                        Stretch="Uniform"
+                                        Width="10" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Button.caption">
+            <Setter Property="Width" Value="25" />
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="7" />
+            <Setter Property="Cursor" Value="Arrow" />
+            <Setter Property="ToolTip.ShowDelay" Value="900" />
+        </Style>
+        <Style Selector="^ /template/ Button.caption:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+        </Style>
+        <Style Selector="^ /template/ Button#PART_CloseButton:pointerover">
+            <Setter Property="Background" Value="Red" />
+        </Style>
+        <Style Selector="^ /template/ Button#PART_CloseButton:pointerover Path#PART_CloseIcon">
+            <Setter Property="Fill" Value="White" />
+        </Style>
+        <Style Selector="^ /template/ Button#PART_RestoreButton">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^:maximized /template/ Button#PART_MaximizeButton">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^:maximized /template/ Button#PART_RestoreButton">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
     </ControlTheme>
 </ResourceDictionary>

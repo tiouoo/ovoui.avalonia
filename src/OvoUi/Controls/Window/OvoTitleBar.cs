@@ -1,16 +1,23 @@
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 
 namespace OvoUi.Controls;
 
-public partial class OvoTitleBar : UserControl
+public class OvoTitleBar : TemplatedControl
 {
     private DateTime? _lastClickTime;
+    private Button? _closeButton;
+    private Button? _maximizeButton;
+    private Button? _restoreButton;
+    private Button? _minimizeButton;
+    private Panel? _moveDragArea;
+    private Window? _window;
+
+    protected override Type StyleKeyOverride => typeof(OvoTitleBar);
 
     public static readonly StyledProperty<Thickness> ControlBtnMarginProperty =
         AvaloniaProperty.Register<OvoTitleBar, Thickness>(nameof(ControlBtnMargin), new Thickness(0, 0, 5, 0));
@@ -21,14 +28,51 @@ public partial class OvoTitleBar : UserControl
         set => SetValue(ControlBtnMarginProperty, value);
     }
 
-    public OvoTitleBar()
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
-        InitializeComponent();
-        CloseButton.Click += CloseButton_Click;
-        MaximizeButton.Click += MaximizeButton_Click;
-        RestoreButton.Click += MaximizeButton_Click;
-        MinimizeButton.Click += MinimizeButton_Click;
-        MoveDragArea.PointerPressed += MoveDragArea_PointerPressed;
+        if (_closeButton is not null) _closeButton.Click -= CloseButton_Click;
+        if (_maximizeButton is not null) _maximizeButton.Click -= MaximizeButton_Click;
+        if (_restoreButton is not null) _restoreButton.Click -= MaximizeButton_Click;
+        if (_minimizeButton is not null) _minimizeButton.Click -= MinimizeButton_Click;
+        if (_moveDragArea is not null) _moveDragArea.PointerPressed -= MoveDragArea_PointerPressed;
+
+        base.OnApplyTemplate(e);
+        _closeButton = e.NameScope.Find<Button>("PART_CloseButton");
+        _maximizeButton = e.NameScope.Find<Button>("PART_MaximizeButton");
+        _restoreButton = e.NameScope.Find<Button>("PART_RestoreButton");
+        _minimizeButton = e.NameScope.Find<Button>("PART_MinimizeButton");
+        _moveDragArea = e.NameScope.Find<Panel>("PART_MoveDragArea");
+
+        if (_closeButton is not null) _closeButton.Click += CloseButton_Click;
+        if (_maximizeButton is not null) _maximizeButton.Click += MaximizeButton_Click;
+        if (_restoreButton is not null) _restoreButton.Click += MaximizeButton_Click;
+        if (_minimizeButton is not null) _minimizeButton.Click += MinimizeButton_Click;
+        if (_moveDragArea is not null) _moveDragArea.PointerPressed += MoveDragArea_PointerPressed;
+    }
+
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+        _window = TopLevel.GetTopLevel(this) as Window;
+        if (_window is not null) _window.PropertyChanged += Window_PropertyChanged;
+        UpdateWindowState();
+    }
+
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        if (_window is not null) _window.PropertyChanged -= Window_PropertyChanged;
+        _window = null;
+        base.OnDetachedFromVisualTree(e);
+    }
+
+    private void Window_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        if (e.Property == Window.WindowStateProperty) UpdateWindowState();
+    }
+
+    private void UpdateWindowState()
+    {
+        PseudoClasses.Set(":maximized", _window?.WindowState == WindowState.Maximized);
     }
 
     private void MoveDragArea_PointerPressed(object? sender, PointerPressedEventArgs e)
@@ -85,11 +129,6 @@ public partial class OvoTitleBar : UserControl
 
         var handled = window.OnClose();
         if (handled) return;
-
-        CloseButton.Click -= CloseButton_Click;
-        MaximizeButton.Click -= MaximizeButton_Click;
-        MinimizeButton.Click -= MinimizeButton_Click;
-        MoveDragArea.PointerPressed -= MoveDragArea_PointerPressed;
 
         window.Close();
     }
