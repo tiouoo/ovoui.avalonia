@@ -73,16 +73,18 @@
                                         <DockPanel>
                                             <o:OvoTitleBar
                                                 CloseIcon="{TemplateBinding CloseIcon}"
-                                                ControlBtnMargin="{TemplateBinding TitleBarControlBtnMargin}"
+                                                ControlBtnMargin="{TemplateBinding o:OvoTitleBar.ControlBtnMargin}"
                                                 DockPanel.Dock="Top"
+                                                IsVisible="{TemplateBinding IsTitleBarVisible}"
                                                 IsCloseBtnShow="{TemplateBinding IsCloseBtnShow}"
                                                 IsMaxBtnShow="{TemplateBinding IsMaxBtnShow}"
                                                 IsMinBtnShow="{TemplateBinding IsMinBtnShow}"
-                                                LeftContent="{TemplateBinding TitleBarLeftContent}"
+                                                LeftContent="{TemplateBinding o:OvoTitleBar.LeftContent}"
                                                 MaximizeIcon="{TemplateBinding MaximizeIcon}"
                                                 MinimizeIcon="{TemplateBinding MinimizeIcon}"
                                                 Name="PART_TitleBar"
-                                                RightContent="{TemplateBinding TitleBarRightContent}"
+                                                RightContent="{TemplateBinding o:OvoTitleBar.RightContent}"
+                                                RestoreIcon="{TemplateBinding RestoreIcon}"
                                                 TitleBarHeight="{TemplateBinding TitleBarHeight}" />
                                             <ContentPresenter
                                                 Content="{Binding $parent[o:OvoWindow].Content}"

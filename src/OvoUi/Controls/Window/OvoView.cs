@@ -5,6 +5,7 @@ namespace OvoUi.Controls;
 
 public class OvoView : ContentControl
 {
+    private OverlayDialogHost? _dialogHost;
     public const string PART_DialogHost = "PART_DialogHost";
     protected override Type StyleKeyOverride => typeof(OvoView);
     
@@ -13,7 +14,8 @@ public class OvoView : ContentControl
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
-        var host = e.NameScope.Find<OverlayDialogHost>(PART_DialogHost);
-        if (host is not null) LogicalChildren.Add(host);
+        if (_dialogHost is not null) LogicalChildren.Remove(_dialogHost);
+        _dialogHost = e.NameScope.Find<OverlayDialogHost>(PART_DialogHost);
+        if (_dialogHost is not null) LogicalChildren.Add(_dialogHost);
     }
 }
