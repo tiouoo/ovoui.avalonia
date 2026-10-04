@@ -191,7 +191,7 @@ public class OvoTitleBar : TemplatedControl
 
     public static readonly StyledProperty<Geometry> MinimizeIconProperty =
         AvaloniaProperty.Register<OvoTitleBar, Geometry>(nameof(MinimizeIcon),
-            PathGeometry.Parse("M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"));
+            StreamGeometry.Parse("M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"));
 
     public Geometry MinimizeIcon
     {
@@ -201,7 +201,7 @@ public class OvoTitleBar : TemplatedControl
 
     public static readonly StyledProperty<Geometry> MaximizeIconProperty =
         AvaloniaProperty.Register<OvoTitleBar, Geometry>(nameof(MaximizeIcon),
-            PathGeometry.Parse("M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM6 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"));
+            StreamGeometry.Parse("M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM6 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"));
 
     public Geometry MaximizeIcon
     {
@@ -211,7 +211,7 @@ public class OvoTitleBar : TemplatedControl
 
     public static readonly StyledProperty<Geometry> RestoreIconProperty =
         AvaloniaProperty.Register<OvoTitleBar, Geometry>(nameof(RestoreIcon),
-            PathGeometry.Parse(
+            StreamGeometry.Parse(
                 "M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM6 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"));
 
     public Geometry RestoreIcon
@@ -222,7 +222,7 @@ public class OvoTitleBar : TemplatedControl
 
     public static readonly StyledProperty<Geometry> CloseIconProperty =
         AvaloniaProperty.Register<OvoTitleBar, Geometry>(nameof(CloseIcon),
-            PathGeometry.Parse("M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"));
+            StreamGeometry.Parse("M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"));
 
     public Geometry CloseIcon
     {
