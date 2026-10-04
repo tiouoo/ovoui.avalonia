@@ -230,7 +230,6 @@
     </ControlTheme>
 
     <ControlTheme TargetType="RadioButton" x:Key="ColorViewRadioButton">
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontWeight" Value="{DynamicResource ColorViewRadioButtonFontWeight}" />
         <Setter Property="Padding" Value="{DynamicResource ColorViewRadioButtonPadding}" />
         <Setter Property="Foreground" Value="{DynamicResource ColorViewRadioButtonForeground}" />

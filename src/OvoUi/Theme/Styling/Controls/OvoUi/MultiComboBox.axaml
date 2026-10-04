@@ -147,6 +147,7 @@
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
+
         <Style Selector="^ /template/ Button#DropDownGlyph">
             <Setter Property="Transitions">
                 <Transitions>
@@ -156,6 +157,7 @@
         </Style>
         <Style Selector="^:dropdownopen /template/ Button#DropDownGlyph">
             <Setter Property="RenderTransform" Value="translate(0px, 0px) rotate(180deg)" />
+
         </Style>
         <Style Selector="^:pressed /template/ Button#DropDownGlyph">
             <Setter Property="RenderTransform" Value="translate(0px, 2px) rotate(0deg)" />
@@ -177,12 +179,8 @@
         </Style>
 
         <!--  Pressed State  -->
-        <Style Selector="^:pressed">
+        <Style Selector="^:pressed,^:dropdownopen,^:focus">
             <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
-        </Style>
-
-        <Style Selector="^:focus">
-            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
         </Style>
 
         <!--  Disabled State  -->
@@ -219,7 +217,6 @@
         <Setter Property="Padding" Value="12 8" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Top" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="32" />

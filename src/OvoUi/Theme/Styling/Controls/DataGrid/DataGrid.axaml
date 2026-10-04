@@ -530,7 +530,6 @@
     </ControlTheme>
 
     <ControlTheme TargetType="ToggleButton" x:Key="DataGridRowGroupExpanderButtonTheme">
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ToggleButton">
                 <PathIcon

@@ -166,7 +166,6 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
