@@ -141,7 +141,7 @@
                                         <ItemsPresenter
                                             HorizontalAlignment="Stretch"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
-                                            Margin="8,4"
+                                            Margin="0,-2"
                                             Name="PART_ItemsPresenter" />
                                     </ScrollViewer>
                                 </DockPanel>

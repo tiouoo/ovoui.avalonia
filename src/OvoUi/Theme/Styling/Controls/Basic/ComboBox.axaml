@@ -161,7 +161,7 @@
                                         HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                         IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
                                         VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                        <Border Margin="4">
+                                        <Border Margin="0,-2">
                                             <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                                         </Border>
                                     </ScrollViewer>
@@ -473,7 +473,7 @@
                                 CornerRadius="{DynamicResource OvoCornerRadius}"
                                 Padding="2">
                                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                    <Border Margin="4">
+                                    <Border Margin="0,-2">
                                         <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                                     </Border>
                                 </ScrollViewer>

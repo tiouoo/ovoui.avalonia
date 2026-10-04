@@ -54,7 +54,7 @@
                                 <ListBox
                                     Foreground="{TemplateBinding Foreground}"
                                     ItemTemplate="{TemplateBinding ItemTemplate}"
-                                    Margin="6,0"
+                                    Margin="0,-2"
                                     Name="PART_SelectingItemsControl"
                                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                     ScrollViewer.IsScrollChainingEnabled="False"

@@ -70,7 +70,7 @@
                                     <ListBox
                                         Foreground="{TemplateBinding Foreground}"
                                         ItemTemplate="{TemplateBinding ItemTemplate}"
-                                        Margin="6,4"
+                                        Margin="0,-2"
                                         Name="PART_SelectingItemsControl"
                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                         ScrollViewer.VerticalScrollBarVisibility="Disabled" />

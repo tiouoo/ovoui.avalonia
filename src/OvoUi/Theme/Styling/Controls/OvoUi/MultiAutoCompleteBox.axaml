@@ -36,7 +36,7 @@
                                 VerticalAlignment="Center">
                                 <ovo:MultiComboBoxSelectedItemList.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ovo:WrapPanelWithTrailingItem>
+                                        <ovo:WrapPanelWithTrailingItem Margin="0,4,0,2">
                                             <ovo:WrapPanelWithTrailingItem.TrailingItem>
                                                 <TextBox
                                                     MinWidth="24"
@@ -79,7 +79,7 @@
                                 <ListBox
                                     Foreground="{TemplateBinding Foreground}"
                                     ItemTemplate="{TemplateBinding ItemTemplate}"
-                                    Margin="8,4"
+                                    Margin="0,-2"
                                     Name="PART_SelectingItemsControl"
                                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                     ScrollViewer.IsScrollChainingEnabled="False"

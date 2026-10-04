@@ -58,6 +58,8 @@ public class WrapPanelWithTrailingItem : Panel
         double currentLineX = 0;
         double currentLineHeight = 0;
         double totalHeight = 0;
+        double desiredWidth = 0;
+        bool isWidthUnbounded = double.IsPositiveInfinity(availableSize.Width);
 
         var children = Children;
         foreach (var child in children)
@@ -76,6 +78,7 @@ public class WrapPanelWithTrailingItem : Panel
             // Notice: last line height accumulation only happens when restarting a new line, so it needs to finally add one more time outside iteration. 
             else
             {
+                desiredWidth = Math.Max(desiredWidth, currentLineX);
                 currentLineX = child.DesiredSize.Width;
                 totalHeight += currentLineHeight;
                 currentLineHeight = child.DesiredSize.Height;
@@ -83,22 +86,31 @@ public class WrapPanelWithTrailingItem : Panel
         }
 
         var last = TrailingItem;
-        if (last is null) return new Size(availableSize.Width, totalHeight);
+        if (last is null)
+        {
+            desiredWidth = Math.Max(desiredWidth, currentLineX);
+            return new Size(isWidthUnbounded ? desiredWidth : availableSize.Width, totalHeight + currentLineHeight);
+        }
+
         last.Measure(availableSize);
         var lastDeltaX = availableSize.Width - currentLineX;
         // If width is not enough, add a new line, and recalculate total height
         if (lastDeltaX < TrailingWrapWidth)
         {
+            desiredWidth = Math.Max(desiredWidth, currentLineX);
+            currentLineX = last.DesiredSize.Width;
             totalHeight += currentLineHeight;
             totalHeight += last.DesiredSize.Height;
         }
         else
         {
             currentLineHeight = Math.Max(currentLineHeight, last.DesiredSize.Height);
+            currentLineX += last.DesiredSize.Width;
             totalHeight += currentLineHeight;
         }
 
-        return new Size(availableSize.Width, totalHeight);
+        desiredWidth = Math.Max(desiredWidth, currentLineX);
+        return new Size(isWidthUnbounded ? desiredWidth : availableSize.Width, totalHeight);
     }
 
     protected override Size ArrangeOverride(Size finalSize)
