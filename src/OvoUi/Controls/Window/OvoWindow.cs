@@ -108,7 +108,7 @@ public class OvoWindow : Window
     private void UpdateWindowFrame()
     {
         if (RootBorder is null) return;
-        RootBorder.Margin = new Thickness(WindowState == WindowState.Maximized ? 10 : 0);
+        // RootBorder.Margin = new Thickness(WindowState == WindowState.Maximized ? 10 : 0);
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) return;
         RootBorder.CornerRadius = new CornerRadius(WindowState == WindowState.Maximized ? 0 : 10);
         RootBorder.BorderThickness = new Thickness(WindowState == WindowState.Maximized ? 0 : 1);
