@@ -1,0 +1,167 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20">
+            <ovo:PathPicker
+                ButtonContent="Hello World"
+                Title="Hello World"
+                Width="300" />
+        </StackPanel>
+    </Design.PreviewWith>
+    <ControlTheme TargetType="ovo:PathPicker" x:Key="{x:Type ovo:PathPicker}">
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel>
+                    <Button
+                        Content="{TemplateBinding ButtonContent}"
+                        DockPanel.Dock="Right"
+                        HorizontalAlignment="Stretch"
+                        Name="{x:Static ovo:PathPicker.PART_Button}"
+                        VerticalAlignment="Stretch" />
+                    <TextBox
+                        AcceptsReturn="{TemplateBinding AllowMultiple}"
+                        DockPanel.Dock="Left"
+                        Name="PART_TextBox"
+                        PlaceholderText="{TemplateBinding PlaceholderText}"
+                        Text="{TemplateBinding SelectedPathsText,
+                                               Mode=TwoWay}"
+                        VerticalAlignment="Stretch" />
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Button#PART_Button:pressed">
+            <Setter Property="RenderTransform" Value="{x:Null}" />
+        </Style>
+
+        <Style Selector="^ /template/ Button#PART_Button">
+            <Setter Property="DockPanel.Dock" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={ovo:CornerRadiusMixerConverter Right}}" />
+            <Setter Property="Margin" Value="1 0 0 0" />
+        </Style>
+        <Style Selector="^ /template/ TextBox#PART_TextBox">
+            <Setter Property="DockPanel.Dock" Value="Left" />
+            <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={ovo:CornerRadiusMixerConverter Left}}" />
+        </Style>
+        <Style Selector="^.Top">
+            <Style Selector="^ /template/ Button#PART_Button">
+                <Setter Property="DockPanel.Dock" Value="Top" />
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={ovo:CornerRadiusMixerConverter Top}}" />
+                <Setter Property="Margin" Value="0 0 0 1" />
+            </Style>
+            <Style Selector="^ /template/ TextBox#PART_TextBox">
+                <Setter Property="DockPanel.Dock" Value="Bottom" />
+                <Setter Property="CornerRadius" Value="{TemplateBinding CornerRadius, Converter={ovo:CornerRadiusMixerConverter Bottom}}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+
+    <ControlTheme TargetType="ovo:PathPicker" x:Key="ButtonPathPicker">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Button
+                    Content="{TemplateBinding ButtonContent}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    Name="{x:Static ovo:PathPicker.PART_Button}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Button#PART_Button:pressed">
+            <Setter Property="RenderTransform" Value="{x:Null}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ovo:PathPicker" x:Key="ListPathPicker">
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Expander
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    Theme="{StaticResource INTERNAL_PathPickerExpander}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <Expander.Header>
+                        <Button
+                            Content="{TemplateBinding ButtonContent}"
+                            CornerRadius="{TemplateBinding CornerRadius,
+                                                           Converter={ovo:CornerRadiusMixerConverter Left}}"
+                            HorizontalAlignment="Stretch"
+                            Name="PART_Button" />
+                    </Expander.Header>
+                    <ListBox ItemsSource="{TemplateBinding SelectedPaths}" />
+                </Expander>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Button#PART_Button:pressed">
+            <Setter Property="RenderTransform" Value="{x:Null}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="Expander" x:Key="INTERNAL_PathPickerExpander">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+                        <ToggleButton
+                            Background="{DynamicResource ButtonDefaultBackground}"
+                            CornerRadius="{TemplateBinding CornerRadius,
+                                                           Converter={ovo:CornerRadiusMixerConverter Right}}"
+                            DockPanel.Dock="Right"
+                            IsChecked="{TemplateBinding IsExpanded,
+                                                        Mode=TwoWay}"
+                            Margin="1,0,0,0"
+                            Name="ExpanderHeader"
+                            Theme="{DynamicResource INTERNAL_PathPickerExpanderHeaderToggleButtonTheme}">
+                            <PathIcon
+                                Data="F1 M384,512z M0,0z M169.4,374.6C181.9,387.1,202.2,387.1,214.7,374.6L374.7,214.6C387.2,202.1 387.2,181.8 374.7,169.3 362.2,156.8 341.9,156.8 329.4,169.3L192,306.7 54.6,169.4C42.1,156.9 21.8,156.9 9.3,169.4 -3.2,181.9 -3.2,202.2 9.3,214.7L169.3,374.7z"
+                                Height="16"
+                                Name="PART_PathIcon"
+                                Width="16">
+                                <PathIcon.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition Duration="0.1" Property="RenderTransform" />
+                                    </Transitions>
+                                </PathIcon.Transitions>
+                            </PathIcon>
+                        </ToggleButton>
+                        <ContentPresenter Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                    </DockPanel>
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Foreground="{DynamicResource ForegroundColor}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        IsVisible="{TemplateBinding IsExpanded,
+                                                    Mode=TwoWay}"
+                        Margin="16,4,16,8"
+                        Name="PART_ContentPresenter"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:expanded /template/ PathIcon#PART_PathIcon">
+            <Setter Property="RenderTransform" Value="rotate(180deg)" />
+        </Style>
+
+    </ControlTheme>
+
+    <ControlTheme TargetType="ToggleButton" x:Key="INTERNAL_PathPickerExpanderHeaderToggleButtonTheme">
+        <Setter Property="Padding" Value="{DynamicResource ButtonDefaultPadding}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ToggleButton">
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    Content="{TemplateBinding Content}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}" />
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
