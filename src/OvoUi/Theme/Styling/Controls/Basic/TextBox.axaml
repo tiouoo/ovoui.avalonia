@@ -60,7 +60,7 @@
                                 HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
                                 IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
                                 VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
-                                <Panel VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Panel Margin="0,1,0,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                     <TextBlock
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         Name="PART_PlaceholderText"
