@@ -18,13 +18,12 @@
             Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:SelectionList ItemsSource="{Binding StringItems}">
-                <ovo:SelectionList.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ovo:SelectionList.ItemsPanel>
-            </ovo:SelectionList>
+            <ovo:TreeComboBox Width="300">
+                <ovo:TreeComboBoxItem Header="Hello">
+                    <ovo:TreeComboBoxItem Header="Hello World" />
+                </ovo:TreeComboBoxItem>
+                <ovo:TreeComboBoxItem Header="World" />
+            </ovo:TreeComboBox>
 
         </StackPanel>
         <StackPanel

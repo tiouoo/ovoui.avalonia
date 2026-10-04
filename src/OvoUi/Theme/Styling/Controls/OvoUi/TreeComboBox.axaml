@@ -1,0 +1,324 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="using:Avalonia.Controls.Converters"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Height="300">
+            <o:TreeComboBox
+                MaxHeight="200"
+                PlaceholderText="Please Select"
+                Width="300">
+                <o:TreeComboBoxItem Header="Option 1">
+                    <o:TreeComboBoxItem Header="Inner Option 1" />
+                    <o:TreeComboBoxItem Header="Inner Option 2" />
+                </o:TreeComboBoxItem>
+                <o:TreeComboBoxItem Header="Option 2" />
+            </o:TreeComboBox>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <converters:MarginMultiplierConverter
+        Indent="20"
+        Left="True"
+        x:Key="LeftMarginConverter" />
+
+    <ControlTheme TargetType="o:TreeComboBox" x:Key="{x:Type o:TreeComboBox}">
+        <Setter Property="Padding" Value="12,0,0,0" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="MaxDropDownHeight" Value="270" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:TreeComboBox">
+                <Grid ColumnDefinitions="Auto, *, Auto, Auto" MinWidth="{TemplateBinding MinHeight}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Name="Background" />
+                    <ContentPresenter
+                        Content="{TemplateBinding InnerLeftContent}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        Grid.Column="0"
+                        IsVisible="{TemplateBinding InnerLeftContent,
+                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                    <TextBlock
+                        Foreground="{TemplateBinding Foreground}"
+                        Grid.Column="1"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        IsVisible="{TemplateBinding SelectionBoxItem,
+                                                    Converter={x:Static ObjectConverters.IsNull}}"
+                        Margin="{TemplateBinding Padding}"
+                        Name="PlaceholderTextBlock"
+                        Opacity="0.3"
+                        Text="{TemplateBinding PlaceholderText}"
+                        TextTrimming="CharacterEllipsis"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <ContentPresenter
+                        Content="{TemplateBinding SelectionBoxItem}"
+                        Grid.Column="1"
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                        <ContentPresenter.ContentTemplate>
+                            <MultiBinding Converter="{x:Static o:SelectionBoxTemplateConverter.Instance}">
+                                <TemplateBinding Property="SelectedItemTemplate" />
+                                <TemplateBinding Property="ItemTemplate" />
+                            </MultiBinding>
+                        </ContentPresenter.ContentTemplate>
+                    </ContentPresenter>
+                    <ContentPresenter
+                        Content="{TemplateBinding InnerRightContent}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        Grid.Column="2"
+                        IsVisible="{TemplateBinding InnerRightContent,
+                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                    <Button
+                        Command="{Binding $parent[o:TreeComboBox].Clear}"
+                        Grid.Column="3"
+                        IsVisible="False"
+                        Name="PART_ClearButton"
+                        Theme="{DynamicResource InputStandardClearIcon}" />
+
+                    <Button
+                        Grid.Column="3"
+                        HorizontalAlignment="Right"
+                        IsHitTestVisible="True"
+                        Margin="8,0,8,0"
+                        Name="DropDownGlyph"
+                        RenderTransform="translate(0px, 0px) rotate(0deg)"
+                        RenderTransformOrigin="50%,50%"
+                        Theme="{DynamicResource InputDropDownIcon}"
+                        UseLayoutRounding="False"
+                        VerticalAlignment="Center" />
+
+                    <Popup
+                        ClipToBounds="False"
+                        Grid.Column="0"
+                        InheritsTransform="True"
+                        IsLightDismissEnabled="True"
+                        IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                        Name="{x:Static o:PartNames.PART_Popup}"
+                        PlacementTarget="Background"
+                        WindowManagerAddShadowHint="False">
+                        <Border
+                            Background="{DynamicResource PopupBackgroundBrush}"
+                            BorderBrush="{DynamicResource LineBrush}"
+                            BorderThickness="1"
+                            BoxShadow="{DynamicResource PopupBoxShadow}"
+                            CornerRadius="{DynamicResource OvoCornerRadius}"
+                            Margin="4"
+                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                            Name="PopupBorder"
+                            Padding="0,4">
+                            <DockPanel LastChildFill="True">
+                                <ContentPresenter
+                                    Content="{TemplateBinding PopupInnerTopContent}"
+                                    DockPanel.Dock="Top"
+                                    IsVisible="{TemplateBinding PopupInnerTopContent,
+                                                                Converter={x:Static ObjectConverters.IsNotNull}}"
+                                    Margin="8,8,8,0"
+                                    Name="PART_PopupHeader" />
+                                <ContentPresenter
+                                    Content="{TemplateBinding PopupInnerBottomContent}"
+                                    DockPanel.Dock="Bottom"
+                                    IsVisible="{TemplateBinding PopupInnerBottomContent,
+                                                                Converter={x:Static ObjectConverters.IsNotNull}}"
+                                    Margin="8,0,8,8"
+                                    Name="PART_PopupFooter" />
+                                <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}">
+                                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Margin="4,-1" />
+                                </ScrollViewer>
+                            </DockPanel>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Button#DropDownGlyph">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Duration="0:0:0.12" Property="RenderTransform" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^:dropdownopen /template/ Button#DropDownGlyph">
+            <Setter Property="RenderTransform" Value="translate(0px, 0px) rotate(180deg)" />
+        </Style>
+        <Style Selector="^:pressed /template/ Button#DropDownGlyph">
+            <Setter Property="RenderTransform" Value="translate(0px, 2px) rotate(0deg)" />
+        </Style>
+
+
+        <Style Selector="^.clear">
+            <Style Selector="^:pointerover /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="{Binding $parent[o:TreeComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Button#DropDownGlyph">
+                <Setter Property="IsVisible" Value="{Binding $parent[o:TreeComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+
+        <Style Selector="^:focus">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+            <Style Selector="^ /template/ ContentControl#ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#PlaceholderTextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^:error">
+            <Style Selector="^ /template/ Border#Background">
+                <Setter Property="Background" Value="{DynamicResource DataValidationErrorsBackground}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#Background">
+                <Setter Property="Background" Value="{DynamicResource DataValidationErrorsPointerOverBackground}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#Background">
+                <Setter Property="Background" Value="{DynamicResource DataValidationErrorsPressedBackground}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+            </Style>
+            <Style Selector="^:focus /template/ Border#Background">
+                <Setter Property="Background" Value="{DynamicResource DataValidationErrorsSelectedBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DataValidationErrorsSelectedBorderBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="o:TreeComboBoxItem" x:Key="{x:Type o:TreeComboBoxItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Margin" Value="0,2" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:TreeComboBoxItem">
+                <StackPanel>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Margin="{TemplateBinding Level,
+                                                 Mode=OneWay,
+                                                 Converter={StaticResource LeftMarginConverter}}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        Name="PART_LayoutRoot"
+                        TemplatedControl.IsTemplateFocusTarget="True">
+                        <Grid>
+                            <Rectangle
+                                Fill="{DynamicResource SystemAccentColor}"
+                                Height="16"
+                                HorizontalAlignment="Left"
+                                IsVisible="True"
+                                Margin="0,4,-2,4"
+                                Name="SelectionIndicator"
+                                Opacity="0"
+                                RadiusX="2"
+                                RadiusY="2"
+                                RenderTransform="scaleY(0)"
+                                UseLayoutRounding="False"
+                                VerticalAlignment="Center"
+                                Width="3">
+                                <Rectangle.Transitions>
+                                    <Transitions>
+                                        <TransformOperationsTransition
+                                            Duration="00:00:00.167"
+                                            Easing="0,0 0,1"
+                                            Property="RenderTransform" />
+                                        <DoubleTransition
+                                            Duration="00:00:00.167"
+                                            Easing="0,0 0,1"
+                                            Property="Opacity" />
+                                    </Transitions>
+                                </Rectangle.Transitions>
+                            </Rectangle>
+                            <Grid ColumnDefinitions="Auto, *" Name="{x:Static o:PartNames.PART_Header}">
+                                <ToggleButton
+                                    Focusable="False"
+                                    Grid.Column="0"
+                                    IsChecked="{TemplateBinding IsExpanded,
+                                                                Mode=TwoWay}"
+                                    Name="PART_ExpandCollapseChevron"
+                                    Padding="8,0"
+                                    Theme="{DynamicResource ToggleButtonTreeViewItemIconButton}" />
+                                <ContentPresenter
+                                    Background="Transparent"
+                                    Content="{TemplateBinding Header}"
+                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                    Focusable="False"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                    Margin="{TemplateBinding Padding}"
+                                    Name="{x:Static o:PartNames.PART_HeaderPresenter}"
+                                    Padding="0,4,8,4"
+                                    VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ItemsPresenter
+                        IsVisible="{TemplateBinding IsExpanded}"
+                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                        Margin="0,2,0,0"
+                        Name="{x:Static o:PartNames.PART_ItemsPresenter}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Border#PART_LayoutRoot:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+        </Style>
+
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+
+        <!--  Selected state  -->
+        <Style Selector="^:selected /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="{DynamicResource ItemSelectedBackground}" />
+        </Style>
+        <Style Selector="^:selected /template/ Rectangle#SelectionIndicator">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="RenderTransform" Value="scaleY(1)" />
+        </Style>
+
+        <Style Selector="^:empty /template/ ToggleButton#PART_ExpandCollapseChevron">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

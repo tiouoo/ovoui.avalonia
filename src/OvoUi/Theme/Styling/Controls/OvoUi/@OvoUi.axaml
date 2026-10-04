@@ -23,5 +23,6 @@
         <ResourceInclude Source="RangeSlider.axaml" />
         <ResourceInclude Source="SelectionList.axaml" />
         <ResourceInclude Source="Rating.axaml" />
+        <ResourceInclude Source="TreeComboBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
