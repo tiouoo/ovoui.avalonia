@@ -1,0 +1,161 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <ovo:ClosableTag Content="Closable Tag" />
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="ovo:TagInput" x:Key="{x:Type ovo:TagInput}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:TagInput">
+                <Border
+                    Background="{DynamicResource ControlBackground}"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    MinHeight="32"
+                    Name="PART_RootBorder"
+                    VerticalAlignment="Stretch">
+                    <Panel HorizontalAlignment="Stretch">
+                        <TextBlock
+                            IsVisible="False"
+                            Margin="12,0"
+                            Name="{x:Static ovo:TagInput.PART_PlaceholderText}"
+                            Opacity="0.5"
+                            Text="{TemplateBinding PlaceholderText}"
+                            VerticalAlignment="Center" />
+                        <ovo:MultiComboBoxSelectedItemList
+                            HorizontalAlignment="Stretch"
+                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                            ItemsSource="{TemplateBinding Tags}"
+                            Margin="3,0,3,0"
+                            Name="PART_ItemsControl"
+                            RemoveCommand="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Close}"
+                            VerticalAlignment="Center">
+                            <ovo:MultiComboBoxSelectedItemList.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ovo:WrapPanelWithTrailingItem TrailingWrapWidth="24">
+                                        <ovo:WrapPanelWithTrailingItem.TrailingItem>
+                                            <TextBox
+                                                Margin="10,0"
+                                                MinHeight="24"
+                                                Theme="{DynamicResource TagInputTextBoxTheme}"
+                                                VerticalAlignment="Center" />
+                                        </ovo:WrapPanelWithTrailingItem.TrailingItem>
+                                    </ovo:WrapPanelWithTrailingItem>
+                                </ItemsPanelTemplate>
+                            </ovo:MultiComboBoxSelectedItemList.ItemsPanel>
+                        </ovo:MultiComboBoxSelectedItemList>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:empty /template/ TextBlock#PART_PlaceholderText">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_RootBorder">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#PART_RootBorder">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:disabled /template/ Border#PART_RootBorder">
+            <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+        </Style>
+        <Style Selector="^:disabled /template/ TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource {x:Type TextBox}}"
+        TargetType="TextBox"
+        x:Key="TagInputTextBoxTheme">
+        <Setter Property="Cursor" Value="Ibeam" />
+        <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="MinHeight" Value="26" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="TextBox">
+                <Border>
+                    <ScrollViewer
+                        AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                        HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                        IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                        VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                        Width="{Binding $parent[TextBox].Bounds.Width}">
+                        <TextPresenter
+                            CaretBrush="{TemplateBinding CaretBrush}"
+                            CaretIndex="{TemplateBinding CaretIndex}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            LineHeight="{TemplateBinding LineHeight}"
+                            Name="PART_TextPresenter"
+                            PasswordChar="{TemplateBinding PasswordChar}"
+                            RevealPassword="{TemplateBinding RevealPassword}"
+                            SelectionBrush="{TemplateBinding SelectionBrush}"
+                            SelectionEnd="{TemplateBinding SelectionEnd}"
+                            SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                            SelectionStart="{TemplateBinding SelectionStart}"
+                            Text="{TemplateBinding Text,
+                                                   Mode=TwoWay}"
+                            TextAlignment="{TemplateBinding TextAlignment}"
+                            TextWrapping="{TemplateBinding TextWrapping}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </ScrollViewer>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ovo:ClosableTag" x:Key="{x:Type ovo:ClosableTag}">
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:ClosableTag">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10"
+                    Margin="1"
+                    Padding="8,2,2,2">
+                    <DockPanel LastChildFill="True">
+                        <Button
+                            Command="{TemplateBinding Command}"
+                            CommandParameter="{TemplateBinding}"
+                            Content="&#xe609;"
+                            DockPanel.Dock="Right"
+                            FontSize="13"
+                            Foreground="{DynamicResource ForegroundBrush}"
+                            Margin="5,0,3,0"
+                            Name="{x:Static ovo:ClosableTag.PART_CloseButton}"
+                            Theme="{DynamicResource InputStandardIcon}" />
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontSize="12"
+                            Foreground="{TemplateBinding Foreground}"
+                            TextTrimming="CharacterEllipsis"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Button#PART_CloseButton:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

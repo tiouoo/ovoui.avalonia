@@ -69,7 +69,7 @@
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
                                     HorizontalScrollBarVisibility="Disabled"
-                                    Margin="2,0"
+                                    Margin="4"
                                     MaxHeight="{TemplateBinding MaxSelectionBoxHeight}">
                                     <ovo:MultiComboBoxSelectedItemList
                                         ItemTemplate="{TemplateBinding SelectedItemTemplate}"
@@ -78,7 +78,11 @@
                                         VerticalAlignment="Center">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <WrapPanel Background="Transparent" Orientation="Horizontal" />
+                                                <WrapPanel
+                                                    Background="Transparent"
+                                                    ItemSpacing="3"
+                                                    LineSpacing="3"
+                                                    Orientation="Horizontal" />
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                     </ovo:MultiComboBoxSelectedItemList>
@@ -137,7 +141,7 @@
                                         <ItemsPresenter
                                             HorizontalAlignment="Stretch"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
-                                            Margin="4,-2"
+                                            Margin="8,4"
                                             Name="PART_ItemsPresenter" />
                                     </ScrollViewer>
                                 </DockPanel>
@@ -179,7 +183,7 @@
         </Style>
 
         <!--  Pressed State  -->
-        <Style Selector="^:pressed,^:dropdownopen,^:focus">
+        <Style Selector="^:pressed">
             <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
         </Style>
 
