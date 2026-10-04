@@ -229,6 +229,16 @@ public class OvoWindow : Window
         return false;
     }
 
+    public virtual bool OnFullScreen()
+    {
+        return false;
+    }
+
+    public virtual bool OnPin()
+    {
+        return false;
+    }
+
     public static readonly StyledProperty<Thickness> ContentMarginProperty =
         AvaloniaProperty.Register<OvoWindow, Thickness>(nameof(ContentMargin), new Thickness(10));
 

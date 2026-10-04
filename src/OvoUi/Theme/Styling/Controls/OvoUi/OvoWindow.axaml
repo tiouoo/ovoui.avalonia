@@ -77,14 +77,20 @@
                                                 DockPanel.Dock="Top"
                                                 IsVisible="{TemplateBinding IsTitleBarVisible}"
                                                 IsCloseButtonVisible="{TemplateBinding o:OvoTitleBar.IsCloseButtonVisible}"
+                                                IsFullScreenButtonVisible="{TemplateBinding o:OvoTitleBar.IsFullScreenButtonVisible}"
                                                 IsMaximizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMaximizeButtonVisible}"
                                                 IsMinimizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMinimizeButtonVisible}"
+                                                IsPinButtonVisible="{TemplateBinding o:OvoTitleBar.IsPinButtonVisible}"
                                                 LeadingContent="{TemplateBinding o:OvoTitleBar.LeadingContent}"
+                                                FullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.FullScreenButtonIcon}"
+                                                ExitFullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.ExitFullScreenButtonIcon}"
                                                 MaximizeButtonIcon="{TemplateBinding o:OvoTitleBar.MaximizeButtonIcon}"
                                                 MinimizeButtonIcon="{TemplateBinding o:OvoTitleBar.MinimizeButtonIcon}"
                                                 Name="PART_TitleBar"
+                                                PinButtonIcon="{TemplateBinding o:OvoTitleBar.PinButtonIcon}"
                                                 TrailingContent="{TemplateBinding o:OvoTitleBar.TrailingContent}"
                                                 RestoreButtonIcon="{TemplateBinding o:OvoTitleBar.RestoreButtonIcon}"
+                                                UnpinButtonIcon="{TemplateBinding o:OvoTitleBar.UnpinButtonIcon}"
                                                 TitleBarHeight="{TemplateBinding o:OvoTitleBar.TitleBarHeight}" />
                                             <ContentPresenter
                                                 Content="{Binding $parent[o:OvoWindow].Content}"
@@ -111,15 +117,10 @@
                 </VisualLayerManager>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^">
-            <Style Selector="^ o|OvoTitleBar#PART_TitleBar">
-                <Setter Property="Background" Value="{DynamicResource TitleBarBackgroundColor}" />
-            </Style>
-        </Style>
     </ControlTheme>
 
     <ControlTheme TargetType="WindowDrawnDecorations" x:Key="OvoWindowDecorationsTheme">
-        <Setter Property="DefaultTitleBarHeight" Value="36" />
+        <Setter Property="DefaultTitleBarHeight" Value="43" />
         <Setter Property="Template">
             <WindowDrawnDecorationsTemplate>
                 <WindowDrawnDecorationsContent>

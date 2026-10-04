@@ -1,47 +1,51 @@
-﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style Selector="Button.caption">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="CornerRadius" Value="20" />
         <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="Height" Value="25" />
-        <Setter Property="Width" Value="25" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="25" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border
                     Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="8"
-                    Height="24"
-                    Name="bd"
-                    Width="24">
-                    <Path
-                        Data="{TemplateBinding Content}"
-                        Fill="{DynamicResource ForegroundBrush}"
-                        Height="10"
-                        HorizontalAlignment="Center"
-                        Margin="{TemplateBinding Padding}"
-                        Name="ico"
-                        Stretch="Uniform"
-                        VerticalAlignment="Center"
-                        Width="10" />
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Duration="0:0:0.01" Property="Background" />
+                        </Transitions>
+                    </Border.Transitions>
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
                 </Border>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^:pointerover">
-            <Style Selector="^ /template/ Border">
-                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
-            </Style>
-            <Style Selector="^.close /template/ Border">
-                <Setter Property="Background" Value="Red" />
-            </Style>
-            <Style Selector="^.close /template/ Border">
-                <Style Selector="^ Path">
-                    <Setter Property="Fill" Value="White" />
-                </Style>
-            </Style>
+        <Style Selector="^:pointerover, ^:flyout-open">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        <Style Selector="^.close:pointerover, ^.close:flyout-open">
+            <Setter Property="Background" Value="#90D00000" />
+        </Style>
+        <Style Selector="^.close:pressed:pointerover">
+            <Setter Property="Background" Value="#C5D30000" />
         </Style>
     </Style>
+
     <Style Selector="Button.custom-caption">
         <Setter Property="Template">
             <ControlTemplate>
@@ -50,12 +54,11 @@
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="8"
                     Height="24"
-                    Name="bd"
                     Width="24">
-                    <ContentControl
+                    <ContentPresenter
                         Content="{TemplateBinding Content}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center" />
                 </Border>
             </ControlTemplate>
         </Setter>

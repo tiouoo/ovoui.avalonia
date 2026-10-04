@@ -13,85 +13,130 @@
         Background="Transparent"
         Height="{Binding #RootControl.TitleBarHeight}"
         VerticalAlignment="Top">
-        <Grid Background="Transparent" cdp:WindowDecorationProperties.ElementRole="TitleBar">
-            <Panel
+        <Panel Background="Transparent" cdp:WindowDecorationProperties.ElementRole="TitleBar">
+            <Border
                 Background="Transparent"
+                BorderThickness="0"
+                CornerRadius="0"
                 Name="MoveDragArea"
-                cdp:WindowDecorationProperties.ElementRole="User" />
-            <ContentControl
-                Content="{Binding #RootControl.LeadingContent}"
-                HorizontalAlignment="Left"
-                KeyboardNavigation.TabNavigation="Local"
-                TabIndex="1"
-                cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <ContentControl
-                    Content="{Binding #RootControl.TrailingContent}"
-                    KeyboardNavigation.TabNavigation="Local"
-                    TabIndex="2"
-                    cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
+                cdp:WindowDecorationProperties.ElementRole="TitleBar" />
+
+            <DockPanel
+                Background="Transparent"
+                LastChildFill="True"
+                Margin="12,9"
+                cdp:WindowDecorationProperties.ElementRole="TitleBar">
                 <StackPanel
+                    DockPanel.Dock="Right"
                     HorizontalAlignment="Right"
                     KeyboardNavigation.TabNavigation="Local"
-                    Margin="{Binding #RootControl.ControlButtonMargin}"
-                    Name="FunctionRoot"
                     Orientation="Horizontal"
-                    TabIndex="3">
-                    <Button
-                        Classes="caption minimize"
-                        Content="{Binding #RootControl.MinimizeButtonIcon}"
-                        HorizontalAlignment="Right"
-                        IsVisible="{Binding #RootControl.IsMinimizeButtonVisible}"
-                        Name="MinimizeButton"
-                        Padding="0,9,0,0"
-                        ToolTip.ShowDelay="900"
-                        ToolTip.Tip="{DynamicResource Lang.Minimum}"
-                        VerticalAlignment="Center"
+                    TabIndex="2">
+                    <ContentControl
+                        Content="{Binding #RootControl.TrailingContent}"
+                        VerticalContentAlignment="Center"
                         cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
-                    <Button
-                        Classes="caption"
-                        Content="{Binding #RootControl.MaximizeButtonIcon}"
+                    <StackPanel
                         HorizontalAlignment="Right"
-                        Name="MaximizeButton"
-                        ToolTip.ShowDelay="900"
-                        ToolTip.Tip="{DynamicResource Lang.Maximum}"
-                        VerticalAlignment="Center"
-                        cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
-                        <Button.IsVisible>
-                            <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="Maximize">
-                                <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
-                                <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
-                            </MultiBinding>
-                        </Button.IsVisible>
-                    </Button>
-                    <Button
-                        Classes="caption"
-                        Content="{Binding #RootControl.RestoreButtonIcon}"
-                        HorizontalAlignment="Right"
-                        Name="RestoreButton"
-                        ToolTip.ShowDelay="900"
-                        ToolTip.Tip="{DynamicResource Lang.Restore}"
-                        VerticalAlignment="Center"
-                        cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
-                        <Button.IsVisible>
-                            <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="Restore">
-                                <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
-                                <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
-                            </MultiBinding>
-                        </Button.IsVisible>
-                    </Button>
-                    <Button
-                        Classes="caption close"
-                        Content="{Binding #RootControl.CloseButtonIcon}"
-                        HorizontalAlignment="Right"
-                        IsVisible="{Binding #RootControl.IsCloseButtonVisible}"
-                        Name="CloseButton"
-                        ToolTip.ShowDelay="900"
-                        ToolTip.Tip="{DynamicResource Lang.Close}"
-                        VerticalAlignment="Center"
-                        cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
+                        Margin="{Binding #RootControl.ControlButtonMargin}"
+                        Name="FunctionRoot"
+                        Orientation="Horizontal"
+                        Spacing="7">
+                        <StackPanel.Styles>
+                            <Style Selector="PathIcon">
+                                <Setter Property="Height" Value="10" />
+                                <Setter Property="Width" Value="10" />
+                            </Style>
+                        </StackPanel.Styles>
+
+                        <Button
+                            Classes="caption"
+                            IsVisible="{Binding #RootControl.IsFullScreenButtonVisible}"
+                            Name="FullScreenButton"
+                            cdp:WindowDecorationProperties.ElementRole="User">
+                            <PathIcon Name="FullScreenIcon">
+                                <PathIcon.Data>
+                                    <MultiBinding Converter="{x:Static o:WindowControlIconConverter.Instance}" ConverterParameter="FullScreen">
+                                        <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                                        <Binding Path="FullScreenButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                        <Binding Path="ExitFullScreenButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                    </MultiBinding>
+                                </PathIcon.Data>
+                            </PathIcon>
+                        </Button>
+                        <Button
+                            Classes="caption"
+                            IsVisible="{Binding #RootControl.IsPinButtonVisible}"
+                            Name="PinButton"
+                            cdp:WindowDecorationProperties.ElementRole="User">
+                            <PathIcon Name="PinIcon">
+                                <PathIcon.Data>
+                                    <MultiBinding Converter="{x:Static o:WindowControlIconConverter.Instance}" ConverterParameter="Pin">
+                                        <Binding Path="Topmost" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                                        <Binding Path="PinButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                        <Binding Path="UnpinButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                    </MultiBinding>
+                                </PathIcon.Data>
+                            </PathIcon>
+                        </Button>
+                        <Button
+                            Classes="caption"
+                            IsVisible="{Binding #RootControl.IsMinimizeButtonVisible}"
+                            Name="MinimizeButton"
+                            cdp:WindowDecorationProperties.ElementRole="User">
+                            <PathIcon Data="{Binding #RootControl.MinimizeButtonIcon}" />
+                        </Button>
+                        <Button
+                            Classes="caption"
+                            Name="MaximizeButton"
+                            cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
+                            <Button.IsVisible>
+                                <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="MaximizeControl">
+                                    <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                    <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                                </MultiBinding>
+                            </Button.IsVisible>
+                            <PathIcon Name="MaximizeIcon">
+                                <PathIcon.Data>
+                                    <MultiBinding Converter="{x:Static o:WindowControlIconConverter.Instance}" ConverterParameter="Maximize">
+                                        <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                                        <Binding Path="MaximizeButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                        <Binding Path="RestoreButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                    </MultiBinding>
+                                </PathIcon.Data>
+                            </PathIcon>
+                        </Button>
+                        <Button
+                            Classes="caption close"
+                            IsVisible="{Binding #RootControl.IsCloseButtonVisible}"
+                            Name="CloseButton"
+                            cdp:WindowDecorationProperties.ElementRole="User">
+                            <PathIcon Data="{Binding #RootControl.CloseButtonIcon}" />
+                        </Button>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-        </Grid>
+
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="10"
+                    KeyboardNavigation.TabNavigation="Local"
+                    TabIndex="1"
+                    VerticalAlignment="Center"
+                    cdp:WindowDecorationProperties.ElementRole="TitleBar">
+                    <TextBlock
+                        IsHitTestVisible="False"
+                        IsVisible="{Binding #RootControl.LeadingContent, Converter={x:Static ObjectConverters.IsNull}}"
+                        Text="{Binding Title, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                        TextTrimming="CharacterEllipsis"
+                        VerticalAlignment="Center" />
+                    <ContentControl
+                        Content="{Binding #RootControl.LeadingContent}"
+                        IsVisible="{Binding #RootControl.LeadingContent, Converter={x:Static ObjectConverters.IsNotNull}}"
+                        VerticalContentAlignment="Center"
+                        cdp:WindowDecorationProperties.ElementRole="User" />
+                    <Border Grid.Column="1" Background="Transparent" />
+                </Grid>
+            </DockPanel>
+        </Panel>
     </Border>
 </UserControl>
