@@ -1,4 +1,17 @@
 <Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush Color="#FF4D5A" x:Key="TitleBarCloseButtonInteractionBackground" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush Color="#C5D30000" x:Key="TitleBarCloseButtonInteractionBackground" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
     <Style Selector="Button.caption">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
@@ -35,15 +48,13 @@
         <Style Selector="^:pointerover, ^:flyout-open">
             <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
         </Style>
-        <Style Selector="^:pressed:pointerover">
-            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        <Style Selector="^.close:pointerover">
+            <Setter Property="Background" Value="{DynamicResource TitleBarCloseButtonInteractionBackground}" />
         </Style>
-        <Style Selector="^.close:pointerover, ^.close:flyout-open">
-            <Setter Property="Background" Value="#90D00000" />
+        <Style Selector="^.close:pointerover PathIcon">
+            <Setter Property="Foreground" Value="White" />
         </Style>
-        <Style Selector="^.close:pressed:pointerover">
-            <Setter Property="Background" Value="#C5D30000" />
-        </Style>
+
     </Style>
 
     <Style Selector="Button.custom-caption">

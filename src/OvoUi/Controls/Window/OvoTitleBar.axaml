@@ -111,8 +111,9 @@
                             Classes="caption close"
                             IsVisible="{Binding #RootControl.IsCloseButtonVisible}"
                             Name="CloseButton"
+                            Transitions="{x:Null}"
                             cdp:WindowDecorationProperties.ElementRole="User">
-                            <PathIcon Data="{Binding #RootControl.CloseButtonIcon}" />
+                            <PathIcon Data="{Binding #RootControl.CloseButtonIcon}" Transitions="{x:Null}" />
                         </Button>
                     </StackPanel>
                 </StackPanel>
