@@ -10,13 +10,13 @@ namespace OvoUi.Controls;
 
 public partial class OvoTitleBar : UserControl
 {
-    public static readonly AttachedProperty<Thickness> ControlBtnMarginProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, Thickness>(nameof(ControlBtnMargin), new Thickness(0, 0, 5, 0));
+    public static readonly AttachedProperty<Thickness> ControlButtonMarginProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, Thickness>(nameof(ControlButtonMargin), new Thickness(0, 0, 5, 0));
 
-    public Thickness ControlBtnMargin
+    public Thickness ControlButtonMargin
     {
-        get => GetValue(ControlBtnMarginProperty);
-        set => SetValue(ControlBtnMarginProperty, value);
+        get => GetValue(ControlButtonMarginProperty);
+        set => SetValue(ControlButtonMarginProperty, value);
     }
 
     public OvoTitleBar()
@@ -41,7 +41,7 @@ public partial class OvoTitleBar : UserControl
         if (!e.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
         if (TopLevel.GetTopLevel(this) is not Window window) return;
 
-        if (e.ClickCount == 2 && IsMaxBtnShow && window.CanResize)
+        if (e.ClickCount == 2 && IsMaximizeButtonVisible && window.CanResize)
             ToggleMaximize(window);
         else
             window.BeginMoveDrag(e);
@@ -79,17 +79,17 @@ public partial class OvoTitleBar : UserControl
 
     #region Styled Properties
 
-    public static readonly AttachedProperty<object?> LeftContentProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, object?>(nameof(LeftContent));
+    public static readonly AttachedProperty<object?> LeadingContentProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, object?>(nameof(LeadingContent));
 
-    public object? LeftContent
+    public object? LeadingContent
     {
-        get => GetValue(LeftContentProperty);
-        set => SetValue(LeftContentProperty, value);
+        get => GetValue(LeadingContentProperty);
+        set => SetValue(LeadingContentProperty, value);
     }
 
     public static readonly AttachedProperty<double> TitleBarHeightProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, double>(nameof(TitleBarHeight), 40,
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, double>(nameof(TitleBarHeight), 36,
             validate: value => double.IsFinite(value) && value >= 0);
 
     public double TitleBarHeight
@@ -98,109 +98,109 @@ public partial class OvoTitleBar : UserControl
         set => SetValue(TitleBarHeightProperty, value);
     }
     
-    public static readonly AttachedProperty<object?> RightContentProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, object?>(nameof(RightContent));
+    public static readonly AttachedProperty<object?> TrailingContentProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, object?>(nameof(TrailingContent));
 
-    public object? RightContent
+    public object? TrailingContent
     {
-        get => GetValue(RightContentProperty);
-        set => SetValue(RightContentProperty, value);
+        get => GetValue(TrailingContentProperty);
+        set => SetValue(TrailingContentProperty, value);
     }
 
-    public static readonly AttachedProperty<bool> IsCloseBtnShowProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, bool>(nameof(IsCloseBtnShow), true);
+    public static readonly AttachedProperty<bool> IsCloseButtonVisibleProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, bool>(nameof(IsCloseButtonVisible), true);
 
-    public bool IsCloseBtnShow
+    public bool IsCloseButtonVisible
     {
-        get => GetValue(IsCloseBtnShowProperty);
-        set => SetValue(IsCloseBtnShowProperty, value);
+        get => GetValue(IsCloseButtonVisibleProperty);
+        set => SetValue(IsCloseButtonVisibleProperty, value);
     }
 
-    public static readonly AttachedProperty<bool> IsMaxBtnShowProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, bool>(nameof(IsMaxBtnShow), true);
+    public static readonly AttachedProperty<bool> IsMaximizeButtonVisibleProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, bool>(nameof(IsMaximizeButtonVisible), true);
 
-    public bool IsMaxBtnShow
+    public bool IsMaximizeButtonVisible
     {
-        get => GetValue(IsMaxBtnShowProperty);
-        set => SetValue(IsMaxBtnShowProperty, value);
+        get => GetValue(IsMaximizeButtonVisibleProperty);
+        set => SetValue(IsMaximizeButtonVisibleProperty, value);
     }
 
-    public static readonly AttachedProperty<bool> IsMinBtnShowProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, bool>(nameof(IsMinBtnShow), true);
+    public static readonly AttachedProperty<bool> IsMinimizeButtonVisibleProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, bool>(nameof(IsMinimizeButtonVisible), true);
 
-    public bool IsMinBtnShow
+    public bool IsMinimizeButtonVisible
     {
-        get => GetValue(IsMinBtnShowProperty);
-        set => SetValue(IsMinBtnShowProperty, value);
+        get => GetValue(IsMinimizeButtonVisibleProperty);
+        set => SetValue(IsMinimizeButtonVisibleProperty, value);
     }
 
-    public static readonly AttachedProperty<StreamGeometry> MinimizeIconProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(MinimizeIcon),
+    public static readonly AttachedProperty<StreamGeometry> MinimizeButtonIconProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(MinimizeButtonIcon),
             StreamGeometry.Parse("M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"));
 
-    public StreamGeometry MinimizeIcon
+    public StreamGeometry MinimizeButtonIcon
     {
-        get => GetValue(MinimizeIconProperty);
-        set => SetValue(MinimizeIconProperty, value);
+        get => GetValue(MinimizeButtonIconProperty);
+        set => SetValue(MinimizeButtonIconProperty, value);
     }
 
-    public static readonly AttachedProperty<StreamGeometry> MaximizeIconProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(MaximizeIcon),
+    public static readonly AttachedProperty<StreamGeometry> MaximizeButtonIconProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(MaximizeButtonIcon),
             StreamGeometry.Parse("M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM6 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"));
 
-    public StreamGeometry MaximizeIcon
+    public StreamGeometry MaximizeButtonIcon
     {
-        get => GetValue(MaximizeIconProperty);
-        set => SetValue(MaximizeIconProperty, value);
+        get => GetValue(MaximizeButtonIconProperty);
+        set => SetValue(MaximizeButtonIconProperty, value);
     }
 
-    public static readonly AttachedProperty<StreamGeometry> RestoreIconProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(RestoreIcon),
+    public static readonly AttachedProperty<StreamGeometry> RestoreButtonIconProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(RestoreButtonIcon),
             StreamGeometry.Parse(
                 "M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM6 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"));
 
-    public StreamGeometry RestoreIcon
+    public StreamGeometry RestoreButtonIcon
     {
-        get => GetValue(RestoreIconProperty);
-        set => SetValue(RestoreIconProperty, value);
+        get => GetValue(RestoreButtonIconProperty);
+        set => SetValue(RestoreButtonIconProperty, value);
     }
 
-    public static readonly AttachedProperty<StreamGeometry> CloseIconProperty =
-        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(CloseIcon),
+    public static readonly AttachedProperty<StreamGeometry> CloseButtonIconProperty =
+        AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, StreamGeometry>(nameof(CloseButtonIcon),
             StreamGeometry.Parse("M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"));
 
-    public StreamGeometry CloseIcon
+    public StreamGeometry CloseButtonIcon
     {
-        get => GetValue(CloseIconProperty);
-        set => SetValue(CloseIconProperty, value);
+        get => GetValue(CloseButtonIconProperty);
+        set => SetValue(CloseButtonIconProperty, value);
     }
 
     #endregion
 
     #region Attached Property Accessors
 
-    public static Thickness GetControlBtnMargin(Control control) => control.GetValue(ControlBtnMarginProperty);
-    public static void SetControlBtnMargin(Control control, Thickness value) => control.SetValue(ControlBtnMarginProperty, value);
+    public static Thickness GetControlButtonMargin(Control control) => control.GetValue(ControlButtonMarginProperty);
+    public static void SetControlButtonMargin(Control control, Thickness value) => control.SetValue(ControlButtonMarginProperty, value);
     public static double GetTitleBarHeight(Control control) => control.GetValue(TitleBarHeightProperty);
     public static void SetTitleBarHeight(Control control, double value) => control.SetValue(TitleBarHeightProperty, value);
-    public static object? GetLeftContent(Control control) => control.GetValue(LeftContentProperty);
-    public static void SetLeftContent(Control control, object? value) => control.SetValue(LeftContentProperty, value);
-    public static object? GetRightContent(Control control) => control.GetValue(RightContentProperty);
-    public static void SetRightContent(Control control, object? value) => control.SetValue(RightContentProperty, value);
-    public static bool GetIsCloseBtnShow(Control control) => control.GetValue(IsCloseBtnShowProperty);
-    public static void SetIsCloseBtnShow(Control control, bool value) => control.SetValue(IsCloseBtnShowProperty, value);
-    public static bool GetIsMaxBtnShow(Control control) => control.GetValue(IsMaxBtnShowProperty);
-    public static void SetIsMaxBtnShow(Control control, bool value) => control.SetValue(IsMaxBtnShowProperty, value);
-    public static bool GetIsMinBtnShow(Control control) => control.GetValue(IsMinBtnShowProperty);
-    public static void SetIsMinBtnShow(Control control, bool value) => control.SetValue(IsMinBtnShowProperty, value);
-    public static StreamGeometry GetMinimizeIcon(Control control) => control.GetValue(MinimizeIconProperty);
-    public static void SetMinimizeIcon(Control control, StreamGeometry value) => control.SetValue(MinimizeIconProperty, value);
-    public static StreamGeometry GetMaximizeIcon(Control control) => control.GetValue(MaximizeIconProperty);
-    public static void SetMaximizeIcon(Control control, StreamGeometry value) => control.SetValue(MaximizeIconProperty, value);
-    public static StreamGeometry GetRestoreIcon(Control control) => control.GetValue(RestoreIconProperty);
-    public static void SetRestoreIcon(Control control, StreamGeometry value) => control.SetValue(RestoreIconProperty, value);
-    public static StreamGeometry GetCloseIcon(Control control) => control.GetValue(CloseIconProperty);
-    public static void SetCloseIcon(Control control, StreamGeometry value) => control.SetValue(CloseIconProperty, value);
+    public static object? GetLeadingContent(Control control) => control.GetValue(LeadingContentProperty);
+    public static void SetLeadingContent(Control control, object? value) => control.SetValue(LeadingContentProperty, value);
+    public static object? GetTrailingContent(Control control) => control.GetValue(TrailingContentProperty);
+    public static void SetTrailingContent(Control control, object? value) => control.SetValue(TrailingContentProperty, value);
+    public static bool GetIsCloseButtonVisible(Control control) => control.GetValue(IsCloseButtonVisibleProperty);
+    public static void SetIsCloseButtonVisible(Control control, bool value) => control.SetValue(IsCloseButtonVisibleProperty, value);
+    public static bool GetIsMaximizeButtonVisible(Control control) => control.GetValue(IsMaximizeButtonVisibleProperty);
+    public static void SetIsMaximizeButtonVisible(Control control, bool value) => control.SetValue(IsMaximizeButtonVisibleProperty, value);
+    public static bool GetIsMinimizeButtonVisible(Control control) => control.GetValue(IsMinimizeButtonVisibleProperty);
+    public static void SetIsMinimizeButtonVisible(Control control, bool value) => control.SetValue(IsMinimizeButtonVisibleProperty, value);
+    public static StreamGeometry GetMinimizeButtonIcon(Control control) => control.GetValue(MinimizeButtonIconProperty);
+    public static void SetMinimizeButtonIcon(Control control, StreamGeometry value) => control.SetValue(MinimizeButtonIconProperty, value);
+    public static StreamGeometry GetMaximizeButtonIcon(Control control) => control.GetValue(MaximizeButtonIconProperty);
+    public static void SetMaximizeButtonIcon(Control control, StreamGeometry value) => control.SetValue(MaximizeButtonIconProperty, value);
+    public static StreamGeometry GetRestoreButtonIcon(Control control) => control.GetValue(RestoreButtonIconProperty);
+    public static void SetRestoreButtonIcon(Control control, StreamGeometry value) => control.SetValue(RestoreButtonIconProperty, value);
+    public static StreamGeometry GetCloseButtonIcon(Control control) => control.GetValue(CloseButtonIconProperty);
+    public static void SetCloseButtonIcon(Control control, StreamGeometry value) => control.SetValue(CloseButtonIconProperty, value);
 
     #endregion
 

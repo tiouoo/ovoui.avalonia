@@ -27,8 +27,8 @@ public class OvoWindow : Window
             if (change.Property == WindowStateProperty)
                 UpdateWindowFrame();
             if (change.Property == IsTitleBarVisibleProperty ||
-                change.Property == TitleBarHeightProperty ||
-                change.Property == IsEnabledDialogHostSafePaddingProperty)
+                change.Property == OvoTitleBar.TitleBarHeightProperty ||
+                change.Property == IsDialogHostSafePaddingEnabledProperty)
                 UpdateDialogHostSafePadding();
         };
     }
@@ -117,7 +117,7 @@ public class OvoWindow : Window
     private void UpdateDialogHostSafePadding()
     {
         if (_dialogHost is null) return;
-        if (!IsEnabledDialogHostSafePadding || !IsTitleBarVisible || TitleBar is null)
+        if (!IsDialogHostSafePaddingEnabled || !IsTitleBarVisible || TitleBar is null)
         {
             _dialogHost.SafePadding = default;
             return;
@@ -127,7 +127,7 @@ public class OvoWindow : Window
         if (height == 0)
         {
             // 如果 TitleBar 还没有测量，使用默认高度
-            height = TitleBarHeight;
+            height = OvoTitleBar.GetTitleBarHeight(this);
         }
 
         var dialogHostPadding = new Thickness(0, height, 0, 0);
@@ -146,22 +146,13 @@ public class OvoWindow : Window
         set => SetValue(IsTitleBarVisibleProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsCloseBtnShowProperty =
-        OvoTitleBar.IsCloseBtnShowProperty.AddOwner<OvoWindow>();
+    public static readonly StyledProperty<bool> IsDialogHostSafePaddingEnabledProperty =
+        AvaloniaProperty.Register<OvoWindow, bool>(nameof(IsDialogHostSafePaddingEnabled), false);
 
-    public bool IsCloseBtnShow
+    public bool IsDialogHostSafePaddingEnabled
     {
-        get => GetValue(IsCloseBtnShowProperty);
-        set => SetValue(IsCloseBtnShowProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> IsEnabledDialogHostSafePaddingProperty =
-        AvaloniaProperty.Register<OvoWindow, bool>(nameof(IsEnabledDialogHostSafePadding), false);
-
-    public bool IsEnabledDialogHostSafePadding
-    {
-        get => GetValue(IsEnabledDialogHostSafePaddingProperty);
-        set => SetValue(IsEnabledDialogHostSafePaddingProperty, value);
+        get => GetValue(IsDialogHostSafePaddingEnabledProperty);
+        set => SetValue(IsDialogHostSafePaddingEnabledProperty, value);
     }
 
     public bool IsManagedResizerVisible
@@ -173,15 +164,6 @@ public class OvoWindow : Window
     public static readonly StyledProperty<bool> IsManagedResizerVisibleProperty =
         AvaloniaProperty.Register<OvoWindow, bool>(
             nameof(IsManagedResizerVisible));
-
-    public static readonly StyledProperty<Thickness> TitleBarControlBtnMarginProperty =
-        OvoTitleBar.ControlBtnMarginProperty.AddOwner<OvoWindow>();
-
-    public Thickness TitleBarControlBtnMargin
-    {
-        get => GetValue(TitleBarControlBtnMarginProperty);
-        set => SetValue(TitleBarControlBtnMarginProperty, value);
-    }
 
     public static readonly StyledProperty<Thickness> FrameBorderThicknessProperty =
         AvaloniaProperty.Register<OvoWindow, Thickness>(nameof(FrameBorderThickness));
@@ -232,33 +214,6 @@ public class OvoWindow : Window
         set => SetValue(FrameBorderBrushProperty, value);
     }
 
-    public static readonly StyledProperty<double> TitleBarHeightProperty =
-        OvoTitleBar.TitleBarHeightProperty.AddOwner<OvoWindow>();
-
-    public double TitleBarHeight
-    {
-        get => GetValue(TitleBarHeightProperty);
-        set => SetValue(TitleBarHeightProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> IsMaxBtnShowProperty =
-        OvoTitleBar.IsMaxBtnShowProperty.AddOwner<OvoWindow>();
-
-    public bool IsMaxBtnShow
-    {
-        get => GetValue(IsMaxBtnShowProperty);
-        set => SetValue(IsMaxBtnShowProperty, value);
-    }
-
-    public static readonly StyledProperty<bool> IsMinBtnShowProperty =
-        OvoTitleBar.IsMinBtnShowProperty.AddOwner<OvoWindow>();
-
-    public bool IsMinBtnShow
-    {
-        get => GetValue(IsMinBtnShowProperty);
-        set => SetValue(IsMinBtnShowProperty, value);
-    }
-
     public virtual bool OnClose()
     {
         return false;
@@ -274,24 +229,6 @@ public class OvoWindow : Window
         return false;
     }
 
-    public static readonly StyledProperty<object?> TitleBarLeftContentProperty =
-        OvoTitleBar.LeftContentProperty.AddOwner<OvoWindow>();
-
-    public object? TitleBarLeftContent
-    {
-        get => GetValue(TitleBarLeftContentProperty);
-        set => SetValue(TitleBarLeftContentProperty, value);
-    }
-
-    public static readonly StyledProperty<object?> TitleBarRightContentProperty =
-        OvoTitleBar.RightContentProperty.AddOwner<OvoWindow>();
-
-    public object? TitleBarRightContent
-    {
-        get => GetValue(TitleBarRightContentProperty);
-        set => SetValue(TitleBarRightContentProperty, value);
-    }
-
     public static readonly StyledProperty<Thickness> ContentMarginProperty =
         AvaloniaProperty.Register<OvoWindow, Thickness>(nameof(ContentMargin), new Thickness(10));
 
@@ -299,42 +236,6 @@ public class OvoWindow : Window
     {
         get => GetValue(ContentMarginProperty);
         set => SetValue(ContentMarginProperty, value);
-    }
-
-    public static readonly StyledProperty<StreamGeometry> MinimizeIconProperty =
-        OvoTitleBar.MinimizeIconProperty.AddOwner<OvoWindow>();
-
-    public StreamGeometry MinimizeIcon
-    {
-        get => GetValue(MinimizeIconProperty);
-        set => SetValue(MinimizeIconProperty, value);
-    }
-
-    public static readonly StyledProperty<StreamGeometry> MaximizeIconProperty =
-        OvoTitleBar.MaximizeIconProperty.AddOwner<OvoWindow>();
-
-    public StreamGeometry MaximizeIcon
-    {
-        get => GetValue(MaximizeIconProperty);
-        set => SetValue(MaximizeIconProperty, value);
-    }
-
-    public static readonly StyledProperty<StreamGeometry> RestoreIconProperty =
-        OvoTitleBar.RestoreIconProperty.AddOwner<OvoWindow>();
-
-    public StreamGeometry RestoreIcon
-    {
-        get => GetValue(RestoreIconProperty);
-        set => SetValue(RestoreIconProperty, value);
-    }
-
-    public static readonly StyledProperty<StreamGeometry> CloseIconProperty =
-        OvoTitleBar.CloseIconProperty.AddOwner<OvoWindow>();
-
-    public StreamGeometry CloseIcon
-    {
-        get => GetValue(CloseIconProperty);
-        set => SetValue(CloseIconProperty, value);
     }
 
     public string HostId { get; set; } = Guid.NewGuid().ToString();

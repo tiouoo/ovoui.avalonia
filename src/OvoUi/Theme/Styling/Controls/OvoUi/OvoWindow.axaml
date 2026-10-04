@@ -72,20 +72,20 @@
                                     <Border Name="PART_Root">
                                         <DockPanel>
                                             <o:OvoTitleBar
-                                                CloseIcon="{TemplateBinding CloseIcon}"
-                                                ControlBtnMargin="{TemplateBinding o:OvoTitleBar.ControlBtnMargin}"
+                                                CloseButtonIcon="{TemplateBinding o:OvoTitleBar.CloseButtonIcon}"
+                                                ControlButtonMargin="{TemplateBinding o:OvoTitleBar.ControlButtonMargin}"
                                                 DockPanel.Dock="Top"
                                                 IsVisible="{TemplateBinding IsTitleBarVisible}"
-                                                IsCloseBtnShow="{TemplateBinding IsCloseBtnShow}"
-                                                IsMaxBtnShow="{TemplateBinding IsMaxBtnShow}"
-                                                IsMinBtnShow="{TemplateBinding IsMinBtnShow}"
-                                                LeftContent="{TemplateBinding o:OvoTitleBar.LeftContent}"
-                                                MaximizeIcon="{TemplateBinding MaximizeIcon}"
-                                                MinimizeIcon="{TemplateBinding MinimizeIcon}"
+                                                IsCloseButtonVisible="{TemplateBinding o:OvoTitleBar.IsCloseButtonVisible}"
+                                                IsMaximizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMaximizeButtonVisible}"
+                                                IsMinimizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMinimizeButtonVisible}"
+                                                LeadingContent="{TemplateBinding o:OvoTitleBar.LeadingContent}"
+                                                MaximizeButtonIcon="{TemplateBinding o:OvoTitleBar.MaximizeButtonIcon}"
+                                                MinimizeButtonIcon="{TemplateBinding o:OvoTitleBar.MinimizeButtonIcon}"
                                                 Name="PART_TitleBar"
-                                                RightContent="{TemplateBinding o:OvoTitleBar.RightContent}"
-                                                RestoreIcon="{TemplateBinding RestoreIcon}"
-                                                TitleBarHeight="{TemplateBinding TitleBarHeight}" />
+                                                TrailingContent="{TemplateBinding o:OvoTitleBar.TrailingContent}"
+                                                RestoreButtonIcon="{TemplateBinding o:OvoTitleBar.RestoreButtonIcon}"
+                                                TitleBarHeight="{TemplateBinding o:OvoTitleBar.TitleBarHeight}" />
                                             <ContentPresenter
                                                 Content="{Binding $parent[o:OvoWindow].Content}"
                                                 ContentTemplate="{TemplateBinding ContentTemplate}"

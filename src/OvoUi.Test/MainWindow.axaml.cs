@@ -16,19 +16,6 @@ public partial class MainWindow : OvoWindow
         InitializeComponent();
         DataContext = this;
     }
-
-    public ObservableCollection<string> StringItems { get; } =
-    [
-        "Button",
-        "TextBox",
-        "ComboBox",
-        "DatePicker"
-    ];
-    
-    
-    
-    
-    
     
     
     
@@ -56,5 +43,11 @@ public partial class MainWindow : OvoWindow
             ],
             AllowMultiple = true,
         });
+    }
+
+    private void Button_OnClick1(object? sender, RoutedEventArgs e)
+    {
+        var a = new TitleBarExample();
+        a.Show();
     }
 }

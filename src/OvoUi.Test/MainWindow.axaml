@@ -11,6 +11,12 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ovo:OvoTitleBar.LeadingContent>
+        <TextBlock
+            Margin="12,0"
+            Text="OvoUi.Avalonia"
+            VerticalAlignment="Center" />
+    </ovo:OvoTitleBar.LeadingContent>
     <Grid>
         <StackPanel
             HorizontalAlignment="Center"
@@ -24,6 +30,7 @@
                 </ovo:TreeComboBoxItem>
                 <ovo:TreeComboBoxItem Header="World" />
             </ovo:TreeComboBox>
+            <Button Click="Button_OnClick1" Content="Open Window" />
 
         </StackPanel>
         <StackPanel

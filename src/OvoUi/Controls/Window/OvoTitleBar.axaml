@@ -19,29 +19,29 @@
                 Name="MoveDragArea"
                 cdp:WindowDecorationProperties.ElementRole="User" />
             <ContentControl
-                Content="{Binding #RootControl.LeftContent}"
+                Content="{Binding #RootControl.LeadingContent}"
                 HorizontalAlignment="Left"
                 KeyboardNavigation.TabNavigation="Local"
                 TabIndex="1"
                 cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <ContentControl
-                    Content="{Binding #RootControl.RightContent}"
+                    Content="{Binding #RootControl.TrailingContent}"
                     KeyboardNavigation.TabNavigation="Local"
                     TabIndex="2"
                     cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
                 <StackPanel
                     HorizontalAlignment="Right"
                     KeyboardNavigation.TabNavigation="Local"
-                    Margin="{Binding #RootControl.ControlBtnMargin}"
+                    Margin="{Binding #RootControl.ControlButtonMargin}"
                     Name="FunctionRoot"
                     Orientation="Horizontal"
                     TabIndex="3">
                     <Button
                         Classes="caption minimize"
-                        Content="{Binding #RootControl.MinimizeIcon}"
+                        Content="{Binding #RootControl.MinimizeButtonIcon}"
                         HorizontalAlignment="Right"
-                        IsVisible="{Binding #RootControl.IsMinBtnShow}"
+                        IsVisible="{Binding #RootControl.IsMinimizeButtonVisible}"
                         Name="MinimizeButton"
                         Padding="0,9,0,0"
                         ToolTip.ShowDelay="900"
@@ -50,7 +50,7 @@
                         cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
                     <Button
                         Classes="caption"
-                        Content="{Binding #RootControl.MaximizeIcon}"
+                        Content="{Binding #RootControl.MaximizeButtonIcon}"
                         HorizontalAlignment="Right"
                         Name="MaximizeButton"
                         ToolTip.ShowDelay="900"
@@ -59,14 +59,14 @@
                         cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
                         <Button.IsVisible>
                             <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="Maximize">
-                                <Binding Path="IsMaxBtnShow" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
                                 <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
                             </MultiBinding>
                         </Button.IsVisible>
                     </Button>
                     <Button
                         Classes="caption"
-                        Content="{Binding #RootControl.RestoreIcon}"
+                        Content="{Binding #RootControl.RestoreButtonIcon}"
                         HorizontalAlignment="Right"
                         Name="RestoreButton"
                         ToolTip.ShowDelay="900"
@@ -75,16 +75,16 @@
                         cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
                         <Button.IsVisible>
                             <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="Restore">
-                                <Binding Path="IsMaxBtnShow" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
                                 <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
                             </MultiBinding>
                         </Button.IsVisible>
                     </Button>
                     <Button
                         Classes="caption close"
-                        Content="{Binding #RootControl.CloseIcon}"
+                        Content="{Binding #RootControl.CloseButtonIcon}"
                         HorizontalAlignment="Right"
-                        IsVisible="{Binding #RootControl.IsCloseBtnShow}"
+                        IsVisible="{Binding #RootControl.IsCloseButtonVisible}"
                         Name="CloseButton"
                         ToolTip.ShowDelay="900"
                         ToolTip.Tip="{DynamicResource Lang.Close}"
