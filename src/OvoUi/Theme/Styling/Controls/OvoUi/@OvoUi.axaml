@@ -18,6 +18,7 @@
         <ResourceInclude Source="IPv4Box.axaml" />
         <ResourceInclude Source="KeyGestureInput.axaml" />
         <ResourceInclude Source="TagInput.axaml" />
+        <ResourceInclude Source="PinCode.axaml" />
         <ResourceInclude Source="MultiAutoCompleteBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
