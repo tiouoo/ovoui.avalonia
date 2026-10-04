@@ -28,7 +28,6 @@
         <ResourceInclude Source="OvoNotification.axaml" />
         <ResourceInclude Source="OvoToast.axaml" />
         <ResourceInclude Source="OvoView.axaml" />
-        <ResourceInclude Source="OvoTitleBar.axaml" />
         <ResourceInclude Source="OvoWindow.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

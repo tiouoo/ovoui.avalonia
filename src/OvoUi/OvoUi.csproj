@@ -21,6 +21,12 @@
       <AvaloniaResource Include="..\..\assets\iconfont.ttf">
         <Link>Assets\iconfont.ttf</Link>
       </AvaloniaResource>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Update="Controls\Window\OvoTitleBar.axaml.cs">
+        <DependentUpon>OvoTitleBar.axaml</DependentUpon>
+      </Compile>
     </ItemGroup>    
     
 </Project>

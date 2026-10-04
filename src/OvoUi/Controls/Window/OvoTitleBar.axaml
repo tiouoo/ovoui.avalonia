@@ -1,0 +1,97 @@
+<UserControl
+    mc:Ignorable="d"
+    x:Class="OvoUi.Controls.OvoTitleBar"
+    x:DataType="o:OvoTitleBar"
+    x:Name="RootControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:cdp="clr-namespace:Avalonia.Controls.Chrome;assembly=Avalonia.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border
+        Background="Transparent"
+        Height="{Binding #RootControl.TitleBarHeight}"
+        VerticalAlignment="Top">
+        <Grid Background="Transparent" cdp:WindowDecorationProperties.ElementRole="TitleBar">
+            <Panel
+                Background="Transparent"
+                Name="MoveDragArea"
+                cdp:WindowDecorationProperties.ElementRole="User" />
+            <ContentControl
+                Content="{Binding #RootControl.LeftContent}"
+                HorizontalAlignment="Left"
+                KeyboardNavigation.TabNavigation="Local"
+                TabIndex="1"
+                cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <ContentControl
+                    Content="{Binding #RootControl.RightContent}"
+                    KeyboardNavigation.TabNavigation="Local"
+                    TabIndex="2"
+                    cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
+                <StackPanel
+                    HorizontalAlignment="Right"
+                    KeyboardNavigation.TabNavigation="Local"
+                    Margin="{Binding #RootControl.ControlBtnMargin}"
+                    Name="FunctionRoot"
+                    Orientation="Horizontal"
+                    TabIndex="3">
+                    <Button
+                        Classes="caption minimize"
+                        Content="{Binding #RootControl.MinimizeIcon}"
+                        HorizontalAlignment="Right"
+                        IsVisible="{Binding #RootControl.IsMinBtnShow}"
+                        Name="MinimizeButton"
+                        Padding="0,9,0,0"
+                        ToolTip.ShowDelay="900"
+                        ToolTip.Tip="{DynamicResource Lang.Minimum}"
+                        VerticalAlignment="Center"
+                        cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
+                    <Button
+                        Classes="caption"
+                        Content="{Binding #RootControl.MaximizeIcon}"
+                        HorizontalAlignment="Right"
+                        Name="MaximizeButton"
+                        ToolTip.ShowDelay="900"
+                        ToolTip.Tip="{DynamicResource Lang.Maximum}"
+                        VerticalAlignment="Center"
+                        cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
+                        <Button.IsVisible>
+                            <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="Maximize">
+                                <Binding Path="IsMaxBtnShow" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                            </MultiBinding>
+                        </Button.IsVisible>
+                    </Button>
+                    <Button
+                        Classes="caption"
+                        Content="{Binding #RootControl.RestoreIcon}"
+                        HorizontalAlignment="Right"
+                        Name="RestoreButton"
+                        ToolTip.ShowDelay="900"
+                        ToolTip.Tip="{DynamicResource Lang.Restore}"
+                        VerticalAlignment="Center"
+                        cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
+                        <Button.IsVisible>
+                            <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="Restore">
+                                <Binding Path="IsMaxBtnShow" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
+                            </MultiBinding>
+                        </Button.IsVisible>
+                    </Button>
+                    <Button
+                        Classes="caption close"
+                        Content="{Binding #RootControl.CloseIcon}"
+                        HorizontalAlignment="Right"
+                        IsVisible="{Binding #RootControl.IsCloseBtnShow}"
+                        Name="CloseButton"
+                        ToolTip.ShowDelay="900"
+                        ToolTip.Tip="{DynamicResource Lang.Close}"
+                        VerticalAlignment="Center"
+                        cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

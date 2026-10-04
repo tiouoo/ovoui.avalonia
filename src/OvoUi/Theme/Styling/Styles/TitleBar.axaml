@@ -11,17 +11,18 @@
                 <Border
                     Background="{TemplateBinding Background}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    CornerRadius="8"
                     Height="24"
                     Name="bd"
                     Width="24">
-                    <PathIcon
+                    <Path
                         Data="{TemplateBinding Content}"
-                        Foreground="{DynamicResource ForegroundBrush}"
+                        Fill="{DynamicResource ForegroundBrush}"
                         Height="10"
                         HorizontalAlignment="Center"
                         Margin="{TemplateBinding Padding}"
                         Name="ico"
+                        Stretch="Uniform"
                         VerticalAlignment="Center"
                         Width="10" />
                 </Border>
@@ -29,19 +30,16 @@
         </Setter>
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border">
-                <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+                <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
             </Style>
             <Style Selector="^.close /template/ Border">
                 <Setter Property="Background" Value="Red" />
             </Style>
             <Style Selector="^.close /template/ Border">
-                <Style Selector="^ PathIcon">
-                    <Setter Property="Foreground" Value="White" />
+                <Style Selector="^ Path">
+                    <Setter Property="Fill" Value="White" />
                 </Style>
             </Style>
-        </Style>
-        <Style Selector="^.minimize">
-            <Setter Property="Padding" Value="0,1,0,0" />
         </Style>
     </Style>
     <Style Selector="Button.custom-caption">
@@ -50,7 +48,7 @@
                 <Border
                     Background="{TemplateBinding Background}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="7"
+                    CornerRadius="8"
                     Height="24"
                     Name="bd"
                     Width="24">
