@@ -1,0 +1,94 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="ovo:MultiAutoCompleteBox" x:Key="{x:Type ovo:MultiAutoCompleteBox}">
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="MaxDropDownHeight" Value="603" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:MultiAutoCompleteBox">
+                <Panel>
+                    <Border
+                        Background="{DynamicResource ControlBackground}"
+                        BorderBrush="{DynamicResource LineBrush}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        MinHeight="30"
+                        Name="PART_RootBorder"
+                        VerticalAlignment="Stretch">
+                        <Grid ColumnDefinitions="Auto, *, Auto">
+                            <ContentPresenter
+                                Content="{TemplateBinding InnerLeftContent}"
+                                Foreground="{DynamicResource ForegroundBrush}"
+                                Grid.Column="0"
+                                IsHitTestVisible="False"
+                                IsVisible="{TemplateBinding InnerLeftContent,
+                                                            Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center" />
+                            <ovo:MultiComboBoxSelectedItemList
+                                Grid.Column="1"
+                                ItemTemplate="{TemplateBinding SelectedItemTemplate}"
+                                ItemsSource="{TemplateBinding SelectedItems}"
+                                Margin="8,0,0,0"
+                                Name="{x:Static ovo:MultiAutoCompleteBox.PART_SelectedItemsControl}"
+                                RemoveCommand="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Remove}"
+                                VerticalAlignment="Center">
+                                <ovo:MultiComboBoxSelectedItemList.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ovo:WrapPanelWithTrailingItem>
+                                            <ovo:WrapPanelWithTrailingItem.TrailingItem>
+                                                <TextBox
+                                                    MinWidth="24"
+                                                    Theme="{DynamicResource TagInputTextBoxTheme}"
+                                                    VerticalAlignment="Center" />
+                                            </ovo:WrapPanelWithTrailingItem.TrailingItem>
+                                        </ovo:WrapPanelWithTrailingItem>
+                                    </ItemsPanelTemplate>
+                                </ovo:MultiComboBoxSelectedItemList.ItemsPanel>
+                            </ovo:MultiComboBoxSelectedItemList>
+                            <ContentPresenter
+                                Content="{TemplateBinding InnerRightContent}"
+                                Foreground="{DynamicResource ForegroundBrush}"
+                                Grid.Column="2"
+                                IsHitTestVisible="False"
+                                IsVisible="{TemplateBinding InnerRightContent,
+                                                            Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="8,0"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                    <Popup
+                        IsLightDismissEnabled="True"
+                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                        Name="PART_Popup"
+                        PlacementTarget="{TemplateBinding}">
+                        <Border
+                            Background="{DynamicResource PopupBackgroundBrush}"
+                            BorderBrush="{DynamicResource PopupBorderBrush}"
+                            BorderThickness="1"
+                            BoxShadow="{DynamicResource PopupBoxShadow}"
+                            CornerRadius="{DynamicResource OvoCornerRadius}"
+                            HorizontalAlignment="Stretch"
+                            Margin="4"
+                            MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                            Padding="0,4">
+                            <DockPanel LastChildFill="True">
+                                <ContentPresenter Content="{TemplateBinding PopupInnerTopContent}" DockPanel.Dock="Top" />
+                                <ContentPresenter Content="{TemplateBinding PopupInnerBottomContent}" DockPanel.Dock="Bottom" />
+                                <ListBox
+                                    Foreground="{TemplateBinding Foreground}"
+                                    ItemTemplate="{TemplateBinding ItemTemplate}"
+                                    Margin="8,4"
+                                    Name="PART_SelectingItemsControl"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                    ScrollViewer.IsScrollChainingEnabled="False"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                            </DockPanel>
+                        </Border>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

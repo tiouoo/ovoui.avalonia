@@ -4,10 +4,12 @@
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Class="OvoUi.Test.MainWindow"
+    x:DataType="test:MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
         <StackPanel
@@ -16,12 +18,7 @@
             Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:MultiComboBox Width="300">
-                <ovo:MultiComboBoxItem Content="Option 1" />
-                <ovo:MultiComboBoxItem Content="Option 2" />
-                <ovo:MultiComboBoxItem Content="Option 3" />
-                <ovo:MultiComboBoxItem Content="Option 4" />
-            </ovo:MultiComboBox>
+            <ovo:MultiAutoCompleteBox ItemsSource="{Binding StringItems}" SelectedItems="{Binding SelectedStringItems}" />
 
         </StackPanel>
         <StackPanel

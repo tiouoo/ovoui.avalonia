@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -12,8 +13,28 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = this;
     }
 
+    public ObservableCollection<string> StringItems { get; } =
+    [
+        "Button",
+        "TextBox",
+        "ComboBox",
+        "DatePicker"
+    ];
+
+    public ObservableCollection<string> SelectedStringItems { get; } = [];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void Dark(object? sender, RoutedEventArgs e)
     {
         ThemeManager.ToggleTheme(Themes.Dark);
