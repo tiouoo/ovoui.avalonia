@@ -1,0 +1,111 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="20">
+            <o:Rating />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <StreamGeometry x:Key="RatingStarIconGlyph">M10.75 1.9c.4-1.2 2.1-1.2 2.5 0l1.99 6.12h6.45a1.3 1.3 0 0 1 .77 2.37l-5.22 3.78 2 6.11c.39 1.2-1 2.2-2.02 1.46L12 17.96l-5.22 3.78c-1.02.75-2.4-.25-2.01-1.46l1.99-6.11-5.22-3.78a1.3 1.3 0 0 1 .77-2.37h6.45l2-6.12Z</StreamGeometry>
+            <SolidColorBrush Color="#FAC800" x:Key="RatingCharacterForeground" />
+            <SolidColorBrush
+                Color="#2E3238"
+                Opacity="0.05"
+                x:Key="RatingCharacterBackground" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <StreamGeometry x:Key="RatingStarIconGlyph">M10.75 1.9c.4-1.2 2.1-1.2 2.5 0l1.99 6.12h6.45a1.3 1.3 0 0 1 .77 2.37l-5.22 3.78 2 6.11c.39 1.2-1 2.2-2.02 1.46L12 17.96l-5.22 3.78c-1.02.75-2.4-.25-2.01-1.46l1.99-6.11-5.22-3.78a1.3 1.3 0 0 1 .77-2.37h6.45l2-6.12Z</StreamGeometry>
+            <SolidColorBrush Color="#FDDE43" x:Key="RatingCharacterForeground" />
+            <SolidColorBrush
+                Color="White"
+                Opacity="0.12"
+                x:Key="RatingCharacterBackground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+
+    <ControlTheme TargetType="o:RatingCharacter" x:Key="{x:Type o:RatingCharacter}">
+        <Setter Property="Character" Value="{DynamicResource RatingStarIconGlyph}" />
+        <Setter Property="Background" Value="{DynamicResource RatingCharacterBackground}" />
+        <Setter Property="Margin" Value="3 ,4" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:RatingCharacter">
+                <Canvas
+                    Height="{TemplateBinding Size}"
+                    Name="PART_Root"
+                    Width="{TemplateBinding Size}">
+                    <Path
+                        Data="{TemplateBinding Character}"
+                        Fill="{TemplateBinding Background}"
+                        Height="{Binding #PART_Root.Height}"
+                        Stretch="Uniform"
+                        Width="{Binding #PART_Root.Width}" />
+                    <Border
+                        ClipToBounds="True"
+                        IsVisible="False"
+                        Name="{x:Static o:RatingCharacter.PART_IconBorder}">
+                        <Path
+                            Data="{TemplateBinding Character}"
+                            Fill="{TemplateBinding Foreground}"
+                            Height="{Binding #PART_Root.Height}"
+                            HorizontalAlignment="Left"
+                            Stretch="Uniform"
+                            Width="{Binding #PART_Root.Width}" />
+                    </Border>
+                </Canvas>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="RenderTransform" Value="scale(1.1)" />
+        </Style>
+        <Style Selector="^:selected /template/ Border#PART_IconBorder">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="o:Rating" x:Key="{x:Type o:Rating}">
+        <Setter Property="Foreground" Value="{DynamicResource RatingCharacterForeground}" />
+        <Setter Property="Character" Value="{DynamicResource RatingStarIconGlyph}" />
+        <Setter Property="Size" Value="24" />
+        <Setter Property="ItemTemplate">
+            <DataTemplate>
+                <o:RatingCharacter />
+            </DataTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:Rating">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="PART_RootBorder"
+                    VerticalAlignment="Stretch">
+                    <Panel HorizontalAlignment="Stretch">
+                        <ItemsControl
+                            HorizontalAlignment="Stretch"
+                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                            ItemsSource="{TemplateBinding Items}"
+                            Name="{x:Static o:Rating.PART_ItemsControl}"
+                            VerticalAlignment="Top">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.small">
+            <Setter Property="Size" Value="16" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

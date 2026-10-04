@@ -63,7 +63,6 @@
                                 Ticks="{TemplateBinding Ticks}"
                                 VerticalAlignment="Top" />
                             <ovo:RangeTrack
-                                Cursor="Hand"
                                 Grid.Row="1"
                                 HorizontalAlignment="Stretch"
                                 LowerValue="{Binding LowerValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -155,7 +154,6 @@
                                 Ticks="{TemplateBinding Ticks}"
                                 Width="{DynamicResource SliderTickVerticalWidth}" />
                             <ovo:RangeTrack
-                                Cursor="Hand"
                                 Grid.Column="1"
                                 HorizontalAlignment="Stretch"
                                 LowerValue="{Binding LowerValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

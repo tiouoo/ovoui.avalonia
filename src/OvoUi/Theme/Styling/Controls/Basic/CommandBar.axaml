@@ -53,7 +53,6 @@
         <Setter Property="CornerRadius" Value="3" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Cursor" Value="Hand" />
 
         <Style Selector="^:pointerover /template/ Border#PART_Border">
             <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
