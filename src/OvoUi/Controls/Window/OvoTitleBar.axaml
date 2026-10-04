@@ -19,7 +19,10 @@
             <Setter Property="Cursor" Value="Arrow" />
             <Setter Property="ContentTemplate">
                 <DataTemplate x:DataType="Geometry">
-                    <PathIcon Width="10" Height="10" Data="{Binding}" />
+                    <PathIcon
+                        Data="{Binding}"
+                        Height="10"
+                        Width="10" />
                 </DataTemplate>
             </Setter>
         </Style>
@@ -61,22 +64,22 @@
                     TabIndex="3">
                     <Button
                         Classes="window-caption"
-                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.MinimizeIcon}"
                         HorizontalAlignment="Right"
                         IsVisible="{Binding #RootControl.IsMinBtnShow}"
                         Name="MinimizeButton"
                         Padding="0"
+                        Theme="{StaticResource BasicButtonTheme}"
                         ToolTip.ShowDelay="900"
                         ToolTip.Tip="{DynamicResource Lang.Minimum}"
                         VerticalAlignment="Center"
                         cdp:WindowDecorationProperties.ElementRole="DecorationsElement" />
                     <Button
                         Classes="window-caption"
-                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.MaximizeIcon}"
                         HorizontalAlignment="Right"
                         Name="MaximizeButton"
+                        Theme="{StaticResource BasicButtonTheme}"
                         ToolTip.ShowDelay="900"
                         ToolTip.Tip="{DynamicResource Lang.Maximum}"
                         VerticalAlignment="Center"
@@ -90,10 +93,10 @@
                     </Button>
                     <Button
                         Classes="window-caption"
-                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.RestoreIcon}"
                         HorizontalAlignment="Right"
                         Name="RestoreButton"
+                        Theme="{StaticResource BasicButtonTheme}"
                         ToolTip.ShowDelay="900"
                         ToolTip.Tip="{DynamicResource Lang.Restore}"
                         VerticalAlignment="Center"
@@ -107,11 +110,11 @@
                     </Button>
                     <Button
                         Classes="window-caption close"
-                        Theme="{StaticResource BasicButtonTheme}"
                         Content="{Binding #RootControl.CloseIcon}"
                         HorizontalAlignment="Right"
                         IsVisible="{Binding #RootControl.IsCloseBtnShow}"
                         Name="CloseButton"
+                        Theme="{StaticResource BasicButtonTheme}"
                         ToolTip.ShowDelay="900"
                         ToolTip.Tip="{DynamicResource Lang.Close}"
                         VerticalAlignment="Center"

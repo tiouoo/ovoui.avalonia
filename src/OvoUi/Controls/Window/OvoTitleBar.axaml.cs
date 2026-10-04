@@ -29,13 +29,6 @@ public partial class OvoTitleBar : UserControl
         RestoreButton.Click += MaximizeButton_Click;
         MinimizeButton.Click += MinimizeButton_Click;
         MoveDragArea.PointerPressed += MoveDragArea_PointerPressed;
-
-        // if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        //     AttachedToVisualTree += (_, _) =>
-        //     {
-        //         Debug.WriteLine("TioTitleBar: AttachedToVisualTree event fired");
-        //         EnableWindowsSnapLayout(MaximizeButton);
-        //     };
     }
 
     private void MoveDragArea_PointerPressed(object? sender, PointerPressedEventArgs e)
@@ -199,113 +192,5 @@ public partial class OvoTitleBar : UserControl
     }
 
     #endregion
-
-    #region Windows Snap Layout Support
     
-    // [DllImport("user32.dll")]
-    // private static extern short GetAsyncKeyState(int vKey);
-    //
-    // private static bool IsMouseDown()
-    // {
-    //     if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-    //         return false;
-    //
-    //     const int VK_LBUTTON = 1;
-    //     return (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
-    // }
-    //
-    // private void EnableWindowsSnapLayout(Button maximizeButton)
-    // {
-    //     if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-    //         return;
-    //
-    //     const int HTCLIENT = 1;
-    //     const int HTMAXBUTTON = 9;
-    //     const uint WM_NCHITTEST = 0x0084;
-    //
-    //     var pointerOnButton = false;
-    //     var pointerOverSetter = typeof(Button).GetProperty(nameof(IsPointerOver));
-    //     if (pointerOverSetter is null)
-    //     {
-    //         Debug.WriteLine("TioTitleBar: IsPointerOver property not found");
-    //         return;
-    //     }
-    //
-    //     var window = TopLevel.GetTopLevel(this) as Window;
-    //     if (window == null)
-    //     {
-    //         Debug.WriteLine("TioTitleBar: Window not found");
-    //         return;
-    //     }
-    //
-    //     Debug.WriteLine("TioTitleBar: Enabling Snap Layout for button");
-    //
-    //     try
-    //     {
-    //         _wndProcHookCallback = ProcHookCallback;
-    //         Win32Properties.AddWndProcHookCallback(window, _wndProcHookCallback);
-    //
-    //         Debug.WriteLine("TioTitleBar: Win32 hook successfully registered");
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         Debug.WriteLine($"TioTitleBar: Failed to enable Windows Snap Layout: {ex.Message}");
-    //         Debug.WriteLine($"TioTitleBar: Stack trace: {ex.StackTrace}");
-    //     }
-    //
-    //     return;
-    //
-    //     nint ProcHookCallback(nint hWnd, uint msg, nint wParam, nint lParam, ref bool handled)
-    //     {
-    //         if (msg == WM_NCHITTEST)
-    //         {
-    //             if (!maximizeButton.IsVisible)
-    //                 return 0;
-    //
-    //             var point = new PixelPoint(
-    //                 (short)(ToInt32(lParam) & 0xffff),
-    //                 (short)(ToInt32(lParam) >> 16)
-    //             );
-    //
-    //             var buttonSize = maximizeButton.DesiredSize;
-    //             var buttonLeftTop = maximizeButton.PointToScreen(new Point(0, 0));
-    //
-    //             var scaling = window.RenderScaling;
-    //             var x = (point.X - buttonLeftTop.X) / scaling;
-    //             var y = (point.Y - buttonLeftTop.Y) / scaling;
-    //
-    //             var isInButton = new Rect(default, buttonSize).Contains(new Point(x, y));
-    //
-    //             if (isInButton)
-    //             {
-    //                 handled = true;
-    //
-    //                 if (!pointerOnButton)
-    //                 {
-    //                     pointerOnButton = true;
-    //                     pointerOverSetter.SetValue(maximizeButton, true);
-    //                     // Debug.WriteLine("TioTitleBar: Pointer entered maximize button");
-    //                 }
-    //
-    //                 var result = IsMouseDown() ? HTCLIENT : HTMAXBUTTON;
-    //                 // Debug.WriteLine($"TioTitleBar: Returning {(result == HTMAXBUTTON ? "HTMAXBUTTON" : "HTCLIENT")}");
-    //                 return result;
-    //             }
-    //
-    //             if (!pointerOnButton) return 0;
-    //             pointerOnButton = false;
-    //             pointerOverSetter.SetValue(maximizeButton, false);
-    //             // Debug.WriteLine("TioTitleBar: Pointer left maximize button");
-    //         }
-    //
-    //         return 0;
-    //     }
-    //
-    //     static int ToInt32(IntPtr ptr)
-    //     {
-    //         return IntPtr.Size == 4 ? ptr.ToInt32() : (int)(ptr.ToInt64() & 0xffffffff);
-    //     }
-    // }
-
-    #endregion
 }
