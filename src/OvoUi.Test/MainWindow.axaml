@@ -18,7 +18,13 @@
             Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:MultiAutoCompleteBox ItemsSource="{Binding StringItems}" SelectedItems="{Binding SelectedStringItems}" />
+            <ovo:SelectionList ItemsSource="{Binding StringItems}">
+                <ovo:SelectionList.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ovo:SelectionList.ItemsPanel>
+            </ovo:SelectionList>
 
         </StackPanel>
         <StackPanel

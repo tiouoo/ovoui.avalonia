@@ -21,6 +21,7 @@
         <ResourceInclude Source="PinCode.axaml" />
         <ResourceInclude Source="MultiAutoCompleteBox.axaml" />
         <ResourceInclude Source="RangeSlider.axaml" />
+        <ResourceInclude Source="SelectionList.axaml" />
         <ResourceInclude Source="Rating.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

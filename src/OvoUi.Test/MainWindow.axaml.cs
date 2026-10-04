@@ -23,10 +23,6 @@ public partial class MainWindow : Window
         "ComboBox",
         "DatePicker"
     ];
-
-    public ObservableCollection<string> SelectedStringItems { get; } = [];
-    
-    
     
     
     
