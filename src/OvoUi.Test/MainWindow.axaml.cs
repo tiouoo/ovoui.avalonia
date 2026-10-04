@@ -5,10 +5,11 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using OvoUi.Common.Theme;
+using OvoUi.Controls;
 
 namespace OvoUi.Test;
 
-public partial class MainWindow : Window
+public partial class MainWindow : OvoWindow
 {
     public MainWindow()
     {

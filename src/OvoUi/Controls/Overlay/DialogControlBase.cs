@@ -1,0 +1,314 @@
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.LogicalTree;
+using OvoUi.Common.Classes;
+using OvoUi.Common.Extension;
+using OvoUi.Common.Helpers;
+
+namespace OvoUi.Controls;
+
+[TemplatePart(PART_CloseButton, typeof(Button))]
+[TemplatePart(PART_TitleArea, typeof(Panel))]
+[PseudoClasses(PC_Modal, PC_FullScreen)]
+public abstract class DialogControlBase : OverlayFeedbackElement
+{
+    public const string PART_CloseButton = "PART_CloseButton";
+    public const string PART_TitleArea = "PART_TitleArea";
+    public const string PC_Modal = ":modal";
+    public const string PC_FullScreen = ":full-screen";
+
+    public static readonly DirectProperty<DialogControlBase, bool> IsFullScreenProperty =
+        AvaloniaProperty.RegisterDirect<DialogControlBase, bool>(
+            nameof(IsFullScreen), o => o.IsFullScreen, (o, v) => o.IsFullScreen = v);
+
+    public static readonly StyledProperty<bool> CanResizeProperty = AvaloniaProperty.Register<DialogControlBase, bool>(
+        nameof(CanResize));
+
+    protected internal Button? _closeButton;
+
+    private bool _isFullScreen;
+    private bool _moveDragging;
+    private Point _moveDragStartPoint;
+    private Panel? _titleArea;
+
+    public static readonly StyledProperty<Thickness> CloseBtnMarginProperty =
+        AvaloniaProperty.Register<CustomDialogControl, Thickness>(nameof(CloseBtnMargin), new Thickness(0,24,24,0));
+
+    public Thickness CloseBtnMargin
+    {
+        get => GetValue(CloseBtnMarginProperty);
+        set => SetValue(CloseBtnMarginProperty, value);
+    }
+    
+    static DialogControlBase()
+    {
+        CanDragMoveProperty.Changed.AddClassHandler<InputElement, bool>(OnCanDragMoveChanged);
+        CanCloseProperty.Changed.AddClassHandler<InputElement, bool>(OnCanCloseChanged);
+        IsFullScreenProperty.AffectsPseudoClass<DialogControlBase>(PC_FullScreen);
+    }
+
+    public bool CanResize
+    {
+        get => GetValue(CanResizeProperty);
+        set => SetValue(CanResizeProperty, value);
+    }
+
+    internal HorizontalPosition HorizontalAnchor { get; set; } = HorizontalPosition.Center;
+    internal VerticalPosition VerticalAnchor { get; set; } = VerticalPosition.Center;
+    internal HorizontalPosition ActualHorizontalAnchor { get; set; }
+    internal VerticalPosition ActualVerticalAnchor { get; set; }
+    internal double? HorizontalOffset { get; set; }
+    internal double? VerticalOffset { get; set; }
+    internal double? HorizontalOffsetRatio { get; set; }
+    internal double? VerticalOffsetRatio { get; set; }
+    internal bool CanLightDismiss { get; set; }
+    internal bool? IsCloseButtonVisible { get; set; }
+
+    public bool IsFullScreen
+    {
+        get => _isFullScreen;
+        set => SetAndRaise(IsFullScreenProperty, ref _isFullScreen, value);
+    }
+
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        _titleArea = e.NameScope.Find<Panel>(PART_TitleArea);
+        if (GetCanDragMove(this))
+        {
+            _titleArea?.RemoveHandler(PointerMovedEvent, OnDraggableAreaPointerMove);
+            _titleArea?.RemoveHandler(PointerPressedEvent, OnDraggableAreaPointerPressed);
+            _titleArea?.RemoveHandler(PointerReleasedEvent, OnDraggableAreaPointerRelease);
+
+            _titleArea?.AddHandler(PointerMovedEvent, OnDraggableAreaPointerMove, RoutingStrategies.Bubble);
+            _titleArea?.AddHandler(PointerPressedEvent, OnDraggableAreaPointerPressed, RoutingStrategies.Bubble);
+            _titleArea?.AddHandler(PointerReleasedEvent, OnDraggableAreaPointerRelease, RoutingStrategies.Bubble);
+        }
+        else
+        {
+            if (_titleArea is not null) _titleArea.IsHitTestVisible = false;
+        }
+
+        Button.ClickEvent.RemoveHandler(OnCloseButtonClick, _closeButton);
+        _closeButton = e.NameScope.Find<Button>(PART_CloseButton);
+        Button.ClickEvent.AddHandler(OnCloseButtonClick, _closeButton);
+    }
+
+    private void OnDraggableAreaPointerPressed(InputElement sender, PointerPressedEventArgs e)
+    {
+        //e.Source = this;
+        if (ContainerPanel is OverlayDialogHost h)
+            if (h.IsTopLevel && IsFullScreen)
+            {
+                var top = TopLevel.GetTopLevel(this);
+                if (top is Window w)
+                {
+                    w.BeginMoveDrag(e);
+                    return;
+                }
+            }
+
+        if (!e.GetCurrentPoint(this).Properties.IsLeftButtonPressed) return;
+        if (IsFullScreen) return;
+        _moveDragging = true;
+        _moveDragStartPoint = e.GetPosition(this);
+    }
+
+    private void OnDraggableAreaPointerMove(InputElement sender, PointerEventArgs e)
+    {
+        //e.Source = this;
+        if (!_moveDragging) return;
+        if (ContainerPanel is null) return;
+        var p = e.GetPosition(this);
+        var left = Canvas.GetLeft(this) + p.X - _moveDragStartPoint.X;
+        var top = Canvas.GetTop(this) + p.Y - _moveDragStartPoint.Y;
+        Thickness safePadding = default;
+        if (ContainerPanel is OverlayDialogHost h) safePadding = h.SafePadding;
+        left = MathHelpers.SafeClamp(left, safePadding.Left, ContainerPanel.Bounds.Width - safePadding.Right - Bounds.Width);
+        top = MathHelpers.SafeClamp(top, safePadding.Top, ContainerPanel.Bounds.Height - safePadding.Bottom - Bounds.Height);
+        Canvas.SetLeft(this, left);
+        Canvas.SetTop(this, top);
+    }
+
+    private void OnDraggableAreaPointerRelease(InputElement sender, PointerReleasedEventArgs e)
+    {
+        // e.Source = this;
+        _moveDragging = false;
+        AnchorAndUpdatePositionInfo();
+    }
+
+    private void OnCloseButtonClick(object? sender, RoutedEventArgs args)
+    {
+        Close();
+    }
+
+    internal void SetAsModal(bool modal)
+    {
+        PseudoClasses.Set(PC_Modal, modal);
+    }
+
+    protected internal override void AnchorAndUpdatePositionInfo()
+    {
+        if (ContainerPanel is null) return;
+        ActualHorizontalAnchor = HorizontalPosition.Center;
+        ActualVerticalAnchor = VerticalPosition.Center;
+        var left = Canvas.GetLeft(this);
+        var top = Canvas.GetTop(this);
+        if (ContainerPanel is OverlayDialogHost h)
+        {
+            var snapThickness = h.SnapThickness;
+            var safePadding = h.SafePadding;
+            var safeTop = safePadding.Top;
+            var safeBottom = safePadding.Bottom;
+            var safeLeft = safePadding.Left;
+            var safeRight = safePadding.Right;
+            var containerWidth = ContainerPanel.Bounds.Width;
+            var containerHeight = ContainerPanel.Bounds.Height;
+
+            if (top - safeTop < snapThickness.Top)
+            {
+                Canvas.SetTop(this, safeTop);
+                ActualVerticalAnchor = VerticalPosition.Top;
+                VerticalOffsetRatio = 0;
+            }
+
+            if (containerHeight - safeBottom - top - Bounds.Height < snapThickness.Bottom)
+            {
+                Canvas.SetTop(this, containerHeight - safeBottom - Bounds.Height);
+                ActualVerticalAnchor = VerticalPosition.Bottom;
+                VerticalOffsetRatio = 1;
+            }
+
+            if (left - safeLeft < snapThickness.Left)
+            {
+                Canvas.SetLeft(this, safeLeft);
+                ActualHorizontalAnchor = HorizontalPosition.Left;
+                HorizontalOffsetRatio = 0;
+            }
+
+            if (containerWidth - safeRight - left - Bounds.Width < snapThickness.Right)
+            {
+                Canvas.SetLeft(this, containerWidth - safeRight - Bounds.Width);
+                ActualHorizontalAnchor = HorizontalPosition.Right;
+                HorizontalOffsetRatio = 1;
+            }
+
+            left = Canvas.GetLeft(this);
+            top = Canvas.GetTop(this);
+            var effectiveLeft = left - safeLeft;
+            var effectiveRight = containerWidth - safeRight - left - Bounds.Width;
+            var effectiveTop = top - safeTop;
+            var effectiveBottom = containerHeight - safeBottom - top - Bounds.Height;
+            HorizontalOffsetRatio = (effectiveLeft + effectiveRight) == 0 ? 0 : effectiveLeft / (effectiveLeft + effectiveRight);
+            VerticalOffsetRatio = (effectiveTop + effectiveBottom) == 0 ? 0 : effectiveTop / (effectiveTop + effectiveBottom);
+        }
+        else
+        {
+            double right = ContainerPanel.Bounds.Width - left - Bounds.Width;
+            double bottom = ContainerPanel.Bounds.Height - top - Bounds.Height;
+            HorizontalOffsetRatio = left + right == 0 ? 0 : left / (left + right);
+            VerticalOffsetRatio = top + bottom == 0 ? 0 : top / (top + bottom);
+        }
+    }
+
+    #region Layer Management
+
+    public static readonly RoutedEvent<DialogLayerChangeEventArgs> LayerChangedEvent =
+        RoutedEvent.Register<CustomDialogControl, DialogLayerChangeEventArgs>(
+            nameof(LayerChanged), RoutingStrategies.Bubble);
+
+    public event EventHandler<DialogLayerChangeEventArgs> LayerChanged
+    {
+        add => AddHandler(LayerChangedEvent, value);
+        remove => RemoveHandler(LayerChangedEvent, value);
+    }
+
+    public void UpdateLayer(object? o)
+    {
+        if (o is DialogLayerChangeType t) RaiseEvent(new DialogLayerChangeEventArgs(LayerChangedEvent, t));
+    }
+
+    #endregion
+
+    #region DragMove AttachedPropert
+
+    public static readonly AttachedProperty<bool> CanDragMoveProperty =
+        AvaloniaProperty.RegisterAttached<DialogControlBase, InputElement, bool>("CanDragMove");
+
+    public static void SetCanDragMove(InputElement obj, bool value)
+    {
+        obj.SetValue(CanDragMoveProperty, value);
+    }
+
+    public static bool GetCanDragMove(InputElement obj)
+    {
+        return obj.GetValue(CanDragMoveProperty);
+    }
+
+    private static void OnCanDragMoveChanged(InputElement arg1, AvaloniaPropertyChangedEventArgs<bool> arg2)
+    {
+        if (arg2.NewValue.Value)
+        {
+            arg1.AddHandler(PointerPressedEvent, OnPointerPressed, RoutingStrategies.Bubble);
+            arg1.AddHandler(PointerMovedEvent, OnPointerMoved, RoutingStrategies.Bubble);
+            arg1.AddHandler(PointerReleasedEvent, OnPointerReleased, RoutingStrategies.Bubble);
+        }
+        else
+        {
+            arg1.RemoveHandler(PointerPressedEvent, OnPointerPressed);
+            arg1.RemoveHandler(PointerMovedEvent, OnPointerMoved);
+            arg1.RemoveHandler(PointerReleasedEvent, OnPointerReleased);
+        }
+
+        static void OnPointerPressed(InputElement sender, PointerPressedEventArgs e)
+        {
+            if (sender.FindLogicalAncestorOfType<DialogControlBase>() is { } dialog)
+                dialog.OnDraggableAreaPointerPressed(sender, e);
+        }
+
+        static void OnPointerMoved(InputElement sender, PointerEventArgs e)
+        {
+            if (sender.FindLogicalAncestorOfType<DialogControlBase>() is { } dialog)
+                dialog.OnDraggableAreaPointerMove(sender, e);
+        }
+
+        static void OnPointerReleased(InputElement sender, PointerReleasedEventArgs e)
+        {
+            if (sender.FindLogicalAncestorOfType<DialogControlBase>() is { } dialog)
+                dialog.OnDraggableAreaPointerRelease(sender, e);
+        }
+    }
+
+    #endregion
+
+    #region Close AttachedProperty
+
+    public static readonly AttachedProperty<bool> CanCloseProperty =
+        AvaloniaProperty.RegisterAttached<DialogControlBase, InputElement, bool>("CanClose");
+
+    public static void SetCanClose(InputElement obj, bool value)
+    {
+        obj.SetValue(CanCloseProperty, value);
+    }
+
+    public static bool GetCanClose(InputElement obj)
+    {
+        return obj.GetValue(CanCloseProperty);
+    }
+
+    private static void OnCanCloseChanged(InputElement arg1, AvaloniaPropertyChangedEventArgs<bool> arg2)
+    {
+        if (arg2.NewValue.Value) arg1.AddHandler(PointerPressedEvent, OnPointerPressed, RoutingStrategies.Bubble);
+
+        void OnPointerPressed(InputElement sender, PointerPressedEventArgs e)
+        {
+            if (sender.FindLogicalAncestorOfType<DialogControlBase>() is { } dialog) dialog.Close();
+        }
+    }
+
+    #endregion
+}

@@ -1,4 +1,4 @@
-<Window
+<ovo:OvoWindow
     Title="OvoUi.Test"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -34,4 +34,4 @@
             <Button Click="Light" Content="Light" />
         </StackPanel>
     </Grid>
-</Window>
+</ovo:OvoWindow>

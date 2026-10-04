@@ -1,0 +1,80 @@
+﻿<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Button.title-bar-button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Width" Value="25" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="7"
+                    Height="24"
+                    Name="bd"
+                    Width="24">
+                    <Path
+                        Data="{TemplateBinding Content}"
+                        Fill="{DynamicResource ForegroundBrush}"
+                        Height="10"
+                        HorizontalAlignment="Center"
+                        Margin="{TemplateBinding Padding}"
+                        Name="ico"
+                        Stretch="Uniform"
+                        VerticalAlignment="Center"
+                        Width="10" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+            </Style>
+            <Style Selector="^.close-button /template/ Border">
+                <Setter Property="Background" Value="Red" />
+            </Style>
+            <Style Selector="^.close-button /template/ Border">
+                <Style Selector="^ Path">
+                    <Setter Property="Fill" Value="White" />
+                </Style>
+            </Style>
+        </Style>
+    </Style>
+    <Style Selector="Button.custom-title-bar-button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Width" Value="25" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="7"
+                    Height="24"
+                    Name="bd"
+                    Width="24">
+                    <ContentControl
+                        Content="{TemplateBinding Content}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border">
+                <Setter Property="Background" Value="{DynamicResource ItemPointeroverBackground}" />
+            </Style>
+            <Style Selector="^.close-button /template/ Border">
+                <Setter Property="Background" Value="Red" />
+            </Style>
+            <Style Selector="^.close-button /template/ Border">
+                <Style Selector="^ Path">
+                    <Setter Property="Fill" Value="White" />
+                </Style>
+            </Style>
+        </Style>
+    </Style>
+</Styles>

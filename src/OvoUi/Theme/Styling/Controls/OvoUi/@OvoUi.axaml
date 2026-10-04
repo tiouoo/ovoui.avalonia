@@ -24,5 +24,10 @@
         <ResourceInclude Source="SelectionList.axaml" />
         <ResourceInclude Source="Rating.axaml" />
         <ResourceInclude Source="TreeComboBox.axaml" />
+        <ResourceInclude Source="Resizer.axaml" />
+        <ResourceInclude Source="OvoNotification.axaml" />
+        <ResourceInclude Source="OvoToast.axaml" />
+        <ResourceInclude Source="OvoView.axaml" />
+        <ResourceInclude Source="OvoWindow.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

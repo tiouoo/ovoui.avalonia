@@ -1,0 +1,126 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:OvoWindow" x:Key="{x:Type o:OvoWindow}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource BackgroundColor}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
+        <Setter Property="FontSize" Value="{DynamicResource TioFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource TioFontWeight}" />
+        <Setter Property="FontFamily" Value="{DynamicResource TioFontFamily}" />
+        <Setter Property="FrameBorderBrush" Value="{DynamicResource PopupBorderBrush}" />
+        <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+        <Setter Property="WindowDecorations">
+            <OnPlatform>
+                <On Options="Default">
+                    <WindowDecorations>Full</WindowDecorations>
+                </On>
+                <On Options="Linux">
+                    <WindowDecorations>None</WindowDecorations>
+                </On>
+            </OnPlatform>
+        </Setter>
+        <Setter Property="IsManagedResizerVisible">
+            <OnPlatform>
+                <On Options="Default">
+                    <system:Boolean>False</system:Boolean>
+                </On>
+                <On Options="Linux">
+                    <system:Boolean>True</system:Boolean>
+                </On>
+            </OnPlatform>
+        </Setter>
+        <Setter Property="FrameBorderCornerRadius">
+            <OnPlatform>
+                <On Options="Default">
+                    <CornerRadius>0</CornerRadius>
+                </On>
+                <On Options="Linux">
+                    <CornerRadius>10</CornerRadius>
+                </On>
+            </OnPlatform>
+        </Setter>
+        <Setter Property="FrameBorderThickness">
+            <OnPlatform>
+                <On Options="Default">
+                    <Thickness>0</Thickness>
+                </On>
+                <On Options="Linux">
+                    <Thickness>1</Thickness>
+                </On>
+            </OnPlatform>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:OvoWindow">
+                <VisualLayerManager Name="PART_VisualLayerManager">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding FrameBorderBrush}"
+                        BorderThickness="{TemplateBinding FrameBorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding FrameBorderCornerRadius}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="0.2" Property="BorderBrush" />
+                                <ThicknessTransition Duration="0.2" Property="BorderThickness" />
+                                <CornerRadiusTransition Duration="0.2" Property="CornerRadius" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Panel>
+                            <Border ClipToBounds="True" CornerRadius="{TemplateBinding FrameContentCornerRadius}">
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <CornerRadiusTransition Duration="0.2" Property="CornerRadius" />
+                                    </Transitions>
+                                </Border.Transitions>
+                                <Panel>
+                                    <Border Name="PART_Root">
+                                        <DockPanel>
+                                            <o:OvoTitleBar
+                                                CloseIcon="{Binding $parent[o:OvoWindow].CloseIcon}"
+                                                ControlBtnMargin="{Binding $parent[o:OvoWindow].TitleBarControlBtnMargin}"
+                                                DockPanel.Dock="Top"
+                                                IsCloseBtnShow="{Binding $parent[o:OvoWindow].IsCloseBtnShow}"
+                                                IsMaxBtnShow="{Binding $parent[o:OvoWindow].IsMaxBtnShow}"
+                                                IsMinBtnShow="{Binding $parent[o:OvoWindow].IsMinBtnShow}"
+                                                LeftContent="{Binding $parent[o:OvoWindow].TitleBarLeftContent}"
+                                                MaximizeIcon="{Binding $parent[o:OvoWindow].MaximizeIcon}"
+                                                MinimizeIcon="{Binding $parent[o:OvoWindow].MinimizeIcon}"
+                                                Name="PART_TitleBar"
+                                                RightContent="{Binding $parent[o:OvoWindow].TitleBarRightContent}"
+                                                TitleBarHeight="{Binding $parent[o:OvoWindow].TitleBarHeight}" />
+                                            <ContentPresenter
+                                                Content="{Binding $parent[o:OvoWindow].Content}"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                DockPanel.Dock="Bottom"
+                                                HorizontalContentAlignment="{Binding $parent[o:OvoWindow].HorizontalContentAlignment}"
+                                                Margin="{Binding $parent[o:OvoWindow].Padding}"
+                                                Name="PART_ContentPresenter"
+                                                VerticalContentAlignment="{Binding $parent[o:OvoWindow].VerticalContentAlignment}" />
+                                        </DockPanel>
+                                    </Border>
+                                    <Panel>
+                                        <o:OverlayDialogHost
+                                            HostId="{Binding $parent[o:OvoWindow].HostId}"
+                                            IsModalStatusReporter="True"
+                                            IsTopLevel="True"
+                                            Name="PART_DialogHost" />
+                                    </Panel>
+                                </Panel>
+                            </Border>
+                            <o:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" />
+                        </Panel>
+                    </Border>
+                </VisualLayerManager>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^">
+            <Style Selector="^ o|OvoTitleBar#PART_TitleBar">
+                <Setter Property="Background" Value="{DynamicResource TitleBarBackgroundColor}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

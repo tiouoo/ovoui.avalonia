@@ -1,0 +1,283 @@
+﻿using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Input;
+using Avalonia.Layout;
+using OvoUi.Common;
+using OvoUi.Common.Enums;
+
+namespace OvoUi.Controls;
+
+public static partial class OverlayDialog
+{
+    public static void ShowStandard<TView, TViewModel>(TViewModel vm, string? hostId = null,
+        OverlayDialogOptions? options = null)
+        where TView : Control, new()
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return;
+        var t = new StandardDialogControl()
+        {
+            Content = new TView(),
+            DataContext = vm,
+        };
+        ConfigureStandardDialogControl(t, options);
+        host.AddDialog(t);
+    }
+
+    public static void ShowStandard(Control control, object? vm, string? hostId = null,
+        OverlayDialogOptions? options = null)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return;
+        var t = new StandardDialogControl()
+        {
+            Content = control,
+            DataContext = vm,
+        };
+        ConfigureStandardDialogControl(t, options);
+
+        if (options?.OnDialogControlClosed != null)
+        {
+            t.AddHandler(OverlayFeedbackElement.ClosedEvent, options.OnDialogControlClosed);
+
+            t.AddHandler(OverlayFeedbackElement.ClosedEvent, (s, _) =>
+            {
+                if (s is not DialogControlBase dc) return;
+                dc.RemoveHandler(OverlayFeedbackElement.ClosedEvent, options.OnDialogControlClosed);
+            });
+        }
+
+        host.AddDialog(t);
+    }
+
+    public static void ShowStandard(object? vm, string? hostId = null, OverlayDialogOptions? options = null)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return;
+        var view = host.GetDataTemplate(vm)?.Build(vm);
+        if (view is null) view = new ContentControl();
+        view.DataContext = vm;
+        var t = new StandardDialogControl()
+        {
+            Content = view,
+            DataContext = vm,
+        };
+        ConfigureStandardDialogControl(t, options);
+        host.AddDialog(t);
+    }
+
+    public static void ShowCustom<TView, TViewModel>(TViewModel vm, string? hostId = null,
+        OverlayDialogOptions? options = null)
+        where TView : Control, new()
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return;
+        var t = new CustomDialogControl()
+        {
+            Content = new TView(),
+            DataContext = vm,
+        };
+        ConfigureCustomDialogControl(t, options);
+        host.AddDialog(t);
+    }
+
+    public static void ShowCustom(Control control, object? vm, string? hostId = null,
+        OverlayDialogOptions? options = null)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return;
+        var t = new CustomDialogControl()
+        {
+            Content = control,
+            DataContext = vm,
+        };
+        ConfigureCustomDialogControl(t, options);
+        host.AddDialog(t);
+    }
+
+    public static void ShowCustom(object? vm, string? hostId = null,
+        OverlayDialogOptions? options = null)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return;
+        var view = host.GetDataTemplate(vm)?.Build(vm);
+        if (view is null) view = new ContentControl() { Padding = new Thickness(24) };
+        view.DataContext = vm;
+        var t = new CustomDialogControl()
+        {
+            Content = view,
+            DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
+        ConfigureCustomDialogControl(t, options);
+        host.AddDialog(t);
+    }
+
+    public static Task<DialogResult> ShowStandardAsync<TView, TViewModel>(TViewModel vm, string? hostId = null,
+        OverlayDialogOptions? options = null, CancellationToken? token = default)
+        where TView : Control, new()
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return Task.FromResult(DialogResult.None);
+        var t = new StandardDialogControl()
+        {
+            Content = new TView(),
+            DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
+        ConfigureStandardDialogControl(t, options);
+        host.AddModalDialog(t);
+        return t.ShowAsync<DialogResult>(token);
+    }
+
+    public static Task<DialogResult> ShowStandardAsync(Control control, object? vm, string? hostId = null,
+        OverlayDialogOptions? options = null, CancellationToken? token = default)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return Task.FromResult(DialogResult.None);
+        var t = new StandardDialogControl()
+        {
+            Content = control,
+            DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
+        ConfigureStandardDialogControl(t, options);
+        host.AddModalDialog(t);
+        return t.ShowAsync<DialogResult>(token);
+    }
+
+    public static Task<TResult?> ShowCustomAsync<TView, TViewModel, TResult>(TViewModel vm, string? hostId = null,
+        OverlayDialogOptions? options = null, CancellationToken? token = default)
+        where TView : Control, new()
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return Task.FromResult(default(TResult));
+        var t = new CustomDialogControl()
+        {
+            Content = new TView(),
+            DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
+        ConfigureCustomDialogControl(t, options);
+        host.AddModalDialog(t);
+        return t.ShowAsync<TResult?>(token);
+    }
+
+    public static Task<TResult?> ShowCustomAsync<TResult>(Control control, object? vm, string? hostId = null,
+        OverlayDialogOptions? options = null, CancellationToken? token = default)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return Task.FromResult(default(TResult));
+        var t = new CustomDialogControl()
+        {
+            Content = control,
+            DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
+        ConfigureCustomDialogControl(t, options);
+        host.AddModalDialog(t);
+        return t.ShowAsync<TResult?>(token);
+    }
+
+    public static Task<TResult?> ShowCustomAsync<TResult>(object? vm, string? hostId = null,
+        OverlayDialogOptions? options = null, CancellationToken? token = default)
+    {
+        var host = OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+        if (host is null) return Task.FromResult(default(TResult));
+        var view = host.GetDataTemplate(vm)?.Build(vm);
+        if (view is null) view = new ContentControl() { Padding = new Thickness(24) };
+        view.DataContext = vm;
+        var t = new CustomDialogControl()
+        {
+            Content = view,
+            DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
+        ConfigureCustomDialogControl(t, options);
+        host.AddModalDialog(t);
+        return t.ShowAsync<TResult?>(token);
+    }
+
+    private static void ConfigureCustomDialogControl(CustomDialogControl control, OverlayDialogOptions? options)
+    {
+        options ??= OverlayDialogOptions.Default;
+        control.IsFullScreen = options.FullScreen;
+        if (options.FullScreen)
+        {
+            control.HorizontalAlignment = HorizontalAlignment.Stretch;
+            control.VerticalAlignment = VerticalAlignment.Stretch;
+        }
+
+        control.HorizontalAnchor = options.HorizontalAnchor;
+        control.VerticalAnchor = options.VerticalAnchor;
+        control.ActualHorizontalAnchor = options.HorizontalAnchor;
+        control.ActualVerticalAnchor = options.VerticalAnchor;
+        control.CloseBtnMargin = options.CloseBtnMargin;
+        control.HorizontalOffset =
+            control.HorizontalAnchor == HorizontalPosition.Center ? null : options.HorizontalOffset;
+        control.VerticalOffset =
+            options.VerticalAnchor == VerticalPosition.Center ? null : options.VerticalOffset;
+        control.IsCloseButtonVisible = options.IsCloseButtonVisible;
+        control.CanLightDismiss = options.CanLightDismiss;
+        control.CanResize = options.CanResize;
+        ScrollViewer.SetHorizontalScrollBarVisibility(control, options.HorizontalScrollBarVisibility);
+        ScrollViewer.SetVerticalScrollBarVisibility(control, options.VerticalScrollBarVisibility);
+        if (!string.IsNullOrWhiteSpace(options.StyleClass))
+        {
+            var styles = options.StyleClass!.Split(Constants.SpaceSeparator, StringSplitOptions.RemoveEmptyEntries);
+            control.Classes.AddRange(styles);
+        }
+
+        DialogControlBase.SetCanDragMove(control, options.CanDragMove);
+    }
+
+    private static void ConfigureStandardDialogControl(StandardDialogControl control, OverlayDialogOptions? options)
+    {
+        if (options is null) options = new OverlayDialogOptions();
+        control.IsFullScreen = options.FullScreen;
+        if (options.FullScreen)
+        {
+            control.HorizontalAlignment = HorizontalAlignment.Stretch;
+            control.VerticalAlignment = VerticalAlignment.Stretch;
+        }
+
+        control.OverrideCancelButtonText = options.OverrideCancelButtonText;
+        control.OverrideOkButtonText = options.OverrideOkButtonText;
+        control.OverrideYesButtonText = options.OverrideYesButtonText;
+        control.OverrideNoButtonText = options.OverrideNoButtonText;
+        
+        control.HorizontalAnchor = options.HorizontalAnchor;
+        control.VerticalAnchor = options.VerticalAnchor;
+        control.ActualHorizontalAnchor = options.HorizontalAnchor;
+        control.ActualVerticalAnchor = options.VerticalAnchor;
+        control.HorizontalOffset =
+            control.HorizontalAnchor == HorizontalPosition.Center ? null : options.HorizontalOffset;
+        control.VerticalOffset =
+            options.VerticalAnchor == VerticalPosition.Center ? null : options.VerticalOffset;
+        control.Mode = options.Mode;
+        control.Buttons = options.Buttons;
+        control.Title = options.Title;
+        control.CloseBtnMargin = options.CloseBtnMargin;
+        control.CanLightDismiss = options.CanLightDismiss;
+        control.IsCloseButtonVisible = options.IsCloseButtonVisible;
+        control.CanResize = options.CanResize;
+        ScrollViewer.SetHorizontalScrollBarVisibility(control, options.HorizontalScrollBarVisibility);
+        ScrollViewer.SetVerticalScrollBarVisibility(control, options.VerticalScrollBarVisibility);
+        if (!string.IsNullOrWhiteSpace(options.StyleClass))
+        {
+            var styles = options.StyleClass!.Split(Constants.SpaceSeparator, StringSplitOptions.RemoveEmptyEntries);
+            control.Classes.AddRange(styles);
+        }
+
+        DialogControlBase.SetCanDragMove(control, options.CanDragMove);
+    }
+
+    internal static T? Recall<T>(string? hostId) where T : Control
+    {
+        var host = OverlayDialogManager.GetHost(hostId, null);
+        if (host is null) return null;
+        var item = host.Recall<T>();
+        return item;
+    }
+}
