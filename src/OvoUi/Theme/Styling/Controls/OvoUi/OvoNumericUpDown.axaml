@@ -1,0 +1,84 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="10">
+            <ovo:OvoNumericIntUpDown Value="1" />
+            <ovo:OvoNumericUIntUpDown Value="1" />
+            <ovo:OvoNumericDoubleUpDown Value="1.5" />
+            <ovo:OvoNumericByteUpDown Value="1" />
+            <ovo:OvoNumericSByteUpDown Value="1" />
+            <ovo:OvoNumericShortUpDown Value="1" />
+            <ovo:OvoNumericUShortUpDown Value="1" />
+            <ovo:OvoNumericLongUpDown Value="1" />
+            <ovo:OvoNumericULongUpDown Value="1" />
+            <ovo:OvoNumericFloatUpDown Value="1.5" />
+            <ovo:OvoNumericDecimalUpDown Value="1.5" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="{x:Type ovo:OvoNumericUpDown}" x:Key="{x:Type ovo:OvoNumericUpDown}">
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:OvoNumericUpDown">
+                <DataValidationErrors>
+                    <ButtonSpinner
+                        AllowSpin="{TemplateBinding AllowSpin}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        HorizontalContentAlignment="Stretch"
+                        MinWidth="0"
+                        Name="PART_Spinner"
+                        ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}"
+                        VerticalAlignment="Top"
+                        VerticalContentAlignment="Stretch">
+                        <Panel>
+                            <TextBox
+                                AcceptsReturn="False"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                DataValidationErrors.Errors="{ReflectionBinding $parent[NumericUpDown].(DataValidationErrors.Errors)}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Height="{TemplateBinding Height}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                InnerLeftContent="{TemplateBinding InnerLeftContent}"
+                                InnerRightContent="{TemplateBinding InnerRightContent}"
+                                MinHeight="{TemplateBinding MinHeight}"
+                                Name="PART_TextBox"
+                                PlaceholderText="{TemplateBinding PlaceholderText}"
+                                TextWrapping="NoWrap"
+                                Theme="{DynamicResource NonErrorTextBox}" />
+                            <Panel
+                                Background="Transparent"
+                                Cursor="SizeAll"
+                                HorizontalAlignment="Stretch"
+                                Name="PART_DragPanel"
+                                VerticalAlignment="Stretch" />
+                            <Button
+                                Command="{Binding $parent[ovo:OvoNumericUpDown].Clear}"
+                                HorizontalAlignment="Right"
+                                IsVisible="False"
+                                Margin="0,0,8,0"
+                                Name="PART_ClearButton"
+                                Theme="{DynamicResource InputStandardClearIcon}" />
+                        </Panel>
+                    </ButtonSpinner>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^.clearn">
+            <Style Selector="^[IsReadOnly=False]:focus /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^[IsReadOnly=False]:pointerover /template/ Button#PART_ClearButton">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+
+    </ControlTheme>
+</ResourceDictionary>
