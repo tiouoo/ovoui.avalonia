@@ -116,11 +116,7 @@
                             Grid.Column="1"
                             IsVisible="False"
                             Name="ClearButton"
-                            Theme="{DynamicResource BasicButtonTheme}"
-                            Width="{DynamicResource ComboBoxIconWidth}">
-                            <Button Theme="{DynamicResource InputClearIcon}" />
-                        </Button>
-
+                            Theme="{DynamicResource InputStandardClearIcon}" />
 
                         <Button
                             Grid.Column="1"

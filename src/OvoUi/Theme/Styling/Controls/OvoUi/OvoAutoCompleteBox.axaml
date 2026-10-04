@@ -11,9 +11,6 @@
     <x:Double x:Key="AutoCompleteBoxDefaultHeight">32</x:Double>
     <x:Double x:Key="AutoCompleteMaxDropdownHeight">600</x:Double>
     <Thickness x:Key="TextBoxContentPadding">8 0</Thickness>
-    <x:Double x:Key="SemiWidthIconMedium">16</x:Double>
-    <Thickness x:Key="SemiBorderThicknessControl">1</Thickness>
-    <Thickness x:Key="SemiThicknessExtraTight">4</Thickness>
     <Thickness x:Key="AutoCompleteBoxPopupPadding">0 4</Thickness>
     <ControlTheme TargetType="ovo:OvoAutoCompleteBox" x:Key="{x:Type ovo:OvoAutoCompleteBox}">
         <Setter Property="VerticalAlignment" Value="Center" />

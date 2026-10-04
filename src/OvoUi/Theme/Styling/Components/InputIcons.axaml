@@ -43,6 +43,7 @@
         x:Key="InputDropDownIcon">
         <Setter Property="Content" Value="&#xe623;" />
         <Setter Property="FontSize" Value="19" />
+        <Setter Property="Margin" Value="8,0" />
     </ControlTheme>
 
     <ControlTheme

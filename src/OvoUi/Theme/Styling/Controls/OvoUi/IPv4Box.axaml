@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Margin="20">
-            <TextBlock Text="Hello World" />
+            <ovo:IPv4Box />
         </StackPanel>
     </Design.PreviewWith>
 
@@ -154,7 +154,7 @@
             <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
         </Style>
         <Style Selector="^:pressed /template/ Border#PART_Border">
-            <Setter Property="Background" Value="{DynamicResource CTRLPressedBackground}" />
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
         </Style>
         <Style Selector="^:focus-within /template/ Border#PART_Border" />
         <Style Selector="^:disabled">

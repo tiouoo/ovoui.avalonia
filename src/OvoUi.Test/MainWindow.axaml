@@ -16,8 +16,12 @@
             Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:KeyGestureInput Width="200" />
-            <ovo:KeyGestureInput Classes="clear" Width="200" />
+            <ovo:MultiComboBox Width="300">
+                <ovo:MultiComboBoxItem Content="Option 1" />
+                <ovo:MultiComboBoxItem Content="Option 2" />
+                <ovo:MultiComboBoxItem Content="Option 3" />
+                <ovo:MultiComboBoxItem Content="Option 4" />
+            </ovo:MultiComboBox>
 
         </StackPanel>
         <StackPanel

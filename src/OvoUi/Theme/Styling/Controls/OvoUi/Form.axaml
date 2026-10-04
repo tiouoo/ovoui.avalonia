@@ -2,9 +2,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!--  Non-theme resources  -->
-    <FontWeight x:Key="TextBlockTitleFontWeight">600</FontWeight>
-
     <!--  Theme resources  -->
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
@@ -12,14 +9,12 @@
                 Color="#000000"
                 Opacity="0.08"
                 x:Key="FormGroupForeground" />
-            <SolidColorBrush Color="#F53F3F" x:Key="FormAsteriskForeground" />
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush
                 Color="#FFFFFF"
                 Opacity="0.08"
                 x:Key="FormGroupForeground" />
-            <SolidColorBrush Color="#F53F3F" x:Key="FormAsteriskForeground" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
     <ControlTheme TargetType="ovo:Form" x:Key="{x:Type ovo:Form}">
@@ -44,7 +39,7 @@
                     <ContentPresenter
                         Content="{TemplateBinding Header}"
                         FontSize="18"
-                        FontWeight="{DynamicResource TextBlockTitleFontWeight}"
+                        FontWeight="600"
                         IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Header, Converter={x:Static ObjectConverters.IsNotNull}}"
                         Margin="0,28,0,0" />
                     <Rectangle
@@ -72,11 +67,11 @@
                         <Label
                             Background="Transparent"
                             Content="{TemplateBinding Label}"
-                            FontWeight="{DynamicResource TextBlockTitleFontWeight}"
+                            FontWeight="600"
                             Name="PART_Label"
                             Target="{Binding #PART_ContentPresenter.Content}" />
                         <TextBlock
-                            Foreground="{DynamicResource FormAsteriskForeground}"
+                            Foreground="{DynamicResource ErrorColor}"
                             IsVisible="{TemplateBinding IsRequired}"
                             Text="*" />
                     </StackPanel>
@@ -108,10 +103,10 @@
                                 <Label
                                     Background="Transparent"
                                     Content="{TemplateBinding Label}"
-                                    FontWeight="{DynamicResource TextBlockTitleFontWeight}"
+                                    FontWeight="600"
                                     Name="PART_Label" />
                                 <TextBlock
-                                    Foreground="{DynamicResource FormAsteriskForeground}"
+                                    Foreground="{DynamicResource ErrorColor}"
                                     IsVisible="{TemplateBinding IsRequired}"
                                     Text="*" />
                             </StackPanel>
