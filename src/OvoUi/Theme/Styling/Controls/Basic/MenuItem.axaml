@@ -150,7 +150,7 @@
                             OverlayInputPassThroughElement="{Binding $parent[MenuItem]}"
                             Placement="RightEdgeAlignedTop"
                             VerticalOffset="-1">
-                            <ovo:PopupContentExpander Name="PART_LayoutTransform">
+                            <LayoutTransformControl Name="PART_LayoutTransform">
                                 <Panel Margin="0,-8,0,0">
                                     <Border
                                         Background="{DynamicResource PopupBackgroundBrush}"
@@ -159,7 +159,7 @@
                                         BoxShadow="{DynamicResource PopupBoxShadow}"
                                         ClipToBounds="False"
                                         CornerRadius="14"
-                                        Margin="16,8,8,8"
+                                        Margin="16,12,8,8"
                                         Name="PART_Border">
                                         <Panel Margin="6">
                                             <ScrollViewer>
@@ -168,7 +168,7 @@
                                         </Panel>
                                     </Border>
                                 </Panel>
-                            </ovo:PopupContentExpander>
+                            </LayoutTransformControl>
                         </Popup>
                     </Panel>
                 </Border>
