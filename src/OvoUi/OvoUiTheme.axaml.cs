@@ -19,6 +19,7 @@ using OvoUi.Common.Theme;
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.Theme.Animations")]
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.Theme.Styling.Controls.ColorPicker")]
 [assembly: XmlnsPrefix("https://github.com/tiouoo/ovoui.avalonia", "ovo")]
+[assembly: XmlnsPrefix("https://github.com/tiouoo/ovoui.avalonia", "o")]
 
 namespace OvoUi;
 

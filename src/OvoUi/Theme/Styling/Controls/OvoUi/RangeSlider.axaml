@@ -1,0 +1,241 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="20">
+            <ovo:RangeSlider
+                LowerValue="25"
+                Maximum="100"
+                Minimum="0"
+                Name="basicRange"
+                UpperValue="75" />
+            <TextBlock Text="{Binding #basicRange.LowerValue, StringFormat='Lower value: {0}'}" />
+            <TextBlock Text="{Binding #basicRange.UpperValue, StringFormat='Upper value: {0}'}" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="ovo:RangeSlider" x:Key="{x:Type ovo:RangeSlider}">
+        <Setter Property="Background" Value="{DynamicResource SliderTrackBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource SliderTrackForeground}" />
+        <Setter Property="TrackWidth" Value="4" />
+        <Style Selector="^:horizontal">
+            <Setter Property="Template">
+                <ControlTemplate TargetType="ovo:RangeSlider">
+                    <DataValidationErrors>
+                        <Grid
+                            Background="Transparent"
+                            Margin="{TemplateBinding Padding}"
+                            RowDefinitions="Auto,Auto,Auto"
+                            x:Name="SliderContainer">
+                            <Grid.Styles>
+                                <Style Selector="TickBar">
+                                    <Setter Property="ReservedSpace" Value="{ReflectionBinding #PART_Track.LowerThumb.Bounds}" />
+                                </Style>
+                            </Grid.Styles>
+                            <TickBar
+                                Fill="{DynamicResource SliderTickForeground}"
+                                Grid.Row="0"
+                                Height="{DynamicResource SliderTickHorizontalHeight}"
+                                IsVisible="False"
+                                Margin="0,0,0,4"
+                                Maximum="{TemplateBinding ovo:RangeSlider.Maximum}"
+                                Minimum="{TemplateBinding ovo:RangeSlider.Minimum}"
+                                Name="TopTickBar"
+                                Orientation="{TemplateBinding ovo:RangeSlider.Orientation}"
+                                Placement="Top"
+                                TickFrequency="{TemplateBinding ovo:RangeSlider.TickFrequency}"
+                                Ticks="{TemplateBinding Ticks}"
+                                VerticalAlignment="Bottom" />
+                            <TickBar
+                                Fill="{DynamicResource SliderTickForeground}"
+                                Grid.Row="2"
+                                Height="{DynamicResource SliderTickHorizontalHeight}"
+                                IsVisible="False"
+                                Margin="0,4,0,0"
+                                Maximum="{TemplateBinding ovo:RangeSlider.Maximum}"
+                                Minimum="{TemplateBinding ovo:RangeSlider.Minimum}"
+                                Name="BottomTickBar"
+                                Orientation="{TemplateBinding ovo:RangeSlider.Orientation}"
+                                Placement="Bottom"
+                                TickFrequency="{TemplateBinding ovo:RangeSlider.TickFrequency}"
+                                Ticks="{TemplateBinding Ticks}"
+                                VerticalAlignment="Top" />
+                            <ovo:RangeTrack
+                                Cursor="Hand"
+                                Grid.Row="1"
+                                HorizontalAlignment="Stretch"
+                                LowerValue="{Binding LowerValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Maximum="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Minimum="{Binding Minimum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Name="PART_Track"
+                                Orientation="{Binding Orientation, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                UpperValue="{Binding UpperValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                VerticalAlignment="Stretch">
+                                <ovo:RangeTrack.LowerSection>
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="100"
+                                        Height="{TemplateBinding TrackWidth}"
+                                        Name="PART_LowerSection" />
+                                </ovo:RangeTrack.LowerSection>
+                                <ovo:RangeTrack.LowerThumb>
+                                    <Thumb
+                                        Height="16"
+                                        Theme="{DynamicResource SliderThumbTheme}"
+                                        Width="16" />
+                                </ovo:RangeTrack.LowerThumb>
+                                <ovo:RangeTrack.InnerSection>
+                                    <Border
+                                        Background="{TemplateBinding Foreground}"
+                                        CornerRadius="100"
+                                        Height="{TemplateBinding TrackWidth}"
+                                        Name="PART_InnerSection" />
+                                </ovo:RangeTrack.InnerSection>
+                                <ovo:RangeTrack.UpperThumb>
+                                    <Thumb
+                                        Height="16"
+                                        Theme="{DynamicResource SliderThumbTheme}"
+                                        Width="16" />
+                                </ovo:RangeTrack.UpperThumb>
+                                <ovo:RangeTrack.UpperSection>
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="100"
+                                        Height="{TemplateBinding TrackWidth}"
+                                        Name="PART_UpperSection" />
+                                </ovo:RangeTrack.UpperSection>
+                            </ovo:RangeTrack>
+                        </Grid>
+                    </DataValidationErrors>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="^:vertical">
+            <Setter Property="Template">
+                <ControlTemplate TargetType="ovo:RangeSlider">
+                    <DataValidationErrors>
+                        <Grid
+                            Background="{DynamicResource SliderContainerBackground}"
+                            ColumnDefinitions="Auto,Auto,Auto"
+                            Margin="{TemplateBinding Padding}"
+                            x:Name="SliderContainer">
+                            <Grid.Styles>
+                                <Style Selector="TickBar">
+                                    <Setter Property="ReservedSpace" Value="{ReflectionBinding #PART_Track.LowerThumb.Bounds}" />
+                                </Style>
+                            </Grid.Styles>
+                            <TickBar
+                                Fill="{DynamicResource SliderTickForeground}"
+                                Grid.Column="0"
+                                HorizontalAlignment="Right"
+                                IsVisible="False"
+                                Margin="0,0,4,0"
+                                Maximum="{TemplateBinding ovo:RangeSlider.Maximum}"
+                                Minimum="{TemplateBinding ovo:RangeSlider.Minimum}"
+                                Name="LeftTickBar"
+                                Orientation="{TemplateBinding ovo:RangeSlider.Orientation}"
+                                Placement="Left"
+                                TickFrequency="{TemplateBinding ovo:RangeSlider.TickFrequency}"
+                                Ticks="{TemplateBinding Ticks}"
+                                Width="{DynamicResource SliderTickVerticalWidth}" />
+                            <TickBar
+                                Fill="{DynamicResource SliderTickForeground}"
+                                Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                IsVisible="False"
+                                Margin="4,0,0,0"
+                                Maximum="{TemplateBinding ovo:RangeSlider.Maximum}"
+                                Minimum="{TemplateBinding ovo:RangeSlider.Minimum}"
+                                Name="RightTickBar"
+                                Orientation="{TemplateBinding ovo:RangeSlider.Orientation}"
+                                Placement="Right"
+                                TickFrequency="{TemplateBinding ovo:RangeSlider.TickFrequency}"
+                                Ticks="{TemplateBinding Ticks}"
+                                Width="{DynamicResource SliderTickVerticalWidth}" />
+                            <ovo:RangeTrack
+                                Cursor="Hand"
+                                Grid.Column="1"
+                                HorizontalAlignment="Stretch"
+                                LowerValue="{Binding LowerValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Maximum="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Minimum="{Binding Minimum, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                Name="PART_Track"
+                                Orientation="{Binding Orientation, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                UpperValue="{Binding UpperValue, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                VerticalAlignment="Stretch">
+                                <ovo:RangeTrack.LowerSection>
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="100"
+                                        Name="PART_LowerSection"
+                                        Width="{TemplateBinding TrackWidth}" />
+                                </ovo:RangeTrack.LowerSection>
+                                <ovo:RangeTrack.LowerThumb>
+                                    <Thumb
+                                        Height="16"
+                                        Theme="{DynamicResource SliderThumbTheme}"
+                                        Width="16" />
+                                </ovo:RangeTrack.LowerThumb>
+                                <ovo:RangeTrack.InnerSection>
+                                    <Border
+                                        Background="{TemplateBinding Foreground}"
+                                        CornerRadius="100"
+                                        Name="PART_InnerSection"
+                                        Width="{TemplateBinding TrackWidth}" />
+                                </ovo:RangeTrack.InnerSection>
+                                <ovo:RangeTrack.UpperThumb>
+                                    <Thumb
+                                        Height="16"
+                                        Theme="{DynamicResource SliderThumbTheme}"
+                                        Width="16" />
+                                </ovo:RangeTrack.UpperThumb>
+                                <ovo:RangeTrack.UpperSection>
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="100"
+                                        Name="PART_UpperSection"
+                                        Width="{TemplateBinding TrackWidth}" />
+                                </ovo:RangeTrack.UpperSection>
+                            </ovo:RangeTrack>
+                        </Grid>
+                    </DataValidationErrors>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#LeftTickBar, ^[TickPlacement=Outside] /template/ TickBar#LeftTickBar">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#TopTickBar, ^[TickPlacement=Outside] /template/ TickBar#TopTickBar">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^[TickPlacement=BottomRight] /template/ TickBar#BottomTickBar, ^[TickPlacement=Outside] /template/ TickBar#BottomTickBar">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^[TickPlacement=BottomRight] /template/ TickBar#RightTickBar, ^[TickPlacement=Outside] /template/ TickBar#RightTickBar">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^:error /template/ Thumb#thumb">
+            <Setter Property="BorderBrush" Value="{DynamicResource DataValidationErrorsSelectedBorderBrush}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Style Selector="^ /template/ Border#PART_InnerSection">
+                <Setter Property="Background" Value="{DynamicResource SliderTrackDisabledForeground}" />
+            </Style>
+
+            <Style Selector="^ /template/ Border#PART_UpperSection, ^ /template/ Border#PART_LowerSection">
+                <Setter Property="Background" Value="{DynamicResource SliderTrackDisabledBackground}" />
+            </Style>
+
+            <Style Selector="^ /template/ Thumb">
+                <Setter Property="BorderBrush" Value="{DynamicResource SliderThumbDisabledBorderBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
