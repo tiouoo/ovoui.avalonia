@@ -2,10 +2,10 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <Color x:Key="ForegroundColor">#494c4f</Color>
-            <Color x:Key="InnerForegroundColor">#777282</Color>
+            <Color x:Key="InnerForegroundColor">#565657</Color>
             <Color x:Key="BackgroundColor">#f8f9fa</Color>
-            <Color x:Key="LineColor">#e9e6ef</Color>
-            <Color x:Key="PanelBackgroundColor">#f5f5f5</Color>
+            <Color x:Key="LineColor">#efeff1</Color>
+            <Color x:Key="PanelBackgroundColor">#FDFEFEFE</Color>
             <Color x:Key="PopupBackgroundColor">#ffffff</Color>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>

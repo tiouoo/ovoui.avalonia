@@ -15,7 +15,6 @@
         <StackPanel
             HorizontalAlignment="Center"
             Margin="20"
-            Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
             <ovo:TreeComboBox Width="300">
@@ -26,6 +25,7 @@
             </ovo:TreeComboBox>
             <Button Click="Button_OnClick1" Content="Open Window" />
 
+            <TextBox PlaceholderText="Hii" />
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"

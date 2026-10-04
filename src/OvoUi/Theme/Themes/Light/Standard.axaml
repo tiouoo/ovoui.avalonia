@@ -27,11 +27,11 @@
                 x:Key="ControlBackground" />
             <SolidColorBrush
                 Color="#2E3238"
-                Opacity="0.09"
+                Opacity="0.08"
                 x:Key="ControlPointeroverBackground" />
             <SolidColorBrush
                 Color="#2E3238"
-                Opacity="0.13"
+                Opacity="0.1"
                 x:Key="ControlPressedBackground" />
             <SolidColorBrush
                 Color="#1C1F23"
