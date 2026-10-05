@@ -1,0 +1,75 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush Color="#555B61" x:Key="ClockHandBrush" />
+            <SolidColorBrush Color="#555B61" x:Key="ClockHourTickForeground" />
+            <SolidColorBrush Color="#888D92" x:Key="ClockMinuteTickForeground" />
+            <SolidColorBrush Color="White" x:Key="ClockArborFill" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ClockArborStroke" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush Color="#A7ABB0" x:Key="ClockHandBrush" />
+            <SolidColorBrush Color="#A7ABB0" x:Key="ClockHourTickForeground" />
+            <SolidColorBrush Color="#6B7075" x:Key="ClockMinuteTickForeground" />
+            <SolidColorBrush Color="White" x:Key="ClockArborFill" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ClockArborStroke" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <ControlTheme TargetType="o:Clock" x:Key="{x:Type o:Clock}">
+        <Setter Property="HandBrush" Value="{DynamicResource ClockHandBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:Clock">
+                <Grid>
+                    <o:ClockTicks
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        HourTickForeground="{DynamicResource ClockHourTickForeground}"
+                        MinuteTickForeground="{DynamicResource ClockMinuteTickForeground}"
+                        ShowHourTicks="{TemplateBinding ShowHourTicks}"
+                        ShowMinuteTicks="{TemplateBinding ShowMinuteTicks}" />
+                    <UniformGrid IsVisible="{TemplateBinding ShowHourHand}" Rows="2">
+                        <Border
+                            Background="{TemplateBinding HandBrush}"
+                            CornerRadius="8"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static o:ClockHandLengthConverter.Hour}}"
+                            VerticalAlignment="Bottom"
+                            Width="16" />
+                        <UniformGrid.RenderTransform>
+                            <RotateTransform Angle="{Binding HourAngle, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </UniformGrid.RenderTransform>
+                    </UniformGrid>
+                    <UniformGrid IsVisible="{TemplateBinding ShowMinuteHand}" Rows="2">
+                        <Border
+                            Background="{TemplateBinding HandBrush}"
+                            CornerRadius="4"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static o:ClockHandLengthConverter.Minute}}"
+                            VerticalAlignment="Bottom"
+                            Width="8" />
+                        <UniformGrid.RenderTransform>
+                            <RotateTransform Angle="{Binding MinuteAngle, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </UniformGrid.RenderTransform>
+                    </UniformGrid>
+                    <UniformGrid IsVisible="{TemplateBinding ShowSecondHand}" Rows="2">
+                        <Border
+                            Background="{TemplateBinding HandBrush}"
+                            CornerRadius="4"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static o:ClockHandLengthConverter.Second}}"
+                            VerticalAlignment="Bottom"
+                            Width="4" />
+                        <UniformGrid.RenderTransform>
+                            <RotateTransform Angle="{Binding SecondAngle, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </UniformGrid.RenderTransform>
+                    </UniformGrid>
+                    <Ellipse
+                        Fill="{DynamicResource ClockArborFill}"
+                        Height="20"
+                        Stroke="{DynamicResource ClockArborStroke}"
+                        StrokeThickness="3"
+                        Width="20" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

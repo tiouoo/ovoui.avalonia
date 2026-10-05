@@ -31,5 +31,8 @@
         <ResourceInclude Source="OvoWindow.axaml" />
         <ResourceInclude Source="PopConfirm.axaml" />
         <ResourceInclude Source="Shimmer.axaml" />
+        <ResourceInclude Source="Skeleton.axaml" />
+        <ResourceInclude Source="Clock.axaml" />
+        <ResourceInclude Source="TimeBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

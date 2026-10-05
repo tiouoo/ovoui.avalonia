@@ -1,0 +1,66 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,100%" x:Key="SkeletonStartAnimationBackground">
+                <GradientStop Color="#F9F9F9" Offset="0" />
+                <GradientStop Color="#E6E8EA" Offset="0" />
+                <GradientStop Color="#F9F9F9" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,100%" x:Key="SkeletonEndAnimationBackground">
+                <GradientStop Color="#F9F9F9" Offset="0" />
+                <GradientStop Color="#E6E8EA" Offset="1" />
+                <GradientStop Color="#F9F9F9" Offset="1" />
+            </LinearGradientBrush>
+            <SolidColorBrush Color="#F9F9F9" x:Key="SkeletonDefaultBackground" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,100%" x:Key="SkeletonStartAnimationBackground">
+                <GradientStop Color="#1C1F23" Offset="0" />
+                <GradientStop Color="#2E3238" Offset="0" />
+                <GradientStop Color="#1C1F23" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,100%" x:Key="SkeletonEndAnimationBackground">
+                <GradientStop Color="#1C1F23" Offset="0" />
+                <GradientStop Color="#2E3238" Offset="1" />
+                <GradientStop Color="#1C1F23" Offset="1" />
+            </LinearGradientBrush>
+            <SolidColorBrush Color="#1C1F23" x:Key="SkeletonDefaultBackground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <ControlTheme TargetType="ovo:Skeleton" x:Key="{x:Type ovo:Skeleton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:Skeleton">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <Panel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            x:Name="PART_ContentPresenter" />
+                        <ovo:PureRectangle
+                            Background="{DynamicResource SkeletonDefaultBackground}"
+                            Classes.Active="{Binding Path=IsActive, RelativeSource={RelativeSource TemplatedParent}}"
+                            IsHitTestVisible="{TemplateBinding IsLoading}"
+                            IsVisible="{TemplateBinding IsLoading}"
+                            x:Name="PART_LoadingBorder" />
+                        <ovo:PureRectangle
+                            IsHitTestVisible="{TemplateBinding IsLoading}"
+                            IsVisible="{TemplateBinding IsLoading}"
+                            x:Name="PART_ActiveBorder" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
