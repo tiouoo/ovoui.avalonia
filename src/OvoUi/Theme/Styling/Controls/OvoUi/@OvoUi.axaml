@@ -36,5 +36,6 @@
         <ResourceInclude Source="Clock.axaml" />
         <ResourceInclude Source="TimeBox.axaml" />
         <ResourceInclude Source="Breadcrumb.axaml" />
+        <ResourceInclude Source="NavMenu.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -12,116 +12,162 @@
     xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
+
         <StackPanel
             HorizontalAlignment="Center"
             Margin="20"
+            Orientation="Horizontal"
             Spacing="20"
             VerticalAlignment="Center">
-            <o:TreeComboBox Width="300">
-                <o:TreeComboBoxItem Header="Hello">
-                    <o:TreeComboBoxItem Header="Hello World" />
-                </o:TreeComboBoxItem>
-                <o:TreeComboBoxItem Header="World" />
-            </o:TreeComboBox>
-            <Button Click="Button_OnClick1" Content="Open Window" />
+            <StackPanel
+                HorizontalAlignment="Center"
+                Margin="20"
+                Spacing="20"
+                VerticalAlignment="Center">
+                <o:TreeComboBox Width="300">
+                    <o:TreeComboBoxItem Header="Hello">
+                        <o:TreeComboBoxItem Header="Hello World" />
+                    </o:TreeComboBoxItem>
+                    <o:TreeComboBoxItem Header="World" />
+                </o:TreeComboBox>
+                <Button Click="Button_OnClick1" Content="Open Window" />
 
-            <TextBox PlaceholderText="Hii" />
+                <TextBox PlaceholderText="Hii" />
 
-            <Border Margin="20" MinWidth="600">
-                <Menu VerticalAlignment="Top">
-                    <MenuItem Header="File">
-                        <MenuItem
-                            Header="Open"
-                            Icon="🗎"
-                            InputGesture="Ctrl + O">
-                            <MenuItem Header="Recent file 1" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 2" Icon="🗎" />
-                            <MenuItem Header="Recent file 3" Icon="🗎" />
-                            <MenuItem Header="Recent file 4" Icon="🗎" />
-                            <Separator />
+                <Border Margin="20" MinWidth="600">
+                    <Menu VerticalAlignment="Top">
+                        <MenuItem Header="File">
                             <MenuItem
-                                Header="Clear recent files"
+                                Header="Open"
+                                Icon="🗎"
+                                InputGesture="Ctrl + O">
+                                <MenuItem Header="Recent file 1" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 2" Icon="🗎" />
+                                <MenuItem Header="Recent file 3" Icon="🗎" />
+                                <MenuItem Header="Recent file 4" Icon="🗎" />
+                                <Separator />
+                                <MenuItem
+                                    Header="Clear recent files"
+                                    Icon="🗙"
+                                    InputGesture="Ctrl + Alt + O" />
+                            </MenuItem>
+                            <MenuItem
+                                Header="Save"
+                                Icon="💾"
+                                InputGesture="Ctrl + S" />
+                            <MenuItem
+                                Header="Fullscreen"
+                                HotKey="F11"
+                                Icon="⛶"
+                                InputGesture="F11" />
+                            <MenuItem
+                                Header="Close"
                                 Icon="🗙"
-                                InputGesture="Ctrl + Alt + O" />
+                                InputGesture="Alt + F4" />
                         </MenuItem>
-                        <MenuItem
-                            Header="Save"
-                            Icon="💾"
-                            InputGesture="Ctrl + S" />
-                        <MenuItem
-                            Header="Fullscreen"
-                            HotKey="F11"
-                            Icon="⛶"
-                            InputGesture="F11" />
-                        <MenuItem
-                            Header="Close"
-                            Icon="🗙"
-                            InputGesture="Alt + F4" />
-                    </MenuItem>
 
-                    <MenuItem Header="View">
-                        <MenuItem Header="Grid options">
-                            <MenuItem Header="Show grid lines" />
-                            <MenuItem Header="Show grid separator" />
-                            <MenuItem Header="Show grid " />
+                        <MenuItem Header="View">
+                            <MenuItem Header="Grid options">
+                                <MenuItem Header="Show grid lines" />
+                                <MenuItem Header="Show grid separator" />
+                                <MenuItem Header="Show grid " />
+                            </MenuItem>
+                            <MenuItem Header="Title bar" />
                         </MenuItem>
-                        <MenuItem Header="Title bar" />
-                    </MenuItem>
 
-                    <MenuItem Header="Help">
-                        <MenuItem Header="About" />
-                        <MenuItem Header="Website" />
-                        <MenuItem Header="Discussions" />
-                        <MenuItem Header="Donate" />
-                    </MenuItem>
-                </Menu>
-            </Border>
+                        <MenuItem Header="Help">
+                            <MenuItem Header="About" />
+                            <MenuItem Header="Website" />
+                            <MenuItem Header="Discussions" />
+                            <MenuItem Header="Donate" />
+                        </MenuItem>
+                    </Menu>
+                </Border>
 
 
-            <o:PopConfirm PopupContent="This action cannot be undone." PopupHeader="Confirm this action?">
-                <Button Content="Run action" />
-            </o:PopConfirm>
+                <o:PopConfirm PopupContent="This action cannot be undone." PopupHeader="Confirm this action?">
+                    <Button Content="Run action" />
+                </o:PopConfirm>
 
-            <o:ShimmerText
-                Duration="00:00:02"
-                FontSize="24"
-                HighlightColor="{DynamicResource InfoColor}"
-                Text="Generating a response…" />
-            <o:ShimmerSelectableText
-                Duration="00:00:02"
-                FontSize="24"
-                HighlightColor="{DynamicResource InfoColor}"
-                Text="Generating a response…" />
+                <o:ShimmerText
+                    Duration="00:00:02"
+                    FontSize="24"
+                    HighlightColor="{DynamicResource InfoColor}"
+                    Text="Generating a response…" />
+                <o:ShimmerSelectableText
+                    Duration="00:00:02"
+                    FontSize="24"
+                    HighlightColor="{DynamicResource InfoColor}"
+                    Text="Generating a response…" />
 
+            </StackPanel>
+
+            <StackPanel>
+                <ToggleSwitch Content="IsHorizontalCollapsed" Name="collapse" />
+                <o:NavMenu
+                    HorizontalAlignment="Left"
+                    IsHorizontalCollapsed="{Binding #collapse.IsChecked}"
+                    Name="menu2">
+                    <o:NavMenuItem Header="Menu 1">
+                        <o:NavMenuItem.Icon>
+                            <Rectangle
+                                Fill="Red"
+                                Height="10"
+                                Width="10" />
+                        </o:NavMenuItem.Icon>
+                        <o:NavMenuItem Header="Sub Menu 1" />
+                        <o:NavMenuItem Header="Sub Menu 2" />
+                        <o:NavMenuItem Header="Sub Menu 3" />
+                    </o:NavMenuItem>
+                    <o:NavMenuItem Header="Menu 2">
+                        <o:NavMenuItem.Icon>
+                            <Rectangle
+                                Fill="Red"
+                                Height="10"
+                                Width="10" />
+                        </o:NavMenuItem.Icon>
+                    </o:NavMenuItem>
+                    <o:NavMenuItem Header="Menu 3">
+                        <o:NavMenuItem.Icon>
+                            <Rectangle
+                                Fill="Red"
+                                Height="10"
+                                Width="10" />
+                        </o:NavMenuItem.Icon>
+                    </o:NavMenuItem>
+                </o:NavMenu>
+            </StackPanel>
         </StackPanel>
+
+
         <StackPanel
             HorizontalAlignment="Left"
             Orientation="Horizontal"
