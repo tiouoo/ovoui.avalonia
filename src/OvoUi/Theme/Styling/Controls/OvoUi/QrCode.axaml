@@ -1,0 +1,8 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:QRCode" x:Key="{x:Type o:QRCode}">
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    </ControlTheme>
+</ResourceDictionary>
