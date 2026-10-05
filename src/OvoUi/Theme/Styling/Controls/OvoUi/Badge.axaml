@@ -1,0 +1,115 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush Color="White" x:Key="BadgeContainerBackground" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush Color="Black" x:Key="BadgeContainerBackground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <ControlTheme TargetType="{x:Type ovo:Badge}" x:Key="{x:Type ovo:Badge}">
+        <Setter Property="CornerRadius" Value="100" />
+        <Setter Property="BadgeFontSize" Value="12" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource SystemAccentColorLight2}" Opacity="0.5" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+        <Setter Property="CornerPosition" Value="TopRight" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type ovo:Badge}">
+                <Panel
+                    ClipToBounds="False"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Foreground="{TemplateBinding Foreground}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        Margin="{TemplateBinding Padding}"
+                        Name="{x:Static ovo:Badge.PART_ContentPresenter}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                    <Border
+                        Background="{DynamicResource BadgeContainerBackground}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        MinHeight="18"
+                        MinWidth="18"
+                        Name="{x:Static ovo:Badge.PART_BadgeContainer}"
+                        RenderTransformOrigin=".5,.5"
+                        Theme="{TemplateBinding BadgeTheme}"
+                        UseLayoutRounding="False">
+                        <Border.IsVisible>
+                            <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                                <Binding
+                                    Converter="{x:Static ObjectConverters.IsNotNull}"
+                                    Path="Header"
+                                    RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Dot" RelativeSource="{RelativeSource TemplatedParent}" />
+                            </MultiBinding>
+                        </Border.IsVisible>
+                        <Border Background="{TemplateBinding Background}" Padding="4,0">
+                            <ContentPresenter
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Focusable="False"
+                                HorizontalAlignment="Center"
+                                IsTabStop="False"
+                                Name="{x:Static ovo:Badge.PART_HeaderPresenter}"
+                                TextElement.FontSize="{TemplateBinding BadgeFontSize}"
+                                TextElement.Foreground="{TemplateBinding Foreground}"
+                                VerticalAlignment="Center">
+                                <ContentPresenter.Content>
+                                    <MultiBinding Converter="{ovo:BadgeContentOverflowConverter}">
+                                        <Binding Path="Header" RelativeSource="{RelativeSource TemplatedParent}" />
+                                        <Binding Path="OverflowCount" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    </MultiBinding>
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </Border>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[Dot=True] /template/ Border#PART_BadgeContainer">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="MinWidth" Value="8" />
+            <Setter Property="MinHeight" Value="8" />
+        </Style>
+        <Style Selector="^[Dot=True] /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^[CornerPosition=TopLeft] /template/ Border#PART_BadgeContainer">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+        <Style Selector="^[CornerPosition=TopRight] /template/ Border#PART_BadgeContainer">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+        <Style Selector="^[CornerPosition=BottomLeft] /template/ Border#PART_BadgeContainer">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+        <Style Selector="^[CornerPosition=BottomRight] /template/ Border#PART_BadgeContainer">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

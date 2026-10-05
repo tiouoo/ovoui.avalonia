@@ -10,6 +10,8 @@
     <ControlTheme TargetType="ovo:NavMenu" x:Key="{x:Type ovo:NavMenu}">
         <Setter Property="Grid.IsSharedSizeScope" Value="True" />
         <Setter Property="SubMenuIndent" Value="24" />
+        <Setter Property="RenderTransform" Value="scale(1, 1)" />
+        <Setter Property="RenderTransformOrigin" Value="0%,50%" />
         <Setter Property="ovo:SizeAnimationHelper.TriggerAvaloniaProperty" Value="{x:Static ovo:NavMenu.IsHorizontalCollapsedProperty}" />
         <Setter Property="ovo:SizeAnimationHelper.CreateAnimation" Value="{DynamicResource NavMenuWidthAnimationGenerator}" />
         <Setter Property="ovo:SizeAnimationHelper.EnableWHAnimation" Value="True" />

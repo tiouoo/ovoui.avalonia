@@ -156,12 +156,12 @@
                                     ClipToBounds="True"
                                     CornerRadius="{DynamicResource OvoCornerRadius}"
                                     Name="PopupContent"
-                                    Padding="2">
+                                    Padding="1,0">
                                     <ScrollViewer
                                         HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                         IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
                                         VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
-                                        <Border Margin="0,-2">
+                                        <Border Margin="4">
                                             <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
                                         </Border>
                                     </ScrollViewer>

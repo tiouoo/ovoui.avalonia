@@ -1,0 +1,129 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.ThemeDictionaries>
+        <!--  Light Theme Resources  -->
+        <ResourceDictionary x:Key="Light">
+            <LinearGradientBrush EndPoint="0%,100%" StartPoint="0%,0%" x:Key="DualBadgeDefaultHeaderBackground">
+                <GradientStop Color="#555B61" Offset="0" />
+                <GradientStop Color="#41464C" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush EndPoint="0%,100%" StartPoint="0%,0%" x:Key="DualBadgeFlatGreenBackground">
+                <GradientStop Color="#5AC262" Offset="0" />
+                <GradientStop Color="#3BB346" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush EndPoint="0%,100%" StartPoint="0%,0%" x:Key="DualBadgePlasticHeaderBackground">
+                <GradientStop Color="#555B61" Offset="0" />
+                <GradientStop Color="#2E3238" Offset="1" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+
+        <!--  Dark Theme Resources  -->
+        <ResourceDictionary x:Key="Dark">
+            <LinearGradientBrush EndPoint="0%,100%" StartPoint="0%,0%" x:Key="DualBadgeDefaultHeaderBackground">
+                <GradientStop Color="#A7ABB0" Offset="0" />
+                <GradientStop Color="#C6CACD" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush EndPoint="0%,100%" StartPoint="0%,0%" x:Key="DualBadgeFlatGreenBackground">
+                <GradientStop Color="#5DC264" Offset="0" />
+                <GradientStop Color="#3EB349" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush EndPoint="0%,100%" StartPoint="0%,0%" x:Key="DualBadgePlasticHeaderBackground">
+                <GradientStop Color="#6B7075" Offset="0" />
+                <GradientStop Color="#C6CACD" Offset="1" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <ControlTheme TargetType="ovo:DualBadge" x:Key="{x:Type ovo:DualBadge}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="IconForeground" Value="White" />
+        <Setter Property="HeaderForeground" Value="White" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource DualBadgeDefaultHeaderBackground}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Background" Value="{DynamicResource DualBadgeFlatGreenBackground}" />
+        <Setter Property="Padding" Value="4 2" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="UseLayoutRounding" Value="False" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type ovo:DualBadge}">
+                <Border
+                    ClipToBounds="{TemplateBinding ClipToBounds}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <Grid ColumnDefinitions="Auto,Auto">
+                        <DockPanel Background="{TemplateBinding HeaderBackground}" Grid.Column="0">
+                            <ContentPresenter
+                                Content="{TemplateBinding Icon}"
+                                ContentTemplate="{TemplateBinding IconTemplate}"
+                                DockPanel.Dock="Left"
+                                Foreground="{TemplateBinding IconForeground}"
+                                IsVisible="{TemplateBinding Icon,
+                                                            Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="{TemplateBinding Padding,
+                                                         Converter={ovo:ThicknessMixerConverter 'Vertical,Left'}}"
+                                Name="{x:Static ovo:DualBadge.PART_Icon}"
+                                RecognizesAccessKey="True">
+                                <ContentPresenter.DataTemplates>
+                                    <DataTemplate DataType="Geometry">
+                                        <PathIcon
+                                            Data="{Binding}"
+                                            Foreground="{Binding $parent[ovo:DualBadge].IconForeground}"
+                                            Height="16"
+                                            Width="16" />
+                                    </DataTemplate>
+                                </ContentPresenter.DataTemplates>
+                            </ContentPresenter>
+                            <ContentPresenter
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Foreground="{TemplateBinding HeaderForeground}"
+                                IsVisible="{TemplateBinding Header,
+                                                            Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Name="{x:Static ovo:DualBadge.PART_HeaderPresenter}"
+                                Padding="{TemplateBinding Padding}"
+                                RecognizesAccessKey="True"
+                                TextElement.FontSize="{TemplateBinding FontSize}" />
+                        </DockPanel>
+                        <ContentPresenter
+                            Background="{TemplateBinding Background}"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            IsVisible="{TemplateBinding Content,
+                                                        Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Name="{x:Static ovo:DualBadge.PART_ContentPresenter}"
+                            Padding="{TemplateBinding Padding}"
+                            RecognizesAccessKey="True"
+                            TextElement.FontSize="{TemplateBinding FontSize}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^.flat_square">
+            <Setter Property="CornerRadius" Value="0" />
+        </Style>
+
+        <Style Selector="^.plastic">
+            <Setter Property="Padding" Value="4 0" />
+            <Setter Property="HeaderBackground" Value="{DynamicResource DualBadgePlasticHeaderBackground}" />
+        </Style>
+
+        <Style Selector="^.for_badge">
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Padding" Value="12 6" />
+        </Style>
+
+        <Style Selector="^:header-empty">
+            <Setter Property="HeaderBackground" Value="{Binding Background, RelativeSource={RelativeSource Self}}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

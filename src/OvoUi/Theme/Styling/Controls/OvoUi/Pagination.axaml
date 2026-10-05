@@ -4,7 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Margin="20">
-            <ovo:PaginationButton Page="3" />
+            <ovo:Pagination
+                CommandParameter="{Binding $self.CurrentPage}"
+                CurrentPage="5"
+                PageSizeOptions="10, 20, 50, 100"
+                ShowPageSizeSelector="True"
+                ShowQuickJump="True"
+                TotalCount="600" />
         </StackPanel>
     </Design.PreviewWith>
 
@@ -177,7 +183,7 @@
             </Style>
         </Style>
         <Style Selector="^:selected">
-            <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity09}" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontWeight" Value="600" />
         </Style>

@@ -1,7 +1,7 @@
 ﻿using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
-using Avalonia.Layout;
+using Avalonia.Media;
 using Avalonia.Styling;
 using OvoUi.Common.Helpers;
 
@@ -14,6 +14,13 @@ public class NavMenuSizeAnimations : ResourceDictionary
     private readonly SizeAnimationHelperAnimationGeneratorDelegate _navMenuWidthAnimationGenerator =
         (_, oldDesiredSize, newDesiredSize) =>
         {
+            var startScale = newDesiredSize.Width > 0
+                ? oldDesiredSize.Width / newDesiredSize.Width
+                : 1;
+
+            if (!double.IsFinite(startScale) || startScale <= 0)
+                startScale = 1;
+
             return new Animation
             {
                 Duration = TimeSpan.FromMilliseconds(300),
@@ -26,7 +33,7 @@ public class NavMenuSizeAnimations : ResourceDictionary
                         Cue = new Cue(0.0),
                         Setters =
                         {
-                            new Setter(Layoutable.WidthProperty, oldDesiredSize.Width)
+                            new Setter(ScaleTransform.ScaleXProperty, startScale)
                         }
                     },
                     new KeyFrame
@@ -34,7 +41,7 @@ public class NavMenuSizeAnimations : ResourceDictionary
                         Cue = new Cue(1.0),
                         Setters =
                         {
-                            new Setter(Layoutable.WidthProperty, newDesiredSize.Width)
+                            new Setter(ScaleTransform.ScaleXProperty, 1d)
                         }
                     }
                 }

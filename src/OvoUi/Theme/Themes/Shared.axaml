@@ -45,6 +45,28 @@
         Color="{DynamicResource SystemAccentColor}"
         Opacity="0.4"
         x:Key="SystemAccentColorOpacity04" />
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.5"
+        x:Key="SystemAccentColorOpacity05" />
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.6"
+        x:Key="SystemAccentColorOpacity06" />
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.7"
+        x:Key="SystemAccentColorOpacity07" />
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.8"
+        x:Key="SystemAccentColorOpacity08" />
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.9"
+        x:Key="SystemAccentColorOpacity09" />
+
+
 
     <SolidColorBrush
         Color="{DynamicResource SystemAccentColor}"
