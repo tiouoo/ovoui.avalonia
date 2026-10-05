@@ -4,7 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Threading;
 using OvoUi.Common.Helpers;
-using TioUi.Controls;
+using OvoUi.Controls;
 using Timer = System.Timers.Timer;
 
 namespace OvoUi.Controls;

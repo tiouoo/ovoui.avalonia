@@ -1,0 +1,38 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:NumberDisplayerBase" x:Key="{x:Type o:NumberDisplayerBase}">
+        <Setter Property="Duration" Value="0:0:0.2" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:NumberDisplayerBase">
+                <TextBlock
+                    Background="{TemplateBinding Background}"
+                    FontFamily="{TemplateBinding FontFamily}"
+                    FontSize="{TemplateBinding FontSize}"
+                    FontStretch="{TemplateBinding FontStretch}"
+                    FontStyle="{TemplateBinding FontStyle}"
+                    FontWeight="{TemplateBinding FontWeight}"
+                    Foreground="{TemplateBinding Foreground}"
+                    Text="{TemplateBinding InternalText,
+                                           Mode=OneWay}" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^[IsSelectable=True]">
+            <Setter Property="Template">
+                <ControlTemplate TargetType="o:NumberDisplayerBase">
+                    <SelectableTextBlock
+                        Background="{TemplateBinding Background}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding FontSize}"
+                        FontStretch="{TemplateBinding FontStretch}"
+                        FontStyle="{TemplateBinding FontStyle}"
+                        FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding Foreground}"
+                        Text="{TemplateBinding InternalText,
+                                               Mode=OneWay}" />
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

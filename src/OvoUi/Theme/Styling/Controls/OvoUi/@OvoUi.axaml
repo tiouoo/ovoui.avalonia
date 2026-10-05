@@ -50,5 +50,6 @@
         <ResourceInclude Source="ImageViewer.axaml" />
         <ResourceInclude Source="MarkdownLine.axaml" />
         <ResourceInclude Source="Marquee.axaml" />
+        <ResourceInclude Source="NumberDisplayer.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
