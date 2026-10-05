@@ -1,0 +1,118 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Thickness x:Key="AnchorIndent">8,4,0,4</Thickness>
+    <x:Double x:Key="AnchorPipeWidth">2</x:Double>
+    <CornerRadius x:Key="AnchorPipeCornerRadius">1</CornerRadius>
+    <x:Double x:Key="AnchorDefaultHeight">20</x:Double>
+    <x:Double x:Key="AnchorSmallHeight">16</x:Double>
+    <x:Double x:Key="AnchorSmallFontSize">12</x:Double>
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush
+                Color="#1C1F23"
+                Opacity="0.08"
+                x:Key="AnchorPipeBackground" />
+            <SolidColorBrush
+                Color="#1C1F23"
+                Opacity="0.62"
+                x:Key="AnchorForeground" />
+            <SolidColorBrush Color="#1C1F23" x:Key="AnchorSelectedForeground" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="AnchorPipeSelectedBackground" />
+            <SolidColorBrush Color="#6B7075" x:Key="AnchorPipeSelectedTertiaryBackground" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush
+                Color="White"
+                Opacity="0.08"
+                x:Key="AnchorPipeBackground" />
+            <SolidColorBrush
+                Color="#F9F9F9"
+                Opacity="0.6"
+                x:Key="AnchorForeground" />
+            <SolidColorBrush Color="#F9F9F9" x:Key="AnchorSelectedForeground" />
+            <SolidColorBrush
+                Color="{DynamicResource SystemAccentColor}"
+                Opacity="0.7"
+                x:Key="AnchorPipeSelectedBackground" />
+            <SolidColorBrush Color="#888D92" x:Key="AnchorPipeSelectedTertiaryBackground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <ControlTheme TargetType="{x:Type o:Anchor}" x:Key="{x:Type o:Anchor}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <Rectangle
+                        Fill="{DynamicResource AnchorPipeBackground}"
+                        HorizontalAlignment="Left"
+                        Name="PART_Pipe"
+                        VerticalAlignment="Stretch"
+                        Width="{DynamicResource AnchorPipeWidth}" />
+                    <ItemsPresenter
+                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                        Margin="{TemplateBinding Padding}"
+                        Name="PART_ItemsPresenter" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.Muted /template/ Rectangle#PART_Pipe">
+            <Setter Property="Fill" Value="Transparent" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="o:AnchorItem" x:Key="{x:Type o:AnchorItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="o:ClassHelper.ClassSource" Value="{Binding $parent[o:Anchor]}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:AnchorItem">
+                <StackPanel>
+                    <Panel Background="{TemplateBinding Background}">
+                        <Border
+                            CornerRadius="{DynamicResource AnchorPipeCornerRadius}"
+                            HorizontalAlignment="Left"
+                            Name="PART_Pipe"
+                            VerticalAlignment="Stretch"
+                            Width="{DynamicResource AnchorPipeWidth}" />
+                        <Panel>
+                            <ContentPresenter
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Foreground="{DynamicResource AnchorForeground}"
+                                Name="{x:Static o:PartNames.PART_HeaderPresenter}"
+                                VerticalAlignment="Center">
+                                <ContentPresenter.Padding>
+                                    <MultiBinding Converter="{o:TreeLevelToPaddingConverter}">
+                                        <Binding Path="Level" RelativeSource="{RelativeSource AncestorType={x:Type o:AnchorItem}}" />
+                                        <DynamicResource ResourceKey="AnchorIndent" />
+                                    </MultiBinding>
+                                </ContentPresenter.Padding>
+                            </ContentPresenter>
+                        </Panel>
+                    </Panel>
+                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="MinHeight" Value="{DynamicResource AnchorDefaultHeight}" />
+        </Style>
+        <Style Selector="^.small /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="MinHeight" Value="{DynamicResource AnchorSmallHeight}" />
+            <Setter Property="FontSize" Value="{DynamicResource AnchorSmallFontSize}" />
+        </Style>
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource AnchorSelectedForeground}" />
+            </Style>
+            <Style Selector="^ /template/ Border#PART_Pipe">
+                <Setter Property="Background" Value="{DynamicResource AnchorPipeSelectedBackground}" />
+            </Style>
+            <Style Selector="^.transparent /template/ Border#PART_Pipe">
+                <Setter Property="Background" Value="Transparent" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,178 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20">
+            <TextBlock Text="Hello World" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="{x:Type ovo:TimeBox}" x:Key="{x:Type ovo:TimeBox}">
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="ShowLeadingZero" Value="True" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBrush}" />
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource TextBoxTextCaretBrush}" />
+        <Setter Property="FocusAdorner" Value="{x:Null}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:TimeBox">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="PART_Border">
+                    <Grid ColumnDefinitions="1*, Auto, 1*, Auto, 1*, Auto, 1*" Width="{TemplateBinding Width}">
+                        <Border
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Grid.Column="0"
+                            Name="{x:Static ovo:TimeBox.PART_HourBorder}">
+                            <Grid>
+                                <TextPresenter
+                                    CaretBrush="{TemplateBinding CaretBrush}"
+                                    Cursor="IBeam"
+                                    MinWidth="8"
+                                    Name="{x:Static ovo:TimeBox.PART_HoursTextPresenter}"
+                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextElement.Foreground="{TemplateBinding Foreground}"
+                                    VerticalAlignment="Center" />
+                                <Panel
+                                    Background="Transparent"
+                                    HorizontalAlignment="Stretch"
+                                    Name="{x:Static ovo:TimeBox.PART_HourDragPanel}"
+                                    VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            Focusable="False"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            Margin="0,4"
+                            Text=":"
+                            VerticalAlignment="Center" />
+                        <Border
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Grid.Column="2"
+                            Name="{x:Static ovo:TimeBox.PART_MinuteBorder}">
+                            <Grid>
+                                <TextPresenter
+                                    CaretBrush="{TemplateBinding CaretBrush}"
+                                    Cursor="IBeam"
+                                    MinWidth="8"
+                                    Name="{x:Static ovo:TimeBox.PART_MinuteTextPresenter}"
+                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextElement.Foreground="{TemplateBinding Foreground}"
+                                    VerticalAlignment="Center" />
+                                <Panel
+                                    Background="Transparent"
+                                    HorizontalAlignment="Stretch"
+                                    Name="{x:Static ovo:TimeBox.PART_MinuteDragPanel}"
+                                    VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            Focusable="False"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="3"
+                            Margin="0,4"
+                            Text=":"
+                            VerticalAlignment="Center" />
+                        <Border
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Grid.Column="4"
+                            Name="{x:Static ovo:TimeBox.PART_SecondBorder}">
+                            <Grid>
+                                <TextPresenter
+                                    CaretBrush="{TemplateBinding CaretBrush}"
+                                    Cursor="IBeam"
+                                    MinWidth="8"
+                                    Name="{x:Static ovo:TimeBox.PART_SecondTextPresenter}"
+                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextElement.Foreground="{TemplateBinding Foreground}"
+                                    VerticalAlignment="Center" />
+                                <Panel
+                                    Background="Transparent"
+                                    HorizontalAlignment="Stretch"
+                                    Name="{x:Static ovo:TimeBox.PART_SecondDragPanel}"
+                                    VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                        <TextBlock
+                            Focusable="False"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="5"
+                            Margin="0,4"
+                            Text="."
+                            VerticalAlignment="Center" />
+                        <Border
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Grid.Column="6"
+                            Name="{x:Static ovo:TimeBox.PART_MilliSecondBorder}">
+                            <Grid>
+                                <TextPresenter
+                                    CaretBrush="{TemplateBinding CaretBrush}"
+                                    Cursor="IBeam"
+                                    MinWidth="8"
+                                    Name="{x:Static ovo:TimeBox.PART_MillisecondTextPresenter}"
+                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                    TextElement.Foreground="{TemplateBinding Foreground}"
+                                    VerticalAlignment="Center" />
+                                <Panel
+                                    Background="Transparent"
+                                    HorizontalAlignment="Stretch"
+                                    Name="{x:Static ovo:TimeBox.PART_MilliSecondDragPanel}"
+                                    VerticalAlignment="Stretch" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:focus-within">
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+        <Style Selector="^[DragOrientation=Horizontal]">
+            <Style Selector="^/template/ Panel">
+                <Setter Property="Cursor" Value="SizeWestEast" />
+            </Style>
+        </Style>
+        <Style Selector="^[DragOrientation=Vertical]">
+            <Style Selector="^/template/ Panel">
+                <Setter Property="Cursor" Value="SizeNorthSouth" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

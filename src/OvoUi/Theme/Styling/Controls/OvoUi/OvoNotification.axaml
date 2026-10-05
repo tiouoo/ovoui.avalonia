@@ -145,7 +145,6 @@
                                         VerticalAlignment="Top"
                                         x:Name="PART_ActionButtons">
                                         <Button
-                                            Cursor="hand"
                                             IsVisible="{TemplateBinding ShowRemoveButton}"
                                             Padding="6"
                                             Theme="{StaticResource TransparentButton}"
@@ -156,7 +155,6 @@
                                                 Width="14" />
                                         </Button>
                                         <Button
-                                            Cursor="hand"
                                             IsVisible="{TemplateBinding ShowCollapseButton}"
                                             Padding="6,5,6,6"
                                             Theme="{StaticResource TransparentButton}"

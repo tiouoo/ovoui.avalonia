@@ -28,6 +28,7 @@
         <ResourceInclude Source="OvoNotification.axaml" />
         <ResourceInclude Source="OvoToast.axaml" />
         <ResourceInclude Source="OvoView.axaml" />
+        <ResourceInclude Source="Anchor.axaml" />
         <ResourceInclude Source="OvoWindow.axaml" />
         <ResourceInclude Source="PopConfirm.axaml" />
         <ResourceInclude Source="Shimmer.axaml" />
