@@ -117,7 +117,6 @@
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:PaginationButton">
                 <Border

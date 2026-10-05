@@ -144,7 +144,6 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 CornerRadius="{DynamicResource OvoCornerRadius}"
-                Cursor="Hand"
                 Grid.Row="0"
                 HorizontalAlignment="Stretch"
                 MinHeight="32"

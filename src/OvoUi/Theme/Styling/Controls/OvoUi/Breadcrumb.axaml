@@ -100,9 +100,6 @@
         <Style Selector="^ /template/ ContentPresenter#Separator">
             <Setter Property="Margin" Value="4 0" />
         </Style>
-        <Style Selector="^[IsReadOnly=False]">
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
         <Style Selector="^:last">
             <Style Selector="^ /template/ ContentPresenter#PART_IconPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource BreadcrumbItemLastForeground}" />

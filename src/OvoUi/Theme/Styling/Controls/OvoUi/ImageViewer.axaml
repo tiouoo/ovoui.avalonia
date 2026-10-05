@@ -1,0 +1,31 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:ImageViewer" x:Key="{x:Type o:ImageViewer}">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type o:ImageViewer}">
+                <VisualLayerManager Name="{x:Static o:ImageViewer.PART_Layer}">
+                    <Border Background="{TemplateBinding Background}" ClipToBounds="True">
+                        <Image
+                            Name="{x:Static o:ImageViewer.PART_Image}"
+                            Source="{TemplateBinding Source}"
+                            Stretch="Uniform">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="{Binding Scale, RelativeSource={RelativeSource TemplatedParent}}" ScaleY="{Binding Scale, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <TranslateTransform X="{Binding TranslateX, RelativeSource={RelativeSource TemplatedParent}}" Y="{Binding TranslateY, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <RotateTransform Angle="0" />
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Border>
+                </VisualLayerManager>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:moving">
+            <Setter Property="Cursor" Value="DragMove" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
