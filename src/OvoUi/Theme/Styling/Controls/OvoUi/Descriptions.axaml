@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Margin="20" Spacing="20">
-            <Border Theme="{DynamicResource CardBorder}">
+            <Border Theme="{DynamicResource CardBorderTheme}">
                 <o:Descriptions
                     ItemAlignment="Center"
                     LabelPosition="Top"
@@ -16,66 +16,6 @@
             </Border>
         </StackPanel>
     </Design.PreviewWith>
-    <x:Double x:Key="DescriptionsLineHeight">20</x:Double>
-    <FontWeight x:Key="DescriptionsValueFontWeight">600</FontWeight>
-    <x:Double x:Key="DescriptionsKeySmallFontSize">12</x:Double>
-    <x:Double x:Key="DescriptionsValueSmallFontSize">16</x:Double>
-    <x:Double x:Key="DescriptionsKeyMediumFontSize">14</x:Double>
-    <x:Double x:Key="DescriptionsValueMediumFontSize">20</x:Double>
-    <x:Double x:Key="DescriptionsKeyLargeFontSize">14</x:Double>
-    <x:Double x:Key="DescriptionsValueLargeFontSize">28</x:Double>
-    <Thickness x:Key="DescriptionsKeyPadding">0 0 24 0</Thickness>
-    <Thickness x:Key="DescriptionsItemMargin">0 0 0 12</Thickness>
-    <Thickness x:Key="DescriptionsValueSmallMargin">0 0 48 0</Thickness>
-    <Thickness x:Key="DescriptionsValueMediumMargin">0 0 60 0</Thickness>
-    <Thickness x:Key="DescriptionsValueLargeMargin">0 0 80 0</Thickness>
-    <Thickness x:Key="DescriptionsKeySmallMargin">0</Thickness>
-    <Thickness x:Key="DescriptionsKeyMediumMargin">0 0 0 4</Thickness>
-    <Thickness x:Key="DescriptionsKeyLargeMargin">0 0 0 4</Thickness>
-    <Thickness x:Key="DescriptionsKeyPlainMargin">0 0 8 0</Thickness>
-    <Thickness x:Key="ThicknessCardBorderThickness">1</Thickness>
-
-    <!--  主题区分的资源  -->
-    <ResourceDictionary.ThemeDictionaries>
-        <ResourceDictionary x:Key="Light">
-            <SolidColorBrush Color="#1C1F23" x:Key="SemiColorText0" />
-            <SolidColorBrush
-                Color="#1C1F23"
-                Opacity="0.62"
-                x:Key="SemiColorText2" />
-            <SolidColorBrush
-                Color="#1C1F23"
-                Opacity="0.08"
-                x:Key="SemiColorBorder" />
-            <SolidColorBrush
-                Color="#1C1F23"
-                Opacity="0.08"
-                x:Key="BorderCardBorderBrush" />
-            <ControlTheme TargetType="Border" x:Key="CardBorder">
-                <Setter Property="BorderBrush" Value="#1C1F23" />
-                <Setter Property="BorderThickness" Value="1" />
-            </ControlTheme>
-        </ResourceDictionary>
-        <ResourceDictionary x:Key="Dark">
-            <SolidColorBrush Color="#F9F9F9" x:Key="SemiColorText0" />
-            <SolidColorBrush
-                Color="#F9F9F9"
-                Opacity="0.6"
-                x:Key="SemiColorText2" />
-            <SolidColorBrush
-                Color="#F9F9F9"
-                Opacity="0.08"
-                x:Key="SemiColorBorder" />
-            <SolidColorBrush
-                Color="#F9F9F9"
-                Opacity="0.08"
-                x:Key="BorderCardBorderBrush" />
-            <ControlTheme TargetType="Border" x:Key="CardBorder">
-                <Setter Property="BorderBrush" Value="#F9F9F9" />
-                <Setter Property="BorderThickness" Value="1" />
-            </ControlTheme>
-        </ResourceDictionary>
-    </ResourceDictionary.ThemeDictionaries>
     <ControlTheme TargetType="o:Descriptions" x:Key="{x:Type o:Descriptions}">
         <Setter Property="Grid.IsSharedSizeScope" Value="False" />
         <Setter Property="Template">
@@ -99,7 +39,7 @@
         <Style Selector="^:horizontal">
             <Setter Property="Template">
                 <ControlTemplate TargetType="o:DescriptionsItem">
-                    <Grid Margin="{DynamicResource DescriptionsItemMargin}">
+                    <Grid Margin="0 0 0 12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition SharedSizeGroup="Label" Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -108,24 +48,24 @@
                         <Label
                             Content="{TemplateBinding Label}"
                             ContentTemplate="{TemplateBinding LabelTemplate}"
-                            Foreground="{DynamicResource InnerForegroundColor}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
                             Grid.Column="0"
                             Name="{x:Static o:LabeledContentControl.PART_Label}"
-                            TextBlock.LineHeight="{DynamicResource DescriptionsLineHeight}"
+                            TextBlock.LineHeight="20"
                             Width="{TemplateBinding LabelWidth}" />
                         <TextBlock
-                            Foreground="{DynamicResource InnerForegroundColor}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
                             Grid.Column="1"
-                            Margin="{DynamicResource DescriptionsKeyPlainMargin}"
+                            Margin="0 0 8 0"
                             Name="PART_Colon"
                             Text=":" />
                         <ContentPresenter
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
-                            Foreground="{DynamicResource ForegroundColor}"
+                            Foreground="{DynamicResource ForegroundBrush}"
                             Grid.Column="2"
                             Name="{x:Static o:PartNames.PART_ContentPresenter}"
-                            TextBlock.LineHeight="{DynamicResource DescriptionsLineHeight}" />
+                            TextBlock.LineHeight="20" />
                     </Grid>
                 </ControlTemplate>
             </Setter>
@@ -133,7 +73,7 @@
             <Style Selector="^[ItemAlignment=Center]">
                 <Style Selector="^ /template/ Label#PART_Label">
                     <Setter Property="HorizontalAlignment" Value="Right" />
-                    <Setter Property="Padding" Value="{DynamicResource DescriptionsKeyPadding}" />
+                    <Setter Property="Padding" Value="0 0 24 0" />
                 </Style>
                 <Style Selector="^ /template/ TextBlock#PART_Colon">
                     <Setter Property="IsVisible" Value="False" />
@@ -145,7 +85,7 @@
             <Style Selector="^[ItemAlignment=Left]">
                 <Style Selector="^ /template/ Label#PART_Label">
                     <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="Padding" Value="{DynamicResource DescriptionsKeyPadding}" />
+                    <Setter Property="Padding" Value="0 0 24 0" />
                 </Style>
                 <Style Selector="^ /template/ TextBlock#PART_Colon">
                     <Setter Property="IsVisible" Value="False" />
@@ -157,7 +97,7 @@
             <Style Selector="^[ItemAlignment=Justify]">
                 <Style Selector="^ /template/ Label#PART_Label">
                     <Setter Property="HorizontalAlignment" Value="Left" />
-                    <Setter Property="Padding" Value="{DynamicResource DescriptionsKeyPadding}" />
+                    <Setter Property="Padding" Value="0 0 24 0" />
                 </Style>
                 <Style Selector="^ /template/ TextBlock#PART_Colon">
                     <Setter Property="IsVisible" Value="False" />
@@ -181,44 +121,44 @@
                             Content="{TemplateBinding Label}"
                             ContentTemplate="{TemplateBinding LabelTemplate}"
                             DataContext="{TemplateBinding Label}"
-                            Foreground="{DynamicResource InnerForegroundColor}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
                             Name="{x:Static o:LabeledContentControl.PART_Label}"
                             Width="{TemplateBinding LabelWidth}" />
                         <ContentPresenter
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
-                            FontWeight="{DynamicResource DescriptionsValueFontWeight}"
-                            Foreground="{DynamicResource ForegroundColor}"
+                            FontWeight="600"
+                            Foreground="{DynamicResource ForegroundBrush}"
                             Name="{x:Static o:PartNames.PART_ContentPresenter}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter>
             <Style Selector="^ /template/ Label#PART_Label">
-                <Setter Property="Margin" Value="{DynamicResource DescriptionsKeyMediumMargin}" />
-                <Setter Property="FontSize" Value="{DynamicResource DescriptionsKeyMediumFontSize}" />
+                <Setter Property="Margin" Value="0 0 0 4" />
+                <Setter Property="FontSize" Value="14" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Margin" Value="{DynamicResource DescriptionsValueMediumMargin}" />
-                <Setter Property="FontSize" Value="{DynamicResource DescriptionsValueMediumFontSize}" />
+                <Setter Property="Margin" Value="0 0 60 0" />
+                <Setter Property="FontSize" Value="20" />
             </Style>
             <Style Selector="^.Small">
                 <Style Selector="^ /template/ Label#PART_Label">
-                    <Setter Property="Margin" Value="{DynamicResource DescriptionsKeySmallMargin}" />
-                    <Setter Property="FontSize" Value="{DynamicResource DescriptionsKeySmallFontSize}" />
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="FontSize" Value="12" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Margin" Value="{DynamicResource DescriptionsValueSmallMargin}" />
-                    <Setter Property="FontSize" Value="{DynamicResource DescriptionsValueSmallFontSize}" />
+                    <Setter Property="Margin" Value="0 0 48 0" />
+                    <Setter Property="FontSize" Value="16" />
                 </Style>
             </Style>
             <Style Selector="^.Large">
                 <Style Selector="^ /template/ Label#PART_Label">
-                    <Setter Property="Margin" Value="{DynamicResource DescriptionsKeyLargeMargin}" />
-                    <Setter Property="FontSize" Value="{DynamicResource DescriptionsKeyLargeFontSize}" />
+                    <Setter Property="Margin" Value="0 0 0 4" />
+                    <Setter Property="FontSize" Value="14" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Margin" Value="{DynamicResource DescriptionsValueLargeMargin}" />
-                    <Setter Property="FontSize" Value="{DynamicResource DescriptionsValueLargeFontSize}" />
+                    <Setter Property="Margin" Value="0 0 80 0" />
+                    <Setter Property="FontSize" Value="28" />
                 </Style>
             </Style>
         </Style>
