@@ -52,5 +52,6 @@
         <ResourceInclude Source="Marquee.axaml" />
         <ResourceInclude Source="NumberDisplayer.axaml" />
         <ResourceInclude Source="QrCode.axaml" />
+        <ResourceInclude Source="ScrollToButton.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -1,0 +1,45 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StreamGeometry x:Key="ScrollToButtonIconGlyph">M19.64 16.44a1.5 1.5 0 0 1-2.12 0l-5.66-5.66-5.66 5.66a1.5 1.5 0 1 1-2.12-2.12L10.8 7.6a1.5 1.5 0 0 1 2.12 0l6.72 6.72a1.5 1.5 0 0 1 0 2.12Z</StreamGeometry>
+
+    <ControlTheme TargetType="o:ScrollToButton" x:Key="{x:Type o:ScrollToButton}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Margin" Value="0, 0, 16, 16" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:ScrollToButton">
+                <Border
+                    Background="{DynamicResource ControlBackground}"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Name="PART_Background">
+                    <PathIcon
+                        Data="{DynamicResource ScrollToButtonIconGlyph}"
+                        Foreground="{DynamicResource SystemAccentColor}"
+                        Margin="8"
+                        Name="PART_Icon"
+                        Theme="{StaticResource InnerPathIcon}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        <Style Selector="^[Direction=Right] /template/ PathIcon#PART_Icon">
+            <Setter Property="RenderTransform" Value="rotate(90deg)" />
+        </Style>
+        <Style Selector="^[Direction=Bottom] /template/ PathIcon#PART_Icon">
+            <Setter Property="RenderTransform" Value="rotate(180deg)" />
+        </Style>
+        <Style Selector="^[Direction=Left] /template/ PathIcon#PART_Icon">
+            <Setter Property="RenderTransform" Value="rotate(270deg)" />
+        </Style>
+    </ControlTheme>
+
+
+</ResourceDictionary>
