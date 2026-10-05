@@ -6,10 +6,11 @@ using Avalonia.Android;
 namespace OvoUi.Demo.Android;
 
 [Activity(
-    Label = "OvoUi.Demo.Android",
+    Label = "OvoUi Demo",
     Theme = "@style/MyTheme.NoActionBar",
     Icon = "@drawable/icon",
     MainLauncher = true,
+    LaunchMode = LaunchMode.SingleTop,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.UiMode)]
 public class MainActivity : AvaloniaMainActivity
 {
