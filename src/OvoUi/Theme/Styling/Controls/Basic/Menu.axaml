@@ -138,7 +138,7 @@
                 </LayoutTransformControl>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^[IsEnabled=True] /template/ LayoutTransformControl#PART_LayoutTransform">
+        <Style Selector="^ /template/ LayoutTransformControl#PART_LayoutTransform">
             <Style.Animations>
                 <Animation
                     Duration="0.35"

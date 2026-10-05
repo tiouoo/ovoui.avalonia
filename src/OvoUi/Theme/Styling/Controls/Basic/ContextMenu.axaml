@@ -12,6 +12,7 @@
                 <LayoutTransformControl
                     Margin="1,0,0,0"
                     Name="PART_LayoutTransform"
+                    Opacity="1"
                     RenderTransformOrigin="0%, 0%">
                     <Panel>
                         <Border
@@ -39,6 +40,11 @@
                 </LayoutTransformControl>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^ /template/ LayoutTransformControl#PART_LayoutTransform">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="ScaleTransform.ScaleX" Value="1" />
+            <Setter Property="ScaleTransform.ScaleY" Value="1" />
+        </Style>
         <Style Selector="^[IsOpen=True] /template/ LayoutTransformControl#PART_LayoutTransform">
             <Style.Animations>
                 <Animation
