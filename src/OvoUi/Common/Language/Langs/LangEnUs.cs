@@ -26,7 +26,7 @@ public class LangEnUs : ILang
     public string Copy => "Copy";
     public string Paste => "Paste";
     public string Clear => "Clear";
-    public string JumpTo => "JumpTo";
+    public string JumpTo => "Jump to";
     public string Page => "Page";
     public string EndTime => "End Time";
     public string StartTime => "Start Time";

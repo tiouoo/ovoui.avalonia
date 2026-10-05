@@ -14,8 +14,6 @@ public class NavMenuSizeAnimations : ResourceDictionary
     private readonly SizeAnimationHelperAnimationGeneratorDelegate _navMenuWidthAnimationGenerator =
         (_, oldDesiredSize, newDesiredSize) =>
         {
-            if (oldDesiredSize.Width > newDesiredSize.Width)
-                newDesiredSize = newDesiredSize.WithWidth(newDesiredSize.Width + 20);
             return new Animation
             {
                 Duration = TimeSpan.FromMilliseconds(300),
@@ -28,8 +26,7 @@ public class NavMenuSizeAnimations : ResourceDictionary
                         Cue = new Cue(0.0),
                         Setters =
                         {
-                            new Setter(Layoutable.WidthProperty, oldDesiredSize.Width),
-                            new Setter(Layoutable.HeightProperty, oldDesiredSize.Height)
+                            new Setter(Layoutable.WidthProperty, oldDesiredSize.Width)
                         }
                     },
                     new KeyFrame
@@ -37,8 +34,7 @@ public class NavMenuSizeAnimations : ResourceDictionary
                         Cue = new Cue(1.0),
                         Setters =
                         {
-                            new Setter(Layoutable.WidthProperty, newDesiredSize.Width),
-                            new Setter(Layoutable.HeightProperty, newDesiredSize.Height)
+                            new Setter(Layoutable.WidthProperty, newDesiredSize.Width)
                         }
                     }
                 }

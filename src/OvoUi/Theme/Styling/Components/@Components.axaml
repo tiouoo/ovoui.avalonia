@@ -3,5 +3,6 @@
         <ResourceInclude Source="TextBoxContextMenu.axaml" />
         <ResourceInclude Source="InputIcons.axaml" />
         <ResourceInclude Source="Icons/StatusIcons.axaml" />
+        <ResourceInclude Source="Icons/PaginationIcons.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

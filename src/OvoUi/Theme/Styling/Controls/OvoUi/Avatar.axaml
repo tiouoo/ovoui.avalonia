@@ -1,0 +1,213 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tio="https://github.com/tiouoo/TioUi.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel
+            Margin="20"
+            Orientation="Horizontal"
+            Spacing="8">
+            <o:Avatar Content="AS" />
+            <o:Avatar Content="Semi" Padding="4" />
+            <o:Avatar Content="Semi" Padding="10" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <FontWeight x:Key="AvatarFontWeight">600</FontWeight>
+    <CornerRadius x:Key="AvatarCircleCornerRadius">100</CornerRadius>
+    <CornerRadius x:Key="AvatarSquareCornerRadius">3</CornerRadius>
+    <x:Double x:Key="AvatarExtraExtraSmallWidth">20</x:Double>
+    <x:Double x:Key="AvatarExtraExtraSmallFontSize">10</x:Double>
+    <x:Double x:Key="AvatarExtraSmallWidth">24</x:Double>
+    <x:Double x:Key="AvatarExtraSmallFontSize">10</x:Double>
+    <x:Double x:Key="AvatarSmallWidth">32</x:Double>
+    <x:Double x:Key="AvatarSmallFontSize">12</x:Double>
+    <x:Double x:Key="AvatarDefaultWidth">40</x:Double>
+    <x:Double x:Key="AvatarDefaultFontSize">18</x:Double>
+    <x:Double x:Key="AvatarMediumWidth">48</x:Double>
+    <x:Double x:Key="AvatarMediumFontSize">20</x:Double>
+    <x:Double x:Key="AvatarLargeWidth">72</x:Double>
+    <x:Double x:Key="AvatarLargeFontSize">32</x:Double>
+    <CornerRadius x:Key="AvatarLargeSquareCornerRadius">6</CornerRadius>
+    <x:Double x:Key="AvatarExtraLargeWidth">128</x:Double>
+    <x:Double x:Key="AvatarExtraLargeFontSize">64</x:Double>
+    <CornerRadius x:Key="AvatarExtraLargeSquareCornerRadius">12</CornerRadius>
+
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush Color="#FFFFFF" x:Key="AvatarForeground" />
+            <SolidColorBrush Color="#FB9078" x:Key="AvatarRedBackground" />
+            <SolidColorBrush Color="#F27396" x:Key="AvatarPinkBackground" />
+            <SolidColorBrush Color="#C96FD1" x:Key="AvatarPurpleBackground" />
+            <SolidColorBrush Color="#A67FDD" x:Key="AvatarVioletBackground" />
+            <SolidColorBrush Color="#8090D3" x:Key="AvatarIndigoBackground" />
+            <SolidColorBrush Color="#65B2FC" x:Key="AvatarBlueBackground" />
+            <SolidColorBrush Color="#62C3F5" x:Key="AvatarLightBlueBackground" />
+            <SolidColorBrush Color="#58CBD3" x:Key="AvatarCyanBackground" />
+            <SolidColorBrush Color="#54D1C1" x:Key="AvatarTealBackground" />
+            <SolidColorBrush Color="#7DD182" x:Key="AvatarGreenBackground" />
+            <SolidColorBrush Color="#ADD37E" x:Key="AvatarLightGreenBackground" />
+            <SolidColorBrush Color="#B7E35B" x:Key="AvatarLimeBackground" />
+            <SolidColorBrush Color="#FCE865" x:Key="AvatarYellowBackground" />
+            <SolidColorBrush Color="#F6D86F" x:Key="AvatarAmberBackground" />
+            <SolidColorBrush Color="#FDC165" x:Key="AvatarOrangeBackground" />
+            <SolidColorBrush Color="#A7ABB0" x:Key="AvatarGreyBackground" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush Color="#FFFFFF" x:Key="AvatarForeground" />
+            <SolidColorBrush Color="#D73324" x:Key="AvatarRedBackground" />
+            <SolidColorBrush Color="#C72261" x:Key="AvatarPinkBackground" />
+            <SolidColorBrush Color="#89289F" x:Key="AvatarPurpleBackground" />
+            <SolidColorBrush Color="#6439B5" x:Key="AvatarVioletBackground" />
+            <SolidColorBrush Color="#3444A3" x:Key="AvatarIndigoBackground" />
+            <SolidColorBrush Color="#1D75DB" x:Key="AvatarBlueBackground" />
+            <SolidColorBrush Color="#0A81CC" x:Key="AvatarLightBlueBackground" />
+            <SolidColorBrush Color="#0E8999" x:Key="AvatarCyanBackground" />
+            <SolidColorBrush Color="#0A9588" x:Key="AvatarTealBackground" />
+            <SolidColorBrush Color="#32953D" x:Key="AvatarGreenBackground" />
+            <SolidColorBrush Color="#679934" x:Key="AvatarLightGreenBackground" />
+            <SolidColorBrush Color="#84B00C" x:Key="AvatarLimeBackground" />
+            <SolidColorBrush Color="#D2AF0F" x:Key="AvatarYellowBackground" />
+            <SolidColorBrush Color="#CA8F1E" x:Key="AvatarAmberBackground" />
+            <SolidColorBrush Color="#D56F0F" x:Key="AvatarOrangeBackground" />
+            <SolidColorBrush Color="#555B61" x:Key="AvatarGreyBackground" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    <ControlTheme TargetType="{x:Type o:Avatar}" x:Key="{x:Type o:Avatar}">
+        <Setter Property="Foreground" Value="{DynamicResource AvatarForeground}" />
+        <Setter Property="Background" Value="{DynamicResource AvatarGreyBackground}" />
+        <Setter Property="FontSize" Value="{DynamicResource AvatarMediumFontSize}" />
+        <Setter Property="FontWeight" Value="{DynamicResource AvatarFontWeight}" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Width" Value="{DynamicResource AvatarMediumWidth}" />
+        <Setter Property="Height" Value="{Binding $self.Width}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="CornerRadius" Value="{DynamicResource AvatarCircleCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="{x:Type o:Avatar}">
+                <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
+                    <Panel>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsVisible="{TemplateBinding Source,
+                                                        Converter={x:Static ObjectConverters.IsNull}}" />
+                        <Viewbox Margin="{TemplateBinding Padding}" StretchDirection="DownOnly">
+                            <ContentPresenter
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                HorizontalContentAlignment="Center"
+                                IsVisible="{TemplateBinding Source,
+                                                            Converter={x:Static ObjectConverters.IsNull}}"
+                                Name="PART_ContentPresenter"
+                                VerticalContentAlignment="Center" />
+                        </Viewbox>
+                        <Image Source="{TemplateBinding Source}" />
+                        <ContentPresenter
+                            Content="{TemplateBinding HoverMask}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            HorizontalContentAlignment="Center"
+                            IsVisible="False"
+                            Name="PART_HoverMask"
+                            VerticalContentAlignment="Center" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_HoverMask">
+            <Setter Property="IsVisible" Value="{Binding HoverMask, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </Style>
+        <Style Selector="^.red">
+            <Setter Property="Background" Value="{DynamicResource AvatarRedBackground}" />
+        </Style>
+        <Style Selector="^.pink">
+            <Setter Property="Background" Value="{DynamicResource AvatarPinkBackground}" />
+        </Style>
+        <Style Selector="^.purple">
+            <Setter Property="Background" Value="{DynamicResource AvatarPurpleBackground}" />
+        </Style>
+        <Style Selector="^.violet">
+            <Setter Property="Background" Value="{DynamicResource AvatarVioletBackground}" />
+        </Style>
+        <Style Selector="^.indigo">
+            <Setter Property="Background" Value="{DynamicResource AvatarIndigoBackground}" />
+        </Style>
+        <Style Selector="^.blue">
+            <Setter Property="Background" Value="{DynamicResource AvatarBlueBackground}" />
+        </Style>
+        <Style Selector="^.lightblue">
+            <Setter Property="Background" Value="{DynamicResource AvatarLightBlueBackground}" />
+        </Style>
+        <Style Selector="^.cyan">
+            <Setter Property="Background" Value="{DynamicResource AvatarCyanBackground}" />
+        </Style>
+        <Style Selector="^.teal">
+            <Setter Property="Background" Value="{DynamicResource AvatarTealBackground}" />
+        </Style>
+        <Style Selector="^.green">
+            <Setter Property="Background" Value="{DynamicResource AvatarGreenBackground}" />
+        </Style>
+        <Style Selector="^.lightgreen">
+            <Setter Property="Background" Value="{DynamicResource AvatarLightGreenBackground}" />
+        </Style>
+        <Style Selector="^.lime">
+            <Setter Property="Background" Value="{DynamicResource AvatarLimeBackground}" />
+        </Style>
+        <Style Selector="^.yellow">
+            <Setter Property="Background" Value="{DynamicResource AvatarYellowBackground}" />
+        </Style>
+        <Style Selector="^.amber">
+            <Setter Property="Background" Value="{DynamicResource AvatarAmberBackground}" />
+        </Style>
+        <Style Selector="^.orange">
+            <Setter Property="Background" Value="{DynamicResource AvatarOrangeBackground}" />
+        </Style>
+        <Style Selector="^.grey">
+            <Setter Property="Background" Value="{DynamicResource AvatarGreyBackground}" />
+        </Style>
+
+        <Style Selector="^.square">
+            <Setter Property="CornerRadius" Value="{DynamicResource AvatarSquareCornerRadius}" />
+        </Style>
+
+        <Style Selector="^.extra_small">
+            <Setter Property="Width" Value="{DynamicResource AvatarExtraExtraSmallWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarExtraExtraSmallFontSize}" />
+        </Style>
+        <Style Selector="^.extra_extra_small">
+            <Setter Property="Width" Value="{DynamicResource AvatarExtraSmallWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarExtraSmallFontSize}" />
+        </Style>
+        <Style Selector="^.small">
+            <Setter Property="Width" Value="{DynamicResource AvatarSmallWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarSmallFontSize}" />
+        </Style>
+        <Style Selector="^.default">
+            <Setter Property="Width" Value="{DynamicResource AvatarDefaultWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarDefaultFontSize}" />
+        </Style>
+        <Style Selector="^.medium">
+            <Setter Property="Width" Value="{DynamicResource AvatarMediumWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarMediumFontSize}" />
+        </Style>
+        <Style Selector="^.large">
+            <Setter Property="Width" Value="{DynamicResource AvatarLargeWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarLargeFontSize}" />
+            <Style Selector="^.square">
+                <Setter Property="CornerRadius" Value="{DynamicResource AvatarLargeSquareCornerRadius}" />
+            </Style>
+        </Style>
+        <Style Selector="^.extralarge">
+            <Setter Property="Width" Value="{DynamicResource AvatarExtraLargeWidth}" />
+            <Setter Property="FontSize" Value="{DynamicResource AvatarExtraLargeFontSize}" />
+            <Style Selector="^.square">
+                <Setter Property="CornerRadius" Value="{DynamicResource AvatarExtraLargeSquareCornerRadius}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,42 @@
+﻿using Avalonia;
+using Avalonia.Controls;
+
+namespace OvoUi.Controls;
+
+public class AspectRatioLayoutItem : ContentControl
+{
+    public static readonly StyledProperty<AspectRatioMode> AcceptAspectRatioModeProperty =
+        AvaloniaProperty.Register<AspectRatioLayoutItem, AspectRatioMode>(
+            nameof(AcceptAspectRatioMode));
+
+    public static readonly StyledProperty<double> StartAspectRatioValueProperty =
+        AvaloniaProperty.Register<AspectRatioLayoutItem, double>(
+            nameof(StartAspectRatioValue), defaultValue: double.NaN);
+
+    public static readonly StyledProperty<double> EndAspectRatioValueProperty =
+        AvaloniaProperty.Register<AspectRatioLayoutItem, double>(
+            nameof(EndAspectRatioValue), defaultValue: double.NaN);
+
+    public double StartAspectRatioValue
+    {
+        get => GetValue(StartAspectRatioValueProperty);
+        set => SetValue(StartAspectRatioValueProperty, value);
+    }
+
+    public double EndAspectRatioValue
+    {
+        get => GetValue(EndAspectRatioValueProperty);
+        set => SetValue(EndAspectRatioValueProperty, value);
+    }
+
+    public bool IsUseAspectRatioRange =>
+        !double.IsNaN(StartAspectRatioValue)
+        && !double.IsNaN(EndAspectRatioValue)
+        && !(StartAspectRatioValue > EndAspectRatioValue);
+
+    public AspectRatioMode AcceptAspectRatioMode
+    {
+        get => GetValue(AcceptAspectRatioModeProperty);
+        set => SetValue(AcceptAspectRatioModeProperty, value);
+    }
+}

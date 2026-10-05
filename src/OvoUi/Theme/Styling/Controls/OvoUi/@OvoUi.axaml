@@ -37,5 +37,7 @@
         <ResourceInclude Source="TimeBox.axaml" />
         <ResourceInclude Source="Breadcrumb.axaml" />
         <ResourceInclude Source="NavMenu.axaml" />
+        <ResourceInclude Source="Pagination.axaml" />
+        <ResourceInclude Source="Avatar.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

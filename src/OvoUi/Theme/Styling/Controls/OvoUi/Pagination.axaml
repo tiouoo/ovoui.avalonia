@@ -1,0 +1,186 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20">
+            <ovo:PaginationButton Page="3" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="ovo:Pagination" x:Key="{x:Type ovo:Pagination}">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:Pagination">
+                <StackPanel Orientation="Horizontal">
+                    <ovo:PaginationButton Name="{x:Static ovo:Pagination.PART_PreviousButton}">
+                        <PathIcon
+                            Data="{DynamicResource IconChevronLeft}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Theme="{DynamicResource InnerPathIcon}" />
+                    </ovo:PaginationButton>
+                    <StackPanel Name="{x:Static ovo:Pagination.PART_ButtonPanel}" Orientation="Horizontal" />
+                    <ovo:PaginationButton Name="{x:Static ovo:Pagination.PART_NextButton}">
+                        <PathIcon
+                            Data="{DynamicResource IconChevronRight}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Theme="{DynamicResource InnerPathIcon}" />
+                    </ovo:PaginationButton>
+                    <StackPanel IsVisible="{TemplateBinding ShowQuickJump}" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="4,0"
+                            Text="{DynamicResource Lang.JumpTo}"
+                            VerticalAlignment="Center" />
+                        <ovo:OvoNumericIntUpDown
+                            ShowButtonSpinner="False"
+                            Width="50"
+                            x:Name="{x:Static ovo:Pagination.PART_QuickJumpInput}" />
+                        <TextBlock
+                            Margin="4,0"
+                            Text="{DynamicResource Lang.Page}"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                    <ComboBox
+                        IsVisible="{TemplateBinding ShowPageSizeSelector}"
+                        ItemsSource="{TemplateBinding PageSizeOptions}"
+                        SelectedItem="{TemplateBinding PageSize,
+                                                       Mode=TwoWay}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="{x:Type ovo:Pagination}" x:Key="TinyPagination">
+        <Setter Property="DisplayCurrentPageInQuickJumper" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:Pagination">
+                <StackPanel Orientation="Horizontal">
+                    <ovo:PaginationButton Name="{x:Static ovo:Pagination.PART_PreviousButton}">
+                        <PathIcon
+                            Data="{DynamicResource IconChevronLeft}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Theme="{DynamicResource InnerPathIcon}" />
+                    </ovo:PaginationButton>
+                    <Grid ColumnDefinitions="*, Auto, *" Margin="5,0">
+                        <ovo:OvoNumericIntUpDown
+                            Grid.Column="0"
+                            HorizontalContentAlignment="Center"
+                            IsVisible="True"
+                            MinWidth="{Binding $self.Bounds.Height}"
+                            Name="{x:Static ovo:Pagination.PART_QuickJumpInput}"
+                            ShowButtonSpinner="False"
+                            Value="{TemplateBinding CurrentPage,
+                                                    Mode=TwoWay}"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            Grid.Column="0"
+                            IsVisible="False"
+                            Name="PART_PageTextBlock"
+                            Text="{TemplateBinding CurrentPage}"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="8,0"
+                            Text="/"
+                            VerticalAlignment="Center" />
+                        <SelectableTextBlock
+                            Grid.Column="2"
+                            Text="{TemplateBinding PageCount}"
+                            VerticalAlignment="Center" />
+                    </Grid>
+                    <ovo:PaginationButton Name="{x:Static ovo:Pagination.PART_NextButton}">
+                        <PathIcon
+                            Data="{DynamicResource IconChevronRight}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Theme="{DynamicResource InnerPathIcon}" />
+                    </ovo:PaginationButton>
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^.ReadOnly /template/ TextBlock#PART_PageTextBlock">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^.ReadOnly /template/ ovo|OvoNumericIntUpDown#PART_QuickJumpInput">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="ovo:PaginationButton" x:Key="{x:Type ovo:PaginationButton}">
+        <Setter Property="Content" Value="{Binding $self.Page}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="MinWidth" Value="32" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:PaginationButton">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="4">
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding Foreground}"
+                        HorizontalAlignment="Center"
+                        RecognizesAccessKey="True"
+                        VerticalAlignment="Center" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        <Style Selector="^:left">
+            <Setter Property="Content">
+                <Template>
+                    <PathIcon
+                        Data="{DynamicResource IconEllipsisHorizontal}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        Theme="{DynamicResource InnerPathIcon}" />
+                </Template>
+            </Setter>
+            <Style Selector="^:pointerover">
+                <Setter Property="Content">
+                    <Template>
+                        <PathIcon
+                            Data="{DynamicResource IconChevronsLeft}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Theme="{DynamicResource InnerPathIcon}" />
+                    </Template>
+                </Setter>
+            </Style>
+        </Style>
+        <Style Selector="^:right">
+            <Setter Property="Content">
+                <Template>
+                    <PathIcon
+                        Data="{DynamicResource IconEllipsisHorizontal}"
+                        Foreground="{DynamicResource InnerForegroundBrush}"
+                        Theme="{DynamicResource InnerPathIcon}" />
+                </Template>
+            </Setter>
+            <Style Selector="^:pointerover">
+                <Setter Property="Content">
+                    <Template>
+                        <PathIcon
+                            Data="{DynamicResource IconChevronsRight}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Theme="{DynamicResource InnerPathIcon}" />
+                    </Template>
+                </Setter>
+            </Style>
+        </Style>
+        <Style Selector="^:selected">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="600" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

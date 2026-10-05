@@ -132,38 +132,44 @@
 
             <StackPanel>
                 <ToggleSwitch Content="IsHorizontalCollapsed" Name="collapse" />
-                <o:NavMenu
+                <Border
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
                     HorizontalAlignment="Left"
-                    IsHorizontalCollapsed="{Binding #collapse.IsChecked}"
-                    Name="menu2">
-                    <o:NavMenuItem Header="Menu 1">
-                        <o:NavMenuItem.Icon>
-                            <Rectangle
-                                Fill="Red"
-                                Height="10"
-                                Width="10" />
-                        </o:NavMenuItem.Icon>
-                        <o:NavMenuItem Header="Sub Menu 1" />
-                        <o:NavMenuItem Header="Sub Menu 2" />
-                        <o:NavMenuItem Header="Sub Menu 3" />
-                    </o:NavMenuItem>
-                    <o:NavMenuItem Header="Menu 2">
-                        <o:NavMenuItem.Icon>
-                            <Rectangle
-                                Fill="Red"
-                                Height="10"
-                                Width="10" />
-                        </o:NavMenuItem.Icon>
-                    </o:NavMenuItem>
-                    <o:NavMenuItem Header="Menu 3">
-                        <o:NavMenuItem.Icon>
-                            <Rectangle
-                                Fill="Red"
-                                Height="10"
-                                Width="10" />
-                        </o:NavMenuItem.Icon>
-                    </o:NavMenuItem>
-                </o:NavMenu>
+                    Padding="20">
+                    <o:NavMenu
+                        HorizontalAlignment="Left"
+                        IsHorizontalCollapsed="{Binding #collapse.IsChecked}"
+                        Name="menu2">
+                        <o:NavMenuItem Header="Menu 1">
+                            <o:NavMenuItem.Icon>
+                                <Rectangle
+                                    Fill="Red"
+                                    Height="10"
+                                    Width="10" />
+                            </o:NavMenuItem.Icon>
+                            <o:NavMenuItem Header="Sub Menu 1" />
+                            <o:NavMenuItem Header="Sub Menu 2" />
+                            <o:NavMenuItem Header="Sub Menu 3" />
+                        </o:NavMenuItem>
+                        <o:NavMenuItem Header="Menu 2">
+                            <o:NavMenuItem.Icon>
+                                <Rectangle
+                                    Fill="Red"
+                                    Height="10"
+                                    Width="10" />
+                            </o:NavMenuItem.Icon>
+                        </o:NavMenuItem>
+                        <o:NavMenuItem Header="Menu 3">
+                            <o:NavMenuItem.Icon>
+                                <Rectangle
+                                    Fill="Red"
+                                    Height="10"
+                                    Width="10" />
+                            </o:NavMenuItem.Icon>
+                        </o:NavMenuItem>
+                    </o:NavMenu>
+                </Border>
             </StackPanel>
         </StackPanel>
 
