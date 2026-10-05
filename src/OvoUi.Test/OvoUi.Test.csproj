@@ -4,7 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ApplicationManifest>app.manifest</ApplicationManifest>
-        <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+        <ApplicationIcon>..\..\assets\icon.ico</ApplicationIcon>
         <Title>OvoUi Test</Title>
         <Description>Desktop test application for OvoUi.</Description>
         <IsPackable>false</IsPackable>
@@ -25,5 +25,11 @@
     <ItemGroup>
       <ProjectReference Include="..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
       <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="..\..\assets\icon.ico">
+            <Link>Assets\icon.ico</Link>
+        </AvaloniaResource>
     </ItemGroup>
 </Project>

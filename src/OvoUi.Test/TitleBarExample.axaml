@@ -1,6 +1,6 @@
 <ovo:OvoWindow
     Height="450"
-    Icon="avares://OvoUi.Test/Assets/icon_256.png"
+    Icon="avares://OvoUi.Test/Assets/icon.ico"
     IsFullScreenTransitionAnimationEnabled="False"
     IsTitleBarVisible="False"
     Title="Custom Title Bar"

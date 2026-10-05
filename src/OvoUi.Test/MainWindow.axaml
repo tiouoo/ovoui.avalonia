@@ -1,5 +1,5 @@
 <o:OvoWindow
-    Icon="avares://OvoUi.Test/Assets/icon_256.png"
+    Icon="avares://OvoUi.Test/Assets/icon.ico"
     Title="OvoUi.Avalonia.Test"
     d:DesignHeight="450"
     d:DesignWidth="800"

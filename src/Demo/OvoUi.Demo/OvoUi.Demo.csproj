@@ -27,7 +27,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\OvoUi\OvoUi.csproj" />
-        <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
+        <ProjectReference Include="..\..\OvoUi\OvoUi.csproj"/>
+        <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="..\..\..\assets\icon.ico">
+            <Link>Assets\icon.ico</Link>
+        </AvaloniaResource>
+        <AvaloniaResource Include="..\..\..\assets\icon_256.png">
+            <Link>Assets\icon_256.png</Link>
+        </AvaloniaResource>
     </ItemGroup>
 </Project>

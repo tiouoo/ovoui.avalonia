@@ -7,31 +7,26 @@
         <Title>OvoUi</Title>
         <Description>An Avalonia UI control library and theme.</Description>
         <PackageTags>avalonia;ui;controls;theme</PackageTags>
-        <PackageIcon>icon_256.png</PackageIcon>
+        <PackageIcon>..\..\assets\icon.ico</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="12.1.3" />
-      <PackageReference Include="Avalonia.Controls.ColorPicker" Version="12.1.3" />
-      <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2" />
-      <PackageReference Include="System.Reactive" Version="7.0.0" />
+        <PackageReference Include="Avalonia" Version="12.1.3"/>
+        <PackageReference Include="Avalonia.Controls.ColorPicker" Version="12.1.3"/>
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2"/>
+        <PackageReference Include="System.Reactive" Version="7.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
+        <AvaloniaResource Include="..\..\assets\iconfont.ttf">
+            <Link>Assets\iconfont.ttf</Link>
+        </AvaloniaResource>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <AvaloniaResource Include="..\..\assets\iconfont.ttf">
-        <Link>Assets\iconfont.ttf</Link>
-      </AvaloniaResource>
-      <None Include="Assets\icon_256.png" Pack="true" PackagePath="\" />
+        <Compile Update="Controls\Window\OvoTitleBar.axaml.cs">
+            <DependentUpon>OvoTitleBar.axaml</DependentUpon>
+        </Compile>
     </ItemGroup>
-    
-    <ItemGroup>
-      <Compile Update="Controls\Window\OvoTitleBar.axaml.cs">
-        <DependentUpon>OvoTitleBar.axaml</DependentUpon>
-      </Compile>
-    </ItemGroup>    
-    
+
 </Project>
