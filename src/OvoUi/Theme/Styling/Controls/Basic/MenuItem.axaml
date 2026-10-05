@@ -82,7 +82,7 @@
                                     Content="{TemplateBinding Icon}"
                                     Height="18"
                                     HorizontalAlignment="Center"
-                                    Margin="5,0"
+                                    Margin="8,0,5,0"
                                     Name="PART_Icon"
                                     VerticalAlignment="Center"
                                     Width="18" />
