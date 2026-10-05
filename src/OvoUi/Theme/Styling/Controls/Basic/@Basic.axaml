@@ -58,5 +58,7 @@
         <ResourceInclude Source="ManagedFileChooser.axaml" />
         <ResourceInclude Source="ListBox.axaml" />
         <ResourceInclude Source="MenuItem.axaml" />
+        <ResourceInclude Source="GroupBox.axaml" />
+        <ResourceInclude Source="HeaderedContentControl.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -1,0 +1,67 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="20">
+            <o:GroupBorder Header="Header">
+                <Border
+                    Background="Aquamarine"
+                    Height="300"
+                    Margin="20"
+                    Width="400" />
+            </o:GroupBorder>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="o:GroupBorder" x:Key="{x:Type o:GroupBorder}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PanelBackgroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid RowDefinitions="Auto,1,*">
+                            <ContentPresenter Content="{TemplateBinding Header}" Grid.Row="0">
+                                <ContentPresenter.DataTemplates>
+                                    <DataTemplate DataType="x:String">
+                                        <Panel>
+                                            <SelectableTextBlock
+                                                Foreground="{DynamicResource ForegroundBrush}"
+                                                IsVisible="{TemplateBinding IsHeaderSelectable}"
+                                                Margin="14,10"
+                                                Name="SelectableText"
+                                                Text="{Binding}" />
+                                            <TextBlock
+                                                Foreground="{DynamicResource ForegroundBrush}"
+                                                IsVisible="{TemplateBinding IsHeaderSelectable,
+                                                                            Converter={x:Static BoolConverters.Not}}"
+                                                Margin="14,10"
+                                                Name="Text"
+                                                Text="{Binding}" />
+                                        </Panel>
+                                    </DataTemplate>
+                                </ContentPresenter.DataTemplates>
+                            </ContentPresenter>
+                            <Border
+                                Background="{TemplateBinding BorderBrush}"
+                                Grid.Row="1"
+                                Height="1" />
+                            <ContentPresenter
+                                Content="{Binding $parent[o:GroupBorder].Content}"
+                                Grid.Row="2"
+                                Padding="{TemplateBinding Padding}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

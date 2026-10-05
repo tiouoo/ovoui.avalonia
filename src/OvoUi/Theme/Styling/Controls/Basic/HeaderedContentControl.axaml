@@ -1,0 +1,152 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <StackPanel
+            Margin="20"
+            Orientation="Horizontal"
+            Spacing="20">
+            <HeaderedContentControl Header="Header" Theme="{StaticResource CardHeaderBorderTheme}">
+                <Border Background="Aquamarine" Padding="60,30">
+                    <TextBlock FontSize="42">Hello</TextBlock>
+                </Border>
+            </HeaderedContentControl>
+            <GroupBox Header="Hea1der1" Theme="{StaticResource CardHeaderBorderTheme}">
+                <Border Background="Aquamarine" Padding="60,30">
+                    <TextBlock FontSize="42">Hello</TextBlock>
+                </Border>
+            </GroupBox>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="HeaderedContentControl" x:Key="{x:Type HeaderedContentControl}">
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid RowDefinitions="Auto,*">
+                        <ContentPresenter
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontStyle="{TemplateBinding FontStyle}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Grid.Row="0"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_HeaderPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontStyle="{TemplateBinding FontStyle}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Grid.Row="1"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource {x:Type HeaderedContentControl}}"
+        TargetType="HeaderedContentControl"
+        x:Key="CardHeaderBorderTheme">
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="BorderThickness" Value="1.2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoBigCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="PART_Border"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid RowDefinitions="Auto,Auto,*">
+                        <ContentPresenter
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontStyle="{TemplateBinding FontStyle}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Grid.Row="0"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_HeaderPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Separator
+                            Background="{TemplateBinding BorderBrush}"
+                            Grid.Row="1"
+                            Margin="0,10,0,18" />
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontStyle="{TemplateBinding FontStyle}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Grid.Row="2"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Setter Property="Transitions">
+            <o:OvoTransitions />
+        </Setter>
+
+        <Style Selector="^ /template/ Border#PART_Border">
+            <Setter Property="BoxShadow" Value="{DynamicResource TransparentBoxShadow}" />
+        </Style>
+
+        <Style Selector="^.interactive:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+
+        <Style Selector="^.interactive_shadow:pointerover /template/ Border#PART_Border">
+            <Setter Property="BoxShadow" Value="{DynamicResource PopupBoxShadow}" />
+        </Style>
+
+        <Style Selector="^.shadow /template/ Border#PART_Border">
+            <Setter Property="BoxShadow" Value="{DynamicResource PopupBoxShadow}" />
+        </Style>
+
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource CardHeaderBorderTheme}"
+        TargetType="HeaderedContentControl"
+        x:Key="TranslucentCardHeaderBorderTheme">
+        <Setter Property="Background" Value="{DynamicResource TranslucentBackgroundColor}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TranslucentBorderBrush}" />
+    </ControlTheme>
+
+</ResourceDictionary>
