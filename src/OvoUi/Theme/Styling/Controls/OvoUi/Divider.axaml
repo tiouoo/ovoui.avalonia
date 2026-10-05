@@ -1,0 +1,130 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Spacing="20">
+            <o:Divider Content="Hello" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="{x:Type Rectangle}" x:Key="DividerLeftLine">
+        <Setter Property="Rectangle.Fill" Value="{DynamicResource LineBrush}" />
+        <Setter Property="Rectangle.Height" Value="1" />
+        <Setter Property="Rectangle.MinWidth" Value="20" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </ControlTheme>
+
+    <ControlTheme TargetType="{x:Type Rectangle}" x:Key="DividerRightLine">
+        <Setter Property="Rectangle.Fill" Value="{DynamicResource LineBrush}" />
+        <Setter Property="Rectangle.Height" Value="1" />
+        <Setter Property="Rectangle.MinWidth" Value="20" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </ControlTheme>
+
+    <ControlTheme TargetType="o:Divider" x:Key="{x:Type o:Divider}">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Style Selector="^[Orientation=Horizontal]">
+            <Style Selector="^[HorizontalContentAlignment=Left]">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Grid
+                            ColumnDefinitions="Auto,Auto,*"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+                            <Rectangle Theme="{StaticResource DividerLeftLine}" />
+                            <ContentPresenter
+                                Background="{TemplateBinding Background}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Grid.Column="1"
+                                IsVisible="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="8,0" />
+                            <Rectangle Grid.Column="2" Theme="{StaticResource DividerRightLine}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter>
+            </Style>
+            <Style Selector="^[HorizontalContentAlignment=Right]">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Grid
+                            ColumnDefinitions="*,Auto,Auto"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+                            <Rectangle Theme="{StaticResource DividerLeftLine}" />
+                            <ContentPresenter
+                                Background="{TemplateBinding Background}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Grid.Column="1"
+                                IsVisible="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="8,0" />
+                            <Rectangle Grid.Column="2" Theme="{StaticResource DividerRightLine}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter>
+            </Style>
+            <Style Selector="^[HorizontalContentAlignment=Center]">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Grid
+                            ColumnDefinitions="*,Auto,*"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+                            <Rectangle Theme="{StaticResource DividerLeftLine}" />
+                            <ContentPresenter
+                                Background="{TemplateBinding Background}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Grid.Column="1"
+                                IsVisible="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="8,0" />
+                            <Rectangle Grid.Column="2" Theme="{StaticResource DividerRightLine}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter>
+            </Style>
+            <Style Selector="^[HorizontalContentAlignment=Stretch]">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Grid
+                            ColumnDefinitions="*,Auto,*"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}">
+                            <Rectangle Theme="{StaticResource DividerLeftLine}" />
+                            <ContentPresenter
+                                Background="{TemplateBinding Background}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Grid.Column="1"
+                                IsVisible="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Margin="8,0" />
+                            <Rectangle Grid.Column="2" Theme="{StaticResource DividerRightLine}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter>
+            </Style>
+        </Style>
+
+        <Style Selector="^[Orientation=Vertical]">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Margin" Value="1,0" />
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Rectangle
+                        Fill="{DynamicResource DividerBorderBrush}"
+                        Height="{TemplateBinding Height}"
+                        Width="{TemplateBinding Width}" />
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
