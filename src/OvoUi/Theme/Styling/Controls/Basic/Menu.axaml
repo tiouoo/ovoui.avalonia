@@ -15,9 +15,10 @@
                     BorderBrush="{DynamicResource LineBrush}"
                     BorderThickness="0"
                     CornerRadius="8"
+                    Cursor="Arrow"
                     Margin="5,5"
                     Name="root">
-                    <Panel>
+                    <Panel Cursor="Arrow">
                         <ovo:GlassCard
                             Classes="control"
                             CornerRadius="{DynamicResource OvoCornerRadius}"

@@ -30,5 +30,6 @@
         <ResourceInclude Source="OvoView.axaml" />
         <ResourceInclude Source="OvoWindow.axaml" />
         <ResourceInclude Source="PopConfirm.axaml" />
+        <ResourceInclude Source="Shimmer.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

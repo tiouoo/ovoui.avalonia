@@ -29,6 +29,7 @@
         <Setter Property="Template">
             <ControlTemplate TargetType="MenuFlyoutPresenter">
                 <LayoutTransformControl
+                    Cursor="Arrow"
                     Name="PART_LayoutTransform"
                     RenderTransformOrigin="50%, 0%">
                     <Border
@@ -37,6 +38,7 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         BoxShadow="{DynamicResource PopupBoxShadow}"
                         CornerRadius="{TemplateBinding CornerRadius}"
+                        Cursor="Arrow"
                         Margin="4"
                         Name="LayoutRoot"
                         Padding="4"

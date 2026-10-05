@@ -27,10 +27,7 @@
 
             <TextBox PlaceholderText="Hii" />
 
-            <Border
-                Margin="20"
-                MinHeight="400"
-                MinWidth="600">
+            <Border Margin="20" MinWidth="600">
                 <Menu VerticalAlignment="Top">
                     <MenuItem Header="File">
                         <MenuItem
@@ -112,6 +109,18 @@
             <o:PopConfirm PopupContent="This action cannot be undone." PopupHeader="Confirm this action?">
                 <Button Content="Run action" />
             </o:PopConfirm>
+
+            <o:ShimmerText
+                Duration="00:00:02"
+                FontSize="24"
+                HighlightColor="{DynamicResource InfoColor}"
+                Text="Generating a response…" />
+            <o:ShimmerSelectableText
+                Duration="00:00:02"
+                FontSize="24"
+                HighlightColor="{DynamicResource InfoColor}"
+                Text="Generating a response…" />
+
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"
