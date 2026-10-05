@@ -1,0 +1,88 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="12">
+            <ovo:ButtonGroup>
+                <Button Content="Default" />
+                <Button Classes="accent" Content="Accent" />
+                <Button Classes="info" Content="Info" />
+                <Button Classes="success" Content="Success" />
+                <Button Classes="warn" Content="Warning" />
+                <Button Classes="danger" Content="Danger" />
+            </ovo:ButtonGroup>
+            <ovo:ButtonGroup>
+                <Button Content="Previous" />
+                <Button Content="Current" IsEnabled="False" />
+                <Button Content="Next" />
+            </ovo:ButtonGroup>
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="ovo:ButtonGroup" x:Key="{x:Type ovo:ButtonGroup}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="ClipToBounds" Value="True" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="ItemContainerTheme" Value="{DynamicResource ButtonGroupItemTheme}" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="ovo:ButtonGroup">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="True"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ItemsPresenter
+                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                        Margin="0,0,-1,0"
+                        Name="PART_ItemsPresenter" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource {x:Type Button}}"
+        TargetType="Button"
+        x:Key="ButtonGroupItemTheme">
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="FontWeight" Value="600" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Padding" Value="12 0" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <DockPanel LastChildFill="True">
+                    <Rectangle
+                        DockPanel.Dock="Right"
+                        Fill="{DynamicResource LineBrush}"
+                        Name="PART_Separator"
+                        VerticalAlignment="Stretch"
+                        Width="1" />
+                    <ContentPresenter
+                        BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Name="PART_ContentPresenter"
+                        Padding="{TemplateBinding Padding}"
+                        TextElement.FontSize="{TemplateBinding FontSize}"
+                        TextElement.FontWeight="{TemplateBinding FontWeight}"
+                        UseLayoutRounding="False"
+                        VerticalAlignment="Stretch"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
