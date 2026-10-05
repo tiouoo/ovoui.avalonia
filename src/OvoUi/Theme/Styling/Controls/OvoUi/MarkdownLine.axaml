@@ -1,0 +1,20 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <o:MarkdownLine Margin="20" Markdown="**Bold** *italic* `code` ~~strike~~" />
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="{x:Type o:MarkdownLine}" x:Key="{x:Type o:MarkdownLine}">
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
+        <Setter Property="Cursor" Value="Ibeam" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBrush}" />
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="CodeBackground" Value="{DynamicResource LineBrush}" />
+        <Setter Property="CodeFontFamily" Value="{x:Null}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
+    </ControlTheme>
+</ResourceDictionary>

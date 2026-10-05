@@ -47,5 +47,7 @@
         <ResourceInclude Source="DisableContainer.axaml" />
         <ResourceInclude Source="Divider.axaml" />
         <ResourceInclude Source="GroupBorder.axaml" />
+        <ResourceInclude Source="ImageViewer.axaml" />
+        <ResourceInclude Source="MarkdownLine.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
