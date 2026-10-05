@@ -53,5 +53,6 @@
         <ResourceInclude Source="NumberDisplayer.axaml" />
         <ResourceInclude Source="QrCode.axaml" />
         <ResourceInclude Source="ScrollToButton.axaml" />
+        <ResourceInclude Source="Timeline.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
