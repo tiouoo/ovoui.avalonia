@@ -1,0 +1,19 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:DisableContainer" x:Key="{x:Type o:DisableContainer}">
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:DisableContainer">
+                <Panel>
+                    <ContentPresenter Content="{TemplateBinding Content}" />
+                    <o:PureRectangle
+                        Background="Transparent"
+                        Cursor="No"
+                        IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content.IsEnabled, Converter={x:Static BoolConverters.Not}}"
+                        ToolTip.Tip="{TemplateBinding DisabledTip}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

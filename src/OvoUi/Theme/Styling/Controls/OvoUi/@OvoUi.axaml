@@ -39,5 +39,10 @@
         <ResourceInclude Source="NavMenu.axaml" />
         <ResourceInclude Source="Pagination.axaml" />
         <ResourceInclude Source="Avatar.axaml" />
+        <ResourceInclude Source="Badge.axaml" />
+        <ResourceInclude Source="DualBadge.axaml" />
+        <ResourceInclude Source="Banner.axaml" />
+        <ResourceInclude Source="Descriptions.axaml" />
+        <ResourceInclude Source="DisableContainer.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
