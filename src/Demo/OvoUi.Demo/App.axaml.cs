@@ -1,13 +1,15 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using OvoUi.Demo.Models;
 using OvoUi.Demo.Views;
 
 namespace OvoUi.Demo;
 
 public partial class App : Application
 {
+    public static IView RootView { get; private set; } = null!;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -20,21 +22,21 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow();
+            var mainWindow = new MainWindow();
+            RootView = mainWindow;
+            desktop.MainWindow = mainWindow;
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {
-            singleViewFactoryApplicationLifetime.MainViewFactory = () => new PageNavigationHost()
-            {
-                Page = new MainView()
-            };
+            var mainView = new MainView();
+            RootView = mainView;
+            singleViewFactoryApplicationLifetime.MainViewFactory = () => mainView;
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new PageNavigationHost()
-            {
-                Page = new MainView () 
-            };
+            var mainView = new MainView();
+            RootView = mainView;
+            singleViewPlatform.MainView = mainView;
         }
 
         base.OnFrameworkInitializationCompleted();

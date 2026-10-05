@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="306pt"
+     height="306pt"
+     viewBox="0 0 306 306"
+     role="img"
+     aria-label="Purple capsule and pink circle">
+  <rect x="92.5"
+        y="48.5"
+        width="77"
+        height="195"
+        rx="38.5"
+        fill="#8359E6"
+        transform="rotate(32.9 131 146)"/>
+  <circle cx="211"
+          cy="205"
+          r="36"
+          fill="#F55681"/>
+</svg>

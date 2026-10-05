@@ -1,5 +1,10 @@
-<Window
+<ovo:OvoWindow
+    Height="720"
+    MinHeight="520"
+    MinWidth="680"
+    Padding="0"
     Title="OvoUi.Demo"
+    Width="1120"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d"
@@ -7,7 +12,37 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:views="using:OvoUi.Demo.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <views:MainView />
-</Window>
+    <ovo:OvoTitleBar.LeadingContent>
+        <StackPanel Margin="12,0" Orientation="Horizontal" Spacing="8">
+            <Border
+                Background="{DynamicResource SystemAccentColor}"
+                CornerRadius="4"
+                Height="24"
+                VerticalAlignment="Center"
+                Width="24">
+                <TextBlock
+                    Foreground="White"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Center"
+                    Text="O"
+                    VerticalAlignment="Center" />
+            </Border>
+            <TextBlock Text="OvoUi.Demo" VerticalAlignment="Center" />
+        </StackPanel>
+    </ovo:OvoTitleBar.LeadingContent>
+    <ovo:OvoTitleBar.TrailingContent>
+        <Button
+            Click="ThemeButton_OnClick"
+            Margin="0,0,4,0"
+            ToolTip.Tip="切换主题">
+            <PathIcon
+                Data="M12,2 A10,10 0 1 0 22,12 A8,8 0 0 1 12,2"
+                Height="14"
+                Width="14" />
+        </Button>
+    </ovo:OvoTitleBar.TrailingContent>
+    <views:DemoView />
+</ovo:OvoWindow>
