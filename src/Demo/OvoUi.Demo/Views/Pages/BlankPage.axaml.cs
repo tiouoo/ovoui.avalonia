@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace OvoUi.Demo.Views.Pages;
 
-public partial class ExamplePage : UserControl
+public partial class BlankPage : UserControl
 {
-    public ExamplePage()
+    public BlankPage()
     {
         InitializeComponent();
     }

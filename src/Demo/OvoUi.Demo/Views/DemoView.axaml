@@ -13,10 +13,10 @@
     <DockPanel>
         <ovo:NavMenu
             Classes="FlatScrollBar"
-            CollapseWidth="56"
             EnableSearch="True"
             ExpandWidth="240"
             HeaderBinding="{Binding Title}"
+            IsHorizontalCollapsed="False"
             ItemsSource="{Binding Pages}"
             Margin="15"
             SearchPlaceholderText="搜索..."

@@ -1,0 +1,108 @@
+<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="960"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Views.Pages.OverviewPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel
+            HorizontalAlignment="Center"
+            Margin="24,28"
+            MaxWidth="980"
+            Spacing="24">
+            <StackPanel HorizontalAlignment="Center" Spacing="8">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="14">
+                    <Image Height="68" Source="{StaticResource OvoUiIcon}" Width="68" />
+                    <TextBlock
+                        FontSize="36"
+                        FontWeight="SemiBold"
+                        Text="OvoUi.Avalonia"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="18">
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Modern" />
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Fluent" />
+                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Simple" />
+                </StackPanel>
+            </StackPanel>
+
+            <Grid ColumnDefinitions="170,280,300" ColumnSpacing="16">
+                <StackPanel Spacing="14">
+                    <Button Content="Button" />
+                    <ovo:IconButton Content="Icon Button">
+                        <ovo:IconButton.Icon>
+                            <StreamGeometry>M12,2 A10,10 0 1 0 22,12 A10,10 0 0 0 12,2 M8,12 L11,15 L17,9</StreamGeometry>
+                        </ovo:IconButton.Icon>
+                    </ovo:IconButton>
+                    <DropDownButton Content="DropDownButton" />
+                    <SplitButton Content="SplitButton" />
+                    <ToggleButton Content="ToggleButton" IsChecked="True" />
+                    <Button Classes="Danger" Content="Danger Button" />
+                    <Button Click="OpenFile_OnClick" Content="Open File Chooser" />
+                    <HyperlinkButton Content="HyperlinkButton" />
+                    <CheckBox Content="CheckBox" IsChecked="True" IsThreeState="True" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Spacing="14">
+                    <Calendar HorizontalAlignment="Stretch" />
+                    <ColorView Color="#7C5CE7" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Spacing="14">
+                    <TextBox InnerLeftContent="https://" InnerRightContent=".com" />
+                    <CalendarDatePicker />
+                    <TimePicker UseSeconds="True" />
+                    <DatePicker />
+                    <NumericUpDown />
+                    <ComboBox PlaceholderText="Select a framework">
+                        <ComboBoxItem Content="OvoUi" />
+                        <ComboBoxItem Content="Avalonia" />
+                    </ComboBox>
+                    <DockPanel LastChildFill="True">
+                        <ToggleSwitch DockPanel.Dock="Right" IsChecked="False" x:Name="ToggleSwitch" />
+                        <Slider
+                            IsSnapToTickEnabled="True"
+                            Margin="0,0,14,0"
+                            Maximum="100"
+                            TickFrequency="1"
+                            Value="66"
+                            x:Name="Slider" />
+                    </DockPanel>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
+                        <StackPanel Spacing="10" VerticalAlignment="Center">
+                            <ProgressBar
+                                IsIndeterminate="{Binding #ToggleSwitch.IsChecked}"
+                                ShowProgressText="True"
+                                Value="{Binding #Slider.Value}" />
+                            <ProgressBar
+                                Classes="Right"
+                                IsIndeterminate="{Binding #ToggleSwitch.IsChecked}"
+                                ShowProgressText="True"
+                                Value="{Binding #Slider.Value}" />
+                        </StackPanel>
+                        <ProgressBar
+                            Grid.Column="1"
+                            Height="72"
+                            IsIndeterminate="{Binding #ToggleSwitch.IsChecked}"
+                            ShowProgressText="True"
+                            Theme="{DynamicResource ProgressRing}"
+                            Value="{Binding #Slider.Value}"
+                            Width="72" />
+                    </Grid>
+                    <TabStrip>
+                        <TabStripItem Content="Tab 1" />
+                        <TabStripItem Content="Tab 2" />
+                        <TabStripItem Content="Tab 3" />
+                    </TabStrip>
+                    <Expander Header="Expander">
+                        <TextBlock Margin="10" Text="OvoUi content" />
+                    </Expander>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
