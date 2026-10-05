@@ -49,5 +49,6 @@
         <ResourceInclude Source="GroupBorder.axaml" />
         <ResourceInclude Source="ImageViewer.axaml" />
         <ResourceInclude Source="MarkdownLine.axaml" />
+        <ResourceInclude Source="Marquee.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
