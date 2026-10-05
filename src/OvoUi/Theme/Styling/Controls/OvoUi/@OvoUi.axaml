@@ -54,5 +54,7 @@
         <ResourceInclude Source="QrCode.axaml" />
         <ResourceInclude Source="ScrollToButton.axaml" />
         <ResourceInclude Source="Timeline.axaml" />
+        <ResourceInclude Source="TwoTonePathIcon.axaml" />
+        <ResourceInclude Source="ControlClassesInput.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
