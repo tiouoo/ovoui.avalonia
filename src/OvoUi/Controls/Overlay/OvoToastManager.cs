@@ -6,7 +6,6 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using OvoUi.Common.Classes;
 using OvoUi.Common.Interfaces;
-using OvoUi.Common.Classes;
 
 namespace OvoUi.Controls;
 

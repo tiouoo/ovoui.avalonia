@@ -7,7 +7,6 @@ using Avalonia.Layout;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using OvoUi.Common.Classes;
-using OvoUi.Common.Classes;
 using INotification = OvoUi.Common.Interfaces.INotification;
 using INotificationManager = OvoUi.Common.Interfaces.INotificationManager;
 
