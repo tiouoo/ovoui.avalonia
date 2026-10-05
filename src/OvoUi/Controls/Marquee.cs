@@ -3,8 +3,8 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Threading;
+using OvoUi.Common.Enums;
 using OvoUi.Common.Helpers;
-using OvoUi.Controls;
 using Timer = System.Timers.Timer;
 
 namespace OvoUi.Controls;

@@ -1,4 +1,4 @@
-namespace OvoUi.Controls;
+namespace OvoUi.Common.Enums;
 
 public enum Direction
 {
