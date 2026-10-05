@@ -2,5 +2,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="TextBoxContextMenu.axaml" />
         <ResourceInclude Source="InputIcons.axaml" />
+        <ResourceInclude Source="Icons/StatusIcons.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

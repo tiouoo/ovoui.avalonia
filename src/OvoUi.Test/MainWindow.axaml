@@ -1,4 +1,4 @@
-<ovo:OvoWindow
+<o:OvoWindow
     Title="OvoUi.Avalonia.Test"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -8,7 +8,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid>
@@ -17,12 +17,12 @@
             Margin="20"
             Spacing="20"
             VerticalAlignment="Center">
-            <ovo:TreeComboBox Width="300">
-                <ovo:TreeComboBoxItem Header="Hello">
-                    <ovo:TreeComboBoxItem Header="Hello World" />
-                </ovo:TreeComboBoxItem>
-                <ovo:TreeComboBoxItem Header="World" />
-            </ovo:TreeComboBox>
+            <o:TreeComboBox Width="300">
+                <o:TreeComboBoxItem Header="Hello">
+                    <o:TreeComboBoxItem Header="Hello World" />
+                </o:TreeComboBoxItem>
+                <o:TreeComboBoxItem Header="World" />
+            </o:TreeComboBox>
             <Button Click="Button_OnClick1" Content="Open Window" />
 
             <TextBox PlaceholderText="Hii" />
@@ -38,6 +38,34 @@
                             Icon="🗎"
                             InputGesture="Ctrl + O">
                             <MenuItem Header="Recent file 1" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
+                            <MenuItem Header="Recent file 2" Icon="🗎" />
                             <MenuItem Header="Recent file 2" Icon="🗎" />
                             <MenuItem Header="Recent file 3" Icon="🗎" />
                             <MenuItem Header="Recent file 4" Icon="🗎" />
@@ -79,6 +107,11 @@
                     </MenuItem>
                 </Menu>
             </Border>
+
+
+            <o:PopConfirm PopupContent="This action cannot be undone." PopupHeader="Confirm this action?">
+                <Button Content="Run action" />
+            </o:PopConfirm>
         </StackPanel>
         <StackPanel
             HorizontalAlignment="Left"
@@ -88,4 +121,4 @@
             <Button Click="Light" Content="Light" />
         </StackPanel>
     </Grid>
-</ovo:OvoWindow>
+</o:OvoWindow>

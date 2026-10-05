@@ -1,0 +1,132 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:PopConfirm" x:Key="{x:Type o:PopConfirm}">
+        <Setter Property="Placement" Value="BottomEdgeAlignedLeft" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:PopConfirm">
+                <Panel>
+                    <ContentPresenter
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Name="PART_ContentPresenter" />
+                    <Popup
+                        IsLightDismissEnabled="True"
+                        IsOpen="{Binding IsDropdownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                        Name="{x:Static o:PopConfirm.PART_Popup}"
+                        OverlayInputPassThroughElement="{Binding #PART_ContentPresenter}"
+                        Placement="{TemplateBinding Placement}">
+                        <Border
+                            Background="{DynamicResource PopupBackgroundBrush}"
+                            BorderBrush="{DynamicResource LineBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Margin="4"
+                            MaxWidth="400"
+                            Padding="16,18,18,18">
+                            <Grid
+                                ColumnDefinitions="Auto, *, Auto"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                RowDefinitions="*, Auto">
+                                <Panel
+                                    Grid.Column="0"
+                                    Margin="0,0,12,0"
+                                    VerticalAlignment="Top">
+                                    <ContentPresenter Content="{TemplateBinding Icon}" />
+                                    <PathIcon
+                                        Classes="extra_large"
+                                        Data="{DynamicResource IconAlertTriangle}"
+                                        Foreground="{DynamicResource WarnColor}"
+                                        IsVisible="{TemplateBinding Icon,
+                                                                    Converter={x:Static ObjectConverters.IsNull}}"
+                                        Name="PART_BuildInIcon"
+                                        Theme="{DynamicResource InnerPathIcon}" />
+                                </Panel>
+                                <StackPanel
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Spacing="8">
+                                    <ContentPresenter
+                                        Content="{TemplateBinding PopupHeader}"
+                                        ContentTemplate="{TemplateBinding PopupHeaderTemplate}"
+                                        TextElement.FontSize="16"
+                                        TextElement.FontWeight="600"
+                                        TextTrimming="CharacterEllipsis" />
+                                    <ContentPresenter
+                                        Content="{TemplateBinding PopupContent}"
+                                        ContentTemplate="{TemplateBinding PopupContentTemplate}"
+                                        Foreground="{DynamicResource InnerForegroundBrush}"
+                                        TextWrapping="Wrap" />
+                                </StackPanel>
+                                <Button
+                                    Command="{TemplateBinding CancelCommand}"
+                                    CommandParameter="{TemplateBinding CancelCommandParameter}"
+                                    Grid.Column="2"
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Right"
+                                    Name="{x:Static o:PopConfirm.PART_CloseButton}"
+                                    Theme="{DynamicResource OverlayCloseButton}"
+                                    VerticalAlignment="Top" />
+                                <StackPanel
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,25,0,0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <Button
+                                        Classes="{TemplateBinding CancelButtonClasses}"
+                                        Command="{TemplateBinding CancelCommand}"
+                                        CommandParameter="{TemplateBinding CancelCommandParameter}"
+                                        Content="{DynamicResource Lang.Cancel}"
+                                        Name="{x:Static o:PopConfirm.PART_CancelButton}" />
+                                    <Button
+                                        Classes="{TemplateBinding ConfirmButtonClasses}"
+                                        Command="{TemplateBinding ConfirmCommand}"
+                                        CommandParameter="{TemplateBinding ConfirmCommandParameter}"
+                                        Content="{DynamicResource Lang.Ok}"
+                                        Name="{x:Static o:PopConfirm.PART_ConfirmButton}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Popup>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ Button#PART_CancelButton">
+            <Setter Property="o:ClassHelper.Classes" Value="Tertiary" />
+        </Style>
+
+        <Style Selector="^ /template/ Button#PART_ConfirmButton">
+            <Setter Property="o:ClassHelper.Classes" Value="Primary" />
+        </Style>
+
+        <Style Selector="^.info">
+            <Style Selector="^ /template/ PathIcon#PART_BuildInIcon">
+                <Setter Property="Data" Value="{DynamicResource IconInfoCircle}" />
+                <Setter Property="Foreground" Value="{DynamicResource InfoColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.success">
+            <Style Selector="^ /template/ PathIcon#PART_BuildInIcon">
+                <Setter Property="Data" Value="{DynamicResource IconTickCircle}" />
+                <Setter Property="Foreground" Value="{DynamicResource SuccessColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.warn">
+            <Style Selector="^ /template/ PathIcon#PART_BuildInIcon">
+                <Setter Property="Data" Value="{DynamicResource IconAlertTriangle}" />
+                <Setter Property="Foreground" Value="{DynamicResource WarnColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.danger">
+            <Style Selector="^ /template/ PathIcon#PART_BuildInIcon">
+                <Setter Property="Data" Value="{DynamicResource IconAlertCircle}" />
+                <Setter Property="Foreground" Value="{DynamicResource ErrorColor}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

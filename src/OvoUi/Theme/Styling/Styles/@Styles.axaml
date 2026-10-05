@@ -6,4 +6,5 @@
     <StyleInclude Source="ColorPicker.axaml" />
     <StyleInclude Source="TitleBar.axaml" />
     <StyleInclude Source="Menu.axaml" />
+    <StyleInclude Source="PathIcon.axaml" />
 </Styles>

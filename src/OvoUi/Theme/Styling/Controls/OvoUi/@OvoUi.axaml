@@ -29,5 +29,6 @@
         <ResourceInclude Source="OvoToast.axaml" />
         <ResourceInclude Source="OvoView.axaml" />
         <ResourceInclude Source="OvoWindow.axaml" />
+        <ResourceInclude Source="PopConfirm.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
