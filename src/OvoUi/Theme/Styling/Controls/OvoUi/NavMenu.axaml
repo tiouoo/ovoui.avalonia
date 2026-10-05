@@ -24,7 +24,7 @@
                     <Border
                         Grid.Row="1"
                         IsVisible="{TemplateBinding EnableSearch}"
-                        Margin="0,0,6,4"
+                        Margin="0,0,6,10"
                         Name="PART_SearchBoxTop">
                         <TextBox
                             Name="PART_SearchBox"
@@ -49,7 +49,7 @@
                     <Border
                         Grid.Row="3"
                         IsVisible="False"
-                        Margin="0,4,6,0"
+                        Margin="0,10,6,0"
                         Name="PART_SearchBoxBottom">
                         <TextBox PlaceholderText="{TemplateBinding SearchPlaceholderText}" Text="{Binding SearchText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                             <TextBox.InnerRightContent>
@@ -93,7 +93,7 @@
                         <Border
                             Grid.Row="1"
                             IsVisible="{TemplateBinding EnableSearch}"
-                            Margin="0,0,6,4"
+                            Margin="0,0,6,10"
                             Name="PART_SearchBoxTop">
                             <TextBox
                                 Name="PART_SearchBox"
@@ -120,7 +120,7 @@
                         <Border
                             Grid.Row="3"
                             IsVisible="False"
-                            Margin="0,4,6,0"
+                            Margin="0,10,6,0"
                             Name="PART_SearchBoxBottom">
                             <TextBox PlaceholderText="{TemplateBinding SearchPlaceholderText}" Text="{Binding SearchText, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                                 <TextBox.InnerRightContent>

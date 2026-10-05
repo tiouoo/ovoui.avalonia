@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DrawingImage x:Key="OvoUiIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M24,24 V282 H282 V24 H24 Z">
+                <DrawingGroup.Transform>
+                    <TranslateTransform X="-24" Y="-24" />
+                </DrawingGroup.Transform>
+                <DrawingGroup Transform="0.839619864534413,0.543174449950671,-0.543174449950671,0.839619864534413,100.31326743879,-47.7403531655622">
+                    <GeometryDrawing Brush="#FF8359E6">
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry
+                                RadiusX="38.5"
+                                RadiusY="38.5"
+                                Rect="92.5,48.5,77,195" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <GeometryDrawing Brush="#FFF55681">
+                    <GeometryDrawing.Geometry>
+                        <EllipseGeometry
+                            Center="211,205"
+                            RadiusX="36"
+                            RadiusY="36" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+</ResourceDictionary>
