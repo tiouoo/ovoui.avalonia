@@ -8,6 +8,8 @@
         <RootNamespace>OvoUi.Demo</RootNamespace>
         <AssemblyName>OvoUi.Demo</AssemblyName>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <Title>OvoUi Demo</Title>
+        <Description>Cross-platform demonstration application for OvoUi.</Description>
     </PropertyGroup>
 
     <ItemGroup>

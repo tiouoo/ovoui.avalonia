@@ -4,6 +4,10 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>OvoUi</Title>
+        <Description>An Avalonia UI control library and theme.</Description>
+        <PackageTags>avalonia;ui;controls;theme</PackageTags>
+        <PackageIcon>icon_256.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,6 +25,7 @@
       <AvaloniaResource Include="..\..\assets\iconfont.ttf">
         <Link>Assets\iconfont.ttf</Link>
       </AvaloniaResource>
+      <None Include="Assets\icon_256.png" Pack="true" PackagePath="\" />
     </ItemGroup>
     
     <ItemGroup>

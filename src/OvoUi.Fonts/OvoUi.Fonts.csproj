@@ -4,6 +4,10 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>OvoUi Fonts</Title>
+        <Description>Font resources for OvoUi Avalonia applications.</Description>
+        <PackageTags>avalonia;ui;font;fonts</PackageTags>
+        <PackageIcon>icon_256.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +17,7 @@
         <AvaloniaResource Include="..\..\assets\AlimamaFangYuanTi-Bold.ttf">
             <Link>AlimamaFangYuanTi-Bold.ttf</Link>
         </AvaloniaResource>
+        <None Include="Assets\icon_256.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>

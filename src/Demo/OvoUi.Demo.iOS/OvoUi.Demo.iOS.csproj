@@ -20,6 +20,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <BundleResource Include="Resources\icon_1024.png" />
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="..\OvoUi.Demo\OvoUi.Demo.csproj" />
     </ItemGroup>
 </Project>
