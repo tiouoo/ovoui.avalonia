@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Specialized;
+using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -8,6 +9,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using Avalonia.Metadata;
 using OvoUi.Common.Contracts;
 using OvoUi.Common.Extension;
@@ -57,8 +59,16 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
         AvaloniaProperty.Register<MultiComboBox, IDataTemplate?>(
             nameof(SelectedItemTemplate));
 
+    [SuppressMessage("AvaloniaProperty", "AVP1013",
+        Justification = "Obsolete property alias for backward compatibility.")]
     public static readonly StyledProperty<string?> PlaceholderTextProperty =
         TextBox.PlaceholderTextProperty.AddOwner<MultiComboBox>();
+
+    public static readonly StyledProperty<IBrush?> PlaceholderForegroundProperty =
+        TextBox.PlaceholderForegroundProperty.AddOwner<MultiComboBox>();
+
+    [Obsolete("Use PlaceholderTextProperty instead.")]
+    public static readonly StyledProperty<string?> WatermarkProperty = PlaceholderTextProperty;
 
     public static readonly StyledProperty<object?> PopupInnerTopContentProperty =
         AvaloniaProperty.Register<MultiComboBox, object?>(
@@ -81,7 +91,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
 
     public MultiComboBox()
     {
-        SelectedItems = new AvaloniaList<object>();
+        SetCurrentValue(SelectedItemsProperty, new AvaloniaList<object>());
         if (SelectedItems is INotifyCollectionChanged c) c.CollectionChanged += OnSelectedItemsCollectionChanged;
     }
 
@@ -120,6 +130,21 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
     {
         get => GetValue(PlaceholderTextProperty);
         set => SetValue(PlaceholderTextProperty, value);
+    }
+
+    public IBrush? PlaceholderForeground
+    {
+        get => GetValue(PlaceholderForegroundProperty);
+        set => SetValue(PlaceholderForegroundProperty, value);
+    }
+
+    [Obsolete("Use PlaceholderText instead.")]
+    [SuppressMessage("AvaloniaProperty", "AVP1012",
+        Justification = "Obsolete property alias for backward compatibility.")]
+    public string? Watermark
+    {
+        get => PlaceholderText;
+        set => PlaceholderText = value;
     }
 
     public object? InnerLeftContent
@@ -179,7 +204,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
     {
         return new MultiComboBoxItem();
     }
-
+    
     protected override void PrepareContainerForItemOverride(Control container, object? item, int index)
     {
         if (item is MultiComboBoxItem containerItem)
@@ -187,7 +212,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
             container.DataContext = containerItem.Content;
             return;
         }
-
+        
         container.DataContext = item;
 
         base.PrepareContainerForItemOverride(container, item, index);
@@ -196,13 +221,13 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
-        PointerReleasedEvent.RemoveHandler(OnBackgroundPointerReleased, _rootBorder);
+        PointerPressedEvent.RemoveHandler(OnBackgroundPointerPressed, _rootBorder);
         _rootBorder = e.NameScope.Find<Border>(PART_BackgroundBorder);
-        PointerReleasedEvent.AddHandler(OnBackgroundPointerReleased, _rootBorder);
+        PointerPressedEvent.AddHandler(OnBackgroundPointerPressed, _rootBorder);
         PseudoClasses.Set(PC_Empty, SelectedItems?.Count == 0);
     }
 
-    private void OnBackgroundPointerReleased(object? sender, PointerReleasedEventArgs e)
+    private void OnBackgroundPointerPressed(object? sender, PointerPressedEventArgs e)
     {
         SetCurrentValue(IsDropDownOpenProperty, !IsDropDownOpen);
     }
@@ -212,9 +237,9 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
         base.OnKeyDown(e);
         if (e.Handled)
             return;
-
+        
         // F4 or Alt+Down/Up toggles dropdown
-        if ((e.Key == Key.F4 && !e.KeyModifiers.HasFlag(KeyModifiers.Alt)) ||
+        if ((e.Key == Key.F4 && !e.KeyModifiers.HasFlag(KeyModifiers.Alt)) || 
             ((e.Key == Key.Down || e.Key == Key.Up) && e.KeyModifiers.HasFlag(KeyModifiers.Alt)))
         {
             SetCurrentValue(IsDropDownOpenProperty, !IsDropDownOpen);
@@ -245,7 +270,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
         if (IsDropDownOpen && dropDownItem.IsFocused && dropDownItem.IsArrangeValid) dropDownItem.BringIntoView();
     }
 
-    public void Remove(object? o)
+    public virtual void Remove(object? o)
     {
         if (o is StyledElement s)
         {
@@ -260,7 +285,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
         }
     }
 
-    public void Clear()
+    public virtual void Clear()
     {
         this.SelectedItems?.Clear();
         var containers = Presenter?.Panel?.Children;

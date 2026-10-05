@@ -1,7 +1,6 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
-    xmlns:u="https://irihi.tech/ursa"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <o:MarkdownLine Margin="20" Markdown="**Bold** *italic* `code` ~~strike~~" />

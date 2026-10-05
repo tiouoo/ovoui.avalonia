@@ -9,16 +9,21 @@ using OvoUi.Common.Helpers;
 
 namespace OvoUi.Controls;
 
-public class MultiComboBoxItem : ContentControl
+public class MultiComboBoxItem: ContentControl
 {
-    private static readonly Point s_invalidPoint = new(double.NaN, double.NaN);
+    private MultiComboBox? _parent;
+    private static readonly Point s_invalidPoint = new (double.NaN, double.NaN);
+    private Point _pointerDownPoint = s_invalidPoint;
+    private bool _updateInternal;
 
     public static readonly StyledProperty<bool> IsSelectedProperty = AvaloniaProperty.Register<MultiComboBoxItem, bool>(
         nameof(IsSelected));
 
-    private MultiComboBox? _parent;
-    private Point _pointerDownPoint = s_invalidPoint;
-    private bool _updateInternal;
+    public bool IsSelected
+    {
+        get => GetValue(IsSelectedProperty);
+        set => SetValue(IsSelectedProperty, value);
+    }
 
     static MultiComboBoxItem()
     {
@@ -27,12 +32,6 @@ public class MultiComboBoxItem : ContentControl
         FocusableProperty.OverrideDefaultValue<MultiComboBoxItem>(true);
         IsSelectedProperty.Changed.AddClassHandler<MultiComboBoxItem, bool>((item, args) =>
             item.OnSelectionChanged(args));
-    }
-
-    public bool IsSelected
-    {
-        get => GetValue(IsSelectedProperty);
-        set => SetValue(IsSelectedProperty, value);
     }
 
     private void OnSelectionChanged(AvaloniaPropertyChangedEventArgs<bool> args)
@@ -70,7 +69,6 @@ public class MultiComboBoxItem : ContentControl
         {
             return;
         }
-
         if (e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
         {
             var p = e.GetCurrentPoint(this);
@@ -79,7 +77,7 @@ public class MultiComboBoxItem : ContentControl
             {
                 if (p.Pointer.Type == PointerType.Mouse)
                 {
-                    this.IsSelected = !this.IsSelected;
+                    SetCurrentValue(IsSelectedProperty, !IsSelected);
                     e.Handled = true;
                 }
                 else
@@ -99,7 +97,7 @@ public class MultiComboBoxItem : ContentControl
             var point = e.GetCurrentPoint(this);
             if (new Rect(Bounds.Size).ContainsExclusive(point.Position) && e.Pointer.Type == PointerType.Touch)
             {
-                this.IsSelected = !this.IsSelected;
+                SetCurrentValue(IsSelectedProperty, !IsSelected);
                 e.Handled = true;
             }
         }
@@ -118,10 +116,8 @@ public class MultiComboBoxItem : ContentControl
         {
             SetCurrentValue(IsSelectedProperty, _parent?.SelectedItems?.Contains(DataContext) ?? false);
         }
-
         _updateInternal = false;
     }
-
     protected override AutomationPeer OnCreateAutomationPeer()
     {
         return new ListItemAutomationPeer(this);
