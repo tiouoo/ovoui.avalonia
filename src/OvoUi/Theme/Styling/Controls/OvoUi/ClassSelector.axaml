@@ -1,0 +1,120 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <o:ClassSelector Width="300">
+            <o:ClassSelectorGroup Header="Header">
+                <o:ClassSelectorItem Content="A" />
+                <o:ClassSelectorItem Content="B" />
+            </o:ClassSelectorGroup>
+            <o:ClassSelectorGroup Header="Alignment">
+                <o:ClassSelectorItem ClassName="Left" Content="Left" />
+                <o:ClassSelectorItem ClassName="Right" Content="Right" />
+            </o:ClassSelectorGroup>
+        </o:ClassSelector>
+    </Design.PreviewWith>
+
+    <ControlTheme
+        BasedOn="{StaticResource {x:Type o:MultiComboBox}}"
+        TargetType="o:ClassSelector"
+        x:Key="{x:Type o:ClassSelector}" />
+
+    <ControlTheme TargetType="o:ClassSelectorGroup" x:Key="{x:Type o:ClassSelectorGroup}">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:ClassSelectorGroup">
+                <StackPanel Margin="0,4">
+                    <ContentPresenter
+                        Content="{TemplateBinding Header}"
+                        ContentTemplate="{TemplateBinding HeaderTemplate}"
+                        FontWeight="600"
+                        IsVisible="{TemplateBinding Header,
+                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                        Margin="12,4" />
+                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="o:ClassSelectorItem" x:Key="{x:Type o:ClassSelectorItem}">
+        <Setter Property="Padding" Value="12 8" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:ClassSelectorItem">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10"
+                    Padding="{TemplateBinding Padding}"
+                    Name="RootBorder">
+                    <Grid ColumnDefinitions="Auto, *" Name="RootGrid">
+                        <TextBlock
+                            FontFamily="{DynamicResource OvoIconFontFamily}"
+                            FontSize="17"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            Margin="-2,1,8,0"
+                            Name="CheckGlyph"
+                            Opacity="0"
+                            Text="&#xe61a;"
+                            VerticalAlignment="Center" />
+                        <ContentPresenter
+                            Content="{TemplateBinding DisplayContent}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Grid.Column="1"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            RecognizesAccessKey="True"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Center"
+                            Name="ContentPresenter" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource TextBoxDisabledBackground}" />
+            <Style Selector="^:selected">
+                <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedDisabledBackground}" />
+            </Style>
+        </Style>
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        </Style>
+        <Style Selector="^ /template/ TextBlock#CheckGlyph">
+            <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+            <Setter Property="RenderTransformOrigin" Value="50%,50%" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Duration="0:0:0.12" Property="RenderTransform" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:selected /template/ TextBlock#CheckGlyph">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

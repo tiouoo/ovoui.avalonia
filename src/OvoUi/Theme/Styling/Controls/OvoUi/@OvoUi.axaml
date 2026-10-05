@@ -56,5 +56,6 @@
         <ResourceInclude Source="Timeline.axaml" />
         <ResourceInclude Source="TwoTonePathIcon.axaml" />
         <ResourceInclude Source="ControlClassesInput.axaml" />
+        <ResourceInclude Source="ClassSelector.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
