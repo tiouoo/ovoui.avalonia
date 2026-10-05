@@ -97,14 +97,6 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^ /template/ Button#PART_CancelButton">
-            <Setter Property="o:ClassHelper.Classes" Value="Tertiary" />
-        </Style>
-
-        <Style Selector="^ /template/ Button#PART_ConfirmButton">
-            <Setter Property="o:ClassHelper.Classes" Value="Primary" />
-        </Style>
-
         <Style Selector="^.info">
             <Style Selector="^ /template/ PathIcon#PART_BuildInIcon">
                 <Setter Property="Data" Value="{DynamicResource IconInfoCircle}" />
