@@ -24,6 +24,7 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2"/>
+        <PackageReference Include="HotAvalonia" Version="3.1.5" />
     </ItemGroup>
 
     <ItemGroup>
@@ -38,5 +39,9 @@
         <AvaloniaResource Include="..\..\..\assets\icon_256.png">
             <Link>Assets\icon_256.png</Link>
         </AvaloniaResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Pages\OverviewPage.axaml" />
     </ItemGroup>
 </Project>

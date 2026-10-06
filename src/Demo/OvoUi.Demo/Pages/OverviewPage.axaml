@@ -15,18 +15,36 @@
             MaxWidth="980"
             Spacing="24">
             <StackPanel HorizontalAlignment="Center" Spacing="8">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="14">
-                    <Image Height="68" Source="{StaticResource OvoUiIcon}" Width="68" />
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="14">
+                    <Image
+                        Height="68"
+                        Source="{StaticResource OvoUiIcon}"
+                        Width="68" />
                     <TextBlock
-                        FontSize="36"
+                        FontSize="46"
                         FontWeight="SemiBold"
                         Text="OvoUi.Avalonia"
                         VerticalAlignment="Center" />
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="18">
-                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Modern" />
-                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Fluent" />
-                    <TextBlock FontSize="16" FontWeight="SemiBold" Text="Simple" />
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="18">
+                    <TextBlock
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Text="Modern" />
+                    <TextBlock
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Text="Fluent" />
+                    <TextBlock
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Text="Simple" />
                 </StackPanel>
             </StackPanel>
 
@@ -44,7 +62,10 @@
                     <Button Classes="Danger" Content="Danger Button" />
                     <Button Click="OpenFile_OnClick" Content="Open File Chooser" />
                     <HyperlinkButton Content="HyperlinkButton" />
-                    <CheckBox Content="CheckBox" IsChecked="True" IsThreeState="True" />
+                    <CheckBox
+                        Content="CheckBox"
+                        IsChecked="True"
+                        IsThreeState="True" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Spacing="14">
@@ -63,7 +84,10 @@
                         <ComboBoxItem Content="Avalonia" />
                     </ComboBox>
                     <DockPanel LastChildFill="True">
-                        <ToggleSwitch DockPanel.Dock="Right" IsChecked="False" x:Name="ToggleSwitch" />
+                        <ToggleSwitch
+                            DockPanel.Dock="Right"
+                            IsChecked="False"
+                            x:Name="ToggleSwitch" />
                         <Slider
                             IsSnapToTickEnabled="True"
                             Margin="0,0,14,0"
