@@ -173,7 +173,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="32" />
-        <Setter Property="Padding" Value="20,8" />
+        <Setter Property="Padding" Value="20,6" />
         <Setter Property="Transitions">
             <ovo:OvoTransitions />
         </Setter>

@@ -2,7 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 
-namespace OvoUi.Demo.Views.Pages;
+namespace OvoUi.Demo.Pages;
 
 public partial class OverviewPage : UserControl
 {

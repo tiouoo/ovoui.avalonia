@@ -2,16 +2,19 @@
     d:DesignHeight="720"
     d:DesignWidth="960"
     mc:Ignorable="d"
-    x:Class="OvoUi.Demo.Views.Pages.OverviewPage"
+    x:Class="OvoUi.Demo.Pages.OverviewPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Auto"
+        Margin="0,0,5,0"
+        VerticalScrollBarVisibility="Auto">
         <StackPanel
             HorizontalAlignment="Center"
-            Margin="24,28"
+            Margin="24,28,19,28"
             MaxWidth="980"
             Spacing="24">
             <StackPanel HorizontalAlignment="Center" Spacing="8">
@@ -48,20 +51,29 @@
                 </StackPanel>
             </StackPanel>
 
-            <Grid ColumnDefinitions="170,280,300" ColumnSpacing="16">
+            <Grid ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="16">
                 <StackPanel Spacing="14">
-                    <Button Content="Button" />
-                    <ovo:IconButton Content="Icon Button">
+                    <Button Content="Button" HorizontalAlignment="Stretch" />
+                    <ovo:IconButton Content="Icon Button" HorizontalAlignment="Stretch">
                         <ovo:IconButton.Icon>
                             <StreamGeometry>M12,2 A10,10 0 1 0 22,12 A10,10 0 0 0 12,2 M8,12 L11,15 L17,9</StreamGeometry>
                         </ovo:IconButton.Icon>
                     </ovo:IconButton>
-                    <DropDownButton Content="DropDownButton" />
-                    <SplitButton Content="SplitButton" />
-                    <ToggleButton Content="ToggleButton" IsChecked="True" />
-                    <Button Classes="Danger" Content="Danger Button" />
-                    <Button Click="OpenFile_OnClick" Content="Open File Chooser" />
-                    <HyperlinkButton Content="HyperlinkButton" />
+                    <DropDownButton Content="DropDownButton" HorizontalAlignment="Stretch" />
+                    <SplitButton Content="SplitButton" HorizontalAlignment="Stretch" />
+                    <ToggleButton
+                        Content="ToggleButton"
+                        HorizontalAlignment="Stretch"
+                        IsChecked="True" />
+                    <Button
+                        Classes="Danger"
+                        Content="Danger Button"
+                        HorizontalAlignment="Stretch" />
+                    <Button
+                        Click="OpenFile_OnClick"
+                        Content="Open File Chooser"
+                        HorizontalAlignment="Stretch" />
+                    <HyperlinkButton Content="HyperlinkButton" HorizontalAlignment="Stretch" />
                     <CheckBox
                         Content="CheckBox"
                         IsChecked="True"

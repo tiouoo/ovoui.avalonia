@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 using OvoUi.Demo.Navs;
-using OvoUi.Demo.Views.Pages;
+using OvoUi.Demo.Pages;
 
 namespace OvoUi.Demo.Models;
 

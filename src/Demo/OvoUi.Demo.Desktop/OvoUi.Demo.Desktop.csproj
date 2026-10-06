@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <!--If you are willing to use platform-specific APIs, use conditional compilation.
-        See https://docs.avaloniaui.net/docs/guides/platforms/platform-specific-code/dotnet for more details.-->
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -18,7 +16,8 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="HotAvalonia" Version="3.1.5" />
+        <PackageReference Include="HotAvalonia" Version="3.1.5" PrivateAssets="All" Publish="True" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" PrivateAssets="All" Publish="True" />
     </ItemGroup>
 
     <ItemGroup>

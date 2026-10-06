@@ -45,7 +45,6 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="Transitions">
@@ -90,7 +89,8 @@
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Padding" Value="20, 6" />
+        <Setter Property="MinHeight" Value="32" />
 
         <Style Selector="^.transparent">
             <Setter Property="BorderBrush" Value="Transparent" />
@@ -180,10 +180,10 @@
         x:Key="SolidButtonTheme">
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Padding" Value="20, 8" />
         <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
         <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
-
+        <Setter Property="Padding" Value="20, 6" />
+        <Setter Property="MinHeight" Value="32" />
         <Style Selector="^.transparent">
             <Setter Property="Background" Value="Transparent" />
         </Style>

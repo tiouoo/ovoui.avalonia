@@ -7,4 +7,5 @@
     <StyleInclude Source="TitleBar.axaml" />
     <StyleInclude Source="Menu.axaml" />
     <StyleInclude Source="PathIcon.axaml" />
+    <StyleInclude Source="TextVisualAlign.axaml" />
 </Styles>
