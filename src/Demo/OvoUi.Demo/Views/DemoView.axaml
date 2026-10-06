@@ -19,8 +19,8 @@
             HeaderBinding="{Binding Title}"
             IsHorizontalCollapsed="False"
             ItemsSource="{Binding Pages}"
-            Margin="15"
-            SearchPlaceholderText="搜索..."
+            Margin="15,15,5,15"
+            SearchPlaceholderText="{Binding SearchText}"
             SearchPlacement="Top"
             SelectedItem="{Binding SelectedPage}"
             SubMenuBinding="{Binding Children}"
@@ -39,11 +39,9 @@
                 </DataTemplate>
             </ovo:NavMenu.ItemTemplate>
         </ovo:NavMenu>
-        <TransitioningContentControl
-            Content="{Binding SelectedPage.Content}"
-            IsTransitionReversed="{Binding IsTransitionReversed}">
+        <TransitioningContentControl Content="{Binding SelectedPage.Content}">
             <TransitioningContentControl.PageTransition>
-                <showcase:SlideFadePageTransition />
+                <showcase:SlideFadePageTransition EnterFromLeft="True" />
             </TransitioningContentControl.PageTransition>
         </TransitioningContentControl>
     </DockPanel>

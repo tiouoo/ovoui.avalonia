@@ -4,10 +4,41 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.LabelPage"
     xmlns="https://github.com/avaloniaui"
+    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel>
-        <TextBlock Classes="h2" />
+    <DockPanel Margin="20,10">
+        <SelectableTextBlock
+            Classes="h2"
+            DockPanel.Dock="Top"
+            Margin="0,0,0,20"
+            Text="Label" />
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            <StackPanel MaxWidth="980">
+                <controls:ControlShowcase
+                    CodeHeight="250"
+                    Header="Label"
+                    PreviewMinHeight="180"
+                    SourceKey="label-1">
+                    <StackPanel Margin="10,0" Spacing="18">
+                        <Label Content="Common Text" />
+                        <Label Classes="h1" Content="H1 Heading" />
+                        <Label Classes="h2" Content="H2 Heading" />
+                        <Label Classes="h3" Content="H3 Heading" />
+                        <Label Classes="h4" Content="H4 Heading" />
+                        <Label Classes="h5" Content="H5 Heading" />
+                        <Label Classes="h6" Content="H6 Heading" />
+                        <Label Classes="accent" Content="Accent Text" />
+                        <Label Classes="success" Content="Success Text" />
+                        <Label Classes="info" Content="Information Text" />
+                        <Label Classes="warn" Content="Warning Text" />
+                        <Label Classes="danger" Content="Danger Text" />
+                        <Label Classes="error" Content="Error Text" />
+                        <Label Content="Disabled Text" IsEnabled="False" />
+                    </StackPanel>
+                </controls:ControlShowcase>
+            </StackPanel>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

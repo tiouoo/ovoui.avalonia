@@ -6,8 +6,6 @@ namespace OvoUi.Demo.Models;
 
 public sealed class DemoViewModel : ModelBase
 {
-    private readonly List<Page> _navigationOrder;
-
     public DemoViewModel()
     {
         foreach (var page in Pages)
@@ -22,11 +20,15 @@ public sealed class DemoViewModel : ModelBase
                 Items += 1;
             }
         }
-        _navigationOrder = Pages
-            .SelectMany(page => page.Children is { Count: > 0 } ? page.Children : [page])
-            .ToList();
         SelectedPage = Pages[0];
+        SearchText += $"  ({Items} items)";
     }
+    
+    public string SearchText
+    {
+        get;
+        set => SetField(ref field, value);
+    } = "Search...";
 
     public static IReadOnlyList<Page> Pages { get; } =
     [
@@ -45,25 +47,12 @@ public sealed class DemoViewModel : ModelBase
     public Page SelectedPage
     {
         get;
-        set
-        {
-            if (ReferenceEquals(field, value))
-                return;
-
-            IsTransitionReversed = field is not null &&
-                                   _navigationOrder.IndexOf(value) < _navigationOrder.IndexOf(field);
-            SetField(ref field, value);
-        }
-    }
-
-    public bool IsTransitionReversed
-    {
-        get;
-        private set => SetField(ref field, value);
+        set => SetField(ref field, value);
     }
     
     public int Items { get; set; }
 
+   
 }
 
 public sealed class Page

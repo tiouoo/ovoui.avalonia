@@ -16,6 +16,11 @@ public sealed class SlideFadePageTransition : IPageTransition
 
     public double Distance { get; set; } = 28d;
 
+    /// <summary>
+    /// Makes the new page enter from the left while the old page exits to the left.
+    /// </summary>
+    public bool EnterFromLeft { get; set; }
+
     public Easing Easing { get; set; } = new SukiEaseOut();
 
     public async Task Start(
@@ -36,7 +41,8 @@ public sealed class SlideFadePageTransition : IPageTransition
         if (to is not null)
         {
             to.IsVisible = true;
-            tasks.Add(CreateAnimation(Distance * direction, 0d, 0d, 1d).RunAsync(to, cancellationToken));
+            var enterFromX = EnterFromLeft ? -Distance : Distance * direction;
+            tasks.Add(CreateAnimation(enterFromX, 0d, 0d, 1d).RunAsync(to, cancellationToken));
         }
 
         await Task.WhenAll(tasks);
