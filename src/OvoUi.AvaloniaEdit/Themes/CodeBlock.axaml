@@ -72,11 +72,11 @@
             </MenuFlyout>
 
             <ControlTheme TargetType="controls:CodeBlock" x:Key="{x:Type controls:CodeBlock}">
-                <Setter Property="Background" Value="{DynamicResource OvoCodeEditorBackground}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource OvoCodeBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-                <Setter Property="HeaderBackground" Value="{DynamicResource OvoCodeHeaderBackground}" />
+                <Setter Property="HeaderBackground" Value="{DynamicResource OvoCodeEditorBackground}" />
                 <Setter Property="MinHeight" Value="78" />
                 <Setter Property="CopiedText" Value="{DynamicResource Lang.Copied}" />
                 <Setter Property="CopyToolTip" Value="{DynamicResource Lang.Copy}" />
