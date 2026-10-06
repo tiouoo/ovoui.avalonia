@@ -5,17 +5,18 @@
   <Color name="DocType" foreground="#7885E0" />
   <Color name="Delimiter" foreground="#BF8FFC" />
   <Color name="Tag" foreground="#BF8FFC" />
-  <Color name="PropertyElement" foreground="#45B1B4" />
-  <Color name="Attribute" foreground="#45B1B4" />
+  <Color name="PropertyElement" foreground="#4FC3FF" />
+  <Color name="Attribute" foreground="#4FC3FF" />
   <Color name="NamespacePrefix" foreground="#7885E0" />
-  <Color name="NamespaceDeclaration" foreground="#45B1B4" />
+  <Color name="NamespaceDeclaration" foreground="#4FC3FF" />
   <Color name="NamespaceIdentifier" foreground="#BF8FFC" />
-  <Color name="String" foreground="#C7A06C" />
+  <Color name="String" foreground="#FFD166" />
+  <Color name="Quote" foreground="#FF4D9D" />
   <Color name="MarkupExtension" foreground="#BF8FFC" />
   <Color name="MarkupParameter" foreground="#787878" />
   <Color name="Special" foreground="#C7A06C" />
   <Color name="Number" foreground="#C7A06C" />
-  <Color name="Entity" foreground="#45B1B4" />
+  <Color name="Entity" foreground="#4FC3FF" />
 
   <RuleSet>
     <Span color="Comment" multiline="true">
@@ -39,12 +40,12 @@
       <End>/?&gt;</End>
       <RuleSet>
         <Span color="String" multiline="true" ruleSet="AttributeValue">
-          <Begin>&quot;</Begin>
-          <End>&quot;|(?=&lt;)</End>
+          <Begin color="Quote">&quot;</Begin>
+          <End color="Quote">&quot;|(?=&lt;)</End>
         </Span>
         <Span color="String" multiline="true" ruleSet="AttributeValue">
-          <Begin>'</Begin>
-          <End>'|(?=&lt;)</End>
+          <Begin color="Quote">'</Begin>
+          <End color="Quote">'|(?=&lt;)</End>
         </Span>
         <Rule color="NamespaceDeclaration">\bxmlns(?=[:\s=])</Rule>
         <Rule color="NamespacePrefix">(?&lt;=:)[A-Za-z_][\w.-]*(?=\s*=)</Rule>

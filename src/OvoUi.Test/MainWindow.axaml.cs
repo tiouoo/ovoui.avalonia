@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using OvoUi.Common.Language;
 using OvoUi.Common.Theme;
 using OvoUi.Controls;
 
@@ -27,6 +28,16 @@ public partial class MainWindow : OvoWindow
     private void Light(object? sender, RoutedEventArgs e)
     {
         ThemeManager.ToggleTheme(Themes.Light);
+    }
+
+    private void Chinese(object? sender, RoutedEventArgs e)
+    {
+        LangManager.SetLanguage(Languages.zh_cn);
+    }
+
+    private void English(object? sender, RoutedEventArgs e)
+    {
+        LangManager.SetLanguage(Languages.en_us);
     }
 
     private async void Button_OnClick(object? sender, RoutedEventArgs e)

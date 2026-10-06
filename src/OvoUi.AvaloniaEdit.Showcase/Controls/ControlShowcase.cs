@@ -34,10 +34,10 @@ public class ControlShowcase : ContentControl
         AvaloniaProperty.Register<ControlShowcase, object?>(nameof(PreviewHeader), "预览");
 
     public static readonly StyledProperty<object?> CodeHeaderProperty =
-        AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeHeader), "Code");
+        AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeHeader), "代码");
 
     public static readonly StyledProperty<object?> CodeBlockHeaderProperty =
-        AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeBlockHeader), "AXAML");
+        AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeBlockHeader), "axaml");
 
     public static readonly StyledProperty<string> LanguageProperty =
         AvaloniaProperty.Register<ControlShowcase, string>(nameof(Language), "axaml");
@@ -187,6 +187,7 @@ public class ControlShowcase : ContentControl
         {
             BorderThickness = new Thickness(0),
             CornerRadius = new CornerRadius(0),
+            HeaderCornerRadius = new CornerRadius(0),
             ShowCopyButton = true
         };
         RaisePropertyChanged(CodeBlockProperty, oldCodeBlock, _codeBlock);

@@ -33,13 +33,13 @@
                     <SolidColorBrush Color="#292B2E" x:Key="ToolTipBackground" />
                     <SolidColorBrush Color="#E6E1CF" x:Key="ToolTipForeground" />
                     <SolidColorBrush Color="#33FFFFFF" x:Key="ToolTipBorderBrush" />
-                    <SolidColorBrush Color="#191A1C" x:Key="OvoCodeEditorBackground" />
-                    <SolidColorBrush Color="#202124" x:Key="OvoCodeHeaderBackground" />
-                    <SolidColorBrush Color="#2B2C2D" x:Key="OvoCodeBorderBrush" />
-                    <SolidColorBrush Color="#CCCCCC" x:Key="OvoCodeForeground" />
-                    <SolidColorBrush Color="#787878" x:Key="OvoCodeLineNumberForeground" />
-                    <SolidColorBrush Color="#2E4D89" x:Key="TextAreaSelectionBrush" />
-                    <Color x:Key="SystemChromeMediumColor">#202124</Color>
+                    <SolidColorBrush Color="#181A1F" x:Key="OvoCodeEditorBackground" />
+                    <SolidColorBrush Color="#22252B" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#343842" x:Key="OvoCodeBorderBrush" />
+                    <SolidColorBrush Color="#D8DEE9" x:Key="OvoCodeForeground" />
+                    <SolidColorBrush Color="#727A88" x:Key="OvoCodeLineNumberForeground" />
+                    <SolidColorBrush Color="#264F78" x:Key="TextAreaSelectionBrush" />
+                    <Color x:Key="SystemChromeMediumColor">#22252B</Color>
                     <Color x:Key="SystemBaseLowColor">#33FFFFFF</Color>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Default">

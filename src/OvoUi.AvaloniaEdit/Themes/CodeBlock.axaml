@@ -91,7 +91,7 @@
                                 <Border
                                     Background="{DynamicResource OvoCodeHeaderBackground}"
                                     ClipToBounds="True"
-                                    CornerRadius="11,11,0,0">
+                                    CornerRadius="{TemplateBinding HeaderCornerRadius}">
                                     <Grid ColumnDefinitions="*,Auto" MinHeight="36">
                                         <ContentPresenter
                                             Content="{Binding EffectiveHeader, RelativeSource={RelativeSource TemplatedParent}}"
@@ -191,7 +191,7 @@
     <Style Selector="editing|TextArea">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="SelectionBrush" Value="{DynamicResource TextAreaSelectionBrush}" />
-        <Setter Property="SelectionForeground" Value="{DynamicResource OvoCodeForeground}" />
+        <Setter Property="SelectionForeground" Value="{x:Null}" />
         <Setter Property="SelectionCornerRadius" Value="2" />
         <Setter Property="RightClickMovesCaret" Value="True" />
     </Style>

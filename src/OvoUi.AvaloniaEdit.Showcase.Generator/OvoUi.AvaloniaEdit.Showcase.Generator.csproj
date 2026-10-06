@@ -9,7 +9,7 @@
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <NoWarn>$(NoWarn);RS2008</NoWarn>
         <Title>OvoUi.AvaloniaEdit.Showcase.Generator</Title>
-        <Description>Generates AXAML source for OvoUi ControlShowcase previews.</Description>
+        <Description>Generates axaml source for OvoUi ControlShowcase previews.</Description>
     </PropertyGroup>
 
     <ItemGroup>

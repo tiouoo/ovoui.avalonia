@@ -58,6 +58,10 @@ public class CodeBlock : TemplatedControl
     public static readonly StyledProperty<bool> ShowCopyButtonProperty =
         AvaloniaProperty.Register<CodeBlock, bool>(nameof(ShowCopyButton), true);
 
+    public static readonly StyledProperty<CornerRadius> HeaderCornerRadiusProperty =
+        AvaloniaProperty.Register<CodeBlock, CornerRadius>(
+            nameof(HeaderCornerRadius), new CornerRadius(11, 11, 0, 0));
+
     public static readonly StyledProperty<string?> CopiedTextProperty =
         AvaloniaProperty.Register<CodeBlock, string?>(nameof(CopiedText));
 
@@ -147,6 +151,12 @@ public class CodeBlock : TemplatedControl
     {
         get => GetValue(ShowCopyButtonProperty);
         set => SetValue(ShowCopyButtonProperty, value);
+    }
+
+    public CornerRadius HeaderCornerRadius
+    {
+        get => GetValue(HeaderCornerRadiusProperty);
+        set => SetValue(HeaderCornerRadiusProperty, value);
     }
 
     /// <summary>
@@ -290,6 +300,7 @@ public class CodeBlock : TemplatedControl
                property == AvaloniaEditor.HorizontalScrollBarVisibilityProperty ||
                property == AvaloniaEditor.VerticalScrollBarVisibilityProperty ||
                property == AvaloniaEditor.OptionsProperty ||
+               property == AvaloniaEditor.AllowScrollBelowDocumentProperty ||
                property == AvaloniaEditor.SelectionBrushProperty ||
                property == AvaloniaEditor.SelectionForegroundProperty ||
                property == AvaloniaEditor.CaretBrushProperty ||
@@ -341,7 +352,11 @@ public class CodeBlock : TemplatedControl
         _editor.VerticalScrollBarVisibility = AvaloniaEditor.GetVerticalScrollBarVisibility(this);
         _editor.TextArea.RightClickMovesCaret = AvaloniaEditor.GetRightClickMovesCaret(this);
 
-        _editor.Options = AvaloniaEditor.GetOptions(this) ?? _defaultEditorOptions ?? _editor.Options;
+        var baseOptions = AvaloniaEditor.GetOptions(this) ?? _defaultEditorOptions ?? _editor.Options;
+        _editor.Options = new global::AvaloniaEdit.TextEditorOptions(baseOptions)
+        {
+            AllowScrollBelowDocument = AvaloniaEditor.GetAllowScrollBelowDocument(this)
+        };
 
         ApplyOptionalBrush(
             AvaloniaEditor.GetSelectionBrush(this),

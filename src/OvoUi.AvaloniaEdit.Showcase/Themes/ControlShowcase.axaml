@@ -10,6 +10,8 @@
             <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="PreviewHeader" Value="{DynamicResource Showcase.Preview}" />
+            <Setter Property="CodeHeader" Value="{DynamicResource Showcase.Code}" />
             <Setter Property="Template">
                 <ControlTemplate TargetType="controls:ControlShowcase">
                     <Border

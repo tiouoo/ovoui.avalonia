@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Title>OvoUi.AvaloniaEdit.Showcase</Title>
-        <Description>Preview and highlighted AXAML source presentation for OvoUi controls.</Description>
+        <Description>Preview and highlighted axaml source presentation for OvoUi controls.</Description>
         <PackageTags>avalonia;avaloniaedit;control-showcase;source-generator;syntax-highlighting</PackageTags>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>

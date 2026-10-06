@@ -52,6 +52,10 @@ public sealed class AvaloniaEditor : AvaloniaObject
         AvaloniaProperty.RegisterAttached<AvaloniaEditor, AvaloniaObject, TextEditorOptions?>(
             "Options");
 
+    public static readonly AttachedProperty<bool> AllowScrollBelowDocumentProperty =
+        AvaloniaProperty.RegisterAttached<AvaloniaEditor, AvaloniaObject, bool>(
+            "AllowScrollBelowDocument");
+
     public static readonly AttachedProperty<IBrush?> SelectionBrushProperty =
         AvaloniaProperty.RegisterAttached<AvaloniaEditor, AvaloniaObject, IBrush?>(
             "SelectionBrush");
@@ -111,6 +115,12 @@ public sealed class AvaloniaEditor : AvaloniaObject
 
     public static TextEditorOptions? GetOptions(AvaloniaObject target) => target.GetValue(OptionsProperty);
     public static void SetOptions(AvaloniaObject target, TextEditorOptions? value) => target.SetValue(OptionsProperty, value);
+
+    public static bool GetAllowScrollBelowDocument(AvaloniaObject target) =>
+        target.GetValue(AllowScrollBelowDocumentProperty);
+
+    public static void SetAllowScrollBelowDocument(AvaloniaObject target, bool value) =>
+        target.SetValue(AllowScrollBelowDocumentProperty, value);
 
     public static IBrush? GetSelectionBrush(AvaloniaObject target) => target.GetValue(SelectionBrushProperty);
     public static void SetSelectionBrush(AvaloniaObject target, IBrush? value) => target.SetValue(SelectionBrushProperty, value);
