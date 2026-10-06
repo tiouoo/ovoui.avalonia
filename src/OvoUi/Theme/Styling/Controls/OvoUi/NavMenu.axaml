@@ -139,7 +139,7 @@
     </ControlTheme>
 
     <ControlTemplate TargetType="ovo:NavMenuItem" x:Key="DefaultNavMenuItemTemplate">
-        <Grid Background="Transparent" RowDefinitions="Auto, *">
+        <Grid RowDefinitions="Auto, *">
             <Border
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -247,7 +247,6 @@
             </Border>
 
             <ovo:ContentExpander
-                Background="Transparent"
                 Grid.Row="1"
                 Name="PART_ContentExpand"
                 Orientation="Vertical"

@@ -7,6 +7,8 @@ public static class Basics
 {
     public static readonly List<Page> BasicsList =
     [
-        Page.View<LabelPage>("Label")
+        Page.View<LabelPage>("Label"),
+        Page.View<TextBlockPage>("TextBlock"),
+        Page.View<SelectableTextBlockPage>("SelectableTextBlock")
     ];
 }

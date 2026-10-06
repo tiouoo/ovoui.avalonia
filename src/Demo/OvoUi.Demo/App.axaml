@@ -13,7 +13,7 @@
         </ResourceDictionary>
     </Application.Resources>
     <Application.Styles>
-        <ovo:OvoUiTheme />
+        <ovo:OvoUiTheme Language="en_us" />
         <ovo:OvoAvaloniaEditTheme />
         <ovo:OvoShowcaseTheme />
         <ovo:OvoUiFont />

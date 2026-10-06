@@ -1,0 +1,44 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.SelectableTextBlockPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="20,10">
+        <SelectableTextBlock
+            Classes="h2"
+            DockPanel.Dock="Top"
+            Margin="0,0,0,20"
+            Text="SelectableTextBlock" />
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            <StackPanel MaxWidth="980" Spacing="20">
+                <controls:ControlShowcase
+                    CodeHeight="250"
+                    Header="SelectableTextBlock"
+                    PreviewMinHeight="180"
+                    SourceKey="selectable-text-block-1">
+                    <StackPanel Margin="10,0" Spacing="18">
+                        <SelectableTextBlock Text="Common selectable text" />
+                        <SelectableTextBlock Classes="h1" Text="H1 Heading" />
+                        <SelectableTextBlock Classes="h2" Text="H2 Heading" />
+                        <SelectableTextBlock Classes="h3" Text="H3 Heading" />
+                        <SelectableTextBlock Classes="h4" Text="H4 Heading" />
+                        <SelectableTextBlock Classes="h5" Text="H5 Heading" />
+                        <SelectableTextBlock Classes="h6" Text="H6 Heading" />
+                        <SelectableTextBlock Classes="accent" Text="Accent Text" />
+                        <SelectableTextBlock Classes="success" Text="Success Text" />
+                        <SelectableTextBlock Classes="info" Text="Information Text" />
+                        <SelectableTextBlock Classes="warn" Text="Warning Text" />
+                        <SelectableTextBlock Classes="danger" Text="Danger Text" />
+                        <SelectableTextBlock Classes="error" Text="Error Text" />
+                        <SelectableTextBlock IsEnabled="False" Text="Disabled Text" />
+                    </StackPanel>
+                </controls:ControlShowcase>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
