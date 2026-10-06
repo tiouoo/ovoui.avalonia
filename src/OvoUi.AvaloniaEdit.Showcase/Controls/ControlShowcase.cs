@@ -175,6 +175,8 @@ public class ControlShowcase : ContentControl
     {
         if (_tabStrip is not null)
             _tabStrip.SelectionChanged -= OnTabSelectionChanged;
+        if (_previewPresenter is not null)
+            _previewPresenter.SizeChanged -= OnPreviewSizeChanged;
 
         base.OnApplyTemplate(e);
 
@@ -183,6 +185,7 @@ public class ControlShowcase : ContentControl
         _transitionHost = e.NameScope.Find<TransitioningContentControl>(PART_TransitionHost);
 
         _previewPresenter = new ContentPresenter();
+        _previewPresenter.SizeChanged += OnPreviewSizeChanged;
         _codeBlock = new CodeBlock
         {
             CornerRadius = new CornerRadius(0),
@@ -263,6 +266,11 @@ public class ControlShowcase : ContentControl
         SetCurrentValue(SelectedIndexProperty, NormalizeIndex(_tabStrip.SelectedIndex));
     }
 
+    private void OnPreviewSizeChanged(object? sender, SizeChangedEventArgs e)
+    {
+        SyncCodeBlockSize(e.NewSize);
+    }
+
     private void UpdateSelection(int selectedIndex)
     {
         if (_tabStrip is not null && _tabStrip.SelectedIndex != selectedIndex)
@@ -316,7 +324,10 @@ public class ControlShowcase : ContentControl
         _codeBlock.Text = EffectiveCode;
         _codeBlock.Language = Language;
         _codeBlock.Header = CodeBlockHeader;
-        _codeBlock.Height = Math.Max(78d, CodeHeight);
+        if (_previewPresenter is { Bounds.Width: > 0, Bounds.Height: > 0 })
+            SyncCodeBlockSize(_previewPresenter.Bounds.Size);
+        else
+            _codeBlock.Height = Math.Max(78d, CodeHeight);
         AvaloniaEditor.SetShowLineNumbers(_codeBlock, ShowLineNumbers);
         AvaloniaEditor.SetWordWrap(_codeBlock, WordWrap);
         AvaloniaEditor.SetHorizontalScrollBarVisibility(
@@ -324,6 +335,15 @@ public class ControlShowcase : ContentControl
             WordWrap ? ScrollBarVisibility.Disabled : ScrollBarVisibility.Auto);
         AvaloniaEditor.SetVerticalScrollBarVisibility(_codeBlock, ScrollBarVisibility.Auto);
         AvaloniaEditor.SetIsReadOnly(_codeBlock, true);
+    }
+
+    private void SyncCodeBlockSize(Size previewSize)
+    {
+        if (_codeBlock is null || previewSize.Width <= 0 || previewSize.Height <= 0)
+            return;
+
+        _codeBlock.Width = previewSize.Width;
+        _codeBlock.Height = previewSize.Height;
     }
 
     private static int NormalizeIndex(int value) => value <= 0 ? 0 : 1;

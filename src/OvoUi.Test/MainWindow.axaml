@@ -17,42 +17,23 @@
     xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid RowDefinitions="Auto,*">
-        <Border
-            Background="{DynamicResource PanelBackgroundBrush}"
-            BorderBrush="{DynamicResource LineBrush}"
-            BorderThickness="0,0,0,1"
-            Padding="24,14">
-            <Grid ColumnDefinitions="*,Auto">
-                <StackPanel Spacing="2">
-                    <TextBlock FontSize="20" FontWeight="SemiBold">Control Showcase</TextBlock>
-                    <TextBlock Foreground="{DynamicResource InnerForegroundBrush}">
-                        OvoUi controls and generated axaml source
-                    </TextBlock>
-                </StackPanel>
-                <StackPanel
-                    Grid.Column="1"
-                    Orientation="Horizontal"
-                    Spacing="8"
-                    VerticalAlignment="Center">
-                    <Button Classes="Basic" Click="Chinese" Content="中文" />
-                    <Button Classes="Basic" Click="English" Content="English" />
-                    <Button Classes="Basic" Click="Light" Content="Light" />
-                    <Button Click="Dark" Content="Dark" />
-                </StackPanel>
-            </Grid>
-        </Border>
+        <StackPanel
+            Margin="10,0,10,20"
+            Orientation="Horizontal"
+            Spacing="20">
+            <Button Click="Chinese" Content="中文" />
+            <Button Click="English" Content="English" />
+            <Button Click="Light" Content="Light" />
+            <Button Click="Dark" Content="Dark" />
+        </StackPanel>
+
 
         <ScrollViewer Grid.Row="1">
             <StackPanel
-                HorizontalAlignment="Center"
-                Margin="24,28,24,40"
+                HorizontalAlignment="Stretch"
                 MaxWidth="920"
                 Spacing="28">
                 <StackPanel Spacing="8">
-                    <TextBlock FontSize="17" FontWeight="SemiBold">Actions</TextBlock>
-                    <TextBlock Foreground="{DynamicResource InnerForegroundBrush}">
-                        Switch between Preview and Code to inspect the generated source.
-                    </TextBlock>
                     <o:ControlShowcase
                         CodeHeight="250"
                         PreviewMinHeight="180"
@@ -64,62 +45,13 @@
                             <StackPanel Orientation="Horizontal" Spacing="10">
                                 <Button Content="Create project" />
                                 <Button Classes="Basic" Content="View details" />
-                                <Button IsEnabled="False" Content="Unavailable" />
+                                <Button Content="Unavailable" IsEnabled="False" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Spacing="24">
                                 <ToggleSwitch Content="Auto save" IsChecked="True" />
                                 <CheckBox Content="Include assets" IsChecked="True" />
                             </StackPanel>
                         </StackPanel>
-                    </o:ControlShowcase>
-                </StackPanel>
-
-                <StackPanel Spacing="8">
-                    <TextBlock FontSize="17" FontWeight="SemiBold">Project Settings</TextBlock>
-                    <TextBlock Foreground="{DynamicResource InnerForegroundBrush}">
-                        A denser layout for checking wrapping, formatting, and scrolling.
-                    </TextBlock>
-                    <o:ControlShowcase
-                        CodeHeight="330"
-                        PreviewMinHeight="260"
-                        SourceKey="test-settings-showcase">
-                        <Grid
-                            ColumnDefinitions="140,*"
-                            HorizontalAlignment="Stretch"
-                            MaxWidth="620"
-                            RowDefinitions="Auto,Auto,Auto,Auto"
-                            RowSpacing="14">
-                            <TextBlock VerticalAlignment="Center">Project name</TextBlock>
-                            <TextBox
-                                Grid.Column="1"
-                                PlaceholderText="Enter a name"
-                                Text="OvoUi Showcase"
-                                />
-
-                            <TextBlock Grid.Row="1" VerticalAlignment="Center">Template</TextBlock>
-                            <ComboBox Grid.Column="1" Grid.Row="1" SelectedIndex="0">
-                                <ComboBoxItem Content="Desktop application" />
-                                <ComboBoxItem Content="Browser application" />
-                                <ComboBoxItem Content="Control library" />
-                            </ComboBox>
-
-                            <TextBlock Grid.Row="2" VerticalAlignment="Center">Build progress</TextBlock>
-                            <ProgressBar
-                                Grid.Column="1"
-                                Grid.Row="2"
-                                Maximum="100"
-                                Value="68" />
-
-                            <StackPanel
-                                Grid.Column="1"
-                                Grid.Row="3"
-                                HorizontalAlignment="Right"
-                                Orientation="Horizontal"
-                                Spacing="10">
-                                <Button Classes="Basic" Content="Cancel" />
-                                <Button Content="Save changes" />
-                            </StackPanel>
-                        </Grid>
                     </o:ControlShowcase>
                 </StackPanel>
             </StackPanel>
