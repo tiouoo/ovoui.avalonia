@@ -1,0 +1,86 @@
+<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.ToggleSwitchPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="20,10">
+        <SelectableTextBlock
+            Classes="h2"
+            DockPanel.Dock="Top"
+            Margin="0,0,0,20"
+            Text="Toggle Switch" />
+
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            <StackPanel MaxWidth="980" Spacing="20">
+                <controls:ControlShowcase Header="Standard states" SourceKey="toggle-switch-standard-states">
+                    <WrapPanel
+                        ItemSpacing="28"
+                        LineSpacing="18"
+                        Margin="10,0">
+                        <ToggleSwitch Content="Default" />
+                        <ToggleSwitch Content="Checked" IsChecked="True" />
+                        <ToggleSwitch Content="Disabled" IsEnabled="False" />
+                        <ToggleSwitch
+                            Content="Checked and disabled"
+                            IsChecked="True"
+                            IsEnabled="False" />
+                    </WrapPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="Content and state labels" SourceKey="toggle-switch-content-labels">
+                    <StackPanel Margin="10,0" Spacing="18">
+                        <ToggleSwitch
+                            Content="Wi-Fi"
+                            IsChecked="True"
+                            OffContent="Disconnected"
+                            OnContent="Connected" />
+                        <ToggleSwitch
+                            Content="Automatic updates"
+                            OffContent="Manual"
+                            OnContent="Automatic" />
+                        <ToggleSwitch Content="Content label only" />
+                    </StackPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="Themes" SourceKey="toggle-switch-themes">
+                    <StackPanel Margin="10,0" Spacing="20">
+                        <StackPanel Spacing="10">
+                            <TextBlock Classes="bodyStrong" Text="SimpleToggleSwitch" />
+                            <WrapPanel ItemSpacing="18" LineSpacing="12">
+                                <ToggleSwitch Theme="{StaticResource SimpleToggleSwitch}" />
+                                <ToggleSwitch IsChecked="True" Theme="{StaticResource SimpleToggleSwitch}" />
+                                <ToggleSwitch IsEnabled="False" Theme="{StaticResource SimpleToggleSwitch}" />
+                                <ToggleSwitch IsChecked="True" IsEnabled="False" Theme="{StaticResource SimpleToggleSwitch}" />
+                            </WrapPanel>
+                        </StackPanel>
+
+                        <StackPanel Spacing="10">
+                            <TextBlock Classes="bodyStrong" Text="ButtonToggleSwitch" />
+                            <WrapPanel ItemSpacing="12" LineSpacing="12">
+                                <ToggleSwitch
+                                    OffContent="List"
+                                    OnContent="Grid"
+                                    Theme="{StaticResource ButtonToggleSwitch}" />
+                                <ToggleSwitch
+                                    IsChecked="True"
+                                    OffContent="Preview off"
+                                    OnContent="Preview on"
+                                    Theme="{StaticResource ButtonToggleSwitch}" />
+                                <ToggleSwitch
+                                    IsEnabled="False"
+                                    OffContent="Disabled"
+                                    OnContent="Enabled"
+                                    Theme="{StaticResource ButtonToggleSwitch}" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </controls:ControlShowcase>
+</StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

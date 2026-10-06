@@ -1,0 +1,60 @@
+<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.ButtonGroupPage"
+    x:DataType="pages:ButtonGroupPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="20,10">
+        <SelectableTextBlock
+            Classes="h2"
+            DockPanel.Dock="Top"
+            Margin="0,0,0,20"
+            Text="Button Group" />
+
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            <StackPanel MaxWidth="980" Spacing="20">
+                <controls:ControlShowcase Header="Basic" SourceKey="button-group-basic">
+                    <StackPanel Margin="10,0" Spacing="16">
+                        <controls:ButtonGroup>
+                            <Button Content="Day" />
+                            <Button Content="Week" />
+                            <Button Content="Month" />
+                            <Button Content="Year" />
+                        </controls:ButtonGroup>
+
+                        <controls:ButtonGroup>
+                            <Button Classes="accent" Content="Save" />
+                            <Button Classes="info" Content="Preview" />
+                            <Button Classes="success" Content="Publish" />
+                            <Button Classes="warn" Content="Archive" />
+                            <Button Classes="danger" Content="Delete" />
+                        </controls:ButtonGroup>
+                    </StackPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="States" SourceKey="button-group-states">
+                    <StackPanel Margin="10,0" Spacing="16">
+                        <controls:ButtonGroup>
+                            <Button Content="Previous" />
+                            <Button Content="Page 2" IsEnabled="False" />
+                            <Button Content="Next" />
+                        </controls:ButtonGroup>
+
+                        <controls:ButtonGroup IsEnabled="False">
+                            <Button Content="Cut" />
+                            <Button Content="Copy" />
+                            <Button Content="Paste" />
+                        </controls:ButtonGroup>
+                    </StackPanel>
+                </controls:ControlShowcase>
+
+</StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

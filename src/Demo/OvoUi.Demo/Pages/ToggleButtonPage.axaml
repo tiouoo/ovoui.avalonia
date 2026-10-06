@@ -1,0 +1,117 @@
+<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.ToggleButtonPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel Margin="20,10">
+        <SelectableTextBlock
+            Classes="h2"
+            DockPanel.Dock="Top"
+            Margin="0,0,0,20"
+            Text="ToggleButton" />
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            <StackPanel MaxWidth="980" Spacing="20">
+                <controls:ControlShowcase Header="Standard states" SourceKey="toggle-button-standard-states">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
+                        <ToggleButton Content="Default" />
+                        <ToggleButton Content="Checked" IsChecked="True" />
+                        <ToggleButton Content="Disabled" IsEnabled="False" />
+                        <ToggleButton
+                            Content="Checked disabled"
+                            IsChecked="True"
+                            IsEnabled="False" />
+                    </WrapPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="Three-state" SourceKey="toggle-button-three-state">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
+                        <ToggleButton Content="Cycle states" IsThreeState="True" />
+                        <ToggleButton
+                            Content="Indeterminate"
+                            IsChecked="{x:Null}"
+                            IsThreeState="True" />
+                        <ToggleButton
+                            Content="Indeterminate disabled"
+                            IsChecked="{x:Null}"
+                            IsEnabled="False"
+                            IsThreeState="True" />
+                    </WrapPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="Basic style" SourceKey="toggle-button-basic-style">
+                    <StackPanel Margin="10,0" Spacing="12">
+                        <WrapPanel ItemSpacing="12" LineSpacing="12">
+                            <ToggleButton Classes="basic" Content="Basic class" />
+                            <ToggleButton
+                                Classes="basic"
+                                Content="Basic class checked"
+                                IsChecked="True" />
+                            <ToggleButton
+                                Content="Basic theme"
+                                Theme="{StaticResource BasicToggleButtonTheme}" />
+                            <ToggleButton
+                                Content="Basic theme checked"
+                                IsChecked="True"
+                                Theme="{StaticResource BasicToggleButtonTheme}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="BorderToggleButtonTheme" SourceKey="toggle-button-border-theme">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
+                        <ToggleButton Content="Border" Theme="{StaticResource BorderToggleButtonTheme}" />
+                        <ToggleButton
+                            Content="Border checked"
+                            IsChecked="True"
+                            Theme="{StaticResource BorderToggleButtonTheme}" />
+                        <ToggleButton
+                            Content="Border disabled"
+                            IsEnabled="False"
+                            Theme="{StaticResource BorderToggleButtonTheme}" />
+                    </WrapPanel>
+                </controls:ControlShowcase>
+
+                <controls:ControlShowcase Header="Light and transparent themes" SourceKey="toggle-button-light-transparent">
+                    <StackPanel Margin="10,0" Spacing="12">
+                        <WrapPanel ItemSpacing="12" LineSpacing="12">
+                            <ToggleButton Content="Light" Theme="{StaticResource LightToggleButton}" />
+                            <ToggleButton
+                                Content="Light checked"
+                                IsChecked="True"
+                                Theme="{StaticResource LightToggleButton}" />
+                            <ToggleButton
+                                Content="Light disabled"
+                                IsEnabled="False"
+                                Theme="{StaticResource LightToggleButton}" />
+                        </WrapPanel>
+                        <WrapPanel ItemSpacing="12" LineSpacing="12">
+                            <ToggleButton Content="Transparent" Theme="{StaticResource TransparentToggleButton}" />
+                            <ToggleButton
+                                Content="Transparent checked"
+                                IsChecked="True"
+                                Theme="{StaticResource TransparentToggleButton}" />
+                            <ToggleButton
+                                Content="Transparent disabled"
+                                IsEnabled="False"
+                                Theme="{StaticResource TransparentToggleButton}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </controls:ControlShowcase>
+</StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
