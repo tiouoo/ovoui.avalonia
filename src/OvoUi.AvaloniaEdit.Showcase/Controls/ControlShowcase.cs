@@ -459,7 +459,7 @@ public class ControlShowcase : ContentControl
         _transitionHost.Height = targetHeight;
         var animation = new Animation
         {
-            Duration = TimeSpan.FromMilliseconds(420),
+            Duration = TimeSpan.FromMilliseconds(210),
             Easing = new SukiEaseOutBack { BounceIntensity = EasingIntensity.Soft },
             FillMode = FillMode.None,
             Children =

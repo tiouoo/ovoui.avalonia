@@ -12,7 +12,7 @@ namespace OvoUi.AvaloniaEdit.Showcase.Controls;
 /// </summary>
 public sealed class SlideFadePageTransition : IPageTransition
 {
-    public TimeSpan Duration { get; set; } = TimeSpan.FromMilliseconds(220);
+    public TimeSpan Duration { get; set; } = TimeSpan.FromMilliseconds(110);
 
     public double Distance { get; set; } = 28d;
 
