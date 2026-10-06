@@ -1,6 +1,8 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
+    xmlns:avaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:controls="clr-namespace:OvoUi.AvaloniaEdit.Showcase.Controls"
+    xmlns:edit="clr-namespace:OvoUi.AvaloniaEdit.Controls;assembly=OvoUi.AvaloniaEdit"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ControlTheme TargetType="controls:ControlShowcase" x:Key="{x:Type controls:ControlShowcase}">
@@ -50,4 +52,15 @@
             </Setter>
         </ControlTheme>
     </Styles.Resources>
+
+    <Style Selector="edit|CodeBlock.control-showcase-code-block">
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="HeaderSeparatorHeight" Value="0" />
+    </Style>
+
+    <Style Selector="edit|CodeBlock.control-showcase-code-block /template/ avaloniaEdit|TextEditor#PART_Editor /template/ ScrollViewer#PART_ScrollViewer /template/ ScrollContentPresenter#PART_ContentPresenter">
+        <Setter Property="Padding" Value="12,0,12,10" />
+    </Style>
 </Styles>

@@ -76,6 +76,7 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource OvoCodeBorderBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+                <Setter Property="HeaderBackground" Value="{DynamicResource OvoCodeHeaderBackground}" />
                 <Setter Property="MinHeight" Value="78" />
                 <Setter Property="CopiedText" Value="{DynamicResource Lang.Copied}" />
                 <Setter Property="CopyToolTip" Value="{DynamicResource Lang.Copy}" />
@@ -87,9 +88,9 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             ClipToBounds="True"
                             CornerRadius="{TemplateBinding CornerRadius}">
-                            <Grid RowDefinitions="Auto,1,*">
+                            <Grid RowDefinitions="Auto,Auto,*">
                                 <Border
-                                    Background="{DynamicResource OvoCodeHeaderBackground}"
+                                    Background="{TemplateBinding HeaderBackground}"
                                     ClipToBounds="True"
                                     CornerRadius="{TemplateBinding HeaderCornerRadius}">
                                     <Grid ColumnDefinitions="*,Auto" MinHeight="36">
@@ -156,7 +157,10 @@
                                     </Grid>
                                 </Border>
 
-                                <Border Background="{TemplateBinding BorderBrush}" Grid.Row="1" />
+                                <Border
+                                    Background="{TemplateBinding BorderBrush}"
+                                    Grid.Row="1"
+                                    Height="{TemplateBinding HeaderSeparatorHeight}" />
 
                                 <controls:OvoTextEditor
                                     Background="Transparent"

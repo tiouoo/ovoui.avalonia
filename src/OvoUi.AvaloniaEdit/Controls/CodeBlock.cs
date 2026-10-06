@@ -52,6 +52,12 @@ public class CodeBlock : TemplatedControl
     public static readonly StyledProperty<object?> HeaderProperty =
         AvaloniaProperty.Register<CodeBlock, object?>(nameof(Header));
 
+    public static readonly StyledProperty<IBrush?> HeaderBackgroundProperty =
+        AvaloniaProperty.Register<CodeBlock, IBrush?>(nameof(HeaderBackground));
+
+    public static readonly StyledProperty<double> HeaderSeparatorHeightProperty =
+        AvaloniaProperty.Register<CodeBlock, double>(nameof(HeaderSeparatorHeight), 1d);
+
     public static readonly StyledProperty<bool> IsHeaderSelectableProperty =
         AvaloniaProperty.Register<CodeBlock, bool>(nameof(IsHeaderSelectable));
 
@@ -139,6 +145,18 @@ public class CodeBlock : TemplatedControl
     {
         get => GetValue(HeaderProperty);
         set => SetValue(HeaderProperty, value);
+    }
+
+    public IBrush? HeaderBackground
+    {
+        get => GetValue(HeaderBackgroundProperty);
+        set => SetValue(HeaderBackgroundProperty, value);
+    }
+
+    public double HeaderSeparatorHeight
+    {
+        get => GetValue(HeaderSeparatorHeightProperty);
+        set => SetValue(HeaderSeparatorHeightProperty, value);
     }
 
     public bool IsHeaderSelectable

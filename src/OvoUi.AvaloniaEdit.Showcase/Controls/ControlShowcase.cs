@@ -185,11 +185,11 @@ public class ControlShowcase : ContentControl
         _previewPresenter = new ContentPresenter();
         _codeBlock = new CodeBlock
         {
-            BorderThickness = new Thickness(0),
             CornerRadius = new CornerRadius(0),
             HeaderCornerRadius = new CornerRadius(0),
             ShowCopyButton = true
         };
+        _codeBlock.Classes.Add("control-showcase-code-block");
         RaisePropertyChanged(CodeBlockProperty, oldCodeBlock, _codeBlock);
 
         UpdatePreviewPresenter();
