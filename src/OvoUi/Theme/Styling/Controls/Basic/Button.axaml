@@ -172,8 +172,59 @@
             </Style>
         </Style>
 
+        <Style Selector="^.accent:disabled">
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledAccentColor}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledAccentColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.info:disabled">
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledInfoColor}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledInfoColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.success:disabled">
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledSuccessColor}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledSuccessColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.warn:disabled">
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledWarnColor}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledWarnColor}" />
+            </Style>
+        </Style>
+        <Style Selector="^.danger:disabled">
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledErrorColor}" />
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledErrorColor}" />
+            </Style>
+        </Style>
+
     </ControlTheme>
 
+    <SolidColorBrush
+        Color="{DynamicResource SystemAccentColor}"
+        Opacity="0.5"
+        x:Key="DisabledAccentColor" />
+    <SolidColorBrush
+        Color="{DynamicResource InfoColor}"
+        Opacity="0.5"
+        x:Key="DisabledInfoColor" />
+    <SolidColorBrush
+        Color="{DynamicResource SuccessColor}"
+        Opacity="0.5"
+        x:Key="DisabledSuccessColor" />
+    <SolidColorBrush
+        Color="{DynamicResource WarnColor}"
+        Opacity="0.5"
+        x:Key="DisabledWarnColor" />
+    <SolidColorBrush
+        Color="{DynamicResource ErrorColor}"
+        Opacity="0.5"
+        x:Key="DisabledErrorColor" />
     <ControlTheme
         BasedOn="{StaticResource BasicButtonTheme}"
         TargetType="Button"
