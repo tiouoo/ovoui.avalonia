@@ -10,10 +10,12 @@ using OvoUi.AvaloniaEdit.Controls;
 
 namespace OvoUi.AvaloniaEdit.Showcase.Controls;
 
+[PseudoClasses(PC_HeaderRight)]
 [TemplatePart(PART_TabStrip, typeof(TabStrip))]
 [TemplatePart(PART_TransitionHost, typeof(TransitioningContentControl))]
 public class ControlShowcase : ContentControl
 {
+    public const string PC_HeaderRight = ":header-right";
     public const string PART_TabStrip = "PART_TabStrip";
     public const string PART_TransitionHost = "PART_TransitionHost";
 
@@ -38,6 +40,13 @@ public class ControlShowcase : ContentControl
 
     public static readonly StyledProperty<object?> CodeBlockHeaderProperty =
         AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeBlockHeader), "axaml");
+
+    public static readonly StyledProperty<object?> HeaderProperty =
+        AvaloniaProperty.Register<ControlShowcase, object?>(nameof(Header));
+
+    public static readonly StyledProperty<ShowcaseHeaderPlacement> HeaderPlacementProperty =
+        AvaloniaProperty.Register<ControlShowcase, ShowcaseHeaderPlacement>(
+            nameof(HeaderPlacement), ShowcaseHeaderPlacement.Left);
 
     public static readonly StyledProperty<string> LanguageProperty =
         AvaloniaProperty.Register<ControlShowcase, string>(nameof(Language), "axaml");
@@ -122,6 +131,18 @@ public class ControlShowcase : ContentControl
         set => SetValue(CodeBlockHeaderProperty, value);
     }
 
+    public object? Header
+    {
+        get => GetValue(HeaderProperty);
+        set => SetValue(HeaderProperty, value);
+    }
+
+    public ShowcaseHeaderPlacement HeaderPlacement
+    {
+        get => GetValue(HeaderPlacementProperty);
+        set => SetValue(HeaderPlacementProperty, value);
+    }
+
     public string Language
     {
         get => GetValue(LanguageProperty);
@@ -179,6 +200,7 @@ public class ControlShowcase : ContentControl
             _previewPresenter.SizeChanged -= OnPreviewSizeChanged;
 
         base.OnApplyTemplate(e);
+        UpdateHeaderPlacement();
 
         var oldCodeBlock = _codeBlock;
         _tabStrip = e.NameScope.Find<TabStrip>(PART_TabStrip);
@@ -256,6 +278,10 @@ public class ControlShowcase : ContentControl
         {
             _transitionHost.PageTransition = PageTransition;
         }
+        else if (change.Property == HeaderPlacementProperty)
+        {
+            UpdateHeaderPlacement();
+        }
     }
 
     private void OnTabSelectionChanged(object? sender, SelectionChangedEventArgs e)
@@ -264,6 +290,11 @@ public class ControlShowcase : ContentControl
             return;
 
         SetCurrentValue(SelectedIndexProperty, NormalizeIndex(_tabStrip.SelectedIndex));
+    }
+
+    private void UpdateHeaderPlacement()
+    {
+        PseudoClasses.Set(PC_HeaderRight, HeaderPlacement == ShowcaseHeaderPlacement.Right);
     }
 
     private void OnPreviewSizeChanged(object? sender, SizeChangedEventArgs e)
