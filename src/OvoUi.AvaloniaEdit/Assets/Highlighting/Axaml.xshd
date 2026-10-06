@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="AXAML" extensions=".axaml;.xaml;.xml" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Comment" foreground="#7F848E" fontStyle="italic" />
+  <Color name="CData" foreground="#7885E0" />
+  <Color name="DocType" foreground="#7885E0" />
+  <Color name="Delimiter" foreground="#BF8FFC" />
+  <Color name="Tag" foreground="#BF8FFC" />
+  <Color name="PropertyElement" foreground="#45B1B4" />
+  <Color name="Attribute" foreground="#45B1B4" />
+  <Color name="NamespacePrefix" foreground="#7885E0" />
+  <Color name="NamespaceDeclaration" foreground="#45B1B4" />
+  <Color name="NamespaceIdentifier" foreground="#BF8FFC" />
+  <Color name="String" foreground="#C7A06C" />
+  <Color name="MarkupExtension" foreground="#BF8FFC" />
+  <Color name="MarkupParameter" foreground="#787878" />
+  <Color name="Special" foreground="#C7A06C" />
+  <Color name="Number" foreground="#C7A06C" />
+  <Color name="Entity" foreground="#45B1B4" />
+
+  <RuleSet>
+    <Span color="Comment" multiline="true">
+      <Begin>&lt;!--</Begin>
+      <End>--&gt;</End>
+    </Span>
+    <Span color="CData" multiline="true">
+      <Begin>&lt;!\[CDATA\[</Begin>
+      <End>]]&gt;</End>
+    </Span>
+    <Span color="DocType" multiline="true">
+      <Begin>&lt;!DOCTYPE</Begin>
+      <End>&gt;</End>
+    </Span>
+    <Span color="DocType" multiline="true">
+      <Begin>&lt;\?</Begin>
+      <End>\?&gt;</End>
+    </Span>
+    <Span color="Delimiter" multiline="true">
+      <Begin>&lt;/?(?=[A-Za-z_])</Begin>
+      <End>/?&gt;</End>
+      <RuleSet>
+        <Span color="String" multiline="true" ruleSet="AttributeValue">
+          <Begin>&quot;</Begin>
+          <End>&quot;|(?=&lt;)</End>
+        </Span>
+        <Span color="String" multiline="true" ruleSet="AttributeValue">
+          <Begin>'</Begin>
+          <End>'|(?=&lt;)</End>
+        </Span>
+        <Rule color="NamespaceDeclaration">\bxmlns(?=[:\s=])</Rule>
+        <Rule color="NamespacePrefix">(?&lt;=:)[A-Za-z_][\w.-]*(?=\s*=)</Rule>
+        <Rule color="NamespacePrefix">\b[A-Za-z_][\w.-]*(?=:)</Rule>
+        <Rule color="PropertyElement">(?&lt;=\.)[A-Za-z_][\w-]*(?=\s|/?$)</Rule>
+        <Rule color="Tag">\b[A-Za-z_][\w-]*(?=\.|\s|/?$)</Rule>
+        <Rule color="Attribute">\b[A-Za-z_][\w.-]*(?=\s*=)</Rule>
+      </RuleSet>
+    </Span>
+    <Import ruleSet="EntitySet" />
+  </RuleSet>
+
+  <RuleSet name="AttributeValue">
+    <Rule color="NamespaceIdentifier">(?&lt;=clr-namespace:)[A-Za-z_][\w]*(?:\.[A-Za-z_][\w]*)*</Rule>
+    <Rule color="NamespaceIdentifier">(?&lt;=assembly=)[A-Za-z_][\w.-]*</Rule>
+    <Rule color="NamespacePrefix">\b[A-Za-z_][\w.-]*(?=:(?!//))</Rule>
+    <Rule color="MarkupExtension">\b(?:Binding|CompiledBinding|DynamicResource|StaticResource|TemplateBinding|RelativeSource|x:Static|x:Type)\b</Rule>
+    <Rule color="MarkupParameter">\b(?:Path|Converter|ElementName|Source|Mode|FallbackValue|TargetNullValue|RelativeSource|AncestorType|Member)\b(?=\s*=)</Rule>
+    <Rule color="Special">\$(?:parent|self|root|templatedParent)\b|\#[A-Za-z_][\w]*</Rule>
+    <Rule color="Number">\b[-+]?(?:\d+(?:\.\d+)?|0x[0-9A-Fa-f]+)\b</Rule>
+    <Import ruleSet="EntitySet" />
+  </RuleSet>
+
+  <RuleSet name="EntitySet">
+    <Rule color="Entity">&amp;[A-Za-z0-9#]+;</Rule>
+  </RuleSet>
+</SyntaxDefinition>

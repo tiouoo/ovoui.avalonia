@@ -12,6 +12,9 @@ public class OvoTextEditor : TextEditor
 
     public OvoTextEditor()
     {
+        Options.EnableHyperlinks = false;
+        Options.EnableEmailHyperlinks = false;
+
         SelectAllCommand = new EditorCommand(SelectAll, () => CanSelectAll);
         CutCommand = new EditorCommand(Cut, () => CanCut);
         CopyCommand = new EditorCommand(Copy, () => CanCopy);

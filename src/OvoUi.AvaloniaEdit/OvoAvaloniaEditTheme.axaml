@@ -20,24 +20,39 @@
                     <SolidColorBrush Color="#FAFAFA" x:Key="ToolTipBackground" />
                     <SolidColorBrush Color="#494C4F" x:Key="ToolTipForeground" />
                     <SolidColorBrush Color="#26000000" x:Key="ToolTipBorderBrush" />
-                    <SolidColorBrush Color="#F7F8F9" x:Key="OvoCodeHeaderBackground" />
-                    <Color x:Key="SystemChromeMediumColor">#F2F4F3</Color>
+                    <SolidColorBrush Color="#FAFAFA" x:Key="OvoCodeEditorBackground" />
+                    <SolidColorBrush Color="#F0F0F0" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#D3D4D5" x:Key="OvoCodeBorderBrush" />
+                    <SolidColorBrush Color="#383A42" x:Key="OvoCodeForeground" />
+                    <SolidColorBrush Color="#9D9D9F" x:Key="OvoCodeLineNumberForeground" />
+                    <SolidColorBrush Color="#D4D4D4" x:Key="TextAreaSelectionBrush" />
+                    <Color x:Key="SystemChromeMediumColor">#F0F0F0</Color>
                     <Color x:Key="SystemBaseLowColor">#26000000</Color>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
                     <SolidColorBrush Color="#292B2E" x:Key="ToolTipBackground" />
                     <SolidColorBrush Color="#E6E1CF" x:Key="ToolTipForeground" />
                     <SolidColorBrush Color="#33FFFFFF" x:Key="ToolTipBorderBrush" />
-                    <SolidColorBrush Color="#202226" x:Key="OvoCodeHeaderBackground" />
-                    <Color x:Key="SystemChromeMediumColor">#292B2E</Color>
+                    <SolidColorBrush Color="#191A1C" x:Key="OvoCodeEditorBackground" />
+                    <SolidColorBrush Color="#202124" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#2B2C2D" x:Key="OvoCodeBorderBrush" />
+                    <SolidColorBrush Color="#CCCCCC" x:Key="OvoCodeForeground" />
+                    <SolidColorBrush Color="#787878" x:Key="OvoCodeLineNumberForeground" />
+                    <SolidColorBrush Color="#2E4D89" x:Key="TextAreaSelectionBrush" />
+                    <Color x:Key="SystemChromeMediumColor">#202124</Color>
                     <Color x:Key="SystemBaseLowColor">#33FFFFFF</Color>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Default">
                     <SolidColorBrush Color="#FAFAFA" x:Key="ToolTipBackground" />
                     <SolidColorBrush Color="#494C4F" x:Key="ToolTipForeground" />
                     <SolidColorBrush Color="#26000000" x:Key="ToolTipBorderBrush" />
-                    <SolidColorBrush Color="#F7F8F9" x:Key="OvoCodeHeaderBackground" />
-                    <Color x:Key="SystemChromeMediumColor">#F2F4F3</Color>
+                    <SolidColorBrush Color="#FAFAFA" x:Key="OvoCodeEditorBackground" />
+                    <SolidColorBrush Color="#F0F0F0" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#D3D4D5" x:Key="OvoCodeBorderBrush" />
+                    <SolidColorBrush Color="#383A42" x:Key="OvoCodeForeground" />
+                    <SolidColorBrush Color="#9D9D9F" x:Key="OvoCodeLineNumberForeground" />
+                    <SolidColorBrush Color="#D4D4D4" x:Key="TextAreaSelectionBrush" />
+                    <Color x:Key="SystemChromeMediumColor">#F0F0F0</Color>
                     <Color x:Key="SystemBaseLowColor">#26000000</Color>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>

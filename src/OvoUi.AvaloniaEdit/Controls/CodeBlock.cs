@@ -71,10 +71,10 @@ public class CodeBlock : TemplatedControl
         AvaloniaProperty.Register<CodeBlock, bool>(nameof(UseTextMate), true);
 
     public static readonly StyledProperty<ThemeName> LightTextMateThemeProperty =
-        AvaloniaProperty.Register<CodeBlock, ThemeName>(nameof(LightTextMateTheme), ThemeName.LightPlus);
+        AvaloniaProperty.Register<CodeBlock, ThemeName>(nameof(LightTextMateTheme), ThemeName.AtomOneLight);
 
     public static readonly StyledProperty<ThemeName> DarkTextMateThemeProperty =
-        AvaloniaProperty.Register<CodeBlock, ThemeName>(nameof(DarkTextMateTheme), ThemeName.DarkPlus);
+        AvaloniaProperty.Register<CodeBlock, ThemeName>(nameof(DarkTextMateTheme), ThemeName.AtomOneDark);
 
     public static readonly DirectProperty<CodeBlock, OvoTextEditor?> EditorProperty =
         AvaloniaProperty.RegisterDirect<CodeBlock, OvoTextEditor?>(nameof(Editor), control => control.Editor);
@@ -93,7 +93,11 @@ public class CodeBlock : TemplatedControl
 
     public CodeBlock()
     {
-        ActualThemeVariantChanged += (_, _) => ApplyTextMateTheme();
+        ActualThemeVariantChanged += (_, _) =>
+        {
+            ApplyTextMateTheme();
+            ApplyHighlighting();
+        };
     }
 
     public event EventHandler? EditorReady;
@@ -406,7 +410,7 @@ public class CodeBlock : TemplatedControl
             return;
         }
 
-        if (OvoHighlightingProvider.Find(language) is { } ovoDefinition)
+        if (OvoHighlightingProvider.Find(language, ActualThemeVariant == ThemeVariant.Dark) is { } ovoDefinition)
         {
             DisposeTextMate();
             _editor.SyntaxHighlighting = ovoDefinition;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="Shell" extensions=".sh;.bash;.zsh" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Comment" foreground="#7F848E" fontStyle="italic" />
+  <Color name="Command" foreground="#F9F1A5" />
+  <Color name="Argument" foreground="#CCCCCC" />
+  <Color name="Option" foreground="#838383" />
+  <Color name="Variable" foreground="#45B1B4" />
+  <Color name="Operator" foreground="#A5A5A5" />
+  <Color name="Keyword" foreground="#BF8FFC" />
+  <RuleSet>
+    <Rule color="Comment">(?m)(?:^|(?&lt;=\s))\#[^\r\n]*</Rule>
+    <Rule color="Variable">\$(?:[A-Za-z_][\w]*|\d+|[@*#?$!-])|\$\{[^}\r\n]+\}</Rule>
+    <Rule color="Option">(?&lt;!\w)-{1,2}[A-Za-z0-9][A-Za-z0-9_-]*(?:=[^\s|;&amp;]+)?</Rule>
+    <Rule color="Operator">(?:&amp;&amp;|\|\||[|;&amp;])</Rule>
+    <Rule color="Argument">(?&lt;=\w)\s+(?!-{1,2}[A-Za-z0-9]|\#|\$)[^\s|;&amp;]+</Rule>
+    <Keywords color="Keyword">
+      <Word>if</Word><Word>then</Word><Word>else</Word><Word>elif</Word><Word>fi</Word>
+      <Word>for</Word><Word>while</Word><Word>until</Word><Word>do</Word><Word>done</Word>
+      <Word>case</Word><Word>esac</Word><Word>in</Word><Word>function</Word><Word>select</Word>
+    </Keywords>
+    <Rule color="Command">(?m)^[\t ]*(?:\.{0,2}/)?[A-Za-z_][\w./-]*(?=[\t ]|$)</Rule>
+    <Rule color="Command">(?&lt;=[|;&amp;(])[\t ]*(?:\.{0,2}/)?[A-Za-z_][\w./-]*(?=[\t ]|$)</Rule>
+  </RuleSet>
+</SyntaxDefinition>

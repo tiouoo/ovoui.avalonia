@@ -1,4 +1,5 @@
 using System.Xml;
+using System.Xml.Linq;
 using Avalonia.Platform;
 using AvaloniaEdit.Highlighting;
 using AvaloniaEdit.Highlighting.Xshd;
@@ -7,33 +8,141 @@ namespace OvoUi.AvaloniaEdit.Highlighting;
 
 internal static class OvoHighlightingProvider
 {
-    private static readonly Lazy<IReadOnlyDictionary<string, IHighlightingDefinition>> Definitions =
-        new(LoadDefinitions);
+    private static readonly IReadOnlyDictionary<string, string> LightPalette =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["Comment"] = "#A0A1A7",
+            ["Key"] = "#E45649",
+            ["String"] = "#50A14F",
+            ["Number"] = "#986801",
+            ["Literal"] = "#A626A4",
+            ["Section"] = "#4078F2",
+            ["Punctuation"] = "#4078F2",
+            ["Delimiter"] = "#E45649",
+            ["Tag"] = "#E45649",
+            ["PropertyElement"] = "#4078F2",
+            ["Attribute"] = "#986801",
+            ["NamespacePrefix"] = "#0184BC",
+            ["NamespaceDeclaration"] = "#4078F2",
+            ["NamespaceIdentifier"] = "#A626A4",
+            ["MarkupExtension"] = "#A626A4",
+            ["MarkupParameter"] = "#9D9D9F",
+            ["Special"] = "#986801",
+            ["Entity"] = "#0184BC",
+            ["CData"] = "#4078F2",
+            ["DocType"] = "#4078F2",
+            ["Command"] = "#986801",
+            ["Argument"] = "#383A42",
+            ["Option"] = "#9D9D9F",
+            ["Variable"] = "#0184BC",
+            ["Operator"] = "#9D9D9F",
+            ["Keyword"] = "#A626A4",
+            ["Information"] = "#4078F2",
+            ["Warning"] = "#986801",
+            ["Error"] = "#E45649",
+            ["Debug"] = "#A626A4",
+            ["Trace"] = "#9D9D9F",
+            ["Logger"] = "#50A14F"
+        };
 
-    public static IHighlightingDefinition? Find(string language)
+    private static readonly IReadOnlyDictionary<string, string> DarkPalette =
+        new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["Comment"] = "#7F848E",
+            ["Key"] = "#D56A72",
+            ["String"] = "#7D9462",
+            ["Number"] = "#C7A06C",
+            ["Literal"] = "#BF8FFC",
+            ["Section"] = "#7885E0",
+            ["Punctuation"] = "#7885E0",
+            ["Delimiter"] = "#BF8FFC",
+            ["Tag"] = "#BF8FFC",
+            ["PropertyElement"] = "#45B1B4",
+            ["Attribute"] = "#45B1B4",
+            ["NamespacePrefix"] = "#7885E0",
+            ["NamespaceDeclaration"] = "#45B1B4",
+            ["NamespaceIdentifier"] = "#BF8FFC",
+            ["MarkupExtension"] = "#BF8FFC",
+            ["MarkupParameter"] = "#787878",
+            ["Special"] = "#C7A06C",
+            ["Entity"] = "#45B1B4",
+            ["CData"] = "#7885E0",
+            ["DocType"] = "#7885E0",
+            ["Command"] = "#F9F1A5",
+            ["Argument"] = "#CCCCCC",
+            ["Option"] = "#838383",
+            ["Variable"] = "#45B1B4",
+            ["Operator"] = "#A5A5A5",
+            ["Keyword"] = "#BF8FFC",
+            ["Information"] = "#7885E0",
+            ["Warning"] = "#C7A06C",
+            ["Error"] = "#D56A72",
+            ["Debug"] = "#BF8FFC",
+            ["Trace"] = "#787878",
+            ["Logger"] = "#7D9462"
+        };
+
+    private static readonly Lazy<IReadOnlyDictionary<string, IHighlightingDefinition>> LightDefinitions =
+        new(() => LoadDefinitions(LightPalette));
+
+    private static readonly Lazy<IReadOnlyDictionary<string, IHighlightingDefinition>> DarkDefinitions =
+        new(() => LoadDefinitions(DarkPalette));
+
+    public static IHighlightingDefinition? Find(string language, bool useDarkPalette)
     {
         if (string.IsNullOrWhiteSpace(language))
             return null;
 
-        return Definitions.Value.TryGetValue(language.Trim(), out var definition) ? definition : null;
+        var definitions = useDarkPalette ? DarkDefinitions.Value : LightDefinitions.Value;
+        var key = language.Trim().TrimStart('.');
+        return definitions.TryGetValue(key, out var definition) ? definition : null;
     }
 
-    private static IReadOnlyDictionary<string, IHighlightingDefinition> LoadDefinitions()
+    private static IReadOnlyDictionary<string, IHighlightingDefinition> LoadDefinitions(
+        IReadOnlyDictionary<string, string> palette)
     {
         var definitions = new Dictionary<string, IHighlightingDefinition>(StringComparer.OrdinalIgnoreCase);
-        Load("Config", ["config", "configuration"], definitions);
-        Load("MinecraftLog", ["minecraftlog", "minecraft-log", "mclog"], definitions);
+        Load(
+            "Axaml",
+            ["axaml", "xaml", "xml"],
+            palette,
+            definitions);
+        Load(
+            "Config",
+            ["config", "configuration", "json", "json5", "toml", "yaml", "yml", "properties", "cfg", "conf", "ini"],
+            palette,
+            definitions);
+        Load(
+            "Shell",
+            ["bash", "shell", "shellscript", "sh", "zsh"],
+            palette,
+            definitions);
+        Load(
+            "MinecraftLog",
+            ["minecraftlog", "minecraft-log", "mclog"],
+            palette,
+            definitions);
         return definitions;
     }
 
     private static void Load(
         string name,
         IEnumerable<string> aliases,
+        IReadOnlyDictionary<string, string> palette,
         IDictionary<string, IHighlightingDefinition> definitions)
     {
         var uri = new Uri($"avares://OvoUi.AvaloniaEdit/Assets/Highlighting/{name}.xshd");
         using var stream = AssetLoader.Open(uri);
-        using var reader = XmlReader.Create(stream);
+        var document = XDocument.Load(stream);
+
+        foreach (var color in document.Root?.Elements().Where(element => element.Name.LocalName == "Color") ?? [])
+        {
+            var nameAttribute = color.Attribute("name");
+            if (nameAttribute is not null && palette.TryGetValue(nameAttribute.Value, out var foreground))
+                color.SetAttributeValue("foreground", foreground);
+        }
+
+        using var reader = document.CreateReader();
         var definition = HighlightingLoader.Load(reader, HighlightingManager.Instance);
 
         definitions[name] = definition;

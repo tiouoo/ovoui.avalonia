@@ -72,8 +72,8 @@
             </MenuFlyout>
 
             <ControlTheme TargetType="controls:CodeBlock" x:Key="{x:Type controls:CodeBlock}">
-                <Setter Property="Background" Value="{DynamicResource PanelBackgroundBrush}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+                <Setter Property="Background" Value="{DynamicResource OvoCodeEditorBackground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource OvoCodeBorderBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
                 <Setter Property="MinHeight" Value="78" />
@@ -181,17 +181,17 @@
 
     <Style Selector="edit|TextEditor">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource OvoCodeForeground}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoCodeFontFamily}" />
         <Setter Property="FontSize" Value="13" />
-        <Setter Property="LineNumbersForeground" Value="{DynamicResource DisabledForegroundBrush}" />
+        <Setter Property="LineNumbersForeground" Value="{DynamicResource OvoCodeLineNumberForeground}" />
         <Setter Property="Padding" Value="12,10" />
     </Style>
 
     <Style Selector="editing|TextArea">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource TextSelectionBrush}" />
-        <Setter Property="SelectionForeground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource TextAreaSelectionBrush}" />
+        <Setter Property="SelectionForeground" Value="{DynamicResource OvoCodeForeground}" />
         <Setter Property="SelectionCornerRadius" Value="2" />
         <Setter Property="RightClickMovesCaret" Value="True" />
     </Style>
