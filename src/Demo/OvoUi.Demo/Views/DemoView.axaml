@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:OvoUi.Demo.Models"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:showcase="using:OvoUi.AvaloniaEdit.Showcase.Controls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel>
         <ovo:NavMenu
@@ -38,6 +39,12 @@
                 </DataTemplate>
             </ovo:NavMenu.ItemTemplate>
         </ovo:NavMenu>
-        <ContentControl Content="{Binding SelectedPage.Content}" />
+        <TransitioningContentControl
+            Content="{Binding SelectedPage.Content}"
+            IsTransitionReversed="{Binding IsTransitionReversed}">
+            <TransitioningContentControl.PageTransition>
+                <showcase:SlideFadePageTransition />
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
     </DockPanel>
 </UserControl>
