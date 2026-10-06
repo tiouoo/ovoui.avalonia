@@ -76,7 +76,7 @@
                 <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
                 <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-                <Setter Property="MinHeight" Value="160" />
+                <Setter Property="MinHeight" Value="78" />
                 <Setter Property="CopiedText" Value="{DynamicResource Lang.Copied}" />
                 <Setter Property="CopyToolTip" Value="{DynamicResource Lang.Copy}" />
                 <Setter Property="Template">
@@ -88,71 +88,73 @@
                             ClipToBounds="True"
                             CornerRadius="{TemplateBinding CornerRadius}">
                             <Grid RowDefinitions="Auto,1,*">
-                                <Grid
-                                    Background="{DynamicResource OvoCodeHeaderBackground}"
-                                    ColumnDefinitions="*,Auto"
-                                    MinHeight="36">
-                                    <ContentPresenter
-                                        Content="{Binding EffectiveHeader, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Margin="14,8"
-                                        VerticalAlignment="Center">
-                                        <ContentPresenter.DataTemplates>
-                                            <DataTemplate DataType="x:String">
-                                                <Panel>
-                                                    <SelectableTextBlock
-                                                        FontWeight="{DynamicResource OvoFontWeight}"
-                                                        Foreground="{DynamicResource ForegroundBrush}"
-                                                        IsVisible="{Binding $parent[controls:CodeBlock].IsHeaderSelectable}"
-                                                        Text="{Binding}" />
-                                                    <TextBlock
-                                                        FontWeight="{DynamicResource OvoFontWeight}"
-                                                        Foreground="{DynamicResource ForegroundBrush}"
-                                                        IsVisible="{Binding $parent[controls:CodeBlock].IsHeaderSelectable, Converter={x:Static BoolConverters.Not}}"
-                                                        Text="{Binding}" />
-                                                </Panel>
-                                            </DataTemplate>
-                                        </ContentPresenter.DataTemplates>
-                                    </ContentPresenter>
+                                <Border ClipToBounds="True" CornerRadius="9,9,0,0">
+                                    <Grid
+                                        Background="{DynamicResource OvoCodeHeaderBackground}"
+                                        ColumnDefinitions="*,Auto"
+                                        MinHeight="36">
+                                        <ContentPresenter
+                                            Content="{Binding EffectiveHeader, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Margin="14,8"
+                                            VerticalAlignment="Center">
+                                            <ContentPresenter.DataTemplates>
+                                                <DataTemplate DataType="x:String">
+                                                    <Panel>
+                                                        <SelectableTextBlock
+                                                            FontWeight="{DynamicResource OvoFontWeight}"
+                                                            Foreground="{DynamicResource ForegroundBrush}"
+                                                            IsVisible="{Binding $parent[controls:CodeBlock].IsHeaderSelectable}"
+                                                            Text="{Binding}" />
+                                                        <TextBlock
+                                                            FontWeight="{DynamicResource OvoFontWeight}"
+                                                            Foreground="{DynamicResource ForegroundBrush}"
+                                                            IsVisible="{Binding $parent[controls:CodeBlock].IsHeaderSelectable, Converter={x:Static BoolConverters.Not}}"
+                                                            Text="{Binding}" />
+                                                    </Panel>
+                                                </DataTemplate>
+                                            </ContentPresenter.DataTemplates>
+                                        </ContentPresenter>
 
-                                    <Button
-                                        Grid.Column="1"
-                                        IsVisible="{TemplateBinding ShowCopyButton}"
-                                        Name="PART_CopyButton"
-                                        Padding="1"
-                                        Theme="{StaticResource BasicButtonTheme}"
-                                        ToolTip.Tip="{TemplateBinding CopyToolTip}">
-                                        <Grid>
-                                            <PathIcon
-                                                Data="F1 M512,512z M0,0z M288,464L64,464C55.2,464,48,456.8,48,448L48,224C48,215.2,55.2,208,64,208L112,208 112,160 64,160C28.7,160,0,188.7,0,224L0,448C0,483.3,28.7,512,64,512L288,512C323.3,512,352,483.3,352,448L352,400 304,400 304,448C304,456.8,296.8,464,288,464z M224,304C215.2,304,208,296.8,208,288L208,64C208,55.2,215.2,48,224,48L448,48C456.8,48,464,55.2,464,64L464,288C464,296.8,456.8,304,448,304L224,304z M160,288C160,323.3,188.7,352,224,352L448,352C483.3,352,512,323.3,512,288L512,64C512,28.7,483.3,0,448,0L224,0C188.7,0,160,28.7,160,64L160,288z"
-                                                HorizontalAlignment="Right"
-                                                Margin="0,0,12,0"
-                                                Name="PART_CopyIcon"
-                                                Width="14">
-                                                <PathIcon.Transitions>
-                                                    <Transitions>
-                                                        <DoubleTransition Duration="0:0:0.16" Property="Opacity" />
-                                                    </Transitions>
-                                                </PathIcon.Transitions>
-                                            </PathIcon>
-                                            <TextBlock
-                                                FontSize="13"
-                                                Foreground="{DynamicResource SuccessColor}"
-                                                HorizontalAlignment="Center"
-                                                Margin="0,0,12,0"
-                                                Name="PART_CopiedText"
-                                                Opacity="0"
-                                                Text="{Binding $parent[controls:CodeBlock].CopiedText}"
-                                                TextTrimming="CharacterEllipsis"
-                                                VerticalAlignment="Center">
-                                                <TextBlock.Transitions>
-                                                    <Transitions>
-                                                        <DoubleTransition Duration="0:0:0.16" Property="Opacity" />
-                                                    </Transitions>
-                                                </TextBlock.Transitions>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Button>
-                                </Grid>
+                                        <Button
+                                            Grid.Column="1"
+                                            IsVisible="{TemplateBinding ShowCopyButton}"
+                                            Name="PART_CopyButton"
+                                            Padding="1"
+                                            Theme="{StaticResource BasicButtonTheme}"
+                                            ToolTip.Tip="{TemplateBinding CopyToolTip}">
+                                            <Grid>
+                                                <PathIcon
+                                                    Data="F1 M512,512z M0,0z M288,464L64,464C55.2,464,48,456.8,48,448L48,224C48,215.2,55.2,208,64,208L112,208 112,160 64,160C28.7,160,0,188.7,0,224L0,448C0,483.3,28.7,512,64,512L288,512C323.3,512,352,483.3,352,448L352,400 304,400 304,448C304,456.8,296.8,464,288,464z M224,304C215.2,304,208,296.8,208,288L208,64C208,55.2,215.2,48,224,48L448,48C456.8,48,464,55.2,464,64L464,288C464,296.8,456.8,304,448,304L224,304z M160,288C160,323.3,188.7,352,224,352L448,352C483.3,352,512,323.3,512,288L512,64C512,28.7,483.3,0,448,0L224,0C188.7,0,160,28.7,160,64L160,288z"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="0,0,12,0"
+                                                    Name="PART_CopyIcon"
+                                                    Width="14">
+                                                    <PathIcon.Transitions>
+                                                        <Transitions>
+                                                            <DoubleTransition Duration="0:0:0.16" Property="Opacity" />
+                                                        </Transitions>
+                                                    </PathIcon.Transitions>
+                                                </PathIcon>
+                                                <TextBlock
+                                                    FontSize="13"
+                                                    Foreground="{DynamicResource SuccessColor}"
+                                                    HorizontalAlignment="Center"
+                                                    Margin="0,0,12,0"
+                                                    Name="PART_CopiedText"
+                                                    Opacity="0"
+                                                    Text="{Binding $parent[controls:CodeBlock].CopiedText}"
+                                                    TextTrimming="CharacterEllipsis"
+                                                    VerticalAlignment="Center">
+                                                    <TextBlock.Transitions>
+                                                        <Transitions>
+                                                            <DoubleTransition Duration="0:0:0.16" Property="Opacity" />
+                                                        </Transitions>
+                                                    </TextBlock.Transitions>
+                                                </TextBlock>
+                                            </Grid>
+                                        </Button>
+                                    </Grid>
+                                </Border>
 
                                 <Border Background="{TemplateBinding BorderBrush}" Grid.Row="1" />
 

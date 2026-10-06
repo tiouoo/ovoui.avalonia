@@ -14,6 +14,7 @@
     </Application.Resources>
     <Application.Styles>
         <ovo:OvoUiTheme />
+        <ovo:OvoAvaloniaEditTheme />
         <ovo:OvoUiFont />
     </Application.Styles>
 </Application>

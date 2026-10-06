@@ -92,7 +92,7 @@
                 <Border
                     Classes="interactive"
                     PointerPressed="OpenLink"
-                    Tag="https://ovoui.2y.nz"
+                    Tag="https://ovoui.y6.nz"
                     Theme="{StaticResource CardBorderTheme}">
                     <DockPanel>
                         <PathIcon
@@ -124,6 +124,20 @@
                 <StackPanel Margin="4,0" Spacing="14">
                     <TextBlock>Getting Started with OvoUi.Avalonia</TextBlock>
                     <TextBlock>1. Clone the repository</TextBlock>
+                    <ovo:CodeBlock
+                        Language="bash"
+                        Text="git clone https://github.com/tiouoo/ovoui.avalonia.git"
+                        ovo:AvaloniaEditor.ShowLineNumbers="False" />
+                    <TextBlock>2. Reference the library in project</TextBlock>
+                    <ovo:CodeBlock
+                        Language="axaml"
+                        Text="&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.Fonts.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.AvaloniaEdit.csproj&quot; /&gt;"
+                        ovo:AvaloniaEditor.ShowLineNumbers="False" />
+                    <TextBlock>3. Add the theme to app.axaml</TextBlock>
+                    <ovo:CodeBlock
+                        Language="axaml"
+                        Text="&lt;Application&#xA;     x:Class=&quot;YourApp.App&quot;&#xA;     xmlns=&quot;https://github.com/avaloniaui&quot;&#xA;     xmlns:o=&quot;https://github.com/tiouoo/ovoui.avalonia&quot;&#xA;     xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;&#xA;     &lt;Application.Styles&gt;&#xA;         &lt;o:OvoUiTheme /&gt;&#xA;         &lt;o:OvoAvaloniaEditTheme /&gt;&#xA;         &lt;o:OvoUiFont /&gt;&#xA;     &lt;/Application.Styles&gt;&#xA;&lt;/Application&gt; "
+                        ovo:AvaloniaEditor.ShowLineNumbers="False" />
                 </StackPanel>
             </Border>
         </StackPanel>
