@@ -140,19 +140,6 @@
                         ovo:AvaloniaEditor.ShowLineNumbers="False" />
                 </StackPanel>
             </Border>
-            <TextBlock Classes="h5">Control Showcase</TextBlock>
-            <ovo:ControlShowcase
-                CodeHeight="240"
-                SourceKey="overview-control-showcase">
-                <StackPanel
-                    HorizontalAlignment="Center"
-                    Orientation="Horizontal"
-                    Spacing="12">
-                    <Button Content="Primary action" />
-                    <Button Classes="Basic" Content="Secondary" />
-                    <ToggleSwitch Content="Enabled" IsChecked="True" />
-                </StackPanel>
-            </ovo:ControlShowcase>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
