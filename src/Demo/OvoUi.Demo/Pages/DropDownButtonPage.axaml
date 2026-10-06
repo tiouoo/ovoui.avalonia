@@ -13,8 +13,8 @@
             Classes="h2"
             DockPanel.Dock="Top"
             Margin="0,0,0,20"
-            Text="Dropdown Button" />
-<ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            Text="DropDownButton" />
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
                 <controls:ControlShowcase Header="Menu flyout" SourceKey="dropdown-button-menu">
                     <WrapPanel
@@ -62,22 +62,30 @@
                         Margin="10,0">
                         <DropDownButton Content="Basic" Theme="{StaticResource BasicDropDownButtonTheme}">
                             <DropDownButton.Flyout>
-                                <MenuFlyout><MenuItem Header="Basic action" /></MenuFlyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Basic action" />
+                                </MenuFlyout>
                             </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Content="Border" Theme="{StaticResource BorderDropDownButtonTheme}">
                             <DropDownButton.Flyout>
-                                <MenuFlyout><MenuItem Header="Border action" /></MenuFlyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Border action" />
+                                </MenuFlyout>
                             </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Content="Solid" Theme="{StaticResource SolidDropDownButtonTheme}">
                             <DropDownButton.Flyout>
-                                <MenuFlyout><MenuItem Header="Solid action" /></MenuFlyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Solid action" />
+                                </MenuFlyout>
                             </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Content="Borderless" Theme="{StaticResource BorderlessDropDownButtonTheme}">
                             <DropDownButton.Flyout>
-                                <MenuFlyout><MenuItem Header="Borderless action" /></MenuFlyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Borderless action" />
+                                </MenuFlyout>
                             </DropDownButton.Flyout>
                         </DropDownButton>
                     </WrapPanel>
@@ -89,16 +97,32 @@
                         LineSpacing="12"
                         Margin="10,0">
                         <DropDownButton Classes="accent" Content="Accent">
-                            <DropDownButton.Flyout><MenuFlyout><MenuItem Header="Accent action" /></MenuFlyout></DropDownButton.Flyout>
+                            <DropDownButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Accent action" />
+                                </MenuFlyout>
+                            </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Classes="info" Content="Info">
-                            <DropDownButton.Flyout><MenuFlyout><MenuItem Header="View details" /></MenuFlyout></DropDownButton.Flyout>
+                            <DropDownButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="View details" />
+                                </MenuFlyout>
+                            </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Classes="success" Content="Success">
-                            <DropDownButton.Flyout><MenuFlyout><MenuItem Header="Publish" /></MenuFlyout></DropDownButton.Flyout>
+                            <DropDownButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Publish" />
+                                </MenuFlyout>
+                            </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Classes="warn" Content="Warning">
-                            <DropDownButton.Flyout><MenuFlyout><MenuItem Header="Review changes" /></MenuFlyout></DropDownButton.Flyout>
+                            <DropDownButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Review changes" />
+                                </MenuFlyout>
+                            </DropDownButton.Flyout>
                         </DropDownButton>
                         <DropDownButton Classes="danger" Content="Danger">
                             <DropDownButton.Flyout>

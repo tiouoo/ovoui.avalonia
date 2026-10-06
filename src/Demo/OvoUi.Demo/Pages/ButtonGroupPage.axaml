@@ -15,7 +15,7 @@
             Classes="h2"
             DockPanel.Dock="Top"
             Margin="0,0,0,20"
-            Text="Button Group" />
+            Text="ButtonGroup" />
 
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
@@ -54,7 +54,7 @@
                     </StackPanel>
                 </controls:ControlShowcase>
 
-</StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </DockPanel>
 </UserControl>

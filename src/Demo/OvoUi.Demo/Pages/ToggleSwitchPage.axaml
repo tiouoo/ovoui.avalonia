@@ -13,7 +13,7 @@
             Classes="h2"
             DockPanel.Dock="Top"
             Margin="0,0,0,20"
-            Text="Toggle Switch" />
+            Text="ToggleSwitch" />
 
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
@@ -55,7 +55,10 @@
                                 <ToggleSwitch Theme="{StaticResource SimpleToggleSwitch}" />
                                 <ToggleSwitch IsChecked="True" Theme="{StaticResource SimpleToggleSwitch}" />
                                 <ToggleSwitch IsEnabled="False" Theme="{StaticResource SimpleToggleSwitch}" />
-                                <ToggleSwitch IsChecked="True" IsEnabled="False" Theme="{StaticResource SimpleToggleSwitch}" />
+                                <ToggleSwitch
+                                    IsChecked="True"
+                                    IsEnabled="False"
+                                    Theme="{StaticResource SimpleToggleSwitch}" />
                             </WrapPanel>
                         </StackPanel>
 
@@ -80,7 +83,7 @@
                         </StackPanel>
                     </StackPanel>
                 </controls:ControlShowcase>
-</StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </DockPanel>
 </UserControl>

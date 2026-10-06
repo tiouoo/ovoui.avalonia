@@ -13,17 +13,23 @@
             Classes="h2"
             DockPanel.Dock="Top"
             Margin="0,0,0,20"
-            Text="Radio Button" />
+            Text="RadioButton" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
                 <controls:ControlShowcase Header="Standard states" SourceKey="radio-button-standard-states">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="24" LineSpacing="12">
                             <RadioButton Content="Unchecked" GroupName="StandardEnabled" />
-                            <RadioButton Content="Checked" GroupName="StandardEnabled" IsChecked="True" />
+                            <RadioButton
+                                Content="Checked"
+                                GroupName="StandardEnabled"
+                                IsChecked="True" />
                         </WrapPanel>
                         <WrapPanel ItemSpacing="24" LineSpacing="12">
-                            <RadioButton Content="Unchecked, disabled" GroupName="StandardDisabled" IsEnabled="False" />
+                            <RadioButton
+                                Content="Unchecked, disabled"
+                                GroupName="StandardDisabled"
+                                IsEnabled="False" />
                             <RadioButton
                                 Content="Checked, disabled"
                                 GroupName="StandardDisabled"
@@ -34,17 +40,26 @@
                 </controls:ControlShowcase>
 
                 <controls:ControlShowcase Header="Selection groups" SourceKey="radio-button-groups">
-                    <WrapPanel ItemSpacing="48" LineSpacing="20" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="48"
+                        LineSpacing="20"
+                        Margin="10,0">
                         <StackPanel Spacing="10">
                             <TextBlock FontWeight="SemiBold" Text="Theme" />
-                            <RadioButton Content="System" GroupName="AppTheme" IsChecked="True" />
+                            <RadioButton
+                                Content="System"
+                                GroupName="AppTheme"
+                                IsChecked="True" />
                             <RadioButton Content="Light" GroupName="AppTheme" />
                             <RadioButton Content="Dark" GroupName="AppTheme" />
                         </StackPanel>
                         <StackPanel Spacing="10">
                             <TextBlock FontWeight="SemiBold" Text="Density" />
                             <RadioButton Content="Compact" GroupName="Density" />
-                            <RadioButton Content="Comfortable" GroupName="Density" IsChecked="True" />
+                            <RadioButton
+                                Content="Comfortable"
+                                GroupName="Density"
+                                IsChecked="True" />
                             <RadioButton Content="Spacious" GroupName="Density" />
                         </StackPanel>
                     </WrapPanel>
@@ -55,31 +70,71 @@
                         <WrapPanel ItemSpacing="16" LineSpacing="12">
                             <Border Theme="{StaticResource RadioButtonGroupBorder}">
                                 <StackPanel Orientation="Horizontal">
-                                    <RadioButton Classes="small" Content="Day" GroupName="SmallPeriod" Theme="{StaticResource ButtonRadioButtonTheme}" />
-                                    <RadioButton Classes="small" Content="Week" GroupName="SmallPeriod" IsChecked="True" Theme="{StaticResource ButtonRadioButtonTheme}" />
-                                    <RadioButton Classes="small" Content="Month" GroupName="SmallPeriod" Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                    <RadioButton
+                                        Classes="small"
+                                        Content="Day"
+                                        GroupName="SmallPeriod"
+                                        Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                    <RadioButton
+                                        Classes="small"
+                                        Content="Week"
+                                        GroupName="SmallPeriod"
+                                        IsChecked="True"
+                                        Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                    <RadioButton
+                                        Classes="small"
+                                        Content="Month"
+                                        GroupName="SmallPeriod"
+                                        Theme="{StaticResource ButtonRadioButtonTheme}" />
                                 </StackPanel>
                             </Border>
                             <Border Theme="{StaticResource RadioButtonGroupBorder}">
                                 <StackPanel Orientation="Horizontal">
-                                    <RadioButton Content="List" GroupName="ViewMode" IsChecked="True" Theme="{StaticResource ButtonRadioButtonTheme}" />
-                                    <RadioButton Content="Grid" GroupName="ViewMode" Theme="{StaticResource ButtonRadioButtonTheme}" />
-                                    <RadioButton Content="Board" GroupName="ViewMode" Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                    <RadioButton
+                                        Content="List"
+                                        GroupName="ViewMode"
+                                        IsChecked="True"
+                                        Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                    <RadioButton
+                                        Content="Grid"
+                                        GroupName="ViewMode"
+                                        Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                    <RadioButton
+                                        Content="Board"
+                                        GroupName="ViewMode"
+                                        Theme="{StaticResource ButtonRadioButtonTheme}" />
                                 </StackPanel>
                             </Border>
                         </WrapPanel>
                         <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton Classes="large" Content="Monthly" GroupName="Billing" Theme="{StaticResource ButtonRadioButtonTheme}" />
-                                <RadioButton Classes="large" Content="Yearly" GroupName="Billing" IsChecked="True" Theme="{StaticResource ButtonRadioButtonTheme}" />
-                                <RadioButton Classes="large" Content="Lifetime" GroupName="Billing" IsEnabled="False" Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                <RadioButton
+                                    Classes="large"
+                                    Content="Monthly"
+                                    GroupName="Billing"
+                                    Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                <RadioButton
+                                    Classes="large"
+                                    Content="Yearly"
+                                    GroupName="Billing"
+                                    IsChecked="True"
+                                    Theme="{StaticResource ButtonRadioButtonTheme}" />
+                                <RadioButton
+                                    Classes="large"
+                                    Content="Lifetime"
+                                    GroupName="Billing"
+                                    IsEnabled="False"
+                                    Theme="{StaticResource ButtonRadioButtonTheme}" />
                             </StackPanel>
                         </Border>
                     </StackPanel>
                 </controls:ControlShowcase>
 
                 <controls:ControlShowcase Header="CardRadioButtonTheme" SourceKey="radio-button-card-theme">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <RadioButton
                             Content="Starter&#xA;For personal projects"
                             GroupName="PlanCard"
@@ -101,7 +156,10 @@
                 </controls:ControlShowcase>
 
                 <controls:ControlShowcase Header="PureCardRadioButtonTheme" SourceKey="radio-button-pure-card-theme">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <RadioButton
                             Content="Compact"
                             GroupName="LayoutCard"

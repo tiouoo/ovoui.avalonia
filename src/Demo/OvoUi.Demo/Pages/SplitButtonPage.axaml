@@ -13,11 +13,14 @@
             Classes="h2"
             DockPanel.Dock="Top"
             Margin="0,0,0,20"
-            Text="Split Button" />
-<ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
+            Text="SplitButton" />
+        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
                 <controls:ControlShowcase Header="SplitButton" SourceKey="split-button-basic">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <SplitButton Content="Save">
                             <SplitButton.Flyout>
                                 <MenuFlyout Placement="BottomEdgeAlignedLeft">
@@ -38,39 +41,75 @@
                         </SplitButton>
                         <SplitButton Content="Unavailable" IsEnabled="False">
                             <SplitButton.Flyout>
-                                <MenuFlyout><MenuItem Header="No available actions" /></MenuFlyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="No available actions" />
+                                </MenuFlyout>
                             </SplitButton.Flyout>
                         </SplitButton>
                     </WrapPanel>
                 </controls:ControlShowcase>
 
                 <controls:ControlShowcase Header="Themes" SourceKey="split-button-themes">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <SplitButton Content="Basic" Theme="{StaticResource BasicSplitButtonTheme}">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="Basic option" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Basic option" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                         <SplitButton Content="Border" Theme="{StaticResource BorderSplitButtonTheme}">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="Border option" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Border option" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                         <SplitButton Content="Solid" Theme="{StaticResource SolidSplitButtonTheme}">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="Solid option" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Solid option" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                     </WrapPanel>
                 </controls:ControlShowcase>
 
                 <controls:ControlShowcase Header="Semantic colors" SourceKey="split-button-colors">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <SplitButton Classes="accent" Content="Accent">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="Create item" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Create item" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                         <SplitButton Classes="info" Content="Info">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="View details" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="View details" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                         <SplitButton Classes="success" Content="Success">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="Publish now" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Publish now" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                         <SplitButton Classes="warn" Content="Warning">
-                            <SplitButton.Flyout><MenuFlyout><MenuItem Header="Review changes" /></MenuFlyout></SplitButton.Flyout>
+                            <SplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Review changes" />
+                                </MenuFlyout>
+                            </SplitButton.Flyout>
                         </SplitButton>
                         <SplitButton Classes="danger" Content="Danger">
                             <SplitButton.Flyout>
@@ -84,7 +123,10 @@
                 </controls:ControlShowcase>
 
                 <controls:ControlShowcase Header="ToggleSplitButton" SourceKey="toggle-split-button">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <ToggleSplitButton Content="Auto save">
                             <ToggleSplitButton.Flyout>
                                 <MenuFlyout Placement="BottomEdgeAlignedLeft">
@@ -98,17 +140,32 @@
                             Content="Sync"
                             IsChecked="True"
                             Theme="{StaticResource BorderSplitButtonTheme}">
-                            <ToggleSplitButton.Flyout><MenuFlyout><MenuItem Header="Sync settings" /></MenuFlyout></ToggleSplitButton.Flyout>
+                            <ToggleSplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Sync settings" />
+                                </MenuFlyout>
+                            </ToggleSplitButton.Flyout>
                         </ToggleSplitButton>
                         <ToggleSplitButton
                             Classes="success"
                             Content="Published"
                             IsChecked="True"
                             Theme="{StaticResource SolidSplitButtonTheme}">
-                            <ToggleSplitButton.Flyout><MenuFlyout><MenuItem Header="Publishing options" /></MenuFlyout></ToggleSplitButton.Flyout>
+                            <ToggleSplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="Publishing options" />
+                                </MenuFlyout>
+                            </ToggleSplitButton.Flyout>
                         </ToggleSplitButton>
-                        <ToggleSplitButton Content="Unavailable" IsChecked="True" IsEnabled="False">
-                            <ToggleSplitButton.Flyout><MenuFlyout><MenuItem Header="No available actions" /></MenuFlyout></ToggleSplitButton.Flyout>
+                        <ToggleSplitButton
+                            Content="Unavailable"
+                            IsChecked="True"
+                            IsEnabled="False">
+                            <ToggleSplitButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuItem Header="No available actions" />
+                                </MenuFlyout>
+                            </ToggleSplitButton.Flyout>
                         </ToggleSplitButton>
                     </WrapPanel>
                 </controls:ControlShowcase>
