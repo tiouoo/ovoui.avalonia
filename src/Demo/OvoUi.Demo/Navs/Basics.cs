@@ -7,18 +7,18 @@ public static class Basics
 {
     public static readonly List<Page> BasicsList =
     [
-        new() { Title = "AdornerLayer", Content = new BlankPage() },
-        new() { Title = "Border", Content = new BlankPage() },
-        new() { Title = "ContentPage", Content = new BlankPage() },
-        new() { Title = "EmbeddableControlRoot", Content = new BlankPage() },
-        new() { Title = "HeaderedContentControl", Content = new BlankPage() },
-        new() { Title = "ItemsControl", Content = new BlankPage() },
-        new() { Title = "Label", Content = new BlankPage() },
-        new() { Title = "PathIcon", Content = new BlankPage() },
-        new() { Title = "Popup", Content = new BlankPage() },
-        new() { Title = "SelectableTextBlock", Content = new BlankPage() },
-        new() { Title = "Separator", Content = new BlankPage() },
-        new() { Title = "TextBlock", Content = new BlankPage() },
-        new() { Title = "TransitioningContentControl", Content = new BlankPage() }
+        new() { Title = "AdornerLayer" },
+        new() { Title = "Border" },
+        new() { Title = "ContentPage" },
+        new() { Title = "EmbeddableControlRoot" },
+        new() { Title = "HeaderedContentControl" },
+        new() { Title = "ItemsControl" },
+        new() { Title = "Label" },
+        new() { Title = "PathIcon" },
+        new() { Title = "Popup" },
+        new() { Title = "SelectableTextBlock" },
+        new() { Title = "Separator" },
+        new() { Title = "TextBlock" },
+        new() { Title = "TransitioningContentControl" }
     ];
 }

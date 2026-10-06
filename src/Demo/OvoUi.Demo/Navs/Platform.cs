@@ -7,10 +7,10 @@ public static class Platform
 {
     public static readonly List<Page> PlatformList =
     [
-        new() { Title = "MacOsWindowHandler", Content = new BlankPage() },
-        new() { Title = "OvoTitleBar", Content = new BlankPage() },
-        new() { Title = "OvoView", Content = new BlankPage() },
-        new() { Title = "OvoWindow", Content = new BlankPage() },
-        new() { Title = "PopupRenderContent", Content = new BlankPage() }
+        new() { Title = "MacOsWindowHandler" },
+        new() { Title = "OvoTitleBar" },
+        new() { Title = "OvoView" },
+        new() { Title = "OvoWindow" },
+        new() { Title = "PopupRenderContent" }
     ];
 }

@@ -7,20 +7,20 @@ public static class Buttons
 {
     public static readonly List<Page> ButtonsList =
     [
-        new() { Title = "Button", Content = new BlankPage() },
-        new() { Title = "ButtonGroup", Content = new BlankPage() },
-        new() { Title = "DropDownButton", Content = new BlankPage() },
-        new() { Title = "HyperlinkButton", Content = new BlankPage() },
-        new() { Title = "IconButton", Content = new BlankPage() },
-        new() { Title = "IconDropDownButton", Content = new BlankPage() },
-        new() { Title = "IconRepeatButton", Content = new BlankPage() },
-        new() { Title = "IconSplitButton", Content = new BlankPage() },
-        new() { Title = "IconToggleButton", Content = new BlankPage() },
-        new() { Title = "RadioButton", Content = new BlankPage() },
-        new() { Title = "RepeatButton", Content = new BlankPage() },
-        new() { Title = "ScrollToButton", Content = new BlankPage() },
-        new() { Title = "SplitButton", Content = new BlankPage() },
-        new() { Title = "ToggleButton", Content = new BlankPage() },
-        new() { Title = "ToggleSwitch", Content = new BlankPage() }
+        new() { Title = "Button" },
+        new() { Title = "ButtonGroup" },
+        new() { Title = "DropDownButton" },
+        new() { Title = "HyperlinkButton" },
+        new() { Title = "IconButton" },
+        new() { Title = "IconDropDownButton" },
+        new() { Title = "IconRepeatButton" },
+        new() { Title = "IconSplitButton" },
+        new() { Title = "IconToggleButton" },
+        new() { Title = "RadioButton" },
+        new() { Title = "RepeatButton" },
+        new() { Title = "ScrollToButton" },
+        new() { Title = "SplitButton" },
+        new() { Title = "ToggleButton" },
+        new() { Title = "ToggleSwitch" }
     ];
 }
