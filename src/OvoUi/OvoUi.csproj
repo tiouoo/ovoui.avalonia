@@ -7,7 +7,7 @@
         <Title>OvoUi</Title>
         <Description>An Avalonia UI control library and theme.</Description>
         <PackageTags>avalonia;ui;controls;theme</PackageTags>
-        <PackageIcon>..\..\assets\icon.ico</PackageIcon>
+        <PackageIcon>icon_256.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,6 +21,7 @@
         <AvaloniaResource Include="..\..\assets\iconfont.ttf">
             <Link>Assets\iconfont.ttf</Link>
         </AvaloniaResource>
+        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>

@@ -28,6 +28,10 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj" />
+        <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase\OvoUi.AvaloniaEdit.Showcase.csproj" />
+        <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false" />
         <ProjectReference Include="..\..\OvoUi\OvoUi.csproj"/>
         <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj"/>
     </ItemGroup>
@@ -42,6 +46,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Pages\OverviewPage.axaml" />
+        <AdditionalFiles Include="**\*.axaml" Exclude="bin\**;obj\**" />
     </ItemGroup>
 </Project>

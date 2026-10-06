@@ -131,15 +131,28 @@
                     <TextBlock>2. Reference the library in project</TextBlock>
                     <ovo:CodeBlock
                         Language="axaml"
-                        Text="&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.Fonts.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.AvaloniaEdit.csproj&quot; /&gt;"
+                        Text="&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi/OvoUi.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi.Fonts/OvoUi.Fonts.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj&quot; /&gt;&#xA;&lt;ProjectReference Include=&quot;ovoui.avalonia/src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj&quot; /&gt;"
                         ovo:AvaloniaEditor.ShowLineNumbers="False" />
                     <TextBlock>3. Add the theme to app.axaml</TextBlock>
                     <ovo:CodeBlock
                         Language="axaml"
-                        Text="&lt;Application&#xA;     x:Class=&quot;YourApp.App&quot;&#xA;     xmlns=&quot;https://github.com/avaloniaui&quot;&#xA;     xmlns:o=&quot;https://github.com/tiouoo/ovoui.avalonia&quot;&#xA;     xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;&#xA;     &lt;Application.Styles&gt;&#xA;         &lt;o:OvoUiTheme /&gt;&#xA;         &lt;o:OvoAvaloniaEditTheme /&gt;&#xA;         &lt;o:OvoUiFont /&gt;&#xA;     &lt;/Application.Styles&gt;&#xA;&lt;/Application&gt; "
+                        Text="&lt;Application&#xA;     x:Class=&quot;YourApp.App&quot;&#xA;     xmlns=&quot;https://github.com/avaloniaui&quot;&#xA;     xmlns:o=&quot;https://github.com/tiouoo/ovoui.avalonia&quot;&#xA;     xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;&#xA;     &lt;Application.Styles&gt;&#xA;         &lt;o:OvoUiTheme /&gt;&#xA;         &lt;o:OvoAvaloniaEditTheme /&gt;&#xA;         &lt;o:OvoShowcaseTheme /&gt;&#xA;         &lt;o:OvoUiFont /&gt;&#xA;     &lt;/Application.Styles&gt;&#xA;&lt;/Application&gt; "
                         ovo:AvaloniaEditor.ShowLineNumbers="False" />
                 </StackPanel>
             </Border>
+            <TextBlock Classes="h5">Control Showcase</TextBlock>
+            <ovo:ControlShowcase
+                CodeHeight="240"
+                SourceKey="overview-control-showcase">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="12">
+                    <Button Content="Primary action" />
+                    <Button Classes="Basic" Content="Secondary" />
+                    <ToggleSwitch Content="Enabled" IsChecked="True" />
+                </StackPanel>
+            </ovo:ControlShowcase>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

@@ -1,0 +1,49 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="clr-namespace:OvoUi.AvaloniaEdit.Showcase.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ControlTheme TargetType="controls:ControlShowcase" x:Key="{x:Type controls:ControlShowcase}">
+            <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <ControlTemplate TargetType="controls:ControlShowcase">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="True"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid RowDefinitions="Auto,*">
+                            <Border
+                                Background="{DynamicResource PanelBackgroundBrush}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0,0,0,1"
+                                Padding="8,7">
+                                <TabStrip
+                                    HorizontalAlignment="Left"
+                                    Name="PART_TabStrip"
+                                    Theme="{StaticResource ButtonTabStrip}">
+                                    <TabStripItem Content="{Binding $parent[controls:ControlShowcase].PreviewHeader}" />
+                                    <TabStripItem Content="{Binding $parent[controls:ControlShowcase].CodeHeader}" />
+                                </TabStrip>
+                            </Border>
+
+                            <TransitioningContentControl
+                                ClipToBounds="True"
+                                Grid.Row="1"
+                                HorizontalContentAlignment="Stretch"
+                                Name="PART_TransitionHost"
+                                PageTransition="{TemplateBinding PageTransition}"
+                                VerticalContentAlignment="Stretch" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </ControlTheme>
+    </Styles.Resources>
+</Styles>

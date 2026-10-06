@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Title>OvoUi.AvaloniaEdit.Showcase</Title>
+        <Description>Preview and highlighted AXAML source presentation for OvoUi controls.</Description>
+        <PackageTags>avalonia;avaloniaedit;control-showcase;source-generator;syntax-highlighting</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj" />
+        <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\bin\$(Configuration)\netstandard2.0\OvoUi.AvaloniaEdit.Showcase.Generator.dll"
+              Pack="true"
+              PackagePath="analyzers/dotnet/cs"
+              Visible="false" />
+        <None Include="OvoUi.AvaloniaEdit.Showcase.props"
+              Pack="true"
+              PackagePath="build\;buildTransitive\" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+</Project>
