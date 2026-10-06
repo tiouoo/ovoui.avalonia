@@ -16,11 +16,7 @@
             Text="TextBlock" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980">
-                <controls:ControlShowcase
-                    CodeHeight="300"
-                    Header="TextBlock"
-                    PreviewMinHeight="180"
-                    SourceKey="text-block-1">
+                <controls:ControlShowcase Header="TextBlock" SourceKey="text-block-1">
                     <StackPanel Margin="10,0" Spacing="18">
                         <TextBlock Text="Common Text" />
                         <TextBlock Classes="h1" Text="H1 Heading" />

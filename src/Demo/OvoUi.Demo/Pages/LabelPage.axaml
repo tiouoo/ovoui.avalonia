@@ -16,11 +16,7 @@
             Text="Label" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980">
-                <controls:ControlShowcase
-                    CodeHeight="250"
-                    Header="Label"
-                    PreviewMinHeight="180"
-                    SourceKey="label-1">
+                <controls:ControlShowcase Header="Label" SourceKey="label-1">
                     <StackPanel Margin="10,0" Spacing="18">
                         <Label Content="Common Text" />
                         <Label Classes="h1" Content="H1 Heading" />

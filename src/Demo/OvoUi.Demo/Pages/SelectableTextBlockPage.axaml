@@ -16,11 +16,7 @@
             Text="SelectableTextBlock" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase
-                    CodeHeight="250"
-                    Header="SelectableTextBlock"
-                    PreviewMinHeight="180"
-                    SourceKey="selectable-text-block-1">
+                <controls:ControlShowcase Header="SelectableTextBlock" SourceKey="selectable-text-block-1">
                     <StackPanel Margin="10,0" Spacing="18">
                         <SelectableTextBlock Text="Common selectable text" />
                         <SelectableTextBlock Classes="h1" Text="H1 Heading" />
