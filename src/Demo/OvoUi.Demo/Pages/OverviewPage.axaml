@@ -9,136 +9,123 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ScrollViewer
-        HorizontalScrollBarVisibility="Auto"
+        HorizontalScrollBarVisibility="Disabled"
         Margin="0,0,5,0"
         VerticalScrollBarVisibility="Auto">
         <StackPanel
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Stretch"
             Margin="24,28,19,28"
             MaxWidth="980"
             Spacing="24">
-            <StackPanel HorizontalAlignment="Center" Spacing="8">
+            <StackPanel
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0"
+                Spacing="8">
                 <StackPanel
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
-                    Spacing="14">
+                    Spacing="34">
                     <Image
-                        Height="68"
+                        Height="52"
                         Source="{StaticResource OvoUiIcon}"
-                        Width="68" />
+                        Width="52" />
                     <TextBlock
-                        FontSize="46"
+                        FontSize="36"
                         FontWeight="SemiBold"
+                        Margin="0,5,0,0"
                         Text="OvoUi.Avalonia"
                         VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel
                     HorizontalAlignment="Center"
+                    Margin="0,12,0,0"
                     Orientation="Horizontal"
-                    Spacing="18">
+                    Spacing="44">
                     <TextBlock
-                        FontSize="16"
+                        FontSize="18"
                         FontWeight="SemiBold"
                         Text="Modern" />
                     <TextBlock
-                        FontSize="16"
+                        FontSize="18"
                         FontWeight="SemiBold"
                         Text="Fluent" />
                     <TextBlock
-                        FontSize="16"
+                        FontSize="18"
                         FontWeight="SemiBold"
                         Text="Simple" />
                 </StackPanel>
             </StackPanel>
-
-            <Grid ColumnDefinitions="Auto,Auto,Auto" ColumnSpacing="16">
-                <StackPanel Spacing="14">
-                    <Button Content="Button" HorizontalAlignment="Stretch" />
-                    <ovo:IconButton Content="Icon Button" HorizontalAlignment="Stretch">
-                        <ovo:IconButton.Icon>
-                            <StreamGeometry>M12,2 A10,10 0 1 0 22,12 A10,10 0 0 0 12,2 M8,12 L11,15 L17,9</StreamGeometry>
-                        </ovo:IconButton.Icon>
-                    </ovo:IconButton>
-                    <DropDownButton Content="DropDownButton" HorizontalAlignment="Stretch" />
-                    <SplitButton Content="SplitButton" HorizontalAlignment="Stretch" />
-                    <ToggleButton
-                        Content="ToggleButton"
-                        HorizontalAlignment="Stretch"
-                        IsChecked="True" />
-                    <Button
-                        Classes="Danger"
-                        Content="Danger Button"
-                        HorizontalAlignment="Stretch" />
-                    <Button
-                        Click="OpenFile_OnClick"
-                        Content="Open File Chooser"
-                        HorizontalAlignment="Stretch" />
-                    <HyperlinkButton Content="HyperlinkButton" HorizontalAlignment="Stretch" />
-                    <CheckBox
-                        Content="CheckBox"
-                        IsChecked="True"
-                        IsThreeState="True" />
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Spacing="14">
-                    <Calendar HorizontalAlignment="Stretch" />
-                    <ColorView Color="#7C5CE7" />
-                </StackPanel>
-
-                <StackPanel Grid.Column="2" Spacing="14">
-                    <TextBox InnerLeftContent="https://" InnerRightContent=".com" />
-                    <CalendarDatePicker />
-                    <TimePicker UseSeconds="True" />
-                    <DatePicker />
-                    <NumericUpDown />
-                    <ComboBox PlaceholderText="Select a framework">
-                        <ComboBoxItem Content="OvoUi" />
-                        <ComboBoxItem Content="Avalonia" />
-                    </ComboBox>
-                    <DockPanel LastChildFill="True">
-                        <ToggleSwitch
-                            DockPanel.Dock="Right"
-                            IsChecked="False"
-                            x:Name="ToggleSwitch" />
-                        <Slider
-                            IsSnapToTickEnabled="True"
-                            Margin="0,0,14,0"
-                            Maximum="100"
-                            TickFrequency="1"
-                            Value="66"
-                            x:Name="Slider" />
+            <Separator />
+            <TextBlock Classes="h3">Welcome to Ovoui Gallery</TextBlock>
+            <TextBlock Classes="h5">Introduction</TextBlock>
+            <UniformGrid ColumnSpacing="20" Columns="2">
+                <Border
+                    Classes="interactive"
+                    PointerPressed="OpenLink"
+                    Tag="https://github.com/tiouoo/ovoui.avalonia"
+                    Theme="{StaticResource CardBorderTheme}">
+                    <DockPanel>
+                        <PathIcon
+                            Data="F1 M576,512z M0,0z M360.8,1.2C343.8,-3.7,326.1,6.2,321.2,23.2L193.2,471.2C188.3,488.2 198.2,505.9 215.2,510.8 232.2,515.7 249.9,505.8 254.8,488.8L382.8,40.8C387.7,23.8,377.8,6.10000000000001,360.8,1.20000000000001z M425.4,137.3C412.9,149.8,412.9,170.1,425.4,182.6L498.8,256 425.4,329.4C412.9,341.9 412.9,362.2 425.4,374.7 437.9,387.2 458.2,387.2 470.7,374.7L566.7,278.7C579.2,266.2,579.2,245.9,566.7,233.4L470.7,137.4C458.2,124.9,437.9,124.9,425.4,137.4z M150.7,137.3C138.2,124.8,117.9,124.8,105.4,137.3L9.39999999999999,233.3C-3.10000000000001,245.8,-3.10000000000001,266.1,9.39999999999999,278.6L105.4,374.6C117.9,387.1 138.2,387.1 150.7,374.6 163.2,362.1 163.2,341.8 150.7,329.3L77.3,256 150.6,182.6C163.1,170.1,163.1,149.8,150.6,137.3z"
+                            DockPanel.Dock="Left"
+                            Foreground="{DynamicResource SystemAccentColor}"
+                            Height="38"
+                            Margin="8,0,4,0"
+                            VerticalAlignment="Center"
+                            Width="38" />
+                        <DockPanel Margin="20,0,0,0" VerticalAlignment="Center">
+                            <TextBlock
+                                DockPanel.Dock="Top"
+                                FontSize="18"
+                                Margin="0,0,0,3">
+                                Source Code
+                            </TextBlock>
+                            <TextBlock
+                                Foreground="{DynamicResource InnerForegroundBrush}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="NoWrap">
+                                tiouoo/ovoui.avalonia
+                            </TextBlock>
+                        </DockPanel>
                     </DockPanel>
-                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14">
-                        <StackPanel Spacing="10" VerticalAlignment="Center">
-                            <ProgressBar
-                                IsIndeterminate="{Binding #ToggleSwitch.IsChecked}"
-                                ShowProgressText="True"
-                                Value="{Binding #Slider.Value}" />
-                            <ProgressBar
-                                Classes="Right"
-                                IsIndeterminate="{Binding #ToggleSwitch.IsChecked}"
-                                ShowProgressText="True"
-                                Value="{Binding #Slider.Value}" />
-                        </StackPanel>
-                        <ProgressBar
-                            Grid.Column="1"
-                            Height="72"
-                            IsIndeterminate="{Binding #ToggleSwitch.IsChecked}"
-                            ShowProgressText="True"
-                            Theme="{DynamicResource ProgressRing}"
-                            Value="{Binding #Slider.Value}"
-                            Width="72" />
-                    </Grid>
-                    <TabStrip>
-                        <TabStripItem Content="Tab 1" />
-                        <TabStripItem Content="Tab 2" />
-                        <TabStripItem Content="Tab 3" />
-                    </TabStrip>
-                    <Expander Header="Expander">
-                        <TextBlock Margin="10" Text="OvoUi content" />
-                    </Expander>
+                </Border>
+                <Border
+                    Classes="interactive"
+                    PointerPressed="OpenLink"
+                    Tag="https://ovoui.2y.nz"
+                    Theme="{StaticResource CardBorderTheme}">
+                    <DockPanel>
+                        <PathIcon
+                            Data="F1 M512,512z M0,0z M285.1,50.7C279.9,39.3 268.5,32 256,32 243.5,32 232.1,39.3 226.9,50.7L59.5,416 48,416C30.3,416 16,430.3 16,448 16,465.7 30.3,480 48,480L136,480C153.7,480 168,465.7 168,448 168,430.3 153.7,416 136,416L129.9,416 151.9,368 360.2,368 382.2,416 376.1,416C358.4,416 344.1,430.3 344.1,448 344.1,465.7 358.4,480 376.1,480L464.1,480C481.8,480 496.1,465.7 496.1,448 496.1,430.3 481.8,416 464.1,416L452.6,416 285.2,50.7z M330.8,304L181.2,304 256,140.8 330.8,304z"
+                            DockPanel.Dock="Left"
+                            Foreground="{DynamicResource SystemAccentColor}"
+                            Height="38"
+                            Margin="8,0,4,0"
+                            Width="38" />
+                        <DockPanel Margin="20,0,0,0" VerticalAlignment="Center">
+                            <TextBlock
+                                DockPanel.Dock="Top"
+                                FontSize="18"
+                                Margin="0,0,0,3">
+                                Document
+                            </TextBlock>
+                            <TextBlock
+                                Foreground="{DynamicResource InnerForegroundBrush}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="NoWrap">
+                                ovoui.2y.nz
+                            </TextBlock>
+                        </DockPanel>
+                    </DockPanel>
+                </Border>
+            </UniformGrid>
+            <TextBlock Classes="h5">Quick Start</TextBlock>
+            <Border Theme="{StaticResource CardBorderTheme}">
+                <StackPanel Margin="4,0" Spacing="14">
+                    <TextBlock>Getting Started with OvoUi.Avalonia</TextBlock>
+                    <TextBlock>1. Clone the repository</TextBlock>
                 </StackPanel>
-            </Grid>
+            </Border>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

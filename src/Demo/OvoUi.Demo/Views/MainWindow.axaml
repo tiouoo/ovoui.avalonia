@@ -1,8 +1,8 @@
 <ovo:OvoWindow
     Height="830"
     Icon="avares://OvoUi.Demo/Assets/icon.ico"
-    MinHeight="520"
-    MinWidth="680"
+    MinHeight="600"
+    MinWidth="940"
     Padding="0"
     Title="OvoUi.Demo"
     Width="1350"
