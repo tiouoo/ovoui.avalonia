@@ -1,11 +1,11 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:avaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
-    xmlns:controls="clr-namespace:OvoUi.AvaloniaEdit.Showcase.Controls"
     xmlns:edit="clr-namespace:OvoUi.AvaloniaEdit.Controls;assembly=OvoUi.AvaloniaEdit"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
-        <ControlTheme TargetType="controls:ControlShowcase" x:Key="{x:Type controls:ControlShowcase}">
+        <ControlTheme TargetType="o:ControlShowcase" x:Key="{x:Type o:ControlShowcase}">
             <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
@@ -15,7 +15,7 @@
             <Setter Property="PreviewHeader" Value="{DynamicResource Showcase.Preview}" />
             <Setter Property="CodeHeader" Value="{DynamicResource Showcase.Code}" />
             <Setter Property="Template">
-                <ControlTemplate TargetType="controls:ControlShowcase">
+                <ControlTemplate TargetType="o:ControlShowcase">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
@@ -31,9 +31,9 @@
                                     Padding="10,7,-1,7">
                                     <Grid ColumnDefinitions="*,Auto">
                                         <ContentPresenter
-                                            Content="{Binding $parent[controls:ControlShowcase].Header}"
+                                            Content="{Binding $parent[o:ControlShowcase].Header}"
                                             HorizontalAlignment="Left"
-                                            IsVisible="{Binding $parent[controls:ControlShowcase].Header, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                            IsVisible="{Binding $parent[o:ControlShowcase].Header, Converter={x:Static ObjectConverters.IsNotNull}}"
                                             Margin="8,0"
                                             Name="PART_HeaderPresenter"
                                             VerticalAlignment="Center" />
@@ -42,8 +42,8 @@
                                             HorizontalAlignment="Right"
                                             Name="PART_TabStrip"
                                             Theme="{StaticResource ButtonTabStrip}">
-                                            <TabStripItem Content="{Binding $parent[controls:ControlShowcase].PreviewHeader}" />
-                                            <TabStripItem Content="{Binding $parent[controls:ControlShowcase].CodeHeader}" />
+                                            <TabStripItem Content="{Binding $parent[o:ControlShowcase].PreviewHeader}" />
+                                            <TabStripItem Content="{Binding $parent[o:ControlShowcase].CodeHeader}" />
                                         </TabStrip>
                                     </Grid>
                                 </Border>
@@ -63,12 +63,12 @@
         </ControlTheme>
     </Styles.Resources>
 
-    <Style Selector="controls|ControlShowcase:header-right /template/ ContentPresenter#PART_HeaderPresenter">
+    <Style Selector="o|ControlShowcase:header-right /template/ ContentPresenter#PART_HeaderPresenter">
         <Setter Property="Grid.Column" Value="1" />
         <Setter Property="HorizontalAlignment" Value="Right" />
     </Style>
 
-    <Style Selector="controls|ControlShowcase:header-right /template/ TabStrip#PART_TabStrip">
+    <Style Selector="o|ControlShowcase:header-right /template/ TabStrip#PART_TabStrip">
         <Setter Property="Grid.Column" Value="0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>

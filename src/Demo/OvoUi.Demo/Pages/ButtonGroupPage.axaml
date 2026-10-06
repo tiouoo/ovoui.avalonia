@@ -5,7 +5,7 @@
     x:Class="OvoUi.Demo.Pages.ButtonGroupPage"
     x:DataType="pages:ButtonGroupPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"

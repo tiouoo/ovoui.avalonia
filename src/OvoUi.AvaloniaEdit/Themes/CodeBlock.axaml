@@ -1,8 +1,8 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:controls="clr-namespace:OvoUi.AvaloniaEdit.Controls"
     xmlns:edit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
     xmlns:editing="clr-namespace:AvaloniaEdit.Editing;assembly=AvaloniaEdit"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:rendering="clr-namespace:AvaloniaEdit.Rendering;assembly=AvaloniaEdit"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
@@ -10,7 +10,7 @@
         <ResourceDictionary>
             <MenuFlyout Placement="Bottom" x:Key="OvoTextEditorContextFlyout">
                 <MenuItem
-                    Command="{Binding $parent[controls:OvoTextEditor].SelectAllCommand}"
+                    Command="{Binding $parent[o:OvoTextEditor].SelectAllCommand}"
                     Header="{DynamicResource Lang.SelectAll}"
                     InputGesture="Ctrl+A">
                     <MenuItem.Icon>
@@ -18,16 +18,16 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem
-                    Command="{Binding $parent[controls:OvoTextEditor].CutCommand}"
+                    Command="{Binding $parent[o:OvoTextEditor].CutCommand}"
                     Header="{DynamicResource Lang.Cut}"
                     InputGesture="{x:Static TextBox.CutGesture}"
-                    IsVisible="{Binding $parent[controls:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
+                    IsVisible="{Binding $parent[o:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
                     <MenuItem.Icon>
                         <PathIcon Data="M256 192l-39.5-39.5c4.9-12.6 7.5-26.2 7.5-40.5C224 50.1 173.9 0 112 0S0 50.1 0 112s50.1 112 112 112c14.3 0 27.9-2.7 40.5-7.5L192 256l-39.5 39.5c-12.6-4.9-26.2-7.5-40.5-7.5C50.1 288 0 338.1 0 400s50.1 112 112 112s112-50.1 112-112c0-14.3-2.7-27.9-7.5-40.5L499.2 76.8c7.1-7.1 7.1-18.5 0-25.6c-28.3-28.3-74.1-28.3-102.4 0L256 192zm22.6 150.6L396.8 460.8c28.3 28.3 74.1 28.3 102.4 0c7.1-7.1 7.1-18.5 0-25.6L342.6 278.6l-64 64zM64 112a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm48 240a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" Width="15" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem
-                    Command="{Binding $parent[controls:OvoTextEditor].CopyCommand}"
+                    Command="{Binding $parent[o:OvoTextEditor].CopyCommand}"
                     Header="{DynamicResource Lang.Copy}"
                     InputGesture="{x:Static TextBox.CopyGesture}">
                     <MenuItem.Icon>
@@ -35,20 +35,20 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem
-                    Command="{Binding $parent[controls:OvoTextEditor].PasteCommand}"
+                    Command="{Binding $parent[o:OvoTextEditor].PasteCommand}"
                     Header="{DynamicResource Lang.Paste}"
                     InputGesture="{x:Static TextBox.PasteGesture}"
-                    IsVisible="{Binding $parent[controls:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
+                    IsVisible="{Binding $parent[o:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
                     <MenuItem.Icon>
                         <PathIcon Data="M160 0c-23.7 0-44.4 12.9-55.4 32L48 32C21.5 32 0 53.5 0 80L0 400c0 26.5 21.5 48 48 48l144 0 0-272c0-44.2 35.8-80 80-80l48 0 0-16c0-26.5-21.5-48-48-48l-56.6 0C204.4 12.9 183.7 0 160 0zM272 128c-26.5 0-48 21.5-48 48l0 272 0 16c0 26.5 21.5 48 48 48l192 0c26.5 0 48-21.5 48-48l0-220.1c0-12.7-5.1-24.9-14.1-33.9l-67.9-67.9c-9-9-21.2-14.1-33.9-14.1L320 128l-48 0zM160 40a24 24 0 1 1 0 48 24 24 0 1 1 0-48z" Width="15" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <Separator IsVisible="{Binding $parent[controls:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}" />
+                <Separator IsVisible="{Binding $parent[o:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}" />
                 <MenuItem
-                    Command="{Binding $parent[controls:OvoTextEditor].UndoCommand}"
+                    Command="{Binding $parent[o:OvoTextEditor].UndoCommand}"
                     Header="{DynamicResource Lang.Undo}"
                     InputGesture="Ctrl+Z"
-                    IsVisible="{Binding $parent[controls:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
+                    IsVisible="{Binding $parent[o:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
                     <MenuItem.Icon>
                         <PathIcon
                             Data="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"
@@ -57,10 +57,10 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem
-                    Command="{Binding $parent[controls:OvoTextEditor].RedoCommand}"
+                    Command="{Binding $parent[o:OvoTextEditor].RedoCommand}"
                     Header="{DynamicResource Lang.Redo}"
                     InputGesture="Ctrl+Y"
-                    IsVisible="{Binding $parent[controls:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
+                    IsVisible="{Binding $parent[o:OvoTextEditor].IsReadOnly, Converter={x:Static BoolConverters.Not}}">
                     <MenuItem.Icon>
                         <PathIcon
                             Data="M386.3 160L336 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l128 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 51.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0s-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3s163.8-62.5 226.3 0L386.3 160z"
@@ -71,7 +71,7 @@
                 </MenuItem>
             </MenuFlyout>
 
-            <ControlTheme TargetType="controls:CodeBlock" x:Key="{x:Type controls:CodeBlock}">
+            <ControlTheme TargetType="o:CodeBlock" x:Key="{x:Type o:CodeBlock}">
                 <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
                 <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
                 <Setter Property="BorderThickness" Value="1" />
@@ -81,7 +81,7 @@
                 <Setter Property="CopiedText" Value="{DynamicResource Lang.Copied}" />
                 <Setter Property="CopyToolTip" Value="{DynamicResource Lang.Copy}" />
                 <Setter Property="Template">
-                    <ControlTemplate TargetType="controls:CodeBlock">
+                    <ControlTemplate TargetType="o:CodeBlock">
                         <Border
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -104,12 +104,12 @@
                                                         <SelectableTextBlock
                                                             FontWeight="{DynamicResource OvoFontWeight}"
                                                             Foreground="{DynamicResource ForegroundBrush}"
-                                                            IsVisible="{Binding $parent[controls:CodeBlock].IsHeaderSelectable}"
+                                                            IsVisible="{Binding $parent[o:CodeBlock].IsHeaderSelectable}"
                                                             Text="{Binding}" />
                                                         <TextBlock
                                                             FontWeight="{DynamicResource OvoFontWeight}"
                                                             Foreground="{DynamicResource ForegroundBrush}"
-                                                            IsVisible="{Binding $parent[controls:CodeBlock].IsHeaderSelectable, Converter={x:Static BoolConverters.Not}}"
+                                                            IsVisible="{Binding $parent[o:CodeBlock].IsHeaderSelectable, Converter={x:Static BoolConverters.Not}}"
                                                             Text="{Binding}" />
                                                     </Panel>
                                                 </DataTemplate>
@@ -143,7 +143,7 @@
                                                     Margin="0,0,12,0"
                                                     Name="PART_CopiedText"
                                                     Opacity="0"
-                                                    Text="{Binding $parent[controls:CodeBlock].CopiedText}"
+                                                    Text="{Binding $parent[o:CodeBlock].CopiedText}"
                                                     TextTrimming="CharacterEllipsis"
                                                     VerticalAlignment="Center">
                                                     <TextBlock.Transitions>
@@ -162,7 +162,7 @@
                                     Grid.Row="1"
                                     Height="{TemplateBinding HeaderSeparatorHeight}" />
 
-                                <controls:OvoTextEditor
+                                <o:OvoTextEditor
                                     Background="Transparent"
                                     ContextFlyout="{DynamicResource OvoTextEditorContextFlyout}"
                                     Grid.Row="2"

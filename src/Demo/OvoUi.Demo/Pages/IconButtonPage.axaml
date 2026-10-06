@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.IconButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:controls="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
         <StreamGeometry x:Key="BellIcon">M12,2 A2,2 0 0 0 10,4 V5.1 A7,7 0 0 0 5,12 V16 L3,18 V19 H21 V18 L19,16 V12 A7,7 0 0 0 14,5.1 V4 A2,2 0 0 0 12,2 M9,21 H15 A3,3 0 0 1 9,21</StreamGeometry>
@@ -23,138 +23,138 @@
             Text="IconButton" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="IconButton: styles and states" SourceKey="icon-button-states">
+                <o:ControlShowcase Header="IconButton: styles and states" SourceKey="icon-button-states">
                     <StackPanel Margin="10,0" Spacing="14">
                         <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <controls:IconButton Icon="{StaticResource BellIcon}" ToolTip.Tip="Notifications" />
-                            <controls:IconButton Content="Default" Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton Icon="{StaticResource BellIcon}" ToolTip.Tip="Notifications" />
+                            <o:IconButton Content="Default" Icon="{StaticResource BellIcon}" />
+                            <o:IconButton
                                 Classes="float"
                                 Content="Float"
                                 Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="border"
                                 Content="Border"
                                 Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="colorless"
                                 Content="Colorless"
                                 Icon="{StaticResource BellIcon}" />
                         </WrapPanel>
                         <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="accent"
                                 Content="Accent"
                                 Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="info"
                                 Content="Info"
                                 Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="success"
                                 Content="Success"
                                 Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="warn"
                                 Content="Warning"
                                 Icon="{StaticResource BellIcon}" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Classes="danger"
                                 Content="Danger"
                                 Icon="{StaticResource BellIcon}" />
                         </WrapPanel>
                         <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <controls:IconButton
+                            <o:IconButton
                                 Content="Loading"
                                 Icon="{StaticResource BellIcon}"
                                 IsLoading="True" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Content="Disabled"
                                 Icon="{StaticResource BellIcon}"
                                 IsEnabled="False" />
-                            <controls:IconButton
+                            <o:IconButton
                                 Content="Loading disabled"
                                 Icon="{StaticResource BellIcon}"
                                 IsEnabled="False"
                                 IsLoading="True" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Icon placement" SourceKey="icon-button-placement">
+                <o:ControlShowcase Header="Icon placement" SourceKey="icon-button-placement">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
                         Margin="10,0">
-                        <controls:IconButton
+                        <o:IconButton
                             Content="Left"
                             Icon="{StaticResource StarIcon}"
                             IconPlacement="Left" />
-                        <controls:IconButton
+                        <o:IconButton
                             Content="Right"
                             Icon="{StaticResource StarIcon}"
                             IconPlacement="Right" />
-                        <controls:IconButton
+                        <o:IconButton
                             Content="Top"
                             Icon="{StaticResource StarIcon}"
                             IconPlacement="Top" />
-                        <controls:IconButton
+                        <o:IconButton
                             Content="Bottom"
                             Icon="{StaticResource StarIcon}"
                             IconPlacement="Bottom" />
-                        <controls:IconButton Content="Text only" />
-                        <controls:IconButton Icon="{StaticResource StarIcon}" ToolTip.Tip="Favorite" />
+                        <o:IconButton Content="Text only" />
+                        <o:IconButton Icon="{StaticResource StarIcon}" ToolTip.Tip="Favorite" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="IconRepeatButton" SourceKey="icon-repeat-button">
+                <o:ControlShowcase Header="IconRepeatButton" SourceKey="icon-repeat-button">
                     <StackPanel Margin="10,0" Spacing="12">
                         <TextBlock Text="Press and hold a repeat button to fire repeatedly." />
                         <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <controls:IconRepeatButton
+                            <o:IconRepeatButton
                                 Content="Repeat"
                                 Delay="400"
                                 Icon="{StaticResource RefreshIcon}"
                                 Interval="100" />
-                            <controls:IconRepeatButton
+                            <o:IconRepeatButton
                                 Classes="border accent"
                                 Content="Slow repeat"
                                 Delay="600"
                                 Icon="{StaticResource RefreshIcon}"
                                 Interval="300" />
-                            <controls:IconRepeatButton
+                            <o:IconRepeatButton
                                 Content="Loading"
                                 Icon="{StaticResource RefreshIcon}"
                                 IsLoading="True" />
-                            <controls:IconRepeatButton
+                            <o:IconRepeatButton
                                 Content="Disabled"
                                 Icon="{StaticResource RefreshIcon}"
                                 IsEnabled="False" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="IconDropDownButton and IconSplitButton" SourceKey="icon-flyout-buttons">
+                <o:ControlShowcase Header="IconDropDownButton and IconSplitButton" SourceKey="icon-flyout-buttons">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
                         Margin="10,0">
-                        <controls:IconDropDownButton Content="Export" Icon="{StaticResource SaveIcon}">
-                            <controls:IconDropDownButton.Flyout>
+                        <o:IconDropDownButton Content="Export" Icon="{StaticResource SaveIcon}">
+                            <o:IconDropDownButton.Flyout>
                                 <MenuFlyout Placement="BottomEdgeAlignedLeft">
                                     <MenuItem Header="Export as PDF" />
                                     <MenuItem Header="Export as image" />
                                     <Separator />
                                     <MenuItem Header="Export as text" />
                                 </MenuFlyout>
-                            </controls:IconDropDownButton.Flyout>
-                        </controls:IconDropDownButton>
-                        <controls:IconDropDownButton
+                            </o:IconDropDownButton.Flyout>
+                        </o:IconDropDownButton>
+                        <o:IconDropDownButton
                             Classes="border info"
                             Content="Tools"
                             Icon="{StaticResource StarIcon}"
                             IconPlacement="Right">
-                            <controls:IconDropDownButton.Flyout>
+                            <o:IconDropDownButton.Flyout>
                                 <Flyout Placement="BottomEdgeAlignedLeft">
                                     <StackPanel MinWidth="220" Spacing="10">
                                         <TextBlock FontWeight="SemiBold" Text="Quick settings" />
@@ -163,45 +163,45 @@
                                         <Button Content="Apply" HorizontalAlignment="Right" />
                                     </StackPanel>
                                 </Flyout>
-                            </controls:IconDropDownButton.Flyout>
-                        </controls:IconDropDownButton>
-                        <controls:IconSplitButton Content="Save" Icon="{StaticResource SaveIcon}">
-                            <controls:IconSplitButton.Flyout>
+                            </o:IconDropDownButton.Flyout>
+                        </o:IconDropDownButton>
+                        <o:IconSplitButton Content="Save" Icon="{StaticResource SaveIcon}">
+                            <o:IconSplitButton.Flyout>
                                 <MenuFlyout Placement="BottomEdgeAlignedLeft">
                                     <MenuItem Header="Save" />
                                     <MenuItem Header="Save as..." />
                                     <MenuItem Header="Save a copy" />
                                 </MenuFlyout>
-                            </controls:IconSplitButton.Flyout>
-                        </controls:IconSplitButton>
-                        <controls:IconSplitButton
+                            </o:IconSplitButton.Flyout>
+                        </o:IconSplitButton>
+                        <o:IconSplitButton
                             Content="Unavailable"
                             Icon="{StaticResource SaveIcon}"
                             IsEnabled="False" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="IconToggleButton" SourceKey="icon-toggle-button">
+                <o:ControlShowcase Header="IconToggleButton" SourceKey="icon-toggle-button">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
                         Margin="10,0">
-                        <controls:IconToggleButton Content="Favorite" Icon="{StaticResource StarIcon}" />
-                        <controls:IconToggleButton
+                        <o:IconToggleButton Content="Favorite" Icon="{StaticResource StarIcon}" />
+                        <o:IconToggleButton
                             Classes="border accent"
                             Content="Pinned"
                             Icon="{StaticResource StarIcon}"
                             IsChecked="True" />
-                        <controls:IconToggleButton
+                        <o:IconToggleButton
                             Content="Loading"
                             Icon="{StaticResource StarIcon}"
                             IsLoading="True" />
-                        <controls:IconToggleButton
+                        <o:IconToggleButton
                             Content="Disabled"
                             Icon="{StaticResource StarIcon}"
                             IsEnabled="False" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>
