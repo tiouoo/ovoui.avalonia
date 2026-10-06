@@ -88,11 +88,11 @@
                             ClipToBounds="True"
                             CornerRadius="{TemplateBinding CornerRadius}">
                             <Grid RowDefinitions="Auto,1,*">
-                                <Border ClipToBounds="True" CornerRadius="9,9,0,0">
-                                    <Grid
-                                        Background="{DynamicResource OvoCodeHeaderBackground}"
-                                        ColumnDefinitions="*,Auto"
-                                        MinHeight="36">
+                                <Border
+                                    Background="{DynamicResource OvoCodeHeaderBackground}"
+                                    ClipToBounds="True"
+                                    CornerRadius="11,11,0,0">
+                                    <Grid ColumnDefinitions="*,Auto" MinHeight="36">
                                         <ContentPresenter
                                             Content="{Binding EffectiveHeader, RelativeSource={RelativeSource TemplatedParent}}"
                                             Margin="14,8"

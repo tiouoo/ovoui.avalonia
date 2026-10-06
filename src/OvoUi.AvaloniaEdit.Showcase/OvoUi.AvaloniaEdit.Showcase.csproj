@@ -24,6 +24,5 @@
         <None Include="OvoUi.AvaloniaEdit.Showcase.props"
               Pack="true"
               PackagePath="build\;buildTransitive\" />
-        <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 </Project>
