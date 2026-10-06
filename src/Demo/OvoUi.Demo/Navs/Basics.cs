@@ -7,6 +7,6 @@ public static class Basics
 {
     public static readonly List<Page> BasicsList =
     [
-        new() { Title = "Label", Content = new LabelPage() }
+        Page.View<LabelPage>("Label")
     ];
 }
