@@ -36,6 +36,7 @@
                 <StackPanel Spacing="8">
                     <o:ControlShowcase
                         CodeHeight="250"
+                        Header="Header"
                         PreviewMinHeight="180"
                         SourceKey="test-action-showcase">
                         <StackPanel

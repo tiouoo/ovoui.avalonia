@@ -28,7 +28,7 @@
                                     Background="{DynamicResource PanelBackgroundBrush}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,0,0,1"
-                                    Padding="8,7">
+                                    Padding="10,7,-1,7">
                                     <Grid ColumnDefinitions="*,Auto">
                                         <ContentPresenter
                                             Content="{Binding $parent[controls:ControlShowcase].Header}"
