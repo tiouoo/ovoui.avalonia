@@ -20,29 +20,31 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         ClipToBounds="True"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                        <Grid RowDefinitions="Auto,*">
-                            <Border
-                                Background="{DynamicResource PanelBackgroundBrush}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0,0,0,1"
-                                Padding="8,7">
-                                <TabStrip
-                                    HorizontalAlignment="Left"
-                                    Name="PART_TabStrip"
-                                    Theme="{StaticResource ButtonTabStrip}">
-                                    <TabStripItem Content="{Binding $parent[controls:ControlShowcase].PreviewHeader}" />
-                                    <TabStripItem Content="{Binding $parent[controls:ControlShowcase].CodeHeader}" />
-                                </TabStrip>
-                            </Border>
+                        <Border ClipToBounds="True" CornerRadius="11">
+                            <Grid RowDefinitions="Auto,*">
+                                <Border
+                                    Background="{DynamicResource PanelBackgroundBrush}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="8,7">
+                                    <TabStrip
+                                        HorizontalAlignment="Left"
+                                        Name="PART_TabStrip"
+                                        Theme="{StaticResource ButtonTabStrip}">
+                                        <TabStripItem Content="{Binding $parent[controls:ControlShowcase].PreviewHeader}" />
+                                        <TabStripItem Content="{Binding $parent[controls:ControlShowcase].CodeHeader}" />
+                                    </TabStrip>
+                                </Border>
 
-                            <TransitioningContentControl
-                                ClipToBounds="True"
-                                Grid.Row="1"
-                                HorizontalContentAlignment="Stretch"
-                                Name="PART_TransitionHost"
-                                PageTransition="{TemplateBinding PageTransition}"
-                                VerticalContentAlignment="Stretch" />
-                        </Grid>
+                                <TransitioningContentControl
+                                    ClipToBounds="True"
+                                    Grid.Row="1"
+                                    HorizontalContentAlignment="Stretch"
+                                    Name="PART_TransitionHost"
+                                    PageTransition="{TemplateBinding PageTransition}"
+                                    VerticalContentAlignment="Stretch" />
+                            </Grid>
+                        </Border>
                     </Border>
                 </ControlTemplate>
             </Setter>
