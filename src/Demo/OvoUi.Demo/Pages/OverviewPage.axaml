@@ -113,7 +113,7 @@
                                 Foreground="{DynamicResource InnerForegroundBrush}"
                                 TextTrimming="CharacterEllipsis"
                                 TextWrapping="NoWrap">
-                                ovoui.2y.nz
+                                ovoui.y6.nz
                             </TextBlock>
                         </DockPanel>
                     </DockPanel>
