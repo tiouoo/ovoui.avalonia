@@ -1,0 +1,49 @@
+<Styles
+    x:Class="OvoUi.AvaloniaEdit.OvoAvaloniaEditTheme"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <system:Double x:Key="ControlContentThemeFontSize">14</system:Double>
+            <FontFamily x:Key="ContentControlThemeFontFamily">Arial, sans-serif</FontFamily>
+            <FontFamily x:Key="OvoCodeFontFamily">Cascadia Code, Consolas, Menlo, Monospace</FontFamily>
+            <Thickness x:Key="ToolTipBorderThemeThickness">1</Thickness>
+            <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="TextViewLinkTextForeground" />
+            <SolidColorBrush
+                Color="{DynamicResource SystemAccentColor}"
+                Opacity="0.24"
+                x:Key="TextAreaSelectionBrush" />
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush Color="#FAFAFA" x:Key="ToolTipBackground" />
+                    <SolidColorBrush Color="#494C4F" x:Key="ToolTipForeground" />
+                    <SolidColorBrush Color="#26000000" x:Key="ToolTipBorderBrush" />
+                    <SolidColorBrush Color="#F7F8F9" x:Key="OvoCodeHeaderBackground" />
+                    <Color x:Key="SystemChromeMediumColor">#F2F4F3</Color>
+                    <Color x:Key="SystemBaseLowColor">#26000000</Color>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush Color="#292B2E" x:Key="ToolTipBackground" />
+                    <SolidColorBrush Color="#E6E1CF" x:Key="ToolTipForeground" />
+                    <SolidColorBrush Color="#33FFFFFF" x:Key="ToolTipBorderBrush" />
+                    <SolidColorBrush Color="#202226" x:Key="OvoCodeHeaderBackground" />
+                    <Color x:Key="SystemChromeMediumColor">#292B2E</Color>
+                    <Color x:Key="SystemBaseLowColor">#33FFFFFF</Color>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Default">
+                    <SolidColorBrush Color="#FAFAFA" x:Key="ToolTipBackground" />
+                    <SolidColorBrush Color="#494C4F" x:Key="ToolTipForeground" />
+                    <SolidColorBrush Color="#26000000" x:Key="ToolTipBorderBrush" />
+                    <SolidColorBrush Color="#F7F8F9" x:Key="OvoCodeHeaderBackground" />
+                    <Color x:Key="SystemChromeMediumColor">#F2F4F3</Color>
+                    <Color x:Key="SystemBaseLowColor">#26000000</Color>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+    <StyleInclude Source="/Themes/CodeBlock.axaml" />
+</Styles>

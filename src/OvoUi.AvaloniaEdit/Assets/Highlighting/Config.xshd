@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="Config" extensions=".json;.json5;.toml;.yaml;.yml;.properties;.cfg;.conf;.ini" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Comment" foreground="#81908B" fontStyle="italic" />
+  <Color name="Key" foreground="#7896B3" fontWeight="bold" />
+  <Color name="String" foreground="#88A981" />
+  <Color name="Number" foreground="#C09A74" />
+  <Color name="Literal" foreground="#A58BB4" />
+  <Color name="Section" foreground="#B88787" fontWeight="bold" />
+  <RuleSet>
+    <Span color="Comment" begin="//" end="\n" />
+    <Span color="Comment" begin="#" end="\n" />
+    <Span color="Comment" begin="/\*" end="\*/" multiline="true" />
+    <Span color="String" begin="&quot;" end="&quot;" />
+    <Span color="String" begin="'" end="'" />
+    <Span color="Section" begin="\[" end="\]" />
+    <Rule color="Key">(?m)^[\t ]*[A-Za-z0-9_.-]+(?=[\t ]*[:=])</Rule>
+    <Rule color="Key">&quot;[^&quot;\n]+&quot;(?=[\t ]*:)</Rule>
+    <Rule color="Number">\b[-+]?(0x[0-9a-fA-F]+|\d+(\.\d+)?([eE][-+]?\d+)?)\b</Rule>
+    <Keywords color="Literal">
+      <Word>true</Word><Word>false</Word><Word>null</Word><Word>yes</Word><Word>no</Word><Word>on</Word><Word>off</Word>
+    </Keywords>
+  </RuleSet>
+</SyntaxDefinition>

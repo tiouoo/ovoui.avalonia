@@ -25,14 +25,15 @@
                 Margin="20"
                 Spacing="20"
                 VerticalAlignment="Center">
-
-                <o:Pagination
-                    CommandParameter="{Binding $self.CurrentPage}"
-                    CurrentPage="5"
-                    PageSizeOptions="10, 20, 50, 100"
-                    ShowPageSizeSelector="True"
-                    ShowQuickJump="True"
-                    TotalCount="600" />
+                <o:CodeBlock
+                    Height="340"
+                    IsHeaderSelectable="True"
+                    Language="xml"
+                    Name="CodeExample"
+                    Text="&lt;o:GroupBorder Header=&quot;Settings&quot;&gt;&#xA;    &lt;TextBox Watermark=&quot;Project name&quot; /&gt;&#xA;&lt;/o:GroupBorder&gt;"
+                    Width="520"
+                    o:AvaloniaEditor.IsReadOnly="True"
+                    o:AvaloniaEditor.ShowLineNumbers="False" />
             </StackPanel>
 
             <StackPanel>

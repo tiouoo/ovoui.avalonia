@@ -24,6 +24,7 @@ public class LangEnUs : ILang
     public string SelectAll => "Select All";
     public string Cut => "Cut";
     public string Copy => "Copy";
+    public string Copied => "Copied";
     public string Paste => "Paste";
     public string Clear => "Clear";
     public string JumpTo => "Jump to";

@@ -4,6 +4,10 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>OvoUi.AvaloniaEdit</Title>
+        <Description>OvoUi code block and themed AvaloniaEdit integration with TextMate highlighting.</Description>
+        <PackageTags>avalonia;avaloniaedit;code-editor;syntax-highlighting;textmate</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,11 +15,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controls\" />
+      <AvaloniaResource Include="Assets\Highlighting\*.xshd" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Avalonia.AvaloniaEdit" Version="12.0.0" />
+      <PackageReference Include="AvaloniaEdit.TextMate" Version="12.0.0" />
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxDefinition name="MinecraftLog" extensions=".log" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Information" foreground="#4EA1FF" />
+  <Color name="Warning" foreground="#D9A441" fontWeight="bold" />
+  <Color name="Error" foreground="#E06C75" fontWeight="bold" />
+  <Color name="Debug" foreground="#B294FF" />
+  <Color name="Trace" foreground="#7F8C8D" />
+  <Color name="Logger" foreground="#83C58A" />
+  <RuleSet>
+    <Rule color="Error">(?m)^.*\/(FATAL|ERROR)\].*$</Rule>
+    <Rule color="Warning">(?m)^.*\/WARN\].*$</Rule>
+    <Rule color="Debug">(?m)^.*\/DEBUG\].*$</Rule>
+    <Rule color="Trace">(?m)^.*\/TRACE\].*$</Rule>
+    <Rule color="Information">(?m)^.*\/INFO\].*$</Rule>
+    <Rule color="Logger">\[[^\]\r\n]+\]</Rule>
+  </RuleSet>
+</SyntaxDefinition>

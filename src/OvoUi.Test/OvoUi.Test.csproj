@@ -23,6 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj" />
       <ProjectReference Include="..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
       <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
     </ItemGroup>
