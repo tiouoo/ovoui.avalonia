@@ -1,8 +1,12 @@
 <o:OvoWindow
+    Height="780"
     Icon="avares://OvoUi.Test/Assets/icon.ico"
-    Title="OvoUi.Avalonia.Test"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    MinHeight="620"
+    MinWidth="760"
+    Title="OvoUi Control Showcase"
+    Width="1080"
+    d:DesignHeight="780"
+    d:DesignWidth="1080"
     mc:Ignorable="d"
     x:Class="OvoUi.Test.MainWindow"
     x:DataType="test:MainWindow"
@@ -12,80 +16,111 @@
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
+    <Grid RowDefinitions="Auto,*">
+        <Border
+            Background="{DynamicResource PanelBackgroundBrush}"
+            BorderBrush="{DynamicResource LineBrush}"
+            BorderThickness="0,0,0,1"
+            Padding="24,14">
+            <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Spacing="2">
+                    <TextBlock FontSize="20" FontWeight="SemiBold">Control Showcase</TextBlock>
+                    <TextBlock Foreground="{DynamicResource InnerForegroundBrush}">
+                        OvoUi controls and generated AXAML source
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    Spacing="8"
+                    VerticalAlignment="Center">
+                    <Button Classes="Basic" Click="Light" Content="Light" />
+                    <Button Click="Dark" Content="Dark" />
+                </StackPanel>
+            </Grid>
+        </Border>
 
-        <StackPanel
-            HorizontalAlignment="Center"
-            Margin="20"
-            Orientation="Horizontal"
-            Spacing="20"
-            VerticalAlignment="Center">
+        <ScrollViewer Grid.Row="1">
             <StackPanel
                 HorizontalAlignment="Center"
-                Margin="20"
-                Spacing="20"
-                VerticalAlignment="Center">
-                <o:CodeBlock
-                    Height="340"
-                    IsHeaderSelectable="True"
-                    Language="xml"
-                    Name="CodeExample"
-                    Text="&lt;o:GroupBorder Header=&quot;Settings&quot;&gt;&#xA;    &lt;TextBox Watermark=&quot;Project name&quot; /&gt;&#xA;&lt;/o:GroupBorder&gt;"
-                    Width="520"
-                    o:AvaloniaEditor.IsReadOnly="True"
-                    o:AvaloniaEditor.ShowLineNumbers="False" />
+                Margin="24,28,24,40"
+                MaxWidth="920"
+                Spacing="28">
+                <StackPanel Spacing="8">
+                    <TextBlock FontSize="17" FontWeight="SemiBold">Actions</TextBlock>
+                    <TextBlock Foreground="{DynamicResource InnerForegroundBrush}">
+                        Switch between Preview and Code to inspect the generated source.
+                    </TextBlock>
+                    <o:ControlShowcase
+                        CodeHeight="250"
+                        PreviewMinHeight="180"
+                        SourceKey="test-action-showcase">
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Spacing="18"
+                            VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <Button Content="Create project" />
+                                <Button Classes="Basic" Content="View details" />
+                                <Button IsEnabled="False" Content="Unavailable" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="24">
+                                <ToggleSwitch Content="Auto save" IsChecked="True" />
+                                <CheckBox Content="Include assets" IsChecked="True" />
+                            </StackPanel>
+                        </StackPanel>
+                    </o:ControlShowcase>
+                </StackPanel>
+
+                <StackPanel Spacing="8">
+                    <TextBlock FontSize="17" FontWeight="SemiBold">Project Settings</TextBlock>
+                    <TextBlock Foreground="{DynamicResource InnerForegroundBrush}">
+                        A denser layout for checking wrapping, formatting, and scrolling.
+                    </TextBlock>
+                    <o:ControlShowcase
+                        CodeHeight="330"
+                        PreviewMinHeight="260"
+                        SourceKey="test-settings-showcase">
+                        <Grid
+                            ColumnDefinitions="140,*"
+                            HorizontalAlignment="Stretch"
+                            MaxWidth="620"
+                            RowDefinitions="Auto,Auto,Auto,Auto"
+                            RowSpacing="14">
+                            <TextBlock VerticalAlignment="Center">Project name</TextBlock>
+                            <TextBox
+                                Grid.Column="1"
+                                PlaceholderText="Enter a name"
+                                Text="OvoUi Showcase"
+                                />
+
+                            <TextBlock Grid.Row="1" VerticalAlignment="Center">Template</TextBlock>
+                            <ComboBox Grid.Column="1" Grid.Row="1" SelectedIndex="0">
+                                <ComboBoxItem Content="Desktop application" />
+                                <ComboBoxItem Content="Browser application" />
+                                <ComboBoxItem Content="Control library" />
+                            </ComboBox>
+
+                            <TextBlock Grid.Row="2" VerticalAlignment="Center">Build progress</TextBlock>
+                            <ProgressBar
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                Maximum="100"
+                                Value="68" />
+
+                            <StackPanel
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Button Classes="Basic" Content="Cancel" />
+                                <Button Content="Save changes" />
+                            </StackPanel>
+                        </Grid>
+                    </o:ControlShowcase>
+                </StackPanel>
             </StackPanel>
-
-            <StackPanel>
-                <ToggleSwitch Content="IsHorizontalCollapsed" Name="collapse" />
-                <Border
-                    BorderBrush="{DynamicResource LineBrush}"
-                    BorderThickness="1"
-                    HorizontalAlignment="Left"
-                    Padding="20">
-                    <o:NavMenu
-                        HorizontalAlignment="Left"
-                        IsHorizontalCollapsed="{Binding #collapse.IsChecked}"
-                        Name="menu2">
-                        <o:NavMenuItem Header="Menu 1">
-                            <o:NavMenuItem.Icon>
-                                <Rectangle
-                                    Fill="Red"
-                                    Height="10"
-                                    Width="10" />
-                            </o:NavMenuItem.Icon>
-                            <o:NavMenuItem Header="Sub Menu 1" />
-                            <o:NavMenuItem Header="Sub Menu 2" />
-                            <o:NavMenuItem Header="Sub Menu 3" />
-                        </o:NavMenuItem>
-                        <o:NavMenuItem Header="Menu 2">
-                            <o:NavMenuItem.Icon>
-                                <Rectangle
-                                    Fill="Red"
-                                    Height="10"
-                                    Width="10" />
-                            </o:NavMenuItem.Icon>
-                        </o:NavMenuItem>
-                        <o:NavMenuItem Header="Menu 3">
-                            <o:NavMenuItem.Icon>
-                                <Rectangle
-                                    Fill="Red"
-                                    Height="10"
-                                    Width="10" />
-                            </o:NavMenuItem.Icon>
-                        </o:NavMenuItem>
-                    </o:NavMenu>
-                </Border>
-            </StackPanel>
-        </StackPanel>
-
-
-        <StackPanel
-            HorizontalAlignment="Left"
-            Orientation="Horizontal"
-            VerticalAlignment="Top">
-            <Button Click="Dark" Content="Dark" />
-            <Button Click="Light" Content="Light" />
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </o:OvoWindow>
