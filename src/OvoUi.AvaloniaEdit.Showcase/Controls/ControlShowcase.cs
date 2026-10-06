@@ -1,12 +1,16 @@
 using System.Xml.Linq;
 using Avalonia;
 using Avalonia.Animation;
+using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
+using Avalonia.Layout;
+using Avalonia.Styling;
 using OvoUi.AvaloniaEdit.Controls;
+using OvoUi.Theme.Animations;
 
 namespace OvoUi.AvaloniaEdit.Showcase.Controls;
 
@@ -48,6 +52,10 @@ public class ControlShowcase : ContentControl
         AvaloniaProperty.Register<ControlShowcase, ShowcaseHeaderPlacement>(
             nameof(HeaderPlacement), ShowcaseHeaderPlacement.Left);
 
+    public static readonly StyledProperty<ShowcaseHeightBehavior> HeightBehaviorProperty =
+        AvaloniaProperty.Register<ControlShowcase, ShowcaseHeightBehavior>(
+            nameof(HeightBehavior), ShowcaseHeightBehavior.Stable);
+
     public static readonly StyledProperty<string> LanguageProperty =
         AvaloniaProperty.Register<ControlShowcase, string>(nameof(Language), "axaml");
 
@@ -85,6 +93,8 @@ public class ControlShowcase : ContentControl
     private string _effectiveCode = string.Empty;
     private int _displayedIndex;
     private bool _synchronizingSelection;
+    private double _previewHeight;
+    private CancellationTokenSource? _heightAnimationCancellation;
 
     public string? SourceKey
     {
@@ -143,6 +153,12 @@ public class ControlShowcase : ContentControl
         set => SetValue(HeaderPlacementProperty, value);
     }
 
+    public ShowcaseHeightBehavior HeightBehavior
+    {
+        get => GetValue(HeightBehaviorProperty);
+        set => SetValue(HeightBehaviorProperty, value);
+    }
+
     public string Language
     {
         get => GetValue(LanguageProperty);
@@ -194,6 +210,7 @@ public class ControlShowcase : ContentControl
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
+        CancelHeightAnimation();
         if (_tabStrip is not null)
             _tabStrip.SelectionChanged -= OnTabSelectionChanged;
         if (_previewPresenter is not null)
@@ -278,6 +295,16 @@ public class ControlShowcase : ContentControl
         {
             _transitionHost.PageTransition = PageTransition;
         }
+        else if (change.Property == HeightBehaviorProperty)
+        {
+            CancelHeightAnimation();
+            _transitionHost?.ClearValue(Layoutable.HeightProperty);
+            if (_transitionHost is not null)
+                _transitionHost.MinHeight = HeightBehavior == ShowcaseHeightBehavior.Animated
+                    ? Math.Max(PreviewMinHeight, _previewHeight)
+                    : 0d;
+            UpdateCodeBlock();
+        }
         else if (change.Property == HeaderPlacementProperty)
         {
             UpdateHeaderPlacement();
@@ -299,6 +326,16 @@ public class ControlShowcase : ContentControl
 
     private void OnPreviewSizeChanged(object? sender, SizeChangedEventArgs e)
     {
+        // The transition host stretches the preview through intermediate animation sizes;
+        // only cache its natural height while no height animation is running.
+        if (_displayedIndex == 0 &&
+            _heightAnimationCancellation is null &&
+            e.NewSize.Height > 0)
+        {
+            _previewHeight = e.NewSize.Height;
+            if (_transitionHost is not null && HeightBehavior == ShowcaseHeightBehavior.Animated)
+                _transitionHost.MinHeight = PreviewMinHeight;
+        }
         SyncCodeBlockSize(e.NewSize);
     }
 
@@ -314,9 +351,13 @@ public class ControlShowcase : ContentControl
         if (_transitionHost is null || selectedIndex == _displayedIndex)
             return;
 
+        var startHeight = _transitionHost.Bounds.Height;
         _transitionHost.IsTransitionReversed = selectedIndex < _displayedIndex;
         _displayedIndex = selectedIndex;
         _transitionHost.Content = GetPage(selectedIndex);
+
+        if (HeightBehavior == ShowcaseHeightBehavior.Animated)
+            _ = AnimateContentHeightAsync(selectedIndex, startHeight);
     }
 
     private object? GetPage(int selectedIndex) => selectedIndex == 0 ? _previewPresenter : _codeBlock;
@@ -357,7 +398,7 @@ public class ControlShowcase : ContentControl
         _codeBlock.Header = CodeBlockHeader;
         if (_previewPresenter is { Bounds.Width: > 0, Bounds.Height: > 0 })
             SyncCodeBlockSize(_previewPresenter.Bounds.Size);
-        else
+        else if (HeightBehavior == ShowcaseHeightBehavior.Stable)
             _codeBlock.Height = Math.Max(78d, CodeHeight);
         AvaloniaEditor.SetShowLineNumbers(_codeBlock, ShowLineNumbers);
         AvaloniaEditor.SetWordWrap(_codeBlock, WordWrap);
@@ -374,7 +415,93 @@ public class ControlShowcase : ContentControl
             return;
 
         _codeBlock.Width = previewSize.Width;
-        _codeBlock.Height = previewSize.Height;
+        if (HeightBehavior == ShowcaseHeightBehavior.Stable)
+            _codeBlock.Height = previewSize.Height;
+        else
+            _codeBlock.ClearValue(Layoutable.HeightProperty);
+    }
+
+    private async Task AnimateContentHeightAsync(int selectedIndex, double startHeight)
+    {
+        if (_transitionHost is null || _previewPresenter is null)
+            return;
+
+        _heightAnimationCancellation?.Cancel();
+        _heightAnimationCancellation?.Dispose();
+        var cancellation = new CancellationTokenSource();
+        _heightAnimationCancellation = cancellation;
+
+        // Let the preview measure without the temporary minimum height from the code page.
+        _transitionHost.ClearValue(Layoutable.HeightProperty);
+        if (selectedIndex == 0)
+            _transitionHost.MinHeight = 0d;
+        _codeBlock?.ClearValue(Layoutable.HeightProperty);
+        _transitionHost.UpdateLayout();
+
+        var minimumHeight = Math.Max(PreviewMinHeight, _previewHeight);
+        _transitionHost.MinHeight = minimumHeight;
+        var targetHeight = minimumHeight;
+        if (selectedIndex == 1)
+            targetHeight = Math.Max(targetHeight, _codeBlock?.DesiredSize.Height ?? 0d);
+
+        if (startHeight <= 0 || Math.Abs(startHeight - targetHeight) < 0.5)
+        {
+            if (selectedIndex == 0)
+                _transitionHost.MinHeight = PreviewMinHeight;
+            cancellation.Dispose();
+            if (ReferenceEquals(_heightAnimationCancellation, cancellation))
+                _heightAnimationCancellation = null;
+            return;
+        }
+
+        // Keep the final height as the base value so removing the animation cannot
+        // restore the expanded height after a reverse transition.
+        _transitionHost.Height = targetHeight;
+        var animation = new Animation
+        {
+            Duration = TimeSpan.FromMilliseconds(420),
+            Easing = new SukiEaseOutBack { BounceIntensity = EasingIntensity.Soft },
+            FillMode = FillMode.None,
+            Children =
+            {
+                new KeyFrame
+                {
+                    Cue = new Cue(0),
+                    Setters = { new Setter(Layoutable.HeightProperty, startHeight) }
+                },
+                new KeyFrame
+                {
+                    Cue = new Cue(1),
+                    Setters = { new Setter(Layoutable.HeightProperty, targetHeight) }
+                }
+            }
+        };
+
+        try
+        {
+            await animation.RunAsync(_transitionHost, cancellation.Token);
+        }
+        catch (OperationCanceledException)
+        {
+        }
+        finally
+        {
+            if (ReferenceEquals(_heightAnimationCancellation, cancellation))
+            {
+                _transitionHost.ClearValue(Layoutable.HeightProperty);
+                if (selectedIndex == 0)
+                    _transitionHost.MinHeight = PreviewMinHeight;
+                _heightAnimationCancellation = null;
+            }
+            cancellation.Dispose();
+        }
+    }
+
+    private void CancelHeightAnimation()
+    {
+        _heightAnimationCancellation?.Cancel();
+        _heightAnimationCancellation?.Dispose();
+        _heightAnimationCancellation = null;
     }
 
     private static int NormalizeIndex(int value) => value <= 0 ? 0 : 1;
