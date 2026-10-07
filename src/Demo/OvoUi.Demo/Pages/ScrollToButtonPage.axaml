@@ -13,6 +13,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ScrollToButton">
         <o:ControlShowcase Header="ScrollToButton" SourceKey="scroll-to-button">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="public ObservableCollection&lt;string&gt; Items { get; } =&#xA;     new(Enumerable.Range(1, 100).Select(index =&gt; $&quot;Item {index:000}&quot;));"
+                    CodeHeight="180"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
             <Grid
                 ColumnDefinitions="*, *, *, *, *"
                 MaxHeight="560"

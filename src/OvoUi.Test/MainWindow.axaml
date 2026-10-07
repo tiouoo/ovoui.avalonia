@@ -44,7 +44,6 @@
                             <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
                             <o:ShowcaseCodeBlock
                                 Code="{x:Static test:MainWindow.CodeBehindSample}"
-                                CodeHeight="180"
                                 Header="C# code behind"
                                 Language="csharp" />
                         </o:ControlShowcase.CodeBlocks>
