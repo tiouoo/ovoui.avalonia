@@ -137,7 +137,10 @@
                 <DropDownButton Content="Text settings">
                     <DropDownButton.Flyout>
                         <Flyout Placement="BottomEdgeAlignedLeft">
-                            <StackPanel MinWidth="240" Spacing="12">
+                            <StackPanel
+                                Margin="5"
+                                MinWidth="240"
+                                Spacing="12">
                                 <TextBlock FontWeight="SemiBold" Text="Text settings" />
                                 <TextBlock Text="Font size" />
                                 <Slider
@@ -158,7 +161,10 @@
                 <DropDownButton Content="Account">
                     <DropDownButton.Flyout>
                         <Flyout Placement="BottomEdgeAlignedLeft">
-                            <StackPanel MinWidth="220" Spacing="10">
+                            <StackPanel
+                                Margin="5"
+                                MinWidth="220"
+                                Spacing="10">
                                 <TextBlock FontWeight="SemiBold" Text="Ada Lovelace" />
                                 <TextBlock Opacity="0.7" Text="ada@example.com" />
                                 <Separator />

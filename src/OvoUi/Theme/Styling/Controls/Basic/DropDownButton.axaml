@@ -24,7 +24,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="Template">
@@ -41,7 +41,7 @@
                         <TextBlock
                             DockPanel.Dock="Right"
                             FontFamily="{DynamicResource OvoIconFontFamily}"
-                            FontSize="21"
+                            FontSize="19"
                             FontWeight="Light"
                             Foreground="{Binding #PART_ContentPresenter.Foreground}"
                             HorizontalAlignment="Right"
@@ -163,7 +163,8 @@
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Padding" Value="20, 4" />
+        <Setter Property="MinHeight" Value="32" />
 
         <Style Selector="^.transparent">
             <Setter Property="BorderBrush" Value="Transparent" />
@@ -249,7 +250,8 @@
         <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Padding" Value="20, 6" />
+        <Setter Property="MinHeight" Value="32" />
     </ControlTheme>
 
     <ControlTheme
@@ -265,6 +267,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
-        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Padding" Value="20, 6" />
+        <Setter Property="MinHeight" Value="32" />
     </ControlTheme>
 </ResourceDictionary>
