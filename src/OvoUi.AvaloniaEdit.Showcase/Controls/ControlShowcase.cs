@@ -637,7 +637,7 @@ public class ControlShowcase : ContentControl
                 page.Children.Add(divider);
             }
 
-            page.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+            page.RowDefinitions.Add(new RowDefinition(GridLength.Star));
             var codeBlock = new CodeBlock
             {
                 CornerRadius = new CornerRadius(0),
@@ -726,26 +726,66 @@ public class ControlShowcase : ContentControl
 
     private void ApplyCodeBlockHeights(double? previewHeight)
     {
-        if (_codeBlockControls.Count == 0)
+        if (_codePage is null || _codeBlockControls.Count == 0)
             return;
 
-        if (HeightBehavior == ShowcaseHeightBehavior.Stable && previewHeight is > 0)
+        var preferredHeights = Enumerable.Range(0, _codeBlockControls.Count)
+            .Select(GetPreferredCodeBlockHeight)
+            .ToArray();
+        var flexibleIndex = Array.IndexOf(preferredHeights, preferredHeights.Max());
+
+        if (HeightBehavior == ShowcaseHeightBehavior.Stable && previewHeight is > 0d)
         {
-            var height = Math.Max(78d, (previewHeight.Value - (_codeBlockControls.Count - 1)) / _codeBlockControls.Count);
-            foreach (var codeBlock in _codeBlockControls)
-                codeBlock.Height = height;
-            return;
+            preferredHeights = AllocateStableHeights(preferredHeights, previewHeight.Value);
+            _codePage.MinHeight = 0d;
+            _codePage.Height = previewHeight.Value;
+        }
+        else
+        {
+            _codePage.ClearValue(Layoutable.HeightProperty);
+            _codePage.MinHeight = preferredHeights.Sum() + _codeBlockControls.Count - 1;
         }
 
         for (var index = 0; index < _codeBlockControls.Count; index++)
         {
-            var configuredHeight = CodeBlocks.Count == 0
-                ? CodeHeight
-                : CodeBlocks[index].CodeHeight;
-            if (double.IsNaN(configuredHeight) || double.IsInfinity(configuredHeight))
-                configuredHeight = CodeHeight;
-            _codeBlockControls[index].Height = Math.Max(78d, configuredHeight);
+            var codeBlock = _codeBlockControls[index];
+            codeBlock.ClearValue(Layoutable.HeightProperty);
+            codeBlock.MinHeight = preferredHeights[index];
+            _codePage.RowDefinitions[index * 2].Height = index == flexibleIndex
+                ? GridLength.Star
+                : GridLength.Auto;
         }
+    }
+
+    private double GetPreferredCodeBlockHeight(int index)
+    {
+        var configuredHeight = CodeBlocks.Count == 0
+            ? CodeHeight
+            : CodeBlocks[index].CodeHeight;
+        if (!double.IsNaN(configuredHeight) && !double.IsInfinity(configuredHeight))
+            return Math.Max(78d, configuredHeight);
+
+        var text = _codeBlockControls[index].Text ?? string.Empty;
+        var lineCount = Math.Max(1, text.Count(character => character == '\n') + 1);
+        return Math.Max(78d, 46d + lineCount * 17d);
+    }
+
+    private static double[] AllocateStableHeights(double[] preferredHeights, double availableHeight)
+    {
+        if (preferredHeights.Length == 1)
+            return [Math.Max(78d, availableHeight)];
+
+        var contentHeight = Math.Max(78d * preferredHeights.Length, availableHeight - preferredHeights.Length + 1);
+        var distributableHeight = contentHeight - 78d * preferredHeights.Length;
+        var weights = preferredHeights.Select(height => Math.Max(0d, height - 78d)).ToArray();
+        var totalWeight = weights.Sum();
+
+        if (totalWeight <= 0d)
+            return Enumerable.Repeat(contentHeight / preferredHeights.Length, preferredHeights.Length).ToArray();
+
+        return weights
+            .Select(weight => 78d + distributableHeight * weight / totalWeight)
+            .ToArray();
     }
 
     private async Task AnimateContentHeightAsync(int selectedIndex, double startHeight)

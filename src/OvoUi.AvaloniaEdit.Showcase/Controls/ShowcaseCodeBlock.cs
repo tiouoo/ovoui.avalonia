@@ -62,7 +62,7 @@ public sealed class ShowcaseCodeBlock : AvaloniaObject
     }
 
     /// <summary>
-    /// Gets or sets this block's preferred height. NaN uses <see cref="ControlShowcase.CodeHeight" />.
+    /// Gets or sets this block's preferred height. NaN sizes the block from its code line count.
     /// </summary>
     public double CodeHeight
     {
