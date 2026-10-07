@@ -69,7 +69,7 @@ public class ControlShowcase : ContentControl
         AvaloniaProperty.Register<ControlShowcase, bool>(nameof(ShowLineNumbers), true);
 
     public static readonly StyledProperty<bool> WordWrapProperty =
-        AvaloniaProperty.Register<ControlShowcase, bool>(nameof(WordWrap), true);
+        AvaloniaProperty.Register<ControlShowcase, bool>(nameof(WordWrap));
 
     public static readonly StyledProperty<double> CodeHeightProperty =
         AvaloniaProperty.Register<ControlShowcase, double>(nameof(CodeHeight), 280d);

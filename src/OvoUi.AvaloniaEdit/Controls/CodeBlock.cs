@@ -378,7 +378,8 @@ public class CodeBlock : TemplatedControl
             return;
 
         _editor.ShowLineNumbers = AvaloniaEditor.GetShowLineNumbers(this);
-        _editor.WordWrap = AvaloniaEditor.GetWordWrap(this);
+        var wordWrap = AvaloniaEditor.GetWordWrap(this);
+        _editor.WordWrap = wordWrap;
         _editor.IsReadOnly = AvaloniaEditor.GetIsReadOnly(this);
         if (AvaloniaEditor.GetFontFamily(this) is { } fontFamily)
             _editor.FontFamily = fontFamily;
@@ -395,7 +396,9 @@ public class CodeBlock : TemplatedControl
         else
             _editor.ClearValue(global::AvaloniaEdit.TextEditor.FontWeightProperty);
 
-        _editor.HorizontalScrollBarVisibility = AvaloniaEditor.GetHorizontalScrollBarVisibility(this);
+        _editor.HorizontalScrollBarVisibility = wordWrap
+            ? ScrollBarVisibility.Disabled
+            : AvaloniaEditor.GetHorizontalScrollBarVisibility(this);
         _editor.VerticalScrollBarVisibility = AvaloniaEditor.GetVerticalScrollBarVisibility(this);
         _editor.TextArea.RightClickMovesCaret = AvaloniaEditor.GetRightClickMovesCaret(this);
 
@@ -577,6 +580,17 @@ public class CodeBlock : TemplatedControl
 
     private void OnWordWrapButtonClick(object? sender, RoutedEventArgs e)
     {
-        SetCurrentValue(AvaloniaEditor.WordWrapProperty, !AvaloniaEditor.GetWordWrap(this));
+        var wordWrap = !AvaloniaEditor.GetWordWrap(this);
+        AvaloniaEditor.SetWordWrap(this, wordWrap);
+
+        if (_editor is not null)
+        {
+            _editor.WordWrap = wordWrap;
+            _editor.HorizontalScrollBarVisibility = wordWrap
+                ? ScrollBarVisibility.Disabled
+                : AvaloniaEditor.GetHorizontalScrollBarVisibility(this);
+        }
+
+        PseudoClasses.Set(PC_WordWrap, wordWrap);
     }
 }
