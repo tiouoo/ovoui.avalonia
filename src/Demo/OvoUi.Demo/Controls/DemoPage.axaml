@@ -1,0 +1,38 @@
+<UserControl
+    x:Class="OvoUi.Demo.Controls.DemoPage"
+    x:DataType="controls:DemoPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="using:OvoUi.Demo.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <controls:VerticalScrollOpacityMaskConverter x:Key="VerticalScrollOpacityMaskConverter" />
+    </UserControl.Resources>
+    <UserControl.Template>
+        <ControlTemplate>
+            <DockPanel Margin="20,10">
+                <SelectableTextBlock
+                    Classes="h2"
+                    DockPanel.Dock="Top"
+                    Margin="0,0,0,20"
+                    Text="{TemplateBinding Text}" />
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    Margin="0,0,-15,0"
+                    OpacityMask="{Binding Offset, ElementName=PART_ScrollViewer, Converter={StaticResource VerticalScrollOpacityMaskConverter}}"
+                    Padding="0,0,15,0"
+                    VerticalScrollBarVisibility="Auto"
+                    x:Name="PART_ScrollViewer">
+                    <ItemsControl
+                        ItemsSource="{Binding PageContent, RelativeSource={RelativeSource TemplatedParent}}"
+                        MaxWidth="980">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Spacing="20" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </DockPanel>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>
