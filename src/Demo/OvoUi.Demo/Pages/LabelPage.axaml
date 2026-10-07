@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.LabelPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="Label" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980">
-                <controls:ControlShowcase Header="Label" SourceKey="label-1">
+                <o:ControlShowcase Header="Label" SourceKey="label-1">
                     <StackPanel Margin="10,0" Spacing="18">
                         <Label Content="Common Text" />
                         <Label Classes="h1" Content="H1 Heading" />
@@ -33,7 +33,7 @@
                         <Label Classes="error" Content="Error Text" />
                         <Label Content="Disabled Text" IsEnabled="False" />
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

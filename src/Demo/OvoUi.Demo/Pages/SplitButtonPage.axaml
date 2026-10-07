@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.SplitButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="SplitButton" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="SplitButton" SourceKey="split-button-basic">
+                <o:ControlShowcase Header="SplitButton" SourceKey="split-button-basic">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -47,9 +47,9 @@
                             </SplitButton.Flyout>
                         </SplitButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Themes" SourceKey="split-button-themes">
+                <o:ControlShowcase Header="Themes" SourceKey="split-button-themes">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -76,9 +76,9 @@
                             </SplitButton.Flyout>
                         </SplitButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Semantic colors" SourceKey="split-button-colors">
+                <o:ControlShowcase Header="Semantic colors" SourceKey="split-button-colors">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -120,9 +120,9 @@
                             </SplitButton.Flyout>
                         </SplitButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="ToggleSplitButton" SourceKey="toggle-split-button">
+                <o:ControlShowcase Header="ToggleSplitButton" SourceKey="toggle-split-button">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -168,7 +168,7 @@
                             </ToggleSplitButton.Flyout>
                         </ToggleSplitButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

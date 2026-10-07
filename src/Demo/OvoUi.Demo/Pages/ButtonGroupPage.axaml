@@ -5,9 +5,9 @@
     x:Class="OvoUi.Demo.Pages.ButtonGroupPage"
     x:DataType="pages:ButtonGroupPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
@@ -19,40 +19,40 @@
 
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="Basic" SourceKey="button-group-basic">
+                <o:ControlShowcase Header="Basic" SourceKey="button-group-basic">
                     <StackPanel Margin="10,0" Spacing="16">
-                        <controls:ButtonGroup>
+                        <o:ButtonGroup>
                             <Button Content="Day" />
                             <Button Content="Week" />
                             <Button Content="Month" />
                             <Button Content="Year" />
-                        </controls:ButtonGroup>
+                        </o:ButtonGroup>
 
-                        <controls:ButtonGroup>
+                        <o:ButtonGroup>
                             <Button Classes="accent" Content="Save" />
                             <Button Classes="info" Content="Preview" />
                             <Button Classes="success" Content="Publish" />
                             <Button Classes="warn" Content="Archive" />
                             <Button Classes="danger" Content="Delete" />
-                        </controls:ButtonGroup>
+                        </o:ButtonGroup>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="States" SourceKey="button-group-states">
+                <o:ControlShowcase Header="States" SourceKey="button-group-states">
                     <StackPanel Margin="10,0" Spacing="16">
-                        <controls:ButtonGroup>
+                        <o:ButtonGroup>
                             <Button Content="Previous" />
                             <Button Content="Page 2" IsEnabled="False" />
                             <Button Content="Next" />
-                        </controls:ButtonGroup>
+                        </o:ButtonGroup>
 
-                        <controls:ButtonGroup IsEnabled="False">
+                        <o:ButtonGroup IsEnabled="False">
                             <Button Content="Cut" />
                             <Button Content="Copy" />
                             <Button Content="Paste" />
-                        </controls:ButtonGroup>
+                        </o:ButtonGroup>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
             </StackPanel>
         </ScrollViewer>

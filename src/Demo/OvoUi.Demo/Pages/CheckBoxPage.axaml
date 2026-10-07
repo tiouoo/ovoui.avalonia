@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.CheckBoxPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="CheckBox" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="Standard CheckBox" SourceKey="checkbox-standard">
+                <o:ControlShowcase Header="Standard CheckBox" SourceKey="checkbox-standard">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="24" LineSpacing="12">
                             <CheckBox Content="Unchecked" />
@@ -31,9 +31,9 @@
                                 IsEnabled="False" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Three-state CheckBox" SourceKey="checkbox-three-state">
+                <o:ControlShowcase Header="Three-state CheckBox" SourceKey="checkbox-three-state">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="24" LineSpacing="12">
                             <CheckBox Content="Click to cycle states" IsThreeState="True" />
@@ -48,9 +48,9 @@
                                 IsThreeState="True" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="BasicCheckBoxTheme" SourceKey="checkbox-basic-theme">
+                <o:ControlShowcase Header="BasicCheckBoxTheme" SourceKey="checkbox-basic-theme">
                     <WrapPanel
                         ItemSpacing="24"
                         LineSpacing="12"
@@ -68,10 +68,13 @@
                             IsEnabled="False"
                             Theme="{StaticResource BasicCheckBoxTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="CardCheckBoxTheme" SourceKey="checkbox-card-theme">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                <o:ControlShowcase Header="CardCheckBoxTheme" SourceKey="checkbox-card-theme">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <CheckBox
                             Content="Email notifications"
                             MinWidth="190"
@@ -87,10 +90,13 @@
                             MinWidth="190"
                             Theme="{StaticResource CardCheckBoxTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="PureCardCheckBoxTheme" SourceKey="checkbox-pure-card-theme">
-                    <WrapPanel ItemSpacing="12" LineSpacing="12" Margin="10,0">
+                <o:ControlShowcase Header="PureCardCheckBoxTheme" SourceKey="checkbox-pure-card-theme">
+                    <WrapPanel
+                        ItemSpacing="12"
+                        LineSpacing="12"
+                        Margin="10,0">
                         <CheckBox
                             Content="Compact"
                             MinWidth="140"
@@ -106,7 +112,7 @@
                             MinWidth="140"
                             Theme="{StaticResource PureCardCheckBoxTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

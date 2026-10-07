@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.DropDownButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="DropDownButton" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="Menu flyout" SourceKey="dropdown-button-menu">
+                <o:ControlShowcase Header="Menu flyout" SourceKey="dropdown-button-menu">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -53,9 +53,9 @@
                             </DropDownButton.Flyout>
                         </DropDownButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Themes" SourceKey="dropdown-button-themes">
+                <o:ControlShowcase Header="Themes" SourceKey="dropdown-button-themes">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -89,9 +89,9 @@
                             </DropDownButton.Flyout>
                         </DropDownButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Semantic colors" SourceKey="dropdown-button-colors">
+                <o:ControlShowcase Header="Semantic colors" SourceKey="dropdown-button-colors">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -133,9 +133,9 @@
                             </DropDownButton.Flyout>
                         </DropDownButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Custom flyout content" SourceKey="dropdown-button-custom-flyout">
+                <o:ControlShowcase Header="Custom flyout content" SourceKey="dropdown-button-custom-flyout">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -174,7 +174,7 @@
                             </DropDownButton.Flyout>
                         </DropDownButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

@@ -5,9 +5,9 @@
     x:Class="OvoUi.Demo.Pages.ScrollToButtonPage"
     x:DataType="pages:ScrollToButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
@@ -19,7 +19,7 @@
 
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="Vertical scrolling" SourceKey="scroll-to-vertical">
+                <o:ControlShowcase Header="Vertical scrolling" SourceKey="scroll-to-vertical">
                     <Grid
                         ColumnDefinitions="*,*"
                         ColumnSpacing="16"
@@ -30,7 +30,7 @@
                                 Height="220"
                                 HorizontalScrollBarVisibility="Disabled"
                                 VerticalScrollBarVisibility="Auto"
-                                controls:ScrollTo.Direction="Top">
+                                o:ScrollTo.Direction="Top">
                                 <StackPanel Spacing="8">
                                     <Border
                                         Background="#2278D4"
@@ -73,7 +73,7 @@
                                 Height="220"
                                 HorizontalScrollBarVisibility="Disabled"
                                 VerticalScrollBarVisibility="Auto"
-                                controls:ScrollTo.Direction="Bottom">
+                                o:ScrollTo.Direction="Bottom">
                                 <StackPanel Spacing="8">
                                     <Border
                                         Background="#7C3AED"
@@ -110,9 +110,9 @@
                             </ScrollViewer>
                         </StackPanel>
                     </Grid>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Horizontal scrolling" SourceKey="scroll-to-horizontal">
+                <o:ControlShowcase Header="Horizontal scrolling" SourceKey="scroll-to-horizontal">
                     <Grid
                         Margin="10,0"
                         RowDefinitions="Auto,Auto"
@@ -123,7 +123,7 @@
                                 Height="112"
                                 HorizontalScrollBarVisibility="Auto"
                                 VerticalScrollBarVisibility="Disabled"
-                                controls:ScrollTo.Direction="Left">
+                                o:ScrollTo.Direction="Left">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <Border
                                         Background="#2278D4"
@@ -153,7 +153,7 @@
                                 Height="112"
                                 HorizontalScrollBarVisibility="Auto"
                                 VerticalScrollBarVisibility="Disabled"
-                                controls:ScrollTo.Direction="Right">
+                                o:ScrollTo.Direction="Right">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <Border
                                         Background="#7C3AED"
@@ -177,9 +177,9 @@
                             </ScrollViewer>
                         </StackPanel>
                     </Grid>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="ListBox" SourceKey="scroll-to-listbox">
+                <o:ControlShowcase Header="ListBox" SourceKey="scroll-to-listbox">
                     <Grid
                         ColumnDefinitions="2*,3*"
                         ColumnSpacing="20"
@@ -197,9 +197,9 @@
                             ItemsSource="{Binding Items}"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                             ScrollViewer.VerticalScrollBarVisibility="Auto"
-                            controls:ScrollTo.Direction="Top" />
+                            o:ScrollTo.Direction="Top" />
                     </Grid>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

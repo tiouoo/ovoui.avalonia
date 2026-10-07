@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.HyperlinkButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="HyperlinkButton" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="Basic" SourceKey="hyperlink-button-basic">
+                <o:ControlShowcase Header="Basic" SourceKey="hyperlink-button-basic">
                     <WrapPanel
                         ItemSpacing="20"
                         LineSpacing="12"
@@ -25,9 +25,9 @@
                         <HyperlinkButton Content="Release notes" />
                         <HyperlinkButton Content="Disabled link" IsEnabled="False" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Text styles" SourceKey="hyperlink-button-text-styles">
+                <o:ControlShowcase Header="Text styles" SourceKey="hyperlink-button-text-styles">
                     <WrapPanel
                         ItemSpacing="20"
                         LineSpacing="12"
@@ -45,9 +45,9 @@
                             Content="Deprecated destination"
                             Theme="{StaticResource BasicHyperlinkButtonTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Themes" SourceKey="hyperlink-button-themes">
+                <o:ControlShowcase Header="Themes" SourceKey="hyperlink-button-themes">
                     <WrapPanel
                         ItemSpacing="20"
                         LineSpacing="16"
@@ -58,9 +58,9 @@
                         <HyperlinkButton Content="Underline motion" Theme="{StaticResource UnderlineMotionHyperlinkButton}" />
                         <HyperlinkButton Content="Underline fill" Theme="{StaticResource UnderlineFillHyperlinkButton}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Rich content" SourceKey="hyperlink-button-rich-content">
+                <o:ControlShowcase Header="Rich content" SourceKey="hyperlink-button-rich-content">
                     <WrapPanel
                         ItemSpacing="20"
                         LineSpacing="12"
@@ -84,7 +84,7 @@
                             </StackPanel>
                         </HyperlinkButton>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

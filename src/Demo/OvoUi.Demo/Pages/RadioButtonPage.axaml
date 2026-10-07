@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.RadioButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="RadioButton" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="Standard states" SourceKey="radio-button-standard-states">
+                <o:ControlShowcase Header="Standard states" SourceKey="radio-button-standard-states">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="24" LineSpacing="12">
                             <RadioButton Content="Unchecked" GroupName="StandardEnabled" />
@@ -37,9 +37,9 @@
                                 IsEnabled="False" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="Selection groups" SourceKey="radio-button-groups">
+                <o:ControlShowcase Header="Selection groups" SourceKey="radio-button-groups">
                     <WrapPanel
                         ItemSpacing="48"
                         LineSpacing="20"
@@ -63,9 +63,9 @@
                             <RadioButton Content="Spacious" GroupName="Density" />
                         </StackPanel>
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="ButtonRadioButtonTheme" SourceKey="radio-button-button-theme">
+                <o:ControlShowcase Header="ButtonRadioButtonTheme" SourceKey="radio-button-button-theme">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="16" LineSpacing="12">
                             <Border Theme="{StaticResource RadioButtonGroupBorder}">
@@ -128,9 +128,9 @@
                             </StackPanel>
                         </Border>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="CardRadioButtonTheme" SourceKey="radio-button-card-theme">
+                <o:ControlShowcase Header="CardRadioButtonTheme" SourceKey="radio-button-card-theme">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -153,9 +153,9 @@
                             MinWidth="210"
                             Theme="{StaticResource CardRadioButtonTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="PureCardRadioButtonTheme" SourceKey="radio-button-pure-card-theme">
+                <o:ControlShowcase Header="PureCardRadioButtonTheme" SourceKey="radio-button-pure-card-theme">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -178,7 +178,7 @@
                             MinWidth="150"
                             Theme="{StaticResource PureCardRadioButtonTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

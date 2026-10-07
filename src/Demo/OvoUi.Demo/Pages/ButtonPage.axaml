@@ -4,9 +4,9 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.ButtonPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <DockPanel Margin="20,10">
         <SelectableTextBlock
@@ -16,7 +16,7 @@
             Text="Button" />
         <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
             <StackPanel MaxWidth="980" Spacing="20">
-                <controls:ControlShowcase Header="BasicButtonTheme" SourceKey="button-basic-theme">
+                <o:ControlShowcase Header="BasicButtonTheme" SourceKey="button-basic-theme">
                     <WrapPanel
                         ItemSpacing="12"
                         LineSpacing="12"
@@ -27,9 +27,9 @@
                             IsEnabled="False"
                             Theme="{StaticResource BasicButtonTheme}" />
                     </WrapPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="BorderButtonTheme" SourceKey="button-border-theme">
+                <o:ControlShowcase Header="BorderButtonTheme" SourceKey="button-border-theme">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="12" LineSpacing="12">
                             <Button Content="Default" Theme="{StaticResource BorderButtonTheme}" />
@@ -95,9 +95,9 @@
                                 Theme="{StaticResource BorderButtonTheme}" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
 
-                <controls:ControlShowcase Header="SolidButtonTheme" SourceKey="button-solid-theme">
+                <o:ControlShowcase Header="SolidButtonTheme" SourceKey="button-solid-theme">
                     <StackPanel Margin="10,0" Spacing="16">
                         <WrapPanel ItemSpacing="12" LineSpacing="12">
                             <Button Content="Default" Theme="{StaticResource SolidButtonTheme}" />
@@ -163,7 +163,7 @@
                                 Theme="{StaticResource SolidButtonTheme}" />
                         </WrapPanel>
                     </StackPanel>
-                </controls:ControlShowcase>
+                </o:ControlShowcase>
             </StackPanel>
         </ScrollViewer>
     </DockPanel>
