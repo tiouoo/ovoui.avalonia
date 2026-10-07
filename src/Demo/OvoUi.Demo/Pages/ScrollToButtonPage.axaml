@@ -6,201 +6,192 @@
     x:DataType="pages:ScrollToButtonPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel Margin="20,10">
-        <SelectableTextBlock
-            Classes="h2"
-            DockPanel.Dock="Top"
-            Margin="0,0,0,20"
-            Text="ScrollToButton" />
-
-        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
-            <StackPanel MaxWidth="980" Spacing="20">
-                <o:ControlShowcase Header="Vertical scrolling" SourceKey="scroll-to-vertical">
-                    <Grid
-                        ColumnDefinitions="*,*"
-                        ColumnSpacing="16"
-                        Margin="10,0">
+    <demo:DemoPage Text="ScrollToButton">
+        <o:ControlShowcase Header="Vertical scrolling" SourceKey="scroll-to-vertical">
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="16"
+                Margin="10,0">
+                <StackPanel Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Back to top" />
+                    <ScrollViewer
+                        Height="220"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto"
+                        o:ScrollTo.Direction="Top">
                         <StackPanel Spacing="8">
-                            <TextBlock FontWeight="SemiBold" Text="Back to top" />
-                            <ScrollViewer
-                                Height="220"
-                                HorizontalScrollBarVisibility="Disabled"
-                                VerticalScrollBarVisibility="Auto"
-                                o:ScrollTo.Direction="Top">
-                                <StackPanel Spacing="8">
-                                    <Border
-                                        Background="#2278D4"
-                                        CornerRadius="4"
-                                        Height="72">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="Start"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                    <Border
-                                        Background="#1F9D75"
-                                        CornerRadius="4"
-                                        Height="280">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="Scroll down to reveal the button"
-                                            TextWrapping="Wrap"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                    <Border
-                                        Background="#D97706"
-                                        CornerRadius="4"
-                                        Height="72">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="End"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                </StackPanel>
-                            </ScrollViewer>
+                            <Border
+                                Background="#2278D4"
+                                CornerRadius="4"
+                                Height="72">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="Start"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                            <Border
+                                Background="#1F9D75"
+                                CornerRadius="4"
+                                Height="280">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="Scroll down to reveal the button"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                            <Border
+                                Background="#D97706"
+                                CornerRadius="4"
+                                Height="72">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="End"
+                                    VerticalAlignment="Center" />
+                            </Border>
                         </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
 
-                        <StackPanel Grid.Column="1" Spacing="8">
-                            <TextBlock FontWeight="SemiBold" Text="Jump to bottom" />
-                            <ScrollViewer
-                                Height="220"
-                                HorizontalScrollBarVisibility="Disabled"
-                                VerticalScrollBarVisibility="Auto"
-                                o:ScrollTo.Direction="Bottom">
-                                <StackPanel Spacing="8">
-                                    <Border
-                                        Background="#7C3AED"
-                                        CornerRadius="4"
-                                        Height="72">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="Start"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                    <Border
-                                        Background="#DB2777"
-                                        CornerRadius="4"
-                                        Height="280">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="Use the overlay button to reach the end"
-                                            TextWrapping="Wrap"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                    <Border
-                                        Background="#0891B2"
-                                        CornerRadius="4"
-                                        Height="72">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="End"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                </StackPanel>
-                            </ScrollViewer>
-                        </StackPanel>
-                    </Grid>
-                </o:ControlShowcase>
-
-                <o:ControlShowcase Header="Horizontal scrolling" SourceKey="scroll-to-horizontal">
-                    <Grid
-                        Margin="10,0"
-                        RowDefinitions="Auto,Auto"
-                        RowSpacing="16">
+                <StackPanel Grid.Column="1" Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Jump to bottom" />
+                    <ScrollViewer
+                        Height="220"
+                        HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto"
+                        o:ScrollTo.Direction="Bottom">
                         <StackPanel Spacing="8">
-                            <TextBlock FontWeight="SemiBold" Text="Back to left" />
-                            <ScrollViewer
-                                Height="112"
-                                HorizontalScrollBarVisibility="Auto"
-                                VerticalScrollBarVisibility="Disabled"
-                                o:ScrollTo.Direction="Left">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Border
-                                        Background="#2278D4"
-                                        CornerRadius="4"
-                                        Width="180" />
-                                    <Border
-                                        Background="#1F9D75"
-                                        CornerRadius="4"
-                                        Width="520">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="Scroll horizontally"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                    <Border
-                                        Background="#D97706"
-                                        CornerRadius="4"
-                                        Width="180" />
-                                </StackPanel>
-                            </ScrollViewer>
+                            <Border
+                                Background="#7C3AED"
+                                CornerRadius="4"
+                                Height="72">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="Start"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                            <Border
+                                Background="#DB2777"
+                                CornerRadius="4"
+                                Height="280">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="Use the overlay button to reach the end"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                            <Border
+                                Background="#0891B2"
+                                CornerRadius="4"
+                                Height="72">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="End"
+                                    VerticalAlignment="Center" />
+                            </Border>
                         </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
 
-                        <StackPanel Grid.Row="1" Spacing="8">
-                            <TextBlock FontWeight="SemiBold" Text="Jump to right" />
-                            <ScrollViewer
-                                Height="112"
-                                HorizontalScrollBarVisibility="Auto"
-                                VerticalScrollBarVisibility="Disabled"
-                                o:ScrollTo.Direction="Right">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <Border
-                                        Background="#7C3AED"
-                                        CornerRadius="4"
-                                        Width="180" />
-                                    <Border
-                                        Background="#DB2777"
-                                        CornerRadius="4"
-                                        Width="520">
-                                        <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            Text="The button follows the selected direction"
-                                            VerticalAlignment="Center" />
-                                    </Border>
-                                    <Border
-                                        Background="#0891B2"
-                                        CornerRadius="4"
-                                        Width="180" />
-                                </StackPanel>
-                            </ScrollViewer>
+        <o:ControlShowcase Header="Horizontal scrolling" SourceKey="scroll-to-horizontal">
+            <Grid
+                Margin="10,0"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="16">
+                <StackPanel Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Back to left" />
+                    <ScrollViewer
+                        Height="112"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Disabled"
+                        o:ScrollTo.Direction="Left">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Border
+                                Background="#2278D4"
+                                CornerRadius="4"
+                                Width="180" />
+                            <Border
+                                Background="#1F9D75"
+                                CornerRadius="4"
+                                Width="520">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="Scroll horizontally"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                            <Border
+                                Background="#D97706"
+                                CornerRadius="4"
+                                Width="180" />
                         </StackPanel>
-                    </Grid>
-                </o:ControlShowcase>
+                    </ScrollViewer>
+                </StackPanel>
 
-                <o:ControlShowcase Header="ListBox" SourceKey="scroll-to-listbox">
-                    <Grid
-                        ColumnDefinitions="2*,3*"
-                        ColumnSpacing="20"
-                        Margin="10,0">
-                        <StackPanel Spacing="8" VerticalAlignment="Center">
-                            <TextBlock FontWeight="SemiBold" Text="Virtualized content" />
-                            <TextBlock
-                                Opacity="0.7"
-                                Text="Scroll through the list. The overlay button appears after leaving the first item and returns directly to the top."
-                                TextWrapping="Wrap" />
+                <StackPanel Grid.Row="1" Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Jump to right" />
+                    <ScrollViewer
+                        Height="112"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Disabled"
+                        o:ScrollTo.Direction="Right">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Border
+                                Background="#7C3AED"
+                                CornerRadius="4"
+                                Width="180" />
+                            <Border
+                                Background="#DB2777"
+                                CornerRadius="4"
+                                Width="520">
+                                <TextBlock
+                                    Foreground="White"
+                                    HorizontalAlignment="Center"
+                                    Text="The button follows the selected direction"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                            <Border
+                                Background="#0891B2"
+                                CornerRadius="4"
+                                Width="180" />
                         </StackPanel>
-                        <ListBox
-                            Grid.Column="1"
-                            Height="250"
-                            ItemsSource="{Binding Items}"
-                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                            ScrollViewer.VerticalScrollBarVisibility="Auto"
-                            o:ScrollTo.Direction="Top" />
-                    </Grid>
-                </o:ControlShowcase>
-            </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="ListBox" SourceKey="scroll-to-listbox">
+            <Grid
+                ColumnDefinitions="2*,3*"
+                ColumnSpacing="20"
+                Margin="10,0">
+                <StackPanel Spacing="8" VerticalAlignment="Center">
+                    <TextBlock FontWeight="SemiBold" Text="Virtualized content" />
+                    <TextBlock
+                        Opacity="0.7"
+                        Text="Scroll through the list. The overlay button appears after leaving the first item and returns directly to the top."
+                        TextWrapping="Wrap" />
+                </StackPanel>
+                <ListBox
+                    Grid.Column="1"
+                    Height="250"
+                    ItemsSource="{Binding Items}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    o:ScrollTo.Direction="Top" />
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
 </UserControl>

@@ -5,87 +5,79 @@
     x:Class="OvoUi.Demo.Pages.HyperlinkButtonPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel Margin="20,10">
-        <SelectableTextBlock
-            Classes="h2"
-            DockPanel.Dock="Top"
-            Margin="0,0,0,20"
-            Text="HyperlinkButton" />
-        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
-            <StackPanel MaxWidth="980" Spacing="20">
-                <o:ControlShowcase Header="Basic" SourceKey="hyperlink-button-basic">
-                    <WrapPanel
-                        ItemSpacing="20"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <HyperlinkButton Content="Documentation" />
-                        <HyperlinkButton Content="Release notes" />
-                        <HyperlinkButton Content="Disabled link" IsEnabled="False" />
-                    </WrapPanel>
-                </o:ControlShowcase>
+    <demo:DemoPage Text="HyperlinkButton">
+        <o:ControlShowcase Header="Basic" SourceKey="hyperlink-button-basic">
+            <WrapPanel
+                ItemSpacing="20"
+                LineSpacing="12"
+                Margin="10,0">
+                <HyperlinkButton Content="Documentation" />
+                <HyperlinkButton Content="Release notes" />
+                <HyperlinkButton Content="Disabled link" IsEnabled="False" />
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="Text styles" SourceKey="hyperlink-button-text-styles">
-                    <WrapPanel
-                        ItemSpacing="20"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <HyperlinkButton
-                            Classes="underline"
-                            Content="Always underlined"
-                            Theme="{StaticResource BasicHyperlinkButtonTheme}" />
-                        <HyperlinkButton
-                            Classes="underline_focus"
-                            Content="Underline on hover"
-                            Theme="{StaticResource BasicHyperlinkButtonTheme}" />
-                        <HyperlinkButton
-                            Classes="del"
-                            Content="Deprecated destination"
-                            Theme="{StaticResource BasicHyperlinkButtonTheme}" />
-                    </WrapPanel>
-                </o:ControlShowcase>
+        <o:ControlShowcase Header="Text styles" SourceKey="hyperlink-button-text-styles">
+            <WrapPanel
+                ItemSpacing="20"
+                LineSpacing="12"
+                Margin="10,0">
+                <HyperlinkButton
+                    Classes="underline"
+                    Content="Always underlined"
+                    Theme="{StaticResource BasicHyperlinkButtonTheme}" />
+                <HyperlinkButton
+                    Classes="underline_focus"
+                    Content="Underline on hover"
+                    Theme="{StaticResource BasicHyperlinkButtonTheme}" />
+                <HyperlinkButton
+                    Classes="del"
+                    Content="Deprecated destination"
+                    Theme="{StaticResource BasicHyperlinkButtonTheme}" />
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="Themes" SourceKey="hyperlink-button-themes">
-                    <WrapPanel
-                        ItemSpacing="20"
-                        LineSpacing="16"
-                        Margin="10,0">
-                        <HyperlinkButton Content="Basic" Theme="{StaticResource BasicHyperlinkButtonTheme}" />
-                        <HyperlinkButton Content="Solid" Theme="{StaticResource SolidHyperlinkButtonTheme}" />
-                        <HyperlinkButton Content="Underline" Theme="{StaticResource UnderlineHyperlinkButton}" />
-                        <HyperlinkButton Content="Underline motion" Theme="{StaticResource UnderlineMotionHyperlinkButton}" />
-                        <HyperlinkButton Content="Underline fill" Theme="{StaticResource UnderlineFillHyperlinkButton}" />
-                    </WrapPanel>
-                </o:ControlShowcase>
+        <o:ControlShowcase Header="Themes" SourceKey="hyperlink-button-themes">
+            <WrapPanel
+                ItemSpacing="20"
+                LineSpacing="16"
+                Margin="10,0">
+                <HyperlinkButton Content="Basic" Theme="{StaticResource BasicHyperlinkButtonTheme}" />
+                <HyperlinkButton Content="Solid" Theme="{StaticResource SolidHyperlinkButtonTheme}" />
+                <HyperlinkButton Content="Underline" Theme="{StaticResource UnderlineHyperlinkButton}" />
+                <HyperlinkButton Content="Underline motion" Theme="{StaticResource UnderlineMotionHyperlinkButton}" />
+                <HyperlinkButton Content="Underline fill" Theme="{StaticResource UnderlineFillHyperlinkButton}" />
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="Rich content" SourceKey="hyperlink-button-rich-content">
-                    <WrapPanel
-                        ItemSpacing="20"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <HyperlinkButton Tag="Getting started">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <TextBlock
-                                    FontSize="16"
-                                    Text="i"
-                                    VerticalAlignment="Center" />
-                                <TextBlock Text="Getting started" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </HyperlinkButton>
-                        <HyperlinkButton Tag="External resource" Theme="{StaticResource UnderlineMotionHyperlinkButton}">
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <TextBlock Text="External resource" VerticalAlignment="Center" />
-                                <TextBlock
-                                    FontSize="12"
-                                    Text="-&gt;"
-                                    VerticalAlignment="Center" />
-                            </StackPanel>
-                        </HyperlinkButton>
-                    </WrapPanel>
-                </o:ControlShowcase>
-            </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+        <o:ControlShowcase Header="Rich content" SourceKey="hyperlink-button-rich-content">
+            <WrapPanel
+                ItemSpacing="20"
+                LineSpacing="12"
+                Margin="10,0">
+                <HyperlinkButton Tag="Getting started">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <TextBlock
+                            FontSize="16"
+                            Text="i"
+                            VerticalAlignment="Center" />
+                        <TextBlock Text="Getting started" VerticalAlignment="Center" />
+                    </StackPanel>
+                </HyperlinkButton>
+                <HyperlinkButton Tag="External resource" Theme="{StaticResource UnderlineMotionHyperlinkButton}">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="External resource" VerticalAlignment="Center" />
+                        <TextBlock
+                            FontSize="12"
+                            Text="-&gt;"
+                            VerticalAlignment="Center" />
+                    </StackPanel>
+                </HyperlinkButton>
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
 </UserControl>

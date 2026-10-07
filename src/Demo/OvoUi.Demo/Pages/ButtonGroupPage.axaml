@@ -6,55 +6,45 @@
     x:DataType="pages:ButtonGroupPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel Margin="20,10">
-        <SelectableTextBlock
-            Classes="h2"
-            DockPanel.Dock="Top"
-            Margin="0,0,0,20"
-            Text="ButtonGroup" />
+    <demo:DemoPage Text="ButtonGroup">
+        <o:ControlShowcase Header="Basic" SourceKey="button-group-basic">
+            <StackPanel Margin="10,0" Spacing="16">
+                <o:ButtonGroup>
+                    <Button Content="Day" />
+                    <Button Content="Week" />
+                    <Button Content="Month" />
+                    <Button Content="Year" />
+                </o:ButtonGroup>
 
-        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
-            <StackPanel MaxWidth="980" Spacing="20">
-                <o:ControlShowcase Header="Basic" SourceKey="button-group-basic">
-                    <StackPanel Margin="10,0" Spacing="16">
-                        <o:ButtonGroup>
-                            <Button Content="Day" />
-                            <Button Content="Week" />
-                            <Button Content="Month" />
-                            <Button Content="Year" />
-                        </o:ButtonGroup>
-
-                        <o:ButtonGroup>
-                            <Button Classes="accent" Content="Save" />
-                            <Button Classes="info" Content="Preview" />
-                            <Button Classes="success" Content="Publish" />
-                            <Button Classes="warn" Content="Archive" />
-                            <Button Classes="danger" Content="Delete" />
-                        </o:ButtonGroup>
-                    </StackPanel>
-                </o:ControlShowcase>
-
-                <o:ControlShowcase Header="States" SourceKey="button-group-states">
-                    <StackPanel Margin="10,0" Spacing="16">
-                        <o:ButtonGroup>
-                            <Button Content="Previous" />
-                            <Button Content="Page 2" IsEnabled="False" />
-                            <Button Content="Next" />
-                        </o:ButtonGroup>
-
-                        <o:ButtonGroup IsEnabled="False">
-                            <Button Content="Cut" />
-                            <Button Content="Copy" />
-                            <Button Content="Paste" />
-                        </o:ButtonGroup>
-                    </StackPanel>
-                </o:ControlShowcase>
-
+                <o:ButtonGroup>
+                    <Button Classes="accent" Content="Save" />
+                    <Button Classes="info" Content="Preview" />
+                    <Button Classes="success" Content="Publish" />
+                    <Button Classes="warn" Content="Archive" />
+                    <Button Classes="danger" Content="Delete" />
+                </o:ButtonGroup>
             </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="States" SourceKey="button-group-states">
+            <StackPanel Margin="10,0" Spacing="16">
+                <o:ButtonGroup>
+                    <Button Content="Previous" />
+                    <Button Content="Page 2" IsEnabled="False" />
+                    <Button Content="Next" />
+                </o:ButtonGroup>
+
+                <o:ButtonGroup IsEnabled="False">
+                    <Button Content="Cut" />
+                    <Button Content="Copy" />
+                    <Button Content="Paste" />
+                </o:ButtonGroup>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
 </UserControl>

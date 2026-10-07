@@ -5,166 +5,158 @@
     x:Class="OvoUi.Demo.Pages.ButtonPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel Margin="20,10">
-        <SelectableTextBlock
-            Classes="h2"
-            DockPanel.Dock="Top"
-            Margin="0,0,0,20"
-            Text="Button" />
-        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
-            <StackPanel MaxWidth="980" Spacing="20">
-                <o:ControlShowcase Header="BasicButtonTheme" SourceKey="button-basic-theme">
-                    <WrapPanel
-                        ItemSpacing="12"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <Button Content="Default" Theme="{StaticResource BasicButtonTheme}" />
-                        <Button
-                            Content="Disabled"
-                            IsEnabled="False"
-                            Theme="{StaticResource BasicButtonTheme}" />
-                    </WrapPanel>
-                </o:ControlShowcase>
+    <demo:DemoPage Text="Button">
+        <o:ControlShowcase Header="BasicButtonTheme" SourceKey="button-basic-theme">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="10,0">
+                <Button Content="Default" Theme="{StaticResource BasicButtonTheme}" />
+                <Button
+                    Content="Disabled"
+                    IsEnabled="False"
+                    Theme="{StaticResource BasicButtonTheme}" />
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="BorderButtonTheme" SourceKey="button-border-theme">
-                    <StackPanel Margin="10,0" Spacing="16">
-                        <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <Button Content="Default" Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="transparent"
-                                Content="Transparent"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="accent"
-                                Content="Accent"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="info"
-                                Content="Info"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="success"
-                                Content="Success"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="warn"
-                                Content="Warning"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="danger"
-                                Content="Danger"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                        </WrapPanel>
-                        <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <Button
-                                Content="Default"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="transparent"
-                                Content="Transparent"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="accent"
-                                Content="Accent"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="info"
-                                Content="Info"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="success"
-                                Content="Success"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="warn"
-                                Content="Warning"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                            <Button
-                                Classes="danger"
-                                Content="Danger"
-                                IsEnabled="False"
-                                Theme="{StaticResource BorderButtonTheme}" />
-                        </WrapPanel>
-                    </StackPanel>
-                </o:ControlShowcase>
-
-                <o:ControlShowcase Header="SolidButtonTheme" SourceKey="button-solid-theme">
-                    <StackPanel Margin="10,0" Spacing="16">
-                        <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <Button Content="Default" Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="transparent"
-                                Content="Transparent"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="accent"
-                                Content="Accent"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="info"
-                                Content="Info"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="success"
-                                Content="Success"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="warn"
-                                Content="Warning"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="danger"
-                                Content="Danger"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                        </WrapPanel>
-                        <WrapPanel ItemSpacing="12" LineSpacing="12">
-                            <Button
-                                Content="Default"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="transparent"
-                                Content="Transparent"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="accent"
-                                Content="Accent"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="info"
-                                Content="Info"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="success"
-                                Content="Success"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="warn"
-                                Content="Warning"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                            <Button
-                                Classes="danger"
-                                Content="Danger"
-                                IsEnabled="False"
-                                Theme="{StaticResource SolidButtonTheme}" />
-                        </WrapPanel>
-                    </StackPanel>
-                </o:ControlShowcase>
+        <o:ControlShowcase Header="BorderButtonTheme" SourceKey="button-border-theme">
+            <StackPanel Margin="10,0" Spacing="16">
+                <WrapPanel ItemSpacing="12" LineSpacing="12">
+                    <Button Content="Default" Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="transparent"
+                        Content="Transparent"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="accent"
+                        Content="Accent"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="info"
+                        Content="Info"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="success"
+                        Content="Success"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="warn"
+                        Content="Warning"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="danger"
+                        Content="Danger"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                </WrapPanel>
+                <WrapPanel ItemSpacing="12" LineSpacing="12">
+                    <Button
+                        Content="Default"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="transparent"
+                        Content="Transparent"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="accent"
+                        Content="Accent"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="info"
+                        Content="Info"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="success"
+                        Content="Success"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="warn"
+                        Content="Warning"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                    <Button
+                        Classes="danger"
+                        Content="Danger"
+                        IsEnabled="False"
+                        Theme="{StaticResource BorderButtonTheme}" />
+                </WrapPanel>
             </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="SolidButtonTheme" SourceKey="button-solid-theme">
+            <StackPanel Margin="10,0" Spacing="16">
+                <WrapPanel ItemSpacing="12" LineSpacing="12">
+                    <Button Content="Default" Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="transparent"
+                        Content="Transparent"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="accent"
+                        Content="Accent"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="info"
+                        Content="Info"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="success"
+                        Content="Success"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="warn"
+                        Content="Warning"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="danger"
+                        Content="Danger"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                </WrapPanel>
+                <WrapPanel ItemSpacing="12" LineSpacing="12">
+                    <Button
+                        Content="Default"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="transparent"
+                        Content="Transparent"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="accent"
+                        Content="Accent"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="info"
+                        Content="Info"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="success"
+                        Content="Success"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="warn"
+                        Content="Warning"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                    <Button
+                        Classes="danger"
+                        Content="Danger"
+                        IsEnabled="False"
+                        Theme="{StaticResource SolidButtonTheme}" />
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
 </UserControl>

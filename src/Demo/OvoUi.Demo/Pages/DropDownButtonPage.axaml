@@ -5,177 +5,169 @@
     x:Class="OvoUi.Demo.Pages.DropDownButtonPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel Margin="20,10">
-        <SelectableTextBlock
-            Classes="h2"
-            DockPanel.Dock="Top"
-            Margin="0,0,0,20"
-            Text="DropDownButton" />
-        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
-            <StackPanel MaxWidth="980" Spacing="20">
-                <o:ControlShowcase Header="Menu flyout" SourceKey="dropdown-button-menu">
-                    <WrapPanel
-                        ItemSpacing="12"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <DropDownButton Content="New document">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout Placement="BottomEdgeAlignedLeft">
-                                    <MenuItem Header="Blank document" />
-                                    <MenuItem Header="From template" />
-                                    <Separator />
-                                    <MenuItem Header="Import">
-                                        <MenuItem Header="Markdown" />
-                                        <MenuItem Header="Plain text" />
-                                    </MenuItem>
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
+    <demo:DemoPage Text="DropDownButton">
+        <o:ControlShowcase Header="Menu flyout" SourceKey="dropdown-button-menu">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="10,0">
+                <DropDownButton Content="New document">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                            <MenuItem Header="Blank document" />
+                            <MenuItem Header="From template" />
+                            <Separator />
+                            <MenuItem Header="Import">
+                                <MenuItem Header="Markdown" />
+                                <MenuItem Header="Plain text" />
+                            </MenuItem>
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
 
-                        <DropDownButton Content="Export">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout Placement="BottomEdgeAlignedLeft">
-                                    <MenuItem Header="PDF" />
-                                    <MenuItem Header="PNG image" />
-                                    <MenuItem Header="Web page" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
+                <DropDownButton Content="Export">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout Placement="BottomEdgeAlignedLeft">
+                            <MenuItem Header="PDF" />
+                            <MenuItem Header="PNG image" />
+                            <MenuItem Header="Web page" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
 
-                        <DropDownButton Content="Unavailable" IsEnabled="False">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="No actions" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                    </WrapPanel>
-                </o:ControlShowcase>
+                <DropDownButton Content="Unavailable" IsEnabled="False">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="No actions" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="Themes" SourceKey="dropdown-button-themes">
-                    <WrapPanel
-                        ItemSpacing="12"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <DropDownButton Content="Basic" Theme="{StaticResource BasicDropDownButtonTheme}">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Basic action" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Content="Border" Theme="{StaticResource BorderDropDownButtonTheme}">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Border action" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Content="Solid" Theme="{StaticResource SolidDropDownButtonTheme}">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Solid action" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Content="Borderless" Theme="{StaticResource BorderlessDropDownButtonTheme}">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Borderless action" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                    </WrapPanel>
-                </o:ControlShowcase>
+        <o:ControlShowcase Header="Themes" SourceKey="dropdown-button-themes">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="10,0">
+                <DropDownButton Content="Basic" Theme="{StaticResource BasicDropDownButtonTheme}">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Basic action" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Content="Border" Theme="{StaticResource BorderDropDownButtonTheme}">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Border action" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Content="Solid" Theme="{StaticResource SolidDropDownButtonTheme}">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Solid action" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Content="Borderless" Theme="{StaticResource BorderlessDropDownButtonTheme}">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Borderless action" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="Semantic colors" SourceKey="dropdown-button-colors">
-                    <WrapPanel
-                        ItemSpacing="12"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <DropDownButton Classes="accent" Content="Accent">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Accent action" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Classes="info" Content="Info">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="View details" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Classes="success" Content="Success">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Publish" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Classes="warn" Content="Warning">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Review changes" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <DropDownButton Classes="danger" Content="Danger">
-                            <DropDownButton.Flyout>
-                                <MenuFlyout>
-                                    <MenuItem Header="Move to trash" />
-                                    <MenuItem Header="Delete permanently" />
-                                </MenuFlyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                    </WrapPanel>
-                </o:ControlShowcase>
+        <o:ControlShowcase Header="Semantic colors" SourceKey="dropdown-button-colors">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="10,0">
+                <DropDownButton Classes="accent" Content="Accent">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Accent action" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Classes="info" Content="Info">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="View details" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Classes="success" Content="Success">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Publish" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Classes="warn" Content="Warning">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Review changes" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <DropDownButton Classes="danger" Content="Danger">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Move to trash" />
+                            <MenuItem Header="Delete permanently" />
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </WrapPanel>
+        </o:ControlShowcase>
 
-                <o:ControlShowcase Header="Custom flyout content" SourceKey="dropdown-button-custom-flyout">
-                    <WrapPanel
-                        ItemSpacing="12"
-                        LineSpacing="12"
-                        Margin="10,0">
-                        <DropDownButton Content="Text settings">
-                            <DropDownButton.Flyout>
-                                <Flyout Placement="BottomEdgeAlignedLeft">
-                                    <StackPanel MinWidth="240" Spacing="12">
-                                        <TextBlock FontWeight="SemiBold" Text="Text settings" />
-                                        <TextBlock Text="Font size" />
-                                        <Slider
-                                            Maximum="32"
-                                            Minimum="10"
-                                            TickFrequency="2"
-                                            Value="16" />
-                                        <CheckBox Content="Use compact line spacing" />
-                                        <Button
-                                            Content="Apply settings"
-                                            HorizontalAlignment="Right"
-                                            Theme="{StaticResource SolidButtonTheme}" />
-                                    </StackPanel>
-                                </Flyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
+        <o:ControlShowcase Header="Custom flyout content" SourceKey="dropdown-button-custom-flyout">
+            <WrapPanel
+                ItemSpacing="12"
+                LineSpacing="12"
+                Margin="10,0">
+                <DropDownButton Content="Text settings">
+                    <DropDownButton.Flyout>
+                        <Flyout Placement="BottomEdgeAlignedLeft">
+                            <StackPanel MinWidth="240" Spacing="12">
+                                <TextBlock FontWeight="SemiBold" Text="Text settings" />
+                                <TextBlock Text="Font size" />
+                                <Slider
+                                    Maximum="32"
+                                    Minimum="10"
+                                    TickFrequency="2"
+                                    Value="16" />
+                                <CheckBox Content="Use compact line spacing" />
+                                <Button
+                                    Content="Apply settings"
+                                    HorizontalAlignment="Right"
+                                    Theme="{StaticResource SolidButtonTheme}" />
+                            </StackPanel>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
 
-                        <DropDownButton Content="Account">
-                            <DropDownButton.Flyout>
-                                <Flyout Placement="BottomEdgeAlignedLeft">
-                                    <StackPanel MinWidth="220" Spacing="10">
-                                        <TextBlock FontWeight="SemiBold" Text="Ada Lovelace" />
-                                        <TextBlock Opacity="0.7" Text="ada@example.com" />
-                                        <Separator />
-                                        <Button Content="Open profile" HorizontalAlignment="Stretch" />
-                                    </StackPanel>
-                                </Flyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                    </WrapPanel>
-                </o:ControlShowcase>
-            </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+                <DropDownButton Content="Account">
+                    <DropDownButton.Flyout>
+                        <Flyout Placement="BottomEdgeAlignedLeft">
+                            <StackPanel MinWidth="220" Spacing="10">
+                                <TextBlock FontWeight="SemiBold" Text="Ada Lovelace" />
+                                <TextBlock Opacity="0.7" Text="ada@example.com" />
+                                <Separator />
+                                <Button Content="Open profile" HorizontalAlignment="Stretch" />
+                            </StackPanel>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
 </UserControl>

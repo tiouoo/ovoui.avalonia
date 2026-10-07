@@ -5,39 +5,31 @@
     x:Class="OvoUi.Demo.Pages.TextBlockPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DockPanel Margin="20,10">
-        <SelectableTextBlock
-            Classes="h2"
-            DockPanel.Dock="Top"
-            Margin="0,0,0,20"
-            Text="TextBlock" />
-        <ScrollViewer Margin="0,0,-15,0" Padding="0,0,15,0">
-            <StackPanel MaxWidth="980">
-                <o:ControlShowcase Header="TextBlock" SourceKey="text-block-1">
-                    <StackPanel Margin="10,0" Spacing="18">
-                        <TextBlock Text="Common Text" />
-                        <TextBlock Classes="h1" Text="H1 Heading" />
-                        <TextBlock Classes="h2" Text="H2 Heading" />
-                        <TextBlock Classes="h3" Text="H3 Heading" />
-                        <TextBlock Classes="h4" Text="H4 Heading" />
-                        <TextBlock Classes="h5" Text="H5 Heading" />
-                        <TextBlock Classes="h6" Text="H6 Heading" />
-                        <TextBlock Classes="underline" Text="Underlined Text" />
-                        <TextBlock Classes="del" Text="Deleted Text" />
-                        <TextBlock Classes="under del" Text="Underlined and Deleted Text" />
-                        <TextBlock Classes="accent" Text="Accent Text" />
-                        <TextBlock Classes="success" Text="Success Text" />
-                        <TextBlock Classes="info" Text="Information Text" />
-                        <TextBlock Classes="warn" Text="Warning Text" />
-                        <TextBlock Classes="danger" Text="Danger Text" />
-                        <TextBlock Classes="error" Text="Error Text" />
-                        <TextBlock IsEnabled="False" Text="Disabled Text" />
-                    </StackPanel>
-                </o:ControlShowcase>
+    <demo:DemoPage Text="TextBlock">
+        <o:ControlShowcase Header="TextBlock" SourceKey="text-block-1">
+            <StackPanel Margin="10,0" Spacing="18">
+                <TextBlock Text="Common Text" />
+                <TextBlock Classes="h1" Text="H1 Heading" />
+                <TextBlock Classes="h2" Text="H2 Heading" />
+                <TextBlock Classes="h3" Text="H3 Heading" />
+                <TextBlock Classes="h4" Text="H4 Heading" />
+                <TextBlock Classes="h5" Text="H5 Heading" />
+                <TextBlock Classes="h6" Text="H6 Heading" />
+                <TextBlock Classes="underline" Text="Underlined Text" />
+                <TextBlock Classes="del" Text="Deleted Text" />
+                <TextBlock Classes="under del" Text="Underlined and Deleted Text" />
+                <TextBlock Classes="accent" Text="Accent Text" />
+                <TextBlock Classes="success" Text="Success Text" />
+                <TextBlock Classes="info" Text="Information Text" />
+                <TextBlock Classes="warn" Text="Warning Text" />
+                <TextBlock Classes="danger" Text="Danger Text" />
+                <TextBlock Classes="error" Text="Error Text" />
+                <TextBlock IsEnabled="False" Text="Disabled Text" />
             </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
 </UserControl>

@@ -4,14 +4,20 @@
     mc:Ignorable="d"
     x:Class="OvoUi.Demo.Pages.OverviewPage"
     xmlns="https://github.com/avaloniaui"
+    xmlns:controls="using:OvoUi.Demo.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <controls:VerticalScrollOpacityMaskConverter x:Key="VerticalScrollOpacityMaskConverter" />
+    </UserControl.Resources>
     <ScrollViewer
         HorizontalScrollBarVisibility="Disabled"
         Margin="0,0,5,0"
-        VerticalScrollBarVisibility="Auto">
+        OpacityMask="{Binding Offset, ElementName=OverviewScrollViewer, Converter={StaticResource VerticalScrollOpacityMaskConverter}}"
+        VerticalScrollBarVisibility="Auto"
+        x:Name="OverviewScrollViewer">
         <StackPanel
             HorizontalAlignment="Stretch"
             Margin="24,28,19,28"
