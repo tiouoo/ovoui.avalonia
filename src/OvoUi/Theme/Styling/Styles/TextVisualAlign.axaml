@@ -2,4 +2,8 @@
     <Style Selector="Button AccessText">
         <Setter Property="Margin" Value="0,1,0,0" />
     </Style>
+    <Style Selector="RadioButton AccessText">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,1,0,0" />
+    </Style>
 </Styles>

@@ -276,10 +276,10 @@
             <Setter Property="Background" Value="Transparent" />
         </Style>
         <Style Selector="^.border">
+            <Setter Property="Padding" Value="20,4" />
             <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
             <Style Selector="^:pointerover">
                 <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
             </Style>

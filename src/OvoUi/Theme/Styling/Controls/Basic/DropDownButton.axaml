@@ -166,6 +166,10 @@
         <Setter Property="Padding" Value="20, 4" />
         <Setter Property="MinHeight" Value="32" />
 
+        <Style Selector="^ /template/ Border#PART_Background">
+            <Setter Property="Margin" Value="0,1,0,0" />
+        </Style>
+
         <Style Selector="^.transparent">
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>

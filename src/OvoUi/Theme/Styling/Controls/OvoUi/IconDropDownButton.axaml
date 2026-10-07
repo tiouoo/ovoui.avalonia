@@ -159,7 +159,7 @@
                 <TextBlock
                     DockPanel.Dock="Right"
                     FontFamily="{DynamicResource OvoIconFontFamily}"
-                    FontSize="21"
+                    FontSize="19"
                     FontWeight="Light"
                     Foreground="{Binding #PART_ContentPresenter.Foreground}"
                     Grid.Column="1"
