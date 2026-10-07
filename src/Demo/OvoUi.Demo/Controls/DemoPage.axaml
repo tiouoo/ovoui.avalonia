@@ -18,10 +18,16 @@
                 <ScrollViewer
                     HorizontalScrollBarVisibility="Disabled"
                     Margin="0,0,-15,0"
-                    OpacityMask="{Binding Offset, ElementName=PART_ScrollViewer, Converter={StaticResource VerticalScrollOpacityMaskConverter}}"
                     Padding="0,0,15,0"
                     VerticalScrollBarVisibility="Auto"
                     x:Name="PART_ScrollViewer">
+                    <ScrollViewer.OpacityMask>
+                        <MultiBinding Converter="{StaticResource VerticalScrollOpacityMaskConverter}">
+                            <Binding ElementName="PART_ScrollViewer" Path="Offset.Y" />
+                            <Binding ElementName="PART_ScrollViewer" Path="Extent.Height" />
+                            <Binding ElementName="PART_ScrollViewer" Path="Viewport.Height" />
+                        </MultiBinding>
+                    </ScrollViewer.OpacityMask>
                     <ItemsControl
                         ItemsSource="{Binding PageContent, RelativeSource={RelativeSource TemplatedParent}}"
                         MaxWidth="1460">

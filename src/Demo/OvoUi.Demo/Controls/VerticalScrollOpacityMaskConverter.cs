@@ -5,11 +5,19 @@ using Avalonia.Media;
 
 namespace OvoUi.Demo.Controls;
 
-public class VerticalScrollOpacityMaskConverter : IValueConverter
+public class VerticalScrollOpacityMaskConverter : IMultiValueConverter
 {
-    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    public object Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
     {
-        var showTopFade = value is Vector offset && offset.Y > 0.5;
+        var offset = values.Count > 0 && values[0] is double offsetValue ? offsetValue : 0;
+        var extent = values.Count > 1 && values[1] is double extentValue ? extentValue : 0;
+        var viewport = values.Count > 2 && values[2] is double viewportValue ? viewportValue : 0;
+        var hasScrollMetrics = values.Count >= 3 &&
+                               values[0] is double &&
+                               values[1] is double &&
+                               values[2] is double;
+        var showTopFade = hasScrollMetrics && offset > 0.5;
+        var showBottomFade = hasScrollMetrics && offset + viewport < extent - 0.5;
         var stops = new GradientStops();
 
         if (showTopFade)
@@ -22,8 +30,15 @@ public class VerticalScrollOpacityMaskConverter : IValueConverter
             stops.Add(new GradientStop(Colors.White, 0));
         }
 
-        stops.Add(new GradientStop(Colors.White, 0.96));
-        stops.Add(new GradientStop(Colors.Transparent, 1));
+        if (showBottomFade)
+        {
+            stops.Add(new GradientStop(Colors.White, 0.96));
+            stops.Add(new GradientStop(Colors.Transparent, 1));
+        }
+        else
+        {
+            stops.Add(new GradientStop(Colors.White, 1));
+        }
 
         return new LinearGradientBrush
         {
@@ -33,5 +48,8 @@ public class VerticalScrollOpacityMaskConverter : IValueConverter
         };
     }
 
-    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture) => null;
+    public object[] ConvertBack(object? value, Type[] targetTypes, object? parameter, CultureInfo culture)
+    {
+        throw new NotSupportedException();
+    }
 }
