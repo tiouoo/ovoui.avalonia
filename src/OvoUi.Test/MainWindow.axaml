@@ -37,8 +37,17 @@
                     <o:ControlShowcase
                         CodeHeight="250"
                         Header="Header"
+                        HeightBehavior="Animated"
                         PreviewMinHeight="180"
                         SourceKey="test-action-showcase">
+                        <o:ControlShowcase.CodeBlocks>
+                            <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                            <o:ShowcaseCodeBlock
+                                Code="{x:Static test:MainWindow.CodeBehindSample}"
+                                CodeHeight="180"
+                                Header="C# code behind"
+                                Language="csharp" />
+                        </o:ControlShowcase.CodeBlocks>
                         <StackPanel
                             HorizontalAlignment="Center"
                             Spacing="18"

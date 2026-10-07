@@ -1,7 +1,9 @@
+using System.Collections.Specialized;
 using System.Xml.Linq;
 using Avalonia;
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
+using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Presenters;
@@ -94,10 +96,17 @@ public class ControlShowcase : ContentControl
         AvaloniaProperty.RegisterDirect<ControlShowcase, CodeBlock?>(
             nameof(CodeBlock), control => control.CodeBlock);
 
+    public static readonly DirectProperty<ControlShowcase, IReadOnlyList<CodeBlock>> CodeBlockControlsProperty =
+        AvaloniaProperty.RegisterDirect<ControlShowcase, IReadOnlyList<CodeBlock>>(
+            nameof(CodeBlockControls), control => control.CodeBlockControls);
+
     private TabStrip? _tabStrip;
     private TransitioningContentControl? _transitionHost;
     private ContentPresenter? _previewPresenter;
+    private Grid? _codePage;
     private CodeBlock? _codeBlock;
+    private IReadOnlyList<CodeBlock> _codeBlockControls = Array.Empty<CodeBlock>();
+    private readonly HashSet<ShowcaseCodeBlock> _subscribedCodeBlocks = [];
     private Grid? _combinedPage;
     private Border? _combinedDivider;
     private string _effectiveCode = string.Empty;
@@ -106,6 +115,16 @@ public class ControlShowcase : ContentControl
     private double _previewHeight;
     private CancellationTokenSource? _heightAnimationCancellation;
     private CancellationTokenSource? _splitAnimationCancellation;
+
+    public ControlShowcase()
+    {
+        CodeBlocks.CollectionChanged += OnCodeBlocksCollectionChanged;
+    }
+
+    /// <summary>
+    /// Gets the code block definitions. When empty, the legacy single-block properties are used.
+    /// </summary>
+    public AvaloniaList<ShowcaseCodeBlock> CodeBlocks { get; } = [];
 
     public string? SourceKey
     {
@@ -234,6 +253,11 @@ public class ControlShowcase : ContentControl
     /// </summary>
     public CodeBlock? CodeBlock => _codeBlock;
 
+    /// <summary>
+    /// Gets the code block controls created after the template has been applied.
+    /// </summary>
+    public IReadOnlyList<CodeBlock> CodeBlockControls => _codeBlockControls;
+
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         CancelHeightAnimation();
@@ -246,7 +270,6 @@ public class ControlShowcase : ContentControl
         base.OnApplyTemplate(e);
         UpdateHeaderPlacement();
 
-        var oldCodeBlock = _codeBlock;
         _tabStrip = e.NameScope.Find<TabStrip>(PART_TabStrip);
         _transitionHost = e.NameScope.Find<TransitioningContentControl>(PART_TransitionHost);
         _combinedPage = null;
@@ -254,18 +277,10 @@ public class ControlShowcase : ContentControl
 
         _previewPresenter = new ContentPresenter();
         _previewPresenter.SizeChanged += OnPreviewSizeChanged;
-        _codeBlock = new CodeBlock
-        {
-            CornerRadius = new CornerRadius(0),
-            HeaderCornerRadius = new CornerRadius(0),
-            ShowCopyButton = true
-        };
-        _codeBlock.Classes.Add("control-showcase-code-block");
-        RaisePropertyChanged(CodeBlockProperty, oldCodeBlock, _codeBlock);
 
         UpdatePreviewPresenter();
         UpdateEffectiveCode();
-        UpdateCodeBlock();
+        RebuildCodePage();
 
         _displayedIndex = NormalizeIndex(SelectedIndex);
         if (_tabStrip is not null)
@@ -403,7 +418,7 @@ public class ControlShowcase : ContentControl
     private object? GetPage(int selectedIndex) => selectedIndex switch
     {
         0 => _previewPresenter,
-        1 => _codeBlock,
+        1 => _codePage,
         _ => CreateCombinedPage()
     };
 
@@ -419,7 +434,7 @@ public class ControlShowcase : ContentControl
         };
         page.Children.Add(_previewPresenter!);
         page.Children.Add(_combinedDivider);
-        page.Children.Add(_codeBlock!);
+        page.Children.Add(_codePage!);
         _combinedPage = page;
         UpdateCombinedLayout();
         return page;
@@ -427,7 +442,7 @@ public class ControlShowcase : ContentControl
 
     private void UpdateCombinedLayout()
     {
-        if (_combinedPage is null || _combinedDivider is null || _previewPresenter is null || _codeBlock is null)
+        if (_combinedPage is null || _combinedDivider is null || _previewPresenter is null || _codePage is null)
             return;
 
         var isVertical = SplitOrientation == Orientation.Vertical;
@@ -438,8 +453,8 @@ public class ControlShowcase : ContentControl
         Grid.SetColumn(_previewPresenter, 0);
         Grid.SetRow(_combinedDivider, isVertical ? 1 : 0);
         Grid.SetColumn(_combinedDivider, isVertical ? 0 : 1);
-        Grid.SetRow(_codeBlock, isVertical ? 2 : 0);
-        Grid.SetColumn(_codeBlock, isVertical ? 0 : 2);
+        Grid.SetRow(_codePage, isVertical ? 2 : 0);
+        Grid.SetColumn(_codePage, isVertical ? 0 : 2);
     }
 
     private void TransitionToPage(int previousIndex, int selectedIndex)
@@ -458,15 +473,15 @@ public class ControlShowcase : ContentControl
         _transitionHost.PageTransition = null;
         _transitionHost.Content = null;
         ResetTransitionState(_previewPresenter);
-        ResetTransitionState(_codeBlock);
+        ResetTransitionState(_codePage);
         _combinedPage?.Children.Clear();
         _combinedPage = null;
         _combinedDivider = null;
         _transitionHost.Content = GetPage(selectedIndex);
         _transitionHost.PageTransition = PageTransition;
         var animatedElement = selectedIndex == 2
-            ? previousIndex == 0 ? (Control?)_codeBlock : _previewPresenter
-            : selectedIndex == 0 ? _previewPresenter : _codeBlock;
+            ? previousIndex == 0 ? (Control?)_codePage : _previewPresenter
+            : selectedIndex == 0 ? _previewPresenter : _codePage;
         _ = AnimateSplitElementAsync(animatedElement, ReferenceEquals(animatedElement, _previewPresenter));
     }
 
@@ -564,37 +579,173 @@ public class ControlShowcase : ContentControl
         SetAndRaise(EffectiveCodeProperty, ref _effectiveCode, source);
     }
 
+    private void OnCodeBlocksCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        foreach (var definition in _subscribedCodeBlocks)
+            definition.PropertyChanged -= OnCodeBlockDefinitionChanged;
+        _subscribedCodeBlocks.Clear();
+        foreach (var definition in CodeBlocks)
+        {
+            if (_subscribedCodeBlocks.Add(definition))
+                definition.PropertyChanged += OnCodeBlockDefinitionChanged;
+        }
+
+        RebuildCodePage();
+    }
+
+    private void OnCodeBlockDefinitionChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        var startHeight = _transitionHost?.Bounds.Height ?? 0d;
+        UpdateCodeBlock();
+        if (_displayedIndex != 0 && HeightBehavior == ShowcaseHeightBehavior.Animated)
+            _ = AnimateContentHeightAsync(_displayedIndex, startHeight);
+    }
+
+    private void RebuildCodePage()
+    {
+        var oldCodeBlock = _codeBlock;
+        var oldCodeBlockControls = _codeBlockControls;
+        var displayedIndex = _displayedIndex;
+        var restoreDisplayedPage = _transitionHost?.Content is not null;
+        var startHeight = _transitionHost?.Bounds.Height ?? 0d;
+
+        CancelHeightAnimation();
+        CancelSplitAnimation();
+        _transitionHost?.ClearValue(Layoutable.HeightProperty);
+        if (restoreDisplayedPage)
+            _transitionHost!.Content = null;
+        _combinedPage?.Children.Clear();
+        _combinedPage = null;
+        _combinedDivider = null;
+
+        var blockCount = Math.Max(1, CodeBlocks.Count);
+        var controls = new List<CodeBlock>(blockCount);
+        var page = new Grid
+        {
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            VerticalAlignment = VerticalAlignment.Stretch
+        };
+
+        for (var index = 0; index < blockCount; index++)
+        {
+            if (index > 0)
+            {
+                page.RowDefinitions.Add(new RowDefinition(1, GridUnitType.Pixel));
+                var divider = new Border();
+                divider.Classes.Add("control-showcase-divider");
+                Grid.SetRow(divider, index * 2 - 1);
+                page.Children.Add(divider);
+            }
+
+            page.RowDefinitions.Add(new RowDefinition(GridLength.Auto));
+            var codeBlock = new CodeBlock
+            {
+                CornerRadius = new CornerRadius(0),
+                HeaderCornerRadius = new CornerRadius(0),
+                ShowCopyButton = true
+            };
+            codeBlock.Classes.Add("control-showcase-code-block");
+            Grid.SetRow(codeBlock, index * 2);
+            page.Children.Add(codeBlock);
+            controls.Add(codeBlock);
+        }
+
+        _codePage = page;
+        _codeBlockControls = controls;
+        _codeBlock = controls[0];
+        RaisePropertyChanged(CodeBlockControlsProperty, oldCodeBlockControls, _codeBlockControls);
+        RaisePropertyChanged(CodeBlockProperty, oldCodeBlock, _codeBlock);
+        UpdateCodeBlock();
+
+        if (restoreDisplayedPage && _transitionHost is not null)
+        {
+            _transitionHost.Content = GetPage(displayedIndex);
+            if (displayedIndex != 0 && HeightBehavior == ShowcaseHeightBehavior.Animated)
+                _ = AnimateContentHeightAsync(displayedIndex, startHeight);
+        }
+    }
+
     private void UpdateCodeBlock()
     {
-        if (_codeBlock is null)
+        if (_codePage is null)
             return;
 
-        _codeBlock.Text = EffectiveCode;
-        _codeBlock.Language = Language;
-        _codeBlock.Header = CodeBlockHeader;
+        if (CodeBlocks.Count == 0)
+        {
+            ConfigureCodeBlock(_codeBlock!, EffectiveCode, Language, CodeBlockHeader, ShowLineNumbers, WordWrap);
+        }
+        else
+        {
+            for (var index = 0; index < CodeBlocks.Count && index < _codeBlockControls.Count; index++)
+            {
+                var definition = CodeBlocks[index];
+                ConfigureCodeBlock(
+                    _codeBlockControls[index],
+                    definition.Code ?? EffectiveCode,
+                    definition.Language,
+                    definition.Header,
+                    definition.ShowLineNumbers,
+                    definition.WordWrap);
+            }
+        }
+
         if (_previewPresenter is { Bounds.Width: > 0, Bounds.Height: > 0 })
             SyncCodeBlockSize(_previewPresenter.Bounds.Size);
-        else if (HeightBehavior == ShowcaseHeightBehavior.Stable)
-            _codeBlock.Height = Math.Max(78d, CodeHeight);
-        AvaloniaEditor.SetShowLineNumbers(_codeBlock, ShowLineNumbers);
-        AvaloniaEditor.SetWordWrap(_codeBlock, WordWrap);
+        else
+            ApplyCodeBlockHeights(null);
+    }
+
+    private static void ConfigureCodeBlock(
+        CodeBlock codeBlock,
+        string code,
+        string language,
+        object? header,
+        bool showLineNumbers,
+        bool wordWrap)
+    {
+        codeBlock.Text = code;
+        codeBlock.Language = language;
+        codeBlock.Header = header;
+        AvaloniaEditor.SetShowLineNumbers(codeBlock, showLineNumbers);
+        AvaloniaEditor.SetWordWrap(codeBlock, wordWrap);
         AvaloniaEditor.SetHorizontalScrollBarVisibility(
-            _codeBlock,
-            WordWrap ? ScrollBarVisibility.Disabled : ScrollBarVisibility.Auto);
-        AvaloniaEditor.SetVerticalScrollBarVisibility(_codeBlock, ScrollBarVisibility.Auto);
-        AvaloniaEditor.SetIsReadOnly(_codeBlock, true);
+            codeBlock,
+            wordWrap ? ScrollBarVisibility.Disabled : ScrollBarVisibility.Auto);
+        AvaloniaEditor.SetVerticalScrollBarVisibility(codeBlock, ScrollBarVisibility.Auto);
+        AvaloniaEditor.SetIsReadOnly(codeBlock, true);
     }
 
     private void SyncCodeBlockSize(Size previewSize)
     {
-        if (_codeBlock is null || previewSize.Width <= 0 || previewSize.Height <= 0)
+        if (_codePage is null || previewSize.Width <= 0 || previewSize.Height <= 0)
             return;
 
-        _codeBlock.ClearValue(Layoutable.WidthProperty);
-        if (HeightBehavior == ShowcaseHeightBehavior.Stable)
-            _codeBlock.Height = previewSize.Height;
-        else
-            _codeBlock.ClearValue(Layoutable.HeightProperty);
+        _codePage.ClearValue(Layoutable.WidthProperty);
+        ApplyCodeBlockHeights(previewSize.Height);
+    }
+
+    private void ApplyCodeBlockHeights(double? previewHeight)
+    {
+        if (_codeBlockControls.Count == 0)
+            return;
+
+        if (HeightBehavior == ShowcaseHeightBehavior.Stable && previewHeight is > 0)
+        {
+            var height = Math.Max(78d, (previewHeight.Value - (_codeBlockControls.Count - 1)) / _codeBlockControls.Count);
+            foreach (var codeBlock in _codeBlockControls)
+                codeBlock.Height = height;
+            return;
+        }
+
+        for (var index = 0; index < _codeBlockControls.Count; index++)
+        {
+            var configuredHeight = CodeBlocks.Count == 0
+                ? CodeHeight
+                : CodeBlocks[index].CodeHeight;
+            if (double.IsNaN(configuredHeight) || double.IsInfinity(configuredHeight))
+                configuredHeight = CodeHeight;
+            _codeBlockControls[index].Height = Math.Max(78d, configuredHeight);
+        }
     }
 
     private async Task AnimateContentHeightAsync(int selectedIndex, double startHeight)
@@ -611,14 +762,14 @@ public class ControlShowcase : ContentControl
         _transitionHost.ClearValue(Layoutable.HeightProperty);
         if (selectedIndex == 0)
             _transitionHost.MinHeight = 0d;
-        _codeBlock?.ClearValue(Layoutable.HeightProperty);
+        _codePage?.ClearValue(Layoutable.HeightProperty);
         _transitionHost.UpdateLayout();
 
         var minimumHeight = Math.Max(PreviewMinHeight, _previewHeight);
         _transitionHost.MinHeight = minimumHeight;
         var targetHeight = minimumHeight;
         if (selectedIndex == 1)
-            targetHeight = Math.Max(targetHeight, _codeBlock?.DesiredSize.Height ?? 0d);
+            targetHeight = Math.Max(targetHeight, _codePage?.DesiredSize.Height ?? 0d);
         else if (selectedIndex == 2)
             targetHeight = Math.Max(targetHeight, _combinedPage?.DesiredSize.Height ?? 0d);
 
@@ -688,7 +839,7 @@ public class ControlShowcase : ContentControl
         _splitAnimationCancellation?.Dispose();
         _splitAnimationCancellation = null;
         ResetTransitionState(_previewPresenter);
-        ResetTransitionState(_codeBlock);
+        ResetTransitionState(_codePage);
     }
 
     private static int NormalizeIndex(int value) => Math.Clamp(value, 0, 2);

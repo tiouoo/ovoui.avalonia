@@ -442,6 +442,18 @@ public class CodeBlock : TemplatedControl
         if (_editor is null || _textMateInstallation is not null)
             return;
 
+        var lineTransformers = _editor.TextArea.TextView.LineTransformers;
+        if (!lineTransformers.OfType<OvoTextMateColoringTransformer>().Any())
+        {
+            // TextMate reuses the first compatible transformer instead of
+            // creating its renderer that overrides every token's font weight.
+            lineTransformers.Insert(
+                0,
+                new OvoTextMateColoringTransformer(
+                    _editor,
+                    exception => HighlightingFailed?.Invoke(exception)));
+        }
+
         _registryOptions = new RegistryOptions(DarkTextMateTheme);
         _textMateInstallation = global::AvaloniaEdit.TextMate.TextMate.InstallTextMate(
             _editor,

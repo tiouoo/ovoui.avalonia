@@ -12,6 +12,13 @@ namespace OvoUi.Test;
 
 public partial class MainWindow : OvoWindow
 {
+    public const string CodeBehindSample = """
+        private void CreateProject(object? sender, RoutedEventArgs e)
+        {
+            // Create the project and update the preview.
+        }
+        """;
+
     public MainWindow()
     {
         InitializeComponent();

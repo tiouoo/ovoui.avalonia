@@ -209,6 +209,7 @@
         <Setter Property="Foreground" Value="{DynamicResource OvoCodeForeground}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoCodeFontFamily}" />
         <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="LineNumbersForeground" Value="{DynamicResource OvoCodeLineNumberForeground}" />
         <Setter Property="Padding" Value="12,10" />
     </Style>
@@ -219,6 +220,10 @@
         <Setter Property="SelectionForeground" Value="{x:Null}" />
         <Setter Property="SelectionCornerRadius" Value="2" />
         <Setter Property="RightClickMovesCaret" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource OvoCodeForeground}" />
+        <Setter Property="FontFamily" Value="{DynamicResource OvoCodeFontFamily}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
     </Style>
 
     <Style Selector="rendering|TextView">
