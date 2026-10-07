@@ -638,7 +638,7 @@ public class ControlShowcase : ContentControl
         var animation = new Animation
         {
             Duration = TimeSpan.FromMilliseconds(300),
-            Easing = new SukiEaseOutBack { BounceIntensity = EasingIntensity.Soft },
+            Easing = new SukiEaseOut(),
             FillMode = FillMode.None,
             Children =
             {
