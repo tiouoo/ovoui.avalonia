@@ -9,8 +9,6 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Media;
-using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 using Avalonia.Styling;
 using OvoUi.AvaloniaEdit.Controls;
 using OvoUi.Theme.Animations;
@@ -62,6 +60,10 @@ public class ControlShowcase : ContentControl
         AvaloniaProperty.Register<ControlShowcase, ShowcaseHeightBehavior>(
             nameof(HeightBehavior), ShowcaseHeightBehavior.Stable);
 
+    public static readonly StyledProperty<Orientation> SplitOrientationProperty =
+        AvaloniaProperty.Register<ControlShowcase, Orientation>(
+            nameof(SplitOrientation), Orientation.Vertical);
+
     public static readonly StyledProperty<string> LanguageProperty =
         AvaloniaProperty.Register<ControlShowcase, string>(nameof(Language), "axaml");
 
@@ -97,11 +99,13 @@ public class ControlShowcase : ContentControl
     private ContentPresenter? _previewPresenter;
     private CodeBlock? _codeBlock;
     private Grid? _combinedPage;
+    private Border? _combinedDivider;
     private string _effectiveCode = string.Empty;
     private int _displayedIndex;
     private bool _synchronizingSelection;
     private double _previewHeight;
     private CancellationTokenSource? _heightAnimationCancellation;
+    private CancellationTokenSource? _splitAnimationCancellation;
 
     public string? SourceKey
     {
@@ -172,6 +176,15 @@ public class ControlShowcase : ContentControl
         set => SetValue(HeightBehaviorProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets whether the split page places preview and code top-to-bottom or side-by-side.
+    /// </summary>
+    public Orientation SplitOrientation
+    {
+        get => GetValue(SplitOrientationProperty);
+        set => SetValue(SplitOrientationProperty, value);
+    }
+
     public string Language
     {
         get => GetValue(LanguageProperty);
@@ -224,6 +237,7 @@ public class ControlShowcase : ContentControl
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         CancelHeightAnimation();
+        CancelSplitAnimation();
         if (_tabStrip is not null)
             _tabStrip.SelectionChanged -= OnTabSelectionChanged;
         if (_previewPresenter is not null)
@@ -236,6 +250,7 @@ public class ControlShowcase : ContentControl
         _tabStrip = e.NameScope.Find<TabStrip>(PART_TabStrip);
         _transitionHost = e.NameScope.Find<TransitioningContentControl>(PART_TransitionHost);
         _combinedPage = null;
+        _combinedDivider = null;
 
         _previewPresenter = new ContentPresenter();
         _previewPresenter.SizeChanged += OnPreviewSizeChanged;
@@ -307,6 +322,7 @@ public class ControlShowcase : ContentControl
         }
         else if (change.Property == PageTransitionProperty && _transitionHost is not null)
         {
+            CancelSplitAnimation();
             _transitionHost.PageTransition = PageTransition;
         }
         else if (change.Property == HeightBehaviorProperty)
@@ -318,6 +334,14 @@ public class ControlShowcase : ContentControl
                     ? Math.Max(PreviewMinHeight, _previewHeight)
                     : 0d;
             UpdateCodeBlock();
+        }
+        else if (change.Property == SplitOrientationProperty)
+        {
+            var startHeight = _transitionHost?.Bounds.Height ?? 0d;
+            CancelSplitAnimation();
+            UpdateCombinedLayout();
+            if (_displayedIndex == 2 && HeightBehavior == ShowcaseHeightBehavior.Animated)
+                _ = AnimateContentHeightAsync(2, startHeight);
         }
         else if (change.Property == HeaderPlacementProperty)
         {
@@ -369,6 +393,7 @@ public class ControlShowcase : ContentControl
         var previousIndex = _displayedIndex;
         _transitionHost.IsTransitionReversed = selectedIndex < previousIndex;
         _displayedIndex = selectedIndex;
+        CancelSplitAnimation();
         TransitionToPage(previousIndex, selectedIndex);
 
         if (HeightBehavior == ShowcaseHeightBehavior.Animated)
@@ -384,21 +409,37 @@ public class ControlShowcase : ContentControl
 
     private Grid CreateCombinedPage()
     {
-        var divider = new Border();
-        divider.Classes.Add("control-showcase-divider");
+        _combinedDivider = new Border();
+        _combinedDivider.Classes.Add("control-showcase-divider");
 
         var page = new Grid
         {
-            ColumnDefinitions = new ColumnDefinitions("*,1,*"),
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch
         };
-        Grid.SetColumn(divider, 1);
-        Grid.SetColumn(_codeBlock!, 2);
         page.Children.Add(_previewPresenter!);
-        page.Children.Add(divider);
+        page.Children.Add(_combinedDivider);
         page.Children.Add(_codeBlock!);
-        return _combinedPage = page;
+        _combinedPage = page;
+        UpdateCombinedLayout();
+        return page;
+    }
+
+    private void UpdateCombinedLayout()
+    {
+        if (_combinedPage is null || _combinedDivider is null || _previewPresenter is null || _codeBlock is null)
+            return;
+
+        var isVertical = SplitOrientation == Orientation.Vertical;
+        _combinedPage.RowDefinitions = new RowDefinitions(isVertical ? "Auto,1,Auto" : "*");
+        _combinedPage.ColumnDefinitions = new ColumnDefinitions(isVertical ? "*" : "*,1,*");
+
+        Grid.SetRow(_previewPresenter, 0);
+        Grid.SetColumn(_previewPresenter, 0);
+        Grid.SetRow(_combinedDivider, isVertical ? 1 : 0);
+        Grid.SetColumn(_combinedDivider, isVertical ? 0 : 1);
+        Grid.SetRow(_codeBlock, isVertical ? 2 : 0);
+        Grid.SetColumn(_codeBlock, isVertical ? 0 : 2);
     }
 
     private void TransitionToPage(int previousIndex, int selectedIndex)
@@ -412,46 +453,79 @@ public class ControlShowcase : ContentControl
             return;
         }
 
-        var snapshot = CaptureCurrentPage();
-        if (snapshot is not null)
-        {
-            // The preview is a real control and cannot belong to both the old and combined
-            // pages. Keep a bitmap of the old page in the transition while it is reparented.
-            _transitionHost.PageTransition = null;
-            _transitionHost.Content = snapshot;
-        }
-        else
-        {
-            _transitionHost.Content = null;
-        }
-
+        // Split transitions reparent the live controls. Bypass the page cross-fade so the
+        // same preview or code is never drawn twice by overlapping outgoing/incoming pages.
+        _transitionHost.PageTransition = null;
+        _transitionHost.Content = null;
         ResetTransitionState(_previewPresenter);
         ResetTransitionState(_codeBlock);
         _combinedPage?.Children.Clear();
         _combinedPage = null;
-        _transitionHost.PageTransition = PageTransition;
+        _combinedDivider = null;
         _transitionHost.Content = GetPage(selectedIndex);
+        _transitionHost.PageTransition = PageTransition;
+        var animatedElement = selectedIndex == 2
+            ? previousIndex == 0 ? (Control?)_codeBlock : _previewPresenter
+            : selectedIndex == 0 ? _previewPresenter : _codeBlock;
+        _ = AnimateSplitElementAsync(animatedElement, ReferenceEquals(animatedElement, _previewPresenter));
     }
 
-    private Image? CaptureCurrentPage()
+    private async Task AnimateSplitElementAsync(Control? element, bool isPreview)
     {
-        if (_transitionHost is null || _transitionHost.Bounds.Width <= 0 || _transitionHost.Bounds.Height <= 0)
-            return null;
+        if (element is null || PageTransition is null)
+            return;
 
-        var scaling = TopLevel.GetTopLevel(this)?.RenderScaling ?? 1d;
-        var pixelSize = PixelSize.FromSize(_transitionHost.Bounds.Size, scaling);
-        if (pixelSize.Width <= 0 || pixelSize.Height <= 0)
-            return null;
-
-        var bitmap = new RenderTargetBitmap(pixelSize, new Vector(96d * scaling, 96d * scaling));
-        bitmap.Render(_transitionHost);
-        return new Image
+        var cancellation = new CancellationTokenSource();
+        _splitAnimationCancellation = cancellation;
+        var slideTransition = PageTransition as SlideFadePageTransition;
+        var distance = (isPreview ? -1d : 1d) * (slideTransition?.Distance ?? 28d);
+        var property = SplitOrientation == Orientation.Vertical
+            ? TranslateTransform.YProperty
+            : TranslateTransform.XProperty;
+        var animation = new Animation
         {
-            Source = bitmap,
-            Stretch = Stretch.Fill,
-            Width = _transitionHost.Bounds.Width,
-            Height = _transitionHost.Bounds.Height
+            Duration = slideTransition?.Duration ?? TimeSpan.FromMilliseconds(160),
+            Easing = slideTransition?.Easing ?? new SukiEaseOut(),
+            FillMode = FillMode.Forward,
+            Children =
+            {
+                new KeyFrame
+                {
+                    Cue = new Cue(0d),
+                    Setters =
+                    {
+                        new Setter(property, distance),
+                        new Setter(Visual.OpacityProperty, 0d)
+                    }
+                },
+                new KeyFrame
+                {
+                    Cue = new Cue(1d),
+                    Setters =
+                    {
+                        new Setter(property, 0d),
+                        new Setter(Visual.OpacityProperty, 1d)
+                    }
+                }
+            }
         };
+
+        try
+        {
+            await animation.RunAsync(element, cancellation.Token);
+        }
+        catch (OperationCanceledException)
+        {
+        }
+        finally
+        {
+            if (ReferenceEquals(_splitAnimationCancellation, cancellation))
+            {
+                ResetTransitionState(element);
+                _splitAnimationCancellation = null;
+            }
+            cancellation.Dispose();
+        }
     }
 
     private static void ResetTransitionState(Visual? visual)
@@ -543,8 +617,10 @@ public class ControlShowcase : ContentControl
         var minimumHeight = Math.Max(PreviewMinHeight, _previewHeight);
         _transitionHost.MinHeight = minimumHeight;
         var targetHeight = minimumHeight;
-        if (selectedIndex is 1 or 2)
+        if (selectedIndex == 1)
             targetHeight = Math.Max(targetHeight, _codeBlock?.DesiredSize.Height ?? 0d);
+        else if (selectedIndex == 2)
+            targetHeight = Math.Max(targetHeight, _combinedPage?.DesiredSize.Height ?? 0d);
 
         if (startHeight <= 0 || Math.Abs(startHeight - targetHeight) < 0.5)
         {
@@ -604,6 +680,15 @@ public class ControlShowcase : ContentControl
         _heightAnimationCancellation?.Cancel();
         _heightAnimationCancellation?.Dispose();
         _heightAnimationCancellation = null;
+    }
+
+    private void CancelSplitAnimation()
+    {
+        _splitAnimationCancellation?.Cancel();
+        _splitAnimationCancellation?.Dispose();
+        _splitAnimationCancellation = null;
+        ResetTransitionState(_previewPresenter);
+        ResetTransitionState(_codeBlock);
     }
 
     private static int NormalizeIndex(int value) => Math.Clamp(value, 0, 2);
