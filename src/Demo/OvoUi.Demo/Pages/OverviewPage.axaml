@@ -15,9 +15,15 @@
     <ScrollViewer
         HorizontalScrollBarVisibility="Disabled"
         Margin="0,0,5,0"
-        OpacityMask="{Binding Offset, ElementName=OverviewScrollViewer, Converter={StaticResource VerticalScrollOpacityMaskConverter}}"
         VerticalScrollBarVisibility="Auto"
         x:Name="OverviewScrollViewer">
+        <ScrollViewer.OpacityMask>
+            <MultiBinding Converter="{StaticResource VerticalScrollOpacityMaskConverter}">
+                <Binding ElementName="OverviewScrollViewer" Path="Offset.Y" />
+                <Binding ElementName="OverviewScrollViewer" Path="Extent.Height" />
+                <Binding ElementName="OverviewScrollViewer" Path="Viewport.Height" />
+            </MultiBinding>
+        </ScrollViewer.OpacityMask>
         <StackPanel
             HorizontalAlignment="Stretch"
             Margin="24,28,19,28"

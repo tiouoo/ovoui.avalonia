@@ -65,26 +65,6 @@
                     <Border Theme="{StaticResource RadioButtonGroupBorder}">
                         <StackPanel Orientation="Horizontal">
                             <RadioButton
-                                Classes="small"
-                                Content="Day"
-                                GroupName="SmallPeriod"
-                                Theme="{StaticResource ButtonRadioButtonTheme}" />
-                            <RadioButton
-                                Classes="small"
-                                Content="Week"
-                                GroupName="SmallPeriod"
-                                IsChecked="True"
-                                Theme="{StaticResource ButtonRadioButtonTheme}" />
-                            <RadioButton
-                                Classes="small"
-                                Content="Month"
-                                GroupName="SmallPeriod"
-                                Theme="{StaticResource ButtonRadioButtonTheme}" />
-                        </StackPanel>
-                    </Border>
-                    <Border Theme="{StaticResource RadioButtonGroupBorder}">
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton
                                 Content="List"
                                 GroupName="ViewMode"
                                 IsChecked="True"

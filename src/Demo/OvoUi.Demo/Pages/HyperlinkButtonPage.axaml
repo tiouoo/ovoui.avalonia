@@ -73,7 +73,7 @@
                         <TextBlock Text="External resource" VerticalAlignment="Center" />
                         <TextBlock
                             FontSize="12"
-                            Text="-&gt;"
+                            Text="→"
                             VerticalAlignment="Center" />
                     </StackPanel>
                 </HyperlinkButton>
