@@ -34,34 +34,74 @@
         <Setter Property="Height" Value="16" />
         <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerForeground}" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ToggleButton">
-                <Panel
+                <Border
                     Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
                     Height="{TemplateBinding Height}"
                     Width="{TemplateBinding Width}">
-                    <TextBlock
-                        FontFamily="{DynamicResource OvoIconFontFamily}"
-                        FontSize="16"
-                        FontWeight="Light"
-                        Foreground="{DynamicResource InnerForegroundBrush}"
-                        HorizontalAlignment="Center"
-                        IsVisible="{TemplateBinding IsChecked,
-                                                    Converter={x:Static BoolConverters.Not}}"
-                        Text="&#xe642;"
-                        VerticalAlignment="Center" />
-                    <TextBlock
-                        FontFamily="{DynamicResource OvoIconFontFamily}"
-                        FontSize="16"
-                        FontWeight="Light"
-                        Foreground="{DynamicResource InnerForegroundBrush}"
-                        HorizontalAlignment="Center"
-                        IsVisible="{TemplateBinding IsChecked}"
-                        Text="&#xe63f;"
-                        VerticalAlignment="Center" />
-                </Panel>
+                    <Panel>
+                        <TextBlock
+                            FontFamily="{DynamicResource OvoIconFontFamily}"
+                            FontSize="16"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            HorizontalAlignment="Center"
+                            IsVisible="{TemplateBinding IsChecked,
+                                                        Converter={x:Static BoolConverters.Not}}"
+                            Name="UncheckedGlyph"
+                            Text="&#xe642;"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            FontFamily="{DynamicResource OvoIconFontFamily}"
+                            FontSize="16"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            HorizontalAlignment="Center"
+                            IsVisible="{TemplateBinding IsChecked}"
+                            Name="CheckedGlyph"
+                            Text="&#xe63f;"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            FontFamily="{DynamicResource OvoIconFontFamily}"
+                            FontSize="16"
+                            FontWeight="Light"
+                            Foreground="{DynamicResource InnerForegroundBrush}"
+                            HorizontalAlignment="Center"
+                            IsVisible="False"
+                            Name="IndeterminateGlyph"
+                            Text="&#xe608;"
+                            VerticalAlignment="Center" />
+                    </Panel>
+                </Border>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^:indeterminate">
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Style Selector="^ /template/ TextBlock#UncheckedGlyph">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#CheckedGlyph">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ TextBlock#IndeterminateGlyph">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+            <Style Selector="^:pointerover">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="BorderBrush" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
     </ControlTheme>
 
     <ControlTheme
@@ -90,6 +130,29 @@
                 <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
             </Style>
         </Style>
+        <Style Selector="^:indeterminate">
+            <Setter Property="FocusAdorner">
+                <FocusAdornerTemplate>
+                    <Border Classes="solid" Theme="{DynamicResource AdornerLayerBorder}" />
+                </FocusAdornerTemplate>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity03}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
     </ControlTheme>
 
     <ControlTheme
@@ -111,6 +174,11 @@
                 </FocusAdornerTemplate>
             </Setter>
             <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+        <Style Selector="^:indeterminate">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderThickness" Value="1" />
         </Style>
     </ControlTheme>
 
@@ -136,6 +204,25 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
+        <Style Selector="^:indeterminate">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity03}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DisabledForegroundBrush}" />
+                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            </Style>
+        </Style>
     </ControlTheme>
 
     <ControlTheme
@@ -155,10 +242,31 @@
         <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
         </Style>
+        <Style Selector="^:indeterminate">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
         <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
             <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
             <Setter Property="Foreground" Value="#ffffff" />
+        </Style>
+        <Style Selector="^:indeterminate /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+        <Style Selector="^:indeterminate:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+        </Style>
+        <Style Selector="^:indeterminate:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity03}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+        </Style>
+        <Style Selector="^:indeterminate:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
         <Style Selector="^:checked:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight1}" />
@@ -198,9 +306,36 @@
                 </FocusAdornerTemplate>
             </Setter>
         </Style>
+        <Style Selector="^:indeterminate">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
+            <Setter Property="FocusAdorner">
+                <FocusAdornerTemplate>
+                    <Border Classes="solid" Theme="{DynamicResource AdornerLayerBorder}" />
+                </FocusAdornerTemplate>
+            </Setter>
+        </Style>
         <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
             <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+        <Style Selector="^:indeterminate /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+        </Style>
+        <Style Selector="^:indeterminate:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+        </Style>
+        <Style Selector="^:indeterminate:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity03}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
+        </Style>
+        <Style Selector="^:indeterminate:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         </Style>
         <Style Selector="^:checked:pointerover /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />

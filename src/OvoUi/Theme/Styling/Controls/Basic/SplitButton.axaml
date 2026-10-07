@@ -24,12 +24,12 @@
         BasedOn="{StaticResource BasicButtonTheme}"
         TargetType="Button"
         x:Key="SplitButtonElementTheme">
-        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Padding" Value="20, 6" />
         <Setter Property="CornerRadius" Value="0" />
     </ControlTheme>
 
     <ControlTheme TargetType="SplitButton" x:Key="BasicSplitButtonTheme">
-        <Setter Property="Padding" Value="20, 8" />
+        <Setter Property="Padding" Value="20, 6" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
         <Setter Property="Background" Value="Transparent" />
@@ -201,6 +201,7 @@
         BasedOn="{StaticResource BasicSplitButtonTheme}"
         TargetType="SplitButton"
         x:Key="BorderSplitButtonTheme">
+        <Setter Property="Padding" Value="20, 4" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="BorderThickness" Value="1" />
