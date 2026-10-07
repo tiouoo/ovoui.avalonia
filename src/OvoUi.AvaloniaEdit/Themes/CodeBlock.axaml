@@ -80,6 +80,8 @@
                 <Setter Property="MinHeight" Value="78" />
                 <Setter Property="CopiedText" Value="{DynamicResource Lang.Copied}" />
                 <Setter Property="CopyToolTip" Value="{DynamicResource Lang.Copy}" />
+                <Setter Property="WordWrapToolTip" Value="{DynamicResource Lang.WordWrap}" />
+                <Setter Property="(o:AvaloniaEditor.WordWrap)" Value="False" />
                 <Setter Property="Template">
                     <ControlTemplate TargetType="o:CodeBlock">
                         <Border
@@ -93,7 +95,7 @@
                                     Background="{TemplateBinding HeaderBackground}"
                                     ClipToBounds="True"
                                     CornerRadius="{TemplateBinding HeaderCornerRadius}">
-                                    <Grid ColumnDefinitions="*,Auto" MinHeight="36">
+                                    <Grid ColumnDefinitions="*,Auto,Auto" MinHeight="36">
                                         <ContentPresenter
                                             Content="{Binding EffectiveHeader, RelativeSource={RelativeSource TemplatedParent}}"
                                             Margin="14,8"
@@ -118,6 +120,20 @@
 
                                         <Button
                                             Grid.Column="1"
+                                            IsVisible="{TemplateBinding ShowWordWrapButton}"
+                                            Name="PART_WordWrapButton"
+                                            Padding="1"
+                                            Theme="{StaticResource BasicButtonTheme}"
+                                            ToolTip.Tip="{TemplateBinding WordWrapToolTip}">
+                                            <PathIcon
+                                                Data="F1 M1024,993z M0,0z M0,768C0,776,4,784,10,790L266,1046C278,1060 298,1060 310,1046 324,1034 324,1014 310,1002L110,800 656,800C860,800 1024,636 1024,432 1024,228 860,64 656,64L160,64 154,64C140,68 128,80 128,96 128,112 140,124 154,128L160,128 656,128C824,128 960,264 960,432 960,600 824,736 656,736L110,736 310,534 314,530C324,518 322,500 310,490 300,478 282,478 270,486L266,490 10,746C4,752,0,760,0,768z"
+                                                Margin="0,0,8,0"
+                                                Name="PART_WordWrapIcon"
+                                                Width="15" />
+                                        </Button>
+
+                                        <Button
+                                            Grid.Column="2"
                                             IsVisible="{TemplateBinding ShowCopyButton}"
                                             Name="PART_CopyButton"
                                             Padding="1"
@@ -178,6 +194,9 @@
                 </Style>
                 <Style Selector="^:copied /template/ TextBlock#PART_CopiedText">
                     <Setter Property="Opacity" Value="1" />
+                </Style>
+                <Style Selector="^:wordwrap /template/ PathIcon#PART_WordWrapIcon">
+                    <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
                 </Style>
             </ControlTheme>
         </ResourceDictionary>

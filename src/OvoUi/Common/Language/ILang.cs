@@ -25,7 +25,8 @@ public interface ILang
     public string SelectAll { get; }
     public string Cut { get; }
     public string Copy { get; }
-    public string Copied => "Copied";
+    public string Copied { get; }
+    public string WordWrap { get; }
     public string Paste { get; }
     public string Clear { get; }
     public string JumpTo { get; }

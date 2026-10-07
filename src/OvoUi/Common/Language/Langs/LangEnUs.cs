@@ -25,6 +25,7 @@ public class LangEnUs : ILang
     public string Cut => "Cut";
     public string Copy => "Copy";
     public string Copied => "Copied";
+    public string WordWrap => "Word Wrap";
     public string Paste => "Paste";
     public string Clear => "Clear";
     public string JumpTo => "Jump to";

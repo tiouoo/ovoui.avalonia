@@ -14,14 +14,17 @@ using TextMateInstallation = AvaloniaEdit.TextMate.TextMate.Installation;
 
 namespace OvoUi.AvaloniaEdit.Controls;
 
-[PseudoClasses(PC_Copied)]
+[PseudoClasses(PC_Copied, PC_WordWrap)]
 [TemplatePart(PART_Editor, typeof(OvoTextEditor))]
+[TemplatePart(PART_WordWrapButton, typeof(Button))]
 [TemplatePart(PART_CopyButton, typeof(Button))]
 public class CodeBlock : TemplatedControl
 {
     public const string PART_Editor = "PART_Editor";
+    public const string PART_WordWrapButton = "PART_WordWrapButton";
     public const string PART_CopyButton = "PART_CopyButton";
     public const string PC_Copied = ":copied";
+    public const string PC_WordWrap = ":wordwrap";
 
     private static readonly Dictionary<string, string> LanguageAliases = new(StringComparer.OrdinalIgnoreCase)
     {
@@ -64,6 +67,9 @@ public class CodeBlock : TemplatedControl
     public static readonly StyledProperty<bool> ShowCopyButtonProperty =
         AvaloniaProperty.Register<CodeBlock, bool>(nameof(ShowCopyButton), true);
 
+    public static readonly StyledProperty<bool> ShowWordWrapButtonProperty =
+        AvaloniaProperty.Register<CodeBlock, bool>(nameof(ShowWordWrapButton), true);
+
     public static readonly StyledProperty<CornerRadius> HeaderCornerRadiusProperty =
         AvaloniaProperty.Register<CodeBlock, CornerRadius>(
             nameof(HeaderCornerRadius), new CornerRadius(11, 11, 0, 0));
@@ -73,6 +79,9 @@ public class CodeBlock : TemplatedControl
 
     public static readonly StyledProperty<object?> CopyToolTipProperty =
         AvaloniaProperty.Register<CodeBlock, object?>(nameof(CopyToolTip));
+
+    public static readonly StyledProperty<object?> WordWrapToolTipProperty =
+        AvaloniaProperty.Register<CodeBlock, object?>(nameof(WordWrapToolTip));
 
     public static readonly StyledProperty<TimeSpan> CopyFeedbackDurationProperty =
         AvaloniaProperty.Register<CodeBlock, TimeSpan>(nameof(CopyFeedbackDuration), TimeSpan.FromSeconds(2));
@@ -93,6 +102,7 @@ public class CodeBlock : TemplatedControl
         AvaloniaProperty.RegisterDirect<CodeBlock, object?>(nameof(EffectiveHeader), control => control.EffectiveHeader);
 
     private OvoTextEditor? _editor;
+    private Button? _wordWrapButton;
     private Button? _copyButton;
     private object? _effectiveHeader = "text";
     private RegistryOptions? _registryOptions;
@@ -171,6 +181,12 @@ public class CodeBlock : TemplatedControl
         set => SetValue(ShowCopyButtonProperty, value);
     }
 
+    public bool ShowWordWrapButton
+    {
+        get => GetValue(ShowWordWrapButtonProperty);
+        set => SetValue(ShowWordWrapButtonProperty, value);
+    }
+
     public CornerRadius HeaderCornerRadius
     {
         get => GetValue(HeaderCornerRadiusProperty);
@@ -190,6 +206,12 @@ public class CodeBlock : TemplatedControl
     {
         get => GetValue(CopyToolTipProperty);
         set => SetValue(CopyToolTipProperty, value);
+    }
+
+    public object? WordWrapToolTip
+    {
+        get => GetValue(WordWrapToolTipProperty);
+        set => SetValue(WordWrapToolTipProperty, value);
     }
 
     public TimeSpan CopyFeedbackDuration
@@ -227,6 +249,8 @@ public class CodeBlock : TemplatedControl
     {
         if (_editor is not null)
             _editor.TextChanged -= OnEditorTextChanged;
+        if (_wordWrapButton is not null)
+            _wordWrapButton.Click -= OnWordWrapButtonClick;
         if (_copyButton is not null)
             _copyButton.Click -= OnCopyButtonClick;
 
@@ -236,6 +260,7 @@ public class CodeBlock : TemplatedControl
 
         var oldEditor = _editor;
         _editor = e.NameScope.Find<OvoTextEditor>(PART_Editor);
+        _wordWrapButton = e.NameScope.Find<Button>(PART_WordWrapButton);
         _copyButton = e.NameScope.Find<Button>(PART_CopyButton);
 
         RaisePropertyChanged(EditorProperty, oldEditor, _editor);
@@ -247,6 +272,8 @@ public class CodeBlock : TemplatedControl
         _editor.Text = Text;
         _editor.TextChanged += OnEditorTextChanged;
 
+        if (_wordWrapButton is not null)
+            _wordWrapButton.Click += OnWordWrapButtonClick;
         if (_copyButton is not null)
             _copyButton.Click += OnCopyButtonClick;
 
@@ -303,6 +330,8 @@ public class CodeBlock : TemplatedControl
         else if (IsEditorSetting(change.Property))
         {
             ApplyEditorSettings();
+            if (change.Property == AvaloniaEditor.WordWrapProperty)
+                PseudoClasses.Set(PC_WordWrap, AvaloniaEditor.GetWordWrap(this));
         }
     }
 
@@ -544,5 +573,10 @@ public class CodeBlock : TemplatedControl
                 _copyFeedbackCancellation = null;
             cancellation.Dispose();
         }
+    }
+
+    private void OnWordWrapButtonClick(object? sender, RoutedEventArgs e)
+    {
+        SetCurrentValue(AvaloniaEditor.WordWrapProperty, !AvaloniaEditor.GetWordWrap(this));
     }
 }

@@ -25,6 +25,7 @@ public class LangZhCn : ILang
     public string Cut => "剪切";
     public string Copy => "复制";
     public string Copied => "已复制";
+    public string WordWrap => "自动换行";
     public string Paste => "粘贴";
     public string Clear => "清空";
     public string JumpTo => "跳至";
