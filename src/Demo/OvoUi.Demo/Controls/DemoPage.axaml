@@ -24,7 +24,7 @@
                     x:Name="PART_ScrollViewer">
                     <ItemsControl
                         ItemsSource="{Binding PageContent, RelativeSource={RelativeSource TemplatedParent}}"
-                        MaxWidth="980">
+                        MaxWidth="1460">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Spacing="20" />

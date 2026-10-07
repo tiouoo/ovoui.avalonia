@@ -8,6 +8,9 @@ using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Layout;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using Avalonia.Styling;
 using OvoUi.AvaloniaEdit.Controls;
 using OvoUi.Theme.Animations;
@@ -41,6 +44,9 @@ public class ControlShowcase : ContentControl
 
     public static readonly StyledProperty<object?> CodeHeaderProperty =
         AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeHeader), "代码");
+
+    public static readonly StyledProperty<object?> CombinedHeaderProperty =
+        AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CombinedHeader), "分屏");
 
     public static readonly StyledProperty<object?> CodeBlockHeaderProperty =
         AvaloniaProperty.Register<ControlShowcase, object?>(nameof(CodeBlockHeader), "axaml");
@@ -90,6 +96,7 @@ public class ControlShowcase : ContentControl
     private TransitioningContentControl? _transitionHost;
     private ContentPresenter? _previewPresenter;
     private CodeBlock? _codeBlock;
+    private Grid? _combinedPage;
     private string _effectiveCode = string.Empty;
     private int _displayedIndex;
     private bool _synchronizingSelection;
@@ -133,6 +140,12 @@ public class ControlShowcase : ContentControl
     {
         get => GetValue(CodeHeaderProperty);
         set => SetValue(CodeHeaderProperty, value);
+    }
+
+    public object? CombinedHeader
+    {
+        get => GetValue(CombinedHeaderProperty);
+        set => SetValue(CombinedHeaderProperty, value);
     }
 
     public object? CodeBlockHeader
@@ -222,6 +235,7 @@ public class ControlShowcase : ContentControl
         var oldCodeBlock = _codeBlock;
         _tabStrip = e.NameScope.Find<TabStrip>(PART_TabStrip);
         _transitionHost = e.NameScope.Find<TransitioningContentControl>(PART_TransitionHost);
+        _combinedPage = null;
 
         _previewPresenter = new ContentPresenter();
         _previewPresenter.SizeChanged += OnPreviewSizeChanged;
@@ -352,15 +366,103 @@ public class ControlShowcase : ContentControl
             return;
 
         var startHeight = _transitionHost.Bounds.Height;
-        _transitionHost.IsTransitionReversed = selectedIndex < _displayedIndex;
+        var previousIndex = _displayedIndex;
+        _transitionHost.IsTransitionReversed = selectedIndex < previousIndex;
         _displayedIndex = selectedIndex;
-        _transitionHost.Content = GetPage(selectedIndex);
+        TransitionToPage(previousIndex, selectedIndex);
 
         if (HeightBehavior == ShowcaseHeightBehavior.Animated)
             _ = AnimateContentHeightAsync(selectedIndex, startHeight);
     }
 
-    private object? GetPage(int selectedIndex) => selectedIndex == 0 ? _previewPresenter : _codeBlock;
+    private object? GetPage(int selectedIndex) => selectedIndex switch
+    {
+        0 => _previewPresenter,
+        1 => _codeBlock,
+        _ => CreateCombinedPage()
+    };
+
+    private Grid CreateCombinedPage()
+    {
+        var divider = new Border();
+        divider.Classes.Add("control-showcase-divider");
+
+        var page = new Grid
+        {
+            ColumnDefinitions = new ColumnDefinitions("*,1,*"),
+            HorizontalAlignment = HorizontalAlignment.Stretch,
+            VerticalAlignment = VerticalAlignment.Stretch
+        };
+        Grid.SetColumn(divider, 1);
+        Grid.SetColumn(_codeBlock!, 2);
+        page.Children.Add(_previewPresenter!);
+        page.Children.Add(divider);
+        page.Children.Add(_codeBlock!);
+        return _combinedPage = page;
+    }
+
+    private void TransitionToPage(int previousIndex, int selectedIndex)
+    {
+        if (_transitionHost is null)
+            return;
+
+        if (previousIndex != 2 && selectedIndex != 2)
+        {
+            _transitionHost.Content = GetPage(selectedIndex);
+            return;
+        }
+
+        var snapshot = CaptureCurrentPage();
+        if (snapshot is not null)
+        {
+            // The preview is a real control and cannot belong to both the old and combined
+            // pages. Keep a bitmap of the old page in the transition while it is reparented.
+            _transitionHost.PageTransition = null;
+            _transitionHost.Content = snapshot;
+        }
+        else
+        {
+            _transitionHost.Content = null;
+        }
+
+        ResetTransitionState(_previewPresenter);
+        ResetTransitionState(_codeBlock);
+        _combinedPage?.Children.Clear();
+        _combinedPage = null;
+        _transitionHost.PageTransition = PageTransition;
+        _transitionHost.Content = GetPage(selectedIndex);
+    }
+
+    private Image? CaptureCurrentPage()
+    {
+        if (_transitionHost is null || _transitionHost.Bounds.Width <= 0 || _transitionHost.Bounds.Height <= 0)
+            return null;
+
+        var scaling = TopLevel.GetTopLevel(this)?.RenderScaling ?? 1d;
+        var pixelSize = PixelSize.FromSize(_transitionHost.Bounds.Size, scaling);
+        if (pixelSize.Width <= 0 || pixelSize.Height <= 0)
+            return null;
+
+        var bitmap = new RenderTargetBitmap(pixelSize, new Vector(96d * scaling, 96d * scaling));
+        bitmap.Render(_transitionHost);
+        return new Image
+        {
+            Source = bitmap,
+            Stretch = Stretch.Fill,
+            Width = _transitionHost.Bounds.Width,
+            Height = _transitionHost.Bounds.Height
+        };
+    }
+
+    private static void ResetTransitionState(Visual? visual)
+    {
+        if (visual is null)
+            return;
+
+        visual.RenderTransform = null;
+        visual.Opacity = 1d;
+        visual.IsVisible = true;
+    }
 
     private void UpdatePreviewPresenter()
     {
@@ -414,7 +516,7 @@ public class ControlShowcase : ContentControl
         if (_codeBlock is null || previewSize.Width <= 0 || previewSize.Height <= 0)
             return;
 
-        _codeBlock.Width = previewSize.Width;
+        _codeBlock.ClearValue(Layoutable.WidthProperty);
         if (HeightBehavior == ShowcaseHeightBehavior.Stable)
             _codeBlock.Height = previewSize.Height;
         else
@@ -441,7 +543,7 @@ public class ControlShowcase : ContentControl
         var minimumHeight = Math.Max(PreviewMinHeight, _previewHeight);
         _transitionHost.MinHeight = minimumHeight;
         var targetHeight = minimumHeight;
-        if (selectedIndex == 1)
+        if (selectedIndex is 1 or 2)
             targetHeight = Math.Max(targetHeight, _codeBlock?.DesiredSize.Height ?? 0d);
 
         if (startHeight <= 0 || Math.Abs(startHeight - targetHeight) < 0.5)
@@ -504,7 +606,7 @@ public class ControlShowcase : ContentControl
         _heightAnimationCancellation = null;
     }
 
-    private static int NormalizeIndex(int value) => value <= 0 ? 0 : 1;
+    private static int NormalizeIndex(int value) => Math.Clamp(value, 0, 2);
 
     private static string FormatXaml(string source)
     {

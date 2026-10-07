@@ -14,6 +14,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="PreviewHeader" Value="{DynamicResource Showcase.Preview}" />
             <Setter Property="CodeHeader" Value="{DynamicResource Showcase.Code}" />
+            <Setter Property="CombinedHeader" Value="{DynamicResource Showcase.Combined}" />
             <Setter Property="Template">
                 <ControlTemplate TargetType="o:ControlShowcase">
                     <Border
@@ -44,6 +45,7 @@
                                             Theme="{StaticResource ButtonTabStrip}">
                                             <TabStripItem Content="{Binding $parent[o:ControlShowcase].PreviewHeader}" />
                                             <TabStripItem Content="{Binding $parent[o:ControlShowcase].CodeHeader}" />
+                                            <TabStripItem Content="{Binding $parent[o:ControlShowcase].CombinedHeader}" />
                                         </TabStrip>
                                     </Grid>
                                 </Border>
@@ -78,6 +80,10 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HeaderBackground" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="HeaderSeparatorHeight" Value="0" />
+    </Style>
+
+    <Style Selector="Border.control-showcase-divider">
+        <Setter Property="Background" Value="{DynamicResource LineBrush}" />
     </Style>
 
     <Style Selector="edit|CodeBlock.control-showcase-code-block /template/ avaloniaEdit|TextEditor#PART_Editor /template/ ScrollViewer#PART_ScrollViewer /template/ ScrollContentPresenter#PART_ContentPresenter">

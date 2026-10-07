@@ -11,14 +11,16 @@ internal sealed class ShowcaseLanguageResourceProvider : ILanguageResourceProvid
         new Dictionary<string, object?>
         {
             ["Showcase.Preview"] = "预览",
-            ["Showcase.Code"] = "代码"
+            ["Showcase.Code"] = "代码",
+            ["Showcase.Combined"] = "分屏"
         };
 
     private static readonly IReadOnlyDictionary<string, object?> English =
         new Dictionary<string, object?>
         {
             ["Showcase.Preview"] = "Preview",
-            ["Showcase.Code"] = "Code"
+            ["Showcase.Code"] = "Code",
+            ["Showcase.Combined"] = "Split"
         };
 
     public IReadOnlyDictionary<string, object?> GetResources(ILang language) =>
