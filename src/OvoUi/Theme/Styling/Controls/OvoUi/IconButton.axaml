@@ -140,9 +140,11 @@
                         </ContentPresenter.DataTemplates>
                     </ContentPresenter>
                     <ovo:LoadingIcon
+                        Classes="small"
                         Foreground="{TemplateBinding Foreground}"
                         IsLoading="{TemplateBinding (ovo:IconButton.IsLoading)}"
-                        IsVisible="{TemplateBinding (ovo:IconButton.IsLoading)}" />
+                        IsVisible="{TemplateBinding (ovo:IconButton.IsLoading)}"
+                        MinHeight="0" />
                 </Panel>
                 <ContentPresenter
                     Content="{TemplateBinding Content}"

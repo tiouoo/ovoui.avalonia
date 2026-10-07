@@ -26,31 +26,39 @@
 
     <ControlTheme TargetType="ovo:LoadingIcon" x:Key="LoadingIconTheme">
         <Setter Property="IsLoading" Value="True" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
         <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:LoadingIcon">
                 <Arc
-                    Height="20"
+                    Height="{TemplateBinding Height}"
                     IsVisible="{TemplateBinding IsVisible}"
                     Name="PART_Arc"
                     StartAngle="0"
                     Stroke="{TemplateBinding Foreground}"
                     StrokeJoin="Round"
                     StrokeLineCap="Round"
-                    StrokeThickness="3"
-                    SweepAngle="240"
-                    Width="20" />
+                    SweepAngle="260"
+                    Width="{TemplateBinding Width}" />
             </ControlTemplate>
         </Setter>
-        <Style Selector="^.small /template/ Arc#PART_Arc">
+        <Style Selector="^ /template/ Arc#PART_Arc">
+            <Setter Property="StrokeThickness" Value="3" />
+        </Style>
+        <Style Selector="^.small">
             <Setter Property="Width" Value="14" />
             <Setter Property="Height" Value="14" />
-            <Setter Property="StrokeThickness" Value="2" />
+            <Style Selector="^ /template/ Arc#PART_Arc">
+                <Setter Property="StrokeThickness" Value="2" />
+            </Style>
         </Style>
-        <Style Selector="^.large /template/ Arc#PART_Arc">
+        <Style Selector="^.large">
             <Setter Property="Width" Value="32" />
             <Setter Property="Height" Value="32" />
-            <Setter Property="StrokeThickness" Value="5" />
+            <Style Selector="^ /template/ Arc#PART_Arc">
+                <Setter Property="StrokeThickness" Value="5" />
+            </Style>
         </Style>
         <Style Selector="^[IsLoading=True] /template/ Arc#PART_Arc">
             <Style.Animations>
@@ -72,15 +80,14 @@
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:LoadingIcon">
                 <Arc
-                    Height="20"
+                    Height="{TemplateBinding Height}"
                     IsVisible="{TemplateBinding IsVisible}"
                     Name="PART_Arc"
                     StartAngle="0"
                     StrokeJoin="Round"
                     StrokeLineCap="Round"
-                    StrokeThickness="3"
                     SweepAngle="300"
-                    Width="20">
+                    Width="{TemplateBinding Width}">
                     <Arc.Stroke>
                         <ConicGradientBrush Angle="50">
                             <GradientStops>
@@ -93,15 +100,22 @@
                 </Arc>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^.small /template/ Arc#PART_Arc">
+        <Style Selector="^ /template/ Arc#PART_Arc">
+            <Setter Property="StrokeThickness" Value="3" />
+        </Style>
+        <Style Selector="^.small">
             <Setter Property="Width" Value="14" />
             <Setter Property="Height" Value="14" />
-            <Setter Property="StrokeThickness" Value="2" />
+            <Style Selector="^ /template/ Arc#PART_Arc">
+                <Setter Property="StrokeThickness" Value="2" />
+            </Style>
         </Style>
-        <Style Selector="^.large /template/ Arc#PART_Arc">
+        <Style Selector="^.large">
             <Setter Property="Width" Value="32" />
             <Setter Property="Height" Value="32" />
-            <Setter Property="StrokeThickness" Value="5" />
+            <Style Selector="^ /template/ Arc#PART_Arc">
+                <Setter Property="StrokeThickness" Value="5" />
+            </Style>
         </Style>
         <Style Selector="^[IsLoading=True] /template/ Arc#PART_Arc">
             <Style.Animations>

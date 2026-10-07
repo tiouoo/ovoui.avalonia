@@ -21,6 +21,7 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
@@ -73,7 +74,8 @@
         x:Key="SolidHyperlinkButtonTheme">
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Padding" Value="11,6,11,5" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Padding" Value="14,6,14,5" />
         <Style Selector="^:pointerover">
             <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
         </Style>
