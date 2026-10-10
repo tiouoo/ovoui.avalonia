@@ -1,0 +1,59 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ClockPage"
+    x:DataType="pages:ClockDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Clock">
+        <o:ControlShowcase Header="Current time" SourceKey="clock-current-time">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="420"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel ItemSpacing="32" LineSpacing="20">
+                <StackPanel Spacing="8">
+                    <TextBlock HorizontalAlignment="Center" Text="Current time" />
+                    <o:Clock
+                        Height="220"
+                        IsSmooth="{Binding #smooth.IsChecked}"
+                        Time="{Binding CurrentTime}"
+                        Width="220" />
+                    <ToggleSwitch
+                        Content="Smooth seconds"
+                        HorizontalAlignment="Center"
+                        IsChecked="True"
+                        x:Name="smooth" />
+                </StackPanel>
+                <StackPanel Spacing="8">
+                    <TextBlock HorizontalAlignment="Center" Text="Fixed time" />
+                    <o:Clock
+                        Height="220"
+                        Time="2026-10-10 14:35:48"
+                        Width="220" />
+                </StackPanel>
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Ticks and hands" SourceKey="clock-ticks-hands">
+            <WrapPanel ItemSpacing="32" LineSpacing="20">
+                <o:Clock
+                    Height="200"
+                    ShowMinuteTicks="False"
+                    ShowSecondHand="False"
+                    Time="2026-10-10 08:20:00"
+                    Width="200" />
+                <o:Clock
+                    HandBrush="{DynamicResource SystemAccentBrush}"
+                    Height="200"
+                    ShowHourTicks="False"
+                    Time="2026-10-10 18:45:20"
+                    Width="200" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

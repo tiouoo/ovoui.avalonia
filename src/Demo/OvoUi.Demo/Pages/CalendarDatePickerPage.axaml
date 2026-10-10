@@ -1,0 +1,43 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.CalendarDatePickerPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="CalendarDatePicker">
+        <o:ControlShowcase Header="Basic and formats" SourceKey="calendar-date-picker-basic">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:OvoCalendarDatePicker PlaceholderText="Select a date" Width="240" />
+                <o:OvoCalendarDatePicker
+                    SelectedDate="2026-10-10"
+                    SelectedDateFormat="Long"
+                    Width="240" />
+                <CalendarDatePicker
+                    CustomDateFormatString="ddd, MMM d"
+                    SelectedDate="2026-10-10"
+                    SelectedDateFormat="Custom"
+                    Width="240" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Styles and states" SourceKey="calendar-date-picker-states">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:OvoCalendarDatePicker
+                    Classes="border"
+                    PlaceholderText="Border"
+                    Width="240" />
+                <o:OvoCalendarDatePicker
+                    Classes="border_focus"
+                    PlaceholderText="Border on focus"
+                    Width="240" />
+                <o:OvoCalendarDatePicker
+                    Classes="clear"
+                    SelectedDate="2026-10-10"
+                    Width="240" />
+                <o:OvoCalendarDatePicker
+                    IsEnabled="False"
+                    PlaceholderText="Disabled"
+                    Width="240" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

@@ -1,0 +1,71 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.TimeBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="TimeBox">
+        <o:ControlShowcase Header="Input modes" SourceKey="time-box-input-modes">
+            <StackPanel HorizontalAlignment="Left" Spacing="16">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Normal" />
+                    <o:TimeBox Time="13:45:30" Width="260" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Fast input" />
+                    <o:TimeBox
+                        InputMode="Fast"
+                        ShowLeadingZero="True"
+                        Time="08:05:09"
+                        Width="260" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Disabled" />
+                    <o:TimeBox
+                        IsEnabled="False"
+                        Time="18:30:00"
+                        Width="260" />
+                </StackPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Drag and loop" SourceKey="time-box-drag-loop">
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="20">
+                    <ToggleSwitch
+                        Content="Allow drag"
+                        IsChecked="True"
+                        x:Name="drag" />
+                    <ToggleSwitch
+                        Content="Loop time"
+                        IsChecked="True"
+                        x:Name="loop" />
+                    <ToggleSwitch
+                        Content="Leading zero"
+                        IsChecked="True"
+                        x:Name="zero" />
+                </WrapPanel>
+                <WrapPanel ItemSpacing="20" LineSpacing="16">
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Horizontal drag" />
+                        <o:TimeBox
+                            AllowDrag="{Binding #drag.IsChecked}"
+                            IsTimeLoop="{Binding #loop.IsChecked}"
+                            ShowLeadingZero="{Binding #zero.IsChecked}"
+                            Time="10:20:30"
+                            Width="260" />
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Vertical drag" />
+                        <o:TimeBox
+                            AllowDrag="{Binding #drag.IsChecked}"
+                            DragOrientation="Vertical"
+                            IsTimeLoop="{Binding #loop.IsChecked}"
+                            ShowLeadingZero="{Binding #zero.IsChecked}"
+                            Time="21:15:40"
+                            Width="260" />
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

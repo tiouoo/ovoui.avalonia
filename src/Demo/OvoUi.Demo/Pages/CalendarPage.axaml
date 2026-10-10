@@ -1,0 +1,28 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.CalendarPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Calendar">
+        <o:ControlShowcase Header="Selection modes" SourceKey="calendar-selection-modes">
+            <WrapPanel ItemSpacing="28" LineSpacing="20">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Single date" />
+                    <Calendar SelectedDate="2026-10-10" />
+                </StackPanel>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Single range" />
+                    <Calendar SelectionMode="SingleRange" />
+                </StackPanel>
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Display modes and states" SourceKey="calendar-display-states">
+            <WrapPanel ItemSpacing="28" LineSpacing="20">
+                <Calendar DisplayDate="2026-10-10" DisplayMode="Year" />
+                <Calendar DisplayDate="2026-10-10" DisplayMode="Decade" />
+                <Calendar IsEnabled="False" SelectedDate="2026-10-10" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
