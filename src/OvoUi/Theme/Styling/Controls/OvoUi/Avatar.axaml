@@ -109,10 +109,10 @@
                         <ContentPresenter
                             Content="{TemplateBinding HoverMask}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            HorizontalContentAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
                             IsVisible="False"
                             Name="PART_HoverMask"
-                            VerticalContentAlignment="Center" />
+                            VerticalContentAlignment="Stretch" />
                     </Panel>
                 </Border>
             </ControlTemplate>

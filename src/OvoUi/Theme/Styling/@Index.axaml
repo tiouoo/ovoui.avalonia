@@ -5,6 +5,7 @@
                 <ResourceInclude Source="Controls/OvoUi/@OvoUi.axaml" />
                 <ResourceInclude Source="Controls/Basic/@Basic.axaml" />
                 <ResourceInclude Source="Controls/ColorPicker/@ColorPicker.axaml" />
+                <ResourceInclude Source="Controls/DataGrid/DataGrid.axaml" />
                 <ResourceInclude Source="Components/@Components.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

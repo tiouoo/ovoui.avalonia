@@ -28,6 +28,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border
@@ -59,13 +60,14 @@
                                         Background="Transparent"
                                         BorderThickness="0"
                                         DockPanel.Dock="Right"
+                                        Foreground="{TemplateBinding Foreground}"
                                         HorizontalAlignment="Stretch"
                                         HorizontalContentAlignment="Stretch"
                                         IsChecked="{TemplateBinding IsExpanded,
                                                                     Mode=TwoWay}"
                                         Name="PART_ToggleButton"
                                         Padding="10,8,10,8"
-                                        Theme="{StaticResource TransparentToggleButton}"
+                                        Theme="{StaticResource ExpanderToggleButton}"
                                         VerticalAlignment="Center">
                                         <DockPanel>
                                             <TextBlock

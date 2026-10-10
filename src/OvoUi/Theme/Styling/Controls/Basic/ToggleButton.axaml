@@ -186,6 +186,36 @@
     <ControlTheme
         BasedOn="{StaticResource {x:Type Button}}"
         TargetType="ToggleButton"
+        x:Key="ExpanderToggleButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+        </Style>
+        <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
+        </Style>
+        <Style Selector="^:indeterminate /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+        </Style>
+        <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{TemplateBinding Foreground}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme
+        BasedOn="{StaticResource {x:Type Button}}"
+        TargetType="ToggleButton"
         x:Key="TransparentToggleButton">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
