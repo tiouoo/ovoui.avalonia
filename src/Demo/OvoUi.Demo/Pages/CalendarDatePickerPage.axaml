@@ -7,8 +7,8 @@
     <demo:DemoPage Text="CalendarDatePicker">
         <o:ControlShowcase Header="Basic and formats" SourceKey="calendar-date-picker-basic">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
-                <o:OvoCalendarDatePicker PlaceholderText="Select a date" Width="240" />
-                <o:OvoCalendarDatePicker
+                <CalendarDatePicker PlaceholderText="Select a date" Width="240" />
+                <CalendarDatePicker
                     SelectedDate="2026-10-10"
                     SelectedDateFormat="Long"
                     Width="240" />
@@ -21,19 +21,19 @@
         </o:ControlShowcase>
         <o:ControlShowcase Header="Styles and states" SourceKey="calendar-date-picker-states">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
-                <o:OvoCalendarDatePicker
+                <CalendarDatePicker
                     Classes="border"
                     PlaceholderText="Border"
                     Width="240" />
-                <o:OvoCalendarDatePicker
+                <CalendarDatePicker
                     Classes="border_focus"
                     PlaceholderText="Border on focus"
                     Width="240" />
-                <o:OvoCalendarDatePicker
+                <CalendarDatePicker
                     Classes="clear"
                     SelectedDate="2026-10-10"
                     Width="240" />
-                <o:OvoCalendarDatePicker
+                <CalendarDatePicker
                     IsEnabled="False"
                     PlaceholderText="Disabled"
                     Width="240" />
