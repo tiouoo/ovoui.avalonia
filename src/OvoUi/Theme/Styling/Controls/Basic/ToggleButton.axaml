@@ -35,7 +35,7 @@
         <Setter Property="Foreground" Value="{DynamicResource ButtonInputInnerForeground}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ToggleButton">
                 <Border
@@ -108,6 +108,7 @@
         BasedOn="{StaticResource {x:Type Button}}"
         TargetType="ToggleButton"
         x:Key="{x:Type ToggleButton}">
+        <Setter Property="BorderThickness" Value="1" />
         <Style Selector="^:checked">
             <Setter Property="FocusAdorner">
                 <FocusAdornerTemplate>
@@ -204,24 +205,11 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
-        <Style Selector="^:indeterminate">
-            <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
-            <Setter Property="BorderThickness" Value="1" />
+        <Style Selector="^:indeterminate /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
-            <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
-            </Style>
-            <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity03}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorDark1}" />
-            </Style>
-            <Style Selector="^:disabled">
-                <Setter Property="Background" Value="Transparent" />
-                <Setter Property="BorderBrush" Value="{DynamicResource DisabledForegroundBrush}" />
-                <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
-            </Style>
+        </Style>
+        <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
         </Style>
     </ControlTheme>
 
@@ -230,7 +218,8 @@
         TargetType="ToggleButton"
         x:Key="BasicToggleButtonTheme">
         <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Foreground" Value="{DynamicResource SystemAccentColor}" />
         <Setter Property="Transitions">

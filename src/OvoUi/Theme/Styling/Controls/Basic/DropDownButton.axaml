@@ -88,12 +88,6 @@
         <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
-        <Style Selector="^:pointerover:not(.accent):not(.info):not(.success):not(.warn):not(.danger) /template/ Border#PART_Background">
-            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
-        </Style>
-        <Style Selector="^:pressed:not(.accent):not(.info):not(.success):not(.warn):not(.danger) /template/ Border#PART_Background">
-            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
-        </Style>
 
         <Style Selector="^.transparent">
             <Setter Property="Background" Value="Transparent" />
@@ -256,6 +250,13 @@
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Padding" Value="20, 6" />
         <Setter Property="MinHeight" Value="32" />
+
+        <Style Selector="^:pointerover:not(.accent):not(.info):not(.success):not(.warn):not(.danger) /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed:not(.accent):not(.info):not(.success):not(.warn):not(.danger) /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
     </ControlTheme>
 
     <ControlTheme
@@ -273,5 +274,12 @@
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Padding" Value="20, 6" />
         <Setter Property="MinHeight" Value="32" />
+
+        <Style Selector="^:pointerover:not(.accent):not(.info):not(.success):not(.warn):not(.danger) /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:pressed:not(.accent):not(.info):not(.success):not(.warn):not(.danger) /template/ Border#PART_Background">
+            <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
     </ControlTheme>
 </ResourceDictionary>
