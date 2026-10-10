@@ -32,6 +32,9 @@
                 <Style Selector="ovo|NavMenuItem:first-level">
                     <Setter Property="IsVerticalCollapsed" Value="True" />
                 </Style>
+                <Style Selector="ovo|NavMenuItem:not(:first-level) TextBlock">
+                    <Setter Property="Margin" Value="0,0,-16,0" />
+                </Style>
             </ovo:NavMenu.Styles>
             <ovo:NavMenu.ItemTemplate>
                 <DataTemplate DataType="models:Page">
