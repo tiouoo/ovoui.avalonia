@@ -4,7 +4,7 @@
             Height="400"
             Margin="20"
             Width="400">
-            <TabStrip Theme="{DynamicResource BorderTabStrip}">
+            <TabStrip Theme="{DynamicResource CardTabStrip}">
                 <TabStripItem Content="文档" />
                 <TabStripItem Content="快速起步" IsEnabled="False" />
                 <TabStripItem Content="帮助" IsSelected="True" />
@@ -199,7 +199,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="12 0" />
         <Setter Property="BorderThickness" Value="1 1 1 0" />
-        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="CornerRadius" Value="10,10,0,0" />
         <Style Selector="^:selected">
             <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         </Style>

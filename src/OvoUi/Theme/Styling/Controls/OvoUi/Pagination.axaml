@@ -24,7 +24,10 @@
                             Foreground="{DynamicResource InnerForegroundBrush}"
                             Theme="{DynamicResource InnerPathIcon}" />
                     </ovo:PaginationButton>
-                    <StackPanel Name="{x:Static ovo:Pagination.PART_ButtonPanel}" Orientation="Horizontal" />
+                    <StackPanel
+                        Name="{x:Static ovo:Pagination.PART_ButtonPanel}"
+                        Orientation="Horizontal"
+                        Spacing="4" />
                     <ovo:PaginationButton Name="{x:Static ovo:Pagination.PART_NextButton}">
                         <PathIcon
                             Data="{DynamicResource IconChevronRight}"
@@ -70,7 +73,7 @@
                         <ovo:OvoNumericIntUpDown
                             Grid.Column="0"
                             HorizontalContentAlignment="Center"
-                            IsVisible="True"
+                            IsVisible="{TemplateBinding DisplayCurrentPageInQuickJumper}"
                             MinWidth="{Binding $self.Bounds.Height}"
                             Name="{x:Static ovo:Pagination.PART_QuickJumpInput}"
                             ShowButtonSpinner="False"
@@ -79,7 +82,6 @@
                             VerticalAlignment="Center" />
                         <TextBlock
                             Grid.Column="0"
-                            IsVisible="False"
                             Name="PART_PageTextBlock"
                             Text="{TemplateBinding CurrentPage}"
                             VerticalAlignment="Center" />
@@ -102,11 +104,14 @@
                 </StackPanel>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^.ReadOnly /template/ TextBlock#PART_PageTextBlock">
+        <Style Selector="^ /template/ TextBlock#PART_PageTextBlock">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^.read_only /template/ TextBlock#PART_PageTextBlock">
             <Setter Property="IsVisible" Value="True" />
         </Style>
-        <Style Selector="^.ReadOnly /template/ ovo|OvoNumericIntUpDown#PART_QuickJumpInput">
-            <Setter Property="IsVisible" Value="False" />
+        <Style Selector="^.read_only">
+            <Setter Property="DisplayCurrentPageInQuickJumper" Value="False" />
         </Style>
     </ControlTheme>
 
