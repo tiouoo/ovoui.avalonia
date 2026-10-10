@@ -1,0 +1,96 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ButtonSpinnerPage"
+    x:DataType="pages:ButtonSpinnerPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ButtonSpinner">
+        <o:ControlShowcase Header="Spin controls" SourceKey="button-spinner-controls">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="220"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="16"
+                Width="360">
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <ToggleSwitch
+                        Content="Show buttons"
+                        IsChecked="True"
+                        x:Name="showSpinCheck" />
+                    <ToggleSwitch
+                        Content="Allow spin"
+                        IsChecked="True"
+                        x:Name="allowSpinCheck" />
+                </StackPanel>
+                <ButtonSpinner
+                    AllowSpin="{Binding #allowSpinCheck.IsChecked}"
+                    BorderThickness="1"
+                    Height="30"
+                    ShowButtonSpinner="{Binding #showSpinCheck.IsChecked}"
+                    Spin="OnSpin">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="ovoui"
+                        VerticalAlignment="Center" />
+                </ButtonSpinner>
+                <ButtonSpinner
+                    AllowSpin="{Binding #allowSpinCheck.IsChecked}"
+                    BorderThickness="1"
+                    Classes="vertical"
+                    Height="30"
+                    ShowButtonSpinner="{Binding #showSpinCheck.IsChecked}"
+                    Spin="OnSpin">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="ovoui"
+                        VerticalAlignment="Center" />
+                </ButtonSpinner>
+                <ButtonSpinner
+                    AllowSpin="{Binding #allowSpinCheck.IsChecked}"
+                    BorderThickness="1"
+                    ButtonSpinnerLocation="Left"
+                    Height="30"
+                    ShowButtonSpinner="{Binding #showSpinCheck.IsChecked}"
+                    Spin="OnSpin">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="ovoui"
+                        VerticalAlignment="Center" />
+                </ButtonSpinner>
+                <ButtonSpinner
+                    AllowSpin="{Binding #allowSpinCheck.IsChecked}"
+                    BorderThickness="1"
+                    Height="30"
+                    ShowButtonSpinner="{Binding #showSpinCheck.IsChecked}"
+                    Spin="OnSpin"
+                    Theme="{StaticResource SplitButtonSpinner}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="ovoui"
+                        VerticalAlignment="Center" />
+                </ButtonSpinner>
+                <ButtonSpinner
+                    AllowSpin="{Binding #allowSpinCheck.IsChecked}"
+                    BorderThickness="1"
+                    ButtonSpinnerLocation="Left"
+                    Height="30"
+                    ShowButtonSpinner="{Binding #showSpinCheck.IsChecked}"
+                    Spin="OnSpin"
+                    Theme="{StaticResource SplitButtonSpinner}">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="ovoui"
+                        VerticalAlignment="Center" />
+                </ButtonSpinner>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

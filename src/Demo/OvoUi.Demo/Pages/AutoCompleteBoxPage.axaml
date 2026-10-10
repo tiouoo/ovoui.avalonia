@@ -1,0 +1,70 @@
+<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.AutoCompleteBoxPage"
+    x:DataType="pages:AutoCompleteBoxDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="AutoCompleteBox">
+        <o:ControlShowcase Header="AutoCompleteBox" SourceKey="auto-complete-search">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="430"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <AutoCompleteBox
+                    ItemsSource="{Binding Cities}"
+                    MinimumPrefixLength="1"
+                    PlaceholderText="Type a Chinese city, e.g. ShangHai"
+                    Width="300" />
+                <AutoCompleteBox
+                    IsTextCompletionEnabled="True"
+                    ItemsSource="{Binding Cities}"
+                    MinimumPrefixLength="1"
+                    PlaceholderText="Text completion"
+                    Width="300" />
+                <AutoCompleteBox
+                    FilterMode="Contains"
+                    ItemsSource="{Binding Cities}"
+                    PlaceholderText="Contains filter, e.g. Zhou"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Content and states" SourceKey="auto-complete-states">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <AutoCompleteBox
+                    InnerLeftContent="City"
+                    InnerRightContent="China"
+                    ItemsSource="{Binding Cities}"
+                    Width="300" />
+                <AutoCompleteBox
+                    Classes="border"
+                    ItemsSource="{Binding Cities}"
+                    PlaceholderText="Bordered"
+                    Width="300" />
+                <AutoCompleteBox
+                    IsEnabled="False"
+                    PlaceholderText="Disabled"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

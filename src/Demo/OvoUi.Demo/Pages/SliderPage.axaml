@@ -1,0 +1,80 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.SliderPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Slider">
+        <o:ControlShowcase Header="Horizontal sliders" SourceKey="slider-horizontal">
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="22"
+                Width="560">
+                <Slider Maximum="100" Value="35" />
+                <Slider
+                    Classes="tooltip"
+                    Maximum="100"
+                    Value="35" />
+                <Slider
+                    IsSnapToTickEnabled="True"
+                    Maximum="100"
+                    TickFrequency="10"
+                    TickPlacement="Outside"
+                    Value="50" />
+                <Slider
+                    Classes="ToolTip"
+                    Maximum="100"
+                    Value="65" />
+                <Slider
+                    IsDirectionReversed="True"
+                    Maximum="100"
+                    Value="25" />
+                <Slider
+                    IsEnabled="False"
+                    Maximum="100"
+                    Value="40" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Value binding" SourceKey="slider-value">
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="12"
+                Width="560">
+                <Slider
+                    Maximum="100"
+                    Value="70"
+                    x:Name="Volume" />
+                <TextBlock Text="{Binding #Volume.Value, StringFormat='Volume: {0:F0}%'}" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Vertical sliders" SourceKey="slider-vertical">
+            <WrapPanel Height="300" ItemSpacing="34">
+                <Slider
+                    Height="260"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    Value="30" />
+                <Slider
+                    Height="260"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    TickFrequency="10"
+                    TickPlacement="Outside"
+                    Value="50" />
+                <Slider
+                    Classes="ToolTip"
+                    Height="260"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    Value="70" />
+                <Slider
+                    Height="260"
+                    IsEnabled="False"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    Value="40" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

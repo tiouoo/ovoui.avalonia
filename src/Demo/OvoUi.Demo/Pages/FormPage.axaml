@@ -1,0 +1,63 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.FormPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Form">
+        <o:ControlShowcase Header="Left-aligned labels" SourceKey="form-left-labels">
+            <o:Form
+                HorizontalAlignment="Left"
+                LabelPosition="Left"
+                LabelWidth="140"
+                Width="520">
+                <TextBox
+                    PlaceholderText="Required"
+                    o:FormItem.IsRequired="True"
+                    o:FormItem.Label="Name" />
+                <TextBox PlaceholderText="name@example.com" o:FormItem.Label="Email" />
+                <ComboBox PlaceholderText="Choose a role" o:FormItem.Label="Role">
+                    <ComboBoxItem>Developer</ComboBoxItem>
+                    <ComboBoxItem>Designer</ComboBoxItem>
+                </ComboBox>
+                <Button
+                    Content="Submit"
+                    HorizontalAlignment="Stretch"
+                    o:FormItem.NoLabel="True" />
+            </o:Form>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Top labels" SourceKey="form-top-labels">
+            <o:Form
+                HorizontalAlignment="Left"
+                LabelPosition="Top"
+                Width="520">
+                <TextBox o:FormItem.Label="Project name" />
+                <TextBox
+                    AcceptsReturn="True"
+                    Classes="TextArea"
+                    Height="90"
+                    o:FormItem.Label="Description" />
+                <CheckBox Content="Make project public" o:FormItem.NoLabel="True" />
+            </o:Form>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Grouped form" SourceKey="form-groups">
+            <o:Form
+                HorizontalAlignment="Left"
+                LabelPosition="Left"
+                LabelWidth="150"
+                Width="560">
+                <o:FormGroup Header="Account">
+                    <TextBox o:FormItem.Label="Username" />
+                    <TextBox PasswordChar="•" o:FormItem.Label="Password" />
+                </o:FormGroup>
+                <o:FormGroup Header="Preferences">
+                    <ToggleSwitch IsChecked="True" o:FormItem.Label="Notifications" />
+                    <Slider
+                        Maximum="100"
+                        Value="60"
+                        o:FormItem.Label="Volume" />
+                </o:FormGroup>
+            </o:Form>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

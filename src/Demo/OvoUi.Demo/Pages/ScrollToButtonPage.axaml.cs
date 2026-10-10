@@ -13,4 +13,9 @@ public partial class ScrollToButtonPage : UserControl
 
     public ObservableCollection<string> Items { get; } =
         new(Enumerable.Range(1, 100).Select(index => $"Item {index:000}"));
+
+    public string SourceCode { get; } = """
+        public ObservableCollection<string> Items { get; } =
+            new(Enumerable.Range(1, 100).Select(index => $"Item {index:000}"));
+        """;
 }

@@ -1,0 +1,77 @@
+<UserControl
+    d:DesignHeight="700"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.OvoAutoCompleteBoxPage"
+    x:DataType="pages:OvoAutoCompleteBoxDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="OvoAutoCompleteBox">
+        <o:ControlShowcase Header="OVO autocomplete" SourceKey="ovo-auto-complete">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="360"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:OvoAutoCompleteBox
+                    Classes="clearButton"
+                    ItemsSource="{Binding Controls}"
+                    PlaceholderText="Search controls"
+                    Width="300" />
+                <o:OvoAutoCompleteBox
+                    InnerLeftContent="OVO"
+                    InnerRightContent="Control"
+                    ItemsSource="{Binding Controls}"
+                    Width="300" />
+                <o:OvoAutoCompleteBox
+                    IsEnabled="False"
+                    ItemsSource="{Binding Controls}"
+                    PlaceholderText="Disabled"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Sizes and borders" SourceKey="ovo-auto-complete-styles">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel
+                ItemSpacing="16"
+                LineSpacing="16"
+                VerticalAlignment="Center">
+                <o:OvoAutoCompleteBox
+                    Classes="Small"
+                    ItemsSource="{Binding Controls}"
+                    PlaceholderText="Small"
+                    Width="260" />
+                <o:OvoAutoCompleteBox
+                    ItemsSource="{Binding Controls}"
+                    PlaceholderText="Default"
+                    Width="280" />
+                <o:OvoAutoCompleteBox
+                    Classes="Large"
+                    ItemsSource="{Binding Controls}"
+                    PlaceholderText="Large"
+                    Width="300" />
+                <o:OvoAutoCompleteBox
+                    Classes="Bordered"
+                    ItemsSource="{Binding Controls}"
+                    PlaceholderText="Bordered"
+                    Width="280" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

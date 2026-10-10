@@ -1,0 +1,30 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.NumPadPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="NumPad">
+        <o:ControlShowcase Header="Numeric input targets" SourceKey="num-pad-targets">
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="14"
+                Width="360">
+                <TextBox PlaceholderText="Plain numeric text" />
+                <NumericUpDown
+                    Maximum="999"
+                    Minimum="0"
+                    PlaceholderText="Decimal value" />
+                <o:OvoNumericIntUpDown InnerLeftContent="Integer" PlaceholderText="OVO numeric input" />
+                <o:IPv4Box InputMode="Fast" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Availability" SourceKey="num-pad-availability">
+            <TextBlock
+                HorizontalAlignment="Left"
+                MaxWidth="720"
+                Text="The former Tio NumPad control is not part of the current OvoUi public API. Use InputScope=Number for the platform keyboard or an OvoNumericUpDown control for validated numeric entry."
+                TextWrapping="Wrap" />
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

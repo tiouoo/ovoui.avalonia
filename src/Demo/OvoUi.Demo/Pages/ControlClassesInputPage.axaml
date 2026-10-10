@@ -1,0 +1,33 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ControlClassesInputPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ControlClassesInput">
+        <o:ControlShowcase Header="Edit another control's classes" SourceKey="control-classes-input">
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="14"
+                Width="420">
+                <Button
+                    Content="Target button"
+                    HorizontalAlignment="Left"
+                    x:Name="TargetButton" />
+                <o:ControlClassesInput Target="{Binding #TargetButton}" />
+                <TextBlock Text="Add classes for target button, e.g. accent" TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Custom separator" SourceKey="control-classes-separator">
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="14"
+                Width="420">
+                <TextBox Text="Target text box" x:Name="TargetTextBox" />
+                <o:ControlClassesInput Separator="," Target="{Binding #TargetTextBox}" />
+                <TextBlock Text="Add classes for target text box, e.g. border" TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

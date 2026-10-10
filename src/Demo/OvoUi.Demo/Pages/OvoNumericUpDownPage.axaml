@@ -1,0 +1,81 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.OvoNumericUpDownPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="OvoNumericUpDown">
+        <o:ControlShowcase Header="Numeric types" SourceKey="ovo-numeric-types">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:OvoNumericIntUpDown
+                    InnerLeftContent="Int32"
+                    Maximum="100"
+                    Minimum="-100"
+                    Value="12"
+                    Width="300" />
+                <o:OvoNumericUIntUpDown
+                    InnerLeftContent="UInt32"
+                    Maximum="1000"
+                    Value="128"
+                    Width="300" />
+                <o:OvoNumericDoubleUpDown
+                    InnerLeftContent="Double"
+                    Step="0.25"
+                    Value="3.5"
+                    Width="300" />
+                <o:OvoNumericDecimalUpDown
+                    InnerLeftContent="Decimal"
+                    InnerRightContent="USD"
+                    Step="0.01"
+                    Value="19.99"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Drag, format and clear" SourceKey="ovo-numeric-features">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:OvoNumericIntUpDown
+                    AllowDrag="True"
+                    InnerLeftContent="Drag"
+                    Value="25"
+                    Width="300" />
+                <o:OvoNumericUIntUpDown
+                    Classes="clearButton"
+                    PlaceholderText="Clearable"
+                    Width="300" />
+                <o:OvoNumericUIntUpDown
+                    FontFamily="Consolas"
+                    FormatString="X8"
+                    InnerLeftContent="0x"
+                    ParsingNumberStyle="AllowHexSpecifier"
+                    Value="255"
+                    Width="300" />
+                <o:OvoNumericDoubleUpDown
+                    InnerLeftContent="No spinner"
+                    ShowButtonSpinner="False"
+                    Value="2.5"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Sizes and states" SourceKey="ovo-numeric-states">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:OvoNumericIntUpDown
+                    Classes="Small"
+                    Value="1"
+                    Width="260" />
+                <o:OvoNumericIntUpDown Value="2" Width="280" />
+                <o:OvoNumericIntUpDown
+                    Classes="Large"
+                    Value="3"
+                    Width="300" />
+                <o:OvoNumericIntUpDown
+                    IsReadOnly="True"
+                    Value="4"
+                    Width="280" />
+                <o:OvoNumericIntUpDown
+                    IsEnabled="False"
+                    Value="5"
+                    Width="280" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

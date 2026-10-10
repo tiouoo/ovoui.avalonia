@@ -1,0 +1,47 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ManagedFileChooserPage"
+    x:DataType="pages:ManagedFileChooserPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ManagedFileChooser">
+        <o:ControlShowcase Header="Storage picker workflows" SourceKey="managed-file-chooser-actions">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="500"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel HorizontalAlignment="Left" Spacing="16">
+                <WrapPanel ItemSpacing="12">
+                    <Button Click="OpenFile" Content="Open files" />
+                    <Button Click="SelectFolder" Content="Select folder" />
+                    <Button Click="SaveFile" Content="Save file" />
+                </WrapPanel>
+                <Border
+                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                    CornerRadius="4"
+                    HorizontalAlignment="Left"
+                    MinHeight="80"
+                    Padding="14"
+                    Width="560">
+                    <TextBlock
+                        Text="Picker result appears here"
+                        TextWrapping="Wrap"
+                        x:Name="PickerResult" />
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="About the control" SourceKey="managed-file-chooser-info">
+            <TextBlock
+                HorizontalAlignment="Left"
+                MaxWidth="720"
+                Text="ManagedFileChooser is Avalonia's internal managed-dialog surface. Applications normally invoke the public StorageProvider API, demonstrated above; OvoUi supplies the visual theme used when the managed implementation is selected."
+                TextWrapping="Wrap" />
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

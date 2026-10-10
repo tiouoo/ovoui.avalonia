@@ -1,0 +1,71 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.RangeSliderPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="RangeSlider">
+        <o:ControlShowcase Header="Horizontal ranges" SourceKey="range-slider-horizontal">
+            <StackPanel HorizontalAlignment="Left" Spacing="20">
+                <o:RangeSlider
+                    LowerValue="20"
+                    Maximum="100"
+                    Minimum="0"
+                    UpperValue="75"
+                    Width="520" />
+                <o:RangeSlider
+                    IsSnapToTick="True"
+                    LowerValue="30"
+                    Maximum="100"
+                    Minimum="0"
+                    TickFrequency="10"
+                    TickPlacement="Outside"
+                    UpperValue="70"
+                    Width="520" />
+                <o:RangeSlider
+                    IsDirectionReversed="True"
+                    LowerValue="25"
+                    Maximum="100"
+                    Minimum="0"
+                    UpperValue="60"
+                    Width="520" />
+                <o:RangeSlider
+                    IsEnabled="False"
+                    LowerValue="20"
+                    UpperValue="80"
+                    Width="520" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Live values" SourceKey="range-slider-values">
+            <StackPanel HorizontalAlignment="Left" Spacing="12">
+                <o:RangeSlider
+                    LowerValue="100"
+                    Maximum="500"
+                    Minimum="0"
+                    TickFrequency="25"
+                    UpperValue="350"
+                    Width="520"
+                    x:Name="Range" />
+                <TextBlock Text="{Binding #Range.LowerValue, StringFormat='Lower: {0:F0}'}" />
+                <TextBlock Text="{Binding #Range.UpperValue, StringFormat='Upper: {0:F0}'}" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Vertical" SourceKey="range-slider-vertical">
+            <WrapPanel ItemSpacing="36">
+                <o:RangeSlider
+                    Height="260"
+                    LowerValue="20"
+                    Orientation="Vertical"
+                    UpperValue="75" />
+                <o:RangeSlider
+                    Height="260"
+                    LowerValue="30"
+                    Orientation="Vertical"
+                    TickFrequency="10"
+                    TickPlacement="Outside"
+                    UpperValue="70" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

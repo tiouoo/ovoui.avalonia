@@ -1,0 +1,57 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ComboBoxPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ComboBox">
+        <o:ControlShowcase Header="Standard states" SourceKey="combo-box-states">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <ComboBox PlaceholderText="Choose a framework" Width="260">
+                    <ComboBoxItem>Avalonia</ComboBoxItem>
+                    <ComboBoxItem>WPF</ComboBoxItem>
+                    <ComboBoxItem>WinUI</ComboBoxItem>
+                </ComboBox>
+                <ComboBox SelectedIndex="0" Width="260">
+                    <ComboBoxItem>Selected item</ComboBoxItem>
+                    <ComboBoxItem>Second item</ComboBoxItem>
+                </ComboBox>
+                <ComboBox
+                    IsEnabled="False"
+                    PlaceholderText="Disabled"
+                    Width="260" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Editable and clearable" SourceKey="combo-box-editable">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <ComboBox
+                    IsEditable="True"
+                    PlaceholderText="Type or select"
+                    Width="260">
+                    <ComboBoxItem>Alpha</ComboBoxItem>
+                    <ComboBoxItem>Beta</ComboBoxItem>
+                </ComboBox>
+                <ComboBox
+                    Classes="clearButton"
+                    SelectedIndex="0"
+                    Width="260">
+                    <ComboBoxItem>Clear this selection</ComboBoxItem>
+                    <ComboBoxItem>Another option</ComboBoxItem>
+                </ComboBox>
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Visual styles" SourceKey="combo-box-styles">
+            <WrapPanel ItemSpacing="16">
+                <ComboBox
+                    Classes="border"
+                    PlaceholderText="Bordered"
+                    Width="260" />
+                <ComboBox
+                    Classes="border_focus"
+                    PlaceholderText="Bordered on focus"
+                    Width="260" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

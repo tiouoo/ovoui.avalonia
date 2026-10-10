@@ -1,0 +1,50 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.TreeComboBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="TreeComboBox">
+        <o:ControlShowcase Header="Hierarchical items" SourceKey="tree-combo-items">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <o:TreeComboBox PlaceholderText="Choose a platform" Width="340">
+                    <o:TreeComboBoxItem Header="Desktop">
+                        <o:TreeComboBoxItem Header="Windows" />
+                        <o:TreeComboBoxItem Header="macOS" />
+                        <o:TreeComboBoxItem Header="Linux" />
+                    </o:TreeComboBoxItem>
+                    <o:TreeComboBoxItem Header="Mobile">
+                        <o:TreeComboBoxItem Header="Android" />
+                        <o:TreeComboBoxItem Header="iOS" />
+                    </o:TreeComboBoxItem>
+                </o:TreeComboBox>
+                <o:TreeComboBox
+                    Classes="clearButton"
+                    InnerLeftContent="Target"
+                    InnerRightContent="Optional"
+                    PopupInnerBottomContent="Platforms"
+                    PopupInnerTopContent="Select a leaf"
+                    Width="340">
+                    <o:TreeComboBoxItem Header=".NET">
+                        <o:TreeComboBoxItem Header="Avalonia" />
+                        <o:TreeComboBoxItem Header="MAUI" />
+                    </o:TreeComboBoxItem>
+                </o:TreeComboBox>
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="States" SourceKey="tree-combo-states">
+            <WrapPanel ItemSpacing="16">
+                <o:TreeComboBox
+                    Classes="border"
+                    PlaceholderText="Bordered"
+                    Width="340">
+                    <o:TreeComboBoxItem Header="Option" />
+                </o:TreeComboBox>
+                <o:TreeComboBox
+                    IsEnabled="False"
+                    PlaceholderText="Disabled"
+                    Width="340" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

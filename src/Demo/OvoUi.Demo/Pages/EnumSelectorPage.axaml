@@ -1,0 +1,37 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.EnumSelectorPage"
+    x:CompileBindings="False"
+    x:DataType="pages:EnumSelectorDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="EnumSelector">
+        <o:ControlShowcase Header="Enum types" SourceKey="enum-selector-types">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="20">
+                <ToggleSwitch Content="Show Description" Name="description" />
+                <TextBlock Text="Select Type" />
+                <ComboBox
+                    DisplayMemberBinding="{Binding Name}"
+                    ItemsSource="{Binding Types}"
+                    SelectedItem="{Binding SelectedType}"
+                    Width="300" />
+                <TextBlock Text="Select Value" />
+                <o:EnumSelector
+                    DisplayDescription="{Binding #description.IsChecked}"
+                    EnumType="{Binding SelectedType}"
+                    Value="{Binding Value}"
+                    Width="300" />
+                <TextBlock Text="{Binding Value}" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

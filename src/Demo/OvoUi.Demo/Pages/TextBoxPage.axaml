@@ -1,0 +1,74 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.TextBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="TextBox">
+        <o:ControlShowcase Header="Standard states" SourceKey="text-box-states">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <TextBox PlaceholderText="Placeholder" Width="280" />
+                <TextBox Text="Editable text" Width="280" />
+                <TextBox
+                    IsReadOnly="True"
+                    Text="Read-only text"
+                    Width="280" />
+                <TextBox
+                    IsEnabled="False"
+                    Text="Disabled"
+                    Width="280" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Inline content and actions" SourceKey="text-box-content">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <TextBox
+                    InnerLeftContent="https://"
+                    InnerRightContent=".com"
+                    PlaceholderText="domain"
+                    Width="300" />
+                <TextBox
+                    Classes="clear"
+                    Text="Clear this value"
+                    Width="300" />
+                <TextBox
+                    Classes="reveal_password"
+                    PasswordChar="•"
+                    Text="secret"
+                    Width="300" />
+                <TextBox
+                    Classes="clear reveal_password"
+                    PasswordChar="•"
+                    Text="secret"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Themes and multiline" SourceKey="text-box-themes">
+            <WrapPanel ItemSpacing="16" LineSpacing="16">
+                <TextBox
+                    Classes="border"
+                    PlaceholderText="Bordered"
+                    Width="300" />
+                <TextBox
+                    PlaceholderText="BorderTextBoxTheme"
+                    Theme="{StaticResource BorderTextBoxTheme}"
+                    Width="300" />
+                <TextBox
+                    Classes="border_focus"
+                    PlaceholderText="Bordered on focus"
+                    Width="300" />
+                <TextBox
+                    AcceptsReturn="True"
+                    Classes="text_area clear"
+                    Height="100"
+                    PlaceholderText="Multiline text"
+                    TextWrapping="Wrap"
+                    Width="300" />
+                <TextBox
+                    InnerLeftContent="Search"
+                    PlaceholderText="Lookless"
+                    Theme="{StaticResource LooklessTextBoxTheme}"
+                    Width="300" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
