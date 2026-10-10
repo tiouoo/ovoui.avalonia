@@ -27,7 +27,7 @@ public partial class EnumSelectorDemoViewModel : ObservableObject
         {
             [ObservableProperty] private Type? _selectedType;
             [ObservableProperty] private object? _value;
-        
+
             public ObservableCollection<Type?> Types { get; set; } =
             [
                 typeof(HorizontalAlignment),
@@ -47,14 +47,14 @@ public partial class EnumSelectorDemoViewModel : ObservableObject
                 typeof(CustomEnum)
             ];
         }
-        
+
         public enum CustomEnum
         {
             [Description("是")] Yes,
             [Description("否")] No,
         }
         """";
-    
+
     [ObservableProperty] private Type? _selectedType;
     [ObservableProperty] private object? _value;
 

@@ -1,0 +1,82 @@
+<UserControl
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.TabControlPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="TabControl">
+        <o:ControlShowcase Header="Default" SourceKey="tab-control-default">
+            <TabControl Height="180" SelectedIndex="0">
+                <TabItem Header="Overview">
+                    <TextBlock Margin="16" Text="Project overview content" />
+                </TabItem>
+                <TabItem Header="Activity">
+                    <TextBlock Margin="16" Text="Recent activity content" />
+                </TabItem>
+                <TabItem Header="Settings">
+                    <TextBlock Margin="16" Text="Project settings content" />
+                </TabItem>
+                <TabItem Header="Disabled" IsEnabled="False" />
+            </TabControl>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Line" SourceKey="tab-control-line">
+            <TabControl
+                Height="180"
+                SelectedIndex="1"
+                Theme="{StaticResource LineTabControl}">
+                <TabItem Header="Details">
+                    <TextBlock Margin="16" Text="Details" />
+                </TabItem>
+                <TabItem Header="History">
+                    <TextBlock Margin="16" Text="History" />
+                </TabItem>
+                <TabItem Header="Permissions">
+                    <TextBlock Margin="16" Text="Permissions" />
+                </TabItem>
+            </TabControl>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Card" SourceKey="tab-control-card">
+            <TabControl Height="180" Theme="{StaticResource CardTabControl}">
+                <TabItem Header="Editor">
+                    <TextBlock Margin="16" Text="Editor workspace" />
+                </TabItem>
+                <TabItem Header="Preview">
+                    <TextBlock Margin="16" Text="Rendered preview" />
+                </TabItem>
+                <TabItem Header="Output">
+                    <TextBlock Margin="16" Text="Build output" />
+                </TabItem>
+            </TabControl>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Placement" SourceKey="tab-control-placement">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <TabControl Height="220" TabStripPlacement="Left">
+                    <TabItem Header="General">
+                        <TextBlock Margin="16" Text="General settings" />
+                    </TabItem>
+                    <TabItem Header="Display">
+                        <TextBlock Margin="16" Text="Display settings" />
+                    </TabItem>
+                    <TabItem Header="Advanced">
+                        <TextBlock Margin="16" Text="Advanced settings" />
+                    </TabItem>
+                </TabControl>
+                <TabControl
+                    Grid.Column="1"
+                    Height="220"
+                    TabStripPlacement="Bottom"
+                    Theme="{StaticResource ButtonTabControl}">
+                    <TabItem Header="Console">
+                        <TextBlock Margin="16" Text="Console output" />
+                    </TabItem>
+                    <TabItem Header="Problems">
+                        <TextBlock Margin="16" Text="No problems" />
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

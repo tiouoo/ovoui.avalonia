@@ -1,0 +1,130 @@
+<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.MenuPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Menu">
+        <o:ControlShowcase Header="Menu bar" SourceKey="menu-bar-basic">
+            <Menu HorizontalAlignment="Stretch">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" InputGesture="Ctrl+N">
+                        <MenuItem.Icon>
+                            <PathIcon Data="M4,2 H14 L20,8 V22 H4 Z M14,2 V8 H20" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="_Open" InputGesture="Ctrl+O">
+                        <MenuItem.Icon>
+                            <PathIcon Data="M2,6 H9 L11,9 H22 L19,20 H2 Z" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Open _recent">
+                        <MenuItem Header="Project overview.axaml" />
+                        <MenuItem Header="App.axaml" />
+                        <Separator />
+                        <MenuItem Header="Clear recent files" />
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="_Save" InputGesture="Ctrl+S" />
+                    <MenuItem Header="Save _as..." InputGesture="Ctrl+Shift+S" />
+                    <Separator />
+                    <MenuItem Header="E_xit" />
+                </MenuItem>
+
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Undo" InputGesture="Ctrl+Z" />
+                    <MenuItem
+                        Header="_Redo"
+                        InputGesture="Ctrl+Y"
+                        IsEnabled="False" />
+                    <Separator />
+                    <MenuItem Header="Cu_t" InputGesture="Ctrl+X" />
+                    <MenuItem Header="_Copy" InputGesture="Ctrl+C" />
+                    <MenuItem Header="_Paste" InputGesture="Ctrl+V" />
+                </MenuItem>
+
+                <MenuItem Header="_View">
+                    <MenuItem
+                        Header="Show status bar"
+                        IsChecked="True"
+                        ToggleType="CheckBox" />
+                    <MenuItem Header="Show sidebar" ToggleType="CheckBox" />
+                    <Separator />
+                    <MenuItem
+                        GroupName="density"
+                        Header="Comfortable"
+                        IsChecked="True"
+                        ToggleType="Radio" />
+                    <MenuItem
+                        GroupName="density"
+                        Header="Compact"
+                        ToggleType="Radio" />
+                </MenuItem>
+
+                <MenuItem Header="_Help">
+                    <MenuItem Header="Documentation" />
+                    <MenuItem Header="About OvoUi" />
+                </MenuItem>
+            </Menu>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="ContextMenu" SourceKey="menu-context-menu">
+            <Border
+                Background="{DynamicResource PanelBackgroundBrush}"
+                BorderBrush="{DynamicResource LineBrush}"
+                BorderThickness="1"
+                CornerRadius="{DynamicResource OvoCornerRadius}"
+                MinHeight="120"
+                Padding="24">
+                <Border.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Open" />
+                        <MenuItem Header="Open in new window" />
+                        <Separator />
+                        <MenuItem Header="Rename" InputGesture="F2" />
+                        <MenuItem Header="Copy" InputGesture="Ctrl+C" />
+                        <MenuItem Header="Delete" InputGesture="Delete" />
+                        <Separator />
+                        <MenuItem Header="Read-only action" IsEnabled="False" />
+                    </ContextMenu>
+                </Border.ContextMenu>
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Spacing="8"
+                    VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" Text="Document.axaml" />
+                    <TextBlock
+                        Classes="caption"
+                        HorizontalAlignment="Center"
+                        Opacity="0.65"
+                        Text="Right-click this area" />
+                </StackPanel>
+            </Border>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="MenuFlyout" SourceKey="menu-flyout">
+            <Button Content="Export" HorizontalAlignment="Left">
+                <Button.Flyout>
+                    <MenuFlyout>
+                        <MenuItem Header="PDF document" />
+                        <MenuItem Header="PNG image" />
+                        <MenuItem Header="Plain text" />
+                        <Separator />
+                        <MenuItem Header="Export settings">
+                            <MenuItem
+                                Header="Include metadata"
+                                IsChecked="True"
+                                ToggleType="CheckBox" />
+                            <MenuItem Header="Open after export" ToggleType="CheckBox" />
+                        </MenuItem>
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

@@ -1,0 +1,81 @@
+<UserControl
+    d:DesignHeight="720"
+    d:DesignWidth="1000"
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.NavMenuPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="NavMenu">
+        <o:ControlShowcase Header="Navigation and collapse" SourceKey="nav-menu-collapse">
+            <StackPanel Spacing="12">
+                <ToggleSwitch Content="Collapsed" x:Name="collapse" />
+                <o:NavMenu
+                    EnableSearch="True"
+                    HorizontalAlignment="Left"
+                    IsHorizontalCollapsed="{Binding #collapse.IsChecked}"
+                    SearchPlaceholderText="Search"
+                    SearchPlacement="Top">
+                    <o:NavMenuItem Header="Overview" IsSelected="True">
+                        <o:NavMenuItem.Icon>
+                            <PathIcon
+                                Data="M3,3 H10 V10 H3 Z M14,3 H21 V10 H14 Z M3,14 H10 V21 H3 Z M14,14 H21 V21 H14 Z"
+                                Height="16"
+                                Width="16" />
+                        </o:NavMenuItem.Icon>
+                    </o:NavMenuItem>
+                    <o:NavMenuItem Header="Content">
+                        <o:NavMenuItem.Icon>
+                            <PathIcon
+                                Data="M3,5 H9 L11,8 H21 V20 H3 Z"
+                                Height="16"
+                                Width="16" />
+                        </o:NavMenuItem.Icon>
+                        <o:NavMenuItem Header="Documents" />
+                        <o:NavMenuItem Header="Media" />
+                        <o:NavMenuItem Header="Archive" />
+                    </o:NavMenuItem>
+                    <o:NavMenuItem Header="Analytics">
+                        <o:NavMenuItem.Icon>
+                            <PathIcon
+                                Data="M4,20 V12 H8 V20 M10,20 V5 H14 V20 M16,20 V9 H20 V20"
+                                Height="16"
+                                Width="16" />
+                        </o:NavMenuItem.Icon>
+                    </o:NavMenuItem>
+                    <o:NavMenuItem IsSeparator="True" />
+                    <o:NavMenuItem Header="Settings">
+                        <o:NavMenuItem.Icon>
+                            <PathIcon
+                                Data="M12,8 A4,4 0 1 0 12,16 A4,4 0 1 0 12,8 M12,2 V5 M12,19 V22 M2,12 H5 M19,12 H22"
+                                Height="16"
+                                Width="16" />
+                        </o:NavMenuItem.Icon>
+                    </o:NavMenuItem>
+                </o:NavMenu>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Nested navigation" SourceKey="nav-menu-nested">
+            <o:NavMenu
+                Header="Project"
+                HorizontalAlignment="Left"
+                Width="320">
+                <o:NavMenuItem Header="Getting started">
+                    <o:NavMenuItem Header="Installation" />
+                    <o:NavMenuItem Header="Configuration" />
+                </o:NavMenuItem>
+                <o:NavMenuItem Header="Components">
+                    <o:NavMenuItem Header="Navigation">
+                        <o:NavMenuItem Header="Menu" />
+                        <o:NavMenuItem Header="Breadcrumb" />
+                    </o:NavMenuItem>
+                    <o:NavMenuItem Header="Data entry" />
+                </o:NavMenuItem>
+                <o:NavMenuItem Header="Disabled" IsEnabled="False" />
+            </o:NavMenu>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

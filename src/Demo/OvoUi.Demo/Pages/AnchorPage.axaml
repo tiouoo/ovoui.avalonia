@@ -1,0 +1,93 @@
+<UserControl
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.AnchorPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Anchor">
+        <o:ControlShowcase Header="Scroll navigation" SourceKey="anchor-scroll-navigation">
+            <Grid ColumnDefinitions="*,220" Height="440">
+                <ScrollViewer x:Name="contentScroller">
+                    <StackPanel Spacing="8">
+                        <Border
+                            Background="{DynamicResource ControlLowBrush}"
+                            CornerRadius="6"
+                            Height="180"
+                            o:Anchor.Id="overview">
+                            <TextBlock
+                                Classes="h3"
+                                HorizontalAlignment="Center"
+                                Text="Overview"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <Border
+                            Background="{DynamicResource ControlMediumBrush}"
+                            CornerRadius="6"
+                            Height="180"
+                            o:Anchor.Id="usage">
+                            <TextBlock
+                                Classes="h3"
+                                HorizontalAlignment="Center"
+                                Text="Usage"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <Border
+                            Background="{DynamicResource ControlLowBrush}"
+                            CornerRadius="6"
+                            Height="180"
+                            o:Anchor.Id="examples">
+                            <TextBlock
+                                Classes="h3"
+                                HorizontalAlignment="Center"
+                                Text="Examples"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <Border
+                            Background="{DynamicResource ControlMediumBrush}"
+                            CornerRadius="6"
+                            Height="180"
+                            o:Anchor.Id="api">
+                            <TextBlock
+                                Classes="h3"
+                                HorizontalAlignment="Center"
+                                Text="API reference"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+                <o:Anchor
+                    Grid.Column="1"
+                    Margin="24,4"
+                    TargetContainer="{Binding #contentScroller}">
+                    <o:AnchorItem AnchorId="overview" Header="Overview" />
+                    <o:AnchorItem AnchorId="usage" Header="Usage">
+                        <o:AnchorItem AnchorId="examples" Header="Examples" />
+                    </o:AnchorItem>
+                    <o:AnchorItem AnchorId="api" Header="API reference" />
+                </o:Anchor>
+            </Grid>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Appearances" SourceKey="anchor-appearances">
+            <WrapPanel ItemSpacing="60" LineSpacing="20">
+                <o:Anchor>
+                    <o:AnchorItem Header="Overview" IsSelected="True" />
+                    <o:AnchorItem Header="Components" />
+                    <o:AnchorItem Header="Resources" />
+                </o:Anchor>
+                <o:Anchor Classes="Muted">
+                    <o:AnchorItem Header="Overview" IsSelected="True" />
+                    <o:AnchorItem Header="Components" />
+                    <o:AnchorItem Header="Resources" />
+                </o:Anchor>
+                <o:Anchor Classes="small">
+                    <o:AnchorItem Header="Overview" IsSelected="True" />
+                    <o:AnchorItem Header="Components" />
+                    <o:AnchorItem Header="Resources" />
+                </o:Anchor>
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

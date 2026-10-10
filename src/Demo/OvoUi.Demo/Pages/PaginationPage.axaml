@@ -1,0 +1,59 @@
+<UserControl
+    mc:Ignorable="d"
+    x:Class="OvoUi.Demo.Pages.PaginationPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Pagination">
+        <o:ControlShowcase Header="Basic" SourceKey="pagination-basic">
+            <StackPanel Spacing="12">
+                <TextBlock>
+                    <Run Text="Current page: " />
+                    <Run Text="{Binding #pages.CurrentPage}" />
+                </TextBlock>
+                <o:Pagination
+                    CurrentPage="5"
+                    PageSize="10"
+                    TotalCount="240"
+                    x:Name="pages" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Page size and quick jump" SourceKey="pagination-options">
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="20">
+                    <ToggleSwitch
+                        Content="Page size"
+                        IsChecked="True"
+                        x:Name="sizes" />
+                    <ToggleSwitch
+                        Content="Quick jump"
+                        IsChecked="True"
+                        x:Name="jump" />
+                </WrapPanel>
+                <o:Pagination
+                    CurrentPage="3"
+                    PageSizeOptions="10, 20, 50, 100"
+                    ShowPageSizeSelector="{Binding #sizes.IsChecked}"
+                    ShowQuickJump="{Binding #jump.IsChecked}"
+                    TotalCount="600" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Tiny and read-only" SourceKey="pagination-tiny">
+            <StackPanel Spacing="16">
+                <o:Pagination
+                    PageSize="1"
+                    Theme="{DynamicResource TinyPagination}"
+                    TotalCount="20" />
+                <o:Pagination
+                    Classes="read_only"
+                    CurrentPage="8"
+                    PageSize="1"
+                    Theme="{DynamicResource TinyPagination}"
+                    TotalCount="20" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

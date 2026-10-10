@@ -15,7 +15,8 @@ public class AutoCompleteBoxDemoViewModel
 {
     public IReadOnlyList<string> Cities { get; } =
     [
-        "BeiJing", "ShangHai", "TianJin", "ChongQing", "ShiJiaZhuang", "TangShan", "QinHuangDao", "HanDan", "BaoDing", "ZhangJiaKou",
+        "BeiJing", "ShangHai", "TianJin", "ChongQing", "ShiJiaZhuang", "TangShan", "QinHuangDao", "HanDan", "BaoDing",
+        "ZhangJiaKou",
         "TaiYuan", "DaTong", "ChangZhi", "HuHeHaoTe", "BaoTou", "ErDuoSi", "ShenYang", "DaLian", "AnShan", "JinZhou",
         "ChangChun", "JiLin", "HarBin", "QiQiHaEr", "NanJing", "WuXi", "XuZhou", "ChangZhou", "SuZhou", "NanTong",
         "HangZhou", "NingBo", "WenZhou", "JiaXing", "ShaoXing", "JinHua", "HeFei", "WuHu", "BengBu", "FuZhou",
@@ -27,28 +28,28 @@ public class AutoCompleteBoxDemoViewModel
     ];
 
     public string SourceCode { get; } = """
-        public partial class AutoCompleteBoxPage : UserControl
-        {
-            public AutoCompleteBoxPage()
-            {
-                InitializeComponent();
-                DataContext = new AutoCompleteBoxDemoViewModel();
-            }
-        }
+                                        public partial class AutoCompleteBoxPage : UserControl
+                                        {
+                                            public AutoCompleteBoxPage()
+                                            {
+                                                InitializeComponent();
+                                                DataContext = new AutoCompleteBoxDemoViewModel();
+                                            }
+                                        }
 
-        public class AutoCompleteBoxDemoViewModel
-        {
-            public IReadOnlyList<string> Cities { get; } =
-            [
-                "BeiJing", "ShangHai", "TianJin", "ChongQing", "ShiJiaZhuang",
-                "ShenYang", "DaLian", "ChangChun", "HarBin", "NanJing",
-                "SuZhou", "HangZhou", "NingBo", "WenZhou", "HeFei", "FuZhou",
-                "XiaMen", "NanChang", "JiNan", "QingDao", "ZhengZhou", "LuoYang",
-                "WuHan", "ChangSha", "GuangZhou", "ShenZhen", "ZhuHai", "FoShan",
-                "NanNing", "GuiLin", "HaiKou", "SanYa", "ChengDu", "GuiYang",
-                "KunMing", "LaSa", "XiAn", "LanZhou", "XiNing", "YinChuan",
-                "WuLuMuQi", "HongKong", "Macao", "TaiBei", "GaoXiong"
-            ];
-        }
-        """;
+                                        public class AutoCompleteBoxDemoViewModel
+                                        {
+                                            public IReadOnlyList<string> Cities { get; } =
+                                            [
+                                                "BeiJing", "ShangHai", "TianJin", "ChongQing", "ShiJiaZhuang",
+                                                "ShenYang", "DaLian", "ChangChun", "HarBin", "NanJing",
+                                                "SuZhou", "HangZhou", "NingBo", "WenZhou", "HeFei", "FuZhou",
+                                                "XiaMen", "NanChang", "JiNan", "QingDao", "ZhengZhou", "LuoYang",
+                                                "WuHan", "ChangSha", "GuangZhou", "ShenZhen", "ZhuHai", "FoShan",
+                                                "NanNing", "GuiLin", "HaiKou", "SanYa", "ChengDu", "GuiYang",
+                                                "KunMing", "LaSa", "XiAn", "LanZhou", "XiNing", "YinChuan",
+                                                "WuLuMuQi", "HongKong", "Macao", "TaiBei", "GaoXiong"
+                                            ];
+                                        }
+                                        """;
 }
