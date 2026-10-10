@@ -1,0 +1,39 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DataGridPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="DataGrid">
+        <o:ControlShowcase Header="DataGrid examples" SourceKey="shows-data-grid">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <DataGrid
+                AutoGenerateColumns="False"
+                CanUserResizeColumns="True"
+                CanUserSortColumns="True"
+                GridLinesVisibility="All"
+                ItemsSource="{Binding People}"
+                SelectedIndex="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Binding="{Binding Name}"
+                        Header="Name"
+                        Width="*" />
+                    <DataGridTextColumn
+                        Binding="{Binding Role}"
+                        Header="Role"
+                        Width="*" />
+                    <DataGridCheckBoxColumn Binding="{Binding Active}" Header="Active" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

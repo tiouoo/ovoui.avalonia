@@ -1,0 +1,96 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.BannerPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:layout="using:Avalonia.Layout"
+    xmlns:notifications="using:Avalonia.Controls.Notifications"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Banner">
+        <o:ControlShowcase Header="Interactive configurator" SourceKey="shows-banner-configurator">
+            <Grid ColumnDefinitions="2*,*" ColumnSpacing="24">
+                <o:Banner
+                    CanClose="{Binding #CanClose.IsChecked}"
+                    Classes.Bordered="{Binding #Bordered.IsChecked}"
+                    Content="{Binding #ContentText.Text}"
+                    Header="{Binding #TitleText.Text}"
+                    HorizontalContentAlignment="{Binding #Alignment.Value}"
+                    IsVisible="{Binding #Visible.IsChecked}"
+                    Name="Preview"
+                    ShowIcon="{Binding #ShowIcon.IsChecked}"
+                    Type="{Binding #Type.Value}"
+                    VerticalAlignment="Top" />
+                <StackPanel Grid.Column="1" Spacing="10">
+                    <TextBox
+                        Name="TitleText"
+                        PlaceholderText="Title"
+                        Text="Deployment completed" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        MinHeight="72"
+                        Name="ContentText"
+                        PlaceholderText="Content"
+                        Text="Version 2.4 is now available to all users."
+                        TextWrapping="Wrap" />
+                    <TextBlock Text="Notification type" />
+                    <o:EnumSelector
+                        EnumType="{x:Type notifications:NotificationType}"
+                        Name="Type"
+                        Value="{x:Static notifications:NotificationType.Success}" />
+                    <TextBlock Text="Content alignment" />
+                    <o:EnumSelector
+                        EnumType="{x:Type layout:HorizontalAlignment}"
+                        Name="Alignment"
+                        Value="{x:Static layout:HorizontalAlignment.Stretch}" />
+                    <WrapPanel ItemSpacing="16" LineSpacing="8">
+                        <CheckBox
+                            Content="Bordered"
+                            IsChecked="True"
+                            Name="Bordered" />
+                        <CheckBox
+                            Content="Show icon"
+                            IsChecked="True"
+                            Name="ShowIcon" />
+                        <CheckBox
+                            Content="Can close"
+                            IsChecked="True"
+                            Name="CanClose" />
+                        <CheckBox
+                            Content="Visible"
+                            IsChecked="True"
+                            Name="Visible" />
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Notification types" SourceKey="shows-banner-types">
+            <StackPanel Spacing="12">
+                <o:Banner
+                    Content="A neutral product message."
+                    Header="Information"
+                    ShowIcon="True"
+                    Type="Information" />
+                <o:Banner
+                    Classes="Bordered"
+                    Content="The operation completed."
+                    Header="Success"
+                    ShowIcon="True"
+                    Type="Success" />
+                <o:Banner
+                    Classes="Bordered"
+                    Content="Review values before continuing."
+                    Header="Warning"
+                    ShowIcon="True"
+                    Type="Warning" />
+                <o:Banner
+                    CanClose="True"
+                    Content="The request could not be completed."
+                    Header="Error"
+                    ShowIcon="True"
+                    Type="Error" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

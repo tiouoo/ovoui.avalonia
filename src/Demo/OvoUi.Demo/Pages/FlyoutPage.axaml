@@ -1,0 +1,25 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.FlyoutPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Flyout">
+        <o:ControlShowcase Header="Flyout examples" SourceKey="shows-flyout">
+            <WrapPanel ItemSpacing="12">
+                <Button Content="Top">
+                    <Button.Flyout>
+                        <Flyout Content="Top flyout" Placement="Top" />
+                    </Button.Flyout>
+                </Button>
+                <Button Content="Bottom">
+                    <Button.Flyout>
+                        <Flyout Content="Bottom flyout" Placement="Bottom" />
+                    </Button.Flyout>
+                </Button>
+                <Button Content="Disabled" IsEnabled="False" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

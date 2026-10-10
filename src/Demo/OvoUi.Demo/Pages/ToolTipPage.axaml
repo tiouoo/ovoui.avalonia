@@ -1,0 +1,187 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ToolTipPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ToolTip">
+        <o:ControlShowcase Header="Basic and rich tips" SourceKey="shows-tool-tip-basic">
+            <WrapPanel ItemSpacing="14" LineSpacing="14">
+                <Border
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="42,14"
+                    ToolTip.Tip="This is a ToolTip">
+                    <TextBlock Text="Hover here" />
+                </Border>
+                <Border
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="42,14">
+                    <ToolTip.Tip>
+                        <StackPanel MaxWidth="260" Spacing="6">
+                            <TextBlock
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Text="ToolTip" />
+                            <TextBlock Text="A control which pops up a hint when a control is hovered." TextWrapping="Wrap" />
+                            <TextBlock
+                                Foreground="{DynamicResource InnerForegroundBrush}"
+                                Text="Rich content can contain multiple elements."
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </ToolTip.Tip>
+                    <TextBlock Text="Rich tooltip" />
+                </Border>
+                <Button Content="Keyboard shortcut">
+                    <ToolTip.Tip>
+                        <StackPanel Spacing="4">
+                            <TextBlock FontWeight="Bold" Text="Save document" />
+                            <TextBlock Text="Ctrl + S" />
+                        </StackPanel>
+                    </ToolTip.Tip>
+                </Button>
+            </WrapPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Open state and placement" SourceKey="shows-tool-tip-open-placement">
+            <StackPanel Spacing="14">
+                <ToggleSwitch
+                    Content="ToolTip open"
+                    IsChecked="{Binding #PlacementTarget.(ToolTip.IsOpen)}"
+                    Name="OpenTip" />
+                <WrapPanel ItemSpacing="14" LineSpacing="12">
+                    <Border
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource LineBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Name="PlacementTarget"
+                        Padding="42,14"
+                        ToolTip.Placement="Bottom">
+                        <ToolTip.Tip>
+                            <StackPanel Spacing="4">
+                                <TextBlock FontWeight="Bold" Text="Controlled tooltip" />
+                                <TextBlock Text="Its open state is controlled by the switch above." />
+                            </StackPanel>
+                        </ToolTip.Tip>
+                        <TextBlock Text="Bottom placement" />
+                    </Border>
+                    <Border
+                        IsEnabled="False"
+                        Padding="42,14"
+                        ToolTip.Tip="A disabled target does not show its tooltip.">
+                        <TextBlock Text="Disabled target" />
+                    </Border>
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Placement directions" SourceKey="shows-tool-tip-directions">
+            <WrapPanel ItemSpacing="14" LineSpacing="14">
+                <Border
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="42,14"
+                    ToolTip.Placement="Top"
+                    ToolTip.Tip="Hello from the top">
+                    <TextBlock Text="Top" />
+                </Border>
+                <Border
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="42,14"
+                    ToolTip.Placement="Left"
+                    ToolTip.Tip="Hello from the left">
+                    <TextBlock Text="Left" />
+                </Border>
+                <Border
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="42,14"
+                    ToolTip.Placement="Right"
+                    ToolTip.Tip="Hello from the right">
+                    <TextBlock Text="Right" />
+                </Border>
+                <Border
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="42,14"
+                    ToolTip.Placement="Bottom"
+                    ToolTip.Tip="Hello from the bottom">
+                    <TextBlock Text="Bottom" />
+                </Border>
+            </WrapPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Offset animation" SourceKey="shows-tool-tip-offset">
+            <Border
+                Background="Transparent"
+                BorderBrush="{DynamicResource LineBrush}"
+                BorderThickness="1"
+                CornerRadius="10"
+                Padding="52,14"
+                ToolTip.Placement="Top"
+                ToolTip.Tip="The tooltip offset is animated">
+                <Border.Styles>
+                    <Style Selector="Border">
+                        <Style.Animations>
+                            <Animation Duration="0:0:4" IterationCount="Infinite">
+                                <KeyFrame KeyTime="0:0:0">
+                                    <Setter Property="ToolTip.HorizontalOffset" Value="0" />
+                                    <Setter Property="ToolTip.VerticalOffset" Value="-50" />
+                                </KeyFrame>
+                                <KeyFrame KeyTime="0:0:2">
+                                    <Setter Property="ToolTip.HorizontalOffset" Value="100" />
+                                    <Setter Property="ToolTip.VerticalOffset" Value="50" />
+                                </KeyFrame>
+                                <KeyFrame KeyTime="0:0:4">
+                                    <Setter Property="ToolTip.HorizontalOffset" Value="0" />
+                                    <Setter Property="ToolTip.VerticalOffset" Value="-50" />
+                                </KeyFrame>
+                            </Animation>
+                        </Style.Animations>
+                    </Style>
+                </Border.Styles>
+                <TextBlock Text="Moving offset" />
+            </Border>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Tooltip inside controls" SourceKey="shows-tool-tip-controls">
+            <WrapPanel ItemSpacing="14" LineSpacing="12">
+                <Button Content="Delete">
+                    <ToolTip.Tip>
+                        <TextBlock Text="This action cannot be undone." />
+                    </ToolTip.Tip>
+                </Button>
+                <TextBox
+                    Text="Hover the field"
+                    ToolTip.Tip="Enter a project name"
+                    Width="180" />
+                <CheckBox
+                    Content="Enable sync"
+                    ToolTip.Tip="Sync changes across devices"
+                    VerticalAlignment="Center" />
+                <ProgressBar
+                    Height="8"
+                    ToolTip.Tip="Current progress: 68%"
+                    Value="68"
+                    Width="180" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

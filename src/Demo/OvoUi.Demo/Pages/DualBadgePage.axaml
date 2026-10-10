@@ -1,0 +1,52 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DualBadgePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <StreamGeometry x:Key="DownloadIcon">M12,2 L12,15 M6,10 L12,16 18,10 M4,20 L20,20</StreamGeometry>
+    </UserControl.Resources>
+    <demo:DemoPage Text="DualBadge">
+        <o:ControlShowcase Header="Flat" SourceKey="shows-dual-badge-flat">
+            <WrapPanel ItemSpacing="14" LineSpacing="12">
+                <o:DualBadge Content="35k" />
+                <o:DualBadge Content="35k" Icon="{StaticResource DownloadIcon}" />
+                <o:DualBadge Content="35k" Header="downloads" />
+                <o:DualBadge Content="35k" Header="downloads" Icon="{StaticResource DownloadIcon}" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Flat square" SourceKey="shows-dual-badge-flat-square">
+            <WrapPanel ItemSpacing="14" LineSpacing="12">
+                <o:DualBadge Classes="flat_square" Content="35k" />
+                <o:DualBadge Classes="flat_square" Content="35k" Icon="{StaticResource DownloadIcon}" />
+                <o:DualBadge Classes="flat_square" Content="35k" Header="downloads" />
+                <o:DualBadge Classes="flat_square" Content="35k" Header="downloads" Icon="{StaticResource DownloadIcon}" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Plastic" SourceKey="shows-dual-badge-plastic">
+            <WrapPanel ItemSpacing="14" LineSpacing="12">
+                <o:DualBadge Classes="plastic" Content="35k" />
+                <o:DualBadge Classes="plastic" Content="35k" Icon="{StaticResource DownloadIcon}" />
+                <o:DualBadge Classes="plastic" Content="35k" Header="downloads" />
+                <o:DualBadge Classes="plastic" Content="35k" Header="downloads" Icon="{StaticResource DownloadIcon}" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="For the badge" SourceKey="shows-dual-badge-for-badge">
+            <WrapPanel ItemSpacing="14" LineSpacing="12">
+                <o:DualBadge Classes="for_badge" Content="35K" />
+                <o:DualBadge Classes="for_badge" Content="35K" Icon="{StaticResource DownloadIcon}" />
+                <o:DualBadge Classes="for_badge" Content="35K" Header="DOWNLOADS" />
+                <o:DualBadge Classes="for_badge" Content="35K" Header="DOWNLOADS" Icon="{StaticResource DownloadIcon}" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Custom colors and states" SourceKey="shows-dual-badge-custom">
+            <WrapPanel ItemSpacing="14" LineSpacing="12">
+                <o:DualBadge Background="#2563EB" Content="passing" Header="build" HeaderBackground="#1E3A8A" />
+                <o:DualBadge Background="#7C3AED" Classes="plastic" Content="92%" Header="coverage" HeaderBackground="#4C1D95" Icon="{StaticResource DownloadIcon}" />
+                <o:DualBadge Classes="for_badge" Content="N/A" Header="DISABLED" IsEnabled="False" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

@@ -1,0 +1,35 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ImageViewerPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ImageViewer">
+        <o:ControlShowcase Header="ImageViewer examples" SourceKey="shows-image-viewer">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <o:ImageViewer
+                    Height="450"
+                    Name="Viewer"
+                    Source="avares://OvoUi.Demo/Assets/icon_256.png" />
+                <WrapPanel ItemSpacing="10">
+                    <Button Click="Fit_Click" Content="Fit to view" />
+                    <Slider
+                        Maximum="4"
+                        Minimum=".5"
+                        Value="{Binding #Viewer.Scale}"
+                        VerticalAlignment="Center"
+                        Width="220" />
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

@@ -1,0 +1,30 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.BadgePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Badge">
+        <o:ControlShowcase Header="Badge examples" SourceKey="shows-badge">
+            <WrapPanel ItemSpacing="28">
+                <o:Badge Header="8">
+                    <Button Content="Inbox" />
+                </o:Badge>
+                <o:Badge Header="120" OverflowCount="99">
+                    <Button Content="Messages" />
+                </o:Badge>
+                <o:Badge
+                    Background="{DynamicResource ErrorColor}"
+                    BorderBrush="{DynamicResource ErrorColor}"
+                    CornerPosition="TopRight"
+                    Dot="True">
+                    <Button Content="Online" />
+                </o:Badge>
+                <o:Badge CornerPosition="BottomRight" Header="3">
+                    <Button Content="Disabled" IsEnabled="False" />
+                </o:Badge>
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

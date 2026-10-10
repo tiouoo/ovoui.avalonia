@@ -1,4 +1,5 @@
 using OvoUi.Demo.Models;
+using OvoUi.Demo.Pages;
 
 namespace OvoUi.Demo.Navs;
 
@@ -6,5 +7,25 @@ public static class Shows
 {
     public static readonly List<Page> ShowsList =
     [
+        Page.View<FlyoutPage>("Flyout"),
+        Page.View<AvatarPage>("Avatar"),
+        Page.View<QrCodePage>("QRCode"),
+        Page.View<ImageViewerPage>("ImageViewer"),
+        Page.View<TimelinePage>("Timeline"),
+        Page.View<TwoTonePathIconPage>("TwoTonePathIcon"),
+        Page.View<NumberDisplayerPage>("NumberDisplayer"),
+        Page.View<MarqueePage>("Marquee"),
+        Page.View<BannerPage>("Banner"),
+        Page.View<BadgePage>("Badge"),
+        Page.View<DescriptionsPage>("Descriptions"),
+        Page.View<DataGridPage>("DataGrid"),
+        Page.View<ToolTipPage>("ToolTip"),
+        Page.View<DisableContainerPage>("DisableContainer"),
+        Page.View<DualBadgePage>("DualBadge"),
+        Page.View<ProgressBarPage>("ProgressBar"),
+        Page.View<ExpanderPage>("Expander"),
+        Page.View<ListBoxPage>("ListBox"),
+        Page.View<TreeViewPage>("TreeView"),
+        Page.View<CarouselPage>("Carousel"),
     ];
 }

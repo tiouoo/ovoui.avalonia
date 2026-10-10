@@ -1,0 +1,88 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ListBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ListBox">
+        <o:ControlShowcase Header="Default ListBox" SourceKey="shows-list-box-default">
+            <ListBox SelectedIndex="0" Width="280">
+                <ListBoxItem>Apple</ListBoxItem>
+                <ListBoxItem>Banana</ListBoxItem>
+                <ListBoxItem>Orange</ListBoxItem>
+                <ListBoxItem IsEnabled="False">Pear (disabled)</ListBoxItem>
+                <ListBoxItem>Grape</ListBoxItem>
+            </ListBox>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Radio group" SourceKey="shows-list-box-radio">
+            <ListBox SelectedIndex="1" Theme="{StaticResource RadioGroupListBoxTheme}">
+                <ListBoxItem>Apple</ListBoxItem>
+                <ListBoxItem>Banana</ListBoxItem>
+                <ListBoxItem>Orange</ListBoxItem>
+                <ListBoxItem IsEnabled="False">Pear</ListBoxItem>
+                <ListBoxItem>Grape</ListBoxItem>
+            </ListBox>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Button radio group sizes" SourceKey="shows-list-box-button-radio">
+            <StackPanel Spacing="12">
+                <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                    <ListBox Theme="{StaticResource ButtonRadioGroupListBoxTheme}">
+                        <ListBoxItem Classes="small" IsSelected="True">Small 1</ListBoxItem>
+                        <ListBoxItem Classes="small">Small 2</ListBoxItem>
+                        <ListBoxItem Classes="small">Small 3</ListBoxItem>
+                    </ListBox>
+                </Border>
+                <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                    <ListBox Theme="{StaticResource ButtonRadioGroupListBoxTheme}">
+                        <ListBoxItem IsSelected="True">Default 1</ListBoxItem>
+                        <ListBoxItem>Default 2</ListBoxItem>
+                        <ListBoxItem>Default 3</ListBoxItem>
+                    </ListBox>
+                </Border>
+                <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                    <ListBox IsEnabled="False" Theme="{StaticResource ButtonRadioGroupListBoxTheme}">
+                        <ListBoxItem Classes="large" IsSelected="True">Large disabled</ListBoxItem>
+                        <ListBoxItem Classes="large">Large option</ListBoxItem>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Card radio group" SourceKey="shows-list-box-card-radio">
+            <ListBox SelectedIndex="0" Theme="{StaticResource CardRadioGroupListBoxTheme}">
+                <ListBoxItem>Starter</ListBoxItem>
+                <ListBoxItem>Professional</ListBoxItem>
+                <ListBoxItem IsEnabled="False">Enterprise (disabled)</ListBoxItem>
+            </ListBox>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Border radio group" SourceKey="shows-list-box-border-radio">
+            <ListBox SelectedIndex="1" Theme="{StaticResource BorderListBoxTheme}">
+                <ListBoxItem>One</ListBoxItem>
+                <ListBoxItem>Two</ListBoxItem>
+                <ListBoxItem>Three</ListBoxItem>
+            </ListBox>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Check group" SourceKey="shows-list-box-check">
+            <ListBox SelectionMode="Multiple,Toggle" Theme="{StaticResource CheckGroupListBoxTheme}">
+                <ListBoxItem IsSelected="True">Design</ListBoxItem>
+                <ListBoxItem>Development</ListBoxItem>
+                <ListBoxItem IsSelected="True">Testing</ListBoxItem>
+                <ListBoxItem IsEnabled="False">Documentation</ListBoxItem>
+                <ListBoxItem>Operations</ListBoxItem>
+            </ListBox>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Card check group" SourceKey="shows-list-box-card-check">
+            <ListBox SelectionMode="Multiple,Toggle" Theme="{StaticResource CardCheckGroupListBoxTheme}">
+                <ListBoxItem IsSelected="True">Email notifications</ListBoxItem>
+                <ListBoxItem>Desktop notifications</ListBoxItem>
+                <ListBoxItem IsSelected="True">Weekly digest</ListBoxItem>
+            </ListBox>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

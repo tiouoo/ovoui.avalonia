@@ -1,0 +1,54 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.NumberDisplayerPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="NumberDisplayer">
+        <o:ControlShowcase Header="NumberDisplayer examples" SourceKey="shows-number-displayer">
+            <StackPanel Spacing="16">
+                <WrapPanel ItemSpacing="30">
+                    <o:Int32Displayer
+                        Duration="0:0:1"
+                        FontSize="32"
+                        Value="{Binding #Int.Value}" />
+                    <o:DoubleDisplayer
+                        Duration="0:0:.6"
+                        FontSize="32"
+                        StringFormat="F2"
+                        Value="{Binding #Double.Value}" />
+                </WrapPanel>
+                <NumericUpDown
+                    Maximum="9999999"
+                    Name="Int"
+                    Value="1280" />
+                <Slider
+                    Maximum="100"
+                    Name="Double"
+                    Value="42.5" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Change values with animation" SourceKey="shows-number-displayer-change">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="18">
+                <Button Command="{Binding ChangeCommand}" Content="Change values" HorizontalAlignment="Left" />
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="12">
+                    <TextBlock Text="Int32" />
+                    <o:Int32Displayer Duration="0:0:1" FontSize="28" Grid.Column="1" StringFormat="N0" Value="{Binding Value}" />
+                    <TextBlock Grid.Row="1" Text="Int64" />
+                    <o:Int64Displayer Duration="0:0:1.2" FontSize="28" Grid.Column="1" Grid.Row="1" StringFormat="N0" Value="{Binding LongValue}" />
+                    <TextBlock Grid.Row="2" Text="Double" />
+                    <o:DoubleDisplayer Duration="0:0:0.8" FontSize="28" Grid.Column="1" Grid.Row="2" StringFormat="N2" Value="{Binding DoubleValue}" />
+                    <TextBlock Grid.Row="3" Text="Date" />
+                    <o:DateDisplay Duration="0:0:1" FontSize="24" Grid.Column="1" Grid.Row="3" StringFormat="yyyy-MM-dd" Value="{Binding DateValue}" />
+                </Grid>
+                <TextBlock Text="The values interpolate to their new targets instead of jumping immediately." TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

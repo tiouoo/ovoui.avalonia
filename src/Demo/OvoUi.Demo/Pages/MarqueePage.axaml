@@ -1,0 +1,125 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.MarqueePage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:common="using:OvoUi.Common.Enums"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:layout="using:Avalonia.Layout"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Marquee">
+        <o:ControlShowcase Header="Interactive editor" SourceKey="shows-marquee-editor">
+            <Grid ColumnDefinitions="2*,*" ColumnSpacing="24">
+                <Border
+                    Background="#DBEAFE"
+                    BorderBrush="#60A5FA"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Height="150">
+                    <o:Marquee
+                        Content="{Binding #ContentText.Text}"
+                        Direction="{Binding #Direction.Value}"
+                        HorizontalContentAlignment="{Binding #Horizontal.Value}"
+                        IsRunning="{Binding #Running.IsChecked}"
+                        Speed="{Binding #Speed.Value}"
+                        VerticalContentAlignment="{Binding #Vertical.Value}">
+                        <o:Marquee.ContentTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Background="#2563EB"
+                                    CornerRadius="4"
+                                    Padding="14,8">
+                                    <TextBlock
+                                        FontWeight="Bold"
+                                        Foreground="White"
+                                        Text="{Binding}" />
+                                </Border>
+                            </DataTemplate>
+                        </o:Marquee.ContentTemplate>
+                    </o:Marquee>
+                </Border>
+
+                <StackPanel Grid.Column="1" Spacing="10">
+                    <TextBlock Text="Content" />
+                    <TextBox
+                        Name="ContentText"
+                        PlaceholderText="Marquee content"
+                        Text="OvoUi interactive marquee - edit this text while it moves." />
+                    <TextBlock Text="Direction" />
+                    <o:EnumSelector
+                        EnumType="{x:Type common:Direction}"
+                        Name="Direction"
+                        Value="{x:Static common:Direction.Left}" />
+                    <TextBlock Text="Horizontal alignment" />
+                    <o:EnumSelector
+                        EnumType="{x:Type layout:HorizontalAlignment}"
+                        Name="Horizontal"
+                        Value="{x:Static layout:HorizontalAlignment.Center}" />
+                    <TextBlock Text="Vertical alignment" />
+                    <o:EnumSelector
+                        EnumType="{x:Type layout:VerticalAlignment}"
+                        Name="Vertical"
+                        Value="{x:Static layout:VerticalAlignment.Center}" />
+                    <TextBlock Text="{Binding #Speed.Value, StringFormat='Speed: {0:0} px/s'}" />
+                    <Slider
+                        IsSnapToTickEnabled="True"
+                        Maximum="300"
+                        Minimum="0"
+                        Name="Speed"
+                        TickFrequency="10"
+                        Value="60" />
+                    <ToggleSwitch
+                        Content="Running"
+                        IsChecked="True"
+                        Name="Running" />
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Direction comparison" SourceKey="shows-marquee-directions">
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="16"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="16">
+                <Border
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    Height="72">
+                    <o:Marquee Direction="Left" Speed="70">
+                        <TextBlock Text="Moves left" />
+                    </o:Marquee>
+                </Border>
+                <Border
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    Grid.Column="1"
+                    Height="72">
+                    <o:Marquee Direction="Right" Speed="70">
+                        <TextBlock Text="Moves right" />
+                    </o:Marquee>
+                </Border>
+                <Border
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    Grid.Row="1"
+                    Height="120">
+                    <o:Marquee Direction="Up" Speed="45">
+                        <TextBlock Text="Moves up" />
+                    </o:Marquee>
+                </Border>
+                <Border
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Height="120">
+                    <o:Marquee Direction="Down" Speed="45">
+                        <TextBlock Text="Moves down" />
+                    </o:Marquee>
+                </Border>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

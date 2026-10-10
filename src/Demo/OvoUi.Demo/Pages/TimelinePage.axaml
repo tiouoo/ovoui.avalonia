@@ -1,0 +1,37 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.TimelinePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Timeline">
+        <o:ControlShowcase Header="Timeline examples" SourceKey="shows-timeline">
+            <StackPanel Spacing="20">
+                <o:Timeline Mode="Left">
+                    <o:TimelineItem
+                        Content="Request accepted"
+                        Header="Received"
+                        Type="Success" />
+                    <o:TimelineItem
+                        Content="Preparing package"
+                        Header="Processing"
+                        Type="Ongoing" />
+                    <o:TimelineItem Content="Pending" Header="Delivery" />
+                </o:Timeline>
+                <o:Timeline Mode="Alternate">
+                    <o:TimelineItem
+                        Content="Complete"
+                        Header="Design"
+                        Position="Left"
+                        Type="Success" />
+                    <o:TimelineItem
+                        Content="In progress"
+                        Header="Review"
+                        Position="Right"
+                        Type="Warning" />
+                </o:Timeline>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

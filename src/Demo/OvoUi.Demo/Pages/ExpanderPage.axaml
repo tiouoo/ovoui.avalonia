@@ -1,0 +1,93 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ExpanderPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Expander">
+        <o:ControlShowcase Header="Vertical directions" SourceKey="shows-expander-vertical">
+            <StackPanel Spacing="18">
+                <Expander Header="Expand down" IsExpanded="True">
+                    <Border
+                        Background="#DBEAFE"
+                        Height="110"
+                        Margin="12"
+                        Padding="18">
+                        <StackPanel Spacing="6">
+                            <TextBlock FontWeight="Bold" Text="Account details" />
+                            <TextBlock Text="Content expands below the header." />
+                        </StackPanel>
+                    </Border>
+                </Expander>
+                <Expander ExpandDirection="Up" Header="Expand up">
+                    <Border
+                        Background="#DCFCE7"
+                        Height="110"
+                        Margin="12"
+                        Padding="18">
+                        <StackPanel Spacing="6">
+                            <TextBlock FontWeight="Bold" Text="Recent activity" />
+                            <TextBlock Text="Content expands above the header." />
+                        </StackPanel>
+                    </Border>
+                </Expander>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Horizontal directions" SourceKey="shows-expander-horizontal">
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="18"
+                MinHeight="230">
+                <Expander
+                    ExpandDirection="Left"
+                    Header="Expand left"
+                    HorizontalAlignment="Right"
+                    IsExpanded="True">
+                    <Border
+                        Background="#FCE7F3"
+                        Height="190"
+                        Padding="18"
+                        Width="220">
+                        <TextBlock Text="The panel grows to the left." TextWrapping="Wrap" />
+                    </Border>
+                </Expander>
+                <Expander
+                    ExpandDirection="Right"
+                    Grid.Column="1"
+                    Header="Expand right"
+                    HorizontalAlignment="Left">
+                    <Border
+                        Background="#FEF3C7"
+                        Height="190"
+                        Padding="18"
+                        Width="220">
+                        <TextBlock Text="The panel grows to the right." TextWrapping="Wrap" />
+                    </Border>
+                </Expander>
+            </Grid>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Header content and states" SourceKey="shows-expander-states">
+            <StackPanel Spacing="12">
+                <Expander IsExpanded="True">
+                    <Expander.Header>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <o:Avatar Classes="small teal" Content="UI" />
+                            <TextBlock
+                                FontWeight="Bold"
+                                Text="Custom header"
+                                VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Expander.Header>
+                    <TextBlock Margin="14" Text="Headers can contain arbitrary controls." />
+                </Expander>
+                <Expander Header="Collapsed initially">
+                    <TextBlock Margin="14" Text="Click the header to reveal this content." />
+                </Expander>
+                <Expander Header="Disabled expander" IsEnabled="False">
+                    <TextBlock Text="Unavailable" />
+                </Expander>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

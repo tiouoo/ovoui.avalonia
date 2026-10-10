@@ -1,0 +1,112 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.CarouselPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Styles>
+        <Style Selector="Carousel TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Styles>
+    <demo:DemoPage Text="Carousel">
+        <o:ControlShowcase Header="Interactive carousel" SourceKey="shows-carousel">
+            <StackPanel Spacing="20">
+                <Carousel
+                    Classes.Center="{Binding #CenterButton.IsChecked}"
+                    Classes.Columnar="{Binding #ColumnarButton.IsChecked}"
+                    Classes.Dot="{Binding #DotButton.IsChecked}"
+                    Classes.Left="{Binding #LeftButton.IsChecked}"
+                    Classes.Line="{Binding #LineButton.IsChecked}"
+                    Classes.Right="{Binding #RightButton.IsChecked}"
+                    Height="220"
+                    SelectedIndex="{Binding #Index.Value}"
+                    Theme="{StaticResource FullCarousel}">
+                    <Border Background="#DBEAFE">
+                        <StackPanel HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center">
+                            <TextBlock FontSize="22" FontWeight="Bold" Text="Overview" />
+                            <TextBlock Text="First carousel page" />
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#DCFCE7">
+                        <StackPanel HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center">
+                            <TextBlock FontSize="22" FontWeight="Bold" Text="Details" />
+                            <TextBlock Text="Second carousel page" />
+                        </StackPanel>
+                    </Border>
+                    <Border Background="#FEF3C7">
+                        <StackPanel HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center">
+                            <TextBlock FontSize="22" FontWeight="Bold" Text="Activity" />
+                            <TextBlock Text="Third carousel page" />
+                        </StackPanel>
+                    </Border>
+                </Carousel>
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+                    <TextBlock Text="Indicator type" VerticalAlignment="Center" />
+                    <Border Grid.Column="1" HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton
+                                Content="Dot"
+                                GroupName="IndicatorType"
+                                IsChecked="True"
+                                Name="DotButton"
+                                Theme="{StaticResource ButtonRadioButtonTheme}" />
+                            <RadioButton
+                                Content="Columnar"
+                                GroupName="IndicatorType"
+                                Name="ColumnarButton"
+                                Theme="{StaticResource ButtonRadioButtonTheme}" />
+                            <RadioButton
+                                Content="Line"
+                                GroupName="IndicatorType"
+                                Name="LineButton"
+                                Theme="{StaticResource ButtonRadioButtonTheme}" />
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Grid.Row="1" Text="Indicator position" VerticalAlignment="Center" />
+                    <Border
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        Theme="{StaticResource RadioButtonGroupBorder}">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton
+                                Content="Left"
+                                GroupName="IndicatorPosition"
+                                IsChecked="True"
+                                Name="LeftButton"
+                                Theme="{StaticResource ButtonRadioButtonTheme}" />
+                            <RadioButton
+                                Content="Center"
+                                GroupName="IndicatorPosition"
+                                Name="CenterButton"
+                                Theme="{StaticResource ButtonRadioButtonTheme}" />
+                            <RadioButton
+                                Content="Right"
+                                GroupName="IndicatorPosition"
+                                Name="RightButton"
+                                Theme="{StaticResource ButtonRadioButtonTheme}" />
+                        </StackPanel>
+                    </Border>
+
+                    <TextBlock Grid.Row="2" Text="Selected page" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Spacing="12">
+                        <Slider
+                            IsSnapToTickEnabled="True"
+                            Maximum="2"
+                            Name="Index"
+                            TickFrequency="1"
+                            Value="0"
+                            Width="240" />
+                        <TextBlock Text="{Binding #Index.Value, StringFormat='Page {0}'}" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

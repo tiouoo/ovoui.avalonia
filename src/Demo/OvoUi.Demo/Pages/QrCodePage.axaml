@@ -1,0 +1,88 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.QrCodePage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="using:OvoUi.Controls"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="QRCode">
+        <o:ControlShowcase Header="Interactive QRCode settings" SourceKey="shows-qr-code-settings">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="28">
+                <StackPanel Spacing="12">
+                    <o:QRCode
+                        Background="White"
+                        Data="{Binding #Data.Text}"
+                        ErrorCorrection="{Binding #Ecc.Value}"
+                        Foreground="#111827"
+                        Height="240"
+                        IsQuietZoneEnabled="{Binding #Quiet.IsChecked}"
+                        Padding="12"
+                        SymbolCornerRatio="{Binding #Ratio.Value}"
+                        Width="240" />
+                    <TextBlock Text="{Binding #Ratio.Value, StringFormat='Symbol corner ratio: {0:0.00}'}" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Spacing="10"
+                    Width="280">
+                    <TextBlock Text="Data" />
+                    <TextBox Name="Data" Text="https://github.com/tiouoo/ovoui" />
+                    <TextBlock Text="Error correction" />
+                    <o:EnumSelector
+                        EnumType="{x:Type controls:EccLevel}"
+                        Name="Ecc"
+                        Value="{x:Static controls:EccLevel.Medium}" />
+                    <TextBlock Text="Symbol corner ratio" />
+                    <Slider
+                        IsSnapToTickEnabled="True"
+                        Maximum=".5"
+                        Name="Ratio"
+                        TickFrequency=".05"
+                        Value=".35" />
+                    <CheckBox
+                        Content="Show quiet zone"
+                        IsChecked="True"
+                        Name="Quiet" />
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Error correction comparison" SourceKey="shows-qr-code-correction">
+            <WrapPanel ItemSpacing="18" LineSpacing="12">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Lowest" />
+                    <o:QRCode
+                        Data="OvoUi"
+                        ErrorCorrection="Lowest"
+                        Height="150"
+                        Width="150" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Medium" />
+                    <o:QRCode
+                        Data="OvoUi"
+                        ErrorCorrection="Medium"
+                        Height="150"
+                        Width="150" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Quality" />
+                    <o:QRCode
+                        Data="OvoUi"
+                        ErrorCorrection="Quality"
+                        Height="150"
+                        Width="150" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Highest" />
+                    <o:QRCode
+                        Data="OvoUi"
+                        ErrorCorrection="Highest"
+                        Height="150"
+                        Width="150" />
+                </StackPanel>
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+

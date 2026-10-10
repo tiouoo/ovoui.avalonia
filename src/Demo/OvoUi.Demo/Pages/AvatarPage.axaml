@@ -1,0 +1,86 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.AvatarPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Avatar">
+        <o:ControlShowcase Header="Sizes and shapes" SourceKey="shows-avatar-sizes">
+            <StackPanel Spacing="14">
+                <WrapPanel ItemSpacing="12" LineSpacing="12">
+                    <o:Avatar Classes="extra_extra_small red" Content="2X" />
+                    <o:Avatar Classes="extra_small pink" Content="XS" />
+                    <o:Avatar Classes="small purple" Content="S" />
+                    <o:Avatar Classes="default violet" Content="D" />
+                    <o:Avatar Classes="medium indigo" Content="M" />
+                    <o:Avatar Classes="large blue" Content="L" />
+                    <o:Avatar Classes="extralarge cyan" Content="XL" />
+                </WrapPanel>
+                <WrapPanel ItemSpacing="12" LineSpacing="12">
+                    <o:Avatar Classes="small square teal" Content="S" />
+                    <o:Avatar Classes="default square green" Content="D" />
+                    <o:Avatar Classes="medium square lime" Content="M" />
+                    <o:Avatar Classes="large square orange" Content="L" />
+                    <o:Avatar Classes="extralarge square grey" Content="XL" />
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Color palette" SourceKey="shows-avatar-colors">
+            <WrapPanel ItemSpacing="12" LineSpacing="12">
+                <o:Avatar Classes="red" Content="R" />
+                <o:Avatar Classes="pink" Content="P" />
+                <o:Avatar Classes="purple" Content="P" />
+                <o:Avatar Classes="violet" Content="V" />
+                <o:Avatar Classes="indigo" Content="I" />
+                <o:Avatar Classes="blue" Content="B" />
+                <o:Avatar Classes="lightblue" Content="LB" />
+                <o:Avatar Classes="cyan" Content="C" />
+                <o:Avatar Classes="teal" Content="T" />
+                <o:Avatar Classes="green" Content="G" />
+                <o:Avatar Classes="lightgreen" Content="LG" />
+                <o:Avatar Classes="lime" Content="L" />
+                <o:Avatar Classes="yellow" Content="Y" />
+                <o:Avatar Classes="amber" Content="A" />
+                <o:Avatar Classes="orange" Content="O" />
+                <o:Avatar Classes="grey" Content="G" />
+            </WrapPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Hover mask and states" SourceKey="shows-avatar-interaction">
+            <WrapPanel ItemSpacing="18" LineSpacing="12">
+                <o:Avatar Classes="large red" Content="HI">
+                    <o:Avatar.HoverMask>
+                        <Border Background="{DynamicResource SystemAccentColor}">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <PathIcon
+                                    Data="M3,5 L21,5 21,19 3,19 Z M8,5 L10,2 14,2 16,5 M12,8 A4,4 0 1 0 12,16 A4,4 0 1 0 12,8"
+                                    Foreground="White"
+                                    Height="24"
+                                    Width="24" />
+                                <TextBlock
+                                    FontSize="11"
+                                    Foreground="White"
+                                    Text="Change" />
+                            </StackPanel>
+                        </Border>
+                    </o:Avatar.HoverMask>
+                </o:Avatar>
+                <o:Avatar Classes="large square teal" Content="OV">
+                    <o:Avatar.HoverMask>
+                        <Border Background="#A0000000">
+                            <TextBlock
+                                Foreground="White"
+                                HorizontalAlignment="Center"
+                                Text="Edit"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </o:Avatar.HoverMask>
+                </o:Avatar>
+                <o:Avatar
+                    Classes="large grey"
+                    Content="NA"
+                    IsEnabled="False" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
+
