@@ -41,7 +41,7 @@
                         PreviewMinHeight="180"
                         SourceKey="test-action-showcase">
                         <o:ControlShowcase.CodeBlocks>
-                            <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                            <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                             <o:ShowcaseCodeBlock
                                 Code="{x:Static test:MainWindow.CodeBehindSample}"
                                 Header="C# code behind"

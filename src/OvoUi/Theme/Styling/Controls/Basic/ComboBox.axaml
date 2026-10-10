@@ -173,7 +173,7 @@
             </ControlTemplate>
         </Setter>
 
-        <Style Selector="^.clearButton, ^.ClearButton">
+        <Style Selector="^.clear">
             <Style Selector="^:pointerover /template/ Button#ClearButton">
                 <Setter Property="IsVisible" Value="{Binding $parent[ComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
             </Style>

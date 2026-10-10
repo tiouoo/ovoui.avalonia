@@ -6,6 +6,7 @@
         <StackPanel Margin="20">
             <ovo:PathPicker
                 ButtonContent="Hello World"
+                Theme="{StaticResource ListPathPicker}"
                 Title="Hello World"
                 Width="300" />
         </StackPanel>
@@ -105,43 +106,44 @@
     <ControlTheme TargetType="Expander" x:Key="INTERNAL_PathPickerExpander">
         <Setter Property="Template">
             <ControlTemplate>
-                <DockPanel>
-                    <DockPanel DockPanel.Dock="Top" LastChildFill="True">
-                        <ToggleButton
-                            Background="{DynamicResource ButtonDefaultBackground}"
-                            CornerRadius="{TemplateBinding CornerRadius,
-                                                           Converter={ovo:CornerRadiusMixerConverter Right}}"
-                            DockPanel.Dock="Right"
-                            IsChecked="{TemplateBinding IsExpanded,
+                <Border>
+                    <DockPanel>
+                        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+                            <ToggleButton
+                                CornerRadius="{TemplateBinding CornerRadius,
+                                                               Converter={ovo:CornerRadiusMixerConverter Right}}"
+                                DockPanel.Dock="Right"
+                                IsChecked="{TemplateBinding IsExpanded,
+                                                            Mode=TwoWay}"
+                                Margin="1,0,0,0"
+                                Name="ExpanderHeader"
+                                Theme="{DynamicResource INTERNAL_PathPickerExpanderHeaderToggleButtonTheme}">
+                                <PathIcon
+                                    Data="F1 M384,512z M0,0z M169.4,374.6C181.9,387.1,202.2,387.1,214.7,374.6L374.7,214.6C387.2,202.1 387.2,181.8 374.7,169.3 362.2,156.8 341.9,156.8 329.4,169.3L192,306.7 54.6,169.4C42.1,156.9 21.8,156.9 9.3,169.4 -3.2,181.9 -3.2,202.2 9.3,214.7L169.3,374.7z"
+                                    Height="16"
+                                    Name="PART_PathIcon"
+                                    Width="16">
+                                    <PathIcon.Transitions>
+                                        <Transitions>
+                                            <TransformOperationsTransition Duration="0.1" Property="RenderTransform" />
+                                        </Transitions>
+                                    </PathIcon.Transitions>
+                                </PathIcon>
+                            </ToggleButton>
+                            <ContentPresenter Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                        </DockPanel>
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{DynamicResource ForegroundColor}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding IsExpanded,
                                                         Mode=TwoWay}"
-                            Margin="1,0,0,0"
-                            Name="ExpanderHeader"
-                            Theme="{DynamicResource INTERNAL_PathPickerExpanderHeaderToggleButtonTheme}">
-                            <PathIcon
-                                Data="F1 M384,512z M0,0z M169.4,374.6C181.9,387.1,202.2,387.1,214.7,374.6L374.7,214.6C387.2,202.1 387.2,181.8 374.7,169.3 362.2,156.8 341.9,156.8 329.4,169.3L192,306.7 54.6,169.4C42.1,156.9 21.8,156.9 9.3,169.4 -3.2,181.9 -3.2,202.2 9.3,214.7L169.3,374.7z"
-                                Height="16"
-                                Name="PART_PathIcon"
-                                Width="16">
-                                <PathIcon.Transitions>
-                                    <Transitions>
-                                        <TransformOperationsTransition Duration="0.1" Property="RenderTransform" />
-                                    </Transitions>
-                                </PathIcon.Transitions>
-                            </PathIcon>
-                        </ToggleButton>
-                        <ContentPresenter Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                            Margin="16,4,16,8"
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </DockPanel>
-                    <ContentPresenter
-                        Content="{TemplateBinding Content}"
-                        ContentTemplate="{TemplateBinding ContentTemplate}"
-                        Foreground="{DynamicResource ForegroundColor}"
-                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        IsVisible="{TemplateBinding IsExpanded,
-                                                    Mode=TwoWay}"
-                        Margin="16,4,16,8"
-                        Name="PART_ContentPresenter"
-                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                </DockPanel>
+                </Border>
             </ControlTemplate>
         </Setter>
 
@@ -152,15 +154,21 @@
     </ControlTheme>
 
     <ControlTheme TargetType="ToggleButton" x:Key="INTERNAL_PathPickerExpanderHeaderToggleButtonTheme">
-        <Setter Property="Padding" Value="{DynamicResource ButtonDefaultPadding}" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="CornerRadius" Value="0,10,10,0" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ToggleButton">
-                <ContentPresenter
-                    Background="{TemplateBinding Background}"
-                    Content="{TemplateBinding Content}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    Padding="{TemplateBinding Padding}" />
+                <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter Content="{TemplateBinding Content}" Padding="{TemplateBinding Padding}" />
+                </Border>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ControlPointeroverBackground}" />
+        </Style>
+        <Style Selector="^:press">
+            <Setter Property="Background" Value="{DynamicResource ControlPressBackground}" />
+        </Style>
     </ControlTheme>
 </ResourceDictionary>

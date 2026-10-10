@@ -132,14 +132,14 @@
                                     DockPanel.Dock="Top"
                                     IsVisible="{TemplateBinding PopupInnerTopContent,
                                                                 Converter={x:Static ObjectConverters.IsNotNull}}"
-                                    Margin="8,8,8,0"
+                                    Margin="12,4"
                                     Name="PART_PopupHeader" />
                                 <ContentPresenter
                                     Content="{TemplateBinding PopupInnerBottomContent}"
                                     DockPanel.Dock="Bottom"
                                     IsVisible="{TemplateBinding PopupInnerBottomContent,
                                                                 Converter={x:Static ObjectConverters.IsNotNull}}"
-                                    Margin="8,0,8,8"
+                                    Margin="12,4"
                                     Name="PART_PopupFooter" />
                                 <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}">
                                     <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Margin="4,-1" />
@@ -185,6 +185,37 @@
 
         <Style Selector="^:focus">
             <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+        </Style>
+        
+        <Style Selector="^.border">
+            <Style Selector="^ /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:dropdownopen /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:focus /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:disabled">
+                <Style Selector="^ /template/ Border#Background">
+                    <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+                </Style>
+            </Style>
+        </Style>
+        <Style Selector="^.border_focus">
+            <Style Selector="^:focus /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
+            <Style Selector="^:dropdownopen /template/ Border#Background">
+                <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorLight1}" />
+            </Style>
         </Style>
 
         <Style Selector="^:disabled">

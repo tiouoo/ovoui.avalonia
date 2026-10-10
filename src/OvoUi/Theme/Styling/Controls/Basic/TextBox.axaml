@@ -168,14 +168,14 @@
             <Setter Property="VerticalContentAlignment" Value="Top" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="TextInputOptions.ReturnKeyType" Value="Return" />
-            <Style Selector="^.clear, ^.Clear">
+            <Style Selector="^.clear">
                 <Style Selector="^ /template/ Button#PART_ClearButton">
                     <Setter Property="VerticalAlignment" Value="Top" />
                     <Setter Property="IsVisible" Value="True" />
                     <Setter Property="IsTabStop" Value="False" />
                     <Setter Property="IsEnabled" Value="False" />
                     <Setter Property="Opacity" Value="0" />
-                    <Setter Property="Margin" Value="2,5,-5,0" />
+                    <Setter Property="Margin" Value="2,5,0,0" />
                 </Style>
                 <Style Selector="^[IsReadOnly=False]:not(:empty)">
                     <Style Selector="^:pointerover,^:focus">

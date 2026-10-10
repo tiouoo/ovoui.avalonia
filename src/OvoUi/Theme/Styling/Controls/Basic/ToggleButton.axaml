@@ -44,7 +44,7 @@
                     BorderThickness="{TemplateBinding BorderThickness}"
                     Height="{TemplateBinding Height}"
                     Width="{TemplateBinding Width}">
-                    <Panel>
+                    <Panel Margin="0,0,-2,0">
                         <TextBlock
                             FontFamily="{DynamicResource OvoIconFontFamily}"
                             FontSize="16"

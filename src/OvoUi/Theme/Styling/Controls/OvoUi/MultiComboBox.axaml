@@ -35,6 +35,7 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             HorizontalAlignment="Stretch"
+                            MinHeight="{TemplateBinding MinHeight}"
                             VerticalAlignment="Stretch">
                             <Grid ColumnDefinitions="Auto, *, Auto, Auto, Auto" Name="PART_RootGrid">
                                 <Border
@@ -69,7 +70,7 @@
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
                                     HorizontalScrollBarVisibility="Disabled"
-                                    Margin="4"
+                                    Margin="4,3"
                                     MaxHeight="{TemplateBinding MaxSelectionBoxHeight}">
                                     <ovo:MultiComboBoxSelectedItemList
                                         ItemTemplate="{TemplateBinding SelectedItemTemplate}"
@@ -132,8 +133,18 @@
                                 MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
                                 Padding="0,4">
                                 <DockPanel LastChildFill="True">
-                                    <ContentPresenter Content="{TemplateBinding PopupInnerTopContent}" DockPanel.Dock="Top" />
-                                    <ContentPresenter Content="{TemplateBinding PopupInnerBottomContent}" DockPanel.Dock="Bottom" />
+                                    <ContentPresenter
+                                        Content="{TemplateBinding PopupInnerTopContent}"
+                                        DockPanel.Dock="Top"
+                                        IsVisible="{TemplateBinding PopupInnerTopContent,
+                                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                                        Margin="12,4" />
+                                    <ContentPresenter
+                                        Content="{TemplateBinding PopupInnerBottomContent}"
+                                        DockPanel.Dock="Bottom"
+                                        IsVisible="{TemplateBinding PopupInnerBottomContent,
+                                                                    Converter={x:Static ObjectConverters.IsNotNull}}"
+                                        Margin="12,4" />
                                     <ScrollViewer
                                         Grid.IsSharedSizeScope="True"
                                         HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
@@ -141,7 +152,7 @@
                                         <ItemsPresenter
                                             HorizontalAlignment="Stretch"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
-                                            Margin="0,-2"
+                                            Margin="4,0"
                                             Name="PART_ItemsPresenter" />
                                     </ScrollViewer>
                                 </DockPanel>
