@@ -12,7 +12,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="8 0" />
+        <Setter Property="Padding" Value="12 0" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:KeyGestureInput">
                 <Border
@@ -48,6 +48,7 @@
                             <SelectableTextBlock
                                 Grid.Column="1"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="0,1,0,0"
                                 Text="{TemplateBinding Gesture,
                                                        Converter={StaticResource KeyGestureConverter}}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />

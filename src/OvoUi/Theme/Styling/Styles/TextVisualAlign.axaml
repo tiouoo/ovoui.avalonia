@@ -9,4 +9,13 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Margin" Value="0,1,0,0" />
     </Style>
+    <Style Selector="AutoCompleteBox /template/ TextBox /template/ ContentPresenter TextBlock">
+        <Setter Property="Margin" Value="0,1,0,0" />
+    </Style>
+    <Style Selector="o|KeyGestureInput /template/ ContentPresenter TextBlock">
+        <Setter Property="Margin" Value="0,1,0,0" />
+    </Style>
+    <Style Selector="TextBox /template/ DataValidationErrors ContentPresenter TextBlock">
+        <Setter Property="Margin" Value="0,1,0,0" />
+    </Style>
 </Styles>
