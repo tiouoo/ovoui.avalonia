@@ -5,8 +5,8 @@
     <Design.PreviewWith>
         <Border Height="500" Padding="20">
             <StackPanel Orientation="Horizontal" Spacing="20">
-                <DatePicker VerticalAlignment="Center" />
-                <DatePicker Classes="connect" VerticalAlignment="Center" />
+                <DatePickerPresenter VerticalAlignment="Center" />
+                <DatePickerPresenter Classes="connect" VerticalAlignment="Center" />
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -468,7 +468,7 @@
         <Style Selector="^:selected">
             <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
-        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:selected">
             <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
         </Style>
         <Style Selector="^:selected /template/ Rectangle#SelectionIndicator">
@@ -483,7 +483,7 @@
         BasedOn="{StaticResource DatePickerItemTheme}"
         TargetType="ListBoxItem"
         x:Key="DatePickerItemConnectTheme">
-        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:selected">
             <Setter Property="Background" Value="Transparent" />
         </Style>
     </ControlTheme>

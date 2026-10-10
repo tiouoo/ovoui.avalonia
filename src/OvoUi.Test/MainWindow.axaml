@@ -33,36 +33,10 @@
                 HorizontalAlignment="Stretch"
                 MaxWidth="920"
                 Spacing="28">
-                <StackPanel Spacing="8">
-                    <o:ControlShowcase
-                        CodeHeight="250"
-                        Header="Header"
-                        HeightBehavior="Animated"
-                        PreviewMinHeight="180"
-                        SourceKey="test-action-showcase">
-                        <o:ControlShowcase.CodeBlocks>
-                            <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                            <o:ShowcaseCodeBlock
-                                Code="{x:Static test:MainWindow.CodeBehindSample}"
-                                Header="C# code behind"
-                                Language="csharp" />
-                        </o:ControlShowcase.CodeBlocks>
-                        <StackPanel
-                            HorizontalAlignment="Center"
-                            Spacing="18"
-                            VerticalAlignment="Center">
-                            <StackPanel Orientation="Horizontal" Spacing="10">
-                                <Button Content="Create project" />
-                                <Button Classes="Basic" Content="View details" />
-                                <Button Content="Unavailable" IsEnabled="False" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Spacing="24">
-                                <ToggleSwitch Content="Auto save" IsChecked="True" />
-                                <CheckBox Content="Include assets" IsChecked="True" />
-                            </StackPanel>
-                        </StackPanel>
-                    </o:ControlShowcase>
-                </StackPanel>
+                <TimePicker VerticalAlignment="Center" />
+                <TimePicker Classes="connect clear" VerticalAlignment="Center" />
+                <TimePicker VerticalAlignment="Center" />
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

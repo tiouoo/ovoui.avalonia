@@ -5,8 +5,8 @@
     <Design.PreviewWith>
         <Border Height="500" Padding="20">
             <StackPanel Orientation="Horizontal" Spacing="20">
-                <TimePicker VerticalAlignment="Center" />
-                <TimePicker Classes="connect clear" VerticalAlignment="Center" />
+                <TimePickerPresenter VerticalAlignment="Center" />
+                <TimePickerPresenter Classes="connect clear" VerticalAlignment="Center" />
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -325,7 +325,7 @@
                                     </Border>
                                 </Grid>
                                 <Button
-                                    Content="&#xe64e;"
+                                    Content="&#xe64b;"
                                     Grid.Column="1"
                                     Name="PART_Button"
                                     Theme="{DynamicResource InputStandardIcon}" />
@@ -486,7 +486,7 @@
         <Style Selector="^:selected">
             <Setter Property="IsHitTestVisible" Value="False" />
         </Style>
-        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:selected">
             <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity02}" />
         </Style>
         <Style Selector="^:selected /template/ Rectangle#SelectionIndicator">
@@ -501,7 +501,7 @@
         BasedOn="{StaticResource TimePickerItemTheme}"
         TargetType="ListBoxItem"
         x:Key="TimePickerItemConnectTheme">
-        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:selected">
             <Setter Property="Background" Value="Transparent" />
         </Style>
     </ControlTheme>
