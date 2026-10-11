@@ -22,18 +22,18 @@ internal static class OverlayDialogManager
 
     public static OverlayDialogHost? GetHost(string? id, int? hash)
     {
-        HostKey? key = hash is null
-            ? Hosts.Keys.Where(k => k.Id == id).ToArray().FirstOrDefault()
-            : Hosts.Keys.FirstOrDefault(k => k.Id == id && k.Hash == hash);
-        if (key is null)
+        var match = Hosts.FirstOrDefault(pair =>
+            (hash is null || pair.Key.Hash == hash) &&
+            pair.Key.Id == id);
+        if (match.Value is null)
         {
             Debug.Assert(false,
                 "OverlayDialogHost not found. Please ensure the host is properly set up with one of below method:\n" +
-                "1. Use TioWindow or which includes a default OverlayDialogHost in their control templates, or\n" +
+                "1. Use OvoWindow or OvoView, which include a default OverlayDialogHost, or\n" +
                 "2. Add an OverlayDialogHost control with a HostId property to your view.");
             return null;
         }
 
-        return Hosts.TryGetValue(key.Value, out var host) ? host : null;
+        return match.Value;
     }
 }

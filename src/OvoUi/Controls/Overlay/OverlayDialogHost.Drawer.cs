@@ -18,7 +18,7 @@ public partial class OverlayDialogHost
         PureRectangle? mask = null;
         if (control.CanLightDismiss) mask = CreateOverlayMask(false, true);
 
-        _layers.Add(new DialogPair(mask, control));
+        _layers.Add(new DialogPair(mask, control, false));
         ResetZIndices();
         var safePadding = SafePadding;
         var safeWidth = Bounds.Width - safePadding.Left - safePadding.Right;
@@ -43,6 +43,8 @@ public partial class OverlayDialogHost
             else
                 await Task.WhenAll(animation.RunAsync(control), MaskAppearAnimation.RunAsync(mask));
         }
+        ResetDrawerPosition(control, Bounds.Size);
+        control.IsOpen = true;
     }
 
     internal async void AddModalDrawer(DrawerControlBase control)
@@ -68,6 +70,8 @@ public partial class OverlayDialogHost
             ResetDrawerPosition(control, Bounds.Size);
         else
             await Task.WhenAll(animation.RunAsync(control), MaskAppearAnimation.RunAsync(mask));
+        ResetDrawerPosition(control, Bounds.Size);
+        control.IsOpen = true;
 
         var element = control.GetVisualDescendants().OfType<InputElement>()
             .FirstOrDefault(FocusHelper.GetDialogFocusHint);
@@ -186,14 +190,16 @@ public partial class OverlayDialogHost
             var layer = _layers.FirstOrDefault(a => a.Element == control);
             if (layer is null) return;
             _layers.Remove(layer);
-            control.RemoveHandler(OverlayFeedbackElement.ClosedEvent, OnDialogControlClosing);
-            control.RemoveHandler(DialogControlBase.LayerChangedEvent, OnDialogLayerChanged);
+            control.RemoveHandler(OverlayFeedbackElement.ClosedEvent, OnDrawerControlClosing);
             if (layer.Mask is not null)
             {
-                _modalCount--;
-                IsInModalStatus = _modalCount > 0;
-                layer.Mask.RemoveHandler(PointerPressedEvent, ClickMaskToCloseDialog);
-                layer.Mask.RemoveHandler(PointerReleasedEvent, DragMaskToMoveWindow);
+                if (layer.Modal)
+                {
+                    _modalCount--;
+                    IsInModalStatus = _modalCount > 0;
+                }
+                layer.Mask.RemoveHandler(PointerReleasedEvent, ClickMaskToCloseDialog);
+                layer.Mask.RemoveHandler(PointerPressedEvent, DragMaskToMoveWindow);
                 if (!IsAnimationDisabled)
                 {
                     var disappearAnimation = CreateAnimation(control.Bounds.Size, control.Position, false);
@@ -213,6 +219,7 @@ public partial class OverlayDialogHost
             }
 
             Children.Remove(control);
+            control.IsOpen = false;
             ResetZIndices();
         }
     }

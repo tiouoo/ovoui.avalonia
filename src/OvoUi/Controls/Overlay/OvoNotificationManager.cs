@@ -69,7 +69,7 @@ public class OvoNotificationManager : WindowMessageManager, INotificationManager
             Title = content.Title,
             Content = content.Content
         };
-        Show(options);
+        ShowCore(options, content);
     }
 
     public static bool TryGetNotificationManager(Visual? visual, out OvoNotificationManager? manager)
@@ -108,12 +108,18 @@ public class OvoNotificationManager : WindowMessageManager, INotificationManager
         Show(options);
     }
 
-    public async void Show(NotificationOptions options)
+    public void Show(NotificationOptions options)
+    {
+        ShowCore(options, null);
+    }
+
+    private async void ShowCore(NotificationOptions options, INotification? source)
     {
         Dispatcher.UIThread.VerifyAccess();
 
         var notificationControl = new OvoNotificationCard
         {
+            Tag = source,
             Content = options is { Title: not null, Content: string msg }
                 ? new Notification
                 {
@@ -145,7 +151,7 @@ public class OvoNotificationManager : WindowMessageManager, INotificationManager
         notificationControl.MessageClosed += (sender, args) =>
         {
             options.OnClose?.Invoke(args.Reason);
-            _items?.Remove(sender);
+            RemoveItem(sender);
         };
 
 
@@ -158,7 +164,7 @@ public class OvoNotificationManager : WindowMessageManager, INotificationManager
 
         Dispatcher.UIThread.Post(() =>
         {
-            _items?.Add(notificationControl);
+            AddItem(notificationControl);
 
             if (_items?.OfType<OvoNotificationCard>().Count(i => !i.IsClosing) > MaxItems)
             {
@@ -182,7 +188,7 @@ public class OvoNotificationManager : WindowMessageManager, INotificationManager
         Dispatcher.UIThread.VerifyAccess();
 
         _items?.OfType<OvoNotificationCard>()
-            .FirstOrDefault(i => i.Content == notification)
+            .FirstOrDefault(i => ReferenceEquals(i.Tag, notification))
             ?.Close(MessageCloseReason.UserAction);
     }
 

@@ -8,17 +8,17 @@
                 <o:OvoNotificationCard ShowIcon="False" ShowRemoveButton="False" />
                 <o:OvoNotificationCard ShowIcon="False" />
                 <o:OvoNotificationCard NotificationType="Information">
-                    Hello, Tio!
+                    Hello, OvoUi!
                 </o:OvoNotificationCard>
                 <o:OvoNotificationCard NotificationType="Success">
                     <o:Notification Title="Welcome" />
                 </o:OvoNotificationCard>
                 <o:OvoNotificationCard NotificationType="Warning">
-                    <o:Notification Content="Hello, Tio!" />
+                    <o:Notification Content="Hello, OvoUi!" />
                 </o:OvoNotificationCard>
                 <o:OvoNotificationCard Classes="Light" NotificationType="Error">
                     <o:Notification Title="Welcome">
-                        Hello, Tio!
+                        Hello, OvoUi!
                     </o:Notification>
                 </o:OvoNotificationCard>
             </ReversibleStackPanel>
@@ -41,45 +41,45 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <SolidColorBrush Color="#1C1F23" x:Key="NotificationCardTitleForeground" />
-            <Color x:Key="NotificationCardBackground">White</Color>
+            <SolidColorBrush Color="White" x:Key="NotificationCardBackground" />
             <BoxShadows x:Key="NotificationCardBoxShadows">0 0 1 #4A000000, 0 4 14 #1A000000</BoxShadows>
-            <Color x:Key="NotificationCardInformationIconForeground">#0064FA</Color>
-            <Color x:Key="NotificationCardSuccessIconForeground">#3BB346</Color>
-            <Color x:Key="NotificationCardWarningIconForeground">#FC8800</Color>
-            <Color x:Key="NotificationCardErrorIconForeground">#F93920</Color>
-            <Color x:Key="NotificationCardLightBackground">White</Color>
-            <Color x:Key="NotificationCardLightInformationBorderBrush">#0064FA</Color>
-            <Color x:Key="NotificationCardLightInformationBackground">#EAF5FF</Color>
-            <Color x:Key="NotificationCardLightSuccessBorderBrush">#3BB346</Color>
-            <Color x:Key="NotificationCardLightSuccessBackground">#ECF7EC</Color>
-            <Color x:Key="NotificationCardLightWarningBorderBrush">#FC8800</Color>
-            <Color x:Key="NotificationCardLightWarningBackground">#FFF8EA</Color>
-            <Color x:Key="NotificationCardLightErrorBorderBrush">#F93920</Color>
-            <Color x:Key="NotificationCardLightErrorBackground">#FEF2ED</Color>
+            <SolidColorBrush Color="#0064FA" x:Key="NotificationCardInformationIconForeground" />
+            <SolidColorBrush Color="#3BB346" x:Key="NotificationCardSuccessIconForeground" />
+            <SolidColorBrush Color="#FC8800" x:Key="NotificationCardWarningIconForeground" />
+            <SolidColorBrush Color="#F93920" x:Key="NotificationCardErrorIconForeground" />
+            <SolidColorBrush Color="White" x:Key="NotificationCardLightBackground" />
+            <SolidColorBrush Color="#0064FA" x:Key="NotificationCardLightInformationBorderBrush" />
+            <SolidColorBrush Color="#EAF5FF" x:Key="NotificationCardLightInformationBackground" />
+            <SolidColorBrush Color="#3BB346" x:Key="NotificationCardLightSuccessBorderBrush" />
+            <SolidColorBrush Color="#ECF7EC" x:Key="NotificationCardLightSuccessBackground" />
+            <SolidColorBrush Color="#FC8800" x:Key="NotificationCardLightWarningBorderBrush" />
+            <SolidColorBrush Color="#FFF8EA" x:Key="NotificationCardLightWarningBackground" />
+            <SolidColorBrush Color="#F93920" x:Key="NotificationCardLightErrorBorderBrush" />
+            <SolidColorBrush Color="#FEF2ED" x:Key="NotificationCardLightErrorBackground" />
         </ResourceDictionary>
 
         <ResourceDictionary x:Key="Dark">
             <SolidColorBrush Color="#F9F9F9" x:Key="NotificationCardTitleForeground" />
-            <Color x:Key="NotificationCardBackground">#43444A</Color>
+            <SolidColorBrush Color="#43444A" x:Key="NotificationCardBackground" />
             <BoxShadows x:Key="NotificationCardBoxShadows">inset 0 0 0 1 #1AFFFFFF, 0 4 14 #40000000</BoxShadows>
-            <Color x:Key="NotificationCardInformationIconForeground">#54A9FF</Color>
-            <Color x:Key="NotificationCardSuccessIconForeground">#5DC264</Color>
-            <Color x:Key="NotificationCardWarningIconForeground">#FFAE43</Color>
-            <Color x:Key="NotificationCardErrorIconForeground">#FC725A</Color>
-            <Color x:Key="NotificationCardLightBackground">#16161A</Color>
-            <Color x:Key="NotificationCardLightInformationBorderBrush">#54A9FF</Color>
-            <Color x:Key="NotificationCardLightInformationBackground">#3354A9FF</Color>
-            <Color x:Key="NotificationCardLightSuccessBorderBrush">#5DC264</Color>
-            <Color x:Key="NotificationCardLightSuccessBackground">#335DC264</Color>
-            <Color x:Key="NotificationCardLightWarningBorderBrush">#FFAE43</Color>
-            <Color x:Key="NotificationCardLightWarningBackground">#33FFAE43</Color>
-            <Color x:Key="NotificationCardLightErrorBorderBrush">#FC725A</Color>
-            <Color x:Key="NotificationCardLightErrorBackground">#33FC725A</Color>
+            <SolidColorBrush Color="#54A9FF" x:Key="NotificationCardInformationIconForeground" />
+            <SolidColorBrush Color="#5DC264" x:Key="NotificationCardSuccessIconForeground" />
+            <SolidColorBrush Color="#FFAE43" x:Key="NotificationCardWarningIconForeground" />
+            <SolidColorBrush Color="#FC725A" x:Key="NotificationCardErrorIconForeground" />
+            <SolidColorBrush Color="#16161A" x:Key="NotificationCardLightBackground" />
+            <SolidColorBrush Color="#54A9FF" x:Key="NotificationCardLightInformationBorderBrush" />
+            <SolidColorBrush Color="#3354A9FF" x:Key="NotificationCardLightInformationBackground" />
+            <SolidColorBrush Color="#5DC264" x:Key="NotificationCardLightSuccessBorderBrush" />
+            <SolidColorBrush Color="#335DC264" x:Key="NotificationCardLightSuccessBackground" />
+            <SolidColorBrush Color="#FFAE43" x:Key="NotificationCardLightWarningBorderBrush" />
+            <SolidColorBrush Color="#33FFAE43" x:Key="NotificationCardLightWarningBackground" />
+            <SolidColorBrush Color="#FC725A" x:Key="NotificationCardLightErrorBorderBrush" />
+            <SolidColorBrush Color="#33FC725A" x:Key="NotificationCardLightErrorBackground" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
 
-    <ControlTheme TargetType="o:OvoNotificationCard" x:Key="{x:Type o:OvoNotificationManager}">
+    <ControlTheme TargetType="o:OvoNotificationManager" x:Key="{x:Type o:OvoNotificationManager}">
         <Setter Property="Margin" Value="10,45,10,10" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -121,7 +121,7 @@
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource NotificationCardBackground}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource TioCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="o:OvoNotificationCard">
                 <LayoutTransformControl UseRenderTransform="True" x:Name="PART_LayoutTransformControl">
@@ -145,9 +145,9 @@
                                         VerticalAlignment="Top"
                                         x:Name="PART_ActionButtons">
                                         <Button
+                                            Classes="transparent"
                                             IsVisible="{TemplateBinding ShowRemoveButton}"
                                             Padding="6"
-                                            Theme="{StaticResource TransparentButton}"
                                             x:Name="PART_RemoveButton">
                                             <PathIcon
                                                 Data="F1 M384,512z M0,0z M55.1,73.4C42.6,60.9 22.3,60.9 9.8,73.4 -2.7,85.9 -2.7,106.2 9.8,118.7L147.2,256 9.9,393.4C-2.6,405.9 -2.6,426.2 9.9,438.7 22.4,451.2 42.7,451.2 55.2,438.7L192.5,301.3 329.9,438.6C342.4,451.1 362.7,451.1 375.2,438.6 387.7,426.1 387.7,405.8 375.2,393.3L237.8,256 375.1,118.6C387.6,106.1 387.6,85.8 375.1,73.3 362.6,60.8 342.3,60.8 329.8,73.3L192.5,210.7 55.1,73.4z"
@@ -155,9 +155,9 @@
                                                 Width="14" />
                                         </Button>
                                         <Button
+                                            Classes="transparent"
                                             IsVisible="{TemplateBinding ShowCollapseButton}"
                                             Padding="6,5,6,6"
-                                            Theme="{StaticResource TransparentButton}"
                                             x:Name="PART_CollapseButton">
                                             <PathIcon
                                                 Data="F1 M640,640z M0,0z M256,128C256,110.3 241.7,96 224,96 206.3,96 192,110.3 192,128L192,192 128,192C110.3,192 96,206.3 96,224 96,241.7 110.3,256 128,256L224,256C241.7,256,256,241.7,256,224L256,128z M128,384C110.3,384 96,398.3 96,416 96,433.7 110.3,448 128,448L192,448 192,512C192,529.7 206.3,544 224,544 241.7,544 256,529.7 256,512L256,416C256,398.3,241.7,384,224,384L128,384z M448,128C448,110.3 433.7,96 416,96 398.3,96 384,110.3 384,128L384,224C384,241.7,398.3,256,416,256L512,256C529.7,256 544,241.7 544,224 544,206.3 529.7,192 512,192L448,192 448,128z M416,384C398.3,384,384,398.3,384,416L384,512C384,529.7 398.3,544 416,544 433.7,544 448,529.7 448,512L448,448 512,448C529.7,448 544,433.7 544,416 544,398.3 529.7,384 512,384L416,384z"

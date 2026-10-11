@@ -23,6 +23,7 @@ public abstract class WindowMessageManager : TemplatedControl
         AvaloniaProperty.Register<WindowMessageManager, int>(nameof(MaxItems), 5);
 
     protected IList? _items;
+    private readonly List<Control> _pendingItems = [];
 
     static WindowMessageManager()
     {
@@ -61,6 +62,23 @@ public abstract class WindowMessageManager : TemplatedControl
 
         var itemsControl = e.NameScope.Find<Panel>(PART_Items);
         _items = itemsControl?.Children;
+        if (_items is null) return;
+        foreach (var item in _pendingItems) _items.Add(item);
+        _pendingItems.Clear();
+    }
+
+    protected void AddItem(Control item)
+    {
+        if (_items is null)
+            _pendingItems.Add(item);
+        else
+            _items.Add(item);
+    }
+
+    protected void RemoveItem(object? item)
+    {
+        if (item is Control control) _pendingItems.Remove(control);
+        _items?.Remove(item);
     }
 
     public abstract void Show(object content);

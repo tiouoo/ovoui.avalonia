@@ -72,7 +72,7 @@
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource ToastCardBackground}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource TioCornerRadius}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="o:OvoToastCard">
                 <LayoutTransformControl UseRenderTransform="True" x:Name="PART_LayoutTransformControl">
@@ -98,9 +98,9 @@
                                         VerticalAlignment="Top"
                                         x:Name="PART_InlineActionButtons">
                                         <Button
+                                            Classes="transparent"
                                             IsVisible="{TemplateBinding ShowCollapseButton}"
                                             Padding="6,5,6,6"
-                                            Theme="{StaticResource TransparentButton}"
                                             VerticalAlignment="Center"
                                             x:Name="PART_CollapseButton">
                                             <PathIcon
@@ -110,9 +110,9 @@
                                                 Width="15" />
                                         </Button>
                                         <Button
+                                            Classes="transparent"
                                             IsVisible="{TemplateBinding ShowRemoveButton}"
                                             Padding="6"
-                                            Theme="{StaticResource TransparentButton}"
                                             VerticalAlignment="Center"
                                             x:Name="PART_RemoveButton">
                                             <PathIcon

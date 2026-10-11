@@ -36,7 +36,7 @@ public class OvoToastManager : WindowMessageManager, IToastManager
             OnClick = content.OnClick,
             OnClose = content.OnClose
         };
-        Show(options);
+        ShowCore(options, content);
     }
 
     public void Show(string msg, NotificationType type = NotificationType.Information)
@@ -73,12 +73,18 @@ public class OvoToastManager : WindowMessageManager, IToastManager
             });
     }
 
-    public async void Show(NotificationOptions options)
+    public void Show(NotificationOptions options)
+    {
+        ShowCore(options, null);
+    }
+
+    private async void ShowCore(NotificationOptions options, IToast? source)
     {
         Dispatcher.UIThread.VerifyAccess();
 
         var toastControl = new OvoToastCard
         {
+            Tag = source,
             Content = options.Content,
             NotificationType = options.Type,
             ShowIcon = options.IsIconVisible,
@@ -99,7 +105,7 @@ public class OvoToastManager : WindowMessageManager, IToastManager
         toastControl.MessageClosed += (sender, args) =>
         {
             options.OnClose?.Invoke(args.Reason);
-            _items?.Remove(sender);
+            RemoveItem(sender);
         };
 
         toastControl.PointerPressed += (_, _) =>
@@ -111,7 +117,7 @@ public class OvoToastManager : WindowMessageManager, IToastManager
 
         Dispatcher.UIThread.Post(() =>
         {
-            _items?.Add(toastControl);
+            AddItem(toastControl);
 
             if (_items?.OfType<OvoToastCard>().Count(i => !i.IsClosing) > MaxItems)
                 _items.OfType<OvoToastCard>().First(i => !i.IsClosing).Close(MessageCloseReason.Displaced);
@@ -130,7 +136,7 @@ public class OvoToastManager : WindowMessageManager, IToastManager
         Dispatcher.UIThread.VerifyAccess();
 
         _items?.OfType<OvoToastCard>()
-            .FirstOrDefault(i => i.Content == toast)
+            .FirstOrDefault(i => ReferenceEquals(i.Tag, toast))
             ?.Close(MessageCloseReason.UserAction);
     }
 

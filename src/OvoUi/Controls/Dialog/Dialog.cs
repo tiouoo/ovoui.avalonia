@@ -35,6 +35,7 @@ public static partial class Dialog
         else
         {
             window.Icon = owner.Icon;
+            ApplyOwnerAppearance(window, owner);
             window.Show(owner);
         }
     }
@@ -62,6 +63,7 @@ public static partial class Dialog
         else
         {
             window.Icon = owner.Icon;
+            ApplyOwnerAppearance(window, owner);
             window.Show(owner);
         }
     }
@@ -93,6 +95,7 @@ public static partial class Dialog
         }
 
         window.Icon = owner.Icon;
+        ApplyOwnerAppearance(window, owner);
         return window.ShowDialog<DialogResult>(owner);
     }
 
@@ -121,6 +124,7 @@ public static partial class Dialog
         }
 
         window.Icon = owner.Icon;
+        ApplyOwnerAppearance(window, owner);
         return window.ShowDialog<DialogResult>(owner);
     }
 
@@ -152,6 +156,7 @@ public static partial class Dialog
         }
 
         window.Icon = owner.Icon;
+        ApplyOwnerAppearance(window, owner);
         return window.ShowDialog<TResult?>(owner);
     }
 
@@ -181,6 +186,7 @@ public static partial class Dialog
         }
 
         window.Icon = owner.Icon;
+        ApplyOwnerAppearance(window, owner);
         return window.ShowDialog<TResult?>(owner);
     }
 
@@ -192,6 +198,15 @@ public static partial class Dialog
     {
         var lifetime = Application.Current?.ApplicationLifetime;
         return lifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: { } w } ? w : null;
+    }
+
+    private static void ApplyOwnerAppearance(Window window, Window owner)
+    {
+        window.FontFamily = owner.FontFamily;
+        window.FontSize = owner.FontSize;
+        window.FontWeight = owner.FontWeight;
+        window.FlowDirection = owner.FlowDirection;
+        window.RequestedThemeVariant = owner.ActualThemeVariant;
     }
 
     /// <summary>

@@ -32,7 +32,7 @@ public partial class OverlayDialogHost : Canvas
 
     public static readonly StyledProperty<IBrush?> OverlayMaskBrushProperty =
         AvaloniaProperty.Register<OverlayDialogHost, IBrush?>(
-            nameof(OverlayMaskBrush));
+            nameof(OverlayMaskBrush), new SolidColorBrush(Color.FromArgb(0x52, 0, 0, 0)));
 
     private readonly List<DialogPair> _layers = new(10);
 
@@ -176,6 +176,8 @@ public partial class OverlayDialogHost : Canvas
             Height = Bounds.Height,
             IsVisible = true
         };
+        SetLeft(rec, 0);
+        SetTop(rec, 0);
         if (modal)
             rec[!PureRectangle.BackgroundProperty] = this[!OverlayMaskBrushProperty];
         else if (canCloseOnClick) rec.SetCurrentValue(PureRectangle.BackgroundProperty, Brushes.Transparent);

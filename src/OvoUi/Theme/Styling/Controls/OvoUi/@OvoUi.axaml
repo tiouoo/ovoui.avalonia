@@ -27,6 +27,10 @@
         <ResourceInclude Source="Resizer.axaml" />
         <ResourceInclude Source="OvoNotification.axaml" />
         <ResourceInclude Source="OvoToast.axaml" />
+        <ResourceInclude Source="ContentDialog.axaml" />
+        <ResourceInclude Source="Dialog.axaml" />
+        <ResourceInclude Source="Drawer.axaml" />
+        <ResourceInclude Source="MessageBox.axaml" />
         <ResourceInclude Source="OvoView.axaml" />
         <ResourceInclude Source="Anchor.axaml" />
         <ResourceInclude Source="OvoWindow.axaml" />

@@ -1,0 +1,92 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="o:CustomDrawerControl" x:Key="{x:Type o:CustomDrawerControl}">
+        <Setter Property="MinWidth" Value="280" />
+        <Setter Property="MaxWidth" Value="520" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:CustomDrawerControl">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    BoxShadow="{DynamicResource PopupBoxShadow}">
+                    <Grid>
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                            <ContentPresenter
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Margin="{TemplateBinding Padding}" />
+                        </ScrollViewer>
+                        <Button
+                            Classes="transparent"
+                            Content="&#x2715;"
+                            HorizontalAlignment="Right"
+                            Margin="12"
+                            Name="{x:Static o:DrawerControlBase.PART_CloseButton}"
+                            Padding="8,4"
+                            VerticalAlignment="Top" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme TargetType="o:StandardDrawerControl" x:Key="{x:Type o:StandardDrawerControl}">
+        <Setter Property="MinWidth" Value="320" />
+        <Setter Property="MaxWidth" Value="520" />
+        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="o:StandardDrawerControl">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    BoxShadow="{DynamicResource PopupBoxShadow}">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <Panel Background="Transparent" Name="PART_TitleArea" />
+                        <Button
+                            Classes="transparent"
+                            Command="{TemplateBinding TitleCommand}"
+                            Content="{TemplateBinding Title}"
+                            FontSize="17"
+                            FontWeight="600"
+                            HorizontalContentAlignment="Left"
+                            Margin="16,14,52,10" />
+                        <Button
+                            Classes="transparent"
+                            Content="&#x2715;"
+                            HorizontalAlignment="Right"
+                            Margin="12"
+                            Name="{x:Static o:DrawerControlBase.PART_CloseButton}"
+                            Padding="8,4" />
+                        <ScrollViewer
+                            Grid.Row="1"
+                            HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                            Margin="20,8"
+                            VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                            <ContentPresenter
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" />
+                        </ScrollViewer>
+                        <StackPanel
+                            Grid.Row="2"
+                            HorizontalAlignment="Right"
+                            Margin="20,10,20,20"
+                            Orientation="Horizontal"
+                            Spacing="8">
+                            <Button Content="Cancel" Name="{x:Static o:StandardDrawerControl.PART_CancelButton}" />
+                            <Button Classes="danger" Content="No" Name="{x:Static o:StandardDrawerControl.PART_NoButton}" />
+                            <Button Classes="accent" Content="Yes" Name="{x:Static o:StandardDrawerControl.PART_YesButton}" />
+                            <Button Classes="accent" Content="OK" Name="{x:Static o:StandardDrawerControl.PART_OKButton}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>
