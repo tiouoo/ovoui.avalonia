@@ -79,6 +79,15 @@
         <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}" />
         </Style>
+
+        <Style Selector="^.large">
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Padding" Value="16,0" />
+        </Style>
+        <Style Selector="^.small">
+            <Setter Property="MinHeight" Value="24" />
+            <Setter Property="Padding" Value="6,0" />
+        </Style>
     </ControlTheme>
 
     <ControlTheme
@@ -225,6 +234,7 @@
         Color="{DynamicResource ErrorColor}"
         Opacity="0.5"
         x:Key="DisabledErrorColor" />
+
     <ControlTheme
         BasedOn="{StaticResource BasicButtonTheme}"
         TargetType="Button"
