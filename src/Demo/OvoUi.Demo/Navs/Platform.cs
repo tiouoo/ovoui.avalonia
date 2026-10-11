@@ -9,6 +9,7 @@ public static class Platform
     [
         Page.View<MacOsWindowControlsPage>("MacOsWindowControls"),
         Page.View<WindowsSystemMenuPage>("WindowsSystemMenu"),
-        Page.View<WindowCompositionMaterialPage>("WindowCompositionMaterial")
+        Page.View<WindowCompositionMaterialPage>("WindowCompositionMaterial"),
+        Page.View<WindowContentInjectionPage>("WindowContentInjection")
     ];
 }
