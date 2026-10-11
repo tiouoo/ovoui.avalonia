@@ -9,6 +9,7 @@ namespace OvoUi.Demo;
 public partial class App : Application
 {
     public static IView RootView { get; private set; } = null!;
+    public static string? JumpListLaunchTarget { get; set; }
 
     public override void Initialize()
     {

@@ -25,6 +25,8 @@ public partial class MainWindow : OvoWindow, IView
     public MainWindow()
     {
         InitializeComponent();
+        if (App.JumpListLaunchTarget is { } jumpListTarget)
+            Title = $"OvoUi Demo - Jump List: {jumpListTarget}";
         TextOptions.SetTextRenderingMode(this, TextRenderingMode.Antialias);
         TextOptions.SetTextHintingMode(this, TextHintingMode.Light);
         TextOptions.SetBaselinePixelAlignment(this, BaselinePixelAlignment.Aligned);

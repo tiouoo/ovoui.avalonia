@@ -7,7 +7,7 @@
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="WindowsSystemMenu">
-        <o:ControlShowcase Header="Windows taskbar system menu" SourceKey="platform-windows-system-menu">
+        <o:ControlShowcase Header="Windows System Menu (window commands)" SourceKey="platform-windows-system-menu">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
                 <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
@@ -24,6 +24,22 @@
                 </WrapPanel>
                 <TextBlock FontWeight="SemiBold" Name="ItemCountLabel" Text="0 custom items are registered." />
                 <TextBlock Name="StatusLabel" Text="Add an item, then show the native menu." TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Windows Jump List (taskbar right-click)" SourceKey="platform-windows-jump-list">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding JumpListSourceCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Apply launch tasks grouped into categories, then right-click the app's taskbar icon normally to view them." TextWrapping="Wrap" />
+                <TextBlock IsVisible="{Binding !IsWindows}" Text="These controls are available when the desktop app runs on Windows." TextWrapping="Wrap" />
+                <WrapPanel ItemSpacing="10" LineSpacing="10" IsEnabled="{Binding IsWindows}">
+                    <Button Classes="accent" Click="ApplyJumpList" Content="Apply sample Jump List" />
+                    <Button Click="ClearJumpList" Content="Clear Jump List" />
+                </WrapPanel>
+                <TextBlock Name="JumpListStatusLabel" Text="Apply the sample, then right-click the taskbar icon." TextWrapping="Wrap" />
             </StackPanel>
         </o:ControlShowcase>
     </demo:DemoPage>
