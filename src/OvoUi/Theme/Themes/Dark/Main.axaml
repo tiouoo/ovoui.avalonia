@@ -35,6 +35,14 @@
                 Color="{StaticResource PopupBackgroundColor}"
                 Opacity="{DynamicResource TranslucentOpacity}"
                 x:Key="TranslucentPopupBackgroundBrush" />
+            <SolidColorBrush
+                Color="{StaticResource PanelBackgroundColor}"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="ShowcaseHeaderBackgroundBrush" />
+            <SolidColorBrush
+                Color="{StaticResource PopupBackgroundColor}"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="ShowcaseCodeBackgroundBrush" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

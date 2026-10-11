@@ -22,6 +22,8 @@
                     <SolidColorBrush Color="#26000000" x:Key="ToolTipBorderBrush" />
                     <SolidColorBrush Color="#FAFAFA" x:Key="OvoCodeEditorBackground" />
                     <SolidColorBrush Color="#F0F0F0" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#FAFAFA" Opacity="{DynamicResource TranslucentOpacity}" x:Key="TranslucentCodeBlockBackgroundBrush" />
+                    <SolidColorBrush Color="#F0F0F0" Opacity="{DynamicResource TranslucentOpacity}" x:Key="TranslucentCodeBlockHeaderBackgroundBrush" />
                     <SolidColorBrush Color="#D3D4D5" x:Key="OvoCodeBorderBrush" />
                     <SolidColorBrush Color="#383A42" x:Key="OvoCodeForeground" />
                     <SolidColorBrush Color="#9D9D9F" x:Key="OvoCodeLineNumberForeground" />
@@ -35,6 +37,8 @@
                     <SolidColorBrush Color="#33FFFFFF" x:Key="ToolTipBorderBrush" />
                     <SolidColorBrush Color="#181A1F" x:Key="OvoCodeEditorBackground" />
                     <SolidColorBrush Color="#22252B" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#181A1F" Opacity="{DynamicResource TranslucentOpacity}" x:Key="TranslucentCodeBlockBackgroundBrush" />
+                    <SolidColorBrush Color="#22252B" Opacity="{DynamicResource TranslucentOpacity}" x:Key="TranslucentCodeBlockHeaderBackgroundBrush" />
                     <SolidColorBrush Color="#343842" x:Key="OvoCodeBorderBrush" />
                     <SolidColorBrush Color="#D8DEE9" x:Key="OvoCodeForeground" />
                     <SolidColorBrush Color="#727A88" x:Key="OvoCodeLineNumberForeground" />
@@ -48,6 +52,8 @@
                     <SolidColorBrush Color="#26000000" x:Key="ToolTipBorderBrush" />
                     <SolidColorBrush Color="#FAFAFA" x:Key="OvoCodeEditorBackground" />
                     <SolidColorBrush Color="#F0F0F0" x:Key="OvoCodeHeaderBackground" />
+                    <SolidColorBrush Color="#FAFAFA" Opacity="{DynamicResource TranslucentOpacity}" x:Key="TranslucentCodeBlockBackgroundBrush" />
+                    <SolidColorBrush Color="#F0F0F0" Opacity="{DynamicResource TranslucentOpacity}" x:Key="TranslucentCodeBlockHeaderBackgroundBrush" />
                     <SolidColorBrush Color="#D3D4D5" x:Key="OvoCodeBorderBrush" />
                     <SolidColorBrush Color="#383A42" x:Key="OvoCodeForeground" />
                     <SolidColorBrush Color="#9D9D9F" x:Key="OvoCodeLineNumberForeground" />

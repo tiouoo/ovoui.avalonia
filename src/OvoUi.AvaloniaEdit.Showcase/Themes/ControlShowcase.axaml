@@ -26,9 +26,10 @@
                         <Border ClipToBounds="True" CornerRadius="11">
                             <Grid RowDefinitions="Auto,*">
                                 <Border
-                                    Background="{DynamicResource PanelBackgroundBrush}"
+                                    Background="{DynamicResource ShowcaseHeaderBackgroundBrush}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="0,0,0,1"
+                                    Name="PART_HeaderBackground"
                                     Padding="10,7,-1,7">
                                     <Grid ColumnDefinitions="*,Auto">
                                         <ContentPresenter
@@ -76,9 +77,9 @@
     </Style>
 
     <Style Selector="edit|CodeBlock.control-showcase-code-block">
-        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ShowcaseCodeBackgroundBrush}" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="HeaderBackground" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource ShowcaseCodeBackgroundBrush}" />
         <Setter Property="HeaderSeparatorHeight" Value="0" />
     </Style>
 

@@ -22,8 +22,8 @@
 
     <ControlTheme TargetType="Border" x:Key="CardBorderTheme">
         <Setter Property="Padding" Value="20" />
-        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="Background" Value="{DynamicResource TranslucentPopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TranslucentLineBrush}" />
         <Setter Property="BorderThickness" Value="1.2" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoBigCornerRadius}" />
         <Setter Property="BoxShadow" Value="{DynamicResource TransparentBoxShadow}" />
