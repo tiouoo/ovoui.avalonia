@@ -7,6 +7,7 @@ public static class Platform
 {
     public static readonly List<Page> PlatformList =
     [
-        Page.View<MacOsWindowControlsPage>("MacOsWindowControls")
+        Page.View<MacOsWindowControlsPage>("MacOsWindowControls"),
+        Page.View<WindowCompositionMaterialPage>("WindowCompositionMaterial")
     ];
 }

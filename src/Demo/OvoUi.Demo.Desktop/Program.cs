@@ -1,7 +1,6 @@
 ﻿using System;
 using Avalonia;
 using Avalonia.Dialogs;
-using HotAvalonia;
 
 namespace OvoUi.Demo.Desktop;
 
@@ -13,10 +12,12 @@ sealed class Program
 
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
-#if DEBUG
-            .UseHotReload()
-#endif
             .UsePlatformDetect()
+            .With(new Win32PlatformOptions
+            {
+                RenderingMode = [Win32RenderingMode.AngleEgl],
+                CompositionMode = [Win32CompositionMode.WinUIComposition]
+            })
             .WithInterFont()
             .UseManagedSystemDialogs()
             .LogToTrace();

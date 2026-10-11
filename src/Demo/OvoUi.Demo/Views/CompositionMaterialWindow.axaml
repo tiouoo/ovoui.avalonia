@@ -1,0 +1,111 @@
+<ovo:OvoWindow
+    Background="Transparent"
+    CanResize="False"
+    ContentMargin="0"
+    FrameBorderThickness="0"
+    Height="620"
+    IsFullScreenTransitionAnimationEnabled="False"
+    IsManagedResizerVisible="False"
+    IsTitleBarVisible="False"
+    MaxHeight="620"
+    MaxWidth="720"
+    MinHeight="620"
+    MinWidth="720"
+    Padding="0"
+    Title="Window composition materials"
+    TransparencyBackgroundFallback="Transparent"
+    TransparencyLevelHint="Transparent"
+    Width="720"
+    WindowDecorations="None"
+    WindowStartupLocation="CenterScreen"
+    x:Class="OvoUi.Demo.Views.CompositionMaterialWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border
+        BorderBrush="{DynamicResource SystemAccentColor}"
+        BorderThickness="2"
+        ClipToBounds="True"
+        CornerRadius="10">
+        <Grid>
+            <Canvas>
+                <Border
+                    Canvas.Left="60"
+                    Canvas.Top="92"
+                    CornerRadius="18"
+                    Height="210"
+                    Padding="28"
+                    Width="670">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <TextBlock
+                            FontSize="11"
+                            Foreground="#C8FFFFFF"
+                            Text="BACKDROP BLUR" />
+                        <TextBlock
+                            FontSize="34"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Grid.Row="1"
+                            Text="ACRYLIC"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="#D8FFFFFF"
+                            Grid.Row="2"
+                            Text="Blurred desktop with a translucent tint"
+                            TextWrapping="Wrap" />
+                    </Grid>
+                </Border>
+
+                <Border
+                    Canvas.Left="60"
+                    Canvas.Top="330"
+                    CornerRadius="18"
+                    Height="210"
+                    Padding="28"
+                    Width="670">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <TextBlock
+                            FontSize="11"
+                            Foreground="#C8FFFFFF"
+                            Text="HOST BACKDROP" />
+                        <TextBlock
+                            FontSize="34"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Grid.Row="1"
+                            Text="MICA"
+                            VerticalAlignment="Center" />
+                        <TextBlock
+                            FontSize="13"
+                            Foreground="#D8FFFFFF"
+                            Grid.Row="2"
+                            Text="Desktop-derived, subtly tinted surface"
+                            TextWrapping="Wrap" />
+                    </Grid>
+                </Border>
+            </Canvas>
+
+            <Border
+                Background="{DynamicResource BackgroundBrush}"
+                ClipToBounds="True"
+                CornerRadius="8"
+                Margin="0"
+                VerticalAlignment="Top">
+                <ovo:OvoTitleBar
+                    ControlButtonMargin="0,0,8,0"
+                    IsFullScreenButtonVisible="False"
+                    IsMaximizeButtonVisible="False"
+                    IsMinimizeButtonVisible="False">
+                    <ovo:OvoTitleBar.LeadingContent>
+                        <TextBlock
+                            IsHitTestVisible="False"
+                            Margin="12,0"
+                            Text="Window composition materials"
+                            VerticalAlignment="Center" />
+                    </ovo:OvoTitleBar.LeadingContent>
+                </ovo:OvoTitleBar>
+            </Border>
+        </Grid>
+    </Border>
+</ovo:OvoWindow>
