@@ -146,7 +146,7 @@
                                         x:Name="PART_ActionButtons">
                                         <Button
                                             IsVisible="{TemplateBinding ShowRemoveButton}"
-                                            Theme="{DynamicResource CloseButtonTheme}"
+                                            Theme="{DynamicResource CompactCloseButtonTheme}"
                                             x:Name="PART_RemoveButton" />
                                         <Button
                                             Classes="transparent"

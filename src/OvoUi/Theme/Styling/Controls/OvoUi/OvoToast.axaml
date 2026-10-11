@@ -111,7 +111,7 @@
                                         </Button>
                                         <Button
                                             IsVisible="{TemplateBinding ShowRemoveButton}"
-                                            Theme="{DynamicResource CloseButtonTheme}"
+                                            Theme="{DynamicResource CompactCloseButtonTheme}"
                                             VerticalAlignment="Center"
                                             x:Name="PART_RemoveButton" />
                                     </StackPanel>

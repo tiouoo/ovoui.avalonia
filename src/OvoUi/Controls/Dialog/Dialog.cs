@@ -224,12 +224,7 @@ public static partial class Dialog
         window.CanDragMove = options.CanDragMove;
         window.CanResize = options.CanResize;
         window.IsManagedResizerVisible = options.CanResize;
-        window.MinHeight = options.DialogWindowMinHeight;
-        window.MinWidth = options.DialogWindowMinWidth;
-        window.MaxHeight = options.DialogWindowMaxHeight;
-        window.MaxWidth = options.DialogWindowMaxWidth;
-        window.Width = options.DialogWindowWidth;
-        window.Height = options.DialogWindowHeight;
+        ApplyWindowDimensions(window, options);
         ScrollViewer.SetHorizontalScrollBarVisibility(window, options.HorizontalScrollBarVisibility);
         ScrollViewer.SetVerticalScrollBarVisibility(window, options.VerticalScrollBarVisibility);
         if (options.StartupLocation == WindowStartupLocation.Manual)
@@ -270,8 +265,7 @@ public static partial class Dialog
         window.CanDragMove = options.CanDragMove;
         window.IsManagedResizerVisible = options.CanResize;
         window.CanResize = options.CanResize;
-        window.MinHeight = options.DialogWindowMinHeight;
-        window.MinWidth = options.DialogWindowMinWidth;
+        ApplyWindowDimensions(window, options);
         ScrollViewer.SetHorizontalScrollBarVisibility(window, options.HorizontalScrollBarVisibility);
         ScrollViewer.SetVerticalScrollBarVisibility(window, options.VerticalScrollBarVisibility);
         if (options.StartupLocation == WindowStartupLocation.Manual)
@@ -287,5 +281,21 @@ public static partial class Dialog
             var styles = options.StyleClass!.Split(Constants.SpaceSeparator, StringSplitOptions.RemoveEmptyEntries);
             window.Classes.AddRange(styles);
         }
+    }
+
+    private static void ApplyWindowDimensions(Window window, DialogOptions options)
+    {
+        if (!double.IsNaN(options.DialogWindowMinHeight))
+            window.MinHeight = options.DialogWindowMinHeight;
+        if (!double.IsNaN(options.DialogWindowMinWidth))
+            window.MinWidth = options.DialogWindowMinWidth;
+        if (!double.IsNaN(options.DialogWindowMaxHeight))
+            window.MaxHeight = options.DialogWindowMaxHeight;
+        if (!double.IsNaN(options.DialogWindowMaxWidth))
+            window.MaxWidth = options.DialogWindowMaxWidth;
+        if (!double.IsNaN(options.DialogWindowWidth))
+            window.Width = options.DialogWindowWidth;
+        if (!double.IsNaN(options.DialogWindowHeight))
+            window.Height = options.DialogWindowHeight;
     }
 }

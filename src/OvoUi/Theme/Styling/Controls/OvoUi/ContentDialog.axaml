@@ -38,7 +38,9 @@
                     BorderThickness="1"
                     BoxShadow="{DynamicResource PopupBoxShadow}"
                     ClipToBounds="True"
-                    CornerRadius="{TemplateBinding CornerRadius}">
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Margin="10"
+                    Name="PART_Border">
                     <Grid RowDefinitions="Auto,*,Auto">
                         <ContentPresenter
                             Content="{TemplateBinding Title}"
@@ -168,6 +170,10 @@
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="MaxWidth" Value="Infinity" />
             <Setter Property="MaxHeight" Value="Infinity" />
+            <Style Selector="^ /template/ Border#PART_Border">
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
         </Style>
     </ControlTheme>
 </ResourceDictionary>

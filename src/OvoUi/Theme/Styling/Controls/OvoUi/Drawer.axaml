@@ -84,14 +84,14 @@
                         Name="PART_Root">
                         <Grid RowDefinitions="Auto,*,Auto">
                             <Panel Background="Transparent" Name="PART_TitleArea" />
-                            <Button
-                                Classes="transparent"
-                                Command="{TemplateBinding TitleCommand}"
-                                Content="{TemplateBinding Title}"
+                            <TextBlock
                                 FontSize="17"
                                 FontWeight="600"
-                                HorizontalContentAlignment="Left"
-                                Margin="16,14,52,10" />
+                                Margin="20,18,52,10"
+                                Text="{TemplateBinding Title}"
+                                TextTrimming="CharacterEllipsis"
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Center" />
                             <Button
                                 HorizontalAlignment="Right"
                                 Margin="12"

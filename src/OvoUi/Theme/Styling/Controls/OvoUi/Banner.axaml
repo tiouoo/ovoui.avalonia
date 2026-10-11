@@ -63,7 +63,7 @@
                             IsVisible="{TemplateBinding CanClose}"
                             Margin="12,-6,-6,0"
                             Name="{x:Static ovo:Banner.PART_CloseButton}"
-                            Theme="{DynamicResource CloseButtonTheme}"
+                            Theme="{DynamicResource CompactCloseButtonTheme}"
                             VerticalAlignment="Top" />
                     </Grid>
                 </Border>
