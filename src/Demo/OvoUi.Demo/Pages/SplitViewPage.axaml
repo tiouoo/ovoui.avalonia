@@ -70,17 +70,5 @@
                 </StackPanel>
             </Grid>
         </o:ControlShowcase>
-
-        <o:ControlShowcase Header="Disabled state" SourceKey="layout-split-view-disabled">
-            <SplitView
-                IsEnabled="False"
-                IsPaneOpen="True"
-                OpenPaneLength="200">
-                <SplitView.Pane>
-                    <TextBlock Margin="16" Text="Disabled pane" />
-                </SplitView.Pane>
-                <TextBlock Margin="16" Text="Disabled content" />
-            </SplitView>
-        </o:ControlShowcase>
     </demo:DemoPage>
 </UserControl>
