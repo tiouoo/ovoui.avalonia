@@ -1,0 +1,38 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.VirtualizingStackPanelPage"
+    x:DataType="pages:VirtualizingStackPanelPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="VirtualizingStackPanel">
+        <o:ControlShowcase Header="100,000-item virtualized list" SourceKey="layout-virtualizing-stack-panel">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="10">
+                <TextBlock Text="Only visible item containers are created. Scroll through 100,000 rows." />
+                <ListBox Height="420" ItemsSource="{Binding Items}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="90,*" Margin="8,6">
+                                <TextBlock FontWeight="SemiBold" Text="{Binding Id, StringFormat='#{0:N0}'}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

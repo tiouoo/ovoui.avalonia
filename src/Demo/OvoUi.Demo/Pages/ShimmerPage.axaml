@@ -1,0 +1,34 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ShimmerPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ShimmerText">
+        <o:ControlShowcase Header="Animated text" SourceKey="shows-shimmer-text">
+            <StackPanel Spacing="16">
+                <ToggleSwitch
+                    Content="Animate"
+                    IsChecked="True"
+                    Name="Active" />
+                <o:ShimmerText
+                    FontSize="28"
+                    FontWeight="SemiBold"
+                    IsActive="{Binding #Active.IsChecked}"
+                    Text="Generating a thoughtful response..." />
+                <o:ShimmerText
+                    BaseColor="#60646C"
+                    Duration="0:0:0.8"
+                    FontSize="20"
+                    HighlightColor="#E5484D"
+                    IsActive="{Binding #Active.IsChecked}"
+                    Text="Custom colors and duration" />
+                <o:ShimmerSelectableText
+                    FontSize="18"
+                    IsActive="{Binding #Active.IsChecked}"
+                    Text="This shimmering text remains selectable." />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

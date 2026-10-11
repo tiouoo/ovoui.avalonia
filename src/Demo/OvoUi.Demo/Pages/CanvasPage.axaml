@@ -1,0 +1,41 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.CanvasPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Canvas">
+        <o:ControlShowcase Header="Absolute positioning" SourceKey="layout-canvas-positioning">
+            <Canvas Background="{DynamicResource LayerFillColorDefaultBrush}" Height="300">
+                <Border
+                    Background="#E57373"
+                    Canvas.Left="24"
+                    Canvas.Top="24"
+                    CornerRadius="4"
+                    Height="72"
+                    Width="160">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Left 24, Top 24"
+                        VerticalAlignment="Center" />
+                </Border>
+                <Border
+                    Background="#64B5F6"
+                    Canvas.Right="24"
+                    Canvas.Top="90"
+                    CornerRadius="4"
+                    Height="84"
+                    Width="180">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Right 24, Top 90"
+                        VerticalAlignment="Center" />
+                </Border>
+                <Button
+                    Canvas.Bottom="24"
+                    Canvas.Left="180"
+                    Content="Bottom anchored" />
+            </Canvas>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

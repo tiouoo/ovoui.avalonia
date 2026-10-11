@@ -1,0 +1,81 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.VirtualizingUniformGridPage"
+    x:DataType="pages:VirtualizingUniformGridDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="VirtualizingUniformGrid">
+        <o:ControlShowcase Header="100,000-item virtualized grid" SourceKey="layout-virtualizing-uniform-grid">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="420"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <Grid ColumnDefinitions="220,*" ColumnSpacing="16">
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Text="Grid settings" />
+                    <TextBlock Text="Columns" />
+                    <o:OvoNumericIntUpDown
+                        Maximum="8"
+                        Minimum="1"
+                        Value="{Binding Columns}" />
+                    <TextBlock Text="Cache length" />
+                    <o:OvoNumericDoubleUpDown
+                        Maximum="2"
+                        Minimum="0"
+                        Step="0.1"
+                        Value="{Binding CacheLength}" />
+                    <TextBlock Text="Item height" />
+                    <o:OvoNumericDoubleUpDown
+                        Maximum="240"
+                        Minimum="40"
+                        Step="10"
+                        Value="{Binding ItemHeight}" />
+                    <CheckBox Content="Uniform item height" IsChecked="{Binding UniformItemHeight}" />
+                    <TextBlock Margin="0,12,0,0" Text="100,000 data items" />
+                    <TextBlock Text="Scroll to observe container recycling." TextWrapping="Wrap" />
+                </StackPanel>
+                <Border
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    Grid.Column="1"
+                    Height="520">
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding Items}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="pages:VirtualGridItem">
+                                    <Border
+                                        Background="{Binding Background}"
+                                        CornerRadius="3"
+                                        Margin="2">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            Text="{Binding Label}"
+                                            VerticalAlignment="Center" />
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <o:VirtualizingUniformGrid
+                                        CacheLength="{Binding CacheLength}"
+                                        Columns="{Binding Columns}"
+                                        ItemHeight="{Binding ItemHeight}"
+                                        UniformItemHeight="{Binding UniformItemHeight}" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

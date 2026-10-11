@@ -1,0 +1,26 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.MarkdownLinePage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="MarkdownLine">
+        <o:ControlShowcase Header="Inline Markdown" SourceKey="shows-markdown-line">
+            <StackPanel Spacing="14">
+                <TextBox
+                    AcceptsReturn="True"
+                    Name="Source"
+                    Text="Use **bold**, *italic*, ~~removed~~ and `inline code` in one selectable line."
+                    TextWrapping="Wrap" />
+                <o:MarkdownLine
+                    CodeBackground="{DynamicResource LayerFillColorDefaultBrush}"
+                    FontSize="18"
+                    Markdown="{Binding #Source.Text}" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Nested formatting" SourceKey="shows-markdown-line-nested">
+            <o:MarkdownLine FontSize="18" Markdown="This is **bold with *nested italic*** and __another strong phrase__." />
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

@@ -8,6 +8,10 @@ public static class Shows
     public static readonly List<Page> ShowsList =
     [
         Page.View<FlyoutPage>("Flyout"),
+        Page.View<ContentExpanderPage>("ContentExpander"),
+        Page.View<GlassCardPage>("GlassCard"),
+        Page.View<MarkdownLinePage>("MarkdownLine"),
+        Page.View<ShimmerPage>("ShimmerText"),
         Page.View<AvatarPage>("Avatar"),
         Page.View<QrCodePage>("QRCode"),
         Page.View<ImageViewerPage>("ImageViewer"),

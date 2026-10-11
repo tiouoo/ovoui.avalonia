@@ -1,0 +1,37 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.WrapPanelPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="WrapPanel">
+        <o:ControlShowcase Header="Automatic wrapping" SourceKey="layout-wrap-panel-flow">
+            <StackPanel Spacing="12">
+                <TextBlock Text="Resize the window to see items move between lines." />
+                <WrapPanel ItemSpacing="10" LineSpacing="10">
+                    <Button Content="Dashboard" />
+                    <Button Content="Analytics" />
+                    <Button Content="Deployments" />
+                    <Button Content="Environments" />
+                    <Button Content="Team members" />
+                    <Button Content="Audit log" />
+                    <Button Content="Billing" />
+                    <Button Content="Settings" />
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Fixed item size" SourceKey="layout-wrap-panel-item-size">
+            <WrapPanel
+                ItemHeight="72"
+                ItemSpacing="8"
+                ItemWidth="140"
+                LineSpacing="8">
+                <Border Background="#E57373" />
+                <Border Background="#81C784" />
+                <Border Background="#64B5F6" />
+                <Border Background="#FFB74D" />
+                <Border Background="#BA68C8" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

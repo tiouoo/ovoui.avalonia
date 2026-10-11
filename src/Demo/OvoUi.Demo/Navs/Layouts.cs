@@ -7,6 +7,17 @@ public static class Layouts
 {
     public static readonly List<Page> LayoutsList =
     [
+        Page.View<StackPanelPage>("StackPanel"),
+        Page.View<GridPage>("Grid"),
+        Page.View<DockPanelPage>("DockPanel"),
+        Page.View<WrapPanelPage>("WrapPanel"),
+        Page.View<CanvasPage>("Canvas"),
+        Page.View<UniformGridPage>("UniformGrid"),
+        Page.View<VirtualizingStackPanelPage>("VirtualizingStackPanel"),
+        Page.View<VirtualizingUniformGridPage>("VirtualizingUniformGrid"),
+        Page.View<ColumnWrapPanelPage>("ColumnWrapPanel"),
+        Page.View<ProportionalCanvasPage>("ProportionalCanvas"),
+        Page.View<WrapPanelWithTrailingItemPage>("WrapPanelWithTrailingItem"),
         Page.View<GroupBorderPage>("GroupBorder"),
         Page.View<AspectRatioLayoutPage>("AspectRatioLayout"),
         Page.View<DividerPage>("Divider"),

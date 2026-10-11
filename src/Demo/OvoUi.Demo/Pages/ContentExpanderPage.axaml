@@ -1,0 +1,39 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ContentExpanderPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ContentExpander">
+        <o:ControlShowcase Header="Partial content reveal" SourceKey="shows-content-expander">
+            <StackPanel Spacing="12">
+                <Slider
+                    Maximum="1"
+                    Minimum="0"
+                    Name="Progress"
+                    TickFrequency="0.1"
+                    Value="0.55" />
+                <TextBlock Text="{Binding #Progress.Value, StringFormat='Multiplier: {0:F2}'}" />
+                <Border BorderBrush="{DynamicResource LineBrush}" BorderThickness="1">
+                    <o:ContentExpander
+                        Multiplier="{Binding #Progress.Value}"
+                        Orientation="Vertical"
+                        PreserveDesiredSize="False">
+                        <Border Padding="18">
+                            <StackPanel Spacing="10">
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="SemiBold"
+                                    Text="Deployment details" />
+                                <TextBlock Text="Build 842 completed successfully." />
+                                <ProgressBar Maximum="100" Value="100" />
+                                <TextBlock Text="Artifacts were uploaded to the staging environment." />
+                            </StackPanel>
+                        </Border>
+                    </o:ContentExpander>
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

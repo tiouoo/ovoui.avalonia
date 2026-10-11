@@ -1,0 +1,53 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.UniformGridPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="UniformGrid">
+        <o:ControlShowcase Header="Equal-sized cells" SourceKey="layout-uniform-grid-cells">
+            <UniformGrid Columns="3" Rows="3">
+                <Button Content="1" />
+                <Button Content="2" />
+                <Button Content="3" />
+                <Button Content="4" />
+                <Button Content="5" />
+                <Button Content="6" />
+                <Button Content="7" />
+                <Button Content="8" />
+                <Button Content="9" />
+            </UniformGrid>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="First column offset" SourceKey="layout-uniform-grid-offset">
+            <UniformGrid
+                Columns="4"
+                FirstColumn="1"
+                Rows="2">
+                <Border
+                    Background="#E57373"
+                    Margin="4"
+                    Padding="20">
+                    <TextBlock Text="A" />
+                </Border>
+                <Border
+                    Background="#81C784"
+                    Margin="4"
+                    Padding="20">
+                    <TextBlock Text="B" />
+                </Border>
+                <Border
+                    Background="#64B5F6"
+                    Margin="4"
+                    Padding="20">
+                    <TextBlock Text="C" />
+                </Border>
+                <Border
+                    Background="#FFB74D"
+                    Margin="4"
+                    Padding="20">
+                    <TextBlock Text="D" />
+                </Border>
+            </UniformGrid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

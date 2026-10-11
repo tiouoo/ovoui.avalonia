@@ -1,0 +1,50 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.WrapPanelWithTrailingItemPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="WrapPanelWithTrailingItem">
+        <o:ControlShowcase Header="Reserved trailing action" SourceKey="layout-wrap-panel-trailing-item">
+            <StackPanel Spacing="10">
+                <TextBlock Text="The trailing action moves to a new line when less than 180 px remains." />
+                <o:WrapPanelWithTrailingItem TrailingWrapWidth="180">
+                    <o:WrapPanelWithTrailingItem.TrailingItem>
+                        <Button
+                            Classes="accent"
+                            Content="Add member"
+                            HorizontalAlignment="Stretch" />
+                    </o:WrapPanelWithTrailingItem.TrailingItem>
+                    <Border
+                        Background="#DCEAFE"
+                        CornerRadius="4"
+                        Margin="4"
+                        Padding="14,8">
+                        <TextBlock Text="Alex" />
+                    </Border>
+                    <Border
+                        Background="#DCFCE7"
+                        CornerRadius="4"
+                        Margin="4"
+                        Padding="14,8">
+                        <TextBlock Text="Morgan" />
+                    </Border>
+                    <Border
+                        Background="#FDE9D9"
+                        CornerRadius="4"
+                        Margin="4"
+                        Padding="14,8">
+                        <TextBlock Text="Taylor" />
+                    </Border>
+                    <Border
+                        Background="#F3E8FF"
+                        CornerRadius="4"
+                        Margin="4"
+                        Padding="14,8">
+                        <TextBlock Text="Jordan" />
+                    </Border>
+                </o:WrapPanelWithTrailingItem>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

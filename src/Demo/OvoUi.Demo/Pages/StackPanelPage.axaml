@@ -1,0 +1,53 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.StackPanelPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:layout="using:Avalonia.Layout"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="StackPanel">
+        <o:ControlShowcase Header="Orientation and spacing" SourceKey="layout-stack-panel-orientation">
+            <StackPanel Spacing="18">
+                <StackPanel
+                    HorizontalAlignment="Left"
+                    Spacing="4"
+                    Width="220">
+                    <TextBlock Text="Orientation" />
+                    <o:EnumSelector
+                        EnumType="{x:Type layout:Orientation}"
+                        Name="OrientationSelector"
+                        Value="{x:Static layout:Orientation.Horizontal}" />
+                </StackPanel>
+                <StackPanel
+                    Background="{DynamicResource LayerFillColorDefaultBrush}"
+                    Orientation="{Binding #OrientationSelector.Value}"
+                    Spacing="12">
+                    <Button Content="Create" />
+                    <Button Content="Open" />
+                    <Button Content="Save" />
+                    <Button Content="Export" />
+                </StackPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Nested stacks" SourceKey="layout-stack-panel-nested">
+            <StackPanel Spacing="12">
+                <TextBlock
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    Text="Account settings" />
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock Text="Name" Width="100" />
+                    <TextBox Text="Alex Morgan" Width="260" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock Text="Role" Width="100" />
+                    <ComboBox SelectedIndex="1" Width="260">
+                        <ComboBoxItem>Viewer</ComboBoxItem>
+                        <ComboBoxItem>Editor</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

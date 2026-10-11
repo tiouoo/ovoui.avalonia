@@ -1,0 +1,40 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.GlassCardPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="GlassCard">
+        <o:ControlShowcase Header="Card states" SourceKey="shows-glass-card-states">
+            <WrapPanel ItemSpacing="18" LineSpacing="18">
+                <o:GlassCard Width="280">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="SemiBold"
+                            Text="Standard card" />
+                        <TextBlock Text="Translucent content surface with animated sizing." TextWrapping="Wrap" />
+                    </StackPanel>
+                </o:GlassCard>
+                <o:GlassCard IsInteractive="True" Width="280">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="SemiBold"
+                            Text="Interactive card" />
+                        <TextBlock Text="Hover and press to see interaction feedback." TextWrapping="Wrap" />
+                    </StackPanel>
+                </o:GlassCard>
+                <o:GlassCard IsOpaque="True" Width="280">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="SemiBold"
+                            Text="Opaque card" />
+                        <TextBlock Text="Use IsOpaque when content needs a solid surface." TextWrapping="Wrap" />
+                    </StackPanel>
+                </o:GlassCard>
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

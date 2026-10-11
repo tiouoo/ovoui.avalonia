@@ -1,0 +1,44 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ProportionalCanvasPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ProportionalCanvas">
+        <o:ControlShowcase Header="Relative positioning and stretching" SourceKey="layout-proportional-canvas">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Resize the window: percentage offsets are recalculated while pixel offsets stay fixed." />
+                <o:ProportionalCanvas Background="{DynamicResource LayerFillColorDefaultBrush}" Height="360">
+                    <Border
+                        Background="#E57373"
+                        CornerRadius="6"
+                        Height="70"
+                        Width="150"
+                        o:ProportionalCanvas.Left="10%"
+                        o:ProportionalCanvas.Top="10%">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="10%, 10%"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <Border
+                        Background="#64B5F6"
+                        CornerRadius="6"
+                        o:ProportionalCanvas.Bottom="12%"
+                        o:ProportionalCanvas.Left="25%"
+                        o:ProportionalCanvas.Right="15%"
+                        o:ProportionalCanvas.Top="42%">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Text="Stretched between four proportional edges"
+                            VerticalAlignment="Center" />
+                    </Border>
+                    <Button
+                        Content="24 px from right"
+                        o:ProportionalCanvas.Right="24"
+                        o:ProportionalCanvas.Top="24" />
+                </o:ProportionalCanvas>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

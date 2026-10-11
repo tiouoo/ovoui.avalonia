@@ -1,0 +1,35 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DockPanelPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="DockPanel">
+        <o:ControlShowcase Header="Docking regions" SourceKey="layout-dock-panel-regions">
+            <DockPanel Height="300" LastChildFill="True">
+                <Border
+                    Background="#2878D4"
+                    DockPanel.Dock="Top"
+                    Padding="14">
+                    <TextBlock Foreground="White" Text="Top toolbar" />
+                </Border>
+                <Border
+                    Background="#3A9864"
+                    DockPanel.Dock="Bottom"
+                    Padding="10">
+                    <TextBlock Foreground="White" Text="Status bar" />
+                </Border>
+                <Border
+                    Background="#E8EEF5"
+                    DockPanel.Dock="Left"
+                    Padding="16"
+                    Width="160">
+                    <TextBlock Text="Left navigation" />
+                </Border>
+                <Border Background="{DynamicResource LayerFillColorDefaultBrush}" Padding="20">
+                    <TextBlock Text="The last child fills the remaining space." TextWrapping="Wrap" />
+                </Border>
+            </DockPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

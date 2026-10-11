@@ -13,6 +13,7 @@ public static class Inputs
         Page.View<AutoCompleteBoxPage>("AutoCompleteBox"),
         Page.View<OvoAutoCompleteBoxPage>("OvoAutoCompleteBox"),
         Page.View<ControlClassesInputPage>("ControlClassesInput"),
+        Page.View<ClassSelectorPage>("ClassSelector"),
         Page.View<EnumSelectorPage>("EnumSelector"),
         Page.View<FormPage>("Form"),
         Page.View<MultiComboBoxPage>("MultiComboBox"),
