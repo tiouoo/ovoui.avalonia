@@ -48,6 +48,8 @@
                             <ContentPresenter
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
+                                HorizontalAlignment="Left"
+                                Width="{TemplateBinding OpenPaneLength}"
                                 Name="PART_PanePresenter" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
@@ -138,6 +140,8 @@
                             <ContentPresenter
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
+                                HorizontalAlignment="Right"
+                                Width="{TemplateBinding OpenPaneLength}"
                                 Name="PART_PanePresenter" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
@@ -225,6 +229,7 @@
                             <ContentPresenter
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
+                                Height="{TemplateBinding OpenPaneLength}"
                                 Name="PART_PanePresenter" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
@@ -316,6 +321,8 @@
                             <ContentPresenter
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
+                                Height="{TemplateBinding OpenPaneLength}"
+                                VerticalAlignment="Bottom"
                                 Name="PART_PanePresenter" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
