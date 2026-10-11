@@ -36,6 +36,9 @@ jobs:
             **/*.csproj
             **/*.props
 
+      - name: Restore .NET workloads
+        run: dotnet workload restore "${{ env.BROWSER_PROJECT }}"
+
       - name: Restore dependencies
         run: dotnet restore "${{ env.BROWSER_PROJECT }}"
 
