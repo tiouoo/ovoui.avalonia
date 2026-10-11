@@ -1,0 +1,107 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ToastPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Toast">
+        <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-toast-configurator">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding ConfiguratorCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="14">
+                <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                    <TextBlock Text="Content" VerticalAlignment="Top" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        Grid.Column="1"
+                        MinHeight="72"
+                        Text="{Binding ToastContent}"
+                        TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="1" Text="Type" VerticalAlignment="Center" />
+                    <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Types}" MinWidth="160" SelectedItem="{Binding SelectedType}" />
+                    <TextBlock Grid.Row="2" Text="Duration (seconds)" VerticalAlignment="Center" />
+                    <NumericUpDown
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Increment="1"
+                        Maximum="60"
+                        Minimum="0"
+                        Value="{Binding ExpirationSeconds}" />
+                </Grid>
+                <WrapPanel ItemSpacing="16" LineSpacing="8">
+                    <CheckBox Content="Icon" IsChecked="{Binding IsIconVisible}" />
+                    <CheckBox Content="Close button" IsChecked="{Binding IsCloseButtonVisible}" />
+                    <CheckBox Content="Collapse button" IsChecked="{Binding IsCollapseButtonVisible}" />
+                    <CheckBox Content="Click to close" IsChecked="{Binding IsTouchClose}" />
+                    <CheckBox Content="Colorful" IsChecked="{Binding IsColorful}" />
+                    <CheckBox Content="Action buttons" IsChecked="{Binding IncludeActions}" />
+                    <CheckBox Content="Inline actions" IsChecked="{Binding IsButtonsInline}" />
+                </WrapPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Button Classes="accent" Click="ShowConfigured" Content="Show toast" />
+                    <TextBlock Text="{Binding LastInteraction, StringFormat='Last interaction: {0}'}" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Types, content, and duration" SourceKey="feedback-toast-presets">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding PresetsCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="10" LineSpacing="10">
+                    <Button Click="ShowInformation" Content="Information" />
+                    <Button Click="ShowSuccess" Content="Success" />
+                    <Button Click="ShowWarning" Content="Warning" />
+                    <Button Click="ShowError" Content="Error" />
+                    <Button Click="ShowLongContent" Content="Long content" />
+                    <Button Click="ShowMultiline" Content="Multiline" />
+                </WrapPanel>
+                <WrapPanel ItemSpacing="10" LineSpacing="10">
+                    <Button Click="ShowOneSecond" Content="One second" />
+                    <Button Click="ShowThreeSeconds" Content="Three seconds" />
+                    <Button Click="ShowFiveSeconds" Content="Five seconds" />
+                    <Button Click="ShowPersistent" Content="Persistent" />
+                    <Button Click="ShowWithoutIcon" Content="Without icon" />
+                    <Button Click="ShowWithoutClose" Content="Without close" />
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Appearance and actions" SourceKey="feedback-toast-actions">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding ActionsCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel ItemSpacing="10" LineSpacing="10">
+                <Button Click="ShowInlineActions" Content="Inline actions" />
+                <Button Click="ShowStackedActions" Content="Stacked actions" />
+                <Button Click="ShowLightStyle" Content="Light style" />
+                <Button Click="ShowDefaultStyle" Content="Default style" />
+                <Button Click="ShowColorfulStyle" Content="Colorful style" />
+                <Button Click="ShowClickable" Content="Click callback" />
+            </WrapPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Lifetime and close reasons" SourceKey="feedback-toast-lifetime">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding LifetimeCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="10" LineSpacing="10">
+                    <Button Click="ShowTimeout" Content="Timeout" />
+                    <Button Click="ShowTracked" Content="Show tracked" />
+                    <Button Click="CloseTracked" Content="Close tracked" />
+                    <Button Click="ShowDisplaced" Content="Displaced" />
+                    <Button Click="CloseAll" Content="Close all" />
+                </WrapPanel>
+                <TextBlock Text="{Binding LastCloseReason, StringFormat='Last close reason: {0}'}" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

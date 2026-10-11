@@ -1,0 +1,61 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DrawerPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Drawer">
+        <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-drawer-configurator">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding ConfiguratorCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="14">
+                <Grid ColumnDefinitions="160,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                    <TextBlock Text="Title" VerticalAlignment="Center" />
+                    <TextBox Grid.Column="1" Text="{Binding DrawerTitle}" />
+                    <TextBlock Grid.Row="1" Text="Content" VerticalAlignment="Top" />
+                    <TextBox AcceptsReturn="True" Grid.Column="1" Grid.Row="1" MinHeight="68" Text="{Binding DrawerContent}" TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="2" Text="Position and buttons" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Spacing="10">
+                        <ComboBox ItemsSource="{Binding Positions}" MinWidth="150" SelectedItem="{Binding Position}" />
+                        <ComboBox ItemsSource="{Binding ButtonSets}" MinWidth="150" SelectedItem="{Binding Buttons}" />
+                    </StackPanel>
+                </Grid>
+                <WrapPanel ItemSpacing="14" LineSpacing="8">
+                    <CheckBox Content="Modal" IsChecked="{Binding IsModal}" />
+                    <CheckBox Content="Custom content" IsChecked="{Binding IsCustom}" />
+                    <CheckBox Content="Light dismiss" IsChecked="{Binding CanLightDismiss}" />
+                    <CheckBox Content="Resize" IsChecked="{Binding CanResize}" />
+                    <CheckBox Content="Local host" IsChecked="{Binding UseLocalHost}" />
+                    <CheckBox Content="Close button" IsChecked="{Binding IsCloseButtonVisible}" IsThreeState="True" />
+                </WrapPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Button Classes="accent" Click="ShowConfigured" Content="Show configured drawer" />
+                    <TextBlock Text="{Binding LastResult, StringFormat='Last result: {0}'}" VerticalAlignment="Center" />
+                </StackPanel>
+                <Border Background="{DynamicResource ControlBackground}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" ClipToBounds="True" CornerRadius="{DynamicResource OvoCornerRadius}" Height="300">
+                    <o:OverlayDialogHost HostId="DrawerPage.Local" />
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Placement and content presets" SourceKey="feedback-drawer-presets">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding PresetsCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="10" LineSpacing="10">
+                    <Button Click="ShowLeft" Content="Left" />
+                    <Button Click="ShowTop" Content="Top" />
+                    <Button Click="ShowRight" Content="Right" />
+                    <Button Click="ShowBottom" Content="Bottom" />
+                    <Button Click="ShowSettings" Content="Settings form" />
+                    <Button Click="ShowDetails" Content="Details and actions" />
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

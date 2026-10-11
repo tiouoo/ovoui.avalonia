@@ -1,0 +1,67 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DialogPage"
+    x:CompileBindings="False"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Dialog">
+        <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-dialog-configurator">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding ConfiguratorCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="14">
+                <Grid ColumnDefinitions="160,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                    <TextBlock Text="Title" VerticalAlignment="Center" />
+                    <TextBox Grid.Column="1" Text="{Binding DialogTitle}" />
+                    <TextBlock Grid.Row="1" Text="Content" VerticalAlignment="Top" />
+                    <TextBox AcceptsReturn="True" Grid.Column="1" Grid.Row="1" MinHeight="68" Text="{Binding DialogContent}" TextWrapping="Wrap" />
+                    <TextBlock Grid.Row="2" Text="Mode and buttons" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Spacing="10">
+                        <ComboBox ItemsSource="{Binding Modes}" MinWidth="150" SelectedItem="{Binding Mode}" />
+                        <ComboBox ItemsSource="{Binding ButtonSets}" MinWidth="150" SelectedItem="{Binding Buttons}" />
+                    </StackPanel>
+                    <TextBlock Grid.Row="3" Text="Anchor" VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Spacing="10">
+                        <ComboBox ItemsSource="{Binding HorizontalAnchors}" MinWidth="150" SelectedItem="{Binding HorizontalAnchor}" />
+                        <ComboBox ItemsSource="{Binding VerticalAnchors}" MinWidth="150" SelectedItem="{Binding VerticalAnchor}" />
+                    </StackPanel>
+                </Grid>
+                <WrapPanel ItemSpacing="14" LineSpacing="8">
+                    <CheckBox Content="Window dialog" IsChecked="{Binding UseWindow}" />
+                    <CheckBox Content="Custom content" IsChecked="{Binding IsCustom}" />
+                    <CheckBox Content="Modal" IsChecked="{Binding IsModal}" />
+                    <CheckBox Content="Light dismiss" IsChecked="{Binding CanLightDismiss}" />
+                    <CheckBox Content="Drag move" IsChecked="{Binding CanDragMove}" />
+                    <CheckBox Content="Resize" IsChecked="{Binding CanResize}" />
+                    <CheckBox Content="Full screen" IsChecked="{Binding FullScreen}" />
+                    <CheckBox Content="Local host" IsChecked="{Binding UseLocalHost}" />
+                    <CheckBox Content="Close button" IsChecked="{Binding IsCloseButtonVisible}" IsThreeState="True" />
+                </WrapPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Button Classes="accent" Click="ShowConfigured" Content="Show configured dialog" />
+                    <TextBlock Text="{Binding LastResult, StringFormat='Last result: {0}'}" VerticalAlignment="Center" />
+                </StackPanel>
+                <Border Background="{DynamicResource ControlBackground}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" ClipToBounds="True" CornerRadius="{DynamicResource OvoCornerRadius}" Height="280">
+                    <o:OverlayDialogHost HostId="DialogPage.Local" />
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Behavior presets" SourceKey="feedback-dialog-presets">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding PresetsCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <WrapPanel ItemSpacing="10" LineSpacing="10">
+                <Button Click="ShowModalMask" Content="Modal mask and window drag" />
+                <Button Click="ShowLightDismiss" Content="Light dismiss" />
+                <Button Click="ShowNonModal" Content="Non-modal movable" />
+                <Button Click="ShowFullScreen" Content="Full screen" />
+                <Button Click="ShowWindowDialog" Content="Owned window" />
+                <Button Click="ShowWindowForm" Content="Custom window form" />
+            </WrapPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
