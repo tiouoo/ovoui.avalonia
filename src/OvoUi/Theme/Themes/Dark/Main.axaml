@@ -7,6 +7,34 @@
             <Color x:Key="LineColor">#3b3833</Color>
             <Color x:Key="PanelBackgroundColor">#191a1c</Color>
             <Color x:Key="PopupBackgroundColor">#252525</Color>
+
+            <SolidColorBrush Color="{StaticResource ForegroundColor}" x:Key="ForegroundBrush" />
+            <SolidColorBrush Color="{StaticResource InnerForegroundColor}" x:Key="InnerForegroundBrush" />
+            <SolidColorBrush Color="{StaticResource BackgroundColor}" x:Key="BackgroundBrush" />
+            <SolidColorBrush
+                Color="{StaticResource LineColor}"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="LineBrush" />
+            <SolidColorBrush
+                Color="{StaticResource PanelBackgroundColor}"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="PanelBackgroundBrush" />
+            <SolidColorBrush
+                Color="{StaticResource PopupBackgroundColor}"
+                Opacity="{DynamicResource SolidOpacity}"
+                x:Key="PopupBackgroundBrush" />
+            <SolidColorBrush
+                Color="{StaticResource LineColor}"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="TranslucentLineBrush" />
+            <SolidColorBrush
+                Color="{StaticResource PanelBackgroundColor}"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="TranslucentPanelBackgroundBrush" />
+            <SolidColorBrush
+                Color="{StaticResource PopupBackgroundColor}"
+                Opacity="{DynamicResource TranslucentOpacity}"
+                x:Key="TranslucentPopupBackgroundBrush" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>
