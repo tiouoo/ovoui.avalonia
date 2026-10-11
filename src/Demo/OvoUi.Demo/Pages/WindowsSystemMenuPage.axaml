@@ -1,0 +1,30 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.WindowsSystemMenuPage"
+    x:DataType="pages:WindowsSystemMenuPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="WindowsSystemMenu">
+        <o:ControlShowcase Header="Windows taskbar system menu" SourceKey="platform-windows-system-menu">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="The buttons modify this demo window. Use Show menu, the title-bar system menu, or Shift+right-click the taskbar icon to inspect the result." TextWrapping="Wrap" />
+                <TextBlock IsVisible="{Binding !IsWindows}" Text="These controls are available when the desktop app runs on Windows." TextWrapping="Wrap" />
+                <WrapPanel ItemSpacing="10" LineSpacing="10" IsEnabled="{Binding IsWindows}">
+                    <Button Click="AddCommand" Content="Add command" />
+                    <Button Click="AddSeparator" Content="Add separator" />
+                    <Button Click="RemoveLast" Content="Remove last item" />
+                    <Button Click="ClearAll" Content="Clear all" />
+                    <Button Classes="accent" Click="ShowMenu" Content="Show menu" />
+                </WrapPanel>
+                <TextBlock FontWeight="SemiBold" Name="ItemCountLabel" Text="0 custom items are registered." />
+                <TextBlock Name="StatusLabel" Text="Add an item, then show the native menu." TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

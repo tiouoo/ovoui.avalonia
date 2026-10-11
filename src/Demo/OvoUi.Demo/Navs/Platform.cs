@@ -8,6 +8,7 @@ public static class Platform
     public static readonly List<Page> PlatformList =
     [
         Page.View<MacOsWindowControlsPage>("MacOsWindowControls"),
+        Page.View<WindowsSystemMenuPage>("WindowsSystemMenu"),
         Page.View<WindowCompositionMaterialPage>("WindowCompositionMaterial")
     ];
 }
