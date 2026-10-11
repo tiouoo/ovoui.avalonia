@@ -1,0 +1,26 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.MacOsWindowControlsPage"
+    x:DataType="pages:MacOsWindowControlsPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="MacOsWindowControls">
+        <o:ControlShowcase Header="macOS window controls" SourceKey="platform-macos-window-controls">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Open a native macOS window and configure each standard window button independently." TextWrapping="Wrap" />
+                <TextBlock IsVisible="{Binding !IsMacOs}" Text="This editor is available when the desktop demo runs on macOS." TextWrapping="Wrap" />
+                <Button
+                    Click="OpenEditor"
+                    Content="Open window controls editor"
+                    HorizontalAlignment="Left"
+                    IsEnabled="{Binding IsMacOs}" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
