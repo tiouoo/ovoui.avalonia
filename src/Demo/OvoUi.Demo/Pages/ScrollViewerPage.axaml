@@ -1,0 +1,100 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ScrollViewerPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ScrollViewer">
+        <o:ControlShowcase Header="OvoUi scrollbar styles" SourceKey="layout-scroll-viewer-styles">
+            <Grid ColumnDefinitions="220,*" ColumnSpacing="24">
+                <StackPanel Spacing="12">
+                    <ToggleSwitch
+                        Content="Inset content"
+                        IsChecked="True"
+                        Name="insetToggle" />
+                    <ToggleSwitch
+                        Content="Allow auto-hide"
+                        IsChecked="True"
+                        Name="autoHideToggle" />
+                    <ToggleSwitch Content="Flat scrollbar" Name="flatToggle" />
+                </StackPanel>
+                <ScrollViewer
+                    AllowAutoHide="{Binding #autoHideToggle.IsChecked}"
+                    Classes.InsetContent="{Binding #insetToggle.IsChecked}"
+                    Classes.flat="{Binding #flatToggle.IsChecked}"
+                    Grid.Column="1"
+                    Height="240"
+                    HorizontalAlignment="Right"
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalAlignment="Top"
+                    VerticalScrollBarVisibility="Auto">
+                    <UniformGrid
+                        Columns="2"
+                        Height="560"
+                        Rows="2"
+                        Width="720">
+                        <Border Background="#33FDF398">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="1"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#3398CDFD">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="2"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33F6A0B5">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="3"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33A4E0A7">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="4"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </UniformGrid>
+                </ScrollViewer>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Scrolling behavior" SourceKey="layout-scroll-viewer-behavior">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
+                <StackPanel Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Inertia and chaining" />
+                    <ScrollViewer
+                        Height="180"
+                        HorizontalScrollBarVisibility="Disabled"
+                        IsScrollChainingEnabled="True"
+                        IsScrollInertiaEnabled="True"
+                        VerticalScrollBarVisibility="Auto">
+                        <StackPanel Spacing="8">
+                            <Button Content="Focusable item 1" />
+                            <Button Content="Focusable item 2" />
+                            <Button Content="Focusable item 3" />
+                            <Button Content="Focusable item 4" />
+                            <Button Content="Focusable item 5" />
+                            <Button Content="Focusable item 6" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Deferred thumb scrolling" />
+                    <ScrollViewer
+                        Height="180"
+                        HorizontalScrollBarVisibility="Auto"
+                        IsDeferredScrollingEnabled="True"
+                        VerticalScrollBarVisibility="Disabled">
+                        <Border Background="#223F8CFF" Width="900">
+                            <TextBlock Margin="24" Text="Drag the horizontal scrollbar thumb" />
+                        </Border>
+                    </ScrollViewer>
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

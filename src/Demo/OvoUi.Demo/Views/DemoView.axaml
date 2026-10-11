@@ -38,6 +38,10 @@
                 <Style Selector="ContentPresenter#PART_IconPresenter">
                     <Setter Property="IsVisible" Value="False" />
                 </Style>
+                <Style Selector="ovo|NavMenuItem TextBlock">
+                    <Setter Property="TextWrapping" Value="NoWrap" />
+                    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                </Style>
             </ovo:NavMenu.Styles>
             <ovo:NavMenu.ItemTemplate>
                 <DataTemplate DataType="models:Page">

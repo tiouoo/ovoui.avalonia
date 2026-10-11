@@ -1,0 +1,120 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.AspectRatioLayoutPage"
+    x:DataType="pages:AspectRatioLayoutPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="AspectRatioLayout">
+        <o:ControlShowcase Header="Aspect modes" SourceKey="layout-aspect-ratio-modes">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="12" LineSpacing="8">
+                    <Button Click="UseHorizontalPreset" Content="Horizontal" />
+                    <Button Click="UseSquarePreset" Content="Square" />
+                    <Button Click="UseVerticalPreset" Content="Vertical" />
+                </WrapPanel>
+                <StackPanel
+                    HorizontalAlignment="Left"
+                    Spacing="4"
+                    Width="200">
+                    <TextBlock Text="Tolerance" VerticalAlignment="Center" />
+                    <Slider
+                        Maximum="0.45"
+                        Minimum="0.05"
+                        Name="toleranceSlider"
+                        TickFrequency="0.05"
+                        Value="0.2" />
+                    <TextBlock Text="Width" VerticalAlignment="Center" />
+                    <Slider
+                        Maximum="760"
+                        Minimum="180"
+                        Name="widthSlider"
+                        Value="640" />
+                    <TextBlock Text="Height" VerticalAlignment="Center" />
+                    <Slider
+                        Maximum="500"
+                        Minimum="180"
+                        Name="heightSlider"
+                        Value="260" />
+                    <TextBlock Text="{Binding #modeLayout.CurrentAspectRatioMode, StringFormat='Mode: {0}'}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding #modeLayout.AspectRatioValue, StringFormat='Ratio: {0:F2}'}" VerticalAlignment="Center" />
+                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <o:AspectRatioLayout
+                        AspectRatioTolerance="{Binding #toleranceSlider.Value}"
+                        Height="{Binding #heightSlider.Value}"
+                        HorizontalAlignment="Left"
+                        Name="modeLayout"
+                        Width="{Binding #widthSlider.Value}">
+                        <o:AspectRatioLayoutItem AcceptAspectRatioMode="HorizontalRectangle">
+                            <Border Background="#223F8CFF" CornerRadius="8">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Text="Horizontal rectangle"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                        </o:AspectRatioLayoutItem>
+                        <o:AspectRatioLayoutItem AcceptAspectRatioMode="VerticalRectangle">
+                            <Border Background="#223BB346" CornerRadius="8">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Text="Vertical rectangle"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                        </o:AspectRatioLayoutItem>
+                        <o:AspectRatioLayoutItem AcceptAspectRatioMode="Square">
+                            <Border Background="#22F0B114" CornerRadius="8">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Text="Square"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                        </o:AspectRatioLayoutItem>
+                    </o:AspectRatioLayout>
+                </ScrollViewer>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Custom aspect range" SourceKey="layout-aspect-ratio-range">
+            <o:AspectRatioLayout Height="240">
+                <o:AspectRatioLayoutItem EndAspectRatioValue="2.2" StartAspectRatioValue="1.8">
+                    <Border Background="#229E28B3" CornerRadius="8">
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Spacing="6"
+                            VerticalAlignment="Center">
+                            <TextBlock FontWeight="SemiBold" Text="Custom range matched" />
+                            <TextBlock Text="1.8 to 2.2" />
+                        </StackPanel>
+                    </Border>
+                </o:AspectRatioLayoutItem>
+                <o:AspectRatioLayoutItem AcceptAspectRatioMode="HorizontalRectangle">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Outside the custom range"
+                        VerticalAlignment="Center" />
+                </o:AspectRatioLayoutItem>
+                <o:AspectRatioLayoutItem AcceptAspectRatioMode="Square">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Square fallback"
+                        VerticalAlignment="Center" />
+                </o:AspectRatioLayoutItem>
+                <o:AspectRatioLayoutItem AcceptAspectRatioMode="VerticalRectangle">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Vertical fallback"
+                        VerticalAlignment="Center" />
+                </o:AspectRatioLayoutItem>
+            </o:AspectRatioLayout>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

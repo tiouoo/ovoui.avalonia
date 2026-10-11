@@ -1,0 +1,53 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.HeaderedContentPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="HeaderedContentControl">
+        <o:ControlShowcase Header="Header and content" SourceKey="layout-headered-content-basic">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <HeaderedContentControl
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="{DynamicResource OvoCornerRadius}"
+                    Header="Text header"
+                    Padding="16">
+                    <TextBlock Text="The content area can host any control." TextWrapping="Wrap" />
+                </HeaderedContentControl>
+                <HeaderedContentControl Grid.Column="1" Padding="16">
+                    <HeaderedContentControl.Header>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Ellipse
+                                Fill="#3BB346"
+                                Height="8"
+                                Width="8" />
+                            <TextBlock FontWeight="SemiBold" Text="Rich header" />
+                        </StackPanel>
+                    </HeaderedContentControl.Header>
+                    <StackPanel Spacing="8">
+                        <TextBox PlaceholderText="Project name" />
+                        <Button Content="Create" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </HeaderedContentControl>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Card themes and classes" SourceKey="layout-headered-content-themes">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <HeaderedContentControl
+                    Classes="interactive"
+                    Header="Interactive card"
+                    Theme="{StaticResource CardHeaderBorderTheme}">
+                    <TextBlock Text="Hover to show the interactive border and shadow." TextWrapping="Wrap" />
+                </HeaderedContentControl>
+                <HeaderedContentControl
+                    Grid.Column="1"
+                    Header="Translucent card"
+                    Theme="{StaticResource TranslucentCardHeaderBorderTheme}">
+                    <TextBlock Text="A translucent card with a persistent shadow." TextWrapping="Wrap" />
+                </HeaderedContentControl>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

@@ -1,0 +1,54 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.GridSplitterPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="GridSplitter">
+        <o:ControlShowcase Header="Resize rows" SourceKey="layout-grid-splitter-rows">
+            <Grid Height="300" RowDefinitions="*,Auto,*">
+                <Border Background="#223F8CFF" CornerRadius="8">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Top row"
+                        VerticalAlignment="Center" />
+                </Border>
+                <GridSplitter Grid.Row="1" ShowsPreview="True" />
+                <Border
+                    Background="#223BB346"
+                    CornerRadius="8"
+                    Grid.Row="2">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Bottom row"
+                        VerticalAlignment="Center" />
+                </Border>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Resize columns" SourceKey="layout-grid-splitter-columns">
+            <Grid ColumnDefinitions="*,Auto,*" Height="260">
+                <Border Background="#229E28B3" CornerRadius="8">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Left column"
+                        VerticalAlignment="Center" />
+                </Border>
+                <GridSplitter
+                    Grid.Column="1"
+                    ResizeBehavior="PreviousAndNext"
+                    ResizeDirection="Columns"
+                    ShowsPreview="False" />
+                <Border
+                    Background="#22F0B114"
+                    CornerRadius="8"
+                    Grid.Column="2">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Text="Right column"
+                        VerticalAlignment="Center" />
+                </Border>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

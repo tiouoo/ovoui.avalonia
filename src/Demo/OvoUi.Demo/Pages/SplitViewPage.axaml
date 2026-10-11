@@ -1,0 +1,86 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.SplitViewPage"
+    x:DataType="pages:SplitViewDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="SplitView">
+        <o:ControlShowcase Header="Interactive pane" SourceKey="layout-split-view-interactive">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <Grid ColumnDefinitions="*,300" ColumnSpacing="20">
+                <Border
+                    ClipToBounds="True"
+                    CornerRadius="8"
+                    Height="420">
+                    <SplitView
+                        CompactPaneLength="{Binding CompactPaneLength}"
+                        DisplayMode="{Binding SelectedDisplayMode}"
+                        IsPaneOpen="{Binding IsPaneOpen}"
+                        OpenPaneLength="{Binding OpenPaneLength}"
+                        PanePlacement="{Binding SelectedPlacement}"
+                        UseLightDismissOverlayMode="{Binding UseLightDismissOverlayMode}">
+                        <SplitView.Pane>
+                            <Grid RowDefinitions="Auto,*">
+                                <TextBlock
+                                    Classes="h3"
+                                    Margin="16"
+                                    Text="Navigation" />
+                                <ListBox
+                                    Grid.Row="1"
+                                    ItemsSource="{Binding Items}"
+                                    SelectedIndex="0" />
+                            </Grid>
+                        </SplitView.Pane>
+                        <Border Background="#223F8CFF">
+                            <StackPanel
+                                HorizontalAlignment="Center"
+                                Spacing="12"
+                                VerticalAlignment="Center">
+                                <TextBlock Classes="h2" Text="Content" />
+                                <Button Command="{Binding TogglePaneCommand}" Content="Toggle pane" />
+                            </StackPanel>
+                        </Border>
+                    </SplitView>
+                </Border>
+                <StackPanel Grid.Column="1" Spacing="12">
+                    <ToggleSwitch Content="Pane open" IsChecked="{Binding IsPaneOpen}" />
+                    <ToggleSwitch Content="Light-dismiss overlay" IsChecked="{Binding UseLightDismissOverlayMode}" />
+                    <TextBlock Text="Pane placement" />
+                    <ComboBox ItemsSource="{Binding Placements}" SelectedItem="{Binding SelectedPlacement}" />
+                    <TextBlock Text="Display mode" />
+                    <ComboBox ItemsSource="{Binding DisplayModes}" SelectedItem="{Binding SelectedDisplayMode}" />
+                    <TextBlock Text="{Binding CompactPaneLength, StringFormat='Compact length: {0:F0}'}" />
+                    <Slider
+                        Maximum="120"
+                        Minimum="0"
+                        Value="{Binding CompactPaneLength}" />
+                    <TextBlock Text="{Binding OpenPaneLength, StringFormat='Open length: {0:F0}'}" />
+                    <Slider
+                        Maximum="420"
+                        Minimum="128"
+                        Value="{Binding OpenPaneLength}" />
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Disabled state" SourceKey="layout-split-view-disabled">
+            <SplitView
+                IsEnabled="False"
+                IsPaneOpen="True"
+                OpenPaneLength="200">
+                <SplitView.Pane>
+                    <TextBlock Margin="16" Text="Disabled pane" />
+                </SplitView.Pane>
+                <TextBlock Margin="16" Text="Disabled content" />
+            </SplitView>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

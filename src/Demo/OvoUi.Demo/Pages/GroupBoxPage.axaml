@@ -1,0 +1,114 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.GroupBoxPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="OvoGroupBox">
+        <o:ControlShowcase Header="Headers and borders" SourceKey="layout-ovo-group-box-headers">
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="18"
+                RowDefinitions="Auto,Auto,Auto"
+                RowSpacing="18">
+                <o:OvoGroupBox Header="Connection settings" HeaderSpacing="12">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Host: localhost" />
+                        <TextBlock Text="Port: 5432" />
+                        <TextBlock Text="Database: app" />
+                    </StackPanel>
+                </o:OvoGroupBox>
+                <o:OvoGroupBox
+                    BorderBrush="#0095EE"
+                    BorderThickness="2"
+                    CornerRadius="12"
+                    Grid.Column="1"
+                    HeaderSpacing="12">
+                    <o:OvoGroupBox.Header>
+                        <TextBlock
+                            FontWeight="SemiBold"
+                            Foreground="#0095EE"
+                            Text="Appearance" />
+                    </o:OvoGroupBox.Header>
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Font size: 14" />
+                        <TextBlock Text="Accent color: Blue" />
+                    </StackPanel>
+                </o:OvoGroupBox>
+                <o:OvoGroupBox
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Grid.Row="1">
+                    <TextBlock Text="Without a header, the border is a complete rounded rectangle." TextWrapping="Wrap" />
+                </o:OvoGroupBox>
+                <o:OvoGroupBox
+                    BorderBrush="#FC8800"
+                    BorderThickness="2"
+                    CornerRadius="16,4,16,4"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Header="Asymmetric corners"
+                    HeaderSpacing="12">
+                    <TextBlock Text="TopLeft=16, TopRight=4, BottomRight=16, BottomLeft=4" TextWrapping="Wrap" />
+                </o:OvoGroupBox>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Background, rich header, and state" SourceKey="layout-ovo-group-box-rich-state">
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="18"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="18">
+                <o:OvoGroupBox
+                    Background="#1DF93920"
+                    BorderBrush="#F93920"
+                    BorderThickness="1.5"
+                    CornerRadius="6"
+                    Header="With background"
+                    HeaderSpacing="12">
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="The interior can use a background fill." TextWrapping="Wrap" />
+                        <Button Content="Action" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </o:OvoGroupBox>
+                <o:OvoGroupBox
+                    BorderBrush="#3BB346"
+                    BorderThickness="3"
+                    CornerRadius="18"
+                    Grid.Column="1"
+                    HeaderSpacing="12">
+                    <o:OvoGroupBox.Header>
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <Ellipse
+                                Fill="#3BB346"
+                                Height="8"
+                                Width="8" />
+                            <TextBlock
+                                FontWeight="SemiBold"
+                                Foreground="#3BB346"
+                                Text="Online" />
+                        </StackPanel>
+                    </o:OvoGroupBox.Header>
+                    <TextBlock Text="The header can be any Avalonia control." TextWrapping="Wrap" />
+                </o:OvoGroupBox>
+                <o:OvoGroupBox
+                    BorderThickness="8,8,24,24"
+                    CornerRadius="28"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    Header="Non-uniform border thickness"
+                    HeaderSpacing="12">
+                    <TextBlock Text="Each edge honors its own border thickness." TextWrapping="Wrap" />
+                </o:OvoGroupBox>
+                <o:OvoGroupBox
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    Header="Disabled"
+                    IsEnabled="False">
+                    <Button Content="Unavailable" HorizontalAlignment="Left" />
+                </o:OvoGroupBox>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

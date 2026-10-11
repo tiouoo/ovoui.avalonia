@@ -1,0 +1,40 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DividerPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="Divider">
+        <o:ControlShowcase Header="Horizontal alignment" SourceKey="layout-divider-horizontal">
+            <StackPanel Spacing="20">
+                <o:Divider HorizontalContentAlignment="Left">Left</o:Divider>
+                <o:Divider HorizontalContentAlignment="Center">Center</o:Divider>
+                <o:Divider HorizontalContentAlignment="Right">Right</o:Divider>
+                <o:Divider HorizontalContentAlignment="Stretch">Stretch</o:Divider>
+                <o:Divider />
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Vertical and rich content" SourceKey="layout-divider-vertical-rich">
+            <StackPanel Spacing="20">
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock Text="Overview" VerticalAlignment="Center" />
+                    <o:Divider Height="28" Orientation="Vertical" />
+                    <TextBlock Text="Details" VerticalAlignment="Center" />
+                    <o:Divider Height="28" Orientation="Vertical" />
+                    <TextBlock Text="History" VerticalAlignment="Center" />
+                </StackPanel>
+                <o:Divider>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Ellipse
+                            Fill="{DynamicResource SystemAccentColor}"
+                            Height="8"
+                            Width="8" />
+                        <TextBlock FontWeight="SemiBold" Text="Active section" />
+                    </StackPanel>
+                </o:Divider>
+                <o:Divider IsEnabled="False">Disabled</o:Divider>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
