@@ -1,0 +1,42 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.RefreshContainerPage"
+    x:DataType="pages:RefreshContainerPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="RefreshContainer">
+        <o:ControlShowcase Header="Pull to refresh" SourceKey="refresh-container-pull">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" CodeHeight="440" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Pull the list downward to request new content." />
+                <TextBlock Text="{Binding Status}" />
+                <Border BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" Height="360">
+                    <RefreshContainer
+                        PullDirection="TopToBottom"
+                        RefreshRequested="OnRefreshRequested">
+                        <ListBox ItemsSource="{Binding Items}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" Margin="12,8">
+                                        <Border Background="{DynamicResource SystemAccentBrush}" CornerRadius="4" Height="32" Width="32">
+                                            <TextBlock HorizontalAlignment="Center" Text="{Binding Id}" VerticalAlignment="Center" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1" Spacing="2">
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding Title}" />
+                                            <TextBlock Opacity="0.7" Text="{Binding Detail}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </RefreshContainer>
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

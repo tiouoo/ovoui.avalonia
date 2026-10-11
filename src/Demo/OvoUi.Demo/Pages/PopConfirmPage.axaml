@@ -1,0 +1,77 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.PopConfirmPage"
+    x:DataType="pages:PopConfirmDemoViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="PopConfirm">
+        <o:ControlShowcase Header="Confirmation commands" SourceKey="pop-confirm-commands">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" CodeHeight="360" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="14">
+                <WrapPanel ItemSpacing="16" LineSpacing="12">
+                    <o:PopConfirm
+                        CancelCommand="{Binding CancelCommand}"
+                        ConfirmCommand="{Binding DeleteCommand}"
+                        PopupContent="This action cannot be undone."
+                        PopupHeader="Delete this deployment?">
+                        <Button Classes="warn" Content="Delete deployment" />
+                    </o:PopConfirm>
+                    <o:PopConfirm
+                        CancelCommand="{Binding CancelCommand}"
+                        ConfirmCommand="{Binding PublishCommand}"
+                        Placement="Right"
+                        PopupContent="The release will become visible to all users."
+                        PopupHeader="Publish release?">
+                        <Button Content="Publish release" />
+                    </o:PopConfirm>
+                </WrapPanel>
+                <TextBlock Text="{Binding LastAction, StringFormat='Last action: {0}'}" />
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Trigger modes and custom content" SourceKey="pop-confirm-trigger-modes">
+            <StackPanel Spacing="14">
+                <WrapPanel ItemSpacing="20" LineSpacing="12">
+                    <o:PopConfirm
+                        CancelCommand="{Binding CancelCommand}"
+                        ConfirmCommand="{Binding ArchiveCommand}"
+                        PopupContent="Click outside or choose an action."
+                        PopupHeader="Click trigger"
+                        TriggerMode="Click">
+                        <TextBlock Foreground="{DynamicResource SystemAccentBrush}" Text="Archive from text" />
+                    </o:PopConfirm>
+                    <o:PopConfirm
+                        CancelCommand="{Binding CancelCommand}"
+                        ConfirmCommand="{Binding ArchiveCommand}"
+                        PopupContent="The popup opens when this button receives focus."
+                        PopupHeader="Focus trigger"
+                        TriggerMode="Focus">
+                        <Button Content="Focus to confirm" />
+                    </o:PopConfirm>
+                </WrapPanel>
+            </StackPanel>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Asynchronous confirmation" SourceKey="pop-confirm-async-command">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" CodeHeight="360" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <o:PopConfirm
+                    CancelCommand="{Binding CancelCommand}"
+                    ConfirmCommand="{Binding AsyncConfirmCommand}"
+                    PopupContent="The popup remains open while the command is running."
+                    PopupHeader="Run remote operation?">
+                    <Button Content="Run operation" />
+                </o:PopConfirm>
+                <TextBlock Text="{Binding LastAction}" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
