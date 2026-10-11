@@ -3,6 +3,7 @@
     <StyleInclude Source="Popup.axaml" />
     <StyleInclude Source="PopupRenderContent.axaml" />
     <StyleInclude Source="ScrollViewer.axaml" />
+    <StyleInclude Source="Skeleton.axaml" />
     <StyleInclude Source="ColorPicker.axaml" />
     <StyleInclude Source="TitleBar.axaml" />
     <StyleInclude Source="Menu.axaml" />
