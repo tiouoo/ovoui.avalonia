@@ -10,21 +10,24 @@
                 HorizontalAlignment="Left"
                 Spacing="14"
                 Width="360">
-                <TextBox PlaceholderText="Plain numeric text" />
+                <TextBox PlaceholderText="Plain numeric text" o:NumPad.Attach="True" />
                 <NumericUpDown
                     Maximum="999"
                     Minimum="0"
-                    PlaceholderText="Decimal value" />
-                <o:OvoNumericIntUpDown InnerLeftContent="Integer" PlaceholderText="OVO numeric input" />
-                <o:IPv4Box InputMode="Fast" />
+                    PlaceholderText="Decimal value"
+                    o:NumPad.Attach="True" />
+                <o:OvoNumericIntUpDown
+                    InnerLeftContent="Integer"
+                    PlaceholderText="OVO numeric input"
+                    o:NumPad.Attach="True" />
+                <o:IPv4Box InputMode="Fast" o:NumPad.Attach="True" />
             </StackPanel>
         </o:ControlShowcase>
-        <o:ControlShowcase Header="Availability" SourceKey="num-pad-availability">
-            <TextBlock
-                HorizontalAlignment="Left"
-                MaxWidth="720"
-                Text="The former Tio NumPad control is not part of the current OvoUi public API. Use InputScope=Number for the platform keyboard or an OvoNumericUpDown control for validated numeric entry."
-                TextWrapping="Wrap" />
+        <o:ControlShowcase Header="Embedded NumPad" SourceKey="num-pad-embedded">
+            <StackPanel HorizontalAlignment="Left" Spacing="12">
+                <TextBox Name="ExplicitTarget" Width="282" />
+                <o:NumPad Target="{Binding #ExplicitTarget}" />
+            </StackPanel>
         </o:ControlShowcase>
     </demo:DemoPage>
 </UserControl>
