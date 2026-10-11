@@ -87,7 +87,14 @@ jobs:
           mkdir -p artifacts
           # 生成器和主包先打包，供后续带项目依赖的包使用。
           dotnet pack src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj -c Release -p:Version="$VERSION" -o artifacts
-          dotnet restore OvoUi.slnx --source "$(pwd)/artifacts" --source https://api.nuget.org/v3/index.json -p:Version="$VERSION" -p:NuGetRelease=true
+          for project in \
+            src/OvoUi/OvoUi.csproj \
+            src/OvoUi.Fonts/OvoUi.Fonts.csproj \
+            src/OvoUi.Platform/OvoUi.Platform.csproj \
+            src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj \
+            src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj; do
+            dotnet restore "$project" --source "$(pwd)/artifacts" --source https://api.nuget.org/v3/index.json -p:Version="$VERSION" -p:NuGetRelease=true
+          done
           dotnet pack src/OvoUi/OvoUi.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
           dotnet pack src/OvoUi.Fonts/OvoUi.Fonts.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
           dotnet pack src/OvoUi.Platform/OvoUi.Platform.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
