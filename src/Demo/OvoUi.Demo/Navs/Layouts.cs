@@ -22,6 +22,7 @@ public static class Layouts
         Page.View<AspectRatioLayoutPage>("AspectRatioLayout"),
         Page.View<DividerPage>("Divider"),
         Page.View<ElasticWrapPanelPage>("ElasticWrapPanel"),
+        Page.View<ElasticDecoratorPage>("ElasticDecorator"),
         Page.View<GridSplitterPage>("GridSplitter"),
         Page.View<ScrollViewerPage>("ScrollViewer"),
         Page.View<FadingScrollViewerPage>("FadingScrollViewer"),
