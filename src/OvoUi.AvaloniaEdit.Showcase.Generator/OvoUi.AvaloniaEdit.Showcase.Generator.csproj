@@ -5,7 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <IsRoslynComponent>true</IsRoslynComponent>
-        <IsPackable>false</IsPackable>
+        <IsPackable>true</IsPackable>
+        <PackageId>OvoUi.AvaloniaEdit.Showcase.Generator</PackageId>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <NoWarn>$(NoWarn);RS2008</NoWarn>
         <Title>OvoUi.AvaloniaEdit.Showcase.Generator</Title>

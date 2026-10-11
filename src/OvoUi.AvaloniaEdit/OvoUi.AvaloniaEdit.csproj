@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <PackageId>OvoUi.AvaloniaEdit</PackageId>
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Title>OvoUi.AvaloniaEdit</Title>
         <Description>OvoUi code block and themed AvaloniaEdit integration with TextMate highlighting.</Description>
         <PackageTags>avalonia;avaloniaedit;code-editor;syntax-highlighting;textmate</PackageTags>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
