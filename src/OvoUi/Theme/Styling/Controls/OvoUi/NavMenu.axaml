@@ -39,14 +39,14 @@
                         </TextBox>
                     </Border>
 
-                    <ScrollViewer
+                    <ovo:FadingScrollViewer
                         AllowAutoHide="True"
                         Grid.Row="2"
                         HorizontalAlignment="Stretch"
                         HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto">
                         <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                    </ScrollViewer>
+                    </ovo:FadingScrollViewer>
 
                     <!--  Search Box at Bottom  -->
                     <Border
@@ -110,7 +110,7 @@
                                 </TextBox.InnerRightContent>
                             </TextBox>
                         </Border>
-                        <ScrollViewer
+                        <ovo:FadingScrollViewer
                             AllowAutoHide="True"
                             Classes="flat"
                             Grid.Row="2"
@@ -118,7 +118,7 @@
                             HorizontalScrollBarVisibility="Disabled"
                             VerticalScrollBarVisibility="Auto">
                             <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" Name="PART_ItemsPresenter" />
-                        </ScrollViewer>
+                        </ovo:FadingScrollViewer>
                         <!--  Search Box at Bottom  -->
                         <Border
                             Grid.Row="3"
