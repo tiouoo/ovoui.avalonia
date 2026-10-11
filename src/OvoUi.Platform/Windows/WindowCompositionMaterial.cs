@@ -9,7 +9,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Styling;
 
-namespace OvoUi.Platforms.Windows;
+namespace OvoUi.Platform.Windows;
 
 public enum WindowCompositionMaterialKind
 {

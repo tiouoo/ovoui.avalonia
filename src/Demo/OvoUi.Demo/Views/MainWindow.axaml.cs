@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Styling;
 using Avalonia.Threading;
-using OvoUi.Common.Helpers;
+using OvoUi.Platform.MacOS;
 using OvoUi.Common.Language;
 using OvoUi.Controls;
 using OvoUi.Demo.Models;

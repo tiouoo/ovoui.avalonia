@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Title>OvoUi Platform</Title>
+        <Description>Native macOS and Windows platform integrations for Avalonia applications.</Description>
+        <PackageTags>avalonia;ui;platform;windows;macos</PackageTags>
+        <PackageIcon>icon_256.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="12.1.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+</Project>

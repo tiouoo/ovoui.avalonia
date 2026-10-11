@@ -5,7 +5,7 @@ using System.Text;
 using Avalonia.Controls;
 using Avalonia.Threading;
 
-namespace OvoUi.Platforms.Windows;
+namespace OvoUi.Platform.Windows;
 
 public sealed record NativeWindowInfo(IntPtr Handle, string Title, string ProcessName, int ProcessId)
 {

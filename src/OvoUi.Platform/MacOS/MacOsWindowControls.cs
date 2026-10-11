@@ -4,7 +4,7 @@ using System.Runtime.Versioning;
 using Avalonia;
 using Avalonia.Controls;
 
-namespace OvoUi.Common.Helpers;
+namespace OvoUi.Platform.MacOS;
 
 /// <summary>
 /// Identifies one of the three native macOS window controls.

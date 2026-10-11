@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using Avalonia.Controls;
 
-namespace OvoUi.Common.Helpers;
+namespace OvoUi.Platform.Windows;
 
 /// <summary>
 /// Adds application commands to the native system menu shown from a Windows taskbar icon or title bar.

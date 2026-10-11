@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using OvoUi.Demo.Navs;
 using OvoUi.Demo.Pages;
+using PlatformNavigation = OvoUi.Demo.Navs.Platform;
 
 namespace OvoUi.Demo.Models;
 
@@ -41,7 +42,7 @@ public sealed class DemoViewModel : ModelBase
         Page.Group("Show", Shows.ShowsList),
         Page.Group("Feedback", Feedbacks.FeedbacksList),
         Page.Group("Layout", Layouts.LayoutsList),
-        Page.Group("Platform", Platform.PlatformList)
+        Page.Group("Platform", PlatformNavigation.PlatformList)
     ];
 
     public Page SelectedPage

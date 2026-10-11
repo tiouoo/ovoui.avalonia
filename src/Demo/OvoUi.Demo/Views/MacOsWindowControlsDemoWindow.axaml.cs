@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using OvoUi.Common.Helpers;
+using OvoUi.Platform.MacOS;
 
 namespace OvoUi.Demo.Views;
 

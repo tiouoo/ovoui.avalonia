@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
-namespace OvoUi.Common.Helpers;
+namespace OvoUi.Platform.Windows;
 
 /// <summary>
 /// Describes a launch task displayed in a Windows taskbar jump list.

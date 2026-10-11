@@ -33,6 +33,7 @@
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false" />
         <ProjectReference Include="..\..\OvoUi\OvoUi.csproj"/>
+        <ProjectReference Include="..\..\OvoUi.Platform\OvoUi.Platform.csproj" />
         <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj"/>
     </ItemGroup>
 

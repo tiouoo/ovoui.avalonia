@@ -1,7 +1,7 @@
 ﻿using System;
 using Avalonia;
 using Avalonia.Dialogs;
-using OvoUi.Common.Helpers;
+using OvoUi.Platform.Windows;
 
 namespace OvoUi.Demo.Desktop;
 

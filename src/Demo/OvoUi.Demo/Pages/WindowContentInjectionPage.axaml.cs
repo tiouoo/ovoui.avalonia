@@ -2,7 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using OvoUi.Demo.Views;
-using OvoUi.Platforms.Windows;
+using OvoUi.Platform.Windows;
 
 namespace OvoUi.Demo.Pages;
 
