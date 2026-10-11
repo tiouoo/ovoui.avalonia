@@ -1,0 +1,99 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.FadingScrollViewerPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="FadingScrollViewer">
+        <o:ControlShowcase Header="Edge fade and scrollbar styles" SourceKey="layout-fading-scroll-viewer-styles">
+            <Grid ColumnDefinitions="220,*" ColumnSpacing="24">
+                <StackPanel Spacing="12">
+                    <ToggleSwitch
+                        Content="Inset content"
+                        IsChecked="True"
+                        Name="insetToggle" />
+                    <ToggleSwitch
+                        Content="Allow auto-hide"
+                        IsChecked="True"
+                        Name="autoHideToggle" />
+                    <ToggleSwitch Content="Flat scrollbar" Name="flatToggle" />
+                </StackPanel>
+                <o:FadingScrollViewer
+                    AllowAutoHide="{Binding #autoHideToggle.IsChecked}"
+                    Classes.InsetContent="{Binding #insetToggle.IsChecked}"
+                    Classes.flat="{Binding #flatToggle.IsChecked}"
+                    Grid.Column="1"
+                    Height="280"
+                    HorizontalAlignment="Stretch"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalAlignment="Top"
+                    VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="0,0,8,0" Spacing="8">
+                        <Border Background="#33FDF398" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 1" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#3398CDFD" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 2" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33F6A0B5" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 3" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33A4E0A7" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 4" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33F2B36D" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 5" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33A9A1F7" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 6" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#337ED6C4" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 7" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Background="#33E58BA5" Height="72">
+                            <TextBlock HorizontalAlignment="Center" Text="Item 8" VerticalAlignment="Center" />
+                        </Border>
+                    </StackPanel>
+                </o:FadingScrollViewer>
+            </Grid>
+        </o:ControlShowcase>
+
+        <o:ControlShowcase Header="Scrolling behavior" SourceKey="layout-fading-scroll-viewer-behavior">
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
+                <StackPanel Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Inertia and chaining" />
+                    <o:FadingScrollViewer
+                        Height="180"
+                        HorizontalScrollBarVisibility="Disabled"
+                        IsScrollChainingEnabled="True"
+                        IsScrollInertiaEnabled="True"
+                        VerticalScrollBarVisibility="Auto">
+                        <StackPanel Spacing="8">
+                            <Button Content="Focusable item 1" />
+                            <Button Content="Focusable item 2" />
+                            <Button Content="Focusable item 3" />
+                            <Button Content="Focusable item 4" />
+                            <Button Content="Focusable item 5" />
+                            <Button Content="Focusable item 6" />
+                        </StackPanel>
+                    </o:FadingScrollViewer>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Spacing="8">
+                    <TextBlock FontWeight="SemiBold" Text="Custom content padding" />
+                    <o:FadingScrollViewer
+                        Height="180"
+                        HorizontalScrollBarVisibility="Disabled"
+                        Padding="12"
+                        VerticalScrollBarVisibility="Auto">
+                        <StackPanel Spacing="8">
+                            <Border Background="#223F8CFF" Height="64" />
+                            <Border Background="#2247B881" Height="64" />
+                            <Border Background="#22E58BA5" Height="64" />
+                            <Border Background="#22F2B36D" Height="64" />
+                        </StackPanel>
+                    </o:FadingScrollViewer>
+                </StackPanel>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

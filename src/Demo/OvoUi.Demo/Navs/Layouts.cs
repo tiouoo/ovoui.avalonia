@@ -24,6 +24,7 @@ public static class Layouts
         Page.View<ElasticWrapPanelPage>("ElasticWrapPanel"),
         Page.View<GridSplitterPage>("GridSplitter"),
         Page.View<ScrollViewerPage>("ScrollViewer"),
+        Page.View<FadingScrollViewerPage>("FadingScrollViewer"),
         Page.View<ThemeVariantScopePage>("ThemeVariantScope"),
         Page.View<HeaderedContentPage>("HeaderedContentControl"),
         Page.View<SplitViewPage>("SplitView"),

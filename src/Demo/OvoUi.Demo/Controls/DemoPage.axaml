@@ -3,10 +3,8 @@
     x:DataType="controls:DemoPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:controls="using:OvoUi.Demo.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <UserControl.Resources>
-        <controls:VerticalScrollOpacityMaskConverter x:Key="VerticalScrollOpacityMaskConverter" />
-    </UserControl.Resources>
     <UserControl.Template>
         <ControlTemplate>
             <DockPanel Margin="20,10">
@@ -15,19 +13,11 @@
                     DockPanel.Dock="Top"
                     Margin="{TemplateBinding TitleMargin}"
                     Text="{TemplateBinding Text}" />
-                <ScrollViewer
+                <ovo:FadingScrollViewer
                     HorizontalScrollBarVisibility="Disabled"
                     Margin="0,0,-15,0"
                     Padding="0,0,15,0"
-                    VerticalScrollBarVisibility="Auto"
-                    x:Name="PART_ScrollViewer">
-                    <ScrollViewer.OpacityMask>
-                        <MultiBinding Converter="{StaticResource VerticalScrollOpacityMaskConverter}">
-                            <Binding ElementName="PART_ScrollViewer" Path="Offset.Y" />
-                            <Binding ElementName="PART_ScrollViewer" Path="Extent.Height" />
-                            <Binding ElementName="PART_ScrollViewer" Path="Viewport.Height" />
-                        </MultiBinding>
-                    </ScrollViewer.OpacityMask>
+                    VerticalScrollBarVisibility="Auto">
                     <ItemsControl
                         ItemsSource="{Binding PageContent, RelativeSource={RelativeSource TemplatedParent}}"
                         MaxWidth="1460">
@@ -37,7 +27,7 @@
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
-                </ScrollViewer>
+                </ovo:FadingScrollViewer>
             </DockPanel>
         </ControlTemplate>
     </UserControl.Template>
