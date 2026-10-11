@@ -61,5 +61,6 @@
         <ResourceInclude Source="TwoTonePathIcon.axaml" />
         <ResourceInclude Source="ControlClassesInput.axaml" />
         <ResourceInclude Source="ClassSelector.axaml" />
+        <ResourceInclude Source="ElasticDecorator.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
