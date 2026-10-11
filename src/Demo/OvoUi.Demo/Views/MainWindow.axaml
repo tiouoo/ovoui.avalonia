@@ -16,6 +16,18 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:views="using:OvoUi.Demo.Views"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ovo:OvoWindow.Styles>
+        <Style Selector="Separator">
+            <Setter Property="Background" Value="{DynamicResource TranslucentLineBrush}" />
+        </Style>
+        <Style Selector="ovo|ControlShowcase">
+            <Setter Property="Background" Value="{DynamicResource TranslucentPopupBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource TranslucentLineBrush}" />
+        </Style>
+        <Style Selector="Border.control-showcase-divider">
+            <Setter Property="Background" Value="{DynamicResource TranslucentLineBrush}" />
+        </Style>
+    </ovo:OvoWindow.Styles>
     <ovo:OvoTitleBar.LeadingContent>
         <StackPanel
             IsHitTestVisible="False"
@@ -30,5 +42,90 @@
                 VerticalAlignment="Top" />
         </StackPanel>
     </ovo:OvoTitleBar.LeadingContent>
+    <ovo:OvoTitleBar.TrailingContent>
+        <Button
+            Classes="caption"
+            Margin="0,0,7,0"
+            ToolTip.Tip="Settings">
+            <Button.Flyout>
+                <MenuFlyout Placement="BottomEdgeAlignedRight">
+                    <MenuItem Header="Theme">
+                        <MenuItem
+                            Click="SetThemeDefault"
+                            GroupName="app-theme"
+                            Header="Default"
+                            IsChecked="True"
+                            Name="ThemeDefaultItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetThemeLight"
+                            GroupName="app-theme"
+                            Header="Light"
+                            Name="ThemeLightItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetThemeDark"
+                            GroupName="app-theme"
+                            Header="Dark"
+                            Name="ThemeDarkItem"
+                            ToggleType="Radio" />
+                    </MenuItem>
+                    <MenuItem Header="Language">
+                        <MenuItem
+                            Click="SetLanguageEnglish"
+                            GroupName="app-language"
+                            Header="English"
+                            IsChecked="True"
+                            Name="LanguageEnglishItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetLanguageChinese"
+                            GroupName="app-language"
+                            Header="Chinese"
+                            Name="LanguageChineseItem"
+                            ToggleType="Radio" />
+                    </MenuItem>
+                    <MenuItem Header="Background">
+                        <MenuItem
+                            Click="SetBackgroundDefault"
+                            GroupName="window-background"
+                            Header="Default"
+                            IsChecked="True"
+                            Name="BackgroundDefaultItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetBackgroundMica"
+                            GroupName="window-background"
+                            Header="Mica"
+                            Name="BackgroundMicaItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetBackgroundAcrylic"
+                            GroupName="window-background"
+                            Header="Acrylic"
+                            Name="BackgroundAcrylicItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetBackgroundBlur"
+                            GroupName="window-background"
+                            Header="Blur"
+                            Name="BackgroundBlurItem"
+                            ToggleType="Radio" />
+                        <MenuItem
+                            Click="SetBackgroundTransparent"
+                            GroupName="window-background"
+                            Header="Transparent"
+                            Name="BackgroundTransparentItem"
+                            ToggleType="Radio" />
+                    </MenuItem>
+                </MenuFlyout>
+            </Button.Flyout>
+            <TextBlock
+                FontFamily="{DynamicResource OvoIconFontFamily}"
+                FontSize="14"
+                FontWeight="Light"
+                Text="&#xe627;" />
+        </Button>
+    </ovo:OvoTitleBar.TrailingContent>
     <views:DemoView Margin="0,-12,0,0" />
 </ovo:OvoWindow>
