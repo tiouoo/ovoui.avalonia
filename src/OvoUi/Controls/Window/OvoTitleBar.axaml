@@ -24,7 +24,6 @@
                 cdp:WindowDecorationProperties.ElementRole="TitleBar" />
 
             <DockPanel
-                Background="Transparent"
                 LastChildFill="True"
                 Name="TitleBarDockPanel"
                 cdp:WindowDecorationProperties.ElementRole="TitleBar">
@@ -139,7 +138,7 @@
                         IsVisible="{Binding #RootControl.LeadingContent, Converter={x:Static ObjectConverters.IsNotNull}}"
                         VerticalContentAlignment="Center"
                         cdp:WindowDecorationProperties.ElementRole="User" />
-                    <Border Background="Transparent" Grid.Column="1" />
+                    <Border Grid.Column="1" IsHitTestVisible="False" />
                 </Grid>
             </DockPanel>
         </Panel>
