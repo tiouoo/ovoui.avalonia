@@ -34,7 +34,7 @@
 
     <ControlTheme TargetType="o:DialogResizer" x:Key="{x:Type o:DialogResizer}">
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:WindowResizer">
+            <ControlTemplate TargetType="o:DialogResizer">
                 <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, *, Auto">
                     <o:DialogResizerThumb
                         Cursor="TopLeftCorner"

@@ -110,16 +110,10 @@
                                                 Width="15" />
                                         </Button>
                                         <Button
-                                            Classes="transparent"
                                             IsVisible="{TemplateBinding ShowRemoveButton}"
-                                            Padding="6"
+                                            Theme="{DynamicResource CloseButtonTheme}"
                                             VerticalAlignment="Center"
-                                            x:Name="PART_RemoveButton">
-                                            <PathIcon
-                                                Data="F1 M384,512z M0,0z M55.1,73.4C42.6,60.9 22.3,60.9 9.8,73.4 -2.7,85.9 -2.7,106.2 9.8,118.7L147.2,256 9.9,393.4C-2.6,405.9 -2.6,426.2 9.9,438.7 22.4,451.2 42.7,451.2 55.2,438.7L192.5,301.3 329.9,438.6C342.4,451.1 362.7,451.1 375.2,438.6 387.7,426.1 387.7,405.8 375.2,393.3L237.8,256 375.1,118.6C387.6,106.1 387.6,85.8 375.1,73.3 362.6,60.8 342.3,60.8 329.8,73.3L192.5,210.7 55.1,73.4z"
-                                                Height="14"
-                                                Width="14" />
-                                        </Button>
+                                            x:Name="PART_RemoveButton" />
                                     </StackPanel>
                                     <ItemsControl
                                         DockPanel.Dock="Right"

@@ -22,9 +22,14 @@ internal static class OverlayDialogManager
 
     public static OverlayDialogHost? GetHost(string? id, int? hash)
     {
-        var match = Hosts.FirstOrDefault(pair =>
-            (hash is null || pair.Key.Hash == hash) &&
-            pair.Key.Id == id);
+        var candidates = Hosts.Where(pair => hash is null || pair.Key.Hash == hash);
+        var match = string.IsNullOrWhiteSpace(id)
+            ? candidates.FirstOrDefault(pair => pair.Value.IsTopLevel)
+            : candidates.FirstOrDefault(pair => pair.Key.Id == id);
+
+        if (match.Value is null && string.IsNullOrWhiteSpace(id))
+            match = candidates.FirstOrDefault(pair => string.IsNullOrWhiteSpace(pair.Key.Id));
+
         if (match.Value is null)
         {
             Debug.Assert(false,

@@ -219,7 +219,7 @@ public abstract class OverlayFeedbackElement : ContentControl
             ? width - MinWidth
             : containerBounds.Value.Width - left - width;
         var maxY = windowEdge is WindowEdge.North or WindowEdge.NorthEast or WindowEdge.NorthWest
-            ? height - MinWidth
+            ? height - MinHeight
             : containerBounds.Value.Height - top - height;
         return new Vector(MathHelpers.SafeClamp(diff.X, minX, maxX), MathHelpers.SafeClamp(diff.Y, minY, maxY));
     }

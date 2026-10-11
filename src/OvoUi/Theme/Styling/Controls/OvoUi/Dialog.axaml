@@ -29,12 +29,10 @@
                                 Margin="{TemplateBinding Padding}" />
                         </ScrollViewer>
                         <Button
-                            Classes="transparent"
-                            Content="&#x2715;"
                             HorizontalAlignment="Right"
                             Margin="{TemplateBinding CloseBtnMargin}"
                             Name="{x:Static o:DialogControlBase.PART_CloseButton}"
-                            Padding="8,4"
+                            Theme="{DynamicResource CloseButtonTheme}"
                             VerticalAlignment="Top" />
                     </Grid>
                 </Border>
@@ -61,12 +59,10 @@
                             <TextBlock FontSize="18" FontWeight="600" Text="{TemplateBinding Title}" VerticalAlignment="Center" />
                         </StackPanel>
                         <Button
-                            Classes="transparent"
-                            Content="&#x2715;"
                             HorizontalAlignment="Right"
                             Margin="12"
                             Name="{x:Static o:DialogControlBase.PART_CloseButton}"
-                            Padding="8,4" />
+                            Theme="{DynamicResource CloseButtonTheme}" />
                         <ScrollViewer
                             Grid.Row="1"
                             HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
@@ -104,7 +100,7 @@
                         <Grid>
                             <Panel Background="Transparent" Height="44" Name="{x:Static o:CustomDialogWindow.PART_TitleArea}" VerticalAlignment="Top" ZIndex="1" />
                             <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
-                            <Button Classes="transparent" Content="&#x2715;" HorizontalAlignment="Right" Margin="8" Name="{x:Static o:CustomDialogWindow.PART_CloseButton}" Padding="8,4" VerticalAlignment="Top" ZIndex="2" />
+                            <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static o:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" VerticalAlignment="Top" ZIndex="2" />
                             <o:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" />
                         </Grid>
                     </Border>
@@ -127,7 +123,7 @@
                         <Grid RowDefinitions="Auto,*,Auto">
                             <Panel Background="Transparent" Height="48" Name="{x:Static o:CustomDialogWindow.PART_TitleArea}" ZIndex="1" />
                             <TextBlock Margin="20,14,52,8" Text="{TemplateBinding Title}" />
-                            <Button Classes="transparent" Content="&#x2715;" HorizontalAlignment="Right" Margin="8" Name="{x:Static o:CustomDialogWindow.PART_CloseButton}" Padding="8,4" ZIndex="2" />
+                            <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static o:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" ZIndex="2" />
                             <ScrollViewer Grid.Row="1" Margin="24,12"><ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" /></ScrollViewer>
                             <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="20" Orientation="Horizontal" Spacing="8">
                                 <Button Content="Cancel" Name="{x:Static o:StandardDialogWindow.PART_CancelButton}" />
