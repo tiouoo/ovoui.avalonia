@@ -13,7 +13,7 @@
                 <SelectableTextBlock
                     Classes="h2"
                     DockPanel.Dock="Top"
-                    Margin="0,0,0,20"
+                    Margin="{TemplateBinding TitleMargin}"
                     Text="{TemplateBinding Text}" />
                 <ScrollViewer
                     HorizontalScrollBarVisibility="Disabled"
