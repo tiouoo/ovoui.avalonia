@@ -1,0 +1,64 @@
+name: Deploy browser demo
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: browser-demo-deployment
+  cancel-in-progress: true
+
+env:
+  BROWSER_PROJECT: src/Demo/OvoUi.Demo.Browser/OvoUi.Demo.Browser.csproj
+  PUBLISH_DIR: artifacts/browser-demo
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy WebAssembly demo
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          cache: true
+          cache-dependency-path: |
+            **/*.csproj
+            **/*.props
+
+      - name: Restore dependencies
+        run: dotnet restore "${{ env.BROWSER_PROJECT }}"
+
+      - name: Publish browser demo
+        run: >-
+          dotnet publish "${{ env.BROWSER_PROJECT }}"
+          --configuration Release
+          --no-restore
+          --output "${{ env.PUBLISH_DIR }}"
+
+      - name: Prepare static site
+        shell: bash
+        run: |
+          cp vercel.json "${PUBLISH_DIR}/wwwroot/vercel.json"
+          touch "${PUBLISH_DIR}/wwwroot/.nojekyll"
+
+      - name: Deploy browser-demo branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: browser-demo
+          publish_dir: ${{ env.PUBLISH_DIR }}/wwwroot
+          force_orphan: true
+          enable_jekyll: false
+          commit_message: "deploy: browser demo from ${{ github.sha }}"
+
