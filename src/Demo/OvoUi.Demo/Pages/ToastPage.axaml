@@ -9,10 +9,17 @@
         <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-toast-configurator">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding ConfiguratorCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding ConfiguratorCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="14">
-                <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto,Auto,Auto"
+                    RowSpacing="10">
                     <TextBlock Text="Content" VerticalAlignment="Top" />
                     <TextBox
                         AcceptsReturn="True"
@@ -20,9 +27,20 @@
                         MinHeight="72"
                         Text="{Binding ToastContent}"
                         TextWrapping="Wrap" />
-                    <TextBlock Grid.Row="1" Text="Type" VerticalAlignment="Center" />
-                    <ComboBox Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Types}" MinWidth="160" SelectedItem="{Binding SelectedType}" />
-                    <TextBlock Grid.Row="2" Text="Duration (seconds)" VerticalAlignment="Center" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="Type"
+                        VerticalAlignment="Center" />
+                    <ComboBox
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Types}"
+                        MinWidth="160"
+                        SelectedItem="{Binding SelectedType}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Text="Duration (seconds)"
+                        VerticalAlignment="Center" />
                     <NumericUpDown
                         Grid.Column="1"
                         Grid.Row="2"
@@ -41,7 +59,10 @@
                     <CheckBox Content="Inline actions" IsChecked="{Binding IsButtonsInline}" />
                 </WrapPanel>
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Button Classes="accent" Click="ShowConfigured" Content="Show toast" />
+                    <Button
+                        Classes="accent"
+                        Click="ShowConfigured"
+                        Content="Show toast" />
                     <TextBlock Text="{Binding LastInteraction, StringFormat='Last interaction: {0}'}" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
@@ -50,7 +71,10 @@
         <o:ControlShowcase Header="Types, content, and duration" SourceKey="feedback-toast-presets">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding PresetsCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding PresetsCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
@@ -75,7 +99,10 @@
         <o:ControlShowcase Header="Appearance and actions" SourceKey="feedback-toast-actions">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding ActionsCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding ActionsCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <WrapPanel ItemSpacing="10" LineSpacing="10">
                 <Button Click="ShowInlineActions" Content="Inline actions" />
@@ -90,7 +117,10 @@
         <o:ControlShowcase Header="Lifetime and close reasons" SourceKey="feedback-toast-lifetime">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding LifetimeCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding LifetimeCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">

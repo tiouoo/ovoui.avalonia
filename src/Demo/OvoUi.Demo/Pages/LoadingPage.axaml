@@ -7,25 +7,43 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Loading">
         <o:ControlShowcase Header="Indicator sizes and styles" SourceKey="loading-indicator-sizes">
-            <WrapPanel ItemSpacing="28" LineSpacing="16" VerticalAlignment="Center">
+            <WrapPanel
+                ItemSpacing="28"
+                LineSpacing="16"
+                VerticalAlignment="Center">
                 <o:LoadingIcon Classes="small" />
                 <o:LoadingIcon />
                 <o:LoadingIcon Classes="large" />
-                <o:LoadingIcon Height="32" Theme="{StaticResource LoadingIconTrailTheme}" Width="32" />
-                <o:LoadingIcon Foreground="#E5484D" Height="32" Width="32" />
+                <o:LoadingIcon
+                    Height="32"
+                    Theme="{StaticResource LoadingIconTrailTheme}"
+                    Width="32" />
+                <o:LoadingIcon
+                    Foreground="#E5484D"
+                    Height="32"
+                    Width="32" />
             </WrapPanel>
         </o:ControlShowcase>
 
         <o:ControlShowcase Header="Loading container" SourceKey="loading-container-overlay">
             <StackPanel Spacing="14">
-                <ToggleSwitch Content="Loading" IsChecked="True" Name="IsLoading" />
+                <ToggleSwitch
+                    Content="Loading"
+                    IsChecked="True"
+                    Name="IsLoading" />
                 <o:LoadingContainer
                     IsLoading="{Binding #IsLoading.IsChecked}"
                     LoadingMessage="Loading project activity..."
                     MinHeight="230">
-                    <Border BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" Padding="20">
+                    <Border
+                        BorderBrush="{DynamicResource LineBrush}"
+                        BorderThickness="1"
+                        Padding="20">
                         <StackPanel Spacing="12">
-                            <TextBlock FontSize="20" FontWeight="SemiBold" Text="Project activity" />
+                            <TextBlock
+                                FontSize="20"
+                                FontWeight="SemiBold"
+                                Text="Project activity" />
                             <ProgressBar Maximum="100" Value="72" />
                             <TextBlock Text="Build completed successfully." />
                             <TextBlock Text="Deploying artifacts to the staging environment." />
@@ -39,10 +57,17 @@
         <o:ControlShowcase Header="Custom indicator and message" SourceKey="loading-custom-content">
             <o:LoadingContainer IsLoading="True" MinHeight="180">
                 <o:LoadingContainer.Indicator>
-                    <o:LoadingIcon Foreground="#2F9E44" Height="40" Theme="{StaticResource LoadingIconTrailTheme}" Width="40" />
+                    <o:LoadingIcon
+                        Foreground="#2F9E44"
+                        Height="40"
+                        Theme="{StaticResource LoadingIconTrailTheme}"
+                        Width="40" />
                 </o:LoadingContainer.Indicator>
                 <o:LoadingContainer.LoadingMessage>
-                    <TextBlock FontWeight="SemiBold" Margin="0,10,0,0" Text="Preparing preview" />
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Margin="0,10,0,0"
+                        Text="Preparing preview" />
                 </o:LoadingContainer.LoadingMessage>
                 <Border Background="{DynamicResource LayerFillColorDefaultBrush}" Height="180" />
             </o:LoadingContainer>

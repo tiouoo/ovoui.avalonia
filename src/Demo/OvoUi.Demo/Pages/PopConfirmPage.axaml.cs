@@ -14,30 +14,29 @@ public partial class PopConfirmPage : Avalonia.Controls.UserControl
 
 public partial class PopConfirmDemoViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private string _lastAction = "No action yet";
+    [ObservableProperty] private string _lastAction = "No action yet";
 
     public string SourceCode { get; } = """
-        public partial class PopConfirmDemoViewModel : ObservableObject
-        {
-            [ObservableProperty]
-            private string _lastAction = "No action yet";
+                                        public partial class PopConfirmDemoViewModel : ObservableObject
+                                        {
+                                            [ObservableProperty]
+                                            private string _lastAction = "No action yet";
 
-            [RelayCommand]
-            private void Delete() => LastAction = "Deployment deleted";
+                                            [RelayCommand]
+                                            private void Delete() => LastAction = "Deployment deleted";
 
-            [RelayCommand]
-            private void Cancel() => LastAction = "Confirmation cancelled";
+                                            [RelayCommand]
+                                            private void Cancel() => LastAction = "Confirmation cancelled";
 
-            [RelayCommand]
-            private async Task AsyncConfirmAsync()
-            {
-                LastAction = "Operation running...";
-                await Task.Delay(1500);
-                LastAction = "Remote operation completed";
-            }
-        }
-        """;
+                                            [RelayCommand]
+                                            private async Task AsyncConfirmAsync()
+                                            {
+                                                LastAction = "Operation running...";
+                                                await Task.Delay(1500);
+                                                LastAction = "Remote operation completed";
+                                            }
+                                        }
+                                        """;
 
     [RelayCommand]
     private void Delete() => LastAction = "Deployment deleted";

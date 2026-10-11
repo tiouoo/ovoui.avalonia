@@ -9,27 +9,54 @@
         <o:ControlShowcase Header="Loading and animation states" SourceKey="skeleton-loading-states">
             <StackPanel Spacing="16">
                 <WrapPanel ItemSpacing="20" LineSpacing="10">
-                    <ToggleSwitch Content="Show skeleton" IsChecked="True" Name="Loading" />
-                    <ToggleSwitch Content="Animate" IsChecked="True" Name="Active" />
+                    <ToggleSwitch
+                        Content="Show skeleton"
+                        IsChecked="True"
+                        Name="Loading" />
+                    <ToggleSwitch
+                        Content="Animate"
+                        IsChecked="True"
+                        Name="Active" />
                 </WrapPanel>
-                <Grid ColumnDefinitions="96,*" ColumnSpacing="16" MaxWidth="620">
+                <Grid
+                    ColumnDefinitions="96,*"
+                    ColumnSpacing="16"
+                    MaxWidth="620">
                     <o:Skeleton
                         CornerRadius="6"
                         Height="96"
                         IsActive="{Binding #Active.IsChecked}"
                         IsLoading="{Binding #Loading.IsChecked}">
                         <Border Background="#2F9E44" CornerRadius="6">
-                            <TextBlock HorizontalAlignment="Center" Text="OVO" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="OVO"
+                                VerticalAlignment="Center" />
                         </Border>
                     </o:Skeleton>
-                    <StackPanel Grid.Column="1" Spacing="12" VerticalAlignment="Center">
-                        <o:Skeleton IsActive="{Binding #Active.IsChecked}" IsLoading="{Binding #Loading.IsChecked}" Width="260">
-                            <TextBlock FontSize="18" FontWeight="SemiBold" Text="Quarterly product update" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Spacing="12"
+                        VerticalAlignment="Center">
+                        <o:Skeleton
+                            IsActive="{Binding #Active.IsChecked}"
+                            IsLoading="{Binding #Loading.IsChecked}"
+                            Width="260">
+                            <TextBlock
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Text="Quarterly product update" />
                         </o:Skeleton>
-                        <o:Skeleton IsActive="{Binding #Active.IsChecked}" IsLoading="{Binding #Loading.IsChecked}" Width="430">
+                        <o:Skeleton
+                            IsActive="{Binding #Active.IsChecked}"
+                            IsLoading="{Binding #Loading.IsChecked}"
+                            Width="430">
                             <TextBlock Text="The content appears when loading finishes." />
                         </o:Skeleton>
-                        <o:Skeleton IsActive="{Binding #Active.IsChecked}" IsLoading="{Binding #Loading.IsChecked}" Width="340">
+                        <o:Skeleton
+                            IsActive="{Binding #Active.IsChecked}"
+                            IsLoading="{Binding #Loading.IsChecked}"
+                            Width="340">
                             <TextBlock Text="Updated a few seconds ago" />
                         </o:Skeleton>
                     </StackPanel>
@@ -39,9 +66,23 @@
 
         <o:ControlShowcase Header="Shapes and content" SourceKey="skeleton-shapes-content">
             <WrapPanel ItemSpacing="24" LineSpacing="18">
-                <o:Skeleton CornerRadius="36" Height="72" IsActive="True" IsLoading="True" Width="72" />
-                <o:Skeleton CornerRadius="4" Height="72" IsLoading="True" Width="220" />
-                <o:Skeleton CornerRadius="10" Height="120" IsActive="True" IsLoading="True" Width="220" />
+                <o:Skeleton
+                    CornerRadius="36"
+                    Height="72"
+                    IsActive="True"
+                    IsLoading="True"
+                    Width="72" />
+                <o:Skeleton
+                    CornerRadius="4"
+                    Height="72"
+                    IsLoading="True"
+                    Width="220" />
+                <o:Skeleton
+                    CornerRadius="10"
+                    Height="120"
+                    IsActive="True"
+                    IsLoading="True"
+                    Width="220" />
                 <o:Skeleton IsLoading="False">
                     <Button Content="Loaded content" />
                 </o:Skeleton>

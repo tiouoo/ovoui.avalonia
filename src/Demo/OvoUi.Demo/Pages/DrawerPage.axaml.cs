@@ -33,17 +33,73 @@ public partial class DrawerPage : UserControl, INotifyPropertyChanged
 
     public IReadOnlyList<Position> Positions { get; } = Enum.GetValues<Position>();
     public IReadOnlyList<DialogButton> ButtonSets { get; } = Enum.GetValues<DialogButton>();
-    public string DrawerTitle { get => _drawerTitle; set => SetField(ref _drawerTitle, value); }
-    public string DrawerContent { get => _drawerContent; set => SetField(ref _drawerContent, value); }
-    public Position Position { get => _position; set => SetField(ref _position, value); }
-    public DialogButton Buttons { get => _buttons; set => SetField(ref _buttons, value); }
-    public bool IsModal { get => _isModal; set => SetField(ref _isModal, value); }
-    public bool IsCustom { get => _isCustom; set => SetField(ref _isCustom, value); }
-    public bool CanLightDismiss { get => _canLightDismiss; set => SetField(ref _canLightDismiss, value); }
-    public bool CanResize { get => _canResize; set => SetField(ref _canResize, value); }
-    public bool UseLocalHost { get => _useLocalHost; set => SetField(ref _useLocalHost, value); }
-    public bool? IsCloseButtonVisible { get => _isCloseButtonVisible; set => SetField(ref _isCloseButtonVisible, value); }
-    public string LastResult { get => _lastResult; private set => SetField(ref _lastResult, value); }
+
+    public string DrawerTitle
+    {
+        get => _drawerTitle;
+        set => SetField(ref _drawerTitle, value);
+    }
+
+    public string DrawerContent
+    {
+        get => _drawerContent;
+        set => SetField(ref _drawerContent, value);
+    }
+
+    public Position Position
+    {
+        get => _position;
+        set => SetField(ref _position, value);
+    }
+
+    public DialogButton Buttons
+    {
+        get => _buttons;
+        set => SetField(ref _buttons, value);
+    }
+
+    public bool IsModal
+    {
+        get => _isModal;
+        set => SetField(ref _isModal, value);
+    }
+
+    public bool IsCustom
+    {
+        get => _isCustom;
+        set => SetField(ref _isCustom, value);
+    }
+
+    public bool CanLightDismiss
+    {
+        get => _canLightDismiss;
+        set => SetField(ref _canLightDismiss, value);
+    }
+
+    public bool CanResize
+    {
+        get => _canResize;
+        set => SetField(ref _canResize, value);
+    }
+
+    public bool UseLocalHost
+    {
+        get => _useLocalHost;
+        set => SetField(ref _useLocalHost, value);
+    }
+
+    public bool? IsCloseButtonVisible
+    {
+        get => _isCloseButtonVisible;
+        set => SetField(ref _isCloseButtonVisible, value);
+    }
+
+    public string LastResult
+    {
+        get => _lastResult;
+        private set => SetField(ref _lastResult, value);
+    }
+
     public new event PropertyChangedEventHandler? PropertyChanged;
 
     private async void ShowConfigured(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -79,7 +135,8 @@ public partial class DrawerPage : UserControl, INotifyPropertyChanged
 
     private void ShowPreset(Position position)
     {
-        OverlayDrawer.ShowStandard(CreateDetailsContent($"Content enters from the {position.ToString().ToLowerInvariant()} edge."), null,
+        OverlayDrawer.ShowStandard(
+            CreateDetailsContent($"Content enters from the {position.ToString().ToLowerInvariant()} edge."), null,
             options: new DrawerOptions
             {
                 Position = position,
@@ -98,10 +155,12 @@ public partial class DrawerPage : UserControl, INotifyPropertyChanged
         });
 
     private async void ShowDetails(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        LastResult = (await OverlayDrawer.ShowStandardAsync(CreateDetailsContent("Review deployment details before publishing."), null, options: new DrawerOptions
-        {
-            Position = Position.Right, Title = "Publish release", Buttons = DialogButton.YesNoCancel, CanLightDismiss = false, MinWidth = 420
-        })).ToString();
+        LastResult = (await OverlayDrawer.ShowStandardAsync(
+            CreateDetailsContent("Review deployment details before publishing."), null, options: new DrawerOptions
+            {
+                Position = Position.Right, Title = "Publish release", Buttons = DialogButton.YesNoCancel,
+                CanLightDismiss = false, MinWidth = 420
+            })).ToString();
 
     private DrawerOptions CreateOptions(Position position) => new()
     {
@@ -129,7 +188,10 @@ public partial class DrawerPage : UserControl, INotifyPropertyChanged
 
     private static Control CreateSettingsContent()
     {
-        var close = new Button { Classes = { "accent" }, Content = "Apply", HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Right };
+        var close = new Button
+        {
+            Classes = { "accent" }, Content = "Apply", HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Right
+        };
         DialogControlBase.SetCanClose(close, true);
         return new StackPanel
         {
@@ -156,24 +218,24 @@ public partial class DrawerPage : UserControl, INotifyPropertyChanged
     }
 
     public string ConfiguratorCode { get; } = """
-        var options = new DrawerOptions
-        {
-            Position = Position,
-            Title = DrawerTitle,
-            Buttons = Buttons,
-            CanLightDismiss = CanLightDismiss,
-            CanResize = CanResize,
-            IsCloseButtonVisible = IsCloseButtonVisible
-        };
-        DialogResult result = await OverlayDrawer.ShowStandardAsync(content, null, hostId, options);
-        """;
+                                              var options = new DrawerOptions
+                                              {
+                                                  Position = Position,
+                                                  Title = DrawerTitle,
+                                                  Buttons = Buttons,
+                                                  CanLightDismiss = CanLightDismiss,
+                                                  CanResize = CanResize,
+                                                  IsCloseButtonVisible = IsCloseButtonVisible
+                                              };
+                                              DialogResult result = await OverlayDrawer.ShowStandardAsync(content, null, hostId, options);
+                                              """;
 
     public string PresetsCode { get; } = """
-        OverlayDrawer.ShowCustom(settingsForm, null, options: new DrawerOptions
-        {
-            Position = Position.Right,
-            CanLightDismiss = true,
-            MinWidth = 380
-        });
-        """;
+                                         OverlayDrawer.ShowCustom(settingsForm, null, options: new DrawerOptions
+                                         {
+                                             Position = Position.Right,
+                                             CanLightDismiss = true,
+                                             MinWidth = 380
+                                         });
+                                         """;
 }

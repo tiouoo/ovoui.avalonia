@@ -8,41 +8,143 @@
     <demo:DemoPage Text="ProgressBar">
         <o:ControlShowcase Header="Determinate and indeterminate" SourceKey="shows-progress-bar-states">
             <StackPanel Spacing="16">
-                <Slider Maximum="100" Name="Progress" Value="62" />
+                <Slider
+                    Maximum="100"
+                    Name="Progress"
+                    Value="62" />
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <ProgressBar Maximum="100" ShowProgressText="True" Value="{Binding #Progress.Value}" Width="240" />
-                    <ProgressBar Classes="info" Maximum="100" ShowProgressText="True" Value="{Binding #Progress.Value}" Width="240" />
-                    <ProgressBar Classes="success" Maximum="100" ShowProgressText="True" Value="{Binding #Progress.Value}" Width="240" />
-                    <ProgressBar Classes="warn" Maximum="100" ShowProgressText="True" Value="{Binding #Progress.Value}" Width="240" />
-                    <ProgressBar Classes="error" Maximum="100" ShowProgressText="True" Value="{Binding #Progress.Value}" Width="240" />
+                    <ProgressBar
+                        Maximum="100"
+                        ShowProgressText="True"
+                        Value="{Binding #Progress.Value}"
+                        Width="240" />
+                    <ProgressBar
+                        Classes="info"
+                        Maximum="100"
+                        ShowProgressText="True"
+                        Value="{Binding #Progress.Value}"
+                        Width="240" />
+                    <ProgressBar
+                        Classes="success"
+                        Maximum="100"
+                        ShowProgressText="True"
+                        Value="{Binding #Progress.Value}"
+                        Width="240" />
+                    <ProgressBar
+                        Classes="warn"
+                        Maximum="100"
+                        ShowProgressText="True"
+                        Value="{Binding #Progress.Value}"
+                        Width="240" />
+                    <ProgressBar
+                        Classes="error"
+                        Maximum="100"
+                        ShowProgressText="True"
+                        Value="{Binding #Progress.Value}"
+                        Width="240" />
                 </WrapPanel>
                 <WrapPanel ItemSpacing="12">
-                    <ProgressBar IsIndeterminate="True" Maximum="100" Width="240" />
-                    <ProgressBar Classes="Left" IsIndeterminate="True" Maximum="100" ShowProgressText="True" Width="240" />
-                    <ProgressBar Classes="Right" IsIndeterminate="True" Maximum="100" Width="240" />
+                    <ProgressBar
+                        IsIndeterminate="True"
+                        Maximum="100"
+                        Width="240" />
+                    <ProgressBar
+                        Classes="Left"
+                        IsIndeterminate="True"
+                        Maximum="100"
+                        ShowProgressText="True"
+                        Width="240" />
+                    <ProgressBar
+                        Classes="Right"
+                        IsIndeterminate="True"
+                        Maximum="100"
+                        Width="240" />
                 </WrapPanel>
             </StackPanel>
         </o:ControlShowcase>
         <o:ControlShowcase Header="Text placement and orientation" SourceKey="shows-progress-bar-layouts">
             <WrapPanel ItemSpacing="20" LineSpacing="20">
-                <ProgressBar Classes="Left" Maximum="100" ShowProgressText="True" Value="35" Width="220" />
-                <ProgressBar Maximum="100" ShowProgressText="True" Value="65" Width="220" />
-                <ProgressBar Classes="Right" Maximum="100" ShowProgressText="True" Value="85" Width="220" />
-                <ProgressBar Classes="Left" Maximum="100" Orientation="Vertical" ShowProgressText="True" Value="35" />
-                <ProgressBar Maximum="100" Orientation="Vertical" ShowProgressText="True" Value="65" />
-                <ProgressBar Classes="Right" Maximum="100" Orientation="Vertical" ShowProgressText="True" Value="85" />
-                <ProgressBar Classes="error" Maximum="100" Orientation="Vertical" Value="48" />
-                <ProgressBar IsIndeterminate="True" Maximum="100" Orientation="Vertical" />
+                <ProgressBar
+                    Classes="Left"
+                    Maximum="100"
+                    ShowProgressText="True"
+                    Value="35"
+                    Width="220" />
+                <ProgressBar
+                    Maximum="100"
+                    ShowProgressText="True"
+                    Value="65"
+                    Width="220" />
+                <ProgressBar
+                    Classes="Right"
+                    Maximum="100"
+                    ShowProgressText="True"
+                    Value="85"
+                    Width="220" />
+                <ProgressBar
+                    Classes="Left"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    ShowProgressText="True"
+                    Value="35" />
+                <ProgressBar
+                    Maximum="100"
+                    Orientation="Vertical"
+                    ShowProgressText="True"
+                    Value="65" />
+                <ProgressBar
+                    Classes="Right"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    ShowProgressText="True"
+                    Value="85" />
+                <ProgressBar
+                    Classes="error"
+                    Maximum="100"
+                    Orientation="Vertical"
+                    Value="48" />
+                <ProgressBar
+                    IsIndeterminate="True"
+                    Maximum="100"
+                    Orientation="Vertical" />
             </WrapPanel>
         </o:ControlShowcase>
         <o:ControlShowcase Header="Progress ring" SourceKey="shows-progress-bar-rings">
             <WrapPanel ItemSpacing="22" LineSpacing="18">
-                <ProgressBar BorderThickness="6" Height="96" Maximum="100" ShowProgressText="True" Theme="{StaticResource ProgressRing}" Value="25" Width="96" />
-                <ProgressBar BorderThickness="10" Classes="success" Height="110" Maximum="100" ShowProgressText="True" Theme="{StaticResource ProgressRing}" Value="68" Width="110" />
-                <ProgressBar BorderThickness="8" Classes="warn" Height="96" IsIndeterminate="True" Theme="{StaticResource ProgressRing}" Width="96" />
-                <ProgressBar BorderThickness="8" Classes="error" Height="96" Maximum="100" ShowProgressText="True" Theme="{StaticResource ProgressRing}" Value="90" Width="96" />
+                <ProgressBar
+                    BorderThickness="6"
+                    Height="96"
+                    Maximum="100"
+                    ShowProgressText="True"
+                    Theme="{StaticResource ProgressRing}"
+                    Value="25"
+                    Width="96" />
+                <ProgressBar
+                    BorderThickness="10"
+                    Classes="success"
+                    Height="110"
+                    Maximum="100"
+                    ShowProgressText="True"
+                    Theme="{StaticResource ProgressRing}"
+                    Value="68"
+                    Width="110" />
+                <ProgressBar
+                    BorderThickness="8"
+                    Classes="warn"
+                    Height="96"
+                    IsIndeterminate="True"
+                    Theme="{StaticResource ProgressRing}"
+                    Width="96" />
+                <ProgressBar
+                    BorderThickness="8"
+                    Classes="error"
+                    Height="96"
+                    Maximum="100"
+                    ShowProgressText="True"
+                    Theme="{StaticResource ProgressRing}"
+                    Value="90"
+                    Width="96" />
             </WrapPanel>
         </o:ControlShowcase>
     </demo:DemoPage>
 </UserControl>
-

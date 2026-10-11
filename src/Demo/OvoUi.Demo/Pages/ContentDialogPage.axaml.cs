@@ -26,16 +26,67 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
     }
 
     public IReadOnlyList<ContentDialogButton> DefaultButtons { get; } = Enum.GetValues<ContentDialogButton>();
-    public string DialogTitle { get => _dialogTitle; set => SetField(ref _dialogTitle, value); }
-    public string DialogContent { get => _dialogContent; set => SetField(ref _dialogContent, value); }
-    public string PrimaryText { get => _primaryText; set => SetField(ref _primaryText, value); }
-    public string SecondaryText { get => _secondaryText; set => SetField(ref _secondaryText, value); }
-    public string CloseText { get => _closeText; set => SetField(ref _closeText, value); }
-    public ContentDialogButton DefaultButton { get => _defaultButton; set => SetField(ref _defaultButton, value); }
-    public bool FullSizeDesired { get => _fullSizeDesired; set => SetField(ref _fullSizeDesired, value); }
-    public string LastResult { get => _lastResult; private set => SetField(ref _lastResult, value); }
-    public string PresetResult { get => _presetResult; private set => SetField(ref _presetResult, value); }
-    public string ValidationResult { get => _validationResult; private set => SetField(ref _validationResult, value); }
+
+    public string DialogTitle
+    {
+        get => _dialogTitle;
+        set => SetField(ref _dialogTitle, value);
+    }
+
+    public string DialogContent
+    {
+        get => _dialogContent;
+        set => SetField(ref _dialogContent, value);
+    }
+
+    public string PrimaryText
+    {
+        get => _primaryText;
+        set => SetField(ref _primaryText, value);
+    }
+
+    public string SecondaryText
+    {
+        get => _secondaryText;
+        set => SetField(ref _secondaryText, value);
+    }
+
+    public string CloseText
+    {
+        get => _closeText;
+        set => SetField(ref _closeText, value);
+    }
+
+    public ContentDialogButton DefaultButton
+    {
+        get => _defaultButton;
+        set => SetField(ref _defaultButton, value);
+    }
+
+    public bool FullSizeDesired
+    {
+        get => _fullSizeDesired;
+        set => SetField(ref _fullSizeDesired, value);
+    }
+
+    public string LastResult
+    {
+        get => _lastResult;
+        private set => SetField(ref _lastResult, value);
+    }
+
+    public string PresetResult
+    {
+        get => _presetResult;
+        private set => SetField(ref _presetResult, value);
+    }
+
+    public string ValidationResult
+    {
+        get => _validationResult;
+        private set => SetField(ref _validationResult, value);
+    }
+
     public new event PropertyChangedEventHandler? PropertyChanged;
 
     private async void ShowConfigured(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -54,16 +105,25 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
             Children =
             {
                 new TextBlock { Text = "Delete 'Quarterly report.docx'?", TextWrapping = TextWrapping.Wrap },
-                new TextBlock { Text = "The file can be restored from the recycle bin for 30 days.", Opacity = 0.65, TextWrapping = TextWrapping.Wrap }
+                new TextBlock
+                {
+                    Text = "The file can be restored from the recycle bin for 30 days.", Opacity = 0.65,
+                    TextWrapping = TextWrapping.Wrap
+                }
             }
         };
-        var dialog = new ContentDialog { Title = "Delete file", Content = content, PrimaryButtonText = "Delete", CloseButtonText = "Cancel", DefaultButton = ContentDialogButton.Close };
+        var dialog = new ContentDialog
+        {
+            Title = "Delete file", Content = content, PrimaryButtonText = "Delete", CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Close
+        };
         PresetResult = await dialog.ShowAsync() == ContentDialogResult.Primary ? "File deleted" : "Deletion cancelled";
     }
 
     private async void ShowSaveChanges(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var result = await CreateDialog("Save changes", "This document contains unsaved changes.", "Save", "Don't save", "Cancel").ShowAsync();
+        var result = await CreateDialog("Save changes", "This document contains unsaved changes.", "Save", "Don't save",
+            "Cancel").ShowAsync();
         PresetResult = result switch
         {
             ContentDialogResult.Primary => "Saved and closed",
@@ -78,7 +138,8 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
         var dialog = new ContentDialog
         {
             Title = "Rename project",
-            Content = new StackPanel { Spacing = 8, Children = { new TextBlock { Text = "Enter a new project name." }, input } },
+            Content = new StackPanel
+                { Spacing = 8, Children = { new TextBlock { Text = "Enter a new project name." }, input } },
             PrimaryButtonText = "Rename",
             CloseButtonText = "Cancel",
             DefaultButton = ContentDialogButton.Primary
@@ -90,16 +151,23 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
 
     private async void ShowRichContent(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var environment = new ComboBox { ItemsSource = new[] { "Production", "Staging", "Development" }, SelectedIndex = 1 };
+        var environment = new ComboBox
+            { ItemsSource = new[] { "Production", "Staging", "Development" }, SelectedIndex = 1 };
         var backup = new CheckBox { Content = "Create a backup before deployment", IsChecked = true };
-        var notes = new TextBox { AcceptsReturn = true, MinHeight = 72, PlaceholderText = "Release notes", TextWrapping = TextWrapping.Wrap };
+        var notes = new TextBox
+        {
+            AcceptsReturn = true, MinHeight = 72, PlaceholderText = "Release notes", TextWrapping = TextWrapping.Wrap
+        };
         var dialog = new ContentDialog
         {
             Title = "Deploy release",
             Content = new StackPanel
             {
                 Spacing = 10,
-                Children = { new TextBlock { Text = "Environment" }, environment, backup, new TextBlock { Text = "Notes" }, notes }
+                Children =
+                {
+                    new TextBlock { Text = "Environment" }, environment, backup, new TextBlock { Text = "Notes" }, notes
+                }
             },
             PrimaryButtonText = "Deploy",
             SecondaryButtonText = "Save draft",
@@ -112,7 +180,11 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
 
     private async void ShowCloseOnly(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var dialog = new ContentDialog { Title = "Session notice", Content = "Your session will expire in five minutes.", CloseButtonText = "Got it", DefaultButton = ContentDialogButton.Close };
+        var dialog = new ContentDialog
+        {
+            Title = "Session notice", Content = "Your session will expire in five minutes.", CloseButtonText = "Got it",
+            DefaultButton = ContentDialogButton.Close
+        };
         await dialog.ShowAsync();
         PresetResult = "Notice acknowledged";
     }
@@ -141,7 +213,8 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
         ValidationResult = (await dialog.ShowAsync()).ToString();
     }
 
-    private static ContentDialog CreateDialog(string title, string content, string? primary, string? secondary, string? close) => new()
+    private static ContentDialog CreateDialog(string title, string content, string? primary, string? secondary,
+        string? close) => new()
     {
         Title = title,
         Content = new TextBlock { Text = content, MaxWidth = 460, TextWrapping = TextWrapping.Wrap },
@@ -161,38 +234,38 @@ public partial class ContentDialogPage : UserControl, INotifyPropertyChanged
     }
 
     public string ConfiguratorCode { get; } = """
-        var dialog = new ContentDialog
-        {
-            Title = DialogTitle,
-            Content = DialogContent,
-            PrimaryButtonText = PrimaryText,
-            SecondaryButtonText = SecondaryText,
-            CloseButtonText = CloseText,
-            DefaultButton = DefaultButton,
-            FullSizeDesired = FullSizeDesired
-        };
-        ContentDialogResult result = await dialog.ShowAsync();
-        """;
+                                              var dialog = new ContentDialog
+                                              {
+                                                  Title = DialogTitle,
+                                                  Content = DialogContent,
+                                                  PrimaryButtonText = PrimaryText,
+                                                  SecondaryButtonText = SecondaryText,
+                                                  CloseButtonText = CloseText,
+                                                  DefaultButton = DefaultButton,
+                                                  FullSizeDesired = FullSizeDesired
+                                              };
+                                              ContentDialogResult result = await dialog.ShowAsync();
+                                              """;
 
     public string ContentCode { get; } = """
-        var input = new TextBox { PlaceholderText = "Project name" };
-        var dialog = new ContentDialog
-        {
-            Title = "Rename project",
-            Content = input,
-            PrimaryButtonText = "Rename",
-            CloseButtonText = "Cancel"
-        };
-        ContentDialogResult result = await dialog.ShowAsync();
-        """;
+                                         var input = new TextBox { PlaceholderText = "Project name" };
+                                         var dialog = new ContentDialog
+                                         {
+                                             Title = "Rename project",
+                                             Content = input,
+                                             PrimaryButtonText = "Rename",
+                                             CloseButtonText = "Cancel"
+                                         };
+                                         ContentDialogResult result = await dialog.ShowAsync();
+                                         """;
 
     public string DeferralCode { get; } = """
-        dialog.PrimaryButtonClick += async (_, args) =>
-        {
-            Deferral deferral = args.GetDeferral();
-            await ValidateAsync();
-            args.Cancel = input.Text != "CONFIRM";
-            deferral.Complete();
-        };
-        """;
+                                          dialog.PrimaryButtonClick += async (_, args) =>
+                                          {
+                                              Deferral deferral = args.GetDeferral();
+                                              await ValidateAsync();
+                                              args.Cancel = input.Text != "CONFIRM";
+                                              deferral.Complete();
+                                          };
+                                          """;
 }

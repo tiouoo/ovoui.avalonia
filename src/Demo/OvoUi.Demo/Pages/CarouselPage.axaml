@@ -25,28 +25,53 @@
                     SelectedIndex="{Binding #Index.Value}"
                     Theme="{StaticResource FullCarousel}">
                     <Border Background="#DBEAFE">
-                        <StackPanel HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center">
-                            <TextBlock FontSize="22" FontWeight="Bold" Text="Overview" />
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Spacing="8"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                FontSize="22"
+                                FontWeight="Bold"
+                                Text="Overview" />
                             <TextBlock Text="First carousel page" />
                         </StackPanel>
                     </Border>
                     <Border Background="#DCFCE7">
-                        <StackPanel HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center">
-                            <TextBlock FontSize="22" FontWeight="Bold" Text="Details" />
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Spacing="8"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                FontSize="22"
+                                FontWeight="Bold"
+                                Text="Details" />
                             <TextBlock Text="Second carousel page" />
                         </StackPanel>
                     </Border>
                     <Border Background="#FEF3C7">
-                        <StackPanel HorizontalAlignment="Center" Spacing="8" VerticalAlignment="Center">
-                            <TextBlock FontSize="22" FontWeight="Bold" Text="Activity" />
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Spacing="8"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                FontSize="22"
+                                FontWeight="Bold"
+                                Text="Activity" />
                             <TextBlock Text="Third carousel page" />
                         </StackPanel>
                     </Border>
                 </Carousel>
 
-                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="16"
+                    RowDefinitions="Auto,Auto,Auto"
+                    RowSpacing="12">
                     <TextBlock Text="Indicator type" VerticalAlignment="Center" />
-                    <Border Grid.Column="1" HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
+                    <Border
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        Theme="{StaticResource RadioButtonGroupBorder}">
                         <StackPanel Orientation="Horizontal">
                             <RadioButton
                                 Content="Dot"
@@ -67,7 +92,10 @@
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Grid.Row="1" Text="Indicator position" VerticalAlignment="Center" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="Indicator position"
+                        VerticalAlignment="Center" />
                     <Border
                         Grid.Column="1"
                         Grid.Row="1"
@@ -93,8 +121,15 @@
                         </StackPanel>
                     </Border>
 
-                    <TextBlock Grid.Row="2" Text="Selected page" VerticalAlignment="Center" />
-                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Spacing="12">
+                    <TextBlock
+                        Grid.Row="2"
+                        Text="Selected page"
+                        VerticalAlignment="Center" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Spacing="12">
                         <Slider
                             IsSnapToTickEnabled="True"
                             Maximum="2"
@@ -109,4 +144,3 @@
         </o:ControlShowcase>
     </demo:DemoPage>
 </UserControl>
-

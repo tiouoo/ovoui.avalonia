@@ -10,7 +10,11 @@
         <o:ControlShowcase Header="Confirmation commands" SourceKey="pop-confirm-commands">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" CodeHeight="360" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="360"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="14">
                 <WrapPanel ItemSpacing="16" LineSpacing="12">
@@ -60,7 +64,11 @@
         <o:ControlShowcase Header="Asynchronous confirmation" SourceKey="pop-confirm-async-command">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" CodeHeight="360" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    CodeHeight="360"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <o:PopConfirm

@@ -29,35 +29,78 @@ public partial class MessageBoxPage : UserControl, INotifyPropertyChanged
 
     public IReadOnlyList<MessageBoxIcon> Icons { get; } = Enum.GetValues<MessageBoxIcon>();
     public IReadOnlyList<MessageBoxButton> ButtonSets { get; } = Enum.GetValues<MessageBoxButton>();
-    public string MessageTitle { get => _messageTitle; set => SetField(ref _messageTitle, value); }
-    public string MessageContent { get => _messageContent; set => SetField(ref _messageContent, value); }
-    public MessageBoxIcon SelectedIcon { get => _selectedIcon; set => SetField(ref _selectedIcon, value); }
-    public MessageBoxButton SelectedButtons { get => _selectedButtons; set => SetField(ref _selectedButtons, value); }
-    public bool UseOverlay { get => _useOverlay; set => SetField(ref _useOverlay, value); }
-    public bool ShowTitle { get => _showTitle; set => SetField(ref _showTitle, value); }
-    public string LastResult { get => _lastResult; private set => SetField(ref _lastResult, value); }
+
+    public string MessageTitle
+    {
+        get => _messageTitle;
+        set => SetField(ref _messageTitle, value);
+    }
+
+    public string MessageContent
+    {
+        get => _messageContent;
+        set => SetField(ref _messageContent, value);
+    }
+
+    public MessageBoxIcon SelectedIcon
+    {
+        get => _selectedIcon;
+        set => SetField(ref _selectedIcon, value);
+    }
+
+    public MessageBoxButton SelectedButtons
+    {
+        get => _selectedButtons;
+        set => SetField(ref _selectedButtons, value);
+    }
+
+    public bool UseOverlay
+    {
+        get => _useOverlay;
+        set => SetField(ref _useOverlay, value);
+    }
+
+    public bool ShowTitle
+    {
+        get => _showTitle;
+        set => SetField(ref _showTitle, value);
+    }
+
+    public string LastResult
+    {
+        get => _lastResult;
+        private set => SetField(ref _lastResult, value);
+    }
+
     public new event PropertyChangedEventHandler? PropertyChanged;
 
     private async void ShowConfigured(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync(MessageContent, ShowTitle ? MessageTitle : string.Empty, SelectedIcon, SelectedButtons, UseOverlay);
+        await ShowAsync(MessageContent, ShowTitle ? MessageTitle : string.Empty, SelectedIcon, SelectedButtons,
+            UseOverlay);
 
     private async void ShowInformation(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("The background index has finished updating.", "Index complete", MessageBoxIcon.Information, MessageBoxButton.OK, UseOverlay);
+        await ShowAsync("The background index has finished updating.", "Index complete", MessageBoxIcon.Information,
+            MessageBoxButton.OK, UseOverlay);
 
     private async void ShowSuccess(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("All selected files were saved successfully.", "Changes saved", MessageBoxIcon.Success, MessageBoxButton.OK, UseOverlay);
+        await ShowAsync("All selected files were saved successfully.", "Changes saved", MessageBoxIcon.Success,
+            MessageBoxButton.OK, UseOverlay);
 
     private async void ShowWarning(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("The connection is unstable. Continue with the current operation?", "Connection warning", MessageBoxIcon.Warning, MessageBoxButton.OKCancel, UseOverlay);
+        await ShowAsync("The connection is unstable. Continue with the current operation?", "Connection warning",
+            MessageBoxIcon.Warning, MessageBoxButton.OKCancel, UseOverlay);
 
     private async void ShowError(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("The package could not be published. Review the build output and try again.", "Publish failed", MessageBoxIcon.Error, MessageBoxButton.OK, UseOverlay);
+        await ShowAsync("The package could not be published. Review the build output and try again.", "Publish failed",
+            MessageBoxIcon.Error, MessageBoxButton.OK, UseOverlay);
 
     private async void ShowQuestion(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("Replace the existing file with the newer version?", "Confirm replacement", MessageBoxIcon.Question, MessageBoxButton.YesNoCancel, UseOverlay);
+        await ShowAsync("Replace the existing file with the newer version?", "Confirm replacement",
+            MessageBoxIcon.Question, MessageBoxButton.YesNoCancel, UseOverlay);
 
     private async void ShowLongMessage(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync(LongMessage, "Review deployment", MessageBoxIcon.Information, MessageBoxButton.OKCancel, UseOverlay);
+        await ShowAsync(LongMessage, "Review deployment", MessageBoxIcon.Information, MessageBoxButton.OKCancel,
+            UseOverlay);
 
     private async void ShowOk(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
         await ShowAsync(MessageContent, MessageTitle, SelectedIcon, MessageBoxButton.OK, UseOverlay);
@@ -72,15 +115,19 @@ public partial class MessageBoxPage : UserControl, INotifyPropertyChanged
         await ShowAsync(MessageContent, MessageTitle, SelectedIcon, MessageBoxButton.YesNoCancel, UseOverlay);
 
     private async void ShowOverlayMessage(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("The modal mask covers the full application window.", "Overlay message", MessageBoxIcon.Information, MessageBoxButton.OKCancel, true);
+        await ShowAsync("The modal mask covers the full application window.", "Overlay message",
+            MessageBoxIcon.Information, MessageBoxButton.OKCancel, true);
 
     private async void ShowOwnedWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("Drag the title area to move this owned message window.", "Owned message window", MessageBoxIcon.Success, MessageBoxButton.OKCancel, false);
+        await ShowAsync("Drag the title area to move this owned message window.", "Owned message window",
+            MessageBoxIcon.Success, MessageBoxButton.OKCancel, false);
 
     private async void ShowUntitledWindow(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
-        await ShowAsync("This message uses the standalone window without title text.", string.Empty, MessageBoxIcon.None, MessageBoxButton.OK, false);
+        await ShowAsync("This message uses the standalone window without title text.", string.Empty,
+            MessageBoxIcon.None, MessageBoxButton.OK, false);
 
-    private async Task ShowAsync(string message, string title, MessageBoxIcon icon, MessageBoxButton buttons, bool overlay)
+    private async Task ShowAsync(string message, string title, MessageBoxIcon icon, MessageBoxButton buttons,
+        bool overlay)
     {
         if (overlay)
         {
@@ -90,7 +137,8 @@ public partial class MessageBoxPage : UserControl, INotifyPropertyChanged
 
         if (TopLevel.GetTopLevel(this) is not Window owner)
         {
-            App.RootView.ToastManager.Show("Window message boxes are only available in the desktop host.", NotificationType.Warning);
+            App.RootView.ToastManager.Show("Window message boxes are only available in the desktop host.",
+                NotificationType.Warning);
             return;
         }
 
@@ -105,27 +153,27 @@ public partial class MessageBoxPage : UserControl, INotifyPropertyChanged
     }
 
     public string ConfiguratorCode { get; } = """
-        MessageBoxResult result = UseOverlay
-            ? await OverlayMessageBox.ShowAsync(MessageContent, MessageTitle,
-                icon: SelectedIcon, button: SelectedButtons)
-            : await MessageBox.ShowAsync(owner, MessageContent, MessageTitle,
-                SelectedIcon, SelectedButtons);
-        """;
+                                              MessageBoxResult result = UseOverlay
+                                                  ? await OverlayMessageBox.ShowAsync(MessageContent, MessageTitle,
+                                                      icon: SelectedIcon, button: SelectedButtons)
+                                                  : await MessageBox.ShowAsync(owner, MessageContent, MessageTitle,
+                                                      SelectedIcon, SelectedButtons);
+                                              """;
 
     public string PresetsCode { get; } = """
-        await OverlayMessageBox.ShowAsync(
-            "Replace the existing file with the newer version?",
-            "Confirm replacement",
-            icon: MessageBoxIcon.Question,
-            button: MessageBoxButton.YesNoCancel);
-        """;
+                                         await OverlayMessageBox.ShowAsync(
+                                             "Replace the existing file with the newer version?",
+                                             "Confirm replacement",
+                                             icon: MessageBoxIcon.Question,
+                                             button: MessageBoxButton.YesNoCancel);
+                                         """;
 
     public string HostingCode { get; } = """
-        // Overlay uses the full-window modal mask.
-        await OverlayMessageBox.ShowAsync(message, title);
+                                         // Overlay uses the full-window modal mask.
+                                         await OverlayMessageBox.ShowAsync(message, title);
 
-        // The owned window inherits its owner's typography and theme.
-        await MessageBox.ShowAsync(owner, message, title,
-            MessageBoxIcon.Information, MessageBoxButton.OKCancel);
-        """;
+                                         // The owned window inherits its owner's typography and theme.
+                                         await MessageBox.ShowAsync(owner, message, title,
+                                             MessageBoxIcon.Information, MessageBoxButton.OKCancel);
+                                         """;
 }

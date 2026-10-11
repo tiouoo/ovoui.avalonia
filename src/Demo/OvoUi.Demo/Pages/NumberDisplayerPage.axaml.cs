@@ -25,20 +25,42 @@ public sealed class NumberDisplayerDemoViewModel : INotifyPropertyChanged
     private DateTime _dateValue = DateTime.Today;
 
     public event PropertyChangedEventHandler? PropertyChanged;
-    public int Value { get => _value; private set => Set(ref _value, value); }
-    public long LongValue { get => _longValue; private set => Set(ref _longValue, value); }
-    public double DoubleValue { get => _doubleValue; private set => Set(ref _doubleValue, value); }
-    public DateTime DateValue { get => _dateValue; private set => Set(ref _dateValue, value); }
+
+    public int Value
+    {
+        get => _value;
+        private set => Set(ref _value, value);
+    }
+
+    public long LongValue
+    {
+        get => _longValue;
+        private set => Set(ref _longValue, value);
+    }
+
+    public double DoubleValue
+    {
+        get => _doubleValue;
+        private set => Set(ref _doubleValue, value);
+    }
+
+    public DateTime DateValue
+    {
+        get => _dateValue;
+        private set => Set(ref _dateValue, value);
+    }
+
     public ICommand ChangeCommand { get; }
+
     public string SourceCode { get; } = """
-        private void ChangeValues()
-        {
-            Value = _random.Next(1000, 1000000);
-            LongValue = _random.NextInt64(100000, 100000000);
-            DoubleValue = _random.NextDouble() * 100000;
-            DateValue = DateTime.Today.AddDays(_random.Next(-30, 365));
-        }
-        """;
+                                        private void ChangeValues()
+                                        {
+                                            Value = _random.Next(1000, 1000000);
+                                            LongValue = _random.NextInt64(100000, 100000000);
+                                            DoubleValue = _random.NextDouble() * 100000;
+                                            DateValue = DateTime.Today.AddDays(_random.Next(-30, 365));
+                                        }
+                                        """;
 
     public NumberDisplayerDemoViewModel() => ChangeCommand = new ActionCommand(ChangeValues);
 
@@ -57,4 +79,3 @@ public sealed class NumberDisplayerDemoViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }
-

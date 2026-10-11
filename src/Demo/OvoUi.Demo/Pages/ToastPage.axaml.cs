@@ -32,35 +32,97 @@ public partial class ToastPage : UserControl, INotifyPropertyChanged
 
     private OvoToastManager Manager => App.RootView.ToastManager;
     public IReadOnlyList<NotificationType> Types { get; } = Enum.GetValues<NotificationType>();
-    public string ToastContent { get => _toastContent; set => SetField(ref _toastContent, value); }
-    public NotificationType SelectedType { get => _selectedType; set => SetField(ref _selectedType, value); }
-    public decimal ExpirationSeconds { get => _expirationSeconds; set => SetField(ref _expirationSeconds, value); }
-    public bool IsIconVisible { get => _isIconVisible; set => SetField(ref _isIconVisible, value); }
-    public bool IsCloseButtonVisible { get => _isCloseButtonVisible; set => SetField(ref _isCloseButtonVisible, value); }
-    public bool IsCollapseButtonVisible { get => _isCollapseButtonVisible; set => SetField(ref _isCollapseButtonVisible, value); }
-    public bool IsTouchClose { get => _isTouchClose; set => SetField(ref _isTouchClose, value); }
-    public bool IsColorful { get => _isColorful; set => SetField(ref _isColorful, value); }
-    public bool IncludeActions { get => _includeActions; set => SetField(ref _includeActions, value); }
-    public bool IsButtonsInline { get => _isButtonsInline; set => SetField(ref _isButtonsInline, value); }
-    public string LastCloseReason { get => _lastCloseReason; private set => SetField(ref _lastCloseReason, value); }
-    public string LastInteraction { get => _lastInteraction; private set => SetField(ref _lastInteraction, value); }
+
+    public string ToastContent
+    {
+        get => _toastContent;
+        set => SetField(ref _toastContent, value);
+    }
+
+    public NotificationType SelectedType
+    {
+        get => _selectedType;
+        set => SetField(ref _selectedType, value);
+    }
+
+    public decimal ExpirationSeconds
+    {
+        get => _expirationSeconds;
+        set => SetField(ref _expirationSeconds, value);
+    }
+
+    public bool IsIconVisible
+    {
+        get => _isIconVisible;
+        set => SetField(ref _isIconVisible, value);
+    }
+
+    public bool IsCloseButtonVisible
+    {
+        get => _isCloseButtonVisible;
+        set => SetField(ref _isCloseButtonVisible, value);
+    }
+
+    public bool IsCollapseButtonVisible
+    {
+        get => _isCollapseButtonVisible;
+        set => SetField(ref _isCollapseButtonVisible, value);
+    }
+
+    public bool IsTouchClose
+    {
+        get => _isTouchClose;
+        set => SetField(ref _isTouchClose, value);
+    }
+
+    public bool IsColorful
+    {
+        get => _isColorful;
+        set => SetField(ref _isColorful, value);
+    }
+
+    public bool IncludeActions
+    {
+        get => _includeActions;
+        set => SetField(ref _includeActions, value);
+    }
+
+    public bool IsButtonsInline
+    {
+        get => _isButtonsInline;
+        set => SetField(ref _isButtonsInline, value);
+    }
+
+    public string LastCloseReason
+    {
+        get => _lastCloseReason;
+        private set => SetField(ref _lastCloseReason, value);
+    }
+
+    public string LastInteraction
+    {
+        get => _lastInteraction;
+        private set => SetField(ref _lastInteraction, value);
+    }
+
     public new event PropertyChangedEventHandler? PropertyChanged;
 
-    private void ShowConfigured(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = ToastContent,
-        Type = SelectedType,
-        Expiration = ExpirationSeconds <= 0 ? TimeSpan.Zero : TimeSpan.FromSeconds((double)ExpirationSeconds),
-        IsIconVisible = IsIconVisible,
-        IsCloseButtonVisible = IsCloseButtonVisible,
-        IsCollapseButtonVisible = IsCollapseButtonVisible,
-        IsTouchClose = IsTouchClose,
-        IsColorful = IsColorful,
-        IsButtonsInline = IsButtonsInline,
-        OperateButtons = IncludeActions ? CreateActions() : null,
-        OnClick = () => LastInteraction = "Toast clicked",
-        OnClose = SetCloseReason
-    });
+    private void ShowConfigured(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content = ToastContent,
+            Type = SelectedType,
+            Expiration = ExpirationSeconds <= 0 ? TimeSpan.Zero : TimeSpan.FromSeconds((double)ExpirationSeconds),
+            IsIconVisible = IsIconVisible,
+            IsCloseButtonVisible = IsCloseButtonVisible,
+            IsCollapseButtonVisible = IsCollapseButtonVisible,
+            IsTouchClose = IsTouchClose,
+            IsColorful = IsColorful,
+            IsButtonsInline = IsButtonsInline,
+            OperateButtons = IncludeActions ? CreateActions() : null,
+            OnClick = () => LastInteraction = "Toast clicked",
+            OnClose = SetCloseReason
+        });
 
     private ObservableCollection<OperateButtonEntry> CreateActions() =>
     [
@@ -68,10 +130,17 @@ public partial class ToastPage : UserControl, INotifyPropertyChanged
         new("Dismiss", _ => LastInteraction = "Dismiss selected", closeOnClick: true)
     ];
 
-    private void ShowInformation(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowPreset("A background task has started.", NotificationType.Information);
-    private void ShowSuccess(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowPreset("Changes saved successfully.", NotificationType.Success);
-    private void ShowWarning(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowPreset("The connection is unstable.", NotificationType.Warning);
-    private void ShowError(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowPreset("The request could not be completed.", NotificationType.Error);
+    private void ShowInformation(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
+        ShowPreset("A background task has started.", NotificationType.Information);
+
+    private void ShowSuccess(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
+        ShowPreset("Changes saved successfully.", NotificationType.Success);
+
+    private void ShowWarning(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
+        ShowPreset("The connection is unstable.", NotificationType.Warning);
+
+    private void ShowError(object? sender, Avalonia.Interactivity.RoutedEventArgs e) =>
+        ShowPreset("The request could not be completed.", NotificationType.Error);
 
     private void ShowPreset(string content, NotificationType type) => Manager.Show(new NotificationOptions
     {
@@ -80,21 +149,24 @@ public partial class ToastPage : UserControl, INotifyPropertyChanged
         OnClose = SetCloseReason
     });
 
-    private void ShowLongContent(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = "The export completed with warnings. Three records used fallback values and two attachments were skipped because they exceeded the configured size limit.",
-        Type = NotificationType.Warning,
-        Expiration = TimeSpan.FromSeconds(8),
-        OnClose = SetCloseReason
-    });
+    private void ShowLongContent(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content =
+                "The export completed with warnings. Three records used fallback values and two attachments were skipped because they exceeded the configured size limit.",
+            Type = NotificationType.Warning,
+            Expiration = TimeSpan.FromSeconds(8),
+            OnClose = SetCloseReason
+        });
 
-    private void ShowMultiline(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = "Upload complete\n12 files processed\n2 warnings require review",
-        Type = NotificationType.Success,
-        Expiration = TimeSpan.FromSeconds(6),
-        OnClose = SetCloseReason
-    });
+    private void ShowMultiline(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content = "Upload complete\n12 files processed\n2 warnings require review",
+            Type = NotificationType.Success,
+            Expiration = TimeSpan.FromSeconds(6),
+            OnClose = SetCloseReason
+        });
 
     private void ShowOneSecond(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowDuration(1);
     private void ShowThreeSeconds(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowDuration(3);
@@ -103,26 +175,30 @@ public partial class ToastPage : UserControl, INotifyPropertyChanged
 
     private void ShowDuration(int seconds) => Manager.Show(new NotificationOptions
     {
-        Content = seconds == 0 ? "Persistent toast: close this item manually." : $"This toast remains visible for {seconds} second(s).",
+        Content = seconds == 0
+            ? "Persistent toast: close this item manually."
+            : $"This toast remains visible for {seconds} second(s).",
         Type = NotificationType.Information,
         Expiration = TimeSpan.FromSeconds(seconds),
         OnClose = SetCloseReason
     });
 
-    private void ShowWithoutIcon(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = "Toast without a status icon.",
-        IsIconVisible = false,
-        OnClose = SetCloseReason
-    });
+    private void ShowWithoutIcon(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content = "Toast without a status icon.",
+            IsIconVisible = false,
+            OnClose = SetCloseReason
+        });
 
-    private void ShowWithoutClose(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = "Toast without a close button.",
-        IsCloseButtonVisible = false,
-        Expiration = TimeSpan.FromSeconds(3),
-        OnClose = SetCloseReason
-    });
+    private void ShowWithoutClose(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content = "Toast without a close button.",
+            IsCloseButtonVisible = false,
+            Expiration = TimeSpan.FromSeconds(3),
+            OnClose = SetCloseReason
+        });
 
     private void ShowInlineActions(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowActions(true);
     private void ShowStackedActions(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => ShowActions(false);
@@ -168,22 +244,24 @@ public partial class ToastPage : UserControl, INotifyPropertyChanged
         OnClose = SetCloseReason
     };
 
-    private void ShowClickable(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = "Click this toast to open the completed export.",
-        Type = NotificationType.Success,
-        Expiration = TimeSpan.FromSeconds(8),
-        IsTouchClose = true,
-        OnClick = () => LastInteraction = "Completed export requested",
-        OnClose = SetCloseReason
-    });
+    private void ShowClickable(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content = "Click this toast to open the completed export.",
+            Type = NotificationType.Success,
+            Expiration = TimeSpan.FromSeconds(8),
+            IsTouchClose = true,
+            OnClick = () => LastInteraction = "Completed export requested",
+            OnClose = SetCloseReason
+        });
 
-    private void ShowTimeout(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(new NotificationOptions
-    {
-        Content = "This toast closes automatically after two seconds.",
-        Expiration = TimeSpan.FromSeconds(2),
-        OnClose = SetCloseReason
-    });
+    private void ShowTimeout(object? sender, Avalonia.Interactivity.RoutedEventArgs e) => Manager.Show(
+        new NotificationOptions
+        {
+            Content = "This toast closes automatically after two seconds.",
+            Expiration = TimeSpan.FromSeconds(2),
+            OnClose = SetCloseReason
+        });
 
     private void ShowTracked(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
@@ -241,49 +319,49 @@ public partial class ToastPage : UserControl, INotifyPropertyChanged
     }
 
     public string ConfiguratorCode { get; } = """
-        manager.Show(new NotificationOptions
-        {
-            Content = ToastContent,
-            Type = SelectedType,
-            Expiration = TimeSpan.FromSeconds((double)ExpirationSeconds),
-            IsIconVisible = IsIconVisible,
-            IsCloseButtonVisible = IsCloseButtonVisible,
-            IsTouchClose = IsTouchClose,
-            IsColorful = IsColorful,
-            OperateButtons = actions,
-            OnClose = reason => LastCloseReason = reason.ToString()
-        });
-        """;
+                                              manager.Show(new NotificationOptions
+                                              {
+                                                  Content = ToastContent,
+                                                  Type = SelectedType,
+                                                  Expiration = TimeSpan.FromSeconds((double)ExpirationSeconds),
+                                                  IsIconVisible = IsIconVisible,
+                                                  IsCloseButtonVisible = IsCloseButtonVisible,
+                                                  IsTouchClose = IsTouchClose,
+                                                  IsColorful = IsColorful,
+                                                  OperateButtons = actions,
+                                                  OnClose = reason => LastCloseReason = reason.ToString()
+                                              });
+                                              """;
 
     public string PresetsCode { get; } = """
-        manager.Show(new Toast(
-            "Changes saved successfully.",
-            NotificationType.Success,
-            TimeSpan.FromSeconds(3),
-            showClose: true));
-        """;
+                                         manager.Show(new Toast(
+                                             "Changes saved successfully.",
+                                             NotificationType.Success,
+                                             TimeSpan.FromSeconds(3),
+                                             showClose: true));
+                                         """;
 
     public string ActionsCode { get; } = """
-        manager.Show(new NotificationOptions
-        {
-            Content = "The download is ready.",
-            IsButtonsInline = true,
-            OperateButtons = new ObservableCollection<OperateButtonEntry>
-            {
-                new("Open", _ => OpenFile(), closeOnClick: true),
-                new("Folder", _ => OpenFolder())
-            }
-        });
-        """;
+                                         manager.Show(new NotificationOptions
+                                         {
+                                             Content = "The download is ready.",
+                                             IsButtonsInline = true,
+                                             OperateButtons = new ObservableCollection<OperateButtonEntry>
+                                             {
+                                                 new("Open", _ => OpenFile(), closeOnClick: true),
+                                                 new("Folder", _ => OpenFolder())
+                                             }
+                                         });
+                                         """;
 
     public string LifetimeCode { get; } = """
-        var toast = new Toast(
-            "Tracked toast",
-            expiration: TimeSpan.Zero,
-            onClose: reason => LastCloseReason = reason.ToString());
+                                          var toast = new Toast(
+                                              "Tracked toast",
+                                              expiration: TimeSpan.Zero,
+                                              onClose: reason => LastCloseReason = reason.ToString());
 
-        manager.Show(toast);
-        manager.Close(toast);
-        manager.CloseAll();
-        """;
+                                          manager.Show(toast);
+                                          manager.Close(toast);
+                                          manager.CloseAll();
+                                          """;
 }

@@ -33,24 +33,24 @@ public partial class RefreshContainerPage : UserControl, INotifyPropertyChanged
     }
 
     public string SourceCode { get; } = """
-        public ObservableCollection<ActivityItem> Items { get; } = new();
+                                        public ObservableCollection<ActivityItem> Items { get; } = new();
 
-        private async void OnRefreshRequested(object? sender, RefreshRequestedEventArgs e)
-        {
-            var deferral = e.GetDeferral();
-            try
-            {
-                Status = "Refreshing...";
-                await Task.Delay(900);
-                Items.Insert(0, CreateItem(_nextId++));
-                Status = "Refresh completed";
-            }
-            finally
-            {
-                deferral.Complete();
-            }
-        }
-        """;
+                                        private async void OnRefreshRequested(object? sender, RefreshRequestedEventArgs e)
+                                        {
+                                            var deferral = e.GetDeferral();
+                                            try
+                                            {
+                                                Status = "Refreshing...";
+                                                await Task.Delay(900);
+                                                Items.Insert(0, CreateItem(_nextId++));
+                                                Status = "Refresh completed";
+                                            }
+                                            finally
+                                            {
+                                                deferral.Complete();
+                                            }
+                                        }
+                                        """;
 
     private async void OnRefreshRequested(object? sender, RefreshRequestedEventArgs e)
     {

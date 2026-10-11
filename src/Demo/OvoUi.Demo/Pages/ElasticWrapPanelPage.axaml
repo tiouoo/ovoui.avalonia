@@ -16,7 +16,10 @@
         <o:ControlShowcase Header="Interactive layout" SourceKey="layout-elastic-wrap-interactive">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <Grid ColumnDefinitions="280,*" ColumnSpacing="20">
                 <ScrollViewer MaxHeight="560" VerticalScrollBarVisibility="Auto">
@@ -31,13 +34,25 @@
                         <CheckBox Content="Fill horizontally" IsChecked="{Binding IsFillHorizontal}" />
                         <CheckBox Content="Fill vertically" IsChecked="{Binding IsFillVertical}" />
                         <TextBlock Text="{Binding ItemWidth, StringFormat='Item width: {0:F0}'}" />
-                        <Slider Maximum="220" Minimum="24" Value="{Binding ItemWidth}" />
+                        <Slider
+                            Maximum="220"
+                            Minimum="24"
+                            Value="{Binding ItemWidth}" />
                         <TextBlock Text="{Binding ItemHeight, StringFormat='Item height: {0:F0}'}" />
-                        <Slider Maximum="160" Minimum="24" Value="{Binding ItemHeight}" />
+                        <Slider
+                            Maximum="160"
+                            Minimum="24"
+                            Value="{Binding ItemHeight}" />
                         <TextBlock Text="{Binding ItemSpacing, StringFormat='Item spacing: {0:F0}'}" />
-                        <Slider Maximum="40" Minimum="-10" Value="{Binding ItemSpacing}" />
+                        <Slider
+                            Maximum="40"
+                            Minimum="-10"
+                            Value="{Binding ItemSpacing}" />
                         <TextBlock Text="{Binding LineSpacing, StringFormat='Line spacing: {0:F0}'}" />
-                        <Slider Maximum="40" Minimum="-10" Value="{Binding LineSpacing}" />
+                        <Slider
+                            Maximum="40"
+                            Minimum="-10"
+                            Value="{Binding LineSpacing}" />
                     </StackPanel>
                 </ScrollViewer>
 
@@ -52,9 +67,7 @@
                         CornerRadius="8"
                         Height="430"
                         Padding="8">
-                        <ScrollViewer
-                            HorizontalScrollBarVisibility="{Binding HorizontalVisibility}"
-                            VerticalScrollBarVisibility="{Binding VerticalVisibility}">
+                        <ScrollViewer HorizontalScrollBarVisibility="{Binding HorizontalVisibility}" VerticalScrollBarVisibility="{Binding VerticalVisibility}">
                             <o:ElasticWrapPanel
                                 Classes="demo"
                                 IsFillHorizontal="{Binding IsFillHorizontal}"
@@ -65,20 +78,48 @@
                                 LineSpacing="{Binding LineSpacing}"
                                 Name="interactivePanel"
                                 Orientation="{Binding SelectedOrientation}">
-                                <Border Background="#22F93920"><TextBlock Text="One" /></Border>
-                                <Border Background="#22E91E63"><TextBlock Text="Two" /></Border>
-                                <Border Background="#229E28B3"><TextBlock Text="Three" /></Border>
-                                <Border Background="#226A3AC7"><TextBlock Text="Four" /></Border>
-                                <Border Background="#223F51B5"><TextBlock Text="Five" /></Border>
-                                <Border Background="#220064FA"><TextBlock Text="Six" /></Border>
-                                <Border Background="#220095EE"><TextBlock Text="Seven" /></Border>
-                                <Border Background="#2205A4B6"><TextBlock Text="Eight" /></Border>
-                                <Border Background="#2200B3A1"><TextBlock Text="Nine" /></Border>
-                                <Border Background="#223BB346"><TextBlock Text="Ten" /></Border>
-                                <Border Background="#227BB63C"><TextBlock Text="Eleven" /></Border>
-                                <Border Background="#22FAC800"><TextBlock Text="Twelve" /></Border>
-                                <Border Background="#22FC8800"><TextBlock Text="Thirteen" /></Border>
-                                <Border Background="#226B7075"><TextBlock Text="Fourteen" /></Border>
+                                <Border Background="#22F93920">
+                                    <TextBlock Text="One" />
+                                </Border>
+                                <Border Background="#22E91E63">
+                                    <TextBlock Text="Two" />
+                                </Border>
+                                <Border Background="#229E28B3">
+                                    <TextBlock Text="Three" />
+                                </Border>
+                                <Border Background="#226A3AC7">
+                                    <TextBlock Text="Four" />
+                                </Border>
+                                <Border Background="#223F51B5">
+                                    <TextBlock Text="Five" />
+                                </Border>
+                                <Border Background="#220064FA">
+                                    <TextBlock Text="Six" />
+                                </Border>
+                                <Border Background="#220095EE">
+                                    <TextBlock Text="Seven" />
+                                </Border>
+                                <Border Background="#2205A4B6">
+                                    <TextBlock Text="Eight" />
+                                </Border>
+                                <Border Background="#2200B3A1">
+                                    <TextBlock Text="Nine" />
+                                </Border>
+                                <Border Background="#223BB346">
+                                    <TextBlock Text="Ten" />
+                                </Border>
+                                <Border Background="#227BB63C">
+                                    <TextBlock Text="Eleven" />
+                                </Border>
+                                <Border Background="#22FAC800">
+                                    <TextBlock Text="Twelve" />
+                                </Border>
+                                <Border Background="#22FC8800">
+                                    <TextBlock Text="Thirteen" />
+                                </Border>
+                                <Border Background="#226B7075">
+                                    <TextBlock Text="Fourteen" />
+                                </Border>
                             </o:ElasticWrapPanel>
                         </ScrollViewer>
                     </Border>
@@ -92,10 +133,18 @@
                     <TextBlock FontWeight="SemiBold" Text="Fixed item settings" />
                     <CheckBox Content="Automatic width" IsChecked="{Binding AutoWidth}" />
                     <TextBlock Text="{Binding ManualItemSelfWidth, StringFormat='Fixed width: {0:F0}'}" />
-                    <Slider IsEnabled="{Binding !AutoWidth}" Maximum="420" Minimum="100" Value="{Binding ManualItemSelfWidth}" />
+                    <Slider
+                        IsEnabled="{Binding !AutoWidth}"
+                        Maximum="420"
+                        Minimum="100"
+                        Value="{Binding ManualItemSelfWidth}" />
                     <CheckBox Content="Automatic height" IsChecked="{Binding AutoHeight}" />
                     <TextBlock Text="{Binding ManualItemSelfHeight, StringFormat='Fixed height: {0:F0}'}" />
-                    <Slider IsEnabled="{Binding !AutoHeight}" Maximum="160" Minimum="32" Value="{Binding ManualItemSelfHeight}" />
+                    <Slider
+                        IsEnabled="{Binding !AutoHeight}"
+                        Maximum="160"
+                        Minimum="32"
+                        Value="{Binding ManualItemSelfHeight}" />
                     <TextBlock Text="Horizontal alignment" />
                     <ComboBox ItemsSource="{Binding HorizontalAlignments}" SelectedItem="{Binding FixedHorizontalAlignment}" />
                     <TextBlock Text="Vertical alignment" />
@@ -109,9 +158,7 @@
                     Grid.Column="1"
                     MinHeight="300"
                     Padding="8">
-                    <ScrollViewer
-                        HorizontalScrollBarVisibility="{Binding HorizontalVisibility}"
-                        VerticalScrollBarVisibility="{Binding VerticalVisibility}">
+                    <ScrollViewer HorizontalScrollBarVisibility="{Binding HorizontalVisibility}" VerticalScrollBarVisibility="{Binding VerticalVisibility}">
                         <o:ElasticWrapPanel
                             Classes="demo"
                             IsFillHorizontal="{Binding IsFillHorizontal}"
@@ -121,28 +168,38 @@
                             ItemWidth="{Binding ItemWidth}"
                             LineSpacing="{Binding LineSpacing}"
                             Orientation="{Binding SelectedOrientation}">
-                            <Border Background="#223F8CFF"><TextBlock Text="Item 1" /></Border>
-                            <Border Background="#223F8CFF"><TextBlock Text="Item 2" /></Border>
-                            <Border Background="#223F8CFF"><TextBlock Text="Item 3" /></Border>
+                            <Border Background="#223F8CFF">
+                                <TextBlock Text="Item 1" />
+                            </Border>
+                            <Border Background="#223F8CFF">
+                                <TextBlock Text="Item 2" />
+                            </Border>
+                            <Border Background="#223F8CFF">
+                                <TextBlock Text="Item 3" />
+                            </Border>
                             <UniformGrid
                                 Height="{Binding ItemSelfHeight}"
                                 HorizontalAlignment="{Binding FixedHorizontalAlignment}"
                                 MinWidth="100"
-                                o:ElasticWrapPanel.FixToRB="True"
                                 VerticalAlignment="{Binding FixedVerticalAlignment}"
-                                Width="{Binding ItemSelfWidth}">
+                                Width="{Binding ItemSelfWidth}"
+                                o:ElasticWrapPanel.FixToRB="True">
                                 <Button Content="Search" />
                                 <Button Content="Export" />
                             </UniformGrid>
-                            <Border Background="#22F0B114"><TextBlock Text="Item 4" /></Border>
-                            <Border Background="#22F0B114"><TextBlock Text="Item 5" /></Border>
+                            <Border Background="#22F0B114">
+                                <TextBlock Text="Item 4" />
+                            </Border>
+                            <Border Background="#22F0B114">
+                                <TextBlock Text="Item 5" />
+                            </Border>
                             <UniformGrid
                                 Height="{Binding ItemSelfHeight}"
                                 HorizontalAlignment="{Binding FixedHorizontalAlignment}"
                                 MinWidth="100"
-                                o:ElasticWrapPanel.FixToRB="True"
                                 VerticalAlignment="{Binding FixedVerticalAlignment}"
-                                Width="{Binding ItemSelfWidth}">
+                                Width="{Binding ItemSelfWidth}"
+                                o:ElasticWrapPanel.FixToRB="True">
                                 <Button Content="Cancel" />
                                 <Button Content="Apply" />
                             </UniformGrid>
@@ -153,11 +210,25 @@
         </o:ControlShowcase>
 
         <o:ControlShowcase Header="Automatic item sizing" SourceKey="layout-elastic-wrap-auto-size">
-            <o:ElasticWrapPanel Classes="demo" ItemSpacing="8" LineSpacing="8">
-                <Border Background="#22F93920" Width="90"><TextBlock Text="Short" /></Border>
-                <Border Background="#220095EE" Width="180"><TextBlock Text="Wider item" /></Border>
-                <Border Background="#223BB346" Height="72" Width="130"><TextBlock Text="Taller item" /></Border>
-                <Border Background="#22FC8800" Width="220"><TextBlock Text="Content-sized item" /></Border>
+            <o:ElasticWrapPanel
+                Classes="demo"
+                ItemSpacing="8"
+                LineSpacing="8">
+                <Border Background="#22F93920" Width="90">
+                    <TextBlock Text="Short" />
+                </Border>
+                <Border Background="#220095EE" Width="180">
+                    <TextBlock Text="Wider item" />
+                </Border>
+                <Border
+                    Background="#223BB346"
+                    Height="72"
+                    Width="130">
+                    <TextBlock Text="Taller item" />
+                </Border>
+                <Border Background="#22FC8800" Width="220">
+                    <TextBlock Text="Content-sized item" />
+                </Border>
             </o:ElasticWrapPanel>
         </o:ControlShowcase>
     </demo:DemoPage>

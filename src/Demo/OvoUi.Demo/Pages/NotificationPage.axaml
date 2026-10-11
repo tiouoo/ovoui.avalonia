@@ -9,13 +9,23 @@
         <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-notification-configurator">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding ConfiguratorCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding ConfiguratorCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="14">
-                <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto,Auto,Auto,Auto"
+                    RowSpacing="10">
                     <TextBlock Text="Title" VerticalAlignment="Center" />
                     <TextBox Grid.Column="1" Text="{Binding NotificationTitle}" />
-                    <TextBlock Grid.Row="1" Text="Content" VerticalAlignment="Top" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="Content"
+                        VerticalAlignment="Top" />
                     <TextBox
                         AcceptsReturn="True"
                         Grid.Column="1"
@@ -23,12 +33,28 @@
                         MinHeight="72"
                         Text="{Binding NotificationContent}"
                         TextWrapping="Wrap" />
-                    <TextBlock Grid.Row="2" Text="Type and position" VerticalAlignment="Center" />
-                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Spacing="10">
-                        <ComboBox ItemsSource="{Binding Types}" MinWidth="150" SelectedItem="{Binding SelectedType}" />
-                        <ComboBox ItemsSource="{Binding Positions}" MinWidth="170" SelectedItem="{Binding SelectedPosition}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Text="Type and position"
+                        VerticalAlignment="Center" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <ComboBox
+                            ItemsSource="{Binding Types}"
+                            MinWidth="150"
+                            SelectedItem="{Binding SelectedType}" />
+                        <ComboBox
+                            ItemsSource="{Binding Positions}"
+                            MinWidth="170"
+                            SelectedItem="{Binding SelectedPosition}" />
                     </StackPanel>
-                    <TextBlock Grid.Row="3" Text="Duration (seconds)" VerticalAlignment="Center" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Text="Duration (seconds)"
+                        VerticalAlignment="Center" />
                     <NumericUpDown
                         Grid.Column="1"
                         Grid.Row="3"
@@ -47,7 +73,10 @@
                     <CheckBox Content="Inline actions" IsChecked="{Binding IsButtonsInline}" />
                 </WrapPanel>
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Button Classes="accent" Click="ShowConfigured" Content="Show notification" />
+                    <Button
+                        Classes="accent"
+                        Click="ShowConfigured"
+                        Content="Show notification" />
                     <TextBlock Text="{Binding LastInteraction, StringFormat='Last interaction: {0}'}" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
@@ -56,7 +85,10 @@
         <o:ControlShowcase Header="Content, appearance, and actions" SourceKey="feedback-notification-presets">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding PresetsCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding PresetsCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
@@ -81,7 +113,10 @@
         <o:ControlShowcase Header="Position and lifetime" SourceKey="feedback-notification-lifetime">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding LifetimeCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding LifetimeCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">

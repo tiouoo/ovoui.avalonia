@@ -11,28 +11,42 @@
                 <TextBox PlaceholderText="Default error" Width="260">
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>A project name is required.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>A project name is required.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </TextBox>
-                <TextBox Classes="Small" PlaceholderText="Small" Width="260">
+                <TextBox
+                    Classes="Small"
+                    PlaceholderText="Small"
+                    Width="260">
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>This value is invalid.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>This value is invalid.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </TextBox>
-                <TextBox Classes="Large" PlaceholderText="Large" Width="260">
+                <TextBox
+                    Classes="Large"
+                    PlaceholderText="Large"
+                    Width="260">
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>This value is invalid.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>This value is invalid.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </TextBox>
                 <NumericUpDown Value="120" Width="260">
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>Enter a value from 1 to 100.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>Enter a value from 1 to 100.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </NumericUpDown>
@@ -41,14 +55,18 @@
                     <ComboBoxItem Content="Production" />
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>Select an environment.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>Select an environment.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </ComboBox>
                 <CalendarDatePicker PlaceholderText="Release date" Width="260">
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>Choose a future date.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>Choose a future date.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </CalendarDatePicker>
@@ -56,11 +74,16 @@
         </o:ControlShowcase>
 
         <o:ControlShowcase Header="Inline and tooltip presentation" SourceKey="data-validation-presentations">
-            <StackPanel HorizontalAlignment="Left" Spacing="18" Width="420">
+            <StackPanel
+                HorizontalAlignment="Left"
+                Spacing="18"
+                Width="420">
                 <TextBox Text="duplicate-project">
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>That project name is already in use.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>That project name is already in use.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </TextBox>
@@ -72,7 +95,9 @@
                     </TextBox.Styles>
                     <DataValidationErrors.Error>
                         <system:Exception>
-                            <x:Arguments><x:String>The tooltip theme keeps the layout compact.</x:String></x:Arguments>
+                            <x:Arguments>
+                                <x:String>The tooltip theme keeps the layout compact.</x:String>
+                            </x:Arguments>
                         </system:Exception>
                     </DataValidationErrors.Error>
                 </TextBox>

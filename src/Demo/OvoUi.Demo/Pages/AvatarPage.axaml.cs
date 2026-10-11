@@ -1,4 +1,8 @@
 using Avalonia.Controls;
-namespace OvoUi.Demo.Pages;
-public partial class AvatarPage : UserControl { public AvatarPage() => InitializeComponent(); }
 
+namespace OvoUi.Demo.Pages;
+
+public partial class AvatarPage : UserControl
+{
+    public AvatarPage() => InitializeComponent();
+}

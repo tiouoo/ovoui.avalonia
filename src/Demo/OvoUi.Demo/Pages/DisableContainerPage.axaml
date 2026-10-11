@@ -17,9 +17,7 @@
                     <o:DisableContainer.DisabledTip>
                         <StackPanel MaxWidth="260" Spacing="4">
                             <TextBlock FontWeight="Bold" Text="Account editor disabled" />
-                            <TextBlock
-                                Text="Turn on the switch above to edit fields and use the actions."
-                                TextWrapping="Wrap" />
+                            <TextBlock Text="Turn on the switch above to edit fields and use the actions." TextWrapping="Wrap" />
                         </StackPanel>
                     </o:DisableContainer.DisabledTip>
                     <Border
@@ -33,26 +31,58 @@
                             ColumnSpacing="16"
                             RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
                             RowSpacing="12">
-                            <TextBlock Text="Profile" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
+                            <TextBlock
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Grid.ColumnSpan="2"
+                                Text="Profile" />
 
-                            <TextBlock Grid.Row="1" Text="Display name" VerticalAlignment="Center" />
-                            <TextBox Grid.Column="1" Grid.Row="1" Text="Alex Morgan" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Text="Display name"
+                                VerticalAlignment="Center" />
+                            <TextBox
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Text="Alex Morgan" />
 
-                            <TextBlock Grid.Row="2" Text="Role" VerticalAlignment="Center" />
-                            <ComboBox Grid.Column="1" Grid.Row="2" SelectedIndex="1">
+                            <TextBlock
+                                Grid.Row="2"
+                                Text="Role"
+                                VerticalAlignment="Center" />
+                            <ComboBox
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                SelectedIndex="1">
                                 <ComboBoxItem Content="Viewer" />
                                 <ComboBoxItem Content="Editor" />
                                 <ComboBoxItem Content="Administrator" />
                             </ComboBox>
 
-                            <TextBlock Grid.Row="3" Text="Quota" VerticalAlignment="Center" />
-                            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Spacing="12">
-                                <Slider Maximum="100" Value="64" Width="220" />
+                            <TextBlock
+                                Grid.Row="3"
+                                Text="Quota"
+                                VerticalAlignment="Center" />
+                            <StackPanel
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                Orientation="Horizontal"
+                                Spacing="12">
+                                <Slider
+                                    Maximum="100"
+                                    Value="64"
+                                    Width="220" />
                                 <TextBlock Text="64%" VerticalAlignment="Center" />
                             </StackPanel>
 
-                            <TextBlock Grid.Row="4" Text="Permissions" VerticalAlignment="Center" />
-                            <WrapPanel Grid.Column="1" Grid.Row="4" ItemSpacing="16">
+                            <TextBlock
+                                Grid.Row="4"
+                                Text="Permissions"
+                                VerticalAlignment="Center" />
+                            <WrapPanel
+                                Grid.Column="1"
+                                Grid.Row="4"
+                                ItemSpacing="16">
                                 <CheckBox Content="Publish" IsChecked="True" />
                                 <CheckBox Content="Export" />
                                 <CheckBox Content="Invite users" IsChecked="True" />
@@ -74,4 +104,3 @@
         </o:ControlShowcase>
     </demo:DemoPage>
 </UserControl>
-

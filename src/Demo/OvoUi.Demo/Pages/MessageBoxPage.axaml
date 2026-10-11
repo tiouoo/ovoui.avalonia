@@ -9,13 +9,23 @@
         <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-message-box-configurator">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding ConfiguratorCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding ConfiguratorCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="14">
-                <Grid ColumnDefinitions="150,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="12">
+                <Grid
+                    ColumnDefinitions="150,*"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto,Auto,Auto"
+                    RowSpacing="10">
                     <TextBlock Text="Title" VerticalAlignment="Center" />
                     <TextBox Grid.Column="1" Text="{Binding MessageTitle}" />
-                    <TextBlock Grid.Row="1" Text="Message" VerticalAlignment="Top" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="Message"
+                        VerticalAlignment="Top" />
                     <TextBox
                         AcceptsReturn="True"
                         Grid.Column="1"
@@ -23,10 +33,23 @@
                         MinHeight="80"
                         Text="{Binding MessageContent}"
                         TextWrapping="Wrap" />
-                    <TextBlock Grid.Row="2" Text="Icon and buttons" VerticalAlignment="Center" />
-                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Spacing="10">
-                        <ComboBox ItemsSource="{Binding Icons}" MinWidth="150" SelectedItem="{Binding SelectedIcon}" />
-                        <ComboBox ItemsSource="{Binding ButtonSets}" MinWidth="150" SelectedItem="{Binding SelectedButtons}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Text="Icon and buttons"
+                        VerticalAlignment="Center" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <ComboBox
+                            ItemsSource="{Binding Icons}"
+                            MinWidth="150"
+                            SelectedItem="{Binding SelectedIcon}" />
+                        <ComboBox
+                            ItemsSource="{Binding ButtonSets}"
+                            MinWidth="150"
+                            SelectedItem="{Binding SelectedButtons}" />
                     </StackPanel>
                 </Grid>
                 <WrapPanel ItemSpacing="16" LineSpacing="8">
@@ -34,7 +57,10 @@
                     <CheckBox Content="Show title" IsChecked="{Binding ShowTitle}" />
                 </WrapPanel>
                 <StackPanel Orientation="Horizontal" Spacing="10">
-                    <Button Classes="accent" Click="ShowConfigured" Content="Show message box" />
+                    <Button
+                        Classes="accent"
+                        Click="ShowConfigured"
+                        Content="Show message box" />
                     <TextBlock Text="{Binding LastResult, StringFormat='Last result: {0}'}" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
@@ -43,7 +69,10 @@
         <o:ControlShowcase Header="Message presets" SourceKey="feedback-message-box-presets">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding PresetsCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding PresetsCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
@@ -66,7 +95,10 @@
         <o:ControlShowcase Header="Overlay and owned window" SourceKey="feedback-message-box-hosting">
             <o:ControlShowcase.CodeBlocks>
                 <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding HostingCode}" Header="C#" Language="csharp" />
+                <o:ShowcaseCodeBlock
+                    Code="{Binding HostingCode}"
+                    Header="C#"
+                    Language="csharp" />
             </o:ControlShowcase.CodeBlocks>
             <WrapPanel ItemSpacing="10" LineSpacing="10">
                 <Button Click="ShowOverlayMessage" Content="Overlay with full mask" />
