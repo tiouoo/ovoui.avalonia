@@ -8,7 +8,6 @@
         <Title>OvoUi Fonts</Title>
         <Description>Font resources for OvoUi Avalonia applications.</Description>
         <PackageTags>avalonia;ui;font;fonts</PackageTags>
-        <PackageIcon>..\..\assets\icon.ico</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
