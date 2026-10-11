@@ -7,7 +7,7 @@
 
     <ControlTheme TargetType="GridSplitter" x:Key="{x:Type GridSplitter}">
         <Setter Property="Focusable" Value="True" />
-        <Setter Property="MinWidth" Value="6" />
+        <Setter Property="MinWidth" Value="7" />
         <Setter Property="MinHeight" Value="6" />
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="Padding" Value="2" />
@@ -19,7 +19,10 @@
         </Setter>
         <Setter Property="Template">
             <ControlTemplate TargetType="GridSplitter">
-                <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                <Border
+                    Background="Transparent"
+                    MinWidth="7"
+                    Padding="{TemplateBinding Padding}">
                     <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"

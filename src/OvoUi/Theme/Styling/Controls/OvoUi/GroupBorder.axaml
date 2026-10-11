@@ -35,14 +35,14 @@
                                         <Panel>
                                             <SelectableTextBlock
                                                 Foreground="{DynamicResource ForegroundBrush}"
-                                                IsVisible="{TemplateBinding IsHeaderSelectable}"
+                                                IsVisible="{Binding $parent[o:GroupBorder].IsHeaderSelectable}"
                                                 Margin="14,10"
                                                 Name="SelectableText"
                                                 Text="{Binding}" />
                                             <TextBlock
                                                 Foreground="{DynamicResource ForegroundBrush}"
-                                                IsVisible="{TemplateBinding IsHeaderSelectable,
-                                                                            Converter={x:Static BoolConverters.Not}}"
+                                                IsVisible="{Binding $parent[o:GroupBorder].IsHeaderSelectable,
+                                                                     Converter={x:Static BoolConverters.Not}}"
                                                 Margin="14,10"
                                                 Name="Text"
                                                 Text="{Binding}" />

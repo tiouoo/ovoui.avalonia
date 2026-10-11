@@ -145,8 +145,8 @@
         BasedOn="{StaticResource CardHeaderBorderTheme}"
         TargetType="HeaderedContentControl"
         x:Key="TranslucentCardHeaderBorderTheme">
-        <Setter Property="Background" Value="{DynamicResource TranslucentBackgroundColor}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource TranslucentBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource TranslucentPopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TranslucentLineBrush}" />
     </ControlTheme>
 
 </ResourceDictionary>

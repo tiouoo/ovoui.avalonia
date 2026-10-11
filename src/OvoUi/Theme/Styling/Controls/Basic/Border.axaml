@@ -50,8 +50,8 @@
         BasedOn="{StaticResource CardBorderTheme}"
         TargetType="Border"
         x:Key="TranslucentCardBorderTheme">
-        <Setter Property="Background" Value="{DynamicResource TranslucentBackgroundColor}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource TranslucentBorderBrush}" />
+        <Setter Property="Background" Value="{DynamicResource TranslucentPopupBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TranslucentLineBrush}" />
     </ControlTheme>
 
 </ResourceDictionary>

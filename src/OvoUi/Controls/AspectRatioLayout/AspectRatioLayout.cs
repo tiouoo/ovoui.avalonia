@@ -25,8 +25,6 @@ public class AspectRatioLayout : TransitioningContentControl
         AvaloniaProperty.Register<AspectRatioLayout, double>(
             nameof(AspectRatioValue));
 
-    private readonly Queue<bool> _history = new();
-
     private AspectRatioMode _currentAspectRatioMode;
 
     static AspectRatioLayout()
@@ -47,8 +45,8 @@ public class AspectRatioLayout : TransitioningContentControl
 
     public AspectRatioMode CurrentAspectRatioMode
     {
-        get => GetValue(CurrentAspectRatioModeProperty);
-        set => SetAndRaise(CurrentAspectRatioModeProperty, ref _currentAspectRatioMode, value);
+        get => _currentAspectRatioMode;
+        private set => SetAndRaise(CurrentAspectRatioModeProperty, ref _currentAspectRatioMode, value);
     }
 
     public double AspectRatioValue
@@ -72,22 +70,12 @@ public class AspectRatioLayout : TransitioningContentControl
         set => SetValue(AspectRatioToleranceProperty, value);
     }
 
-    private void UpdateHistory(bool value)
-    {
-        _history.Enqueue(value);
-        while (_history.Count > 3)
-            _history.Dequeue();
-    }
-
-    private bool IsRightChanges()
-    {
-        //if (_history.Count < 3) return false;
-        return _history.All(x => x) || _history.All(x => !x);
-    }
-
     private double GetAspectRatio(Rect rect)
     {
-        return Math.Round(Math.Truncate(Math.Abs(rect.Width)) / Math.Truncate(Math.Abs(rect.Height)), 3);
+        var height = Math.Truncate(Math.Abs(rect.Height));
+        if (height <= 0) return 0;
+
+        return Math.Round(Math.Truncate(Math.Abs(rect.Width)) / height, 3);
     }
 
     private AspectRatioMode GetScaleMode(Rect rect)
@@ -111,10 +99,7 @@ public class AspectRatioLayout : TransitioningContentControl
         {
             if (change.Property == BoundsProperty)
             {
-                var o = (Rect)change.OldValue!;
                 var n = (Rect)change.NewValue!;
-                UpdateHistory(GetAspectRatio(o) <= GetAspectRatio(n));
-                if (!IsRightChanges()) return;
                 CurrentAspectRatioMode = GetScaleMode(n);
             }
 
