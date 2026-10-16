@@ -1,0 +1,36 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.TabWindowPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:tab="using:OvoUi.Tab"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="OvoTabHost">
+        <o:ControlShowcase Header="Tab workspace" SourceKey="tab-workspace">
+            <Grid RowDefinitions="Auto,420" RowSpacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Click="OpenWindow_OnClick" Name="OpenWindowButton">
+                        Open tab window
+                    </Button>
+                    <Button Click="AddTabs_OnClick">
+                        Add tabs
+                    </Button>
+                </StackPanel>
+                <tab:OvoTabHost
+                    BorderBrush="{DynamicResource LineBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Grid.Row="1"
+                    Name="TabHost">
+                    <tab:OvoTabHost.EmptyContent>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Opacity="0.65"
+                            Text="No open tabs"
+                            VerticalAlignment="Center" />
+                    </tab:OvoTabHost.EmptyContent>
+                </tab:OvoTabHost>
+            </Grid>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

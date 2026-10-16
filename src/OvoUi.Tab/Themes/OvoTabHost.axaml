@@ -1,0 +1,415 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:converters="using:OvoUi.Tab.Converters"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:tab="using:OvoUi.Tab"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <SolidColorBrush Color="#2E3238" Opacity="0.05" x:Key="OvoTabBackground" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColorLight3}" Opacity="0.15" x:Key="OvoTabHover" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColorLight3}" Opacity="0.3" x:Key="OvoTabSelected" />
+            <SolidColorBrush Color="#2E3238" Opacity="0.09" x:Key="OvoTabButtonHover" />
+            <SolidColorBrush Color="#2E3238" Opacity="0.13" x:Key="OvoTabButtonPressed" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <SolidColorBrush Color="White" Opacity="0.12" x:Key="OvoTabBackground" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColorLight3}" Opacity="0.15" x:Key="OvoTabHover" />
+            <SolidColorBrush Color="{DynamicResource SystemAccentColorLight3}" Opacity="0.3" x:Key="OvoTabSelected" />
+            <SolidColorBrush Color="White" Opacity="0.16" x:Key="OvoTabButtonHover" />
+            <SolidColorBrush Color="White" Opacity="0.20" x:Key="OvoTabButtonPressed" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+    <converters:HorizontalTabFadeConverter x:Key="OvoTabHorizontalFadeConverter" />
+    <converters:NullToBoolConverter x:Key="OvoTabNullToBoolConverter" />
+
+    <ControlTheme TargetType="Button" x:Key="OvoTabChromeButtonTheme">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="Button">
+                <ContentPresenter
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Padding="{TemplateBinding Padding}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource OvoTabButtonHover}" />
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource OvoTabButtonPressed}" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="tab:OvoTabHost" x:Key="{x:Type tab:OvoTabHost}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="tab:OvoTabHost">
+                <Grid
+                    Background="{TemplateBinding Background}"
+                    RowDefinitions="Auto,*">
+                    <Border
+                        Background="Transparent"
+                        Height="{TemplateBinding TabStripHeight}"
+                        IsVisible="{TemplateBinding IsTabStripVisible}"
+                        Padding="{TemplateBinding TabStripPadding}">
+                        <Grid ColumnDefinitions="Auto,Auto,*,Auto">
+                            <Button
+                                Background="Transparent"
+                                Classes="tab-add"
+                                Command="{Binding NewTabCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                CornerRadius="10"
+                                Grid.Column="0"
+                                Height="30"
+                                IsVisible="{TemplateBinding IsAddButtonVisible}"
+                                Margin="3,0,25,0"
+                                Theme="{StaticResource OvoTabChromeButtonTheme}"
+                                ToolTip.ShowDelay="900"
+                                ToolTip.Tip="{Binding Strings.NewTab, RelativeSource={RelativeSource TemplatedParent}}"
+                                Width="30">
+                                <TextBlock
+                                    FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                    FontSize="18"
+                                    FontWeight="Thin"
+                                    HorizontalAlignment="Center"
+                                    Text="&#xE647;"
+                                    VerticalAlignment="Center" />
+                            </Button>
+                            <ContentControl
+                                Content="{TemplateBinding LeadingHeaderContent}"
+                                Grid.Column="1"
+                                Margin="0,0,6,0"
+                                VerticalContentAlignment="Center" />
+                            <ScrollViewer
+                                AllowAutoHide="True"
+                                Background="Transparent"
+                                Classes="ovotab-flat"
+                                Grid.Column="2"
+                                HorizontalScrollBarVisibility="Auto"
+                                Name="PART_TabScrollViewer"
+                                OpacityMask="{Binding Offset, RelativeSource={RelativeSource Self}, Converter={StaticResource OvoTabHorizontalFadeConverter}}"
+                                VerticalScrollBarVisibility="Disabled">
+                                <o:SelectionList
+                                    Indicator="{x:Null}"
+                                    ItemsSource="{TemplateBinding Tabs}"
+                                    Name="PART_TabList"
+                                    SelectedItem="{Binding SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                    <o:SelectionList.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </o:SelectionList.ItemsPanel>
+                                    <o:SelectionList.ItemTemplate>
+                                        <DataTemplate DataType="tab:OvoTabItem">
+                                            <Border
+                                                Background="{DynamicResource OvoTabBackground}"
+                                                BorderThickness="0"
+                                                Classes="tab-root"
+                                                CornerRadius="10"
+                                                Height="30"
+                                                Margin="3,1,3,0"
+                                                MaxWidth="{Binding MaximumWidth}"
+                                                MinWidth="{Binding MinimumWidth}"
+                                                Tag="{Binding}">
+                                                <Border.Transitions>
+                                                    <Transitions>
+                                                        <DoubleTransition Duration="0:0:0.15" Property="Opacity" />
+                                                        <BrushTransition Duration="0:0:0.15" Property="Background" />
+                                                    </Transitions>
+                                                </Border.Transitions>
+                                                <Panel Margin="9,0,10,0">
+                                                    <DockPanel VerticalAlignment="Stretch">
+                                                        <Panel
+                                                            DockPanel.Dock="Left"
+                                                            Height="{Binding IconHeight}"
+                                                            IsVisible="{Binding HasIcon}"
+                                                            Margin="{Binding IconMargin}"
+                                                            VerticalAlignment="Center"
+                                                            Width="{Binding IconWidth}">
+                                                            <TextBlock
+                                                                FontFamily="{Binding IconFontFamily}"
+                                                                FontSize="{Binding IconHeight}"
+                                                                FontWeight="Thin"
+                                                                HorizontalAlignment="Center"
+                                                                IsVisible="{Binding HasGlyphIcon}"
+                                                                Text="{Binding IconGlyph}"
+                                                                VerticalAlignment="Center" />
+                                                            <PathIcon
+                                                                Data="{Binding Icon}"
+                                                                Height="{Binding IconHeight}"
+                                                                HorizontalAlignment="Center"
+                                                                IsVisible="{Binding HasPathIcon}"
+                                                                VerticalAlignment="Center"
+                                                                Width="{Binding IconWidth}" />
+                                                        </Panel>
+                                                        <ContentControl Content="{Binding Header}" VerticalContentAlignment="Center">
+                                                            <ContentControl.ContentTemplate>
+                                                                <DataTemplate DataType="{x:Type sys:String}">
+                                                                    <TextBlock
+                                                                        FontSize="13"
+                                                                        Margin="2,0,25,0"
+                                                                        Text="{Binding}"
+                                                                        VerticalAlignment="Center" />
+                                                                </DataTemplate>
+                                                            </ContentControl.ContentTemplate>
+                                                        </ContentControl>
+                                                    </DockPanel>
+                                                    <Grid HorizontalAlignment="Right" IsVisible="{Binding IsCloseable}" Margin="0,0,-4,0">
+                                                        <Button
+                                                            Background="Transparent"
+                                                            Classes="tab-close"
+                                                            Command="{Binding $parent[tab:OvoTabHost].CloseTabCommand}"
+                                                            CommandParameter="{Binding}"
+                                                            Height="28"
+                                                            HorizontalAlignment="Right"
+                                                            Margin="20,0,3,0"
+                                                            MaxHeight="14"
+                                                            MaxWidth="16"
+                                                            MinHeight="14"
+                                                            Opacity="0"
+                                                            Theme="{StaticResource OvoTabChromeButtonTheme}"
+                                                            ToolTip.ShowDelay="900"
+                                                            ToolTip.Tip="{Binding $parent[tab:OvoTabHost].Strings.CloseTab}"
+                                                            VerticalAlignment="Center"
+                                                            Width="20">
+                                                            <Button.Transitions>
+                                                                <Transitions>
+                                                                    <DoubleTransition Duration="0:0:0.07" Property="Opacity" />
+                                                                </Transitions>
+                                                            </Button.Transitions>
+                                                            <TextBlock
+                                                                FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                                                FontSize="16"
+                                                                FontWeight="Thin"
+                                                                HorizontalAlignment="Center"
+                                                                Text="&#xE609;"
+                                                                VerticalAlignment="Center" />
+                                                        </Button>
+                                                    </Grid>
+                                                </Panel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </o:SelectionList.ItemTemplate>
+                                </o:SelectionList>
+                            </ScrollViewer>
+                            <ContentControl
+                                Content="{TemplateBinding TrailingHeaderContent}"
+                                Grid.Column="3"
+                                Margin="6,0,0,0"
+                                VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Border>
+
+                    <TransitioningContentControl
+                        Background="Transparent"
+                        Content="{Binding SelectedTab.Content, RelativeSource={RelativeSource TemplatedParent}}"
+                        Grid.Row="1"
+                        PageTransition="{TemplateBinding PageTransition}" />
+                    <ContentControl
+                        Content="{TemplateBinding EmptyContent}"
+                        Grid.Row="1"
+                        IsHitTestVisible="False"
+                        IsVisible="{Binding SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource OvoTabNullToBoolConverter}}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Border.tab-root:pointerover">
+            <Setter Property="Background" Value="{DynamicResource OvoTabHover}" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style Selector="^ /template/ o|SelectionListItem:pointerover Button.tab-close">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^ /template/ o|SelectionListItem:selected Border.tab-root">
+            <Setter Property="Background" Value="{DynamicResource OvoTabSelected}" />
+        </Style>
+        <Style Selector="^ /template/ o|SelectionListItem:selected Button.tab-close">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </ControlTheme>
+
+    <ControlTheme TargetType="tab:OvoTabStrip" x:Key="{x:Type tab:OvoTabStrip}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="tab:OvoTabStrip">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    Height="{Binding Host.TabStripHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                    Padding="{Binding Host.TabStripPadding, RelativeSource={RelativeSource TemplatedParent}}">
+                    <Grid ColumnDefinitions="Auto,Auto,*,Auto">
+                        <Button
+                            Background="Transparent"
+                            Classes="tab-add"
+                            Command="{Binding Host.NewTabCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                            CornerRadius="10"
+                            Grid.Column="0"
+                            Height="30"
+                            IsVisible="{Binding Host.IsAddButtonVisible, RelativeSource={RelativeSource TemplatedParent}}"
+                            Margin="3,0,25,0"
+                            Theme="{StaticResource OvoTabChromeButtonTheme}"
+                            ToolTip.ShowDelay="900"
+                            ToolTip.Tip="{Binding Host.Strings.NewTab, RelativeSource={RelativeSource TemplatedParent}}"
+                            Width="30">
+                            <TextBlock
+                                FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                FontSize="18"
+                                FontWeight="Thin"
+                                HorizontalAlignment="Center"
+                                Text="&#xE647;"
+                                VerticalAlignment="Center" />
+                        </Button>
+                        <ContentControl
+                            Content="{Binding Host.LeadingHeaderContent, RelativeSource={RelativeSource TemplatedParent}}"
+                            Grid.Column="1"
+                            Margin="0,0,6,0"
+                            VerticalContentAlignment="Center" />
+                        <ScrollViewer
+                            AllowAutoHide="True"
+                            Background="Transparent"
+                            Classes="ovotab-flat"
+                            Grid.Column="2"
+                            HorizontalScrollBarVisibility="Auto"
+                            Name="PART_TabScrollViewer"
+                            OpacityMask="{Binding Offset, RelativeSource={RelativeSource Self}, Converter={StaticResource OvoTabHorizontalFadeConverter}}"
+                            VerticalScrollBarVisibility="Disabled">
+                            <o:SelectionList
+                                Indicator="{x:Null}"
+                                ItemsSource="{Binding Host.Tabs, RelativeSource={RelativeSource TemplatedParent}}"
+                                Name="PART_TabList"
+                                SelectedItem="{Binding Host.SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                <o:SelectionList.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </o:SelectionList.ItemsPanel>
+                                <o:SelectionList.ItemTemplate>
+                                    <DataTemplate DataType="tab:OvoTabItem">
+                                        <Border
+                                            Background="{DynamicResource OvoTabBackground}"
+                                            BorderThickness="0"
+                                            Classes="tab-root"
+                                            CornerRadius="10"
+                                            Height="30"
+                                            Margin="3,1,3,0"
+                                            MaxWidth="{Binding MaximumWidth}"
+                                            MinWidth="{Binding MinimumWidth}"
+                                            Tag="{Binding}">
+                                            <Border.Transitions>
+                                                <Transitions>
+                                                    <DoubleTransition Duration="0:0:0.15" Property="Opacity" />
+                                                    <BrushTransition Duration="0:0:0.15" Property="Background" />
+                                                </Transitions>
+                                            </Border.Transitions>
+                                            <Panel Margin="9,0,10,0">
+                                                <DockPanel VerticalAlignment="Stretch">
+                                                    <Panel
+                                                        DockPanel.Dock="Left"
+                                                        Height="{Binding IconHeight}"
+                                                        IsVisible="{Binding HasIcon}"
+                                                        Margin="{Binding IconMargin}"
+                                                        VerticalAlignment="Center"
+                                                        Width="{Binding IconWidth}">
+                                                        <TextBlock
+                                                            FontFamily="{Binding IconFontFamily}"
+                                                            FontSize="{Binding IconHeight}"
+                                                            FontWeight="Thin"
+                                                            HorizontalAlignment="Center"
+                                                            IsVisible="{Binding HasGlyphIcon}"
+                                                            Text="{Binding IconGlyph}"
+                                                            VerticalAlignment="Center" />
+                                                        <PathIcon
+                                                            Data="{Binding Icon}"
+                                                            Height="{Binding IconHeight}"
+                                                            HorizontalAlignment="Center"
+                                                            IsVisible="{Binding HasPathIcon}"
+                                                            VerticalAlignment="Center"
+                                                            Width="{Binding IconWidth}" />
+                                                    </Panel>
+                                                    <ContentControl Content="{Binding Header}" VerticalContentAlignment="Center">
+                                                        <ContentControl.ContentTemplate>
+                                                            <DataTemplate DataType="{x:Type sys:String}">
+                                                                <TextBlock
+                                                                    FontSize="13"
+                                                                    Margin="2,0,25,0"
+                                                                    Text="{Binding}"
+                                                                    VerticalAlignment="Center" />
+                                                            </DataTemplate>
+                                                        </ContentControl.ContentTemplate>
+                                                    </ContentControl>
+                                                </DockPanel>
+                                                <Grid HorizontalAlignment="Right" IsVisible="{Binding IsCloseable}" Margin="0,0,-4,0">
+                                                    <Button
+                                                        Background="Transparent"
+                                                        Classes="tab-close"
+                                                        Command="{Binding $parent[tab:OvoTabStrip].Host.CloseTabCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        Height="28"
+                                                        HorizontalAlignment="Right"
+                                                        Margin="20,0,3,0"
+                                                        MaxHeight="14"
+                                                        MaxWidth="16"
+                                                        MinHeight="14"
+                                                        Opacity="0"
+                                                        Theme="{StaticResource OvoTabChromeButtonTheme}"
+                                                        ToolTip.ShowDelay="900"
+                                                        ToolTip.Tip="{Binding $parent[tab:OvoTabStrip].Host.Strings.CloseTab}"
+                                                        VerticalAlignment="Center"
+                                                        Width="20">
+                                                        <Button.Transitions>
+                                                            <Transitions>
+                                                                <DoubleTransition Duration="0:0:0.07" Property="Opacity" />
+                                                            </Transitions>
+                                                        </Button.Transitions>
+                                                        <TextBlock
+                                                            FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                                            FontSize="16"
+                                                            FontWeight="Thin"
+                                                            HorizontalAlignment="Center"
+                                                            Text="&#xE609;"
+                                                            VerticalAlignment="Center" />
+                                                    </Button>
+                                                </Grid>
+                                            </Panel>
+                                        </Border>
+                                    </DataTemplate>
+                                </o:SelectionList.ItemTemplate>
+                            </o:SelectionList>
+                        </ScrollViewer>
+                        <ContentControl
+                            Content="{Binding Host.TrailingHeaderContent, RelativeSource={RelativeSource TemplatedParent}}"
+                            Grid.Column="3"
+                            Margin="6,0,0,0"
+                            VerticalContentAlignment="Center" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Border.tab-root:pointerover">
+            <Setter Property="Background" Value="{DynamicResource OvoTabHover}" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style Selector="^ /template/ o|SelectionListItem:pointerover Button.tab-close">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^ /template/ o|SelectionListItem:selected Border.tab-root">
+            <Setter Property="Background" Value="{DynamicResource OvoTabSelected}" />
+        </Style>
+        <Style Selector="^ /template/ o|SelectionListItem:selected Button.tab-close">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
