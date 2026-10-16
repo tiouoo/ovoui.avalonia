@@ -1,7 +1,8 @@
 namespace OvoUi.Tab;
 
 /// <summary>
-/// User-visible labels used by the built-in tab UI. Replace this object to localize a host.
+/// User-visible labels used by the built-in tab UI. The default theme follows the active OvoUi language.
+/// Set <see cref="OvoTabHost.Strings"/> to override the labels for an individual host.
 /// </summary>
 public sealed class OvoTabStrings
 {

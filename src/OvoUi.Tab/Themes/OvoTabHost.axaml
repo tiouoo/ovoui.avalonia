@@ -60,6 +60,7 @@
 
     <ControlTheme TargetType="tab:OvoTabHost" x:Key="{x:Type tab:OvoTabHost}">
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+        <Setter Property="Strings" Value="{DynamicResource OvoTab.Strings}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="tab:OvoTabHost">
                 <Grid

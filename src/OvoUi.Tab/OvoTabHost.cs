@@ -404,18 +404,7 @@ public class OvoTabHost : TemplatedControl
                 iconWidth: 11));
 
         if (Tabs.Count > 1)
-        {
             flyout.Items.Add(MenuItem(Strings.CloseOtherTabs, () => _ = CloseOtherTabsAsync(tab)));
-
-            var reorder = new MenuItem { Header = Strings.ReorderTabs, Icon = Icon(OvoTabIcons.Reorder, width: 15) };
-            var index = Tabs.IndexOf(tab);
-            reorder.Items.Add(MenuItem(Strings.MoveBackward, () => MoveTab(tab, index - 1), isEnabled: index > 0));
-            reorder.Items.Add(MenuItem(Strings.MoveForward, () => MoveTab(tab, index + 1), isEnabled: index < Tabs.Count - 1));
-            reorder.Items.Add(MenuItem(Strings.MoveToStart, () => MoveTab(tab, 0), isEnabled: index > 0));
-            reorder.Items.Add(MenuItem(Strings.MoveToEnd, () => MoveTab(tab, Tabs.Count - 1),
-                isEnabled: index < Tabs.Count - 1));
-            flyout.Items.Add(reorder);
-        }
 
         var otherHosts = TabService.Hosts.Where(host => !ReferenceEquals(host, this) &&
                                                          TopLevel.GetTopLevel(host) is Window).ToArray();
@@ -429,15 +418,30 @@ public class OvoTabHost : TemplatedControl
             foreach (var target in otherHosts)
             {
                 var window = TopLevel.GetTopLevel(target) as Window;
-                move.Items.Add(MenuItem(window?.Title ?? target.HostId, () => TabService.Transfer(tab, this, target)));
+                move.Items.Add(MenuItem(window?.Title ?? target.HostId, () => TabService.Transfer(tab, this, target),
+                    hideIcon: true));
             }
             flyout.Items.Add(move);
         }
 
         if (Tabs.Count > 1 && EffectiveDragMode == OvoTabDragMode.ReorderAndDetach && TabService.WindowFactory is not null)
             flyout.Items.Add(MenuItem(Strings.OpenInNewWindow,
-                () => TabService.Detach(tab, this, GetDefaultDetachPosition()), OvoTabIcons.Detach,
-                iconWidth: 18, iconHeight: 18, iconMargin: new Thickness(1, 0, 0, 0)));
+                () => TabService.Detach(tab, this, GetDefaultDetachPosition())));
+
+        if (Tabs.Count > 1)
+        {
+            var reorder = new MenuItem { Header = Strings.ReorderTabs, Icon = Icon(OvoTabIcons.Reorder, width: 15) };
+            var index = Tabs.IndexOf(tab);
+            reorder.Items.Add(MenuItem(Strings.MoveBackward, () => MoveTab(tab, index - 1), isEnabled: index > 0,
+                hideIcon: true));
+            reorder.Items.Add(MenuItem(Strings.MoveForward, () => MoveTab(tab, index + 1), isEnabled: index < Tabs.Count - 1,
+                hideIcon: true));
+            reorder.Items.Add(MenuItem(Strings.MoveToStart, () => MoveTab(tab, 0), isEnabled: index > 0,
+                hideIcon: true));
+            reorder.Items.Add(MenuItem(Strings.MoveToEnd, () => MoveTab(tab, Tabs.Count - 1),
+                isEnabled: index < Tabs.Count - 1, hideIcon: true));
+            flyout.Items.Add(reorder);
+        }
 
         var additionalItems = new List<MenuItem>();
         if (tab.Content is IOvoTabMenuProvider provider)
@@ -570,14 +574,19 @@ public class OvoTabHost : TemplatedControl
 
     private static MenuItem MenuItem(string header, Action action, Avalonia.Media.StreamGeometry? icon = null,
         string? gesture = null, bool isEnabled = true, double iconWidth = 16, double iconHeight = 16,
-        Thickness iconMargin = default) => new()
+        Thickness iconMargin = default, bool hideIcon = false)
     {
-        Header = header,
-        Command = new DelegateCommand(action),
-        Icon = icon is null ? null : Icon(icon, iconWidth, iconHeight, iconMargin),
-        InputGesture = gesture is null ? null : KeyGesture.Parse(gesture),
-        IsEnabled = isEnabled
-    };
+        var item = new MenuItem
+        {
+            Header = header,
+            Command = new DelegateCommand(action),
+            Icon = icon is null ? null : Icon(icon, iconWidth, iconHeight, iconMargin),
+            InputGesture = gesture is null ? null : KeyGesture.Parse(gesture),
+            IsEnabled = isEnabled
+        };
+        if (hideIcon) item.Classes.Add("hide-icon");
+        return item;
+    }
 
     private static PathIcon Icon(Avalonia.Media.StreamGeometry geometry, double width = 16, double height = 16,
         Thickness margin = default) => new()
