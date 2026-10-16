@@ -18,93 +18,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.meta.outputs.version }}
-      tag: ${{ steps.meta.outputs.tag }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Calculate version
-        id: meta
-        shell: bash
-        env:
-          INPUT_VERSION: ${{ inputs.version }}
-        run: |
-          set -euo pipefail
-          PREV_TAG=$(git tag -l --sort=-v:refname 'v*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n1 || true)
-          if [ -n "$INPUT_VERSION" ]; then
-            VERSION="$INPUT_VERSION"
-          elif [ -n "$PREV_TAG" ]; then
-            BASE="${PREV_TAG#v}"
-            IFS=. read -r MAJOR MINOR PATCH <<< "$BASE"
-            VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
-          else
-            VERSION="1.0.0"
-          fi
-          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "版本号必须是 Major.Minor.Patch，例如 1.2.3" >&2
-            exit 1
-          fi
-          if git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
-            echo "版本标签 v$VERSION 已存在，不能重复发布" >&2
-            exit 1
-          fi
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
-      - name: Create and push version tag
-        env:
-          VERSION: ${{ steps.meta.outputs.version }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag "v$VERSION"
-          git push origin "v$VERSION"
-
   publish:
-    needs: prepare
-    runs-on: ubuntu-latest
-    environment: production
-    env:
-      VERSION: ${{ needs.prepare.outputs.version }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.x
-      - name: Authenticate to NuGet.org with trusted publishing
-        uses: NuGet/login@v1
-        id: nuget-login
-        with:
-          user: ${{ secrets.NUGET_USER }}
-      - name: Pack NuGet packages
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p artifacts
-          # 生成器和主包先打包，供后续带项目依赖的包使用。
-          dotnet pack src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj -c Release -p:Version="$VERSION" -o artifacts
-          for project in \
-            src/OvoUi/OvoUi.csproj \
-            src/OvoUi.Fonts/OvoUi.Fonts.csproj \
-            src/OvoUi.Platform/OvoUi.Platform.csproj \
-            src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj \
-            src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj; do
-            dotnet restore "$project" --source "$(pwd)/artifacts" --source https://api.nuget.org/v3/index.json -p:Version="$VERSION" -p:NuGetRelease=true
-          done
-          dotnet pack src/OvoUi/OvoUi.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
-          dotnet pack src/OvoUi.Fonts/OvoUi.Fonts.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
-          dotnet pack src/OvoUi.Platform/OvoUi.Platform.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
-          dotnet pack src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
-          dotnet pack src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj -c Release -p:Version="$VERSION" -p:NuGetRelease=true --no-restore -o artifacts
-          ls -lh artifacts
-      - name: Publish packages to NuGet.org
-        run: dotnet nuget push "artifacts/*.nupkg" --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
-      - name: Create GitHub release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ needs.prepare.outputs.tag }}
-        run: gh release create "$TAG" artifacts/*.nupkg --title "OvoUi $VERSION" --generate-notes
+    uses: tiouoo/tiller/.github/workflows/nuget.yml@v1
+    with:
+      version: ${{ inputs.version }}
+      dotnet-version: 10.x
+      pack-script: .github/scripts/pack-nuget.sh
+      release-name-prefix: OvoUi
+    secrets: inherit
