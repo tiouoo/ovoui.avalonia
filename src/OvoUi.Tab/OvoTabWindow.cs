@@ -1,6 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 using OvoUi.Controls;
 using OvoUi.Tab.Internal;
 
@@ -41,6 +44,7 @@ public class OvoTabWindow : OvoWindow
             Height = 44,
             HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Left
         };
+        TabStrip.AddHandler(PointerPressedEvent, OnTabStripBackgroundPointerPressed, RoutingStrategies.Tunnel);
         OvoTitleBar.SetLeadingContent(this, TabStrip);
         Content = TabHost;
         Width = 1100;
@@ -80,7 +84,8 @@ public class OvoTabWindow : OvoWindow
         Avalonia.AvaloniaProperty.Register<OvoTabWindow, bool>(nameof(IsTabStripWindowDragEnabled), true);
 
     /// <summary>
-    /// Allows the tab strip to move this window when tab manipulation is unavailable or unnecessary.
+    /// Allows the tab strip's blank areas to move this window, including gaps between tabs.
+    /// Also enables window movement from a tab when tab manipulation is unavailable or unnecessary.
     /// </summary>
     public bool IsTabStripWindowDragEnabled
     {
@@ -137,6 +142,7 @@ public class OvoTabWindow : OvoWindow
 
     protected override void OnClosed(EventArgs e)
     {
+        TabStrip.RemoveHandler(PointerPressedEvent, OnTabStripBackgroundPointerPressed);
         Closing -= OnWindowClosing;
         TabHost.SelectedTabChanged -= OnSelectedTabChanged;
         TabHost.TabClosed -= OnTabClosed;
@@ -159,6 +165,27 @@ public class OvoTabWindow : OvoWindow
     {
         var inset = OperatingSystem.IsMacOS() ? 12 : TabStripRightInset;
         TabStrip.Width = Math.Max(0, clientWidth - inset);
+    }
+
+    private void OnTabStripBackgroundPointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        if (!IsTabStripWindowDragEnabled || WindowState == WindowState.FullScreen ||
+            !e.GetCurrentPoint(TabStrip).Properties.IsLeftButtonPressed ||
+            OvoTabHost.FindTabRoot(e.Source as Visual) is not null)
+            return;
+
+        // Transparent panels and item margins are draggable; tab controls and header content own their input.
+        for (var visual = e.Source as Visual; visual is not null && !ReferenceEquals(visual, TabStrip);
+             visual = visual.GetVisualParent())
+        {
+            if (visual is Button or ScrollBar or Thumb ||
+                ReferenceEquals(visual, TabHost.LeadingHeaderContent) ||
+                ReferenceEquals(visual, TabHost.TrailingHeaderContent))
+                return;
+        }
+
+        BeginMoveDrag(e);
+        e.Handled = true;
     }
 
     private async void OnWindowClosing(object? sender, WindowClosingEventArgs e)

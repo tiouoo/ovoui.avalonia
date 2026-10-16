@@ -26,6 +26,7 @@ public partial class TabWindowPage : UserControl
     public TabWindowPage()
     {
         InitializeComponent();
+        _tabService.WindowFactory = _ => CreateTabWindow();
         TabHost.TabService = _tabService;
         TabHost.NewTabFactory = CreateTab;
         OpenWindowButton.IsVisible = Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime;
@@ -33,10 +34,18 @@ public partial class TabWindowPage : UserControl
         TabHost.AddTab(CreateTab("Dashboard", OvoTabIcons.Reorder));
         TabHost.AddTab(CreateTab("Activity", OvoTabIcons.Transfer), select: false);
         TabHost.AddTab(CreateTab("Deployment logs", OvoTabIcons.Detach), select: false);
-        TabHost.AddTab(CreateTab("Settings", OvoTabIcons.Add), select: false);
     }
 
-    private OvoTabItem CreateTab() => CreateTab($"Document {++_tabNumber}", OvoTabIcons.Add);
+    private OvoTabItem CreateTab()
+    {
+        var icon = (_tabNumber % 3) switch
+        {
+            0 => OvoTabIcons.Reorder,
+            1 => OvoTabIcons.Transfer,
+            _ => OvoTabIcons.Detach
+        };
+        return CreateTab($"Document {++_tabNumber}", icon);
+    }
 
     private OvoTabItem CreateTab(string title, StreamGeometry icon)
     {
@@ -95,15 +104,17 @@ public partial class TabWindowPage : UserControl
     {
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime) return;
 
-        var window = new OvoTabWindow(_tabService)
-        {
-            Title = "OvoUi Tab Workspace",
-            NewTabFactory = CreateTab,
-            CreateTabWhenEmpty = true
-        };
+        var window = CreateTabWindow();
         window.AddTab(CreateTab("Welcome", OvoTabIcons.Transfer));
         window.AddTab(CreateTab("Release notes", OvoTabIcons.Reorder), select: false);
 
         window.Show();
     }
+
+    private OvoTabWindow CreateTabWindow() => new(_tabService)
+    {
+        Title = "OvoUi Tab Workspace",
+        NewTabFactory = CreateTab,
+        CreateTabWhenEmpty = true
+    };
 }
