@@ -20,10 +20,11 @@ public sealed class OvoTabStrip : TemplatedControl
     private TabDragBehavior? _dragBehavior;
     private SelectionList? _tabList;
     private ScrollViewer? _scrollViewer;
+    private OvoTabHost? _subscribedHost;
 
     static OvoTabStrip()
     {
-        HostProperty.Changed.AddClassHandler<OvoTabStrip>((strip, _) => strip.AttachDragBehavior());
+        HostProperty.Changed.AddClassHandler<OvoTabStrip>((strip, _) => strip.AttachHandlers());
     }
 
     public static readonly StyledProperty<OvoTabHost?> HostProperty =
@@ -42,15 +43,32 @@ public sealed class OvoTabStrip : TemplatedControl
 
         _tabList = e.NameScope.Find<SelectionList>(OvoTabHost.PartTabList);
         _scrollViewer = e.NameScope.Find<ScrollViewer>(OvoTabHost.PartTabScrollViewer);
+        AttachHandlers();
+        if (Host?.Tabs.Count > 0) ScrollToEnd();
+    }
+
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+        AttachHandlers();
+    }
+
+    private void AttachHandlers()
+    {
+        DetachHandlers();
+        if (!this.IsAttachedToVisualTree()) return;
         if (_tabList is not null)
         {
             _tabList.AddHandler(PointerPressedEvent, OnPointerPressed,
-                RoutingStrategies.Tunnel | RoutingStrategies.Bubble, handledEventsToo: true);
+                RoutingStrategies.Tunnel, handledEventsToo: true);
         }
 
         if (_scrollViewer is not null)
             _scrollViewer.PointerWheelChanged += OnPointerWheelChanged;
 
+        _subscribedHost = Host;
+        if (_subscribedHost is not null)
+            _subscribedHost.TabAdded += OnTabAdded;
         AttachDragBehavior();
     }
 
@@ -93,13 +111,25 @@ public sealed class OvoTabStrip : TemplatedControl
         _dragBehavior.Attach(_tabList);
     }
 
+    private void OnTabAdded(object? sender, OvoTabEventArgs e) => ScrollToEnd();
+
+    private void ScrollToEnd()
+    {
+        // Selection queues BringIntoView during layout. Scroll past it to include the add button.
+        Avalonia.Threading.Dispatcher.UIThread.Post(() =>
+        {
+            if (_scrollViewer is not null && this.IsAttachedToVisualTree())
+                _scrollViewer.Offset = new Vector(double.PositiveInfinity, _scrollViewer.Offset.Y);
+        }, Avalonia.Threading.DispatcherPriority.Background);
+    }
+
     private void DetachHandlers()
     {
         _dragBehavior?.Detach();
         _dragBehavior = null;
+        if (_subscribedHost is not null) _subscribedHost.TabAdded -= OnTabAdded;
+        _subscribedHost = null;
         if (_tabList is not null) _tabList.RemoveHandler(PointerPressedEvent, OnPointerPressed);
         if (_scrollViewer is not null) _scrollViewer.PointerWheelChanged -= OnPointerWheelChanged;
-        _tabList = null;
-        _scrollViewer = null;
     }
 }

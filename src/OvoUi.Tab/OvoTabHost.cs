@@ -113,7 +113,7 @@ public class OvoTabHost : TemplatedControl
     }
 
     public static readonly StyledProperty<Thickness> TabStripPaddingProperty =
-        AvaloniaProperty.Register<OvoTabHost, Thickness>(nameof(TabStripPadding), new Thickness(6, 3));
+        AvaloniaProperty.Register<OvoTabHost, Thickness>(nameof(TabStripPadding), new Thickness(3, 0));
 
     public Thickness TabStripPadding
     {
@@ -206,10 +206,17 @@ public class OvoTabHost : TemplatedControl
 
         _tabList = e.NameScope.Find<SelectionList>(PartTabList);
         _tabScrollViewer = e.NameScope.Find<ScrollViewer>(PartTabScrollViewer);
+        AttachTemplateHandlers();
+        if (Tabs.Count > 0) ScrollToEnd();
+    }
 
+    private void AttachTemplateHandlers()
+    {
+        DetachTemplateHandlers();
+        if (!this.IsAttachedToVisualTree()) return;
         if (_tabList is not null)
         {
-            _tabList.AddHandler(PointerPressedEvent, TabListOnPointerPressed, RoutingStrategies.Tunnel | RoutingStrategies.Bubble,
+            _tabList.AddHandler(PointerPressedEvent, TabListOnPointerPressed, RoutingStrategies.Tunnel,
                 handledEventsToo: true);
             _dragBehavior.Attach(_tabList);
         }
@@ -223,6 +230,7 @@ public class OvoTabHost : TemplatedControl
         base.OnAttachedToVisualTree(e);
         _isAttached = true;
         TabService.Register(this);
+        AttachTemplateHandlers();
     }
 
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
@@ -373,7 +381,7 @@ public class OvoTabHost : TemplatedControl
         var index = Tabs.IndexOf(tab);
         if (index < 0) return;
         if (ReferenceEquals(SelectedTab, tab))
-            SelectedTab = Tabs.Count > 1 ? Tabs[index == Tabs.Count - 1 ? index - 1 : index + 1] : null;
+            SelectedTab = Tabs.LastOrDefault(item => !ReferenceEquals(item, tab));
         Tabs.RemoveAt(index);
     }
 
@@ -441,7 +449,6 @@ public class OvoTabHost : TemplatedControl
 
     internal void ShowTabMenu(OvoTabItem tab, Control placementTarget)
     {
-        SelectedTab = tab;
         BuildTabMenu(tab).ShowAt(placementTarget);
     }
 
@@ -467,7 +474,7 @@ public class OvoTabHost : TemplatedControl
         // Move selection first. Selection controls can otherwise write the removed item
         // back through their two-way binding while processing CollectionChanged.
         if (wasSelected)
-            SelectedTab = Tabs.Count > 1 ? Tabs[index == Tabs.Count - 1 ? index - 1 : index + 1] : null;
+            SelectedTab = Tabs.LastOrDefault(item => !ReferenceEquals(item, tab));
 
         Tabs.RemoveAt(index);
 
@@ -520,8 +527,12 @@ public class OvoTabHost : TemplatedControl
     private void ScrollToEnd()
     {
         if (_tabScrollViewer is null) return;
+        // Selection queues BringIntoView during layout. Scroll past it to include the add button.
         Avalonia.Threading.Dispatcher.UIThread.Post(() =>
-            _tabScrollViewer.Offset = new Vector(double.PositiveInfinity, _tabScrollViewer.Offset.Y));
+        {
+            if (_tabScrollViewer is not null && this.IsAttachedToVisualTree())
+                _tabScrollViewer.Offset = new Vector(double.PositiveInfinity, _tabScrollViewer.Offset.Y);
+        }, Avalonia.Threading.DispatcherPriority.Background);
     }
 
     private PixelPoint GetDefaultDetachPosition()
@@ -533,12 +544,11 @@ public class OvoTabHost : TemplatedControl
 
     private void DetachTemplateHandlers()
     {
+        _dragBehavior.Detach();
         if (_tabList is not null)
             _tabList.RemoveHandler(PointerPressedEvent, TabListOnPointerPressed);
         if (_tabScrollViewer is not null)
             _tabScrollViewer.PointerWheelChanged -= TabScrollViewerOnPointerWheelChanged;
-        _tabList = null;
-        _tabScrollViewer = null;
     }
 
     internal static Border? FindTabRoot(Visual? visual)

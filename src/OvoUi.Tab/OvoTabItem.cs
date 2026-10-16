@@ -22,7 +22,7 @@ public sealed class OvoTabItem : INotifyPropertyChanged
     private bool _isDragging;
     private bool _isIconVisible = true;
     private bool _isClosing;
-    private double _maximumWidth = 260;
+    private double _maximumWidth = double.PositiveInfinity;
     private double _minimumWidth = 150;
     private string _title;
 

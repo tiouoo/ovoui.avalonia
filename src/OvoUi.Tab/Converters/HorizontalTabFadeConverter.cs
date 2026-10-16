@@ -18,14 +18,14 @@ public sealed class HorizontalTabFadeConverter : IValueConverter
                 ?
                 [
                     new GradientStop(Colors.Transparent, 0),
-                    new GradientStop(Colors.White, 0.035),
-                    new GradientStop(Colors.White, 0.965),
+                    new GradientStop(Colors.White, 0.03),
+                    new GradientStop(Colors.White, 0.97),
                     new GradientStop(Colors.Transparent, 1)
                 ]
                 :
                 [
                     new GradientStop(Colors.White, 0),
-                    new GradientStop(Colors.White, 0.965),
+                    new GradientStop(Colors.White, 0.97),
                     new GradientStop(Colors.Transparent, 1)
                 ]
         };

@@ -33,8 +33,8 @@ public class OvoTabWindow : OvoWindow
         WindowId = Guid.NewGuid().ToString("N")[..6];
         TabHost = new OvoTabHost { TabService = tabService, IsTabStripVisible = false };
         TabHost.TabStripPadding = OperatingSystem.IsMacOS()
-            ? new Avalonia.Thickness(92, 3, 12, 3)
-            : new Avalonia.Thickness(6, 3);
+            ? new Avalonia.Thickness(92, 0, 12, 0)
+            : new Avalonia.Thickness(3, 0);
         TabStrip = new OvoTabStrip
         {
             Host = TabHost,
