@@ -1,0 +1,82 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.SmoothScrollViewerPage"
+    x:DataType="pages:SmoothScrollViewerDemoModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia">
+    <UserControl.Styles>
+        <o:OvoScrollViewerTheme />
+    </UserControl.Styles>
+    <demo:DemoPage Text="Smooth ScrollViewer">
+        <o:ControlShowcase Header="Virtualized list and custom bring-into-view animation" SourceKey="smooth-scroll-viewer-list">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ListCode}" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="OvoScrollViewerTheme is loaded only on this page. This ListBox contains 10,000 rows and keeps virtualization enabled." TextWrapping="Wrap" />
+                <WrapPanel>
+                    <Button Content="Bring a random item into view" Click="BringItem_OnClick" Margin="0,0,16,8" />
+                    <CheckBox Name="CustomAnimation" Content="Use teleport animation" />
+                </WrapPanel>
+                <ListBox Name="VirtualList" Height="300" ItemsSource="{Binding Items}" SelectionMode="Multiple"
+                         Loaded="VirtualList_OnLoaded" Unloaded="VirtualList_OnUnloaded">
+                    <ListBox.ItemTemplate><DataTemplate x:DataType="x:String"><TextBlock Margin="8" Text="{Binding}" /></DataTemplate></ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Text selection, caret and wheel scrolling" SourceKey="smooth-scroll-viewer-text">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding TextCode}" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Edit, select, use the keyboard and move the caret beyond the visible lines. The TextBox's internal ScrollViewer uses the same smooth presenter." TextWrapping="Wrap" />
+                <TextBox Name="SmoothTextBox" Height="220" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Text, Mode=TwoWay}" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Anchoring while content changes" SourceKey="smooth-scroll-viewer-anchors">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding AnchorCode}" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Scroll down, then insert or resize rows above the viewport. The current anchor stays in place." TextWrapping="Wrap" />
+                <WrapPanel>
+                    <Button Content="Insert at top" Click="InsertAnchor_OnClick" Margin="0,0,8,8" />
+                    <Button Content="Resize rows" Click="ResizeAnchors_OnClick" Margin="0,0,8,8" />
+                    <Button Content="Remove first row" Click="RemoveAnchor_OnClick" Margin="0,0,8,8" />
+                    <TextBlock Name="AnchorStatus" VerticalAlignment="Center" Text="Anchor: scroll down to select" />
+                </WrapPanel>
+                <ScrollViewer Name="AnchorViewer" Height="260" ScrollChanged="AnchorViewer_OnScrollChanged">
+                    <ItemsControl ItemsSource="{Binding AnchorItems}" ContainerPrepared="Anchor_Prepared" ContainerClearing="Anchor_Clearing">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="pages:SmoothAnchorItem">
+                                <Border Height="{Binding Height}" Margin="0,0,0,4" Padding="12" Background="{DynamicResource ControlBackground}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1">
+                                    <TextBlock Text="{Binding Title}" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Mouse panning and wheel direction" SourceKey="smooth-scroll-viewer-mouse">
+            <ScrollViewer Height="200" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <ScrollViewer.Styles>
+                    <Style Selector="o|OvoScrollPresenter">
+                        <Setter Property="ContentOrientation" Value="Horizontal" />
+                        <Setter Property="ScrollFeatures" Value="MousePressedScroll,MousePressedScrollEnertia,WheelSwapDirections" />
+                    </Style>
+                </ScrollViewer.Styles>
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <Border Width="400" Background="#334D8DFF"><TextBlock Text="Drag with the mouse" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                    <Border Width="400" Background="#334FC1A5"><TextBlock Text="Release to coast" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                    <Border Width="400" Background="#33EFAD57"><TextBlock Text="The wheel scrolls horizontally" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                </StackPanel>
+            </ScrollViewer>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

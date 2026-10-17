@@ -39,6 +39,7 @@ dotnet add package OvoUi
 dotnet add package OvoUi.Fonts
 dotnet add package OvoUi.Platform
 dotnet add package OvoUi.Tab
+dotnet add package OvoUi.SmoothScroll
 dotnet add package OvoUi.AvaloniaEdit
 dotnet add package OvoUi.AvaloniaEdit.Showcase
 ```
@@ -74,6 +75,7 @@ OvoUi 的开发受到了以下优秀项目的启发：
 - [Semi.Avalonia](https://github.com/irihitech/Semi.Avalonia)
 - [Ursa.Avalonia](https://github.com/irihitech/Ursa.Avalonia)
 - [SukiUI](https://github.com/kikipoulet/SukiUI)
+- [SmoothScroll.Avalonia](https://github.com/zxbmmmmmmmmm/SmoothScroll.Avalonia)
 
 ## 许可证
 

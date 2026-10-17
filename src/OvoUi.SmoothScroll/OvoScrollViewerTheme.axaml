@@ -1,0 +1,38 @@
+<Styles
+    x:Class="OvoUi.SmoothScroll.OvoScrollViewerTheme"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:scroll="using:OvoUi.SmoothScroll.Controls">
+    <Styles.Resources>
+        <ControlTheme x:Key="{x:Type ScrollViewer}" TargetType="ScrollViewer">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
+                        <scroll:OvoScrollPresenter
+                            Name="PART_ContentPresenter"
+                            Grid.RowSpan="2"
+                            Grid.ColumnSpan="2"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
+                            HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                            ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}"
+                            VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
+                            VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}" />
+                        <ScrollBar Name="PART_HorizontalScrollBar" Grid.Row="1" Orientation="Horizontal" />
+                        <ScrollBar Name="PART_VerticalScrollBar" Grid.Column="1" Orientation="Vertical" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^.InsetContent /template/ scroll|OvoScrollPresenter#PART_ContentPresenter">
+                <Setter Property="Grid.ColumnSpan" Value="1" />
+                <Setter Property="Grid.RowSpan" Value="1" />
+            </Style>
+            <Style Selector="^[AllowAutoHide=False] /template/ scroll|OvoScrollPresenter#PART_ContentPresenter">
+                <Setter Property="Grid.ColumnSpan" Value="1" />
+                <Setter Property="Grid.RowSpan" Value="1" />
+            </Style>
+        </ControlTheme>
+    </Styles.Resources>
+</Styles>

@@ -1,0 +1,41 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.InteractionTrackerPage"
+    x:DataType="pages:InteractionTrackerDemoModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia">
+    <demo:DemoPage Text="InteractionTracker">
+        <o:ControlShowcase Header="Composition interaction without a ScrollViewer" SourceKey="smooth-scroll-interaction-tracker">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding SourceCode}" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Drag or use the wheel anywhere in the canvas. The tiles follow the same tracker through composition expressions. Toggle inertia, or send position requests and a custom animation." TextWrapping="Wrap" />
+                <WrapPanel>
+                    <Button Content="Reset" Tag="reset" Click="Move_OnClick" Margin="0,0,8,8" />
+                    <Button Content="Move by 80, 40" Tag="by" Click="Move_OnClick" Margin="0,0,8,8" />
+                    <Button Content="Animate to end" Tag="animate" Click="Move_OnClick" Margin="0,0,16,8" />
+                    <CheckBox Name="InertiaToggle" Content="Inertia" IsChecked="True" IsCheckedChanged="Inertia_OnChanged" />
+                </WrapPanel>
+                <TextBlock Name="TrackerStatus" Text="Ready" TextWrapping="Wrap" />
+                <Border Name="InputSurface" Height="340" Background="#164D8DFF" ClipToBounds="True" SizeChanged="Surface_OnSizeChanged"
+                        Loaded="Surface_OnLoaded" Unloaded="Surface_OnUnloaded">
+                    <Canvas>
+                        <Border Name="PrimaryTile" Width="110" Height="80" Background="#CC4D8DFF" CornerRadius="12">
+                            <TextBlock Text="Position" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Name="FollowerTile" Canvas.Left="140" Canvas.Top="100" Width="110" Height="80" Background="#CC299C7B" CornerRadius="12" IsHitTestVisible="False">
+                            <TextBlock Text="Half speed" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Name="ReversedTile" Width="110" Height="80" Background="#CCAD5AC0" CornerRadius="12" IsHitTestVisible="False">
+                            <TextBlock Text="Reversed axes" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </Canvas>
+                </Border>
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

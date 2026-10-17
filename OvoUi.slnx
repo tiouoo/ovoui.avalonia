@@ -17,6 +17,7 @@
     <Project Path="src/Demo/OvoUi.Demo/OvoUi.Demo.csproj" />
   </Folder>
   <Project Path="src/OvoUi.Platform/OvoUi.Platform.csproj" />
+  <Project Path="src/OvoUi.SmoothScroll/OvoUi.SmoothScroll.csproj" />
   <Project Path="src/OvoUi.Tab/OvoUi.Tab.csproj" />
   <Project Path="src/OvoUi.Fonts/OvoUi.Fonts.csproj" />
   <Project Path="src/OvoUi.Test/OvoUi.Test.csproj" />

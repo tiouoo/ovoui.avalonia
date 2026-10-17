@@ -13,6 +13,7 @@ projects=(
   src/OvoUi.Fonts/OvoUi.Fonts.csproj
   src/OvoUi.Platform/OvoUi.Platform.csproj
   src/OvoUi.Tab/OvoUi.Tab.csproj
+  src/OvoUi.SmoothScroll/OvoUi.SmoothScroll.csproj
   src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj
   src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj
 )

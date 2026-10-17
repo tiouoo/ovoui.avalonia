@@ -1,0 +1,146 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.SmoothScrollDemoPage"
+    x:DataType="pages:SmoothScrollDemoModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia">
+    <demo:DemoPage Text="Smooth Scroll Demo">
+        <TextBlock Text="All original sample scenarios. Each example loads only the theme it uses; the application and navigation retain their default scrolling." TextWrapping="Wrap" />
+        <TabControl Name="SampleTabs">
+            <TabItem Header="Zooming">
+                <o:ControlShowcase Header="Pan, pinch and zoom interactive content" SourceKey="smooth-scroll-original-zoom">
+                    <o:ControlShowcase.Styles><o:OvoScrollViewTheme /></o:ControlShowcase.Styles>
+                    <o:ControlShowcase.CodeBlocks>
+                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ZoomCode}" />
+                    </o:ControlShowcase.CodeBlocks>
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Wheel or pinch to zoom; drag to pan with elastic edges. The slider inside the zoomed content remains interactive." TextWrapping="Wrap" />
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <Button Name="ReferenceZoomIn" Content="+" Tag="in" Click="Zoom_OnClick" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding #ReferenceZoom.ZoomFactor, StringFormat='{}{0:P1}'}" />
+                            <Button Name="ReferenceZoomOut" Content="−" Tag="out" Click="Zoom_OnClick" />
+                        </StackPanel>
+                        <o:OvoScrollView Name="ReferenceZoom" Height="340" IsZoomEnabled="True" ContentOrientation="Both"
+                                         HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+                            <Grid Width="1200" Height="800" RowDefinitions="*,*" ColumnDefinitions="*,*">
+                                <Border Background="#334D8DFF"><TextBlock Text="Zoom" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                                <Border Grid.Column="1" Background="#334FC1A5"><TextBlock Text="Pan" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                                <Border Grid.Row="1" Background="#33EFAD57"><TextBlock Text="Pinch" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                                <Border Grid.Row="1" Grid.Column="1" Background="#33C889DD"><TextBlock Text="Explore" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                                <Slider Name="ReferenceSlider" Grid.ColumnSpan="2" Margin="24" VerticalAlignment="Top" Value="50" ZIndex="1" />
+                            </Grid>
+                        </o:OvoScrollView>
+                    </StackPanel>
+                </o:ControlShowcase>
+            </TabItem>
+            <TabItem Header="List">
+                <o:ControlShowcase Header="Virtualization and replaceable bring-into-view animation" SourceKey="smooth-scroll-original-list">
+                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
+                    <o:ControlShowcase.CodeBlocks>
+                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ListCode}" />
+                    </o:ControlShowcase.CodeBlocks>
+                    <StackPanel Spacing="12">
+                        <WrapPanel>
+                            <Button Name="ReferenceBringItem" Content="Bring random item into view" Click="BringItem_OnClick" Margin="0,0,12,8" />
+                            <ComboBox Name="AnimationMode" ItemsSource="{Binding AnimationModes}" SelectedIndex="0" Margin="0,0,0,8" />
+                        </WrapPanel>
+                        <ListBox Name="ReferenceList" Height="340" ItemsSource="{Binding Items}" SelectionMode="Multiple"
+                                 Loaded="List_OnLoaded" Unloaded="List_OnUnloaded">
+                            <ListBox.ItemTemplate><DataTemplate x:DataType="x:Int32"><TextBlock Margin="8" Text="{Binding}" /></DataTemplate></ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </o:ControlShowcase>
+            </TabItem>
+            <TabItem Header="TextBox">
+                <o:ControlShowcase Header="Editable text, selection and caret navigation" SourceKey="smooth-scroll-original-textbox">
+                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
+                    <o:ControlShowcase.CodeBlocks>
+                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding TextCode}" />
+                    </o:ControlShowcase.CodeBlocks>
+                    <TextBox Name="ReferenceText" Height="380" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Text, Mode=TwoWay}" />
+                </o:ControlShowcase>
+            </TabItem>
+            <TabItem Header="Chaining">
+                <o:ControlShowcase Header="Vertical and horizontal nested scrolling" SourceKey="smooth-scroll-original-chaining">
+                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
+                    <o:ControlShowcase.CodeBlocks>
+                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ChainingCode}" />
+                    </o:ControlShowcase.CodeBlocks>
+                    <StackPanel Spacing="12">
+                        <ToggleSwitch Name="ReferenceChaining" Content="Continue scrolling the parent at an inner edge" IsChecked="True" />
+                        <ScrollViewer Name="ReferenceOuter" Height="360">
+                            <StackPanel Spacing="16">
+                                <TextBlock Text="Vertical" FontWeight="Bold" />
+                                <ScrollViewer Name="ReferenceVertical" Height="200" IsScrollChainingEnabled="{Binding #ReferenceChaining.IsChecked}">
+                                    <ItemsControl ItemsSource="{Binding Children}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <Border Height="84" Margin="0,0,0,12" Padding="16" Background="#224D8DFF"><TextBlock Text="{Binding}" /></Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
+                                <TextBlock Text="Horizontal" FontWeight="Bold" />
+                                <ScrollViewer Name="ReferenceHorizontal" Height="160" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
+                                              IsScrollChainingEnabled="{Binding #ReferenceChaining.IsChecked}">
+                                    <ScrollViewer.Styles>
+                                        <Style Selector="o|OvoScrollPresenter">
+                                            <Setter Property="ContentOrientation" Value="Horizontal" />
+                                        </Style>
+                                    </ScrollViewer.Styles>
+                                    <ItemsControl ItemsSource="{Binding Cards}">
+                                        <ItemsControl.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal" /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate x:DataType="x:String">
+                                                <Border Width="300" Margin="0,0,24,0" Padding="16" Background="#224FC1A5"><TextBlock Text="{Binding}" /></Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
+                                <Border Height="240" Background="#22EFAD57"><TextBlock Margin="16" Text="Outer viewer: keep scrolling" /></Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
+                </o:ControlShowcase>
+            </TabItem>
+            <TabItem Header="Anchor">
+                <o:ControlShowcase Header="Anchor candidates, incremental resizing and scroll events" SourceKey="smooth-scroll-original-anchor">
+                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
+                    <o:ControlShowcase.CodeBlocks>
+                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding AnchorCode}" />
+                    </o:ControlShowcase.CodeBlocks>
+                    <StackPanel Spacing="12">
+                        <WrapPanel>
+                            <Button Name="ReferenceResize" Content="Change items size" Click="Resize_OnClick" Margin="0,0,12,8" />
+                            <TextBlock Name="ReferenceAnchorStatus" VerticalAlignment="Center" Text="Anchor: none · ScrollChanged: 0" TextWrapping="Wrap" />
+                        </WrapPanel>
+                        <ScrollViewer Name="ReferenceAnchors" Height="340" ScrollChanged="Anchors_OnScrollChanged">
+                            <ItemsControl ItemsSource="{Binding AnchorItems}" ContainerPrepared="Anchor_Prepared" ContainerClearing="Anchor_Clearing">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="pages:SmoothAnchorItem">
+                                        <Border Height="{Binding Height}" Padding="8" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" Background="{DynamicResource ControlBackground}">
+                                            <StackPanel Orientation="Horizontal" Spacing="16">
+                                                <TextBlock Text="{Binding Title}" />
+                                                <TextBlock Text="{Binding Height, StringFormat='Height: {0}'}" />
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </StackPanel>
+                </o:ControlShowcase>
+            </TabItem>
+            <TabItem Header="InteractionTracker">
+                <pages:InteractionTrackerPage />
+            </TabItem>
+        </TabControl>
+    </demo:DemoPage>
+</UserControl>

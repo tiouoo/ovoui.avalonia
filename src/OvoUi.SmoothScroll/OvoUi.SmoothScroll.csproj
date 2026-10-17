@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <PackageId>OvoUi.SmoothScroll</PackageId>
+        <AssemblyName>OvoUi.SmoothScroll</AssemblyName>
+        <RootNamespace>OvoUi.SmoothScroll</RootNamespace>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <Title>OvoUi Smooth Scroll</Title>
+        <Description>Smooth scrolling, panning, multi-touch zoom, elastic overscroll and composition interaction tracking for Avalonia.</Description>
+        <PackageTags>avalonia;ovoui;scroll;pan;zoom;interaction;composition</PackageTags>
+        <PackageIcon>icon_256.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+    <ItemGroup>
+        <IgnoresAccessChecksTo Include="Avalonia.Base" />
+        <IgnoresAccessChecksTo Include="Avalonia.Controls" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="12.1.4" />
+        <PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.8.0" PrivateAssets="all" />
+        <PackageReference Include="PropertyGenerator.Avalonia" Version="1.3.1" PrivateAssets="all" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
+        <None Update="README.md;LICENSE.txt;THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+</Project>
