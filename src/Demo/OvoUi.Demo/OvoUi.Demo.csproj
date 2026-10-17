@@ -13,6 +13,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\OvoUi.Lang\OvoUi.Lang.csproj" />
+        <ProjectReference Include="..\..\OvoUi.Lang.Generator\OvoUi.Lang.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
 
@@ -50,5 +52,8 @@
 
     <ItemGroup>
         <AdditionalFiles Include="**\*.axaml" Exclude="bin\**;obj\**" />
+        <AdditionalFiles Include="Resources\Lang\**\*.json;Resources\Lang\**\*.resx" />
+        <CompilerVisibleProperty Include="MSBuildProjectDirectory" />
     </ItemGroup>
+    <PropertyGroup><NoWarn>$(NoWarn);LANG002</NoWarn></PropertyGroup>
 </Project>

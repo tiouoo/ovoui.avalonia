@@ -1,0 +1,6 @@
+{
+  "App_Title": "OvoUi.Lang · localisation indépendante",
+  "Greeting": "Bonjour, le monde !",
+  "ParentOnly": "Repli sur la culture parente.",
+  "Page_Template": "Page {0} : total {1:N2}"
+}

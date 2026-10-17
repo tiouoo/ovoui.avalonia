@@ -1,0 +1,6 @@
+{
+  "App_Title": "OvoUi.Lang · ローカライズ",
+  "Greeting": "こんにちは、世界！",
+  "ParentOnly": "親言語へのフォールバックをサポートします。",
+  "Page_Template": "{0} ページ：合計 {1:N2}"
+}

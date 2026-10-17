@@ -1,0 +1,6 @@
+{
+  "App_Title": "This automatically discovered file is replaced entirely.",
+  "Greeting": "This greeting must never appear.",
+  "ParentOnly": "This must not be merged into the explicit Chinese file.",
+  "DefaultOnly": "This must not be used: fall back to the default file."
+}

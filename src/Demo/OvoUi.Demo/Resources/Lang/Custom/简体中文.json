@@ -1,0 +1,5 @@
+{
+  "App_Title": "OvoUi.Lang · 显式中文路径",
+  "Greeting": "你好，世界！这段文本来自自定义中文路径。",
+  "Page_Template": "第 {0} 页：总额 {1:N2}"
+}

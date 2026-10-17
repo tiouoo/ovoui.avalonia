@@ -45,6 +45,7 @@ public sealed class DemoViewModel : ModelBase
         Page.Group("Feedback", Feedbacks.FeedbacksList),
         Page.Group("Layout", Layouts.LayoutsList),
         Page.Group("Platform", PlatformNavigation.PlatformList),
+        Page.View<LangPage>("OvoUi.Lang"),
     ];
 
     public Page SelectedPage

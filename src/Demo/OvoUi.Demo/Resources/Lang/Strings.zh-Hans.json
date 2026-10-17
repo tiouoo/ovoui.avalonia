@@ -1,0 +1,6 @@
+{
+  "App_Title": "OvoUi.Lang · 独立多语言组件",
+  "Greeting": "来自父语言的问候",
+  "ParentOnly": "这是从 zh-Hans 父语言回退得到的中文。",
+  "Page_Template": "第 {0} 页：总额 {1:N2}"
+}

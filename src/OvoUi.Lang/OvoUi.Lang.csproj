@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <PackageId>OvoUi.Lang</PackageId>
+    <Description>Reactive, strongly typed Avalonia localization with configurable resource paths and multilingual IntelliSense.</Description>
+    <PackageTags>avalonia;localization;i18n;resx;json;source-generator;aot</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.1.4" />
+    <ProjectReference Include="../OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="/" />
+    <None Include="buildTransitive/OvoUi.Lang.props" Pack="true" PackagePath="buildTransitive/" />
+  </ItemGroup>
+  <Target Name="PackLangGenerator" BeforeTargets="_GetPackageFiles">
+    <ItemGroup>
+      <None Include="../OvoUi.Lang.Generator/bin/$(Configuration)/netstandard2.0/OvoUi.Lang.Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs/" />
+      <None Include="../OvoUi.Lang.Generator/bin/$(Configuration)/netstandard2.0/Newtonsoft.Json.dll" Pack="true" PackagePath="analyzers/dotnet/cs/" />
+    </ItemGroup>
+  </Target>
+</Project>

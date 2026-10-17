@@ -1,0 +1,59 @@
+<UserControl x:Class="OvoUi.Demo.Pages.LangPage"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:demo="using:OvoUi.Demo.Controls"
+             xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+             xmlns:lang="https://github.com/tiouoo/ovoui.avalonia/lang"
+             xmlns:models="using:OvoUi.Demo.Models"
+             x:DataType="models:LangDemoViewModel">
+    <demo:DemoPage Text="OvoUi.Lang">
+        <o:ControlShowcase Header="Language · shared across independent JSON and RESX managers" SourceKey="lang-picker">
+            <lang:CulturePicker Managers="{Binding Managers}" Cultures="{Binding Cultures}" MinWidth="210" HorizontalAlignment="Left" />
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="JSON · Translate and ViewModel stream bindings" SourceKey="lang-json">
+            <StackPanel Spacing="10">
+                <TextBlock FontSize="22" FontWeight="SemiBold" Text="{lang:Translate {x:Static models:DemoLanguage+Keys.App_Title}}" />
+                <TextBlock Text="{Binding Greeting^}" TextWrapping="Wrap" />
+                <TextBlock Text="{lang:Translate {x:Static models:DemoLanguage+Keys.Greeting}}" TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Explicit Chinese file · whole-file replacement and per-key fallback" SourceKey="lang-fallback">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Select 简体中文: Greeting uses the explicit file; the next lines fall back to zh-Hans and the default file." TextWrapping="Wrap" Opacity="0.65" />
+                <TextBlock Text="{lang:Translate {x:Static models:DemoLanguage+Keys.ParentOnly}}" TextWrapping="Wrap" />
+                <TextBlock Text="{lang:Translate {x:Static models:DemoLanguage+Keys.DefaultOnly}}" TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="RESX · same API" SourceKey="lang-resx">
+            <TextBlock Text="{lang:Translate {x:Static models:DemoResxLanguage+Keys.Greeting}}" />
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Reactive formatting · numbers follow the selected culture" SourceKey="lang-format">
+            <StackPanel Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <NumericUpDown Value="{Binding PageNumber}" Minimum="1" Maximum="100" Width="120" />
+                    <NumericUpDown Value="{Binding Amount}" Minimum="0" Maximum="1000000" Width="180" Increment="0.5" />
+                </StackPanel>
+                <TextBlock Text="{Binding FormattedText^}" />
+                <TextBlock>
+                    <TextBlock.Text>
+                        <lang:FormatTranslate FormatKey="{x:Static models:DemoLanguage+Keys.Page_Template}">
+                            <lang:TranslateEntry Binding="{Binding PageNumber}" />
+                            <lang:TranslateEntry Binding="{Binding Amount}" />
+                        </lang:FormatTranslate>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </o:ControlShowcase>
+        <o:ControlShowcase Header="Runtime override · patch the selected language and restore it" SourceKey="lang-runtime">
+            <StackPanel Spacing="10">
+                <TextBox Text="{Binding CustomGreeting}" PlaceholderText="Your translation" />
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <Button Click="ApplyOverride">Apply override</Button>
+                    <Button Click="ClearOverrides">Restore translations</Button>
+                </StackPanel>
+                <TextBlock Text="{Binding TranslationList}" TextWrapping="Wrap" />
+                <TextBlock Text="In your IDE, hover DemoLanguage.Instance.Greeting or DemoLanguage.Keys.Greeting to see all configured translations." TextWrapping="Wrap" Opacity="0.65" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
