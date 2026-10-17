@@ -11,7 +11,6 @@
         <Description>Smooth scrolling, panning, multi-touch zoom, elastic overscroll and composition interaction tracking for Avalonia.</Description>
         <PackageTags>avalonia;ovoui;scroll;pan;zoom;interaction;composition</PackageTags>
         <PackageIcon>icon_256.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <ItemGroup>

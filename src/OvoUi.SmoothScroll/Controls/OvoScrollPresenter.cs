@@ -121,6 +121,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     private Size _extent;
     private Size _viewport;
     private HashSet<Control>? _anchorCandidates;
+    private readonly HashSet<AvaloniaProperty> _ownerBoundProperties = [];
     private Control? _anchorElement;
     private Rect _anchorElementBounds;
     private bool _isAnchorElementDirty;
@@ -576,7 +577,16 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
 
         static bool NotDisabled(ScrollBarVisibility v) => v != ScrollBarVisibility.Disabled;
 
-        IDisposable? IfUnset<T>(T property, Func<T, IDisposable> func) where T : AvaloniaProperty => IsSet(property) ? null : func(property);
+        IDisposable? IfUnset<T>(T property, Func<T, IDisposable> func) where T : AvaloniaProperty
+        {
+            // SetCurrentValue may retain a value after an owner binding is disposed on detach.
+            // Restore bindings we previously owned when the presenter is attached again.
+            if (IsSet(property) && !_ownerBoundProperties.Contains(property))
+                return null;
+
+            _ownerBoundProperties.Add(property);
+            return func(property);
+        }
     }
 
     /// <inheritdoc/>
