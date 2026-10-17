@@ -8,7 +8,7 @@ namespace OvoUi.Tab.Internal;
 
 /// <summary>
 /// Owns capture on the original top-level, independently of tab containers and current host.
-/// No capturing window is hidden or closed until the pointer has been released.
+/// The native capture handle stays mapped until the pointer has been released.
 /// </summary>
 internal sealed class TabDragSession
 {
@@ -21,7 +21,7 @@ internal sealed class TabDragSession
     private readonly double _grabOffset;
     private readonly bool _isLiveDragEnabled;
     private readonly HashSet<OvoTabHost> _touchedHosts = [];
-    private readonly Dictionary<Window, (double Opacity, bool ShowActivated, bool Topmost)> _windowSettings = [];
+    private readonly Dictionary<Window, TabDragWindowState> _windowSettings = [];
     private readonly DispatcherTimer _scrollTimer;
     private TabDragBehavior _current;
     private OvoTabPanel? _dragPanel;
@@ -123,14 +123,18 @@ internal sealed class TabDragSession
             return;
         }
 
-        // The tolerance applies only to leaving a strip; entering a target uses its exact bounds.
-        if (_enteredThroughWindow && _current.Contains(point, OvoTabDragBoundary.TabStrip))
-            _enteredThroughWindow = false;
+        // Leaving the actual strip ends tentative reordering, even while the pointer is
+        // still inside the detach tolerance or the window boundary.
+        var inStrip = _current.Contains(point, OvoTabDragBoundary.TabStrip);
+        if (inStrip) _enteredThroughWindow = false;
+        else ResetVisualOrder();
         var detachBoundary = _enteredThroughWindow ? OvoTabDragBoundary.Window : host.DetachBoundary;
         if (_current.Contains(point, detachBoundary, host.DetachDistance) ||
             host.EffectiveDragMode != OvoTabDragMode.ReorderAndDetach)
         {
-            DragInStrip(point);
+            if (inStrip) DragInStrip(point);
+            else SetState(host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach
+                ? OvoTabDragState.CurrentWindow : OvoTabDragState.Blocked);
             return;
         }
 
@@ -138,7 +142,7 @@ internal sealed class TabDragSession
             ? _service.FindSurfaceAt(point, host, _reusableWindow)
             : null;
         if (attachTarget is not null && AttachTo(attachTarget, point)) return;
-        if (!DetachToWindow(point)) DragInStrip(point);
+        if (!DetachToWindow(point)) SetState(OvoTabDragState.Blocked);
     }
 
     private void ContinuePreviewDrag(PixelPoint point)
@@ -152,6 +156,7 @@ internal sealed class TabDragSession
             return;
         }
 
+        ResetVisualOrder();
         var host = _current.Host;
         if (host.EffectiveDragMode != OvoTabDragMode.ReorderAndDetach)
         {
@@ -227,17 +232,14 @@ internal sealed class TabDragSession
         try
         {
             var source = _current.Host;
-            CommitVisualOrder();
+            ResetVisualOrder();
             if (!_service.Transfer(_tab, source, target.Host, target.InsertionIndex(point),
                     closeEmpty: false, activate: false)) return false;
             _touchedHosts.Add(target.Host);
             if (_floatingWindow is { } floating)
             {
                 RememberWindow(floating);
-                // Hide visually, but keep the native capture window mapped. Hide()/Close()
-                // can cancel native capture before the next mouse event reaches this session.
-                floating.Opacity = 0;
-                floating.Topmost = _windowSettings[floating].Topmost;
+                _windowSettings[floating].HideWhileAttached();
                 _floatingWindow = null;
             }
             source.UpdateDragState(OvoTabDragState.None);
@@ -245,7 +247,7 @@ internal sealed class TabDragSession
             _enteredThroughWindow = target.Host.AttachBoundary == OvoTabDragBoundary.Window;
             (TopLevel.GetTopLevel(target.Container!) as Window)?.Activate();
             target.Container?.UpdateLayout();
-            DragInStrip(point);
+            if (target.Contains(point, OvoTabDragBoundary.TabStrip)) DragInStrip(point);
             SetState(OvoTabDragState.Transfer);
             return true;
         }
@@ -269,14 +271,13 @@ internal sealed class TabDragSession
                 if (window is null) return false;
                 _createdWindow = _reusableWindow = window;
             }
-            CommitVisualOrder();
+            ResetVisualOrder();
             RememberWindow(window);
             window.ShowActivated = false;
             window.Topmost = true;
             window.Position = new PixelPoint(point.X - (int)Math.Round((_grabOffset + 6) * window.RenderScaling),
                 point.Y - (int)Math.Round(22 * window.RenderScaling));
             if (!_service.Transfer(_tab, source, window.TabHost, 0, closeEmpty: false, activate: false)) return false;
-            window.Opacity = _windowSettings[window].Opacity;
             if (!window.IsVisible) window.Show();
             window.UpdateLayout();
             var surface = window.TabHost.DragSurfaces.FirstOrDefault(candidate => candidate.Panel is not null);
@@ -298,6 +299,8 @@ internal sealed class TabDragSession
             _touchedHosts.Add(window.TabHost);
             source.UpdateDragState(OvoTabDragState.None);
             MoveFloatingWindow(point);
+            // Populate, arrange and position the reused window before revealing its native frame.
+            _windowSettings[window].RestoreVisibility();
             SetState(OvoTabDragState.Detach);
             return true;
         }
@@ -315,6 +318,14 @@ internal sealed class TabDragSession
         _dragPanel = null;
         if (_current.Host.Tabs.Contains(_tab))
             _current.Host.MoveTab(_tab, Math.Clamp(index, 0, _current.Host.Tabs.Count - 1));
+    }
+
+    private void ResetVisualOrder()
+    {
+        // EndDrag animates all headers back to their model positions. Only a drop
+        // inside the strip commits DropIndex to the collection.
+        _dragPanel?.EndDrag();
+        _dragPanel = null;
     }
 
     private void MoveFloatingWindow(PixelPoint point)
@@ -385,22 +396,18 @@ internal sealed class TabDragSession
         _tab.IsDragging = false;
         foreach (var host in _touchedHosts) host.UpdateDragState(OvoTabDragState.None);
         if (ReferenceEquals(_service.ActiveDrag, this)) _service.ActiveDrag = null;
-        foreach (var (window, settings) in _windowSettings)
-        {
-            window.Opacity = settings.Opacity;
-            window.ShowActivated = settings.ShowActivated;
-            window.Topmost = settings.Topmost;
-        }
+        // Close empty shells while still concealed, so restoring chrome cannot flash them.
         if (_createdWindow is { } created && created.TabHost.Tabs.Count == 0) created.CloseAfterTransfer();
         foreach (var host in _touchedHosts)
         {
             if (!ReferenceEquals(host, _createdWindow?.TabHost)) _service.CloseEmptyWindowIfNeeded(host);
         }
+        foreach (var settings in _windowSettings.Values) settings.Restore();
         if (_dragging) (TopLevel.GetTopLevel(_current.Host) as Window)?.Activate();
     }
 
     private void RememberWindow(Window window) =>
-        _windowSettings.TryAdd(window, (window.Opacity, window.ShowActivated, window.Topmost));
+        _windowSettings.TryAdd(window, new TabDragWindowState(window));
 
     private void SetState(OvoTabDragState state)
     {
