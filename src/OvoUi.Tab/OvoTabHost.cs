@@ -25,7 +25,10 @@ public class OvoTabHost : TemplatedControl
     private readonly ICommand _closeTabCommand;
     private readonly DelegateCommand _newTabCommand;
     private readonly TabDragBehavior _dragBehavior;
-    private readonly ObservableCollection<OvoTabItem> _tabs = [];
+    private readonly ObservableCollection<OvoTabItem> _tabs;
+    private readonly List<SelectionList> _headerLists = [];
+    private int _collectionUpdateDepth;
+    private bool _synchronizingSelection;
     private OvoTabDragState _dragState;
     private OvoTabService _tabService = OvoTabService.Shared;
     private bool _isAttached;
@@ -34,6 +37,7 @@ public class OvoTabHost : TemplatedControl
 
     public OvoTabHost()
     {
+        _tabs = new TabCollection(this);
         _tabs.CollectionChanged += TabsOnCollectionChanged;
         _newTabCommand = new DelegateCommand(RequestNewTab);
         _closeTabCommand = new DelegateCommand<OvoTabItem>(tab => _ = CloseTabAsync(tab));
@@ -84,6 +88,49 @@ public class OvoTabHost : TemplatedControl
         get => GetValue(DragModeProperty);
         set => SetValue(DragModeProperty, value);
     }
+
+    public static readonly StyledProperty<OvoTabDragBoundary> DetachBoundaryProperty =
+        AvaloniaProperty.Register<OvoTabHost, OvoTabDragBoundary>(nameof(DetachBoundary), OvoTabDragBoundary.TabStrip);
+
+    /// <summary>The region the pointer must leave to create a window while dragging.</summary>
+    public OvoTabDragBoundary DetachBoundary
+    {
+        get => GetValue(DetachBoundaryProperty);
+        set => SetValue(DetachBoundaryProperty, value);
+    }
+
+    public static readonly StyledProperty<OvoTabDragBoundary> AttachBoundaryProperty =
+        AvaloniaProperty.Register<OvoTabHost, OvoTabDragBoundary>(nameof(AttachBoundary), OvoTabDragBoundary.TabStrip);
+
+    /// <summary>The region a floating tab must enter to attach to this host.</summary>
+    public OvoTabDragBoundary AttachBoundary
+    {
+        get => GetValue(AttachBoundaryProperty);
+        set => SetValue(AttachBoundaryProperty, value);
+    }
+
+    public static readonly StyledProperty<bool> IsTabAttachEnabledProperty =
+        AvaloniaProperty.Register<OvoTabHost, bool>(nameof(IsTabAttachEnabled), true);
+
+    /// <summary>Allows tabs to attach to and leave this host during a cross-window drag.</summary>
+    public bool IsTabAttachEnabled
+    {
+        get => GetValue(IsTabAttachEnabledProperty);
+        set => SetValue(IsTabAttachEnabledProperty, value);
+    }
+
+    public static readonly StyledProperty<double> DetachDistanceProperty =
+        AvaloniaProperty.Register<OvoTabHost, double>(nameof(DetachDistance), 24,
+            validate: value => double.IsFinite(value) && value >= 0);
+
+    /// <summary>Distance in device-independent pixels outside the boundary before detaching.</summary>
+    public double DetachDistance
+    {
+        get => GetValue(DetachDistanceProperty);
+        set => SetValue(DetachDistanceProperty, value);
+    }
+
+    internal List<TabDragBehavior> DragSurfaces { get; } = [];
 
     public static readonly StyledProperty<bool> IsAddButtonVisibleProperty =
         AvaloniaProperty.Register<OvoTabHost, bool>(nameof(IsAddButtonVisible), true);
@@ -217,6 +264,7 @@ public class OvoTabHost : TemplatedControl
         if (!this.IsAttachedToVisualTree()) return;
         if (_tabList is not null)
         {
+            RegisterHeaderList(_tabList);
             _tabList.AddHandler(PointerPressedEvent, TabListOnPointerPressed, RoutingStrategies.Tunnel,
                 handledEventsToo: true);
             _dragBehavior.Attach(_tabList);
@@ -255,6 +303,7 @@ public class OvoTabHost : TemplatedControl
             return;
         }
 
+        SynchronizeHeaderSelection();
         if (tab is not null)
             SelectedTabChanged?.Invoke(this, new OvoTabEventArgs(tab));
     }
@@ -264,12 +313,12 @@ public class OvoTabHost : TemplatedControl
         ArgumentNullException.ThrowIfNull(tab);
         if (Tabs.Contains(tab))
         {
-            if (select) SelectedTab = tab;
+            if (select) SetCurrentValue(SelectedTabProperty, tab);
             return;
         }
 
         Tabs.Add(tab);
-        if (select) SelectedTab = tab;
+        if (select) SetCurrentValue(SelectedTabProperty, tab);
         TabAdded?.Invoke(this, new OvoTabEventArgs(tab));
         ScrollToEnd();
     }
@@ -277,7 +326,7 @@ public class OvoTabHost : TemplatedControl
     public bool SelectTab(OvoTabItem tab)
     {
         if (!Tabs.Contains(tab)) return false;
-        SelectedTab = tab;
+        SetCurrentValue(SelectedTabProperty, tab);
         return true;
     }
 
@@ -286,7 +335,6 @@ public class OvoTabHost : TemplatedControl
         var oldIndex = Tabs.IndexOf(tab);
         if (oldIndex < 0 || newIndex < 0 || newIndex >= Tabs.Count || oldIndex == newIndex) return false;
         Tabs.Move(oldIndex, newIndex);
-        SelectedTab = tab;
         return true;
     }
 
@@ -328,7 +376,7 @@ public class OvoTabHost : TemplatedControl
 
         foreach (var candidate in candidates)
             RemoveClosedTab(candidate, OvoTabCloseReason.CloseOthers);
-        SelectedTab = tab;
+        SetCurrentValue(SelectedTabProperty, tab);
         return true;
     }
 
@@ -382,8 +430,16 @@ public class OvoTabHost : TemplatedControl
         var index = Tabs.IndexOf(tab);
         if (index < 0) return;
         if (ReferenceEquals(SelectedTab, tab))
-            SelectedTab = Tabs.LastOrDefault(item => !ReferenceEquals(item, tab));
+            SetCurrentValue(SelectedTabProperty, Tabs.LastOrDefault(item => !ReferenceEquals(item, tab)));
         Tabs.RemoveAt(index);
+    }
+
+    internal void InsertTransferredTab(OvoTabItem tab, int index)
+    {
+        Tabs.Insert(Math.Clamp(index, 0, Tabs.Count), tab);
+        SetCurrentValue(SelectedTabProperty, tab);
+        TabAdded?.Invoke(this, new OvoTabEventArgs(tab));
+        if (TabService.ActiveDrag is null) ScrollToEnd();
     }
 
     internal void UpdateDragState(OvoTabDragState state)
@@ -485,7 +541,7 @@ public class OvoTabHost : TemplatedControl
         // Move selection first. Selection controls can otherwise write the removed item
         // back through their two-way binding while processing CollectionChanged.
         if (wasSelected)
-            SelectedTab = Tabs.LastOrDefault(item => !ReferenceEquals(item, tab));
+            SetCurrentValue(SelectedTabProperty, Tabs.LastOrDefault(item => !ReferenceEquals(item, tab)));
 
         Tabs.RemoveAt(index);
 
@@ -505,12 +561,12 @@ public class OvoTabHost : TemplatedControl
     {
         if (Tabs.Count == 0)
         {
-            SelectedTab = null;
+            SetCurrentValue(SelectedTabProperty, null);
             return;
         }
 
         if (SelectedTab is null || !Tabs.Contains(SelectedTab))
-            SelectedTab = Tabs[0];
+            SetCurrentValue(SelectedTabProperty, Tabs[0]);
     }
 
     private void TabListOnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -557,9 +613,67 @@ public class OvoTabHost : TemplatedControl
     {
         _dragBehavior.Detach();
         if (_tabList is not null)
+        {
+            UnregisterHeaderList(_tabList);
             _tabList.RemoveHandler(PointerPressedEvent, TabListOnPointerPressed);
+        }
         if (_tabScrollViewer is not null)
             _tabScrollViewer.PointerWheelChanged -= TabScrollViewerOnPointerWheelChanged;
+    }
+
+    internal void RegisterHeaderList(SelectionList list)
+    {
+        if (_headerLists.Contains(list)) return;
+        _headerLists.Add(list);
+        list.SelectionChanged += HeaderSelectionChanged;
+        SynchronizeHeaderSelection();
+    }
+
+    internal void UnregisterHeaderList(SelectionList list)
+    {
+        list.SelectionChanged -= HeaderSelectionChanged;
+        _headerLists.Remove(list);
+    }
+
+    private void HeaderSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (_collectionUpdateDepth != 0 || _synchronizingSelection) return;
+        if (sender is SelectionList { SelectedItem: OvoTabItem tab } && Tabs.Contains(tab))
+            SetCurrentValue(SelectedTabProperty, tab);
+    }
+
+    private void SynchronizeHeaderSelection()
+    {
+        if (_collectionUpdateDepth != 0 || _synchronizingSelection) return;
+        _synchronizingSelection = true;
+        try
+        {
+            foreach (var list in _headerLists)
+                list.SetCurrentValue(SelectionList.SelectedItemProperty, SelectedTab);
+        }
+        finally
+        {
+            _synchronizingSelection = false;
+        }
+    }
+
+    // Header selection models process collection moves as well. Only the host owns page
+    // selection; intermediate container/index changes must never flow back into SelectedTab.
+    private sealed class TabCollection(OvoTabHost owner) : ObservableCollection<OvoTabItem>
+    {
+        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            owner._collectionUpdateDepth++;
+            try
+            {
+                base.OnCollectionChanged(e);
+            }
+            finally
+            {
+                owner._collectionUpdateDepth--;
+                owner.SynchronizeHeaderSelection();
+            }
+        }
     }
 
     internal static Border? FindTabRoot(Visual? visual)

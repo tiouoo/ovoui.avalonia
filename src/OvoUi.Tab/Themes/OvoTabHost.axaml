@@ -5,6 +5,7 @@
     xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
     xmlns:tab="using:OvoUi.Tab"
+    xmlns:internal="using:OvoUi.Tab.Internal"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
@@ -68,6 +69,7 @@
                     RowDefinitions="Auto,*">
                     <Border
                         Background="Transparent"
+                        Name="PART_TabStripArea"
                         Height="{TemplateBinding TabStripHeight}"
                         IsVisible="{TemplateBinding IsTabStripVisible}"
                         Padding="{TemplateBinding TabStripPadding}">
@@ -94,10 +96,10 @@
                                         Indicator="{x:Null}"
                                         ItemsSource="{TemplateBinding Tabs}"
                                         Name="PART_TabList"
-                                        SelectedItem="{Binding SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                        SelectedItem="{Binding SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                         <o:SelectionList.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal" />
+                                                <internal:OvoTabPanel />
                                             </ItemsPanelTemplate>
                                         </o:SelectionList.ItemsPanel>
                                         <o:SelectionList.ItemTemplate>
@@ -242,6 +244,7 @@
             <ControlTemplate TargetType="tab:OvoTabStrip">
                 <Border
                     Background="{TemplateBinding Background}"
+                    Name="PART_TabStripArea"
                     Height="{Binding Host.TabStripHeight, RelativeSource={RelativeSource TemplatedParent}}"
                     Padding="{Binding Host.TabStripPadding, RelativeSource={RelativeSource TemplatedParent}}">
                     <Grid ColumnDefinitions="Auto,*,Auto">
@@ -267,10 +270,10 @@
                                     Indicator="{x:Null}"
                                     ItemsSource="{Binding Host.Tabs, RelativeSource={RelativeSource TemplatedParent}}"
                                     Name="PART_TabList"
-                                    SelectedItem="{Binding Host.SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                    SelectedItem="{Binding Host.SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                     <o:SelectionList.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal" />
+                                            <internal:OvoTabPanel />
                                         </ItemsPanelTemplate>
                                     </o:SelectionList.ItemsPanel>
                                     <o:SelectionList.ItemTemplate>

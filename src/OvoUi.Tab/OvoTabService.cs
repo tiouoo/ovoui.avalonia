@@ -10,6 +10,7 @@ namespace OvoUi.Tab;
 public sealed class OvoTabService
 {
     private readonly List<WeakReference<OvoTabHost>> _hosts = [];
+    internal TabDragSession? ActiveDrag { get; set; }
 
     public OvoTabService()
     {
@@ -52,16 +53,23 @@ public sealed class OvoTabService
 
     public bool Transfer(OvoTabItem tab, OvoTabHost source, OvoTabHost target)
     {
+        ArgumentNullException.ThrowIfNull(target);
+        return Transfer(tab, source, target, target.Tabs.Count, closeEmpty: true, activate: true);
+    }
+
+    internal bool Transfer(OvoTabItem tab, OvoTabHost source, OvoTabHost target, int index,
+        bool closeEmpty, bool activate)
+    {
         ArgumentNullException.ThrowIfNull(tab);
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(target);
-        if (ReferenceEquals(source, target) || !source.Tabs.Contains(tab)) return false;
+        if (ReferenceEquals(source, target) || !source.Tabs.Contains(tab) || target.Tabs.Contains(tab)) return false;
 
         VisualDetach.FromParent(tab.Content);
         source.RemoveForTransfer(tab);
-        target.AddTab(tab, select: true);
-        CloseEmptyWindowIfNeeded(source);
-        (TopLevel.GetTopLevel(target) as Window)?.Activate();
+        target.InsertTransferredTab(tab, index);
+        if (closeEmpty) CloseEmptyWindowIfNeeded(source);
+        if (activate) (TopLevel.GetTopLevel(target) as Window)?.Activate();
         return true;
     }
 
@@ -71,10 +79,9 @@ public sealed class OvoTabService
         ArgumentNullException.ThrowIfNull(source);
         if (!source.Tabs.Contains(tab) || WindowFactory is null) return null;
 
-        var window = WindowFactory(new OvoTabWindowCreationContext(this, source, tab, screenPosition));
+        var window = CreateDetachedWindow(tab, source, screenPosition);
         if (window is null) return null;
 
-        window.TabService = this;
         VisualDetach.FromParent(tab.Content);
         source.RemoveForTransfer(tab);
         window.TabHost.AddTab(tab, select: true);
@@ -84,27 +91,34 @@ public sealed class OvoTabService
         return window;
     }
 
-    internal OvoTabHost? FindHostAt(PixelPoint screenPoint, OvoTabHost? excluded = null)
+    internal OvoTabWindow? CreateDetachedWindow(OvoTabItem tab, OvoTabHost source, PixelPoint screenPosition)
     {
-        foreach (var host in Hosts.Reverse())
-        {
-            if (ReferenceEquals(host, excluded) || !host.IsVisible || TopLevel.GetTopLevel(host) is not Window window ||
-                !window.IsVisible)
-                continue;
-
-            var origin = host.PointToScreen(default);
-            var scaling = window.RenderScaling;
-            var width = host.Bounds.Width * scaling;
-            var height = host.Bounds.Height * scaling;
-            if (screenPoint.X >= origin.X && screenPoint.X <= origin.X + width &&
-                screenPoint.Y >= origin.Y && screenPoint.Y <= origin.Y + height)
-                return host;
-        }
-
-        return null;
+        var window = WindowFactory?.Invoke(new OvoTabWindowCreationContext(this, source, tab, screenPosition));
+        if (window is null) return null;
+        window.TabService = this;
+        var target = window.TabHost;
+        target.DragMode = source.DragMode;
+        target.DetachBoundary = source.DetachBoundary;
+        target.AttachBoundary = source.AttachBoundary;
+        target.DetachDistance = source.DetachDistance;
+        target.IsTabAttachEnabled = source.IsTabAttachEnabled;
+        target.Strings = source.Strings;
+        target.PageTransition = source.PageTransition;
+        target.NewTabFactory ??= source.NewTabFactory;
+        target.CloseGuard ??= source.CloseGuard;
+        return window;
     }
 
-    private void CloseEmptyWindowIfNeeded(OvoTabHost host)
+    internal TabDragBehavior? FindSurfaceAt(PixelPoint screenPoint, OvoTabHost excluded,
+        Window? excludedWindow = null)
+        => Hosts.OrderBy(host => (TopLevel.GetTopLevel(host) as Window)?.IsActive == true).Reverse()
+            .Where(host => !ReferenceEquals(host, excluded) && host.IsTabAttachEnabled &&
+                           host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach &&
+                           !ReferenceEquals(TopLevel.GetTopLevel(host), excludedWindow))
+            .SelectMany(host => host.DragSurfaces)
+            .FirstOrDefault(surface => surface.Contains(screenPoint, surface.Host.AttachBoundary));
+
+    internal void CloseEmptyWindowIfNeeded(OvoTabHost host)
     {
         if (!CloseEmptySecondaryWindows || host.Tabs.Count != 0) return;
         if (TopLevel.GetTopLevel(host) is OvoTabWindow { IsPrimaryWindow: false } window)

@@ -68,7 +68,10 @@ public sealed class OvoTabStrip : TemplatedControl
 
         _subscribedHost = Host;
         if (_subscribedHost is not null)
+        {
             _subscribedHost.TabAdded += OnTabAdded;
+            if (_tabList is not null) _subscribedHost.RegisterHeaderList(_tabList);
+        }
         AttachDragBehavior();
     }
 
@@ -111,7 +114,10 @@ public sealed class OvoTabStrip : TemplatedControl
         _dragBehavior.Attach(_tabList);
     }
 
-    private void OnTabAdded(object? sender, OvoTabEventArgs e) => ScrollToEnd();
+    private void OnTabAdded(object? sender, OvoTabEventArgs e)
+    {
+        if (Host?.TabService.ActiveDrag is null) ScrollToEnd();
+    }
 
     private void ScrollToEnd()
     {
@@ -127,7 +133,11 @@ public sealed class OvoTabStrip : TemplatedControl
     {
         _dragBehavior?.Detach();
         _dragBehavior = null;
-        if (_subscribedHost is not null) _subscribedHost.TabAdded -= OnTabAdded;
+        if (_subscribedHost is not null)
+        {
+            _subscribedHost.TabAdded -= OnTabAdded;
+            if (_tabList is not null) _subscribedHost.UnregisterHeaderList(_tabList);
+        }
         _subscribedHost = null;
         if (_tabList is not null) _tabList.RemoveHandler(PointerPressedEvent, OnPointerPressed);
         if (_scrollViewer is not null) _scrollViewer.PointerWheelChanged -= OnPointerWheelChanged;
