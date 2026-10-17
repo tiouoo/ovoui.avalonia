@@ -8,16 +8,33 @@
         <ovo:ControlShowcase Header="Buttons and sizes" SourceKey="layout-elastic-decorator-buttons">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <ovo:ElasticDecorator>
-                    <Button Content="Small" FontSize="12" Height="32" Width="88" />
+                    <Button
+                        Content="Small"
+                        FontSize="12"
+                        Height="32"
+                        Width="88" />
                 </ovo:ElasticDecorator>
                 <ovo:ElasticDecorator>
-                    <Button Content="Drag me" Height="40" Width="120" />
+                    <Button
+                        Content="Drag me"
+                        Height="40"
+                        Width="120" />
                 </ovo:ElasticDecorator>
                 <ovo:ElasticDecorator>
-                    <Button Classes="accent" Content="Accent" FontSize="16" Height="48" Width="152" />
+                    <Button
+                        Classes="accent"
+                        Content="Accent"
+                        FontSize="16"
+                        Height="48"
+                        Width="152" />
                 </ovo:ElasticDecorator>
                 <ovo:ElasticDecorator>
-                    <Button Content="+" CornerRadius="24" FontSize="24" Height="48" Width="48" />
+                    <Button
+                        Content="+"
+                        CornerRadius="24"
+                        FontSize="24"
+                        Height="48"
+                        Width="48" />
                 </ovo:ElasticDecorator>
             </WrapPanel>
         </ovo:ControlShowcase>
@@ -43,8 +60,14 @@
                         Padding="18"
                         Width="180">
                         <StackPanel Spacing="4" VerticalAlignment="Center">
-                            <TextBlock FontWeight="SemiBold" Foreground="White" Text="Elastic card" />
-                            <TextBlock Foreground="White" Opacity="0.8" Text="Drag in any direction" />
+                            <TextBlock
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Text="Elastic card" />
+                            <TextBlock
+                                Foreground="White"
+                                Opacity="0.8"
+                                Text="Drag in any direction" />
                         </StackPanel>
                     </Border>
                 </ovo:ElasticDecorator>
@@ -56,7 +79,11 @@
                         CornerRadius="40"
                         Height="80"
                         Width="80">
-                        <TextBlock FontSize="24" HorizontalAlignment="Center" Text="OVO" VerticalAlignment="Center" />
+                        <TextBlock
+                            FontSize="24"
+                            HorizontalAlignment="Center"
+                            Text="OVO"
+                            VerticalAlignment="Center" />
                     </Border>
                 </ovo:ElasticDecorator>
             </WrapPanel>

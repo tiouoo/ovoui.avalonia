@@ -292,22 +292,40 @@ public sealed class LangFormatObservable : IObservable<string?>
 
     private sealed class FormatObserver(LangFormatObservable parent) : IObserver<string?>
     {
-        public void OnCompleted() { }
-        public void OnError(Exception error) { }
+        public void OnCompleted()
+        {
+        }
+
+        public void OnError(Exception error)
+        {
+        }
+
         public void OnNext(string? value) => parent.OnFormatValue(value);
     }
 
     private sealed class ArgObserver(LangFormatObservable parent, int argIndex) : IObserver<object?>
     {
-        public void OnCompleted() { }
-        public void OnError(Exception error) { }
+        public void OnCompleted()
+        {
+        }
+
+        public void OnError(Exception error)
+        {
+        }
+
         public void OnNext(object? value) => parent.OnArgValue(argIndex, value);
     }
 
     private sealed class CultureObserver(LangFormatObservable parent) : IObserver<CultureInfo>
     {
-        public void OnCompleted() { }
-        public void OnError(Exception error) { }
+        public void OnCompleted()
+        {
+        }
+
+        public void OnError(Exception error)
+        {
+        }
+
         public void OnNext(CultureInfo value) => parent.OnCultureChanged();
     }
 }

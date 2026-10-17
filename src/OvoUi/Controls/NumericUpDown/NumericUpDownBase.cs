@@ -395,7 +395,8 @@ public abstract class OvoNumericUpDownBase<T> : OvoNumericUpDown where T : struc
     /// Defines the <see cref="ValueChanged"/> event.
     /// </summary>
     public static readonly RoutedEvent<ValueChangedEventArgs<T>> ValueChangedEvent =
-        RoutedEvent.Register<OvoNumericUpDown, ValueChangedEventArgs<T>>(nameof(ValueChanged), RoutingStrategies.Bubble);
+        RoutedEvent.Register<OvoNumericUpDown, ValueChangedEventArgs<T>>(nameof(ValueChanged),
+            RoutingStrategies.Bubble);
 
     private bool _isSyncingTextAndValue;
 

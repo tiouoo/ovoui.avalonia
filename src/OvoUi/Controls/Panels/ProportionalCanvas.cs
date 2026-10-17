@@ -4,7 +4,6 @@ using Avalonia.Controls;
 
 namespace OvoUi.Controls;
 
-
 /// <summary>
 /// Defines a layout panel that positions child elements using <see cref="RelativeScalar"/>
 /// values for the <c>Left</c>, <c>Top</c>, <c>Right</c>, and <c>Bottom</c> attached
@@ -163,6 +162,7 @@ public class ProportionalCanvas : Panel
                 maxW = Math.Max(maxW, offsetX + child.DesiredSize.Width);
                 maxH = Math.Max(maxH, offsetY + child.DesiredSize.Height);
             }
+
             return new Size(
                 double.IsInfinity(availableSize.Width) ? maxW : availableSize.Width,
                 double.IsInfinity(availableSize.Height) ? maxH : availableSize.Height);
@@ -179,14 +179,14 @@ public class ProportionalCanvas : Panel
 
         foreach (var child in Children)
         {
-            var left   = GetLeft(child);
-            var top    = GetTop(child);
-            var right  = GetRight(child);
+            var left = GetLeft(child);
+            var top = GetTop(child);
+            var right = GetRight(child);
             var bottom = GetBottom(child);
 
-            bool hasLeft   = IsSet(left);
-            bool hasTop    = IsSet(top);
-            bool hasRight  = IsSet(right);
+            bool hasLeft = IsSet(left);
+            bool hasTop = IsSet(top);
+            bool hasRight = IsSet(right);
             bool hasBottom = IsSet(bottom);
 
             double x, y, w, h;

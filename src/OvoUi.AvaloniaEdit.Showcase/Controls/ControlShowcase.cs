@@ -389,6 +389,7 @@ public class ControlShowcase : ContentControl
             if (_transitionHost is not null && HeightBehavior == ShowcaseHeightBehavior.Animated)
                 _transitionHost.MinHeight = PreviewMinHeight;
         }
+
         SyncCodeBlockSize(e.NewSize);
     }
 
@@ -481,7 +482,9 @@ public class ControlShowcase : ContentControl
         _transitionHost.PageTransition = PageTransition;
         var animatedElement = selectedIndex == 2
             ? previousIndex == 0 ? (Control?)_codePage : _previewPresenter
-            : selectedIndex == 0 ? _previewPresenter : _codePage;
+            : selectedIndex == 0
+                ? _previewPresenter
+                : _codePage;
         _ = AnimateSplitElementAsync(animatedElement, ReferenceEquals(animatedElement, _previewPresenter));
     }
 
@@ -539,6 +542,7 @@ public class ControlShowcase : ContentControl
                 ResetTransitionState(element);
                 _splitAnimationCancellation = null;
             }
+
             cancellation.Dispose();
         }
     }
@@ -862,6 +866,7 @@ public class ControlShowcase : ContentControl
                     _transitionHost.MinHeight = PreviewMinHeight;
                 _heightAnimationCancellation = null;
             }
+
             cancellation.Dispose();
         }
     }

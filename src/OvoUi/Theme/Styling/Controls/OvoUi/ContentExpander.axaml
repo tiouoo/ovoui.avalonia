@@ -27,7 +27,6 @@
     <ControlTheme
         BasedOn="{StaticResource ContentExpanderTheme}"
         TargetType="ovo:PopupContentExpander"
-        x:Key="{x:Type ovo:PopupContentExpander}">
-    </ControlTheme>
+        x:Key="{x:Type ovo:PopupContentExpander}" />
 
 </ResourceDictionary>

@@ -66,9 +66,7 @@
         </Setter>
     </ControlTheme>
 
-    <ControlTheme
-        TargetType="Button"
-        x:Key="CompactCloseButtonTheme">
+    <ControlTheme TargetType="Button" x:Key="CompactCloseButtonTheme">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
@@ -136,8 +134,6 @@
         x:Key="InputStandardClearIcon">
         <Setter Property="Content" Value="&#xe643;" />
     </ControlTheme>
-
-
 
 
 </ResourceDictionary>

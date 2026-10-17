@@ -194,5 +194,4 @@ public class ClassSelector : MultiComboBox
     {
         target.Classes.Replace(SelectedClasses?.OfType<string>().ToList() ?? []);
     }
-
 }

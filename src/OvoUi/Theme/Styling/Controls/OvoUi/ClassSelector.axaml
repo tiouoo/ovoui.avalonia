@@ -60,8 +60,8 @@
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="10"
-                    Padding="{TemplateBinding Padding}"
-                    Name="RootBorder">
+                    Name="RootBorder"
+                    Padding="{TemplateBinding Padding}">
                     <Grid ColumnDefinitions="Auto, *" Name="RootGrid">
                         <TextBlock
                             FontFamily="{DynamicResource OvoIconFontFamily}"
@@ -81,10 +81,10 @@
                             Foreground="{TemplateBinding Foreground}"
                             Grid.Column="1"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Name="ContentPresenter"
                             RecognizesAccessKey="True"
                             TextWrapping="Wrap"
-                            VerticalAlignment="Center"
-                            Name="ContentPresenter" />
+                            VerticalAlignment="Center" />
                     </Grid>
                 </Border>
             </ControlTemplate>

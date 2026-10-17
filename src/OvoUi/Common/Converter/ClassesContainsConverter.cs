@@ -10,7 +10,8 @@ public sealed class ClassesContainsConverter : IValueConverter
 
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return value is Avalonia.Controls.Classes classes && parameter is string className && classes.Contains(className);
+        return value is Avalonia.Controls.Classes classes && parameter is string className &&
+               classes.Contains(className);
     }
 
     public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -18,13 +19,15 @@ public sealed class ClassesContainsConverter : IValueConverter
         throw new NotSupportedException();
     }
 }
+
 public sealed class ClassesNotContainsConverter : IValueConverter
 {
     public static ClassesNotContainsConverter Instance { get; } = new();
 
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return !(value is Avalonia.Controls.Classes classes && parameter is string className && classes.Contains(className));
+        return !(value is Avalonia.Controls.Classes classes && parameter is string className &&
+                 classes.Contains(className));
     }
 
     public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

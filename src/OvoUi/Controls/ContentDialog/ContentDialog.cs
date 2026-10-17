@@ -77,6 +77,7 @@ public partial class ContentDialog : ContentControl
                 e.Handled = true;
             }
         }
+
         base.OnKeyUp(e);
     }
 
@@ -98,9 +99,15 @@ public partial class ContentDialog : ContentControl
     protected virtual void OnOpened() => Opened?.Invoke(this, EventArgs.Empty);
     protected virtual void OnClosing(ContentDialogClosingEventArgs args) => Closing?.Invoke(this, args);
     protected virtual void OnClosed(ContentDialogClosedEventArgs args) => Closed?.Invoke(this, args);
-    protected virtual void OnPrimaryButtonClick(ContentDialogButtonClickEventArgs args) => PrimaryButtonClick?.Invoke(this, args);
-    protected virtual void OnSecondaryButtonClick(ContentDialogButtonClickEventArgs args) => SecondaryButtonClick?.Invoke(this, args);
-    protected virtual void OnCloseButtonClick(ContentDialogButtonClickEventArgs args) => CloseButtonClick?.Invoke(this, args);
+
+    protected virtual void OnPrimaryButtonClick(ContentDialogButtonClickEventArgs args) =>
+        PrimaryButtonClick?.Invoke(this, args);
+
+    protected virtual void OnSecondaryButtonClick(ContentDialogButtonClickEventArgs args) =>
+        SecondaryButtonClick?.Invoke(this, args);
+
+    protected virtual void OnCloseButtonClick(ContentDialogButtonClickEventArgs args) =>
+        CloseButtonClick?.Invoke(this, args);
 
     private Task<ContentDialogResult> ShowAsyncCore(TopLevel? topLevel, string? hostId)
     {
@@ -127,7 +134,8 @@ public partial class ContentDialog : ContentControl
         SyncHostSize(overlayHost.Bounds.Size);
         Canvas.SetLeft(_dialogHost, 0);
         Canvas.SetTop(_dialogHost, 0);
-        _hostBoundsSubscription = overlayHost.GetObservable(BoundsProperty).Subscribe(bounds => SyncHostSize(bounds.Size));
+        _hostBoundsSubscription =
+            overlayHost.GetObservable(BoundsProperty).Subscribe(bounds => SyncHostSize(bounds.Size));
         overlayHost.Children.Add(_dialogHost);
 
         IsVisible = true;
@@ -180,6 +188,7 @@ public partial class ContentDialog : ContentControl
                 Execute(CloseButtonCommand, CloseButtonCommandParameter);
                 _result = ContentDialogResult.None;
             }
+
             BeginClose();
         });
 
@@ -272,6 +281,7 @@ public partial class ContentDialog : ContentControl
                 presenter.Content = this;
                 break;
         }
+
         _originalParent = null;
     }
 

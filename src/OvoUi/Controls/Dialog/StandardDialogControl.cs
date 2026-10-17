@@ -73,7 +73,7 @@ public class StandardDialogControl : DialogControlBase
         _noButton = e.NameScope.Find<Button>(PART_NoButton);
         Button.ClickEvent.AddHandler(DefaultButtonsClose, _okButton, _cancelButton, _yesButton, _noButton);
         SetButtonVisibility();
-        
+
         if (OverrideCancelButtonText != null)
             _cancelButton.Content = OverrideCancelButtonText;
         if (OverrideOkButtonText != null)

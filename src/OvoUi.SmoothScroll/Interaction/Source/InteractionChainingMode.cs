@@ -1,6 +1,5 @@
 namespace OvoUi.SmoothScroll.Interaction;
 
-
 /// <summary>
 /// Defines the chaining behavior for a VisualInteractionSource. 
 /// There are three options: Always chain, never chain or auto chain (let the system choose).
@@ -12,10 +11,12 @@ public enum InteractionChainingMode
     /// Automatically determine whether to continue the manipulation.
     /// </summary>
     Auto,
+
     /// <summary>
     /// Always continue the manipulation.
     /// </summary>
     Always,
+
     /// <summary>
     /// Never continue the manipulation.
     /// </summary>

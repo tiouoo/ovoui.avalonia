@@ -73,7 +73,7 @@ public partial class PathPicker : TemplatedControl
     public static readonly StyledProperty<bool> IsClearSelectionOnCancelProperty =
         AvaloniaProperty.Register<PathPicker, bool>(
             nameof(IsClearSelectionOnCancel));
-    
+
     public static readonly StyledProperty<string?> PlaceholderTextProperty =
         AvaloniaProperty.Register<PathPicker, string?>(
             nameof(PlaceholderText));
@@ -194,7 +194,7 @@ public partial class PathPicker : TemplatedControl
         if (change.Property == SelectedPathsProperty)
         {
             _twoConvertLock = true;
-            SetCurrentValue(SelectedPathsTextProperty , string.Join(Environment.NewLine, SelectedPaths));
+            SetCurrentValue(SelectedPathsTextProperty, string.Join(Environment.NewLine, SelectedPaths));
             _twoConvertLock = false;
         }
 

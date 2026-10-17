@@ -22,10 +22,11 @@ public sealed class DemoViewModel : ModelBase
                 Items += 1;
             }
         }
+
         SelectedPage = Pages[0];
         SearchText += $"  ({Items} items)";
     }
-    
+
     public string SearchText
     {
         get;
@@ -53,10 +54,8 @@ public sealed class DemoViewModel : ModelBase
         get;
         set => SetField(ref field, value);
     }
-    
-    public int Items { get; set; }
 
-   
+    public int Items { get; set; }
 }
 
 public sealed class Page

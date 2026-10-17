@@ -10,7 +10,6 @@ using Avalonia.VisualTree;
 
 namespace OvoUi.Controls;
 
-
 /// <summary>
 /// A virtualizing panel that arranges items in a uniform grid with a fixed number
 /// of columns. Only items that are currently visible (plus a buffer area) are
@@ -122,16 +121,11 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
 
     static VirtualizingUniformGrid()
     {
-        CacheLengthProperty.Changed.AddClassHandler<VirtualizingUniformGrid>(
-            (x, _) => x.OnCacheLengthChanged());
-        ColumnsProperty.Changed.AddClassHandler<VirtualizingUniformGrid>(
-            (x, _) => x.OnColumnsChanged());
-        ItemWidthProperty.Changed.AddClassHandler<VirtualizingUniformGrid>(
-            (x, _) => x.InvalidateMeasure());
-        ItemHeightProperty.Changed.AddClassHandler<VirtualizingUniformGrid>(
-            (x, _) => x.InvalidateMeasure());
-        UniformItemHeightProperty.Changed.AddClassHandler<VirtualizingUniformGrid>(
-            (x, _) => x.InvalidateMeasure());
+        CacheLengthProperty.Changed.AddClassHandler<VirtualizingUniformGrid>((x, _) => x.OnCacheLengthChanged());
+        ColumnsProperty.Changed.AddClassHandler<VirtualizingUniformGrid>((x, _) => x.OnColumnsChanged());
+        ItemWidthProperty.Changed.AddClassHandler<VirtualizingUniformGrid>((x, _) => x.InvalidateMeasure());
+        ItemHeightProperty.Changed.AddClassHandler<VirtualizingUniformGrid>((x, _) => x.InvalidateMeasure());
+        UniformItemHeightProperty.Changed.AddClassHandler<VirtualizingUniformGrid>((x, _) => x.InvalidateMeasure());
     }
 
     public VirtualizingUniformGrid()
@@ -253,12 +247,12 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         scrollToElement.Measure(Size.Infinity);
 
         // Arrange it at its estimated position.
-        var row  = index / EffectiveColumns;
+        var row = index / EffectiveColumns;
         var rect = new Rect(0, row * _cellHeight, _cellWidth, _cellHeight);
         scrollToElement.Arrange(rect);
 
         _scrollToElement = scrollToElement;
-        _scrollToIndex   = index;
+        _scrollToIndex = index;
 
         // Ensure the panel extent reflects the new item, then bring it into view.
         if (!_viewport.Contains(rect))
@@ -270,7 +264,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         scrollToElement.BringIntoView();
 
         _scrollToElement = null;
-        _scrollToIndex   = -1;
+        _scrollToIndex = -1;
         return scrollToElement;
     }
 
@@ -281,7 +275,8 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         var count = items.Count;
         var fromControl = from as Control;
 
-        if (count == 0 || (fromControl is null && direction is not NavigationDirection.First and not NavigationDirection.Last))
+        if (count == 0 || (fromControl is null &&
+                           direction is not NavigationDirection.First and not NavigationDirection.Last))
             return null;
 
         var cols = EffectiveColumns;
@@ -303,16 +298,20 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                 --toIndex;
                 break;
             case NavigationDirection.Left:
-                if (toIndex % cols > 0) --toIndex; else return null;
+                if (toIndex % cols > 0) --toIndex;
+                else return null;
                 break;
             case NavigationDirection.Right:
-                if (toIndex % cols < cols - 1) ++toIndex; else return null;
+                if (toIndex % cols < cols - 1) ++toIndex;
+                else return null;
                 break;
             case NavigationDirection.Up:
-                if (toIndex >= cols) toIndex -= cols; else return null;
+                if (toIndex >= cols) toIndex -= cols;
+                else return null;
                 break;
             case NavigationDirection.Down:
-                if (toIndex + cols < count) toIndex += cols; else return null;
+                if (toIndex + cols < count) toIndex += cols;
+                else return null;
                 break;
             default:
                 return null;
@@ -350,14 +349,16 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                 _realizedElements.ItemsInserted(e.NewStartingIndex, e.NewItems!.Count, _updateElementIndex);
                 break;
             case NotifyCollectionChangedAction.Remove:
-                _realizedElements.ItemsRemoved(e.OldStartingIndex, e.OldItems!.Count, _updateElementIndex, _recycleElementOnItemRemoved);
+                _realizedElements.ItemsRemoved(e.OldStartingIndex, e.OldItems!.Count, _updateElementIndex,
+                    _recycleElementOnItemRemoved);
                 break;
             case NotifyCollectionChangedAction.Replace:
                 _realizedElements.ItemsReplaced(e.OldStartingIndex, e.OldItems!.Count, _recycleElementOnItemRemoved);
                 break;
             case NotifyCollectionChangedAction.Move:
                 if (e.OldStartingIndex < 0) goto case NotifyCollectionChangedAction.Reset;
-                _realizedElements.ItemsRemoved(e.OldStartingIndex, e.OldItems!.Count, _updateElementIndex, _recycleElementOnItemRemoved);
+                _realizedElements.ItemsRemoved(e.OldStartingIndex, e.OldItems!.Count, _updateElementIndex,
+                    _recycleElementOnItemRemoved);
                 var insertIdx = e.NewStartingIndex;
                 if (e.NewStartingIndex > e.OldStartingIndex)
                     insertIdx -= e.OldItems!.Count - 1;
@@ -388,6 +389,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                 {
                     _scrollToIndex -= e.OldItems!.Count;
                 }
+
                 break;
             case NotifyCollectionChangedAction.Replace:
                 if (e.OldStartingIndex <= _scrollToIndex && _scrollToIndex < e.OldStartingIndex + e.OldItems!.Count)
@@ -406,6 +408,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                     if (e.NewStartingIndex <= _scrollToIndex)
                         _scrollToIndex += e.NewItems!.Count;
                 }
+
                 break;
             case NotifyCollectionChangedAction.Reset:
                 RecycleScrollToElement();
@@ -418,7 +421,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         if (_scrollToElement is not null)
             RecycleElementOnItemRemoved(_scrollToElement);
         _scrollToElement = null;
-        _scrollToIndex   = -1;
+        _scrollToIndex = -1;
     }
 
     // ─────────────────────────────────────────────────────────────
@@ -469,7 +472,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                     ? GetVisibleRowRangeUniform()
                     : GetVisibleRowRangeNonUniform();
                 var desiredFirst = firstRow * cols;
-                var desiredLast  = Math.Min((lastRow + 1) * cols - 1, itemCount - 1);
+                var desiredLast = Math.Min((lastRow + 1) * cols - 1, itemCount - 1);
 
                 if (_realizedElements.Count > 0 &&
                     (desiredFirst > _realizedElements.LastIndex || desiredLast < _realizedElements.FirstIndex))
@@ -510,6 +513,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                     if (!_rowHeights.TryGetValue(row, out var cur) || h > cur)
                         _rowHeights[row] = h;
                 }
+
                 if (_rowHeights.Count > 0)
                 {
                     double sum = 0;
@@ -547,9 +551,9 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         _isInLayout = true;
         try
         {
-            var cols    = EffectiveColumns;
+            var cols = EffectiveColumns;
             var uniform = UniformItemHeight;
-            double y    = 0;
+            double y = 0;
             int prevRow = -1;
 
             for (int i = 0; i < _realizedElements.Count; i++)
@@ -570,7 +574,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                     prevRow = row;
                 }
 
-                var x    = col * _cellWidth;
+                var x = col * _cellWidth;
                 var cellH = uniform ? _cellHeight : RowHeight(row);
                 var rect = new Rect(x, y, _cellWidth, cellH);
 
@@ -578,8 +582,14 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
 
                 if (e.IsVisible && _viewport.Intersects(rect))
                 {
-                    try { _scrollAnchorProvider?.RegisterAnchorCandidate(e); }
-                    catch (InvalidOperationException) { /* element not descendant */ }
+                    try
+                    {
+                        _scrollAnchorProvider?.RegisterAnchorCandidate(e);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        /* element not descendant */
+                    }
                 }
             }
 
@@ -612,8 +622,8 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
             cellW = 100.0;
 
         double cellH = !double.IsNaN(ItemHeight) ? ItemHeight : cellW;
-        double y     = 0;
-        int prevRow  = -1;
+        double y = 0;
+        int prevRow = -1;
 
         for (int i = 0; i < itemCount; i++)
         {
@@ -646,13 +656,13 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
 
     private void OnEffectiveViewportChanged(object? sender, EffectiveViewportChangedEventArgs e)
     {
-        var oldTop  = _viewport.Top;
-        var oldBot  = _viewport.Bottom;
+        var oldTop = _viewport.Top;
+        var oldBot = _viewport.Bottom;
 
         _viewport = e.EffectiveViewport.Intersect(new(Bounds.Size));
 
-        var newTop  = _viewport.Top;
-        var newBot  = _viewport.Bottom;
+        var newTop = _viewport.Top;
+        var newBot = _viewport.Bottom;
 
         if (Math.Abs(oldTop - newTop) > 0.001 ||
             Math.Abs(oldBot - newBot) > 0.001)
@@ -686,12 +696,12 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         if (_cellHeight <= 0 || _totalRows == 0)
             return (0, 0);
 
-        double viewportTop    = _viewport.Top;
+        double viewportTop = _viewport.Top;
         double viewportHeight = _viewport.Height;
-        double bufferPx       = viewportHeight * _bufferFactor;
+        double bufferPx = viewportHeight * _bufferFactor;
 
-        int first = Math.Max(0,               (int)((viewportTop - bufferPx) / _cellHeight));
-        int last  = Math.Min(_totalRows - 1,  (int)((viewportTop + viewportHeight + bufferPx) / _cellHeight));
+        int first = Math.Max(0, (int)((viewportTop - bufferPx) / _cellHeight));
+        int last = Math.Min(_totalRows - 1, (int)((viewportTop + viewportHeight + bufferPx) / _cellHeight));
 
         if (first > last) last = first;
         return (first, last);
@@ -702,9 +712,9 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         if (_totalRows == 0) return (0, 0);
         EnsureEstRowHeight();
 
-        double viewportTop    = _viewport.Top;
+        double viewportTop = _viewport.Top;
         double viewportHeight = _viewport.Height;
-        double bufferPx       = viewportHeight * _bufferFactor;
+        double bufferPx = viewportHeight * _bufferFactor;
 
         double y = 0;
         int first = 0, last = _totalRows - 1;
@@ -800,8 +810,8 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                 continue;
 
             var row = idx / EffectiveColumns;
-            var e   = GetOrCreateElement(items, idx);
-            var u   = row * _cellHeight;
+            var e = GetOrCreateElement(items, idx);
+            var u = row * _cellHeight;
 
             _measureElements.Add(idx, e, u, _cellHeight);
         }
@@ -823,8 +833,8 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         if (GetRealizedElement(index) is { } realized)
             return realized;
 
-        var item    = items[index];
-        var gen     = ItemContainerGenerator!;
+        var item = items[index];
+        var gen = ItemContainerGenerator!;
 
         if (gen.NeedsContainer(item, index, out var recycleKey))
         {
@@ -841,7 +851,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
     {
         Debug.Assert(ItemContainerGenerator is not null);
         var controlItem = (Control)item!;
-        var gen         = ItemContainerGenerator!;
+        var gen = ItemContainerGenerator!;
 
         if (!controlItem.IsSet(RecycleKeyProperty))
         {
@@ -948,6 +958,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
             pool = new();
             _recyclePool.Add(recycleKey, pool);
         }
+
         pool.Push(element);
     }
 
@@ -999,16 +1010,16 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
     private sealed class RealizedGridElements
     {
         private readonly List<Control?> _elements = new();
-        private readonly List<double>  _sizeU    = new();
-        private readonly List<double>  _startU   = new();
+        private readonly List<double> _sizeU = new();
+        private readonly List<double> _startU = new();
         private int _firstIndex;
 
         public List<Control?> Elements => _elements;
-        public List<double> SizeU     => _sizeU;
-        public int FirstIndex         => _firstIndex;
-        public int LastIndex          => _firstIndex + _elements.Count - 1;
-        public int Count              => _elements.Count;
-        public double StartU          => _elements.Count > 0 ? _startU[0] : 0;
+        public List<double> SizeU => _sizeU;
+        public int FirstIndex => _firstIndex;
+        public int LastIndex => _firstIndex + _elements.Count - 1;
+        public int Count => _elements.Count;
+        public double StartU => _elements.Count > 0 ? _startU[0] : 0;
 
         public void Add(int index, Control? element, double startU, double sizeU)
         {
@@ -1038,8 +1049,8 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
             {
                 int local = index - _firstIndex;
                 _elements[local] = element;
-                _sizeU[local]    = sizeU;
-                _startU[local]   = startU;
+                _sizeU[local] = sizeU;
+                _startU[local] = startU;
             }
         }
 
@@ -1063,6 +1074,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
                 if (_elements[i] is { } e)
                     recycle(e, _firstIndex + i);
             }
+
             ResetForReuse();
         }
 
@@ -1107,7 +1119,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
             Action<Control> recycle)
         {
             int removeStart = index;
-            int removeEnd   = index + count - 1;
+            int removeEnd = index + count - 1;
 
             for (int i = _elements.Count - 1; i >= 0; i--)
             {
@@ -1132,7 +1144,7 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         public void ItemsReplaced(int index, int count, Action<Control> recycle)
         {
             int start = index;
-            int end   = index + count - 1;
+            int end = index + count - 1;
 
             for (int i = _elements.Count - 1; i >= 0; i--)
             {
@@ -1148,7 +1160,8 @@ public class VirtualizingUniformGrid : VirtualizingPanel, IScrollSnapPointsInfo
         public void ItemsReset(Action<Control> recycle)
         {
             foreach (var e in _elements)
-                if (e is not null) recycle(e);
+                if (e is not null)
+                    recycle(e);
             ResetForReuse();
         }
 

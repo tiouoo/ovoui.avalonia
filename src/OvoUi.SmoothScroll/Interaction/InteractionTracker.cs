@@ -72,7 +72,8 @@ public partial class InteractionTracker : CompositionObject, IDisposable
     {
         if (animation is not Vector3DKeyFrameAnimation and not ExpressionAnimation)
         {
-            throw new ArgumentException("Only Vector3DKeyFrameAnimation and ExpressionAnimation are supported.", nameof(animation));
+            throw new ArgumentException("Only Vector3DKeyFrameAnimation and ExpressionAnimation are supported.",
+                nameof(animation));
         }
 
         animation.Target = nameof(Server.Position);
@@ -85,12 +86,13 @@ public partial class InteractionTracker : CompositionObject, IDisposable
     {
         if (animation is not DoubleKeyFrameAnimation and not ExpressionAnimation)
         {
-            throw new ArgumentException("Only DoubleKeyFrameAnimation and ExpressionAnimation are supported.", nameof(animation));
+            throw new ArgumentException("Only DoubleKeyFrameAnimation and ExpressionAnimation are supported.",
+                nameof(animation));
         }
 
         animation.Target = nameof(Server.Scale);
         var id = NextRequestId();
-        QueueRequest(new StartAnimationRequest(id,animation, centerPoint));
+        QueueRequest(new StartAnimationRequest(id, animation, centerPoint));
         return id;
     }
 
@@ -150,7 +152,8 @@ public partial class InteractionTracker : CompositionObject, IDisposable
 
     internal void RaiseInteractingStateEntered(int requestId, bool isFromBinding)
     {
-        Owner?.InteractingStateEntered(this, new InteractionTrackerInteractingStateEnteredArgs(requestId, isFromBinding));
+        Owner?.InteractingStateEntered(this,
+            new InteractionTrackerInteractingStateEnteredArgs(requestId, isFromBinding));
     }
 
     internal void RaiseCustomAnimationStateEntered()
@@ -193,6 +196,7 @@ public partial class InteractionTracker : CompositionObject, IDisposable
 
         Compositor.PostServerJob(() => action(Server), false);
     }
+
     private int NextRequestId() => Interlocked.Increment(ref _requestId);
 
     private void QueueRequest(InteractionTrackerRequest request)
@@ -204,26 +208,42 @@ public partial class InteractionTracker : CompositionObject, IDisposable
     partial void SerializeRequests(BatchStreamWriter writer)
     {
         writer.Write(_pendingRequests.Count);
-        foreach(var request in _pendingRequests)
+        foreach (var request in _pendingRequests)
         {
             writer.WriteObject(request);
         }
+
         _pendingRequests.Clear();
     }
-    
 }
 
 internal record InteractionTrackerRequest(int RequestId);
-internal record TryUpdatePositionRequest(int RequestId, Vector3D Position, InteractionTrackerClampingOption ClampingOption) : InteractionTrackerRequest(RequestId);
-internal record TryUpdateScaleRequest(int RequestId, double Scale, Vector3D CenterPoint) : InteractionTrackerRequest(RequestId);
-internal record StartAnimationRequest(int RequestId, CompositionAnimation Animation, Vector3D? ScaleCenterPoint) : InteractionTrackerRequest(RequestId);
-internal record BeginUserManipulationRequest(int RequestId, Point Position, IPointer Pointer) : InteractionTrackerRequest(RequestId);
-internal record CompleteManipulationRequest(int RequestId) : InteractionTrackerRequest(RequestId);
-internal record ApplyManipulationDeltaRequest(int RequestId, Vector TranslationDelta) : InteractionTrackerRequest(RequestId);
-internal record StartInertiaRequest(int RequestId, Point LinearVelocity) : InteractionTrackerRequest(RequestId);
-internal record AddScaleVelocityRequest(int RequestId, Point Origin, double Delta) : InteractionTrackerRequest(RequestId);
-internal record ApplyWheelDeltaRequest(int RequestId, Vector Delta) : InteractionTrackerRequest(RequestId);
 
+internal record TryUpdatePositionRequest(
+    int RequestId,
+    Vector3D Position,
+    InteractionTrackerClampingOption ClampingOption) : InteractionTrackerRequest(RequestId);
+
+internal record TryUpdateScaleRequest(int RequestId, double Scale, Vector3D CenterPoint)
+    : InteractionTrackerRequest(RequestId);
+
+internal record StartAnimationRequest(int RequestId, CompositionAnimation Animation, Vector3D? ScaleCenterPoint)
+    : InteractionTrackerRequest(RequestId);
+
+internal record BeginUserManipulationRequest(int RequestId, Point Position, IPointer Pointer)
+    : InteractionTrackerRequest(RequestId);
+
+internal record CompleteManipulationRequest(int RequestId) : InteractionTrackerRequest(RequestId);
+
+internal record ApplyManipulationDeltaRequest(int RequestId, Vector TranslationDelta)
+    : InteractionTrackerRequest(RequestId);
+
+internal record StartInertiaRequest(int RequestId, Point LinearVelocity) : InteractionTrackerRequest(RequestId);
+
+internal record AddScaleVelocityRequest(int RequestId, Point Origin, double Delta)
+    : InteractionTrackerRequest(RequestId);
+
+internal record ApplyWheelDeltaRequest(int RequestId, Vector Delta) : InteractionTrackerRequest(RequestId);
 
 public static class CompositorExtensions
 {

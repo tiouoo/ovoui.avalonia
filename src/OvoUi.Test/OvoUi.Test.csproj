@@ -11,25 +11,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="12.1.4" />
-        <PackageReference Include="Avalonia.Desktop" Version="12.1.4" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.4" />
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.4" />
+        <PackageReference Include="Avalonia" Version="12.1.4"/>
+        <PackageReference Include="Avalonia.Desktop" Version="12.1.4"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.4"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.4"/>
         <PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3">
             <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="HotAvalonia" Version="3.1.5" />
+        <PackageReference Include="HotAvalonia" Version="3.1.5"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj" />
-      <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase\OvoUi.AvaloniaEdit.Showcase.csproj" />
-      <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
-                        OutputItemType="Analyzer"
-                        ReferenceOutputAssembly="false" />
-      <ProjectReference Include="..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
-      <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
+        <ProjectReference Include="..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj"/>
+        <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase\OvoUi.AvaloniaEdit.Showcase.csproj"/>
+        <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\OvoUi.Fonts\OvoUi.Fonts.csproj"/>
+        <ProjectReference Include="..\OvoUi\OvoUi.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -39,6 +39,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="**\*.axaml" Exclude="bin\**;obj\**" />
+        <AdditionalFiles Include="**\*.axaml" Exclude="bin\**;obj\**"/>
     </ItemGroup>
 </Project>

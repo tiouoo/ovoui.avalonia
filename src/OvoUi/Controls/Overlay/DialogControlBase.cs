@@ -36,14 +36,14 @@ public abstract class DialogControlBase : OverlayFeedbackElement
     private Panel? _titleArea;
 
     public static readonly StyledProperty<Thickness> CloseBtnMarginProperty =
-        AvaloniaProperty.Register<CustomDialogControl, Thickness>(nameof(CloseBtnMargin), new Thickness(0,24,24,0));
+        AvaloniaProperty.Register<CustomDialogControl, Thickness>(nameof(CloseBtnMargin), new Thickness(0, 24, 24, 0));
 
     public Thickness CloseBtnMargin
     {
         get => GetValue(CloseBtnMarginProperty);
         set => SetValue(CloseBtnMarginProperty, value);
     }
-    
+
     static DialogControlBase()
     {
         CanDragMoveProperty.Changed.AddClassHandler<InputElement, bool>(OnCanDragMoveChanged);
@@ -128,8 +128,10 @@ public abstract class DialogControlBase : OverlayFeedbackElement
         var top = Canvas.GetTop(this) + p.Y - _moveDragStartPoint.Y;
         Thickness safePadding = default;
         if (ContainerPanel is OverlayDialogHost h) safePadding = h.SafePadding;
-        left = MathHelpers.SafeClamp(left, safePadding.Left, ContainerPanel.Bounds.Width - safePadding.Right - Bounds.Width);
-        top = MathHelpers.SafeClamp(top, safePadding.Top, ContainerPanel.Bounds.Height - safePadding.Bottom - Bounds.Height);
+        left = MathHelpers.SafeClamp(left, safePadding.Left,
+            ContainerPanel.Bounds.Width - safePadding.Right - Bounds.Width);
+        top = MathHelpers.SafeClamp(top, safePadding.Top,
+            ContainerPanel.Bounds.Height - safePadding.Bottom - Bounds.Height);
         Canvas.SetLeft(this, left);
         Canvas.SetTop(this, top);
     }
@@ -203,8 +205,12 @@ public abstract class DialogControlBase : OverlayFeedbackElement
             var effectiveRight = containerWidth - safeRight - left - Bounds.Width;
             var effectiveTop = top - safeTop;
             var effectiveBottom = containerHeight - safeBottom - top - Bounds.Height;
-            HorizontalOffsetRatio = (effectiveLeft + effectiveRight) == 0 ? 0 : effectiveLeft / (effectiveLeft + effectiveRight);
-            VerticalOffsetRatio = (effectiveTop + effectiveBottom) == 0 ? 0 : effectiveTop / (effectiveTop + effectiveBottom);
+            HorizontalOffsetRatio = (effectiveLeft + effectiveRight) == 0
+                ? 0
+                : effectiveLeft / (effectiveLeft + effectiveRight);
+            VerticalOffsetRatio = (effectiveTop + effectiveBottom) == 0
+                ? 0
+                : effectiveTop / (effectiveTop + effectiveBottom);
         }
         else
         {

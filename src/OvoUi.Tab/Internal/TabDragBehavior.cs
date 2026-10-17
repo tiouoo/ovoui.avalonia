@@ -12,6 +12,7 @@ internal sealed class TabDragBehavior(OvoTabHost host)
     internal SelectionList? Container { get; private set; }
     internal OvoTabPanel? Panel => Container?.ItemsPanelRoot as OvoTabPanel;
     internal ScrollViewer? ScrollViewer => Container?.FindAncestorOfType<ScrollViewer>();
+
     internal Control? Area => Container?.GetVisualAncestors().OfType<Control>()
         .FirstOrDefault(control => control.Name == "PART_TabStripArea") ?? Container;
 
@@ -88,6 +89,7 @@ internal sealed class TabDragBehavior(OvoTabHost host)
             if (visual is Border border && border.Classes.Contains("tab-root")) return false;
             visual = visual.GetVisualParent();
         }
+
         return false;
     }
 }

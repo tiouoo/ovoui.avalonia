@@ -10,19 +10,42 @@
         <ovo:ControlShowcase Header="Host Avalonia content in another window" SourceKey="platform-window-content-injection">
             <ovo:ControlShowcase.CodeBlocks>
                 <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <ovo:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Select a visible desktop window. The demo creates an Avalonia window, reparents it into the target client area, and keeps its size synchronized." TextWrapping="Wrap" />
-                <TextBlock IsVisible="{Binding !IsWindows}" Text="This API requires the Windows desktop host." TextWrapping="Wrap" />
-                <ComboBox Name="WindowPicker" MinWidth="420" HorizontalAlignment="Left" PlaceholderText="Select a target window" />
-                <CheckBox Name="InteractiveCheckBox" Content="Allow injected content to receive input" IsChecked="True" />
+                <TextBlock
+                    IsVisible="{Binding !IsWindows}"
+                    Text="This API requires the Windows desktop host."
+                    TextWrapping="Wrap" />
+                <ComboBox
+                    HorizontalAlignment="Left"
+                    MinWidth="420"
+                    Name="WindowPicker"
+                    PlaceholderText="Select a target window" />
+                <CheckBox
+                    Content="Allow injected content to receive input"
+                    IsChecked="True"
+                    Name="InteractiveCheckBox" />
                 <WrapPanel ItemSpacing="8">
-                    <Button Click="RefreshWindows" Content="Refresh windows" IsEnabled="{Binding IsWindows}" />
-                    <Button Classes="accent" Click="InjectContent" Content="Inject content" IsEnabled="{Binding IsWindows}" />
+                    <Button
+                        Click="RefreshWindows"
+                        Content="Refresh windows"
+                        IsEnabled="{Binding IsWindows}" />
+                    <Button
+                        Classes="accent"
+                        Click="InjectContent"
+                        Content="Inject content"
+                        IsEnabled="{Binding IsWindows}" />
                     <Button Click="RemoveContent" Content="Remove content" />
                 </WrapPanel>
-                <TextBlock Name="StatusLabel" Text="Choose a window to begin." TextWrapping="Wrap" />
+                <TextBlock
+                    Name="StatusLabel"
+                    Text="Choose a window to begin."
+                    TextWrapping="Wrap" />
             </StackPanel>
         </ovo:ControlShowcase>
     </demo:DemoPage>

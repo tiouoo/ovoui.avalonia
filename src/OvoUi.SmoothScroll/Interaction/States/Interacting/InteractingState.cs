@@ -13,10 +13,12 @@ internal sealed class InteractingState : InteractionTrackerState
     private double _previousScale;
     private Point _previousOrigin;
     private Vector3D _position;
+
     public InteractingState(ServerInteractionTracker interactionTracker) : base(interactionTracker)
     {
         _previousScale = interactionTracker.Scale;
-        _position = GetOriginalPoint(interactionTracker.Position, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
+        _position = GetOriginalPoint(interactionTracker.Position, _interactionTracker.MinPosition,
+            _interactionTracker.MaxPosition);
         EnterState();
     }
 
@@ -121,12 +123,14 @@ internal sealed class InteractingState : InteractionTrackerState
 
     private void SyncPositionFromTracker()
     {
-        _position = GetOriginalPoint(_interactionTracker.Position, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
+        _position = GetOriginalPoint(_interactionTracker.Position, _interactionTracker.MinPosition,
+            _interactionTracker.MaxPosition);
     }
 
     private void UpdateTrackerPosition(Vector3D position)
     {
-        var modifiedPosition = GetElasticPoint(position, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
+        var modifiedPosition =
+            GetElasticPoint(position, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
         _interactionTracker.SetPosition(modifiedPosition, requestId: 0);
     }
 

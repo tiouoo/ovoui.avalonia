@@ -148,7 +148,7 @@ public partial class OvoTitleBar : UserControl
         get => GetValue(TitleBarHeightProperty);
         set => SetValue(TitleBarHeightProperty, value);
     }
-    
+
     public static readonly AttachedProperty<Thickness> TitleBarMarginProperty =
         AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, Thickness>(nameof(TitleBarMargin));
 
@@ -157,10 +157,10 @@ public partial class OvoTitleBar : UserControl
         get => GetValue(TitleBarMarginProperty);
         set => SetValue(TitleBarMarginProperty, value);
     }
-    
+
     public static readonly AttachedProperty<Thickness> TitleBarPaddingProperty =
         AvaloniaProperty.RegisterAttached<OvoTitleBar, Control, Thickness>(nameof(TitleBarPadding));
-    
+
     public Thickness TitleBarPadding
     {
         get => GetValue(TitleBarPaddingProperty);

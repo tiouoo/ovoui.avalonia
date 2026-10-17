@@ -16,11 +16,11 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="HotAvalonia" Version="3.1.5" PrivateAssets="All" Publish="True" />
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" PrivateAssets="All" Publish="True" />
+        <PackageReference Include="HotAvalonia" Version="3.1.5" PrivateAssets="All" Publish="True"/>
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" PrivateAssets="All" Publish="True"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OvoUi.Demo\OvoUi.Demo.csproj" />
+        <ProjectReference Include="..\OvoUi.Demo\OvoUi.Demo.csproj"/>
     </ItemGroup>
 </Project>

@@ -72,6 +72,7 @@ public sealed class OvoTabStrip : TemplatedControl
             _subscribedHost.TabAdded += OnTabAdded;
             if (_tabList is not null) _subscribedHost.RegisterHeaderList(_tabList);
         }
+
         AttachDragBehavior();
     }
 
@@ -138,6 +139,7 @@ public sealed class OvoTabStrip : TemplatedControl
             _subscribedHost.TabAdded -= OnTabAdded;
             if (_tabList is not null) _subscribedHost.UnregisterHeaderList(_tabList);
         }
+
         _subscribedHost = null;
         if (_tabList is not null) _tabList.RemoveHandler(PointerPressedEvent, OnPointerPressed);
         if (_scrollViewer is not null) _scrollViewer.PointerWheelChanged -= OnPointerWheelChanged;

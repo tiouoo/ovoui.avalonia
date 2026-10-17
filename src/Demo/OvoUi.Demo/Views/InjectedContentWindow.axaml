@@ -1,29 +1,36 @@
 <Window
-    x:Class="OvoUi.Demo.Views.InjectedContentWindow"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Background="Transparent"
     CanResize="False"
+    Height="450"
     ShowInTaskbar="False"
-    WindowDecorations="None"
     TransparencyLevelHint="Transparent"
     Width="800"
-    Height="450">
+    WindowDecorations="None"
+    x:Class="OvoUi.Demo.Views.InjectedContentWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Background="#520B1118">
         <Border
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            MaxWidth="460"
-            Padding="28"
             Background="#E6202832"
             BorderBrush="#70FFFFFF"
             BorderThickness="1"
-            CornerRadius="8">
+            CornerRadius="8"
+            HorizontalAlignment="Center"
+            MaxWidth="460"
+            Padding="28"
+            VerticalAlignment="Center">
             <StackPanel Spacing="12">
-                <TextBlock FontSize="28" FontWeight="SemiBold" Foreground="White" Text="OVO UI" />
-                <TextBlock Foreground="#DFFFFFFF" Text="This Avalonia content is hosted inside the selected native window." TextWrapping="Wrap" />
-                <ProgressBar IsIndeterminate="True" Height="4" />
-                <Button HorizontalAlignment="Left" Content="Interactive content" />
+                <TextBlock
+                    FontSize="28"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    Text="OVO UI" />
+                <TextBlock
+                    Foreground="#DFFFFFFF"
+                    Text="This Avalonia content is hosted inside the selected native window."
+                    TextWrapping="Wrap" />
+                <ProgressBar Height="4" IsIndeterminate="True" />
+                <Button Content="Interactive content" HorizontalAlignment="Left" />
             </StackPanel>
         </Border>
     </Grid>

@@ -14,6 +14,7 @@ public partial class DemoResxLanguage;
 public partial class LangDemoViewModel : ObservableObject
 {
     public IList<ILangManager> Managers { get; } = [DemoLanguage.Instance, DemoResxLanguage.Instance];
+
     public IList<LangCulture> Cultures { get; } =
     [
         new() { CultureName = "en-US", DisplayName = "English", ShortDisplayName = "EN" },

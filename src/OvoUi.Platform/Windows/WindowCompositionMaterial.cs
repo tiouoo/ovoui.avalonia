@@ -82,7 +82,8 @@ public sealed class WindowCompositionMaterial : IDisposable
             // Do not gate on AssemblyName.Version. Compatibility is determined from the members
             // exposed by the Avalonia.Win32 assembly that is actually loaded by the application.
             var win32Assembly = Assembly.Load("Avalonia.Win32");
-            var platform = topLevel.PlatformImpl ?? throw new InvalidOperationException("Window platform is unavailable.");
+            var platform = topLevel.PlatformImpl ??
+                           throw new InvalidOperationException("Window platform is unavailable.");
             var surface = FindField(platform.GetType(), "_glSurface").GetValue(platform)
                           ?? throw new InvalidOperationException("Window composition surface is unavailable.");
 
@@ -164,6 +165,7 @@ public sealed class WindowCompositionMaterial : IDisposable
                 Invoke(_visual, _visualType, "SetOpacity", 1f);
                 Invoke(_visual, _visualType, "SetIsVisible", 1);
             }
+
             return true;
         }
         catch
@@ -304,6 +306,7 @@ public sealed class WindowCompositionMaterial : IDisposable
             var field = current.GetField(name, AllMembers);
             if (field is not null) return field;
         }
+
         throw new MissingFieldException(type.FullName, name);
     }
 
@@ -320,7 +323,7 @@ public sealed class WindowCompositionMaterial : IDisposable
     }
 
     private const BindingFlags AllMembers = BindingFlags.Instance | BindingFlags.Static |
-                                                     BindingFlags.Public | BindingFlags.NonPublic;
+                                            BindingFlags.Public | BindingFlags.NonPublic;
 
     private sealed class HostBackdropLease : IDisposable
     {
@@ -378,5 +381,3 @@ public sealed class WindowCompositionMaterial : IDisposable
     [DllImport("dwmapi.dll")]
     private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attribute, ref int value, int size);
 }
-
-

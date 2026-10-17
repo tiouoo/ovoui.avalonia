@@ -27,6 +27,7 @@ public sealed class OvoTabPanel : Panel
             width += child.DesiredSize.Width;
             height = Math.Max(height, child.DesiredSize.Height);
         }
+
         return new Size(width, height);
     }
 
@@ -55,12 +56,15 @@ public sealed class OvoTabPanel : Panel
                     transform.Transitions = null;
                     transform.X = oldX - child.Bounds.X;
                 }
+
                 EnableAnimation(transform);
                 transform.X = 0;
                 child.ZIndex = 0;
             }
+
             _settlingPositions = null;
         }
+
         return finalSize;
     }
 
@@ -118,6 +122,7 @@ public sealed class OvoTabPanel : Panel
                 transform.X = x - child.Bounds.X;
                 child.ZIndex = 0;
             }
+
             x += child.DesiredSize.Width;
         }
     }

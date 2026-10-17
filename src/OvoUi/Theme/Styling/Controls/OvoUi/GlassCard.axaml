@@ -16,7 +16,7 @@
                         ClipToBounds="{TemplateBinding ClipToBounds}"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         Name="PART_BorderCard"
-                         Opacity="{DynamicResource SolidOpacity}"
+                        Opacity="{DynamicResource SolidOpacity}"
                         RenderTransformOrigin="50%,50%">
                         <Border.Transitions>
                             <Transitions>

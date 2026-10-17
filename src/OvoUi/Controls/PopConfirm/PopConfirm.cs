@@ -59,7 +59,7 @@ public class PopConfirm : ContentControl
     public static readonly StyledProperty<Classes> ConfirmButtonClassesProperty =
         AvaloniaProperty.Register<PopConfirm, Classes>(
             nameof(ConfirmButtonClasses), new Classes("accent"));
-    
+
     public static readonly StyledProperty<Classes> CancelButtonClassesProperty =
         AvaloniaProperty.Register<PopConfirm, Classes>(
             nameof(CancelButtonClasses), new Classes("warn"));
@@ -98,7 +98,7 @@ public class PopConfirm : ContentControl
         TriggerModeProperty.Changed.AddClassHandler<PopConfirm, PopConfirmTriggerMode>((pop, args) =>
             pop.OnTriggerModeChanged(args));
     }
-    
+
     public Classes ConfirmButtonClasses
     {
         get => GetValue(ConfirmButtonClassesProperty);
@@ -110,7 +110,7 @@ public class PopConfirm : ContentControl
         get => GetValue(CancelButtonClassesProperty);
         set => SetValue(CancelButtonClassesProperty, value);
     }
-    
+
     public object? Icon
     {
         get => GetValue(IconProperty);

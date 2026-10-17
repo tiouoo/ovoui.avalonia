@@ -5,7 +5,6 @@ namespace OvoUi.SmoothScroll.Interaction;
 
 internal sealed class PointerWheelInertiaState : InertiaState
 {
-
     public PointerWheelInertiaState(
         ServerInteractionTracker interactionTracker,
         Vector3D translationVelocities,

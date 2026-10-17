@@ -6,7 +6,6 @@ using Avalonia.Media;
 
 namespace OvoUi.Controls;
 
-
 /// <summary>
 /// Attached properties that add a shimmer sweep effect to any control — e.g.
 /// skeleton screens on <see cref="Rectangle"/> / <see cref="Border"/>.
@@ -32,7 +31,8 @@ public static class Shimmer
 
     /// <summary>Defines the <see cref="GetDuration"/> / <see cref="SetDuration"/> attached property.</summary>
     public static readonly AttachedProperty<TimeSpan> DurationProperty =
-        AvaloniaProperty.RegisterAttached<AvaloniaObject, TimeSpan>("Duration", typeof(Shimmer), TimeSpan.FromSeconds(1.5));
+        AvaloniaProperty.RegisterAttached<AvaloniaObject, TimeSpan>("Duration", typeof(Shimmer),
+            TimeSpan.FromSeconds(1.5));
 
     /// <summary>
     /// Defines the <see cref="GetBrushProperty"/> / <see cref="SetBrushProperty"/> attached property:
@@ -127,14 +127,14 @@ public static class Shimmer
     private static ShimmerAnimator CreateAnimator(AvaloniaObject target)
     {
         var visual = target as Visual
-            ?? throw new ArgumentException("Shimmer can only be applied to visuals.", nameof(target));
+                     ?? throw new ArgumentException("Shimmer can only be applied to visuals.", nameof(target));
 
         var brushProperty = target.GetValue(BrushProperty) as AvaloniaProperty<IBrush?>
-            ?? InferBrushProperty(visual)
-            ?? throw new InvalidOperationException(
-                $"Shimmer: cannot infer a brush property for {target.GetType().Name}; " +
-                "set Shimmer.BrushProperty explicitly.");
-        
+                            ?? InferBrushProperty(visual)
+                            ?? throw new InvalidOperationException(
+                                $"Shimmer: cannot infer a brush property for {target.GetType().Name}; " +
+                                "set Shimmer.BrushProperty explicitly.");
+
         return new ShimmerAnimator(
             visual,
             brushProperty,

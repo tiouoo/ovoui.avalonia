@@ -175,7 +175,8 @@ public class OvoTabWindow : OvoWindow
             return;
 
         // Transparent panels and item margins are draggable; tab controls and header content own their input.
-        for (var visual = e.Source as Visual; visual is not null && !ReferenceEquals(visual, TabStrip);
+        for (var visual = e.Source as Visual;
+             visual is not null && !ReferenceEquals(visual, TabStrip);
              visual = visual.GetVisualParent())
         {
             if (visual is Button or ScrollBar or Thumb ||

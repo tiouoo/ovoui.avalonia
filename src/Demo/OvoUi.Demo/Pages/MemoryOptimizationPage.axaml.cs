@@ -16,25 +16,25 @@ public partial class MemoryOptimizationPage : UserControl
     public bool CanTrimWorkingSet => MemoryOptimization.IsWorkingSetTrimSupported;
 
     public string SourceCode { get; } = """
-        using Avalonia.Interactivity;
-        using OvoUi.Platform;
+                                        using Avalonia.Interactivity;
+                                        using OvoUi.Platform;
 
-        // Set DataContext = this in the page constructor.
-        public bool CanTrimWorkingSet => MemoryOptimization.IsWorkingSetTrimSupported;
+                                        // Set DataContext = this in the page constructor.
+                                        public bool CanTrimWorkingSet => MemoryOptimization.IsWorkingSetTrimSupported;
 
-        private void TrimWorkingSet(object? sender, RoutedEventArgs e)
-        {
-            StatusLabel.Text = MemoryOptimization.TryTrimWorkingSet(out var error)
-                ? "Working set trim request completed."
-                : error;
-        }
+                                        private void TrimWorkingSet(object? sender, RoutedEventArgs e)
+                                        {
+                                            StatusLabel.Text = MemoryOptimization.TryTrimWorkingSet(out var error)
+                                                ? "Working set trim request completed."
+                                                : error;
+                                        }
 
-        private void ForceGc(object? sender, RoutedEventArgs e)
-        {
-            MemoryOptimization.ForceGarbageCollection();
-            StatusLabel.Text = "Forced GC completed.";
-        }
-        """;
+                                        private void ForceGc(object? sender, RoutedEventArgs e)
+                                        {
+                                            MemoryOptimization.ForceGarbageCollection();
+                                            StatusLabel.Text = "Forced GC completed.";
+                                        }
+                                        """;
 
     private void TrimWorkingSet(object? sender, RoutedEventArgs e) => RunOperation(trimWorkingSet: true);
 

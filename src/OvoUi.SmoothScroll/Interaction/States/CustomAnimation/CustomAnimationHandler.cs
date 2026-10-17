@@ -72,7 +72,7 @@ internal abstract class CustomAnimationHandler : ServerObject, IServerClockItem
     protected abstract void Evaluate(ExpressionVariant animationValue);
 }
 
-internal class ScaleAnimationHandler: CustomAnimationHandler
+internal class ScaleAnimationHandler : CustomAnimationHandler
 {
     private readonly Vector3D _centerPoint;
 
@@ -96,7 +96,7 @@ internal class ScaleAnimationHandler: CustomAnimationHandler
         var scale = animationValue.Double;
 
         var modifiedScale = Math.Clamp(scale, InteractionTracker.MinScale, InteractionTracker.MaxScale);
-        
+
 
         InteractionTracker.SetScale(modifiedScale, _centerPoint, 0);
     }

@@ -41,8 +41,7 @@
                                                 Text="{Binding}" />
                                             <TextBlock
                                                 Foreground="{DynamicResource ForegroundBrush}"
-                                                IsVisible="{Binding $parent[ovo:GroupBorder].IsHeaderSelectable,
-                                                                     Converter={x:Static BoolConverters.Not}}"
+                                                IsVisible="{Binding $parent[ovo:GroupBorder].IsHeaderSelectable, Converter={x:Static BoolConverters.Not}}"
                                                 Margin="14,10"
                                                 Name="Text"
                                                 Text="{Binding}" />

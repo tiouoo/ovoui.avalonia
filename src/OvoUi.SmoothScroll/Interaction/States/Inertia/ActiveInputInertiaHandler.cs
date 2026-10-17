@@ -5,7 +5,8 @@ using Avalonia.Utilities;
 
 namespace OvoUi.SmoothScroll.Interaction;
 
-internal sealed partial class ActiveInputInertiaHandler : ServerObject, IServerClockItem, IInteractionTrackerInertiaHandler
+internal sealed partial class ActiveInputInertiaHandler : ServerObject, IServerClockItem,
+    IInteractionTrackerInertiaHandler
 {
     private readonly ServerInteractionTracker _interactionTracker;
     private readonly AxisHelper _xHelper;
@@ -21,9 +22,14 @@ internal sealed partial class ActiveInputInertiaHandler : ServerObject, IServerC
     // > InteractionTracker was built to utilize the new Animation engine that operates on an independent thread at 60 FPS,resulting in smooth motion.
     //private const int IntervalInMilliseconds = 17; // Ceiling of 1000/60
 
-    public Vector3D InitialVelocity => new Vector3D(_xHelper.InitialVelocity, _yHelper.InitialVelocity, _zHelper.InitialVelocity);
+    public Vector3D InitialVelocity =>
+        new Vector3D(_xHelper.InitialVelocity, _yHelper.InitialVelocity, _zHelper.InitialVelocity);
+
     public Vector3D FinalPosition => new Vector3D(_xHelper.FinalValue, _yHelper.FinalValue, _zHelper.FinalValue);
-    public Vector3D FinalModifiedPosition => new Vector3D(_xHelper.FinalModifiedValue, _yHelper.FinalModifiedValue, _zHelper.FinalModifiedValue);
+
+    public Vector3D FinalModifiedPosition => new Vector3D(_xHelper.FinalModifiedValue, _yHelper.FinalModifiedValue,
+        _zHelper.FinalModifiedValue);
+
     public double FinalModifiedScale => _interactionTracker.Scale; // TODO: Scale not yet implemented
 
     public ActiveInputInertiaHandler(
@@ -125,7 +131,10 @@ internal sealed partial class ActiveInputInertiaHandler : ServerObject, IServerC
         internal double InitialVelocity { get; }
         internal double InitialValue { get; }
         internal double FinalValue { get; }
-        internal double FinalModifiedValue => Math.Clamp(FinalValue, GetValue(Handler._interactionTracker.MinPosition), GetValue(Handler._interactionTracker.MaxPosition));
+
+        internal double FinalModifiedValue => Math.Clamp(FinalValue, GetValue(Handler._interactionTracker.MinPosition),
+            GetValue(Handler._interactionTracker.MaxPosition));
+
         internal double TimeToMinimumVelocity { get; }
         internal Axis Axis { get; }
 
@@ -243,8 +252,11 @@ internal sealed partial class ActiveInputInertiaHandler : ServerObject, IServerC
                 var target = FinalModifiedValue;
                 var y0 = _dampingStatePosition!.Value - target;
                 var currentOffset =
-                    DampingHelper.SolveCriticallyDampedWithVelocity(y0, _initialDampingVelocity!.Value, wn, elapsedInDamping);
-                var finalOffset = DampingHelper.SolveCriticallyDampedWithVelocity(y0, _initialDampingVelocity!.Value, wn, settlingTime);
+                    DampingHelper.SolveCriticallyDampedWithVelocity(y0, _initialDampingVelocity!.Value, wn,
+                        elapsedInDamping);
+                var finalOffset =
+                    DampingHelper.SolveCriticallyDampedWithVelocity(y0, _initialDampingVelocity!.Value, wn,
+                        settlingTime);
                 return target + currentOffset - finalOffset;
             }
 
@@ -288,10 +300,12 @@ internal static class DampingHelper
     {
         if (zeta >= 1)
         {
-            throw new ArgumentException($"Damping ratio '{zeta}' is invalid. It must be less than 1 for underdamped systems.");
+            throw new ArgumentException(
+                $"Damping ratio '{zeta}' is invalid. It must be less than 1 for underdamped systems.");
         }
 
-        return 1 - Math.Exp(-zeta * wn * t) * (Math.Cos(wd * t) + (zeta / Math.Sqrt(1 - zeta * zeta)) * Math.Sin(wd * t));
+        return 1 - Math.Exp(-zeta * wn * t) *
+            (Math.Cos(wd * t) + (zeta / Math.Sqrt(1 - zeta * zeta)) * Math.Sin(wd * t));
     }
 
     // Ts (settling time) = 5.8335 / wn

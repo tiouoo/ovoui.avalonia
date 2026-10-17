@@ -10,11 +10,17 @@
         <ovo:ControlShowcase Header="macOS window controls" SourceKey="platform-macos-window-controls">
             <ovo:ControlShowcase.CodeBlocks>
                 <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <ovo:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Open a native macOS window and configure each standard window button independently." TextWrapping="Wrap" />
-                <TextBlock IsVisible="{Binding !IsMacOs}" Text="This editor is available when the desktop demo runs on macOS." TextWrapping="Wrap" />
+                <TextBlock
+                    IsVisible="{Binding !IsMacOs}"
+                    Text="This editor is available when the desktop demo runs on macOS."
+                    TextWrapping="Wrap" />
                 <Button
                     Click="OpenEditor"
                     Content="Open window controls editor"

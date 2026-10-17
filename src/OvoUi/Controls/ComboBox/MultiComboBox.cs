@@ -204,7 +204,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
     {
         return new MultiComboBoxItem();
     }
-    
+
     protected override void PrepareContainerForItemOverride(Control container, object? item, int index)
     {
         if (item is MultiComboBoxItem containerItem)
@@ -212,7 +212,7 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
             container.DataContext = containerItem.Content;
             return;
         }
-        
+
         container.DataContext = item;
 
         base.PrepareContainerForItemOverride(container, item, index);
@@ -237,9 +237,9 @@ public class MultiComboBox : SelectingItemsControl, IInnerContentControl, IPopup
         base.OnKeyDown(e);
         if (e.Handled)
             return;
-        
+
         // F4 or Alt+Down/Up toggles dropdown
-        if ((e.Key == Key.F4 && !e.KeyModifiers.HasFlag(KeyModifiers.Alt)) || 
+        if ((e.Key == Key.F4 && !e.KeyModifiers.HasFlag(KeyModifiers.Alt)) ||
             ((e.Key == Key.Down || e.Key == Key.Up) && e.KeyModifiers.HasFlag(KeyModifiers.Alt)))
         {
             SetCurrentValue(IsDropDownOpenProperty, !IsDropDownOpen);

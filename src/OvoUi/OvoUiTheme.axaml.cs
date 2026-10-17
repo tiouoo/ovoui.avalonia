@@ -22,7 +22,7 @@ using OvoUi.Common.Theme;
 
 namespace OvoUi;
 
-public partial class OvoUiTheme :  Styles
+public partial class OvoUiTheme : Styles
 {
     private static readonly StyledProperty<Color> ThemeColorProperty =
         AvaloniaProperty.Register<OvoUiTheme, Color>(nameof(ThemeColor), Color.Parse("#1890ff"));
@@ -44,7 +44,7 @@ public partial class OvoUiTheme :  Styles
 
         ThemeManager.SetThemeColor(ThemeColor);
 
-        ObservableExtension.Subscribe(this.GetObservable(ThemeColorProperty),ThemeManager.SetThemeColor);
+        ObservableExtension.Subscribe(this.GetObservable(ThemeColorProperty), ThemeManager.SetThemeColor);
 
         ObservableExtension.Subscribe(this.GetObservable(LanguageProperty), lang =>
         {

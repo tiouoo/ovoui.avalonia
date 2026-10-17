@@ -8,7 +8,7 @@ public class OvoView : ContentControl
     private OverlayDialogHost? _dialogHost;
     public const string PART_DialogHost = "PART_DialogHost";
     protected override Type StyleKeyOverride => typeof(OvoView);
-    
+
     public string HostId { get; set; } = Guid.NewGuid().ToString();
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)

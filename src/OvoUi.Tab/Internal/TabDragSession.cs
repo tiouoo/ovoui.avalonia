@@ -73,6 +73,7 @@ internal sealed class TabDragSession
             Finish();
             return;
         }
+
         if (!_dragging)
         {
             var distance = _lastPoint - _start;
@@ -83,7 +84,9 @@ internal sealed class TabDragSession
             _scrollTimer.Start();
 
             if (_isLiveDragEnabled && _current.Host.Tabs.Count == 1 && _captureRoot is OvoTabWindow
-                { IsTabStripWindowDragEnabled: true, WindowState: WindowState.Normal } tabWindow &&
+                {
+                    IsTabStripWindowDragEnabled: true, WindowState: WindowState.Normal
+                } tabWindow &&
                 ReferenceEquals(tabWindow.TabHost, _current.Host))
             {
                 _floatingWindow = _reusableWindow = tabWindow;
@@ -93,6 +96,7 @@ internal sealed class TabDragSession
                     (_start.Y - tabWindow.Position.Y) / tabWindow.RenderScaling);
             }
         }
+
         ContinueDrag(_lastPoint);
         e.Handled = true;
     }
@@ -112,6 +116,7 @@ internal sealed class TabDragSession
             ContinuePreviewDrag(point);
             return;
         }
+
         if (_floatingWindow is not null)
         {
             var target = host.IsTabAttachEnabled && host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach
@@ -133,8 +138,10 @@ internal sealed class TabDragSession
             host.EffectiveDragMode != OvoTabDragMode.ReorderAndDetach)
         {
             if (inStrip) DragInStrip(point);
-            else SetState(host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach
-                ? OvoTabDragState.CurrentWindow : OvoTabDragState.Blocked);
+            else
+                SetState(host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach
+                    ? OvoTabDragState.CurrentWindow
+                    : OvoTabDragState.Blocked);
             return;
         }
 
@@ -192,6 +199,7 @@ internal sealed class TabDragSession
                 _previewSourceOpacity = _previewSource.Opacity;
                 _previewSource.Opacity = 0.35;
             }
+
             _preview = new OvoTabDragPreviewWindow();
             _preview.UpdateTab(_tab);
             _preview.UpdateState(state);
@@ -203,6 +211,7 @@ internal sealed class TabDragSession
             _preview.UpdateState(state);
             _preview.MoveTo(point);
         }
+
         SetState(state);
     }
 
@@ -222,6 +231,7 @@ internal sealed class TabDragSession
             if (!panel.BeginDrag(_tab, _current.PanelPoint(point), _grabOffset)) return;
             _dragPanel = panel;
         }
+
         panel.DragTo(_current.PanelPoint(point));
         SetState(OvoTabDragState.Reorder);
     }
@@ -242,6 +252,7 @@ internal sealed class TabDragSession
                 _windowSettings[floating].HideWhileAttached();
                 _floatingWindow = null;
             }
+
             source.UpdateDragState(OvoTabDragState.None);
             _current = target;
             _enteredThroughWindow = target.Host.AttachBoundary == OvoTabDragBoundary.Window;
@@ -271,6 +282,7 @@ internal sealed class TabDragSession
                 if (window is null) return false;
                 _createdWindow = _reusableWindow = window;
             }
+
             ResetVisualOrder();
             RememberWindow(window);
             window.ShowActivated = false;
@@ -294,6 +306,7 @@ internal sealed class TabDragSession
                 _current = new TabDragBehavior(window.TabHost);
                 _windowGrab = new Vector(_grabOffset + 6, 22);
             }
+
             _floatingWindow = window;
             _enteredThroughWindow = false;
             _touchedHosts.Add(window.TabHost);
@@ -365,10 +378,12 @@ internal sealed class TabDragSession
         if (commitPreview)
         {
             if (previewState == OvoTabDragState.Transfer && target is not null)
-                _service.Transfer(_tab, source, target.Host, target.InsertionIndex(point), closeEmpty: true, activate: true);
+                _service.Transfer(_tab, source, target.Host, target.InsertionIndex(point), closeEmpty: true,
+                    activate: true);
             else if (previewState == OvoTabDragState.Detach)
                 _service.Detach(_tab, source, point);
         }
+
         e.Handled = true;
     }
 
@@ -402,6 +417,7 @@ internal sealed class TabDragSession
         {
             if (!ReferenceEquals(host, _createdWindow?.TabHost)) _service.CloseEmptyWindowIfNeeded(host);
         }
+
         foreach (var settings in _windowSettings.Values) settings.Restore();
         if (_dragging) (TopLevel.GetTopLevel(_current.Host) as Window)?.Activate();
     }

@@ -186,7 +186,7 @@
         <Style Selector="^:focus">
             <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
         </Style>
-        
+
         <Style Selector="^.border">
             <Style Selector="^ /template/ Border#Background">
                 <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />

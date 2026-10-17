@@ -18,20 +18,40 @@ public class MessageBoxControl : DialogControlBase
     public const string PART_OKButton = "PART_OKButton";
     public const string PART_CancelButton = "PART_CancelButton";
 
-    public static readonly StyledProperty<MessageBoxIcon> MessageIconProperty = AvaloniaProperty.Register<MessageBoxControl, MessageBoxIcon>(nameof(MessageIcon), MessageBoxIcon.None);
-    public static readonly StyledProperty<MessageBoxButton> ButtonsProperty = AvaloniaProperty.Register<MessageBoxControl, MessageBoxButton>(nameof(Buttons));
-    public static readonly StyledProperty<string?> TitleProperty = AvaloniaProperty.Register<MessageBoxControl, string?>(nameof(Title));
+    public static readonly StyledProperty<MessageBoxIcon> MessageIconProperty =
+        AvaloniaProperty.Register<MessageBoxControl, MessageBoxIcon>(nameof(MessageIcon), MessageBoxIcon.None);
+
+    public static readonly StyledProperty<MessageBoxButton> ButtonsProperty =
+        AvaloniaProperty.Register<MessageBoxControl, MessageBoxButton>(nameof(Buttons));
+
+    public static readonly StyledProperty<string?> TitleProperty =
+        AvaloniaProperty.Register<MessageBoxControl, string?>(nameof(Title));
 
     private Button? _okButton;
     private Button? _cancelButton;
     private Button? _yesButton;
     private Button? _noButton;
 
-    static MessageBoxControl() => ButtonsProperty.Changed.AddClassHandler<MessageBoxControl>((control, _) => control.SetButtonVisibility());
+    static MessageBoxControl() =>
+        ButtonsProperty.Changed.AddClassHandler<MessageBoxControl>((control, _) => control.SetButtonVisibility());
 
-    public MessageBoxIcon MessageIcon { get => GetValue(MessageIconProperty); set => SetValue(MessageIconProperty, value); }
-    public MessageBoxButton Buttons { get => GetValue(ButtonsProperty); set => SetValue(ButtonsProperty, value); }
-    public string? Title { get => GetValue(TitleProperty); set => SetValue(TitleProperty, value); }
+    public MessageBoxIcon MessageIcon
+    {
+        get => GetValue(MessageIconProperty);
+        set => SetValue(MessageIconProperty, value);
+    }
+
+    public MessageBoxButton Buttons
+    {
+        get => GetValue(ButtonsProperty);
+        set => SetValue(ButtonsProperty, value);
+    }
+
+    public string? Title
+    {
+        get => GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
+    }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {

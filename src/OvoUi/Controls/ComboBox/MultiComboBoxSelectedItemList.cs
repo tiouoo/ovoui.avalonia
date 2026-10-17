@@ -7,17 +7,18 @@ using Avalonia.Media;
 
 namespace OvoUi.Controls;
 
-public class MultiComboBoxSelectedItemList: ItemsControl
+public class MultiComboBoxSelectedItemList : ItemsControl
 {
-    public static readonly StyledProperty<ICommand?> RemoveCommandProperty = AvaloniaProperty.Register<MultiComboBoxSelectedItemList, ICommand?>(
-        nameof(RemoveCommand));
+    public static readonly StyledProperty<ICommand?> RemoveCommandProperty =
+        AvaloniaProperty.Register<MultiComboBoxSelectedItemList, ICommand?>(
+            nameof(RemoveCommand));
 
     public ICommand? RemoveCommand
     {
         get => GetValue(RemoveCommandProperty);
         set => SetValue(RemoveCommandProperty, value);
     }
-    
+
     protected override bool NeedsContainerOverride(object? item, int index, out object? recycleKey)
     {
         return NeedsContainer<ClosableTag>(item, out recycleKey);

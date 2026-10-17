@@ -19,47 +19,47 @@ public partial class WindowsSystemMenuPage : UserControl
     public bool IsWindows { get; } = OperatingSystem.IsWindows();
 
     public string SourceCode { get; } = """
-        private void AddCommand(object? sender, RoutedEventArgs e)
-        {
-            var window = (Window)TopLevel.GetTopLevel(this)!;
-            if (WindowsSystemMenu.TryAddItem(
-                    window,
-                    "Refresh data",
-                    RefreshData,
-                    out var item,
-                    out var error))
-            {
-                _menuItems.Add(item!);
-            }
-        }
+                                        private void AddCommand(object? sender, RoutedEventArgs e)
+                                        {
+                                            var window = (Window)TopLevel.GetTopLevel(this)!;
+                                            if (WindowsSystemMenu.TryAddItem(
+                                                    window,
+                                                    "Refresh data",
+                                                    RefreshData,
+                                                    out var item,
+                                                    out var error))
+                                            {
+                                                _menuItems.Add(item!);
+                                            }
+                                        }
 
-        private void ShowMenu(object? sender, RoutedEventArgs e)
-        {
-            var window = (Window)TopLevel.GetTopLevel(this)!;
-            WindowsSystemMenu.TryShow(window, out _);
-        }
-        """;
+                                        private void ShowMenu(object? sender, RoutedEventArgs e)
+                                        {
+                                            var window = (Window)TopLevel.GetTopLevel(this)!;
+                                            WindowsSystemMenu.TryShow(window, out _);
+                                        }
+                                        """;
 
     public string JumpListSourceCode { get; } = """
-        var items = new[]
-        {
-            new WindowsJumpListItem(
-                "Tasks",
-                "Open overview",
-                "Launch the OvoUi demo overview",
-                "--jump-list-demo overview"),
-            new WindowsJumpListItem(
-                "Examples",
-                "Open controls",
-                "Launch the OvoUi controls demo",
-                "--jump-list-demo controls")
-        };
+                                                var items = new[]
+                                                {
+                                                    new WindowsJumpListItem(
+                                                        "Tasks",
+                                                        "Open overview",
+                                                        "Launch the OvoUi demo overview",
+                                                        "--jump-list-demo overview"),
+                                                    new WindowsJumpListItem(
+                                                        "Examples",
+                                                        "Open controls",
+                                                        "Launch the OvoUi controls demo",
+                                                        "--jump-list-demo controls")
+                                                };
 
-        WindowsJumpList.TryApply(
-            "cc.example.MyApplication",
-            items,
-            out var error);
-        """;
+                                                WindowsJumpList.TryApply(
+                                                    "cc.example.MyApplication",
+                                                    items,
+                                                    out var error);
+                                                """;
 
     private void AddCommand(object? sender, RoutedEventArgs e)
     {

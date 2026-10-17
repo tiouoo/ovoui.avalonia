@@ -30,7 +30,8 @@ public partial class TabWindowPage : UserControl
         _tabService.WindowFactory = _ => CreateTabWindow();
         TabHost.TabService = _tabService;
         TabHost.NewTabFactory = CreateTab;
-        OpenWindowButton.IsVisible = Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime;
+        OpenWindowButton.IsVisible =
+            Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime;
 
         TabHost.AddTab(CreateTab("Dashboard", OvoTabIcons.Reorder));
         TabHost.AddTab(CreateTab("Activity", OvoTabIcons.Transfer), select: false);
@@ -40,64 +41,64 @@ public partial class TabWindowPage : UserControl
     public IReadOnlyList<OvoTabDragBoundary> DragBoundaries { get; } = Enum.GetValues<OvoTabDragBoundary>();
 
     public string SourceCode { get; } = """
-        private readonly OvoTabService _tabService = new();
-        private int _tabNumber;
+                                        private readonly OvoTabService _tabService = new();
+                                        private int _tabNumber;
 
-        public IReadOnlyList<OvoTabDragBoundary> DragBoundaries { get; }
-            = Enum.GetValues<OvoTabDragBoundary>();
+                                        public IReadOnlyList<OvoTabDragBoundary> DragBoundaries { get; }
+                                            = Enum.GetValues<OvoTabDragBoundary>();
 
-        public TabWindowPage()
-        {
-            InitializeComponent();
-            DataContext = this;
-            _tabService.WindowFactory = _ => CreateTabWindow();
-            TabHost.TabService = _tabService;
-            TabHost.NewTabFactory = CreateTab;
-            TabHost.DetachBoundary = OvoTabDragBoundary.TabStrip;
-            TabHost.AttachBoundary = OvoTabDragBoundary.TabStrip;
-            TabHost.DetachDistance = 24;
-            TabHost.IsLiveDragEnabled = true;
-            TabHost.IsTabAttachEnabled = true;
-            TabHost.AddTab(CreateTab());
-            TabHost.AddTab(CreateTab(), select: false);
-        }
+                                        public TabWindowPage()
+                                        {
+                                            InitializeComponent();
+                                            DataContext = this;
+                                            _tabService.WindowFactory = _ => CreateTabWindow();
+                                            TabHost.TabService = _tabService;
+                                            TabHost.NewTabFactory = CreateTab;
+                                            TabHost.DetachBoundary = OvoTabDragBoundary.TabStrip;
+                                            TabHost.AttachBoundary = OvoTabDragBoundary.TabStrip;
+                                            TabHost.DetachDistance = 24;
+                                            TabHost.IsLiveDragEnabled = true;
+                                            TabHost.IsTabAttachEnabled = true;
+                                            TabHost.AddTab(CreateTab());
+                                            TabHost.AddTab(CreateTab(), select: false);
+                                        }
 
-        private OvoTabItem CreateTab()
-        {
-            var title = $"Document {++_tabNumber}";
-            return new OvoTabItem(title, new TextBox { Text = title })
-            {
-                MinimumWidth = 145
-            };
-        }
+                                        private OvoTabItem CreateTab()
+                                        {
+                                            var title = $"Document {++_tabNumber}";
+                                            return new OvoTabItem(title, new TextBox { Text = title })
+                                            {
+                                                MinimumWidth = 145
+                                            };
+                                        }
 
-        private OvoTabWindow CreateTabWindow()
-        {
-            var window = new OvoTabWindow(_tabService)
-            {
-                Title = "OvoUi Tab Workspace",
-                NewTabFactory = CreateTab
-            };
-            window.TabHost.IsLiveDragEnabled = TabHost.IsLiveDragEnabled;
-            window.TabHost.DetachBoundary = TabHost.DetachBoundary;
-            window.TabHost.AttachBoundary = TabHost.AttachBoundary;
-            window.TabHost.IsTabAttachEnabled = TabHost.IsTabAttachEnabled;
-            return window;
-        }
+                                        private OvoTabWindow CreateTabWindow()
+                                        {
+                                            var window = new OvoTabWindow(_tabService)
+                                            {
+                                                Title = "OvoUi Tab Workspace",
+                                                NewTabFactory = CreateTab
+                                            };
+                                            window.TabHost.IsLiveDragEnabled = TabHost.IsLiveDragEnabled;
+                                            window.TabHost.DetachBoundary = TabHost.DetachBoundary;
+                                            window.TabHost.AttachBoundary = TabHost.AttachBoundary;
+                                            window.TabHost.IsTabAttachEnabled = TabHost.IsTabAttachEnabled;
+                                            return window;
+                                        }
 
-        private void AddTabs_OnClick(object? sender, RoutedEventArgs e)
-        {
-            for (var i = 0; i < 4; i++) TabHost.AddTab(CreateTab(), select: i == 3);
-        }
+                                        private void AddTabs_OnClick(object? sender, RoutedEventArgs e)
+                                        {
+                                            for (var i = 0; i < 4; i++) TabHost.AddTab(CreateTab(), select: i == 3);
+                                        }
 
-        private void OpenWindow_OnClick(object? sender, RoutedEventArgs e)
-        {
-            var window = CreateTabWindow();
-            window.AddTab(CreateTab());
-            window.AddTab(CreateTab(), select: false);
-            window.Show();
-        }
-        """;
+                                        private void OpenWindow_OnClick(object? sender, RoutedEventArgs e)
+                                        {
+                                            var window = CreateTabWindow();
+                                            window.AddTab(CreateTab());
+                                            window.AddTab(CreateTab(), select: false);
+                                            window.Show();
+                                        }
+                                        """;
 
     private OvoTabItem CreateTab()
     {

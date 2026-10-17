@@ -62,7 +62,8 @@ public class OvoTabHost : TemplatedControl
     public string HostId { get; } = Guid.NewGuid().ToString("N")[..6];
 
     public static readonly StyledProperty<OvoTabItem?> SelectedTabProperty =
-        AvaloniaProperty.Register<OvoTabHost, OvoTabItem?>(nameof(SelectedTab), defaultBindingMode: Avalonia.Data.BindingMode.TwoWay);
+        AvaloniaProperty.Register<OvoTabHost, OvoTabItem?>(nameof(SelectedTab),
+            defaultBindingMode: Avalonia.Data.BindingMode.TwoWay);
 
     public OvoTabItem? SelectedTab
     {
@@ -477,7 +478,7 @@ public class OvoTabHost : TemplatedControl
             flyout.Items.Add(MenuItem(Strings.CloseOtherTabs, () => _ = CloseOtherTabsAsync(tab)));
 
         var otherHosts = TabService.Hosts.Where(host => !ReferenceEquals(host, this) &&
-                                                         TopLevel.GetTopLevel(host) is Window).ToArray();
+                                                        TopLevel.GetTopLevel(host) is Window).ToArray();
         if (otherHosts.Length > 0)
         {
             var move = new MenuItem
@@ -491,10 +492,12 @@ public class OvoTabHost : TemplatedControl
                 move.Items.Add(MenuItem(window?.Title ?? target.HostId, () => TabService.Transfer(tab, this, target),
                     hideIcon: true));
             }
+
             flyout.Items.Add(move);
         }
 
-        if (Tabs.Count > 1 && EffectiveDragMode == OvoTabDragMode.ReorderAndDetach && TabService.WindowFactory is not null)
+        if (Tabs.Count > 1 && EffectiveDragMode == OvoTabDragMode.ReorderAndDetach &&
+            TabService.WindowFactory is not null)
             flyout.Items.Add(MenuItem(Strings.OpenInNewWindow,
                 () => TabService.Detach(tab, this, GetDefaultDetachPosition())));
 
@@ -504,7 +507,8 @@ public class OvoTabHost : TemplatedControl
             var index = Tabs.IndexOf(tab);
             reorder.Items.Add(MenuItem(Strings.MoveBackward, () => MoveTab(tab, index - 1), isEnabled: index > 0,
                 hideIcon: true));
-            reorder.Items.Add(MenuItem(Strings.MoveForward, () => MoveTab(tab, index + 1), isEnabled: index < Tabs.Count - 1,
+            reorder.Items.Add(MenuItem(Strings.MoveForward, () => MoveTab(tab, index + 1),
+                isEnabled: index < Tabs.Count - 1,
                 hideIcon: true));
             reorder.Items.Add(MenuItem(Strings.MoveToStart, () => MoveTab(tab, 0), isEnabled: index > 0,
                 hideIcon: true));
@@ -525,6 +529,7 @@ public class OvoTabHost : TemplatedControl
             flyout.Items.Add(new Separator());
             foreach (var item in additionalItems) flyout.Items.Add(item);
         }
+
         return flyout;
     }
 
@@ -631,6 +636,7 @@ public class OvoTabHost : TemplatedControl
             UnregisterHeaderList(_tabList);
             _tabList.RemoveHandler(PointerPressedEvent, TabListOnPointerPressed);
         }
+
         if (_tabScrollViewer is not null)
             _tabScrollViewer.PointerWheelChanged -= TabScrollViewerOnPointerWheelChanged;
     }
@@ -697,6 +703,7 @@ public class OvoTabHost : TemplatedControl
             if (visual is Border border && border.Classes.Contains("tab-root")) return border;
             visual = visual.GetVisualParent();
         }
+
         return null;
     }
 

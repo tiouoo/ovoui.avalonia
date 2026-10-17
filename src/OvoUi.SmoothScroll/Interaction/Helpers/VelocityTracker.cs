@@ -23,11 +23,13 @@ internal readonly record struct Velocity(Vector PixelsPerSecond)
             // preventing double.NaN in Vector PixelsPerSecond is important -- if a NaN eventually gets into a
             // ScrollGestureEventArgs it results in runtime errors.
         }
+
         if (valueSquared < minValue * minValue)
         {
             double length = PixelsPerSecond.Length;
             return new Velocity(length != 0.0 ? (PixelsPerSecond / length) * minValue : Vector.Zero);
         }
+
         return this;
     }
 }
@@ -83,6 +85,7 @@ internal class VelocityTracker
         {
             _index = 0;
         }
+
         _samples[_index] = new PointAtTime(true, position, time);
     }
 
@@ -153,10 +156,12 @@ internal class VelocityTracker
 
         if (sampleCount >= MinSampleSize)
         {
-            var xFit = LeastSquaresSolver.Solve(2, time.Slice(0, sampleCount), x.Slice(0, sampleCount), w.Slice(0, sampleCount));
+            var xFit = LeastSquaresSolver.Solve(2, time.Slice(0, sampleCount), x.Slice(0, sampleCount),
+                w.Slice(0, sampleCount));
             if (xFit != null)
             {
-                var yFit = LeastSquaresSolver.Solve(2, time.Slice(0, sampleCount), y.Slice(0, sampleCount), w.Slice(0, sampleCount));
+                var yFit = LeastSquaresSolver.Solve(2, time.Slice(0, sampleCount), y.Slice(0, sampleCount),
+                    w.Slice(0, sampleCount));
                 if (yFit != null)
                 {
                     return new VelocityEstimate( // convert from pixels/ms to pixels/s
@@ -168,12 +173,13 @@ internal class VelocityTracker
                 }
             }
         }
-        else if(sampleCount > 1)
+        else if (sampleCount > 1)
         {
             // Return linear velocity if we don't have enough samples
             var distance = newestSample.Point - oldestSample.Point;
             return new VelocityEstimate(
-                PixelsPerSecond: new Vector(distance.X / duration.Milliseconds * 1000, distance.Y / duration.Milliseconds * 1000),
+                PixelsPerSecond: new Vector(distance.X / duration.Milliseconds * 1000,
+                    distance.Y / duration.Milliseconds * 1000),
                 Confidence: 1,
                 Duration: duration,
                 Offset: offset
@@ -207,6 +213,7 @@ internal class VelocityTracker
         {
             return new Velocity(Vector.Zero);
         }
+
         return new Velocity(estimate.PixelsPerSecond);
     }
 
@@ -244,7 +251,8 @@ internal sealed class LeastSquaresSolver
     /// Fits a polynomial of the given degree to the data points.
     /// When there is not enough data to fit a curve null is returned.
     /// </summary>
-    public static PolynomialFit? Solve(int degree, ReadOnlySpan<double> x, ReadOnlySpan<double> y, ReadOnlySpan<double> w)
+    public static PolynomialFit? Solve(int degree, ReadOnlySpan<double> x, ReadOnlySpan<double> y,
+        ReadOnlySpan<double> w)
     {
         if (degree > x.Length)
         {
@@ -281,6 +289,7 @@ internal sealed class LeastSquaresSolver
             {
                 q[j, h] = a[j, h];
             }
+
             for (int i = 0; i < j; i += 1)
             {
                 double dot = Multiply(q.GetRow(j), q.GetRow(i));
@@ -302,6 +311,7 @@ internal sealed class LeastSquaresSolver
             {
                 q[j, h] = q[j, h] * inverseNorm;
             }
+
             for (int i = 0; i < n; i += 1)
             {
                 r[j, i] = i < j ? 0.0 : Multiply(q.GetRow(j), a.GetRow(i));
@@ -311,11 +321,12 @@ internal sealed class LeastSquaresSolver
         // Solve R B = Qt W Y to find B. This is easy because R is upper triangular.
         // We just work from bottom-right to top-left calculating B's coefficients.
         // "m" isn't expected to be bigger than HistorySize=20, so allocation on stack is safe.
-        Span<double> wy = stackalloc double[m];  
+        Span<double> wy = stackalloc double[m];
         for (int h = 0; h < m; h += 1)
         {
             wy[h] = y[h] * w[h];
         }
+
         for (int i = n - 1; i >= 0; i -= 1)
         {
             result.Coefficients[i] = Multiply(q.GetRow(i), wy);
@@ -323,6 +334,7 @@ internal sealed class LeastSquaresSolver
             {
                 result.Coefficients[i] -= r[i, j] * result.Coefficients[j];
             }
+
             result.Coefficients[i] /= r[i, i];
         }
 
@@ -336,6 +348,7 @@ internal sealed class LeastSquaresSolver
         {
             yMean += y[h];
         }
+
         yMean /= m;
 
         double sumSquaredError = 0.0;
@@ -349,13 +362,14 @@ internal sealed class LeastSquaresSolver
                 term *= x[h];
                 err -= term * result.Coefficients[i];
             }
+
             sumSquaredError += w[h] * w[h] * err * err;
             double v = y[h] - yMean;
             sumSquaredTotal += w[h] * w[h] * v * v;
         }
 
-        result.Confidence = sumSquaredTotal <= PrecisionErrorTolerance ? 1.0 :
-            1.0 - (sumSquaredError / sumSquaredTotal);
+        result.Confidence =
+            sumSquaredTotal <= PrecisionErrorTolerance ? 1.0 : 1.0 - (sumSquaredError / sumSquaredTotal);
 
         return result;
     }
@@ -367,9 +381,10 @@ internal sealed class LeastSquaresSolver
         {
             result += v1[i] * v2[i];
         }
+
         return result;
     }
-        
+
     private static double Norm(Span<double> v)
     {
         return Math.Sqrt(Multiply(v, v));

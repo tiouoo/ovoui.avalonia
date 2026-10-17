@@ -14,11 +14,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
+        <ProjectReference Include="..\OvoUi\OvoUi.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="12.1.4" />
+        <PackageReference Include="Avalonia" Version="12.1.4"/>
     </ItemGroup>
 
 </Project>

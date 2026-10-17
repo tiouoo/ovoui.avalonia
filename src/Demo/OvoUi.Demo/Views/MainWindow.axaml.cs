@@ -57,7 +57,8 @@ public partial class MainWindow : OvoWindow, IView
     {
         BackgroundMicaItem.IsVisible = OperatingSystem.IsWindows();
         BackgroundAcrylicItem.IsVisible = OperatingSystem.IsWindows();
-        BackgroundBlurItem.IsVisible = OperatingSystem.IsWindows() || OperatingSystem.IsMacOS() || OperatingSystem.IsLinux();
+        BackgroundBlurItem.IsVisible =
+            OperatingSystem.IsWindows() || OperatingSystem.IsMacOS() || OperatingSystem.IsLinux();
     }
 
     private void SetThemeDefault(object? sender, RoutedEventArgs e) => SetTheme(ThemeVariant.Default);

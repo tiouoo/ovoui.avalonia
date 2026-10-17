@@ -7,7 +7,7 @@ using Avalonia.Styling;
 
 namespace OvoUi.Fonts;
 
-public partial class OvoUiFont :  Styles
+public partial class OvoUiFont : Styles
 {
     public OvoUiFont()
     {

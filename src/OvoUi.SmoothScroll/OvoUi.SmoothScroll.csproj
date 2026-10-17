@@ -14,16 +14,16 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <ItemGroup>
-        <IgnoresAccessChecksTo Include="Avalonia.Base" />
-        <IgnoresAccessChecksTo Include="Avalonia.Controls" />
+        <IgnoresAccessChecksTo Include="Avalonia.Base"/>
+        <IgnoresAccessChecksTo Include="Avalonia.Controls"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="12.1.4" />
-        <PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.8.0" PrivateAssets="all" />
-        <PackageReference Include="PropertyGenerator.Avalonia" Version="1.3.1" PrivateAssets="all" />
+        <PackageReference Include="Avalonia" Version="12.1.4"/>
+        <PackageReference Include="IgnoresAccessChecksToGenerator" Version="0.8.0" PrivateAssets="all"/>
+        <PackageReference Include="PropertyGenerator.Avalonia" Version="1.3.1" PrivateAssets="all"/>
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
-        <None Update="README.md;LICENSE.txt;THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\"/>
+        <None Update="README.md;LICENSE.txt;THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

@@ -8,59 +8,247 @@
     x:Class="OvoUi.Demo.Views.MacOsWindowControlsDemoWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid Margin="24" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="20">
+    <Grid
+        Margin="24"
+        RowDefinitions="Auto,Auto,*,Auto"
+        RowSpacing="20">
         <StackPanel Spacing="6">
-            <TextBlock FontSize="20" FontWeight="SemiBold" Text="Native macOS window controls" />
+            <TextBlock
+                FontSize="20"
+                FontWeight="SemiBold"
+                Text="Native macOS window controls" />
             <TextBlock Text="The native button size is preserved unless size override is enabled." TextWrapping="Wrap" />
         </StackPanel>
 
         <GroupBox Grid.Row="1" Header="Common placement">
-            <WrapPanel ItemSpacing="24" LineSpacing="12" Margin="16">
-                <StackPanel Spacing="6"><TextBlock Text="Origin X" /><NumericUpDown Name="OriginX" Value="14" Width="150" /></StackPanel>
-                <StackPanel Spacing="6"><TextBlock Text="Origin Y" /><NumericUpDown Name="OriginY" Value="2" Width="150" /></StackPanel>
-                <StackPanel Spacing="6"><TextBlock Text="Spacing" /><NumericUpDown Name="Spacing" Value="20" Width="150" /></StackPanel>
-                <Button Click="UseSpacing" Content="Apply to position fields" VerticalAlignment="Bottom" />
+            <WrapPanel
+                ItemSpacing="24"
+                LineSpacing="12"
+                Margin="16">
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Origin X" />
+                    <NumericUpDown
+                        Name="OriginX"
+                        Value="14"
+                        Width="150" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Origin Y" />
+                    <NumericUpDown
+                        Name="OriginY"
+                        Value="2"
+                        Width="150" />
+                </StackPanel>
+                <StackPanel Spacing="6">
+                    <TextBlock Text="Spacing" />
+                    <NumericUpDown
+                        Name="Spacing"
+                        Value="20"
+                        Width="150" />
+                </StackPanel>
+                <Button
+                    Click="UseSpacing"
+                    Content="Apply to position fields"
+                    VerticalAlignment="Bottom" />
             </WrapPanel>
         </GroupBox>
 
         <ScrollViewer Grid.Row="2">
             <StackPanel Spacing="16">
                 <GroupBox Header="Close button">
-                    <WrapPanel ItemSpacing="20" LineSpacing="14" Margin="16">
-                        <StackPanel Spacing="6"><TextBlock Text="X" /><NumericUpDown Name="CloseX" Value="14" Width="140" /></StackPanel>
-                        <StackPanel Spacing="6"><TextBlock Text="Y" /><NumericUpDown Name="CloseY" Value="2" Width="140" /></StackPanel>
-                        <StackPanel Spacing="6"><TextBlock Text="Opacity" /><NumericUpDown Increment="0.1" Maximum="1" Minimum="0" Name="CloseOpacity" Value="1" Width="140" /></StackPanel>
-                        <StackPanel Spacing="10"><TextBlock Text="State" /><CheckBox Content="Visible" IsChecked="True" Name="CloseVisible" /><CheckBox Content="Enabled" IsChecked="True" Name="CloseEnabled" /></StackPanel>
-                        <StackPanel Spacing="6"><CheckBox Content="Override native size" Name="CloseOverrideSize" /><NumericUpDown IsEnabled="{Binding #CloseOverrideSize.IsChecked}" Minimum="1" Name="CloseWidth" Value="14" Width="140" /><NumericUpDown IsEnabled="{Binding #CloseOverrideSize.IsChecked}" Minimum="1" Name="CloseHeight" Value="14" Width="140" /></StackPanel>
+                    <WrapPanel
+                        ItemSpacing="20"
+                        LineSpacing="14"
+                        Margin="16">
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="X" />
+                            <NumericUpDown
+                                Name="CloseX"
+                                Value="14"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Y" />
+                            <NumericUpDown
+                                Name="CloseY"
+                                Value="2"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Opacity" />
+                            <NumericUpDown
+                                Increment="0.1"
+                                Maximum="1"
+                                Minimum="0"
+                                Name="CloseOpacity"
+                                Value="1"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="State" />
+                            <CheckBox
+                                Content="Visible"
+                                IsChecked="True"
+                                Name="CloseVisible" />
+                            <CheckBox
+                                Content="Enabled"
+                                IsChecked="True"
+                                Name="CloseEnabled" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <CheckBox Content="Override native size" Name="CloseOverrideSize" />
+                            <NumericUpDown
+                                IsEnabled="{Binding #CloseOverrideSize.IsChecked}"
+                                Minimum="1"
+                                Name="CloseWidth"
+                                Value="14"
+                                Width="140" />
+                            <NumericUpDown
+                                IsEnabled="{Binding #CloseOverrideSize.IsChecked}"
+                                Minimum="1"
+                                Name="CloseHeight"
+                                Value="14"
+                                Width="140" />
+                        </StackPanel>
                     </WrapPanel>
                 </GroupBox>
 
                 <GroupBox Header="Minimize button">
-                    <WrapPanel ItemSpacing="20" LineSpacing="14" Margin="16">
-                        <StackPanel Spacing="6"><TextBlock Text="X" /><NumericUpDown Name="MinimizeX" Value="34" Width="140" /></StackPanel>
-                        <StackPanel Spacing="6"><TextBlock Text="Y" /><NumericUpDown Name="MinimizeY" Value="2" Width="140" /></StackPanel>
-                        <StackPanel Spacing="6"><TextBlock Text="Opacity" /><NumericUpDown Increment="0.1" Maximum="1" Minimum="0" Name="MinimizeOpacity" Value="1" Width="140" /></StackPanel>
-                        <StackPanel Spacing="10"><TextBlock Text="State" /><CheckBox Content="Visible" IsChecked="True" Name="MinimizeVisible" /><CheckBox Content="Enabled" IsChecked="True" Name="MinimizeEnabled" /></StackPanel>
-                        <StackPanel Spacing="6"><CheckBox Content="Override native size" Name="MinimizeOverrideSize" /><NumericUpDown IsEnabled="{Binding #MinimizeOverrideSize.IsChecked}" Minimum="1" Name="MinimizeWidth" Value="14" Width="140" /><NumericUpDown IsEnabled="{Binding #MinimizeOverrideSize.IsChecked}" Minimum="1" Name="MinimizeHeight" Value="14" Width="140" /></StackPanel>
+                    <WrapPanel
+                        ItemSpacing="20"
+                        LineSpacing="14"
+                        Margin="16">
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="X" />
+                            <NumericUpDown
+                                Name="MinimizeX"
+                                Value="34"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Y" />
+                            <NumericUpDown
+                                Name="MinimizeY"
+                                Value="2"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Opacity" />
+                            <NumericUpDown
+                                Increment="0.1"
+                                Maximum="1"
+                                Minimum="0"
+                                Name="MinimizeOpacity"
+                                Value="1"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="State" />
+                            <CheckBox
+                                Content="Visible"
+                                IsChecked="True"
+                                Name="MinimizeVisible" />
+                            <CheckBox
+                                Content="Enabled"
+                                IsChecked="True"
+                                Name="MinimizeEnabled" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <CheckBox Content="Override native size" Name="MinimizeOverrideSize" />
+                            <NumericUpDown
+                                IsEnabled="{Binding #MinimizeOverrideSize.IsChecked}"
+                                Minimum="1"
+                                Name="MinimizeWidth"
+                                Value="14"
+                                Width="140" />
+                            <NumericUpDown
+                                IsEnabled="{Binding #MinimizeOverrideSize.IsChecked}"
+                                Minimum="1"
+                                Name="MinimizeHeight"
+                                Value="14"
+                                Width="140" />
+                        </StackPanel>
                     </WrapPanel>
                 </GroupBox>
 
                 <GroupBox Header="Zoom button">
-                    <WrapPanel ItemSpacing="20" LineSpacing="14" Margin="16">
-                        <StackPanel Spacing="6"><TextBlock Text="X" /><NumericUpDown Name="ZoomX" Value="54" Width="140" /></StackPanel>
-                        <StackPanel Spacing="6"><TextBlock Text="Y" /><NumericUpDown Name="ZoomY" Value="2" Width="140" /></StackPanel>
-                        <StackPanel Spacing="6"><TextBlock Text="Opacity" /><NumericUpDown Increment="0.1" Maximum="1" Minimum="0" Name="ZoomOpacity" Value="1" Width="140" /></StackPanel>
-                        <StackPanel Spacing="10"><TextBlock Text="State" /><CheckBox Content="Visible" IsChecked="True" Name="ZoomVisible" /><CheckBox Content="Enabled" IsChecked="True" Name="ZoomEnabled" /></StackPanel>
-                        <StackPanel Spacing="6"><CheckBox Content="Override native size" Name="ZoomOverrideSize" /><NumericUpDown IsEnabled="{Binding #ZoomOverrideSize.IsChecked}" Minimum="1" Name="ZoomWidth" Value="14" Width="140" /><NumericUpDown IsEnabled="{Binding #ZoomOverrideSize.IsChecked}" Minimum="1" Name="ZoomHeight" Value="14" Width="140" /></StackPanel>
+                    <WrapPanel
+                        ItemSpacing="20"
+                        LineSpacing="14"
+                        Margin="16">
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="X" />
+                            <NumericUpDown
+                                Name="ZoomX"
+                                Value="54"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Y" />
+                            <NumericUpDown
+                                Name="ZoomY"
+                                Value="2"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <TextBlock Text="Opacity" />
+                            <NumericUpDown
+                                Increment="0.1"
+                                Maximum="1"
+                                Minimum="0"
+                                Name="ZoomOpacity"
+                                Value="1"
+                                Width="140" />
+                        </StackPanel>
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="State" />
+                            <CheckBox
+                                Content="Visible"
+                                IsChecked="True"
+                                Name="ZoomVisible" />
+                            <CheckBox
+                                Content="Enabled"
+                                IsChecked="True"
+                                Name="ZoomEnabled" />
+                        </StackPanel>
+                        <StackPanel Spacing="6">
+                            <CheckBox Content="Override native size" Name="ZoomOverrideSize" />
+                            <NumericUpDown
+                                IsEnabled="{Binding #ZoomOverrideSize.IsChecked}"
+                                Minimum="1"
+                                Name="ZoomWidth"
+                                Value="14"
+                                Width="140" />
+                            <NumericUpDown
+                                IsEnabled="{Binding #ZoomOverrideSize.IsChecked}"
+                                Minimum="1"
+                                Name="ZoomHeight"
+                                Value="14"
+                                Width="140" />
+                        </StackPanel>
                     </WrapPanel>
                 </GroupBox>
             </StackPanel>
         </ScrollViewer>
 
-        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
-            <TextBlock Name="StatusText" Text="Change values, then apply them to this window." TextWrapping="Wrap" VerticalAlignment="Center" />
-            <Button Click="RestoreDefaults" Content="Restore native defaults" Grid.Column="1" />
-            <Button Classes="accent" Click="ApplyOptions" Content="Apply" Grid.Column="2" />
+        <Grid
+            ColumnDefinitions="*,Auto,Auto"
+            ColumnSpacing="12"
+            Grid.Row="3">
+            <TextBlock
+                Name="StatusText"
+                Text="Change values, then apply them to this window."
+                TextWrapping="Wrap"
+                VerticalAlignment="Center" />
+            <Button
+                Click="RestoreDefaults"
+                Content="Restore native defaults"
+                Grid.Column="1" />
+            <Button
+                Classes="accent"
+                Click="ApplyOptions"
+                Content="Apply"
+                Grid.Column="2" />
         </Grid>
     </Grid>
 </Window>

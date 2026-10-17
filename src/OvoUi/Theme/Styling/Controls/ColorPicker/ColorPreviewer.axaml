@@ -133,7 +133,8 @@
                             Margin="0,8"
                             VerticalAlignment="Stretch">
                             <Panel>
-                                <Border Background="{DynamicResource ColorControlCheckeredBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" />
+                                <Border Background="{DynamicResource ColorControlCheckeredBackgroundBrush}"
+                                        CornerRadius="{TemplateBinding CornerRadius}" />
                                 <Border
                                     Background="{TemplateBinding HsvColor,
                                                                  Converter={StaticResource ToBrushConverter}}"
@@ -151,7 +152,8 @@
                                                     Converter={x:Static BoolConverters.Not}}"
                         VerticalAlignment="Stretch">
                         <Panel>
-                            <Border Background="{DynamicResource ColorControlCheckeredBackgroundBrush}" CornerRadius="{TemplateBinding CornerRadius}" />
+                            <Border Background="{DynamicResource ColorControlCheckeredBackgroundBrush}"
+                                    CornerRadius="{TemplateBinding CornerRadius}" />
                             <Border
                                 Background="{TemplateBinding HsvColor,
                                                              Converter={StaticResource ToBrushConverter}}"

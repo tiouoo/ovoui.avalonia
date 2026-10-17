@@ -7,9 +7,9 @@ public static class LangFormatExtensions
         ArgumentNullException.ThrowIfNull(formatKey);
 
         var format = formatKey.Manager.GetObservable(formatKey.Key)
-            ?? throw new ArgumentException(
-                $"The manager does not contain an observable for the resource key '{formatKey.Key}'.",
-                nameof(formatKey));
+                     ?? throw new ArgumentException(
+                         $"The manager does not contain an observable for the resource key '{formatKey.Key}'.",
+                         nameof(formatKey));
 
         return new LangFormatBuilder(formatKey.Manager, format);
     }

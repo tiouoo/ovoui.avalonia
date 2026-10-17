@@ -15,18 +15,18 @@ public partial class MacOsWindowControlsPage : UserControl
     public bool IsMacOs { get; } = OperatingSystem.IsMacOS();
 
     public string SourceCode { get; } = """
-        private void OpenEditor(object? sender, RoutedEventArgs e)
-        {
-            if (!OperatingSystem.IsMacOS())
-                return;
+                                        private void OpenEditor(object? sender, RoutedEventArgs e)
+                                        {
+                                            if (!OperatingSystem.IsMacOS())
+                                                return;
 
-            var editor = new MacOsWindowControlsDemoWindow();
-            if (TopLevel.GetTopLevel(this) is Window owner)
-                editor.Show(owner);
-            else
-                editor.Show();
-        }
-        """;
+                                            var editor = new MacOsWindowControlsDemoWindow();
+                                            if (TopLevel.GetTopLevel(this) is Window owner)
+                                                editor.Show(owner);
+                                            else
+                                                editor.Show();
+                                        }
+                                        """;
 
     private void OpenEditor(object? sender, RoutedEventArgs e)
     {

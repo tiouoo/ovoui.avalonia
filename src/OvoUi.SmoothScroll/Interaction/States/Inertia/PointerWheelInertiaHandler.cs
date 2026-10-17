@@ -50,7 +50,8 @@ internal class PointerWheelInertiaHandler : ServerObject, IServerClockItem, IInt
 
     public Vector3D FinalPosition => _calculatedFinalPosition;
 
-    public Vector3D FinalModifiedPosition => Vector3D.Clamp(_calculatedFinalPosition, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
+    public Vector3D FinalModifiedPosition => Vector3D.Clamp(_calculatedFinalPosition, _interactionTracker.MinPosition,
+        _interactionTracker.MaxPosition);
 
     public double FinalModifiedScale => _interactionTracker.Scale;
 
@@ -91,7 +92,8 @@ internal class PointerWheelInertiaHandler : ServerObject, IServerClockItem, IInt
         Velocity = currentVelocity;
 
         var newPosition = _initialPosition + _initialVelocity * _timeConstantSeconds * (1 - decay);
-        var clampedNewPosition = Vector3D.Clamp(newPosition, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
+        var clampedNewPosition =
+            Vector3D.Clamp(newPosition, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
 
         _interactionTracker.SetPosition(clampedNewPosition, requestId: 0);
 

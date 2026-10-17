@@ -37,14 +37,16 @@ public enum ScrollFeaturesEnum
 /// <summary>
 /// Presents a scrolling view of content inside a <see cref="ScrollViewer"/>.
 /// </summary>
-public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, IScrollAnchorProvider, IInteractionTrackerOwner
+public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, IScrollAnchorProvider,
+    IInteractionTrackerOwner
 {
     private const double EdgeDetectionTolerance = 0.1;
     private const int ArrangeTimerIntervalMs = 40;
     private const int ArrangeTimerIdleTimeoutMs = 160;
 
     public static readonly AttachedProperty<ScrollFeaturesEnum> ScrollFeaturesProperty =
-        AvaloniaProperty.RegisterAttached<OvoScrollPresenter, Control, ScrollFeaturesEnum>("ScrollFeatures", defaultValue: ScrollFeaturesEnum.None);
+        AvaloniaProperty.RegisterAttached<OvoScrollPresenter, Control, ScrollFeaturesEnum>("ScrollFeatures",
+            defaultValue: ScrollFeaturesEnum.None);
 
     /// <summary>
     /// Defines the <see cref="CanHorizontallyScroll"/> property.
@@ -62,8 +64,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     /// Defines the <see cref="Extent"/> property.
     /// </summary>
     public static readonly DirectProperty<OvoScrollPresenter, Size> ExtentProperty =
-        ScrollViewer.ExtentProperty.AddOwner<OvoScrollPresenter>(
-            o => o.Extent);
+        ScrollViewer.ExtentProperty.AddOwner<OvoScrollPresenter>(o => o.Extent);
 
     /// <summary>
     /// Defines the <see cref="Offset"/> property.
@@ -75,8 +76,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     /// Defines the <see cref="Viewport"/> property.
     /// </summary>
     public static readonly DirectProperty<OvoScrollPresenter, Size> ViewportProperty =
-        ScrollViewer.ViewportProperty.AddOwner<OvoScrollPresenter>(
-            o => o.Viewport);
+        ScrollViewer.ViewportProperty.AddOwner<OvoScrollPresenter>(o => o.Viewport);
 
     /// <summary>
     /// Defines the <see cref="HorizontalSnapPointsType"/> property.
@@ -142,6 +142,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     private bool _hasPendingArrange;
     private long _lastScrollActivityTick;
     private bool _synchronizingOwnerOffset;
+
     /// <summary>
     /// Initializes static members of the <see cref="OvoScrollPresenter"/> class.
     /// </summary>
@@ -359,8 +360,10 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             unscaledRectangle.Width * ZoomFactor, unscaledRectangle.Height * ZoomFactor);
         Rect viewport = new Rect(Offset.X, Offset.Y, Viewport.Width, Viewport.Height);
 
-        double minX = ComputeScrollOffsetWithMinimalScroll(viewport.Left, viewport.Right, rectangle.Left, rectangle.Right);
-        double minY = ComputeScrollOffsetWithMinimalScroll(viewport.Top, viewport.Bottom, rectangle.Top, rectangle.Bottom);
+        double minX =
+            ComputeScrollOffsetWithMinimalScroll(viewport.Left, viewport.Right, rectangle.Left, rectangle.Right);
+        double minY =
+            ComputeScrollOffsetWithMinimalScroll(viewport.Top, viewport.Bottom, rectangle.Top, rectangle.Bottom);
         var endPosition = new Vector(minX, minY);
 
         if (Offset.NearlyEquals(endPosition))
@@ -382,7 +385,8 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             {
                 animation.InsertKeyFrame(
                     0.0001f,
-                    new Vector3D(endPosition.X, targetVerticalPosition - Math.Clamp(deltaVerticalPosition, -5000, 5000), 0),
+                    new Vector3D(endPosition.X, targetVerticalPosition - Math.Clamp(deltaVerticalPosition, -5000, 5000),
+                        0),
                     new StepEasing()); // Easing function for sudden change
             }
 
@@ -395,6 +399,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             _requestId = _interactionTracker.TryUpdatePositionWithAnimation(args.Animation);
             return true;
         }
+
         SetCurrentValue(OffsetProperty, endPosition);
 
         // It's possible that the Offset coercion has changed the offset back to its previous value,
@@ -417,10 +422,12 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
         double childEnd)
     {
         // If child is at least partially above viewport, i.e. top of child is above viewport top and bottom of child is above viewport bottom.
-        bool isChildAbove = MathUtilities.LessThan(childStart, viewportStart) && MathUtilities.LessThan(childEnd, viewportEnd);
+        bool isChildAbove = MathUtilities.LessThan(childStart, viewportStart) &&
+                            MathUtilities.LessThan(childEnd, viewportEnd);
 
         // If child is at least partially below viewport, i.e. top of child is below viewport top and bottom of child is below viewport bottom.
-        bool isChildBelow = MathUtilities.GreaterThan(childEnd, viewportEnd) && MathUtilities.GreaterThan(childStart, viewportStart);
+        bool isChildBelow = MathUtilities.GreaterThan(childEnd, viewportEnd) &&
+                            MathUtilities.GreaterThan(childStart, viewportStart);
         bool isChildLarger = (childEnd - childStart) > (viewportEnd - viewportStart);
 
         // Value if no updates is needed. The child is fully visible in the viewport, or the viewport is completely within the child's bounds
@@ -460,6 +467,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             _scrollSnapPointsInfo.HorizontalSnapPointsChanged -= ScrollSnapPointsInfoSnapPointsChanged;
             _scrollSnapPointsInfo = null;
         }
+
         _isSnapPointsUpdated = false;
         _inertiaArgs = null;
     }
@@ -563,14 +571,32 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
 
         IDisposable[] subscriptionDisposables = new IDisposable?[]
         {
-            owner is OvoScrollView ? null : IfUnset(CanHorizontallyScrollProperty, p => Bind(p, owner.GetObservable(ScrollViewer.HorizontalScrollBarVisibilityProperty, NotDisabled), BindingPriority.Template)),
-            owner is OvoScrollView ? null : IfUnset(CanVerticallyScrollProperty, p => Bind(p, owner.GetObservable(ScrollViewer.VerticalScrollBarVisibilityProperty, NotDisabled), BindingPriority.Template)),
-            IfUnset(OffsetProperty, p => Bind(p, owner.GetBindingObservable(ScrollViewer.OffsetProperty), BindingPriority.Template)),
-            IfUnset(HorizontalContentAlignmentProperty, p => Bind(p, owner.GetBindingObservable(ContentControl.HorizontalContentAlignmentProperty), BindingPriority.Template)),
-            IfUnset(VerticalContentAlignmentProperty, p => Bind(p, owner.GetBindingObservable(ContentControl.VerticalContentAlignmentProperty), BindingPriority.Template)),
-            IfUnset(IsScrollChainingEnabledProperty, p => Bind(p, owner.GetBindingObservable(ScrollViewer.IsScrollChainingEnabledProperty), BindingPriority.Template)),
-            IfUnset(ContentProperty, p => Bind(p, owner.GetBindingObservable(ContentProperty), BindingPriority.Template)),
-            IfUnset(ContentTemplateProperty, p => Bind(p, owner.GetBindingObservable(ContentControl.ContentTemplateProperty), BindingPriority.Template)),
+            owner is OvoScrollView
+                ? null
+                : IfUnset(CanHorizontallyScrollProperty,
+                    p => Bind(p, owner.GetObservable(ScrollViewer.HorizontalScrollBarVisibilityProperty, NotDisabled),
+                        BindingPriority.Template)),
+            owner is OvoScrollView
+                ? null
+                : IfUnset(CanVerticallyScrollProperty,
+                    p => Bind(p, owner.GetObservable(ScrollViewer.VerticalScrollBarVisibilityProperty, NotDisabled),
+                        BindingPriority.Template)),
+            IfUnset(OffsetProperty,
+                p => Bind(p, owner.GetBindingObservable(ScrollViewer.OffsetProperty), BindingPriority.Template)),
+            IfUnset(HorizontalContentAlignmentProperty,
+                p => Bind(p, owner.GetBindingObservable(ContentControl.HorizontalContentAlignmentProperty),
+                    BindingPriority.Template)),
+            IfUnset(VerticalContentAlignmentProperty,
+                p => Bind(p, owner.GetBindingObservable(ContentControl.VerticalContentAlignmentProperty),
+                    BindingPriority.Template)),
+            IfUnset(IsScrollChainingEnabledProperty,
+                p => Bind(p, owner.GetBindingObservable(ScrollViewer.IsScrollChainingEnabledProperty),
+                    BindingPriority.Template)),
+            IfUnset(ContentProperty,
+                p => Bind(p, owner.GetBindingObservable(ContentProperty), BindingPriority.Template)),
+            IfUnset(ContentTemplateProperty,
+                p => Bind(p, owner.GetBindingObservable(ContentControl.ContentTemplateProperty),
+                    BindingPriority.Template)),
         }.Where(d => d != null).Cast<IDisposable>().ToArray();
 
         _ownerSubscriptions = new CompositeDisposable(subscriptionDisposables);
@@ -626,9 +652,11 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
         var availableWithPadding = availableSize.Deflate(Padding);
         var constraint = new Size(
             ContentOrientation is ScrollContentOrientation.Horizontal or ScrollContentOrientation.Both
-                ? double.PositiveInfinity : availableWithPadding.Width,
+                ? double.PositiveInfinity
+                : availableWithPadding.Width,
             ContentOrientation is ScrollContentOrientation.Vertical or ScrollContentOrientation.Both
-                ? double.PositiveInfinity : availableWithPadding.Height);
+                ? double.PositiveInfinity
+                : availableWithPadding.Height);
 
         Child.Measure(constraint);
 
@@ -648,6 +676,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
         {
             return base.ArrangeOverride(finalSize);
         }
+
         return ArrangeWithAnchoring(finalSize);
     }
 
@@ -661,16 +690,23 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             GetComputedScrollMode(finalSize);
             if (IsZoomEnabled)
             {
-                width = (HorizontalContentAlignment == HorizontalAlignment.Stretch) ?
-                    Math.Max(Child!.DesiredSize.Inflate(Padding).Width, finalSize.Width) : finalSize.Width;
-                height = (VerticalContentAlignment == VerticalAlignment.Stretch) ?
-                    Math.Max(Child!.DesiredSize.Inflate(Padding).Height, finalSize.Height) : finalSize.Height;
+                width = (HorizontalContentAlignment == HorizontalAlignment.Stretch)
+                    ? Math.Max(Child!.DesiredSize.Inflate(Padding).Width, finalSize.Width)
+                    : finalSize.Width;
+                height = (VerticalContentAlignment == VerticalAlignment.Stretch)
+                    ? Math.Max(Child!.DesiredSize.Inflate(Padding).Height, finalSize.Height)
+                    : finalSize.Height;
             }
             else
             {
-                width = CanHorizontallyScroll ? Math.Max(Child!.DesiredSize.Inflate(Padding).Width, finalSize.Width) : finalSize.Width;
-                height = CanVerticallyScroll ? Math.Max(Child!.DesiredSize.Inflate(Padding).Height, finalSize.Height) : finalSize.Height;
+                width = CanHorizontallyScroll
+                    ? Math.Max(Child!.DesiredSize.Inflate(Padding).Width, finalSize.Width)
+                    : finalSize.Width;
+                height = CanVerticallyScroll
+                    ? Math.Max(Child!.DesiredSize.Inflate(Padding).Height, finalSize.Height)
+                    : finalSize.Height;
             }
+
             var size = new Size(width, height);
 
             var isAnchoring = Offset.X >= EdgeDetectionTolerance || Offset.Y >= EdgeDetectionTolerance;
@@ -817,6 +853,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             SetCurrentValue(CanVerticallyScrollProperty, true);
             return;
         }
+
         var scrollableWidth = Math.Max(0, Child.DesiredSize.Width - finalSize.Width);
         var scrollHeight = Math.Max(0, Child.DesiredSize.Height - finalSize.Height);
         if (HorizontalScrollMode == ScrollMode.Enabled
@@ -828,6 +865,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
         {
             SetCurrentValue(CanHorizontallyScrollProperty, false);
         }
+
         if (VerticalScrollMode == ScrollMode.Enabled
             || (VerticalScrollMode == ScrollMode.Auto && scrollHeight > 0))
         {
@@ -896,11 +934,11 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             EnsureScrollAnimation();
         }
         else if (change.Property == ScrollFeaturesProperty ||
-                change.Property == IsScrollChainingEnabledProperty ||
-                change.Property == ScrollViewer.IsScrollInertiaEnabledProperty ||
-                change.Property == CanVerticallyScrollProperty ||
-                change.Property == CanHorizontallyScrollProperty ||
-                change.Property == IsZoomEnabledProperty)
+                 change.Property == IsScrollChainingEnabledProperty ||
+                 change.Property == ScrollViewer.IsScrollInertiaEnabledProperty ||
+                 change.Property == CanVerticallyScrollProperty ||
+                 change.Property == CanHorizontallyScrollProperty ||
+                 change.Property == IsZoomEnabledProperty)
             UpdateInteractionOptions();
         else if (change.Property == ZoomFactorProperty)
         {
@@ -1067,23 +1105,26 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
 
             if (!_areVerticalSnapPointsRegular)
             {
-                _verticalSnapPoints = scrollable.GetIrregularSnapPoints(Orientation.Vertical, VerticalSnapPointsAlignment);
+                _verticalSnapPoints =
+                    scrollable.GetIrregularSnapPoints(Orientation.Vertical, VerticalSnapPointsAlignment);
             }
             else
             {
                 _verticalSnapPoints = new List<double>();
-                _verticalSnapPoint = scrollable.GetRegularSnapPoints(Orientation.Vertical, VerticalSnapPointsAlignment, out _verticalSnapPointOffset);
-
+                _verticalSnapPoint = scrollable.GetRegularSnapPoints(Orientation.Vertical, VerticalSnapPointsAlignment,
+                    out _verticalSnapPointOffset);
             }
 
             if (!_areHorizontalSnapPointsRegular)
             {
-                _horizontalSnapPoints = scrollable.GetIrregularSnapPoints(Orientation.Horizontal, HorizontalSnapPointsAlignment);
+                _horizontalSnapPoints =
+                    scrollable.GetIrregularSnapPoints(Orientation.Horizontal, HorizontalSnapPointsAlignment);
             }
             else
             {
                 _horizontalSnapPoints = new List<double>();
-                _horizontalSnapPoint = scrollable.GetRegularSnapPoints(Orientation.Horizontal, HorizontalSnapPointsAlignment, out _horizontalSnapPointOffset);
+                _horizontalSnapPoint = scrollable.GetRegularSnapPoints(Orientation.Horizontal,
+                    HorizontalSnapPointsAlignment, out _horizontalSnapPointOffset);
             }
         }
         else
@@ -1105,7 +1146,8 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
         Vector snapPoint;
         if (_inertiaArgs.IsInertiaFromImpulse)
         {
-            var vel = new Vector(-_inertiaArgs.PositionVelocityInPixelsPerSecond.X, -_inertiaArgs.PositionVelocityInPixelsPerSecond.Y);
+            var vel = new Vector(-_inertiaArgs.PositionVelocityInPixelsPerSecond.X,
+                -_inertiaArgs.PositionVelocityInPixelsPerSecond.Y);
             snapPoint = SnapOffset(pos, vel, true);
         }
         else
@@ -1123,19 +1165,23 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     {
         var scrollable = GetScrollSnapPointsInfo(Content);
 
-        if (scrollable is null || (VerticalSnapPointsType == SnapPointsType.None && HorizontalSnapPointsType == SnapPointsType.None))
+        if (scrollable is null || (VerticalSnapPointsType == SnapPointsType.None &&
+                                   HorizontalSnapPointsType == SnapPointsType.None))
             return offset;
 
         var diff = GetAlignmentDiff();
 
-        if (VerticalSnapPointsType != SnapPointsType.None && (_areVerticalSnapPointsRegular || _verticalSnapPoints?.Count > 0) && (!snapToNext || snapToNext && direction.Y != 0))
+        if (VerticalSnapPointsType != SnapPointsType.None &&
+            (_areVerticalSnapPointsRegular || _verticalSnapPoints?.Count > 0) &&
+            (!snapToNext || snapToNext && direction.Y != 0))
         {
             var estimatedOffset = new Vector(offset.X, offset.Y + diff.Y);
             double previousSnapPoint = 0, nextSnapPoint = 0, midPoint = 0;
 
             if (_areVerticalSnapPointsRegular)
             {
-                previousSnapPoint = (int)(estimatedOffset.Y / _verticalSnapPoint) * _verticalSnapPoint + _verticalSnapPointOffset;
+                previousSnapPoint = (int)(estimatedOffset.Y / _verticalSnapPoint) * _verticalSnapPoint +
+                                    _verticalSnapPointOffset;
                 nextSnapPoint = previousSnapPoint + _verticalSnapPoint;
                 midPoint = (previousSnapPoint + nextSnapPoint) / 2;
             }
@@ -1151,14 +1197,17 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             offset = new Vector(offset.X, nearestSnapPoint - diff.Y);
         }
 
-        if (HorizontalSnapPointsType != SnapPointsType.None && (_areHorizontalSnapPointsRegular || _horizontalSnapPoints?.Count > 0) && (!snapToNext || snapToNext && direction.X != 0))
+        if (HorizontalSnapPointsType != SnapPointsType.None &&
+            (_areHorizontalSnapPointsRegular || _horizontalSnapPoints?.Count > 0) &&
+            (!snapToNext || snapToNext && direction.X != 0))
         {
             var estimatedOffset = new Vector(offset.X + diff.X, offset.Y);
             double previousSnapPoint = 0, nextSnapPoint = 0, midPoint = 0;
 
             if (_areHorizontalSnapPointsRegular)
             {
-                previousSnapPoint = (int)(estimatedOffset.X / _horizontalSnapPoint) * _horizontalSnapPoint + _horizontalSnapPointOffset;
+                previousSnapPoint = (int)(estimatedOffset.X / _horizontalSnapPoint) * _horizontalSnapPoint +
+                                    _horizontalSnapPointOffset;
                 nextSnapPoint = previousSnapPoint + _horizontalSnapPoint;
                 midPoint = (previousSnapPoint + nextSnapPoint) / 2;
             }
@@ -1263,7 +1312,6 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
 
     public void ValuesChanged(InteractionTracker sender, InteractionTrackerValuesChangedArgs args)
     {
-
         var position = new Vector(args.Position.X, args.Position.Y);
         var scale = args.Scale;
         var compositionVisual = GetCompositionVisual();
@@ -1310,25 +1358,28 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     }
 
 
-
-    void IInteractionTrackerOwner.CustomAnimationStateEntered(InteractionTracker sender, InteractionTrackerCustomAnimationStateEnteredArgs args)
+    void IInteractionTrackerOwner.CustomAnimationStateEntered(InteractionTracker sender,
+        InteractionTrackerCustomAnimationStateEnteredArgs args)
     {
     }
 
-    void IInteractionTrackerOwner.IdleStateEntered(InteractionTracker sender, InteractionTrackerIdleStateEnteredArgs args)
+    void IInteractionTrackerOwner.IdleStateEntered(InteractionTracker sender,
+        InteractionTrackerIdleStateEnteredArgs args)
     {
         _inertiaArgs = null;
         Dispatcher.UIThread.Post(InvalidateArrange);
     }
 
-    void IInteractionTrackerOwner.InertiaStateEntered(InteractionTracker sender, InteractionTrackerInertiaStateEnteredArgs args)
+    void IInteractionTrackerOwner.InertiaStateEntered(InteractionTracker sender,
+        InteractionTrackerInertiaStateEnteredArgs args)
     {
         _inertiaArgs = args;
         EnsureScrollAnimation();
         UpdateScrollModified();
     }
 
-    void IInteractionTrackerOwner.InteractingStateEntered(InteractionTracker sender, InteractionTrackerInteractingStateEnteredArgs args)
+    void IInteractionTrackerOwner.InteractingStateEntered(InteractionTracker sender,
+        InteractionTrackerInteractingStateEnteredArgs args)
     {
         _inertiaArgs = null;
         EnsureScrollAnimation();
@@ -1343,10 +1394,13 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             return;
 
         _interactionTracker.MinPosition = new Vector3D(scrollableArea.MinPosition.X, scrollableArea.MinPosition.Y, 0);
-        _interactionTracker.MaxPosition = new Vector3D(Math.Max(scrollableArea.MinPosition.X, scrollableArea.MaxPosition.X), Math.Max(scrollableArea.MinPosition.Y,scrollableArea.MaxPosition.Y), 0);
+        _interactionTracker.MaxPosition =
+            new Vector3D(Math.Max(scrollableArea.MinPosition.X, scrollableArea.MaxPosition.X),
+                Math.Max(scrollableArea.MinPosition.Y, scrollableArea.MaxPosition.Y), 0);
 
         var sourceMode = ScrollViewer.GetIsScrollInertiaEnabled(this)
-            ? InteractionSourceMode.EnabledWithInertia : InteractionSourceMode.EnabledWithoutInertia;
+            ? InteractionSourceMode.EnabledWithInertia
+            : InteractionSourceMode.EnabledWithoutInertia;
         _interactionSource.PositionXSourceMode = !CanHorizontallyScroll
             ? InteractionSourceMode.Disabled
             : sourceMode;
@@ -1378,6 +1432,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
 
         return (scaledExtent, minPosition, maxPosition);
     }
+
     private Vector ComputeMinPositionForAlignment(Size unscaledExtent, double scale)
     {
         var scaledWidthMinusViewport = (unscaledExtent.Width * scale) - Viewport.Width;
@@ -1539,14 +1594,16 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
 
         var features = GetScrollFeatures(this);
         _interactionSource.IsMousePanningEnabled = features.HasFlag(ScrollFeaturesEnum.MousePressedScroll);
-        _interactionSource.IsMousePanningInertiaEnabled = features.HasFlag(ScrollFeaturesEnum.MousePressedScrollEnertia);
+        _interactionSource.IsMousePanningInertiaEnabled =
+            features.HasFlag(ScrollFeaturesEnum.MousePressedScrollEnertia);
         _interactionSource.SwapWheelDirections = features.HasFlag(ScrollFeaturesEnum.WheelSwapDirections);
 
         _interactionSource.ScaleSourceMode = IsZoomEnabled
             ? InteractionSourceMode.EnabledWithInertia
             : InteractionSourceMode.Disabled;
         var sourceMode = ScrollViewer.GetIsScrollInertiaEnabled(this)
-            ? InteractionSourceMode.EnabledWithInertia : InteractionSourceMode.EnabledWithoutInertia;
+            ? InteractionSourceMode.EnabledWithInertia
+            : InteractionSourceMode.EnabledWithoutInertia;
         _interactionSource.PositionXSourceMode = CanHorizontallyScroll
             ? sourceMode
             : InteractionSourceMode.Disabled;
@@ -1592,7 +1649,6 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
         {
             _interactionTracker.TryUpdateScale(newScale, viewportCenter);
         }
-
     }
 
     private CompositionVisual? GetCompositionVisual()

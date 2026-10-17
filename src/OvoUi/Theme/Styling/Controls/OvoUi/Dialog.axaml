@@ -23,9 +23,7 @@
                         Name="PART_Border">
                         <Grid>
                             <Panel Background="Transparent" Name="{x:Static ovo:DialogControlBase.PART_TitleArea}" />
-                            <ScrollViewer
-                                HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                            <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                 <ContentPresenter
                                     Content="{TemplateBinding Content}"
                                     ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -39,7 +37,10 @@
                                 VerticalAlignment="Top" />
                         </Grid>
                     </Border>
-                    <ovo:DialogResizer IsVisible="{TemplateBinding CanResize}" Margin="10" ZIndex="3" />
+                    <ovo:DialogResizer
+                        IsVisible="{TemplateBinding CanResize}"
+                        Margin="10"
+                        ZIndex="3" />
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -69,9 +70,20 @@
                         Name="PART_Border">
                         <Grid RowDefinitions="Auto,*,Auto">
                             <Panel Background="Transparent" Name="{x:Static ovo:DialogControlBase.PART_TitleArea}" />
-                            <StackPanel Margin="24,20,52,0" Name="PART_DialogHeader" Orientation="Horizontal" Spacing="10">
-                                <PathIcon Height="20" Name="PART_ModeIcon" Width="20" />
-                                <TextBlock FontSize="18" FontWeight="600" Text="{TemplateBinding Title}" VerticalAlignment="Center" />
+                            <StackPanel
+                                Margin="24,20,52,0"
+                                Name="PART_DialogHeader"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <PathIcon
+                                    Height="20"
+                                    Name="PART_ModeIcon"
+                                    Width="20" />
+                                <TextBlock
+                                    FontSize="18"
+                                    FontWeight="600"
+                                    Text="{TemplateBinding Title}"
+                                    VerticalAlignment="Center" />
                             </StackPanel>
                             <Button
                                 HorizontalAlignment="Right"
@@ -86,24 +98,59 @@
                                 VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                                 <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                             </ScrollViewer>
-                            <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="24,0,24,20" Name="PART_DialogButtons" Orientation="Horizontal" Spacing="8">
+                            <StackPanel
+                                Grid.Row="2"
+                                HorizontalAlignment="Right"
+                                Margin="24,0,24,20"
+                                Name="PART_DialogButtons"
+                                Orientation="Horizontal"
+                                Spacing="8">
                                 <Button Content="Cancel" Name="{x:Static ovo:StandardDialogControl.PART_CancelButton}" />
-                                <Button Classes="danger" Content="No" Name="{x:Static ovo:StandardDialogControl.PART_NoButton}" />
-                                <Button Classes="accent" Content="Yes" Name="{x:Static ovo:StandardDialogControl.PART_YesButton}" />
-                                <Button Classes="accent" Content="OK" Name="{x:Static ovo:StandardDialogControl.PART_OKButton}" />
+                                <Button
+                                    Classes="danger"
+                                    Content="No"
+                                    Name="{x:Static ovo:StandardDialogControl.PART_NoButton}" />
+                                <Button
+                                    Classes="accent"
+                                    Content="Yes"
+                                    Name="{x:Static ovo:StandardDialogControl.PART_YesButton}" />
+                                <Button
+                                    Classes="accent"
+                                    Content="OK"
+                                    Name="{x:Static ovo:StandardDialogControl.PART_OKButton}" />
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <ovo:DialogResizer IsVisible="{TemplateBinding CanResize}" Margin="10" ZIndex="3" />
+                    <ovo:DialogResizer
+                        IsVisible="{TemplateBinding CanResize}"
+                        Margin="10"
+                        ZIndex="3" />
                 </Panel>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^[Mode=None] /template/ PathIcon#PART_ModeIcon"><Setter Property="IsVisible" Value="False" /></Style>
-        <Style Selector="^[Mode=Info] /template/ PathIcon#PART_ModeIcon"><Setter Property="Data" Value="{DynamicResource IconInfoCircle}" /><Setter Property="Foreground" Value="{DynamicResource InfoColor}" /></Style>
-        <Style Selector="^[Mode=Success] /template/ PathIcon#PART_ModeIcon"><Setter Property="Data" Value="{DynamicResource IconTickCircle}" /><Setter Property="Foreground" Value="{DynamicResource SuccessColor}" /></Style>
-        <Style Selector="^[Mode=Warning] /template/ PathIcon#PART_ModeIcon"><Setter Property="Data" Value="{DynamicResource IconAlertTriangle}" /><Setter Property="Foreground" Value="{DynamicResource WarnColor}" /></Style>
-        <Style Selector="^[Mode=Error] /template/ PathIcon#PART_ModeIcon"><Setter Property="Data" Value="{DynamicResource IconAlertCircle}" /><Setter Property="Foreground" Value="{DynamicResource ErrorColor}" /></Style>
-        <Style Selector="^[Mode=Question] /template/ PathIcon#PART_ModeIcon"><Setter Property="Data" Value="{DynamicResource IconInfoCircle}" /><Setter Property="Foreground" Value="{DynamicResource InfoColor}" /></Style>
+        <Style Selector="^[Mode=None] /template/ PathIcon#PART_ModeIcon">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^[Mode=Info] /template/ PathIcon#PART_ModeIcon">
+            <Setter Property="Data" Value="{DynamicResource IconInfoCircle}" />
+            <Setter Property="Foreground" Value="{DynamicResource InfoColor}" />
+        </Style>
+        <Style Selector="^[Mode=Success] /template/ PathIcon#PART_ModeIcon">
+            <Setter Property="Data" Value="{DynamicResource IconTickCircle}" />
+            <Setter Property="Foreground" Value="{DynamicResource SuccessColor}" />
+        </Style>
+        <Style Selector="^[Mode=Warning] /template/ PathIcon#PART_ModeIcon">
+            <Setter Property="Data" Value="{DynamicResource IconAlertTriangle}" />
+            <Setter Property="Foreground" Value="{DynamicResource WarnColor}" />
+        </Style>
+        <Style Selector="^[Mode=Error] /template/ PathIcon#PART_ModeIcon">
+            <Setter Property="Data" Value="{DynamicResource IconAlertCircle}" />
+            <Setter Property="Foreground" Value="{DynamicResource ErrorColor}" />
+        </Style>
+        <Style Selector="^[Mode=Question] /template/ PathIcon#PART_ModeIcon">
+            <Setter Property="Data" Value="{DynamicResource IconInfoCircle}" />
+            <Setter Property="Foreground" Value="{DynamicResource InfoColor}" />
+        </Style>
         <Style Selector="^.num-pad">
             <Setter Property="MinWidth" Value="0" />
         </Style>
@@ -146,9 +193,23 @@
                             BorderThickness="1"
                             CornerRadius="{DynamicResource OvoCornerRadius}">
                             <Grid>
-                                <Panel Background="Transparent" Height="44" Name="{x:Static ovo:CustomDialogWindow.PART_TitleArea}" VerticalAlignment="Top" ZIndex="1" />
-                                <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
-                                <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static ovo:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" VerticalAlignment="Top" ZIndex="2" />
+                                <Panel
+                                    Background="Transparent"
+                                    Height="44"
+                                    Name="{x:Static ovo:CustomDialogWindow.PART_TitleArea}"
+                                    VerticalAlignment="Top"
+                                    ZIndex="1" />
+                                <ContentPresenter
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    Margin="{TemplateBinding Padding}" />
+                                <Button
+                                    HorizontalAlignment="Right"
+                                    Margin="8"
+                                    Name="{x:Static ovo:CustomDialogWindow.PART_CloseButton}"
+                                    Theme="{DynamicResource CloseButtonTheme}"
+                                    VerticalAlignment="Top"
+                                    ZIndex="2" />
                             </Grid>
                         </Border>
                         <ovo:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" ZIndex="3" />
@@ -175,15 +236,40 @@
                             BorderThickness="1"
                             CornerRadius="{DynamicResource OvoCornerRadius}">
                             <Grid RowDefinitions="Auto,*,Auto">
-                                <Panel Background="Transparent" Height="48" Name="{x:Static ovo:CustomDialogWindow.PART_TitleArea}" ZIndex="1" />
+                                <Panel
+                                    Background="Transparent"
+                                    Height="48"
+                                    Name="{x:Static ovo:CustomDialogWindow.PART_TitleArea}"
+                                    ZIndex="1" />
                                 <TextBlock Margin="20,14,52,8" Text="{TemplateBinding Title}" />
-                                <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static ovo:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" ZIndex="2" />
-                                <ScrollViewer Grid.Row="1" Margin="24,12"><ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" /></ScrollViewer>
-                                <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="20" Orientation="Horizontal" Spacing="8">
+                                <Button
+                                    HorizontalAlignment="Right"
+                                    Margin="8"
+                                    Name="{x:Static ovo:CustomDialogWindow.PART_CloseButton}"
+                                    Theme="{DynamicResource CloseButtonTheme}"
+                                    ZIndex="2" />
+                                <ScrollViewer Grid.Row="1" Margin="24,12">
+                                    <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                </ScrollViewer>
+                                <StackPanel
+                                    Grid.Row="2"
+                                    HorizontalAlignment="Right"
+                                    Margin="20"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
                                     <Button Content="Cancel" Name="{x:Static ovo:StandardDialogWindow.PART_CancelButton}" />
-                                    <Button Classes="danger" Content="No" Name="{x:Static ovo:StandardDialogWindow.PART_NoButton}" />
-                                    <Button Classes="accent" Content="Yes" Name="{x:Static ovo:StandardDialogWindow.PART_YesButton}" />
-                                    <Button Classes="accent" Content="OK" Name="{x:Static ovo:StandardDialogWindow.PART_OKButton}" />
+                                    <Button
+                                        Classes="danger"
+                                        Content="No"
+                                        Name="{x:Static ovo:StandardDialogWindow.PART_NoButton}" />
+                                    <Button
+                                        Classes="accent"
+                                        Content="Yes"
+                                        Name="{x:Static ovo:StandardDialogWindow.PART_YesButton}" />
+                                    <Button
+                                        Classes="accent"
+                                        Content="OK"
+                                        Name="{x:Static ovo:StandardDialogWindow.PART_OKButton}" />
                                 </StackPanel>
                             </Grid>
                         </Border>

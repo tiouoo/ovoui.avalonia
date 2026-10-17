@@ -28,7 +28,8 @@ public static class WindowContentInjection
         var windows = new List<NativeWindowInfo>();
         NativeMethods.EnumWindows((handle, _) =>
         {
-            if (!NativeMethods.IsWindowVisible(handle) || NativeMethods.GetWindow(handle, NativeMethods.GwOwner) != IntPtr.Zero)
+            if (!NativeMethods.IsWindowVisible(handle) ||
+                NativeMethods.GetWindow(handle, NativeMethods.GwOwner) != IntPtr.Zero)
                 return true;
 
             var length = NativeMethods.GetWindowTextLength(handle);
@@ -162,6 +163,7 @@ public sealed class WindowContentInjectionSession : IDisposable
             _synchronizationTimer.Tick += SynchronizationTimerOnTick;
             _synchronizationTimer.Start();
         }
+
         _window.Closed += WindowOnClosed;
     }
 
@@ -197,6 +199,7 @@ public sealed class WindowContentInjectionSession : IDisposable
             _window.Close();
             return;
         }
+
         Synchronize();
     }
 

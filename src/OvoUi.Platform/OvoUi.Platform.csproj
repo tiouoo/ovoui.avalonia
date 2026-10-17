@@ -12,14 +12,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
+        <ProjectReference Include="..\OvoUi\OvoUi.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="12.1.4" />
+        <PackageReference Include="Avalonia" Version="12.1.4"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
+        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

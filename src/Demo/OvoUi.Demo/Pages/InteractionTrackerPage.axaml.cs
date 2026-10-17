@@ -43,7 +43,8 @@ public partial class InteractionTrackerPage : UserControl, IInteractionTrackerOw
             return;
         _tracker = surface.Compositor.CreateInteractionTracker(this);
         _needsInitialPosition = true;
-        _source = new InputElementInteractionSource(InputSurface, _tracker) { IsMousePanningEnabled = true, IsMousePanningInertiaEnabled = true };
+        _source = new InputElementInteractionSource(InputSurface, _tracker)
+            { IsMousePanningEnabled = true, IsMousePanningInertiaEnabled = true };
         UpdateBounds();
         UpdateInertia();
         var primary = surface.Compositor.CreateExpressionAnimation("tracker.Position");
@@ -52,7 +53,9 @@ public partial class InteractionTrackerPage : UserControl, IInteractionTrackerOw
         var follower = surface.Compositor.CreateExpressionAnimation("tracker.Position * 0.5");
         follower.SetReferenceParameter("tracker", _tracker);
         ElementComposition.GetElementVisual(FollowerTile)!.StartAnimation("Translation", follower);
-        var reversed = surface.Compositor.CreateExpressionAnimation("Vector3(tracker.Position.Y, tracker.Position.X, tracker.Position.Z)");
+        var reversed =
+            surface.Compositor.CreateExpressionAnimation(
+                "Vector3(tracker.Position.Y, tracker.Position.X, tracker.Position.Z)");
         reversed.SetReferenceParameter("tracker", _tracker);
         ElementComposition.GetElementVisual(ReversedTile)!.StartAnimation("Translation", reversed);
         // The initial loaded event can precede the final layout of the showcase.
@@ -76,6 +79,7 @@ public partial class InteractionTrackerPage : UserControl, IInteractionTrackerOw
     }
 
     private void Surface_OnSizeChanged(object? sender, SizeChangedEventArgs e) => UpdateBounds();
+
     private void UpdateBounds()
     {
         if (_tracker is null || InputSurface.Bounds.Width <= 0 || InputSurface.Bounds.Height <= 0)
@@ -91,10 +95,13 @@ public partial class InteractionTrackerPage : UserControl, IInteractionTrackerOw
     }
 
     private void Inertia_OnChanged(object? sender, RoutedEventArgs e) => UpdateInertia();
+
     private void UpdateInertia()
     {
         if (_source is null) return;
-        var mode = InertiaToggle.IsChecked == true ? InteractionSourceMode.EnabledWithInertia : InteractionSourceMode.EnabledWithoutInertia;
+        var mode = InertiaToggle.IsChecked == true
+            ? InteractionSourceMode.EnabledWithInertia
+            : InteractionSourceMode.EnabledWithoutInertia;
         _source.PositionXSourceMode = mode;
         _source.PositionYSourceMode = mode;
     }
@@ -116,11 +123,26 @@ public partial class InteractionTrackerPage : UserControl, IInteractionTrackerOw
     }
 
     public void ValuesChanged(InteractionTracker sender, InteractionTrackerValuesChangedArgs args) =>
-        TrackerStatus.Text = $"Position: {args.Position.X:F0}, {args.Position.Y:F0}   Scale: {args.Scale:F2}   Request: {args.RequestId}";
-    public void IdleStateEntered(InteractionTracker sender, InteractionTrackerIdleStateEnteredArgs args) { }
-    public void InertiaStateEntered(InteractionTracker sender, InteractionTrackerInertiaStateEnteredArgs args) { }
-    public void InteractingStateEntered(InteractionTracker sender, InteractionTrackerInteractingStateEnteredArgs args) { }
-    public void CustomAnimationStateEntered(InteractionTracker sender, InteractionTrackerCustomAnimationStateEnteredArgs args) { }
+        TrackerStatus.Text =
+            $"Position: {args.Position.X:F0}, {args.Position.Y:F0}   Scale: {args.Scale:F2}   Request: {args.RequestId}";
+
+    public void IdleStateEntered(InteractionTracker sender, InteractionTrackerIdleStateEnteredArgs args)
+    {
+    }
+
+    public void InertiaStateEntered(InteractionTracker sender, InteractionTrackerInertiaStateEnteredArgs args)
+    {
+    }
+
+    public void InteractingStateEntered(InteractionTracker sender, InteractionTrackerInteractingStateEnteredArgs args)
+    {
+    }
+
+    public void CustomAnimationStateEntered(InteractionTracker sender,
+        InteractionTrackerCustomAnimationStateEnteredArgs args)
+    {
+    }
+
     public void RequestIgnored(InteractionTracker sender, InteractionTrackerRequestIgnoredArgs args) =>
         TrackerStatus.Text = "The request was ignored while a gesture was active.";
 }
@@ -128,42 +150,42 @@ public partial class InteractionTrackerPage : UserControl, IInteractionTrackerOw
 public class InteractionTrackerDemoModel
 {
     public string SourceCode => """
-        using OvoUi.SmoothScroll.Interaction;
-        // Create on Loaded, after composition visuals exist.
-        var visual = ElementComposition.GetElementVisual(InputSurface)!;
-        var tracker = visual.Compositor.CreateInteractionTracker(owner: null);
-        tracker.MinPosition = default;
-        var side = Math.Max(0, Math.Min(InputSurface.Bounds.Width - 110, InputSurface.Bounds.Height - 80));
-        tracker.MaxPosition = new Vector3D(side, side, 0);
-        var source = new InputElementInteractionSource(InputSurface, tracker)
-        {
-            IsMousePanningEnabled = true,
-            IsMousePanningInertiaEnabled = true,
-            PositionXSourceMode = InteractionSourceMode.EnabledWithInertia,
-            PositionYSourceMode = InteractionSourceMode.EnabledWithInertia
-        };
-        var expression = visual.Compositor.CreateExpressionAnimation("tracker.Position");
-        expression.SetReferenceParameter("tracker", tracker);
-        ElementComposition.GetElementVisual(PrimaryTile)!.StartAnimation("Translation", expression);
-        var follower = visual.Compositor.CreateExpressionAnimation("tracker.Position * 0.5");
-        follower.SetReferenceParameter("tracker", tracker);
-        ElementComposition.GetElementVisual(FollowerTile)!.StartAnimation("Translation", follower);
-        var reversed = visual.Compositor.CreateExpressionAnimation("Vector3(tracker.Position.Y, tracker.Position.X, tracker.Position.Z)");
-        reversed.SetReferenceParameter("tracker", tracker);
-        ElementComposition.GetElementVisual(ReversedTile)!.StartAnimation("Translation", reversed);
-        tracker.TryUpdatePosition(new Vector3D(120, 80, 0));
-        tracker.TryUpdatePositionBy(new Vector3D(80, 40, 0));
-        var animation = visual.Compositor.CreateVector3DKeyFrameAnimation();
-        animation.Duration = TimeSpan.FromMilliseconds(700);
-        animation.InsertKeyFrame(1, tracker.MaxPosition, new CubicEaseOut());
-        tracker.TryUpdatePositionWithAnimation(animation);
-        // For the checkbox, set both source modes to EnabledWithoutInertia.
-        // Update MaxPosition on SizeChanged. On Unloaded:
-        ElementComposition.GetElementVisual(PrimaryTile)?.StopAnimation("Translation");
-        ElementComposition.GetElementVisual(FollowerTile)?.StopAnimation("Translation");
-        ElementComposition.GetElementVisual(ReversedTile)?.StopAnimation("Translation");
-        source.Dispose();
-        tracker.Dispose();
-        // Pass an IInteractionTrackerOwner to receive values and state callbacks.
-        """;
+                                using OvoUi.SmoothScroll.Interaction;
+                                // Create on Loaded, after composition visuals exist.
+                                var visual = ElementComposition.GetElementVisual(InputSurface)!;
+                                var tracker = visual.Compositor.CreateInteractionTracker(owner: null);
+                                tracker.MinPosition = default;
+                                var side = Math.Max(0, Math.Min(InputSurface.Bounds.Width - 110, InputSurface.Bounds.Height - 80));
+                                tracker.MaxPosition = new Vector3D(side, side, 0);
+                                var source = new InputElementInteractionSource(InputSurface, tracker)
+                                {
+                                    IsMousePanningEnabled = true,
+                                    IsMousePanningInertiaEnabled = true,
+                                    PositionXSourceMode = InteractionSourceMode.EnabledWithInertia,
+                                    PositionYSourceMode = InteractionSourceMode.EnabledWithInertia
+                                };
+                                var expression = visual.Compositor.CreateExpressionAnimation("tracker.Position");
+                                expression.SetReferenceParameter("tracker", tracker);
+                                ElementComposition.GetElementVisual(PrimaryTile)!.StartAnimation("Translation", expression);
+                                var follower = visual.Compositor.CreateExpressionAnimation("tracker.Position * 0.5");
+                                follower.SetReferenceParameter("tracker", tracker);
+                                ElementComposition.GetElementVisual(FollowerTile)!.StartAnimation("Translation", follower);
+                                var reversed = visual.Compositor.CreateExpressionAnimation("Vector3(tracker.Position.Y, tracker.Position.X, tracker.Position.Z)");
+                                reversed.SetReferenceParameter("tracker", tracker);
+                                ElementComposition.GetElementVisual(ReversedTile)!.StartAnimation("Translation", reversed);
+                                tracker.TryUpdatePosition(new Vector3D(120, 80, 0));
+                                tracker.TryUpdatePositionBy(new Vector3D(80, 40, 0));
+                                var animation = visual.Compositor.CreateVector3DKeyFrameAnimation();
+                                animation.Duration = TimeSpan.FromMilliseconds(700);
+                                animation.InsertKeyFrame(1, tracker.MaxPosition, new CubicEaseOut());
+                                tracker.TryUpdatePositionWithAnimation(animation);
+                                // For the checkbox, set both source modes to EnabledWithoutInertia.
+                                // Update MaxPosition on SizeChanged. On Unloaded:
+                                ElementComposition.GetElementVisual(PrimaryTile)?.StopAnimation("Translation");
+                                ElementComposition.GetElementVisual(FollowerTile)?.StopAnimation("Translation");
+                                ElementComposition.GetElementVisual(ReversedTile)?.StopAnimation("Translation");
+                                source.Dispose();
+                                tracker.Dispose();
+                                // Pass an IInteractionTrackerOwner to receive values and state callbacks.
+                                """;
 }

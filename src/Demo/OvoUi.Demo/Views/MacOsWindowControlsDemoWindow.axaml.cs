@@ -60,8 +60,10 @@ public partial class MacOsWindowControlsDemoWindow : Window
 
     private void PopulateForm(MacOsWindowControlsOptions options)
     {
-        PopulateButton(options.Close, CloseX, CloseY, CloseWidth, CloseHeight, CloseOpacity, CloseVisible, CloseEnabled);
-        PopulateButton(options.Minimize, MinimizeX, MinimizeY, MinimizeWidth, MinimizeHeight, MinimizeOpacity, MinimizeVisible, MinimizeEnabled);
+        PopulateButton(options.Close, CloseX, CloseY, CloseWidth, CloseHeight, CloseOpacity, CloseVisible,
+            CloseEnabled);
+        PopulateButton(options.Minimize, MinimizeX, MinimizeY, MinimizeWidth, MinimizeHeight, MinimizeOpacity,
+            MinimizeVisible, MinimizeEnabled);
         PopulateButton(options.Zoom, ZoomX, ZoomY, ZoomWidth, ZoomHeight, ZoomOpacity, ZoomVisible, ZoomEnabled);
 
         if (options.Close.Position is { } close && options.Minimize.Position is { } minimize)
@@ -87,11 +89,13 @@ public partial class MacOsWindowControlsDemoWindow : Window
             x.Value = (decimal)position.X;
             y.Value = (decimal)position.Y;
         }
+
         if (options.Size is { } size)
         {
             width.Value = (decimal)size.Width;
             height.Value = (decimal)size.Height;
         }
+
         opacity.Value = (decimal)options.Opacity;
         visible.IsChecked = options.IsVisible;
         enabled.IsChecked = options.IsEnabled;
@@ -104,9 +108,12 @@ public partial class MacOsWindowControlsDemoWindow : Window
             OriginX = Number(OriginX),
             OriginY = Number(OriginY),
             Spacing = Number(Spacing),
-            Close = CreateButtonOptions(CloseX, CloseY, CloseWidth, CloseHeight, CloseOpacity, CloseVisible, CloseEnabled, CloseOverrideSize),
-            Minimize = CreateButtonOptions(MinimizeX, MinimizeY, MinimizeWidth, MinimizeHeight, MinimizeOpacity, MinimizeVisible, MinimizeEnabled, MinimizeOverrideSize),
-            Zoom = CreateButtonOptions(ZoomX, ZoomY, ZoomWidth, ZoomHeight, ZoomOpacity, ZoomVisible, ZoomEnabled, ZoomOverrideSize)
+            Close = CreateButtonOptions(CloseX, CloseY, CloseWidth, CloseHeight, CloseOpacity, CloseVisible,
+                CloseEnabled, CloseOverrideSize),
+            Minimize = CreateButtonOptions(MinimizeX, MinimizeY, MinimizeWidth, MinimizeHeight, MinimizeOpacity,
+                MinimizeVisible, MinimizeEnabled, MinimizeOverrideSize),
+            Zoom = CreateButtonOptions(ZoomX, ZoomY, ZoomWidth, ZoomHeight, ZoomOpacity, ZoomVisible, ZoomEnabled,
+                ZoomOverrideSize)
         };
 
         StatusText.Text = MacOsWindowControls.TryApply(this, options, out var error)

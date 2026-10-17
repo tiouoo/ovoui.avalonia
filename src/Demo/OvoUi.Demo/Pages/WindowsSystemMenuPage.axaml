@@ -10,36 +10,69 @@
         <ovo:ControlShowcase Header="Windows System Menu (window commands)" SourceKey="platform-windows-system-menu">
             <ovo:ControlShowcase.CodeBlocks>
                 <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <ovo:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="The buttons modify this demo window. Use Show menu, the title-bar system menu, or Shift+right-click the taskbar icon to inspect the result." TextWrapping="Wrap" />
-                <TextBlock IsVisible="{Binding !IsWindows}" Text="These controls are available when the desktop app runs on Windows." TextWrapping="Wrap" />
-                <WrapPanel ItemSpacing="10" LineSpacing="10" IsEnabled="{Binding IsWindows}">
+                <TextBlock
+                    IsVisible="{Binding !IsWindows}"
+                    Text="These controls are available when the desktop app runs on Windows."
+                    TextWrapping="Wrap" />
+                <WrapPanel
+                    IsEnabled="{Binding IsWindows}"
+                    ItemSpacing="10"
+                    LineSpacing="10">
                     <Button Click="AddCommand" Content="Add command" />
                     <Button Click="AddSeparator" Content="Add separator" />
                     <Button Click="RemoveLast" Content="Remove last item" />
                     <Button Click="ClearAll" Content="Clear all" />
-                    <Button Classes="accent" Click="ShowMenu" Content="Show menu" />
+                    <Button
+                        Classes="accent"
+                        Click="ShowMenu"
+                        Content="Show menu" />
                 </WrapPanel>
-                <TextBlock FontWeight="SemiBold" Name="ItemCountLabel" Text="0 custom items are registered." />
-                <TextBlock Name="StatusLabel" Text="Add an item, then show the native menu." TextWrapping="Wrap" />
+                <TextBlock
+                    FontWeight="SemiBold"
+                    Name="ItemCountLabel"
+                    Text="0 custom items are registered." />
+                <TextBlock
+                    Name="StatusLabel"
+                    Text="Add an item, then show the native menu."
+                    TextWrapping="Wrap" />
             </StackPanel>
         </ovo:ControlShowcase>
 
         <ovo:ControlShowcase Header="Windows Jump List (taskbar right-click)" SourceKey="platform-windows-jump-list">
             <ovo:ControlShowcase.CodeBlocks>
                 <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <ovo:ShowcaseCodeBlock Code="{Binding JumpListSourceCode}" Header="C#" Language="csharp" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding JumpListSourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Apply launch tasks grouped into categories, then right-click the app's taskbar icon normally to view them." TextWrapping="Wrap" />
-                <TextBlock IsVisible="{Binding !IsWindows}" Text="These controls are available when the desktop app runs on Windows." TextWrapping="Wrap" />
-                <WrapPanel ItemSpacing="10" LineSpacing="10" IsEnabled="{Binding IsWindows}">
-                    <Button Classes="accent" Click="ApplyJumpList" Content="Apply sample Jump List" />
+                <TextBlock
+                    IsVisible="{Binding !IsWindows}"
+                    Text="These controls are available when the desktop app runs on Windows."
+                    TextWrapping="Wrap" />
+                <WrapPanel
+                    IsEnabled="{Binding IsWindows}"
+                    ItemSpacing="10"
+                    LineSpacing="10">
+                    <Button
+                        Classes="accent"
+                        Click="ApplyJumpList"
+                        Content="Apply sample Jump List" />
                     <Button Click="ClearJumpList" Content="Clear Jump List" />
                 </WrapPanel>
-                <TextBlock Name="JumpListStatusLabel" Text="Apply the sample, then right-click the taskbar icon." TextWrapping="Wrap" />
+                <TextBlock
+                    Name="JumpListStatusLabel"
+                    Text="Apply the sample, then right-click the taskbar icon."
+                    TextWrapping="Wrap" />
             </StackPanel>
         </ovo:ControlShowcase>
     </demo:DemoPage>

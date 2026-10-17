@@ -14,8 +14,7 @@ public sealed class FormatTranslateExtension : MarkupExtension
 
     public LangKey? FormatKey { get; set; }
 
-    [Content]
-    public IList<TranslateEntry> Items { get; set; } = new List<TranslateEntry>();
+    [Content] public IList<TranslateEntry> Items { get; set; } = new List<TranslateEntry>();
 
     public override object ProvideValue(IServiceProvider serviceProvider)
     {

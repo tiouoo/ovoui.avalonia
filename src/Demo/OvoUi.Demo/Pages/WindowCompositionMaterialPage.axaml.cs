@@ -15,14 +15,14 @@ public partial class WindowCompositionMaterialPage : UserControl
     public bool IsWindows { get; } = OperatingSystem.IsWindows();
 
     public string SourceCode { get; } = """
-        private void OpenMaterialWindow(object? sender, RoutedEventArgs e)
-        {
-            if (!OperatingSystem.IsWindows())
-                return;
+                                        private void OpenMaterialWindow(object? sender, RoutedEventArgs e)
+                                        {
+                                            if (!OperatingSystem.IsWindows())
+                                                return;
 
-            new CompositionMaterialWindow().Show();
-        }
-        """;
+                                            new CompositionMaterialWindow().Show();
+                                        }
+                                        """;
 
     private void OpenMaterialWindow(object? sender, RoutedEventArgs e)
     {

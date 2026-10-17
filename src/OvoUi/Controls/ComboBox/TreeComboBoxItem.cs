@@ -13,29 +13,32 @@ using OvoUi.Common.Helpers;
 namespace OvoUi.Controls;
 
 [TemplatePart(PartNames.PART_Header, typeof(Control))]
-public class TreeComboBoxItem: HeaderedItemsControl, ISelectable
+public class TreeComboBoxItem : HeaderedItemsControl, ISelectable
 {
     private TreeComboBox? _treeComboBox;
     public TreeComboBox? Owner => _treeComboBox;
-    
-    public static readonly StyledProperty<bool> IsSelectedProperty = TreeViewItem.IsSelectedProperty.AddOwner<TreeComboBoxItem>();
+
+    public static readonly StyledProperty<bool> IsSelectedProperty =
+        TreeViewItem.IsSelectedProperty.AddOwner<TreeComboBoxItem>();
 
     public bool IsSelected
     {
         get => GetValue(IsSelectedProperty);
         set => SetValue(IsSelectedProperty, value);
     }
-    
-    public static readonly StyledProperty<bool> IsExpandedProperty = TreeViewItem.IsExpandedProperty.AddOwner<TreeComboBoxItem>();
-    
+
+    public static readonly StyledProperty<bool> IsExpandedProperty =
+        TreeViewItem.IsExpandedProperty.AddOwner<TreeComboBoxItem>();
+
     public bool IsExpanded
     {
         get => GetValue(IsExpandedProperty);
         set => SetValue(IsExpandedProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsSelectableProperty = AvaloniaProperty.Register<TreeComboBoxItem, bool>(
-        nameof(IsSelectable), true);
+    public static readonly StyledProperty<bool> IsSelectableProperty =
+        AvaloniaProperty.Register<TreeComboBoxItem, bool>(
+            nameof(IsSelectable), true);
 
     public bool IsSelectable
     {
@@ -43,10 +46,10 @@ public class TreeComboBoxItem: HeaderedItemsControl, ISelectable
         set => SetValue(IsSelectableProperty, value);
     }
 
-    
 
-    public static readonly DirectProperty<TreeComboBoxItem, int> LevelProperty = AvaloniaProperty.RegisterDirect<TreeComboBoxItem, int>(
-        nameof(Level), o => o.Level, (o, v) => o.Level = v);
+    public static readonly DirectProperty<TreeComboBoxItem, int> LevelProperty =
+        AvaloniaProperty.RegisterDirect<TreeComboBoxItem, int>(
+            nameof(Level), o => o.Level, (o, v) => o.Level = v);
 
     public int Level
     {
@@ -78,7 +81,8 @@ public class TreeComboBoxItem: HeaderedItemsControl, ISelectable
         {
             SetCurrentValue(ItemTemplateProperty, this._treeComboBox.ItemTemplate);
         }
-        if(this.ItemContainerTheme is null && this._treeComboBox?.ItemContainerTheme is not null)
+
+        if (this.ItemContainerTheme is null && this._treeComboBox?.ItemContainerTheme is not null)
         {
             SetCurrentValue(ItemContainerThemeProperty, this._treeComboBox.ItemContainerTheme);
         }
@@ -107,7 +111,7 @@ public class TreeComboBoxItem: HeaderedItemsControl, ISelectable
     }
 
     // TODO replace with helper method from shared library. 
-    private static int CalculateDistanceFromLogicalParent<T>(ILogical? logical, int @default = -1) where T: ILogical
+    private static int CalculateDistanceFromLogicalParent<T>(ILogical? logical, int @default = -1) where T : ILogical
     {
         int distance = 0;
         ILogical? parent = logical;
@@ -117,6 +121,7 @@ public class TreeComboBoxItem: HeaderedItemsControl, ISelectable
             parent = parent.LogicalParent;
             distance++;
         }
+
         return @default;
     }
 

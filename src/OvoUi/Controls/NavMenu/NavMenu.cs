@@ -288,6 +288,7 @@ public class NavMenu : ItemsControl, ICustomKeyboardNavigation
             recycleKey = null;
             return false;
         }
+
         return NeedsContainer<NavMenuItem>(item, out recycleKey);
     }
 
@@ -295,7 +296,7 @@ public class NavMenu : ItemsControl, ICustomKeyboardNavigation
     {
         return new NavMenuItem();
     }
-    
+
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);

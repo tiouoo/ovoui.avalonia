@@ -22,17 +22,17 @@ public partial class WindowContentInjectionPage : UserControl
     public bool IsWindows { get; } = OperatingSystem.IsWindows();
 
     public string SourceCode { get; } = """
-        var targets = WindowContentInjection.GetAvailableWindows();
-        var contentWindow = new Window { Content = new MyOverlayContent() };
-        contentWindow.Show();
+                                        var targets = WindowContentInjection.GetAvailableWindows();
+                                        var contentWindow = new Window { Content = new MyOverlayContent() };
+                                        contentWindow.Show();
 
-        if (WindowContentInjection.TryInject(contentWindow, targets[0],
-                out var session, out var error,
-                new WindowContentInjectionOptions { IsInteractive = true }))
-        {
-            // Keep the session alive. Dispose it to restore the original window state.
-        }
-        """;
+                                        if (WindowContentInjection.TryInject(contentWindow, targets[0],
+                                                out var session, out var error,
+                                                new WindowContentInjectionOptions { IsInteractive = true }))
+                                        {
+                                            // Keep the session alive. Dispose it to restore the original window state.
+                                        }
+                                        """;
 
     private void RefreshWindows(object? sender, RoutedEventArgs e) => RefreshWindowList();
 

@@ -43,6 +43,7 @@ public partial class OverlayDialogHost
             else
                 await Task.WhenAll(animation.RunAsync(control), MaskAppearAnimation.RunAsync(mask));
         }
+
         ResetDrawerPosition(control, Bounds.Size);
         control.IsOpen = true;
     }
@@ -198,6 +199,7 @@ public partial class OverlayDialogHost
                     _modalCount--;
                     IsInModalStatus = _modalCount > 0;
                 }
+
                 layer.Mask.RemoveHandler(PointerReleasedEvent, ClickMaskToCloseDialog);
                 layer.Mask.RemoveHandler(PointerPressedEvent, DragMaskToMoveWindow);
                 if (!IsAnimationDisabled)

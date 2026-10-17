@@ -19,7 +19,8 @@ public static class OverlayMessageBox
             MessageIcon = icon,
             [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
         };
-        if (!string.IsNullOrWhiteSpace(styleClass)) control.Classes.AddRange(styleClass.Split(Constants.SpaceSeparator, StringSplitOptions.RemoveEmptyEntries));
+        if (!string.IsNullOrWhiteSpace(styleClass))
+            control.Classes.AddRange(styleClass.Split(Constants.SpaceSeparator, StringSplitOptions.RemoveEmptyEntries));
         host.AddModalDialog(control);
         return control.ShowAsync<MessageBoxResult>();
     }

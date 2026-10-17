@@ -99,7 +99,8 @@ public class CodeBlock : TemplatedControl
         AvaloniaProperty.RegisterDirect<CodeBlock, OvoTextEditor?>(nameof(Editor), control => control.Editor);
 
     public static readonly DirectProperty<CodeBlock, object?> EffectiveHeaderProperty =
-        AvaloniaProperty.RegisterDirect<CodeBlock, object?>(nameof(EffectiveHeader), control => control.EffectiveHeader);
+        AvaloniaProperty.RegisterDirect<CodeBlock, object?>(nameof(EffectiveHeader),
+            control => control.EffectiveHeader);
 
     private OvoTextEditor? _editor;
     private Button? _wordWrapButton;

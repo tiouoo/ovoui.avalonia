@@ -10,17 +10,35 @@
         <ovo:ControlShowcase Header="Manual memory operations" SourceKey="platform-memory-optimization">
             <ovo:ControlShowcase.CodeBlocks>
                 <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <ovo:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Each button immediately runs one operation on the current demo process. The results show memory usage before and after that operation." TextWrapping="Wrap" />
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
-                    <Button Click="TrimWorkingSet" Content="Trim working set" IsEnabled="{Binding CanTrimWorkingSet}" />
-                    <Button Classes="accent" Click="ForceGc" Content="Force GC" />
+                    <Button
+                        Click="TrimWorkingSet"
+                        Content="Trim working set"
+                        IsEnabled="{Binding CanTrimWorkingSet}" />
+                    <Button
+                        Classes="accent"
+                        Click="ForceGc"
+                        Content="Force GC" />
                 </WrapPanel>
-                <TextBlock IsVisible="{Binding !CanTrimWorkingSet}" Text="Working set trimming is only supported on Windows. Force GC is still available on this platform." TextWrapping="Wrap" />
-                <TextBlock Name="StatusLabel" Text="Click either button to compare memory usage." TextWrapping="Wrap" />
-                <TextBlock Name="MetricsLabel" FontFamily="monospace" TextWrapping="Wrap" />
+                <TextBlock
+                    IsVisible="{Binding !CanTrimWorkingSet}"
+                    Text="Working set trimming is only supported on Windows. Force GC is still available on this platform."
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Name="StatusLabel"
+                    Text="Click either button to compare memory usage."
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    FontFamily="monospace"
+                    Name="MetricsLabel"
+                    TextWrapping="Wrap" />
             </StackPanel>
         </ovo:ControlShowcase>
     </demo:DemoPage>

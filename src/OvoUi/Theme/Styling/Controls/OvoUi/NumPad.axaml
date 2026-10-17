@@ -6,9 +6,7 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:NumPad">
-                <Border
-                    Background="Transparent"
-                    Padding="6">
+                <Border Background="Transparent" Padding="6">
                     <Border.Styles>
                         <Style Selector="ovo|NumPadButton">
                             <Setter Property="NumMode" Value="{Binding $parent[ovo:NumPad].NumMode}" />
@@ -26,7 +24,8 @@
                             Focusable="False"
                             Grid.Column="0"
                             Grid.Row="0"
-                            IsChecked="{TemplateBinding NumMode, Mode=TwoWay}"
+                            IsChecked="{TemplateBinding NumMode,
+                                                        Mode=TwoWay}"
                             Margin="1"
                             MinHeight="54"
                             MinWidth="54"
@@ -34,35 +33,132 @@
                             Theme="{StaticResource LightToggleButton}">
                             <TextBlock Text="Num&#x0a;Lock" TextAlignment="Center" />
                         </ToggleButton>
-                        <ovo:NumPadButton Grid.Column="1" Grid.Row="0" NumContent="/" NumKey="Divide" FunctionContent="/" FunctionKey="Divide" />
-                        <ovo:NumPadButton Grid.Column="2" Grid.Row="0" NumContent="*" NumKey="Multiply" FunctionContent="*" FunctionKey="Multiply" />
-                        <ovo:NumPadButton Grid.Column="3" Grid.Row="0" NumContent="-" NumKey="Subtract" FunctionContent="-" FunctionKey="Subtract" />
-
-                        <ovo:NumPadButton Grid.Column="0" Grid.Row="1" NumContent="7" NumKey="NumPad7" FunctionContent="Home" FunctionKey="Home" />
-                        <ovo:NumPadButton Grid.Column="1" Grid.Row="1" NumContent="8" NumKey="NumPad8" FunctionContent="Up" FunctionKey="Up" />
-                        <ovo:NumPadButton Grid.Column="2" Grid.Row="1" NumContent="9" NumKey="NumPad9" FunctionContent="Page Up" FunctionKey="PageUp" />
-                        <ovo:NumPadButton Grid.Column="3" Grid.Row="1" NumContent="+" NumKey="Add" FunctionContent="+" FunctionKey="Add" />
-
-                        <ovo:NumPadButton Grid.Column="0" Grid.Row="2" NumContent="4" NumKey="NumPad4" FunctionContent="Left" FunctionKey="Left" />
-                        <ovo:NumPadButton Grid.Column="1" Grid.Row="2" NumContent="5" NumKey="NumPad5" FunctionKey="None" />
-                        <ovo:NumPadButton Grid.Column="2" Grid.Row="2" NumContent="6" NumKey="NumPad6" FunctionContent="Right" FunctionKey="Right" />
-                        <ovo:NumPadButton Grid.Column="3" Grid.Row="2" NumContent="←" NumKey="Back" FunctionContent="←" FunctionKey="Back" />
-
-                        <ovo:NumPadButton Grid.Column="0" Grid.Row="3" NumContent="1" NumKey="NumPad1" FunctionContent="End" FunctionKey="End" />
-                        <ovo:NumPadButton Grid.Column="1" Grid.Row="3" NumContent="2" NumKey="NumPad2" FunctionContent="Down" FunctionKey="Down" />
-                        <ovo:NumPadButton Grid.Column="2" Grid.Row="3" NumContent="3" NumKey="NumPad3" FunctionContent="Page Down" FunctionKey="PageDown" />
                         <ovo:NumPadButton
+                            FunctionContent="/"
+                            FunctionKey="Divide"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            NumContent="/"
+                            NumKey="Divide" />
+                        <ovo:NumPadButton
+                            FunctionContent="*"
+                            FunctionKey="Multiply"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            NumContent="*"
+                            NumKey="Multiply" />
+                        <ovo:NumPadButton
+                            FunctionContent="-"
+                            FunctionKey="Subtract"
+                            Grid.Column="3"
+                            Grid.Row="0"
+                            NumContent="-"
+                            NumKey="Subtract" />
+
+                        <ovo:NumPadButton
+                            FunctionContent="Home"
+                            FunctionKey="Home"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            NumContent="7"
+                            NumKey="NumPad7" />
+                        <ovo:NumPadButton
+                            FunctionContent="Up"
+                            FunctionKey="Up"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            NumContent="8"
+                            NumKey="NumPad8" />
+                        <ovo:NumPadButton
+                            FunctionContent="Page Up"
+                            FunctionKey="PageUp"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            NumContent="9"
+                            NumKey="NumPad9" />
+                        <ovo:NumPadButton
+                            FunctionContent="+"
+                            FunctionKey="Add"
+                            Grid.Column="3"
+                            Grid.Row="1"
+                            NumContent="+"
+                            NumKey="Add" />
+
+                        <ovo:NumPadButton
+                            FunctionContent="Left"
+                            FunctionKey="Left"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            NumContent="4"
+                            NumKey="NumPad4" />
+                        <ovo:NumPadButton
+                            FunctionKey="None"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            NumContent="5"
+                            NumKey="NumPad5" />
+                        <ovo:NumPadButton
+                            FunctionContent="Right"
+                            FunctionKey="Right"
+                            Grid.Column="2"
+                            Grid.Row="2"
+                            NumContent="6"
+                            NumKey="NumPad6" />
+                        <ovo:NumPadButton
+                            FunctionContent="←"
+                            FunctionKey="Back"
+                            Grid.Column="3"
+                            Grid.Row="2"
+                            NumContent="←"
+                            NumKey="Back" />
+
+                        <ovo:NumPadButton
+                            FunctionContent="End"
+                            FunctionKey="End"
+                            Grid.Column="0"
+                            Grid.Row="3"
+                            NumContent="1"
+                            NumKey="NumPad1" />
+                        <ovo:NumPadButton
+                            FunctionContent="Down"
+                            FunctionKey="Down"
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            NumContent="2"
+                            NumKey="NumPad2" />
+                        <ovo:NumPadButton
+                            FunctionContent="Page Down"
+                            FunctionKey="PageDown"
+                            Grid.Column="2"
+                            Grid.Row="3"
+                            NumContent="3"
+                            NumKey="NumPad3" />
+                        <ovo:NumPadButton
+                            FunctionContent="Enter"
+                            FunctionKey="Enter"
                             Grid.Column="3"
                             Grid.Row="3"
                             Grid.RowSpan="2"
                             Height="NaN"
                             NumContent="Enter"
-                            NumKey="Enter"
-                            FunctionContent="Enter"
-                            FunctionKey="Enter" />
+                            NumKey="Enter" />
 
-                        <ovo:NumPadButton Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Width="NaN" NumContent="0" NumKey="NumPad0" FunctionContent="Insert" FunctionKey="Insert" />
-                        <ovo:NumPadButton Grid.Column="2" Grid.Row="4" NumContent="." NumKey="Decimal" FunctionContent="Delete" FunctionKey="Delete" />
+                        <ovo:NumPadButton
+                            FunctionContent="Insert"
+                            FunctionKey="Insert"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="4"
+                            NumContent="0"
+                            NumKey="NumPad0"
+                            Width="NaN" />
+                        <ovo:NumPadButton
+                            FunctionContent="Delete"
+                            FunctionKey="Delete"
+                            Grid.Column="2"
+                            Grid.Row="4"
+                            NumContent="."
+                            NumKey="Decimal" />
                     </Grid>
                 </Border>
             </ControlTemplate>
@@ -76,7 +172,10 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:NumPadButton">
-                <Border Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" Name="PART_Background">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Name="PART_Background">
                     <Panel>
                         <ContentPresenter
                             Content="{TemplateBinding NumContent}"

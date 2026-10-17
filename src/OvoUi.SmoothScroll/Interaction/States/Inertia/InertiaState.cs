@@ -44,7 +44,7 @@ internal abstract class InertiaState : InteractionTrackerState
         // > of Position (and potentially clamped) the next time InteractionTracker enters
         // > the Inertia state.
         // TODO: Commented out for now. It's wrong to do this when transitioning from interacting to inertia.
-       
+
         //var position = InteractionTracker.Position;
         //InteractionTracker.MinPosition = Vector3.Min(InteractionTracker.MinPosition, position);
         //InteractionTracker.MaxPosition = Vector3.Max(InteractionTracker.MaxPosition, position);
@@ -135,7 +135,7 @@ internal abstract class InertiaState : InteractionTrackerState
     {
         // Inertia is restarted (state re-enters inertia) and inertia modifiers are evaluated with requested velocity added to current velocity
         _interactionTracker.ChangeState(new ActiveInputInertiaState(
-            _interactionTracker, 
+            _interactionTracker,
             Handler.InitialVelocity + velocityInPixelsPerSecond,
             requestId));
         Handler.Stop();
@@ -155,7 +155,7 @@ internal abstract class InertiaState : InteractionTrackerState
 
     internal override void ReceiveBoundsUpdate()
     {
-        if(Handler is ActiveInputInertiaHandler activeInputInertiaHandler)
+        if (Handler is ActiveInputInertiaHandler activeInputInertiaHandler)
         {
             activeInputInertiaHandler.ReceiveBoundsUpdate();
         }
@@ -166,5 +166,4 @@ internal abstract class InertiaState : InteractionTrackerState
         Handler.Stop();
         _interactionTracker.ChangeState(new CustomAnimationState(_interactionTracker, animation, scaleCenterPoint));
     }
-
 }

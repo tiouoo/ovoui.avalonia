@@ -3,12 +3,12 @@ using Avalonia.Controls.Primitives;
 
 namespace OvoUi.Controls;
 
-public class OvoGroupBox: HeaderedContentControl
+public class OvoGroupBox : HeaderedContentControl
 {
     /// <summary>Defines the <see cref="HeaderSpacing"/> property.</summary>
     public static readonly StyledProperty<double> HeaderSpacingProperty =
         GroupBoxBorder.HeaderSpacingProperty.AddOwner<OvoGroupBox>();
-    
+
     /// <summary>
     /// Gets or sets the extra space (in device-independent pixels) added on each side of
     /// the <see cref="HeaderedContentControl.Header"/> control within the border gap.  Defaults to 4.

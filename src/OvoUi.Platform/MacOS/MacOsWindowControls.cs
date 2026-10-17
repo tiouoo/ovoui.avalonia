@@ -197,14 +197,17 @@ public static class MacOsWindowControls
                 continue;
 
             var (buttonOptions, position) = options.GetButton(button);
-            NativeMethods.SendPoint(nativeButton, GetSelector("setFrameOrigin:"), new NativePoint(position.X, position.Y));
+            NativeMethods.SendPoint(nativeButton, GetSelector("setFrameOrigin:"),
+                new NativePoint(position.X, position.Y));
 
             if (buttonOptions.Size is { } size)
-                NativeMethods.SendSize(nativeButton, GetSelector("setFrameSize:"), new NativeSize(size.Width, size.Height));
+                NativeMethods.SendSize(nativeButton, GetSelector("setFrameSize:"),
+                    new NativeSize(size.Width, size.Height));
 
             NativeMethods.SendBool(nativeButton, GetSelector("setHidden:"), !buttonOptions.IsVisible);
             NativeMethods.SendBool(nativeButton, GetSelector("setEnabled:"), buttonOptions.IsEnabled);
-            NativeMethods.SendDouble(nativeButton, GetSelector("setAlphaValue:"), Math.Clamp(buttonOptions.Opacity, 0, 1));
+            NativeMethods.SendDouble(nativeButton, GetSelector("setAlphaValue:"),
+                Math.Clamp(buttonOptions.Opacity, 0, 1));
         }
     }
 

@@ -81,7 +81,9 @@ public sealed class AvaloniaEditor : AvaloniaObject
     }
 
     public static bool GetShowLineNumbers(AvaloniaObject target) => target.GetValue(ShowLineNumbersProperty);
-    public static void SetShowLineNumbers(AvaloniaObject target, bool value) => target.SetValue(ShowLineNumbersProperty, value);
+
+    public static void SetShowLineNumbers(AvaloniaObject target, bool value) =>
+        target.SetValue(ShowLineNumbersProperty, value);
 
     public static bool GetWordWrap(AvaloniaObject target) => target.GetValue(WordWrapProperty);
     public static void SetWordWrap(AvaloniaObject target, bool value) => target.SetValue(WordWrapProperty, value);
@@ -90,16 +92,22 @@ public sealed class AvaloniaEditor : AvaloniaObject
     public static void SetIsReadOnly(AvaloniaObject target, bool value) => target.SetValue(IsReadOnlyProperty, value);
 
     public static bool GetRightClickMovesCaret(AvaloniaObject target) => target.GetValue(RightClickMovesCaretProperty);
-    public static void SetRightClickMovesCaret(AvaloniaObject target, bool value) => target.SetValue(RightClickMovesCaretProperty, value);
+
+    public static void SetRightClickMovesCaret(AvaloniaObject target, bool value) =>
+        target.SetValue(RightClickMovesCaretProperty, value);
 
     public static FontFamily? GetFontFamily(AvaloniaObject target) => target.GetValue(FontFamilyProperty);
-    public static void SetFontFamily(AvaloniaObject target, FontFamily? value) => target.SetValue(FontFamilyProperty, value);
+
+    public static void SetFontFamily(AvaloniaObject target, FontFamily? value) =>
+        target.SetValue(FontFamilyProperty, value);
 
     public static double? GetFontSize(AvaloniaObject target) => target.GetValue(FontSizeProperty);
     public static void SetFontSize(AvaloniaObject target, double? value) => target.SetValue(FontSizeProperty, value);
 
     public static FontWeight? GetFontWeight(AvaloniaObject target) => target.GetValue(FontWeightProperty);
-    public static void SetFontWeight(AvaloniaObject target, FontWeight? value) => target.SetValue(FontWeightProperty, value);
+
+    public static void SetFontWeight(AvaloniaObject target, FontWeight? value) =>
+        target.SetValue(FontWeightProperty, value);
 
     public static ScrollBarVisibility GetHorizontalScrollBarVisibility(AvaloniaObject target) =>
         target.GetValue(HorizontalScrollBarVisibilityProperty);
@@ -114,7 +122,9 @@ public sealed class AvaloniaEditor : AvaloniaObject
         target.SetValue(VerticalScrollBarVisibilityProperty, value);
 
     public static TextEditorOptions? GetOptions(AvaloniaObject target) => target.GetValue(OptionsProperty);
-    public static void SetOptions(AvaloniaObject target, TextEditorOptions? value) => target.SetValue(OptionsProperty, value);
+
+    public static void SetOptions(AvaloniaObject target, TextEditorOptions? value) =>
+        target.SetValue(OptionsProperty, value);
 
     public static bool GetAllowScrollBelowDocument(AvaloniaObject target) =>
         target.GetValue(AllowScrollBelowDocumentProperty);
@@ -123,16 +133,25 @@ public sealed class AvaloniaEditor : AvaloniaObject
         target.SetValue(AllowScrollBelowDocumentProperty, value);
 
     public static IBrush? GetSelectionBrush(AvaloniaObject target) => target.GetValue(SelectionBrushProperty);
-    public static void SetSelectionBrush(AvaloniaObject target, IBrush? value) => target.SetValue(SelectionBrushProperty, value);
+
+    public static void SetSelectionBrush(AvaloniaObject target, IBrush? value) =>
+        target.SetValue(SelectionBrushProperty, value);
 
     public static IBrush? GetSelectionForeground(AvaloniaObject target) => target.GetValue(SelectionForegroundProperty);
-    public static void SetSelectionForeground(AvaloniaObject target, IBrush? value) => target.SetValue(SelectionForegroundProperty, value);
+
+    public static void SetSelectionForeground(AvaloniaObject target, IBrush? value) =>
+        target.SetValue(SelectionForegroundProperty, value);
 
     public static IBrush? GetCaretBrush(AvaloniaObject target) => target.GetValue(CaretBrushProperty);
-    public static void SetCaretBrush(AvaloniaObject target, IBrush? value) => target.SetValue(CaretBrushProperty, value);
 
-    public static IBrush? GetLineNumbersForeground(AvaloniaObject target) => target.GetValue(LineNumbersForegroundProperty);
-    public static void SetLineNumbersForeground(AvaloniaObject target, IBrush? value) => target.SetValue(LineNumbersForegroundProperty, value);
+    public static void SetCaretBrush(AvaloniaObject target, IBrush? value) =>
+        target.SetValue(CaretBrushProperty, value);
+
+    public static IBrush? GetLineNumbersForeground(AvaloniaObject target) =>
+        target.GetValue(LineNumbersForegroundProperty);
+
+    public static void SetLineNumbersForeground(AvaloniaObject target, IBrush? value) =>
+        target.SetValue(LineNumbersForegroundProperty, value);
 
     public static IHighlightingDefinition? GetSyntaxHighlighting(AvaloniaObject target) =>
         target.GetValue(SyntaxHighlightingProperty);

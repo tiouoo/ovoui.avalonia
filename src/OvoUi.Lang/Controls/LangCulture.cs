@@ -12,6 +12,7 @@ public class LangCulture
         Culture = CultureInfo.InvariantCulture,
         DisplayName = CultureInfo.InvariantCulture.NativeName,
     };
+
     [Content]
     public string CultureName
     {

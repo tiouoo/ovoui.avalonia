@@ -166,7 +166,10 @@ public static partial class WindowsJumpList
     internal partial interface ICustomDestinationList
     {
         void SetAppId([MarshalAs(UnmanagedType.LPWStr)] string appId);
-        void BeginList(out uint maxSlots, ref Guid interfaceId, [MarshalAs(UnmanagedType.Interface)] out object removedItems);
+
+        void BeginList(out uint maxSlots, ref Guid interfaceId,
+            [MarshalAs(UnmanagedType.Interface)] out object removedItems);
+
         void AppendCategory([MarshalAs(UnmanagedType.LPWStr)] string category, IObjectArray objects);
         void AppendKnownCategory(int category);
         void AddUserTasks(IObjectArray tasks);
@@ -228,7 +231,9 @@ public static partial class WindowsJumpList
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     private interface IShellLinkW
     {
-        void GetPath([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder file, int capacity, out IntPtr findData, uint flags);
+        void GetPath([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder file, int capacity, out IntPtr findData,
+            uint flags);
+
         void GetIDList(out IntPtr itemIdList);
         void SetIDList(IntPtr itemIdList);
         void GetDescription([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder name, int capacity);
@@ -241,7 +246,10 @@ public static partial class WindowsJumpList
         void SetHotkey(short hotkey);
         void GetShowCmd(out int showCommand);
         void SetShowCmd(int showCommand);
-        void GetIconLocation([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder iconPath, int capacity, out int iconIndex);
+
+        void GetIconLocation([Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder iconPath, int capacity,
+            out int iconIndex);
+
         void SetIconLocation([MarshalAs(UnmanagedType.LPWStr)] string iconPath, int iconIndex);
         void SetRelativePath([MarshalAs(UnmanagedType.LPWStr)] string path, uint reserved);
         void Resolve(IntPtr windowHandle, uint flags);

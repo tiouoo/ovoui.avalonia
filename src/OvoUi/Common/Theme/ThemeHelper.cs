@@ -36,7 +36,7 @@ public static class ThemeHelper
             SetThemeColor(color);
         }
     }
-    
+
     public static void ToggleTheme(Themes theme)
     {
         Application.Current.RequestedThemeVariant = theme switch

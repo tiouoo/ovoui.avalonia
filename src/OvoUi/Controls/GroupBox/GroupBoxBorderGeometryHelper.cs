@@ -18,10 +18,10 @@ internal static class GroupBoxBorderGeometryHelper
     /// </summary>
     public static CornerRadius ComputeOuterCornerRadius(CornerRadius inner, Thickness bt) =>
         new CornerRadius(
-            topLeft:     inner.TopLeft     + Math.Max(bt.Left,  bt.Top),
-            topRight:    inner.TopRight    + Math.Max(bt.Right, bt.Top),
+            topLeft: inner.TopLeft + Math.Max(bt.Left, bt.Top),
+            topRight: inner.TopRight + Math.Max(bt.Right, bt.Top),
             bottomRight: inner.BottomRight + Math.Max(bt.Right, bt.Bottom),
-            bottomLeft:  inner.BottomLeft  + Math.Max(bt.Left,  bt.Bottom));
+            bottomLeft: inner.BottomLeft + Math.Max(bt.Left, bt.Bottom));
 
     /// <summary>
     /// Builds a closed border-ring <see cref="StreamGeometry"/> (filled contour) that
@@ -58,19 +58,19 @@ internal static class GroupBoxBorderGeometryHelper
         double gapStart, double gapEnd,
         double topThickness)
     {
-        double xo  = outerRect.X;
-        double yo  = outerRect.Y;
+        double xo = outerRect.X;
+        double yo = outerRect.Y;
         double rxo = outerRect.Right;
-        double bo  = outerRect.Bottom;
+        double bo = outerRect.Bottom;
         double tlo = Math.Max(0, outerCr.TopLeft);
         double tro = Math.Max(0, outerCr.TopRight);
         double bro = Math.Max(0, outerCr.BottomRight);
         double blo = Math.Max(0, outerCr.BottomLeft);
 
-        double xi  = innerRect.X;
-        double yi  = innerRect.Y;
+        double xi = innerRect.X;
+        double yi = innerRect.Y;
         double rxi = innerRect.Right;
-        double bi  = innerRect.Bottom;
+        double bi = innerRect.Bottom;
         double tli = Math.Max(0, innerCr.TopLeft);
         double tri = Math.Max(0, innerCr.TopRight);
         double bri = Math.Max(0, innerCr.BottomRight);
@@ -78,7 +78,7 @@ internal static class GroupBoxBorderGeometryHelper
 
         // Clamp the gap to the straight portions of both the outer and inner top edges.
         double cgStart = Math.Max(Math.Max(xo + tlo, xi + tli), gapStart);
-        double cgEnd   = Math.Min(Math.Min(rxo - tro, rxi - tri), gapEnd);
+        double cgEnd = Math.Min(Math.Min(rxo - tro, rxi - tri), gapEnd);
 
         // If the gap collapses after clamping, fall back to a plain closed ring.
         if (cgEnd <= cgStart)
@@ -154,10 +154,10 @@ internal static class GroupBoxBorderGeometryHelper
     /// </summary>
     public static void AddRoundedRectFigure(StreamGeometryContext ctx, Rect rect, CornerRadius cr)
     {
-        double x  = rect.X;
-        double y  = rect.Y;
+        double x = rect.X;
+        double y = rect.Y;
         double rx = rect.Right;
-        double b  = rect.Bottom;
+        double b = rect.Bottom;
         double tl = Math.Max(0, cr.TopLeft);
         double tr = Math.Max(0, cr.TopRight);
         double br = Math.Max(0, cr.BottomRight);
@@ -192,10 +192,10 @@ internal static class GroupBoxBorderGeometryHelper
     /// </summary>
     public static void AddRoundedRectFigureCcw(StreamGeometryContext ctx, Rect rect, CornerRadius cr)
     {
-        double x  = rect.X;
-        double y  = rect.Y;
+        double x = rect.X;
+        double y = rect.Y;
         double rx = rect.Right;
-        double b  = rect.Bottom;
+        double b = rect.Bottom;
         double tl = Math.Max(0, cr.TopLeft);
         double tr = Math.Max(0, cr.TopRight);
         double br = Math.Max(0, cr.BottomRight);
@@ -232,10 +232,10 @@ internal static class GroupBoxBorderGeometryHelper
     public static StreamGeometry BuildRoundedRectGeometry(
         Rect rect, CornerRadius cr, bool closeAtStart)
     {
-        double x  = rect.X;
-        double y  = rect.Y;
+        double x = rect.X;
+        double y = rect.Y;
         double rx = rect.Right;
-        double b  = rect.Bottom;
+        double b = rect.Bottom;
         double tl = Math.Max(0, cr.TopLeft);
         double tr = Math.Max(0, cr.TopRight);
         double br = Math.Max(0, cr.BottomRight);
@@ -270,4 +270,3 @@ internal static class GroupBoxBorderGeometryHelper
         return geometry;
     }
 }
-

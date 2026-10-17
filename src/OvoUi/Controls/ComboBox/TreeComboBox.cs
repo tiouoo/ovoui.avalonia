@@ -22,12 +22,12 @@ namespace OvoUi.Controls;
 
 [TemplatePart(PartNames.PART_Popup, typeof(Popup))]
 [PseudoClasses(PC_DropdownOpen)]
-public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IPopupInnerContent
+public class TreeComboBox : ItemsControl, IClearControl, IInnerContentControl, IPopupInnerContent
 {
     public const string PC_DropdownOpen = ":dropdownopen";
-    
+
     private Popup? _popup;
-    
+
     private static readonly FuncTemplate<Panel?> DefaultPanel =
         new FuncTemplate<Panel?>(() => new VirtualizingStackPanel());
 
@@ -69,10 +69,10 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         get => GetValue(PlaceholderTextProperty);
         set => SetValue(PlaceholderTextProperty, value);
     }
-    
+
     public static readonly StyledProperty<bool> IsDropDownOpenProperty =
         ComboBox.IsDropDownOpenProperty.AddOwner<TreeComboBox>();
-    
+
     public bool IsDropDownOpen
     {
         get => GetValue(IsDropDownOpenProperty);
@@ -87,10 +87,10 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         get => GetValue(HorizontalContentAlignmentProperty);
         set => SetValue(HorizontalContentAlignmentProperty, value);
     }
-    
+
     public static readonly StyledProperty<VerticalAlignment> VerticalContentAlignmentProperty =
         ContentControl.VerticalContentAlignmentProperty.AddOwner<TreeComboBox>();
-    
+
     public VerticalAlignment VerticalContentAlignment
     {
         get => GetValue(VerticalContentAlignmentProperty);
@@ -107,8 +107,9 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         set => SetValue(SelectedItemTemplateProperty, value);
     }
 
-    public static readonly DirectProperty<TreeComboBox, object?> SelectionBoxItemProperty = AvaloniaProperty.RegisterDirect<TreeComboBox, object?>(
-        nameof(SelectionBoxItem), o => o.SelectionBoxItem);
+    public static readonly DirectProperty<TreeComboBox, object?> SelectionBoxItemProperty =
+        AvaloniaProperty.RegisterDirect<TreeComboBox, object?>(
+            nameof(SelectionBoxItem), o => o.SelectionBoxItem);
 
     public object? SelectionBoxItem
     {
@@ -127,8 +128,9 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         set => SetAndRaise(SelectedItemProperty, ref field, value);
     }
 
-    public static readonly StyledProperty<object?> InnerLeftContentProperty = AvaloniaProperty.Register<TreeComboBox, object?>(
-        nameof(InnerLeftContent));
+    public static readonly StyledProperty<object?> InnerLeftContentProperty =
+        AvaloniaProperty.Register<TreeComboBox, object?>(
+            nameof(InnerLeftContent));
 
     public object? InnerLeftContent
     {
@@ -136,8 +138,9 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         set => SetValue(InnerLeftContentProperty, value);
     }
 
-    public static readonly StyledProperty<object?> InnerRightContentProperty = AvaloniaProperty.Register<TreeComboBox, object?>(
-        nameof(InnerRightContent));
+    public static readonly StyledProperty<object?> InnerRightContentProperty =
+        AvaloniaProperty.Register<TreeComboBox, object?>(
+            nameof(InnerRightContent));
 
     public object? InnerRightContent
     {
@@ -145,8 +148,9 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         set => SetValue(InnerRightContentProperty, value);
     }
 
-    public static readonly StyledProperty<object?> PopupInnerTopContentProperty = AvaloniaProperty.Register<TreeComboBox, object?>(
-        nameof(PopupInnerTopContent));
+    public static readonly StyledProperty<object?> PopupInnerTopContentProperty =
+        AvaloniaProperty.Register<TreeComboBox, object?>(
+            nameof(PopupInnerTopContent));
 
     public object? PopupInnerTopContent
     {
@@ -154,20 +158,22 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         set => SetValue(PopupInnerTopContentProperty, value);
     }
 
-    public static readonly StyledProperty<object?> PopupInnerBottomContentProperty = AvaloniaProperty.Register<TreeComboBox, object?>(
-        nameof(PopupInnerBottomContent));
+    public static readonly StyledProperty<object?> PopupInnerBottomContentProperty =
+        AvaloniaProperty.Register<TreeComboBox, object?>(
+            nameof(PopupInnerBottomContent));
 
     public object? PopupInnerBottomContent
     {
         get => GetValue(PopupInnerBottomContentProperty);
         set => SetValue(PopupInnerBottomContentProperty, value);
     }
-    
+
     static TreeComboBox()
     {
         ItemsPanelProperty.OverrideDefaultValue<TreeComboBox>(DefaultPanel);
         FocusableProperty.OverrideDefaultValue<TreeComboBox>(true);
-        SelectedItemProperty.Changed.AddClassHandler<TreeComboBox, object?>((box, args) => box.OnSelectedItemChanged(args));
+        SelectedItemProperty.Changed.AddClassHandler<TreeComboBox, object?>((box, args) =>
+            box.OnSelectedItemChanged(args));
         IsDropDownOpenProperty.AffectsPseudoClass<TreeComboBox>(PC_DropdownOpen);
         PressedMixin.Attach<TreeComboBox>();
     }
@@ -178,7 +184,7 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         MarkContainerSelection(args.NewValue.Value, true);
         UpdateSelectionBoxItem(args.NewValue.Value);
     }
-    
+
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
         base.OnApplyTemplate(e);
@@ -209,15 +215,15 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
     {
         ContainerForItemPreparedOverride(container, item, index);
     }
-    
+
     protected override void OnKeyDown(KeyEventArgs e)
     {
         base.OnKeyDown(e);
         if (e.Handled)
             return;
-        
+
         // F4 or Alt+Down/Up toggles dropdown
-        if ((e.Key == Key.F4 && !e.KeyModifiers.HasFlag(KeyModifiers.Alt)) || 
+        if ((e.Key == Key.F4 && !e.KeyModifiers.HasFlag(KeyModifiers.Alt)) ||
             ((e.Key == Key.Down || e.Key == Key.Up) && e.KeyModifiers.HasFlag(KeyModifiers.Alt)))
         {
             SetCurrentValue(IsDropDownOpenProperty, !IsDropDownOpen);
@@ -257,11 +263,12 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
                 if (SelectedItem is not null)
                 {
                     var selectedContainer = TreeContainerFromItem(SelectedItem);
-                    if(selectedContainer is TreeComboBoxItem selectedTreeComboBoxItem)
+                    if (selectedContainer is TreeComboBoxItem selectedTreeComboBoxItem)
                     {
                         selectedTreeComboBoxItem.IsSelected = false;
                     }
                 }
+
                 this.SelectedItem = item;
                 container.IsSelected = true;
                 SetCurrentValue(IsDropDownOpenProperty, false);
@@ -270,18 +277,17 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
             {
                 SetCurrentValue(IsDropDownOpenProperty, !IsDropDownOpen);
             }
-            
         }
     }
 
     private void UpdateSelectionBoxItem(object? item)
     {
-        if(item is null) SelectionBoxItem = null;
+        if (item is null) SelectionBoxItem = null;
         if (item is ContentControl contentControl)
         {
             item = contentControl.Content;
         }
-        else if(item is HeaderedItemsControl headeredItemsControl)
+        else if (item is HeaderedItemsControl headeredItemsControl)
         {
             item = headeredItemsControl.Header;
         }
@@ -307,7 +313,7 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
         {
             if (ItemTemplate is null && DisplayMemberBinding is { } binding)
             {
-                var template = new FuncDataTemplate<object?>((a,_) => new TextBlock
+                var template = new FuncDataTemplate<object?>((a, _) => new TextBlock
                 {
                     [DataContextProperty] = a,
                     [!TextBlock.TextProperty] = binding,
@@ -337,41 +343,47 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
     {
         return TreeItemFromContainer(this, container);
     }
-    
+
     private Control? TreeContainerFromItem(object item)
     {
         return TreeContainerFromItem(this, item);
     }
-    
+
     private static Control? TreeContainerFromItem(ItemsControl itemsControl, object item)
     {
         if (itemsControl.ContainerFromItem(item) is { } container)
         {
             return container;
         }
+
         foreach (var child in itemsControl.GetRealizedContainers())
         {
-            if(child is ItemsControl childItemsControl && TreeContainerFromItem(childItemsControl, item) is { } childContainer)
+            if (child is ItemsControl childItemsControl && TreeContainerFromItem(childItemsControl, item) is
+                    { } childContainer)
             {
                 return childContainer;
             }
         }
+
         return null;
     }
-    
+
     private static object? TreeItemFromContainer(ItemsControl itemsControl, Control container)
     {
         if (itemsControl.ItemFromContainer(container) is { } item)
         {
             return item;
         }
+
         foreach (var child in itemsControl.GetRealizedContainers())
         {
-            if(child is ItemsControl childItemsControl && TreeItemFromContainer(childItemsControl, container) is { } childItem)
+            if (child is ItemsControl childItemsControl && TreeItemFromContainer(childItemsControl, container) is
+                    { } childItem)
             {
                 return childItem;
             }
         }
+
         return null;
     }
 
@@ -389,4 +401,4 @@ public class TreeComboBox: ItemsControl, IClearControl, IInnerContentControl, IP
     {
         SelectedItem = null;
     }
-} 
+}

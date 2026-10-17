@@ -1,52 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f6f8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0d0c0f" media="(prefers-color-scheme: dark)">
-  <meta name="description" content="Browse the OvoUi Avalonia component catalog in WebAssembly.">
-  <title>OvoUi - Browser Demo</title>
-  <link rel="icon" href="./favicon.ico">
-  <link rel="stylesheet" href="./app.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f7f6f8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d0c0f" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="Browse the OvoUi Avalonia component catalog in WebAssembly.">
+    <title>OvoUi - Browser Demo</title>
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./app.css">
 </head>
 <body>
-  <div id="out">
+<div id="out">
     <main class="splash" aria-busy="true" aria-live="polite" aria-label="Loading the OvoUi component catalog">
-      <header class="splash-header">
-        <div class="brand-lockup">
-          <svg class="brand-logo" viewBox="24 24 258 258" aria-hidden="true">
-            <rect x="92.5" y="48.5" width="77" height="195" rx="38.5" fill="#8359e6" transform="rotate(32.9 131 146)" />
-            <circle cx="211" cy="205" r="36" fill="#f55681" />
-          </svg>
-          <span class="brand-name">OvoUi</span>
-        </div>
-        <span class="edition">Browser demo</span>
-      </header>
+        <header class="splash-header">
+            <div class="brand-lockup">
+                <svg class="brand-logo" viewBox="24 24 258 258" aria-hidden="true">
+                    <rect x="92.5" y="48.5" width="77" height="195" rx="38.5" fill="#8359e6"
+                          transform="rotate(32.9 131 146)"/>
+                    <circle cx="211" cy="205" r="36" fill="#f55681"/>
+                </svg>
+                <span class="brand-name">OvoUi</span>
+            </div>
+            <span class="edition">Browser demo</span>
+        </header>
 
-      <section class="loading-state">
-        <div class="loading-mark" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </div>
-        <p class="eyebrow">Component catalog</p>
-        <h1>Preparing OvoUi</h1>
-        <p class="status">Loading components, examples, and themes into your browser.</p>
-        <div class="progress" role="progressbar" aria-label="Loading component catalog" aria-valuetext="Loading">
-          <span></span>
-        </div>
-        <div class="progress-meta" aria-hidden="true">
-          <span>Starting Avalonia</span>
-          <span>WebAssembly</span>
-        </div>
-      </section>
+        <section class="loading-state">
+            <div class="loading-mark" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+            </div>
+            <p class="eyebrow">Component catalog</p>
+            <h1>Preparing OvoUi</h1>
+            <p class="status">Loading components, examples, and themes into your browser.</p>
+            <div class="progress" role="progressbar" aria-label="Loading component catalog" aria-valuetext="Loading">
+                <span></span>
+            </div>
+            <div class="progress-meta" aria-hidden="true">
+                <span>Starting Avalonia</span>
+                <span>WebAssembly</span>
+            </div>
+        </section>
 
-      <footer class="runtime">
-        <span>Avalonia 12</span>
-        <span>.NET 10</span>
-        <span>Runs locally in your browser</span>
-      </footer>
+        <footer class="runtime">
+            <span>Avalonia 12</span>
+            <span>.NET 10</span>
+            <span>Runs locally in your browser</span>
+        </footer>
     </main>
-  </div>
-  <script type="module" src="./main.js"></script>
+</div>
+<script type="module" src="./main.js"></script>
 </body>
 </html>

@@ -12,7 +12,8 @@ public sealed class ScrollAnimationStartingEventArgs
 
     public Vector StartingPosition { get; init; }
 
-    internal ScrollAnimationStartingEventArgs(CompositionAnimation animation, Vector startingPosition, Vector endPosition)
+    internal ScrollAnimationStartingEventArgs(CompositionAnimation animation, Vector startingPosition,
+        Vector endPosition)
     {
         Animation = animation;
         StartingPosition = startingPosition;

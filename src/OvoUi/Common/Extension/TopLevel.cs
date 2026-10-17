@@ -8,9 +8,10 @@ public static class TopLevelExtension
     {
         return TopLevel.GetTopLevel(control);
     }
-    
+
     public static TopLevel GetTopLevel(this Control control)
     {
-        return TopLevel.GetTopLevel(control) ?? throw new InvalidOperationException("Control is not attached to a TopLevel.");
+        return TopLevel.GetTopLevel(control) ??
+               throw new InvalidOperationException("Control is not attached to a TopLevel.");
     }
 }

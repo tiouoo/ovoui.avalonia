@@ -22,8 +22,7 @@ public partial class DemoPage : UserControl
         InitializeComponent();
     }
 
-    [Content]
-    public AvaloniaList<Control> PageContent { get; } = [];
+    [Content] public AvaloniaList<Control> PageContent { get; } = [];
 
     public string? Text
     {

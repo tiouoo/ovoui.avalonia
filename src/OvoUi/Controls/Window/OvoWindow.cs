@@ -64,7 +64,7 @@ public class OvoWindow : Window
     public OvoTitleBar? TitleBar { get; private set; }
 
     public Border? RootBorder { get; private set; }
-    
+
     public static readonly DirectProperty<OvoWindow, WindowState> PreviousVisibleWindowStateProperty =
         AvaloniaProperty.RegisterDirect<OvoWindow, WindowState>(
             nameof(PreviousVisibleWindowState),
@@ -77,7 +77,7 @@ public class OvoWindow : Window
     }
 
     public event EventHandler<OvoTitleBar>? TitleBarLoaded;
-    
+
     public void OnTitleBarLoaded(Action<OvoTitleBar> callback)
     {
         if (TitleBar != null)
@@ -356,7 +356,7 @@ public class OvoWindow : Window
     }
 
     public void ToggleFullScreen() => _ = ToggleFullScreenAsync();
-    
+
     public async Task ToggleFullScreenAsync()
     {
         if (_isFullScreenTransitioning) return;

@@ -39,7 +39,7 @@
         <Style Selector="^:horizontal">
             <Setter Property="Template">
                 <ControlTemplate TargetType="ovo:DescriptionsItem">
-                    <Grid Margin="0 0 0 12">
+                    <Grid Margin="0,0,0,12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition SharedSizeGroup="Label" Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -56,7 +56,7 @@
                         <TextBlock
                             Foreground="{DynamicResource InnerForegroundBrush}"
                             Grid.Column="1"
-                            Margin="0 0 8 0"
+                            Margin="0,0,8,0"
                             Name="PART_Colon"
                             Text=":" />
                         <ContentPresenter

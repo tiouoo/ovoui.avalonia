@@ -204,14 +204,23 @@ public class CulturePicker : TemplatedControl
 
     private sealed class CultureChangeObserver(CulturePicker owner) : IObserver<CultureInfo>
     {
-        public void OnCompleted() { }
-        public void OnError(Exception error) { }
+        public void OnCompleted()
+        {
+        }
+
+        public void OnError(Exception error)
+        {
+        }
 
         public void OnNext(CultureInfo value)
         {
             if (owner._suppressSync || owner._suspended) return;
             if (Dispatcher.UIThread.CheckAccess()) owner.SyncSelectedItemFromPrimary();
-            else Dispatcher.UIThread.Post(() => { if (!owner._suspended) owner.SyncSelectedItemFromPrimary(); });
+            else
+                Dispatcher.UIThread.Post(() =>
+                {
+                    if (!owner._suspended) owner.SyncSelectedItemFromPrimary();
+                });
         }
     }
 }

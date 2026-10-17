@@ -11,16 +11,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
+        <ProjectReference Include="..\OvoUi\OvoUi.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <AvaloniaResource Include="Assets\Highlighting\*.xshd" />
+        <AvaloniaResource Include="Assets\Highlighting\*.xshd"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia.AvaloniaEdit" Version="12.0.0" />
-      <PackageReference Include="AvaloniaEdit.TextMate" Version="12.0.0" />
+        <PackageReference Include="Avalonia.AvaloniaEdit" Version="12.0.0"/>
+        <PackageReference Include="AvaloniaEdit.TextMate" Version="12.0.0"/>
     </ItemGroup>
 
 </Project>

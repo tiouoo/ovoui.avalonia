@@ -22,7 +22,9 @@ public class MessageBoxWindow : Window
     public const string PART_NoButton = "PART_NoButton";
     public const string PART_OKButton = "PART_OKButton";
     public const string PART_CancelButton = "PART_CancelButton";
-    public static readonly StyledProperty<MessageBoxIcon> MessageIconProperty = AvaloniaProperty.Register<MessageBoxWindow, MessageBoxIcon>(nameof(MessageIcon), MessageBoxIcon.None);
+
+    public static readonly StyledProperty<MessageBoxIcon> MessageIconProperty =
+        AvaloniaProperty.Register<MessageBoxWindow, MessageBoxIcon>(nameof(MessageIcon), MessageBoxIcon.None);
 
     private readonly MessageBoxButton _buttons;
     private Button? _closeButton;
@@ -32,11 +34,19 @@ public class MessageBoxWindow : Window
     private Button? _noButton;
     private Panel? _titleArea;
 
-    public MessageBoxWindow() : this(MessageBoxButton.OK) { }
+    public MessageBoxWindow() : this(MessageBoxButton.OK)
+    {
+    }
+
     public MessageBoxWindow(MessageBoxButton buttons) => _buttons = buttons;
 
     protected override Type StyleKeyOverride => typeof(MessageBoxWindow);
-    public MessageBoxIcon MessageIcon { get => GetValue(MessageIconProperty); set => SetValue(MessageIconProperty, value); }
+
+    public MessageBoxIcon MessageIcon
+    {
+        get => GetValue(MessageIconProperty);
+        set => SetValue(MessageIconProperty, value);
+    }
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {

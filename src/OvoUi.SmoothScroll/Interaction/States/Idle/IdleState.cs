@@ -11,7 +11,8 @@ internal sealed class IdleState : InteractionTrackerState
 
     internal override string Name => "IdleState";
 
-    public IdleState(ServerInteractionTracker interactionTracker, int requestId, bool isInitialIdleState = false) : base(interactionTracker)
+    public IdleState(ServerInteractionTracker interactionTracker, int requestId, bool isInitialIdleState = false) :
+        base(interactionTracker)
     {
         _requestId = requestId;
         _isInitialIdleState = isInitialIdleState;
@@ -68,7 +69,8 @@ internal sealed class IdleState : InteractionTrackerState
     {
         // State changes to inertia and inertia modifiers are evaluated with requested velocity as initial velocity
         // TODO: inertia modifiers not yet implemented.
-        _interactionTracker.ChangeState(new ActiveInputInertiaState(_interactionTracker, velocityInPixelsPerSecond, requestId));
+        _interactionTracker.ChangeState(new ActiveInputInertiaState(_interactionTracker, velocityInPixelsPerSecond,
+            requestId));
     }
 
     internal override void TryUpdatePosition(Vector3D value, InteractionTrackerClampingOption option, int requestId)
@@ -84,7 +86,8 @@ internal sealed class IdleState : InteractionTrackerState
     internal override void ReceiveBoundsUpdate()
     {
         var position = _interactionTracker.Position;
-        var clampedPosition = Vector3D.Clamp(position, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
+        var clampedPosition =
+            Vector3D.Clamp(position, _interactionTracker.MinPosition, _interactionTracker.MaxPosition);
         _interactionTracker.SetPosition(clampedPosition, 0);
     }
 

@@ -95,7 +95,7 @@ internal class ScaleInertiaHandler : ServerObject, IInteractionTrackerInertiaHan
         var scale = _initialScale * Math.Exp(scaleLogDelta);
         var modifiedScale = Math.Clamp(scale, _interactionTracker.MinScale, _interactionTracker.MaxScale);
 
-        _interactionTracker.SetScale(modifiedScale, new(_scaleOrigin.X,_scaleOrigin.Y,0), 0);
+        _interactionTracker.SetScale(modifiedScale, new(_scaleOrigin.X, _scaleOrigin.Y, 0), 0);
 
         var hasStoppedByScaleVelocity = Math.Abs(ScaleVelocity) <= Epsilon;
         var hasReachedScaleTarget = MathUtilities.AreClose(scale, FinalModifiedScale, 0.001);

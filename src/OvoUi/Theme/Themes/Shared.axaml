@@ -38,7 +38,6 @@
         x:Key="SystemAccentColorOpacity09" />
 
 
-
     <SolidColorBrush
         Color="{DynamicResource SystemAccentColor}"
         Opacity="0.2"

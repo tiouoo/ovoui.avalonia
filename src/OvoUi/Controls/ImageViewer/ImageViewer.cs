@@ -18,9 +18,8 @@ namespace OvoUi.Controls;
 [TemplatePart(PART_Image, typeof(ImageViewerPresenter))]
 [TemplatePart(PART_Layer, typeof(VisualLayerManager))]
 [PseudoClasses(PC_Moving)]
-public class ImageViewer: TemplatedControl
+public class ImageViewer : TemplatedControl
 {
-    
     // ── Styled properties (mirrored on the internal ImageViewerPresenter) ────
 
     /// <summary>Defines the <see cref="Source"/> property.</summary>
@@ -63,7 +62,7 @@ public class ImageViewer: TemplatedControl
     /// <summary>Defines the <see cref="OffsetY"/> property.</summary>
     public static readonly StyledProperty<double> OffsetYProperty =
         AvaloniaProperty.Register<ImageViewer, double>(nameof(OffsetY));
-    
+
     // ── CLR property wrappers ────────────────────────────────────────────────
 
     /// <summary>Gets or sets the image to display.</summary>
@@ -140,13 +139,14 @@ public class ImageViewer: TemplatedControl
         if (sender is not ImageViewer viewer) return value;
         return Math.Clamp(value, viewer.MinZoom, viewer.MaxZoom);
     }
-    
+
     public const string PART_Image = "PART_Image";
     public const string PART_Layer = "PART_Layer";
     public const string PC_Moving = ":moving";
 
-    public static readonly StyledProperty<Control?> OverlayerProperty = AvaloniaProperty.Register<ImageViewer, Control?>(
-        nameof(Overlayer));
+    public static readonly StyledProperty<Control?> OverlayerProperty =
+        AvaloniaProperty.Register<ImageViewer, Control?>(
+            nameof(Overlayer));
 
     public Control? Overlayer
     {
@@ -155,8 +155,9 @@ public class ImageViewer: TemplatedControl
     }
 
     [Obsolete($"Replace with {nameof(ZoomProperty)}")]
-    public static readonly DirectProperty<ImageViewer, double> ScaleProperty = AvaloniaProperty.RegisterDirect<ImageViewer, double>(
-        nameof(Scale), o => o.Scale, (o,v)=> o.Scale = v, unsetValue: 1);
+    public static readonly DirectProperty<ImageViewer, double> ScaleProperty =
+        AvaloniaProperty.RegisterDirect<ImageViewer, double>(
+            nameof(Scale), o => o.Scale, (o, v) => o.Scale = v, unsetValue: 1);
 
     [Obsolete($"Replace with {nameof(Zoom)}")]
     public double Scale
@@ -166,10 +167,11 @@ public class ImageViewer: TemplatedControl
     }
 
     [Obsolete($"Replace with {nameof(MinZoomProperty)}")]
-    public static readonly DirectProperty<ImageViewer, double> MinScaleProperty = AvaloniaProperty.RegisterDirect<ImageViewer, double>(
-        nameof(MinScale), o => o.MinScale, (o, v) => o.MinScale = v, unsetValue: 0.1);
+    public static readonly DirectProperty<ImageViewer, double> MinScaleProperty =
+        AvaloniaProperty.RegisterDirect<ImageViewer, double>(
+            nameof(MinScale), o => o.MinScale, (o, v) => o.MinScale = v, unsetValue: 0.1);
 
-    [Obsolete ($"Replace with {nameof(MinZoom)}")]
+    [Obsolete($"Replace with {nameof(MinZoom)}")]
     public double MinScale
     {
         get => GetValue(MinZoomProperty);
@@ -177,8 +179,9 @@ public class ImageViewer: TemplatedControl
     }
 
     [Obsolete($"Replace with {nameof(OffsetXProperty)}")]
-    public static readonly DirectProperty<ImageViewer, double> TranslateXProperty = AvaloniaProperty.RegisterDirect<ImageViewer, double>(
-        nameof(TranslateX), o => o.TranslateX, (o,v)=>o.TranslateX = v, unsetValue: 0);
+    public static readonly DirectProperty<ImageViewer, double> TranslateXProperty =
+        AvaloniaProperty.RegisterDirect<ImageViewer, double>(
+            nameof(TranslateX), o => o.TranslateX, (o, v) => o.TranslateX = v, unsetValue: 0);
 
     [Obsolete($"Replace with {nameof(OffsetX)}")]
     public double TranslateX
@@ -187,7 +190,7 @@ public class ImageViewer: TemplatedControl
         set => SetValue(OffsetXProperty, value);
     }
 
-    [Obsolete( $"Replace with {nameof(OffsetYProperty)}")]
+    [Obsolete($"Replace with {nameof(OffsetYProperty)}")]
     public static readonly DirectProperty<ImageViewer, double> TranslateYProperty =
         AvaloniaProperty.RegisterDirect<ImageViewer, double>(
             nameof(TranslateY), o => o.TranslateY, (o, v) => o.TranslateY = v, unsetValue: 0);
@@ -204,7 +207,7 @@ public class ImageViewer: TemplatedControl
     /// </summary>
     public static readonly StyledProperty<double> SmallChangeProperty = AvaloniaProperty.Register<ImageViewer, double>(
         nameof(SmallChange), defaultValue: 1);
-    
+
     /// <summary>
     /// Gets or sets the amount to pan when the arrow keys are pressed without Ctrl.
     /// </summary>
@@ -213,13 +216,13 @@ public class ImageViewer: TemplatedControl
         get => GetValue(SmallChangeProperty);
         set => SetValue(SmallChangeProperty, value);
     }
-    
+
     /// <summary>
     /// Defines the <see cref="LargeChange"/> property.
     /// </summary>
     public static readonly StyledProperty<double> LargeChangeProperty = AvaloniaProperty.Register<ImageViewer, double>(
         nameof(LargeChange), defaultValue: 10);
-    
+
     /// <summary>
     /// Gets or sets the amount to pan when the arrow keys are pressed with Ctrl.
     /// </summary>
@@ -247,7 +250,7 @@ public class ImageViewer: TemplatedControl
     {
         OverlayerProperty.Changed.AddClassHandler<ImageViewer, Control?>((o, e) => o.OnOverlayerChanged(e));
     }
-    
+
     private void OnOverlayerChanged(AvaloniaPropertyChangedEventArgs args)
     {
         var control = args.GetNewValue<Control?>();
@@ -282,7 +285,7 @@ public class ImageViewer: TemplatedControl
             CoerceValue(ZoomProperty);
         }
     }
-    
+
     protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
     {
         base.OnDetachedFromVisualTree(e);
@@ -350,6 +353,7 @@ public class ImageViewer: TemplatedControl
         {
             PseudoClasses.Set(PC_Moving, true);
         }
+
         _gesture.PointerPressed(e, this);
     }
 
@@ -442,9 +446,9 @@ public class ImageViewer: TemplatedControl
 
     protected override void OnKeyDown(KeyEventArgs e)
     {
-        double step = e.KeyModifiers.HasFlag(KeyModifiers.Control) || e.KeyModifiers.HasFlag(KeyModifiers.Meta) ?
-            LargeChange :
-            SmallChange;
+        double step = e.KeyModifiers.HasFlag(KeyModifiers.Control) || e.KeyModifiers.HasFlag(KeyModifiers.Meta)
+            ? LargeChange
+            : SmallChange;
         switch (e.Key)
         {
             case Key.Left:
@@ -460,6 +464,7 @@ public class ImageViewer: TemplatedControl
                 OffsetY += step;
                 break;
         }
+
         base.OnKeyDown(e);
     }
 }

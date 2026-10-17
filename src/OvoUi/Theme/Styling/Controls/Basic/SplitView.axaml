@@ -49,8 +49,8 @@
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
                                 HorizontalAlignment="Left"
-                                Width="{TemplateBinding OpenPaneLength}"
-                                Name="PART_PanePresenter" />
+                                Name="PART_PanePresenter"
+                                Width="{TemplateBinding OpenPaneLength}" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
                                 HorizontalAlignment="Right"
@@ -141,8 +141,8 @@
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
                                 HorizontalAlignment="Right"
-                                Width="{TemplateBinding OpenPaneLength}"
-                                Name="PART_PanePresenter" />
+                                Name="PART_PanePresenter"
+                                Width="{TemplateBinding OpenPaneLength}" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
                                 HorizontalAlignment="Left"
@@ -322,8 +322,8 @@
                                 Content="{TemplateBinding Pane}"
                                 ContentTemplate="{TemplateBinding PaneTemplate}"
                                 Height="{TemplateBinding OpenPaneLength}"
-                                VerticalAlignment="Bottom"
-                                Name="PART_PanePresenter" />
+                                Name="PART_PanePresenter"
+                                VerticalAlignment="Bottom" />
                             <Rectangle
                                 Fill="{DynamicResource SplitViewSeparatorBackground}"
                                 Height="1"

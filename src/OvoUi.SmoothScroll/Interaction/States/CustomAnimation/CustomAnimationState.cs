@@ -21,12 +21,15 @@ internal sealed class CustomAnimationState : InteractionTrackerState
         EnterState();
         if (scaleCenterPoint is null)
         {
-            _animationHandler = new PositionAnimationHandler(interactionTracker, animation, interactionTracker.Compositor);
+            _animationHandler =
+                new PositionAnimationHandler(interactionTracker, animation, interactionTracker.Compositor);
         }
         else
         {
-            _animationHandler = new ScaleAnimationHandler(interactionTracker, animation, scaleCenterPoint.Value, interactionTracker.Compositor);
+            _animationHandler = new ScaleAnimationHandler(interactionTracker, animation, scaleCenterPoint.Value,
+                interactionTracker.Compositor);
         }
+
         _animationHandler.Start();
     }
 
@@ -51,6 +54,7 @@ internal sealed class CustomAnimationState : InteractionTrackerState
         {
             return;
         }
+
         _animationHandler.Stop();
 
         var scaleVelocity = Math.Log(delta) / 0.2;

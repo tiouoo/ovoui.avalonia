@@ -88,7 +88,8 @@ public sealed class ControlShowcaseGenerator : IIncrementalGenerator
 
         var xmlNamespace = element.Name.NamespaceName;
         return xmlNamespace.Equals(OvoXmlNamespace, StringComparison.Ordinal) ||
-               xmlNamespace.StartsWith("clr-namespace:OvoUi.AvaloniaEdit.Showcase.Controls", StringComparison.Ordinal) ||
+               xmlNamespace.StartsWith("clr-namespace:OvoUi.AvaloniaEdit.Showcase.Controls",
+                   StringComparison.Ordinal) ||
                xmlNamespace.StartsWith("using:OvoUi.AvaloniaEdit.Showcase.Controls", StringComparison.Ordinal);
     }
 
@@ -153,7 +154,8 @@ public sealed class ControlShowcaseGenerator : IIncrementalGenerator
         }
 
         var samples = files.SelectMany(file => file.Samples).ToImmutableArray();
-        foreach (var sample in samples.Where(sample => string.IsNullOrWhiteSpace(sample.SourceKey) && !sample.HasExplicitCode))
+        foreach (var sample in samples.Where(sample =>
+                     string.IsNullOrWhiteSpace(sample.SourceKey) && !sample.HasExplicitCode))
         {
             context.ReportDiagnostic(Diagnostic.Create(MissingSourceKey, Location.None, sample.Path, sample.Line));
         }

@@ -11,7 +11,7 @@ public class ThemeManager : INotifyPropertyChanged
     {
     }
 
-    
+
     public static ThemeManager Instance { get; } = new();
 
     public Color CurrentColor
@@ -42,7 +42,7 @@ public class ThemeManager : INotifyPropertyChanged
             Instance.CurrentColor = color;
         }
     }
-    
+
     public static void ToggleTheme(Themes theme)
     {
         Application.Current.RequestedThemeVariant = theme switch

@@ -127,6 +127,7 @@ public class InputElementInteractionSource : IDisposable
             e.Handled = true;
             return;
         }
+
         var deltaX = (SwapWheelDirections ? e.Delta.Y : e.Delta.X) * MouseWheelDeltaScale;
         var deltaY = (SwapWheelDirections ? e.Delta.X : e.Delta.Y) * MouseWheelDeltaScale;
         if (deltaY != 0)
@@ -135,7 +136,8 @@ public class InputElementInteractionSource : IDisposable
             {
                 if (PositionXSourceMode is InteractionSourceMode.Disabled)
                     return;
-                if (IsAtBoundaryForChaining(deltaY, _tracker.Position.X, _tracker.MinPosition.X, _tracker.MaxPosition.X, PositionXChainingMode, _hasHorizontalChainingTarget))
+                if (IsAtBoundaryForChaining(deltaY, _tracker.Position.X, _tracker.MinPosition.X, _tracker.MaxPosition.X,
+                        PositionXChainingMode, _hasHorizontalChainingTarget))
                     return;
 
                 ApplyWheelDelta(new Vector(-deltaY, 0), PositionXSourceMode);
@@ -143,7 +145,8 @@ public class InputElementInteractionSource : IDisposable
                 return;
             }
 
-            if (IsAtBoundaryForChaining(deltaY, _tracker.Position.Y, _tracker.MinPosition.Y, _tracker.MaxPosition.Y, PositionYChainingMode, _hasVerticalChainingTarget))
+            if (IsAtBoundaryForChaining(deltaY, _tracker.Position.Y, _tracker.MinPosition.Y, _tracker.MaxPosition.Y,
+                    PositionYChainingMode, _hasVerticalChainingTarget))
                 return;
 
             ApplyWheelDelta(new Vector(0, -deltaY), PositionYSourceMode);
@@ -155,7 +158,8 @@ public class InputElementInteractionSource : IDisposable
                 return;
             }
 
-            if (IsAtBoundaryForChaining(deltaX, _tracker.Position.X, _tracker.MinPosition.X, _tracker.MaxPosition.X, PositionXChainingMode, _hasHorizontalChainingTarget))
+            if (IsAtBoundaryForChaining(deltaX, _tracker.Position.X, _tracker.MinPosition.X, _tracker.MaxPosition.X,
+                    PositionXChainingMode, _hasHorizontalChainingTarget))
                 return;
 
             ApplyWheelDelta(new Vector(-deltaX, 0), PositionXSourceMode);
@@ -195,8 +199,12 @@ public class InputElementInteractionSource : IDisposable
         var currentScrollViewer = visual as ScrollViewer ?? visual.FindAncestorOfType<ScrollViewer>();
         var ancestorScrollViewer = currentScrollViewer?.FindAncestorOfType<ScrollViewer>();
 
-        _hasHorizontalChainingTarget = ancestorScrollViewer is not null && ancestorScrollViewer.HorizontalScrollBarVisibility is not ScrollBarVisibility.Disabled;
-        _hasVerticalChainingTarget = ancestorScrollViewer is not null && ancestorScrollViewer.VerticalScrollBarVisibility is not ScrollBarVisibility.Disabled;
+        _hasHorizontalChainingTarget = ancestorScrollViewer is not null &&
+                                       ancestorScrollViewer.HorizontalScrollBarVisibility is not ScrollBarVisibility
+                                           .Disabled;
+        _hasVerticalChainingTarget = ancestorScrollViewer is not null &&
+                                     ancestorScrollViewer.VerticalScrollBarVisibility is not ScrollBarVisibility
+                                         .Disabled;
     }
 
     private void OnPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -205,12 +213,14 @@ public class InputElementInteractionSource : IDisposable
         {
             return;
         }
+
         if (!IsTranslationEnabled && ScaleSourceMode is InteractionSourceMode.Disabled)
         {
             return;
         }
 
-        if (e.Pointer.Type == PointerType.Mouse && !IsMousePanningEnabled && ScaleSourceMode is InteractionSourceMode.Disabled)
+        if (e.Pointer.Type == PointerType.Mouse && !IsMousePanningEnabled &&
+            ScaleSourceMode is InteractionSourceMode.Disabled)
         {
             return;
         }
@@ -320,7 +330,8 @@ public class InputElementInteractionSource : IDisposable
 
             if (delta != default)
             {
-                if (ShouldChainDuringInteraction(delta) && ScaleSourceMode is not InteractionSourceMode.EnabledWithInertia)
+                if (ShouldChainDuringInteraction(delta) &&
+                    ScaleSourceMode is not InteractionSourceMode.EnabledWithInertia)
                 {
                     _firstContact?.Capture(null);
                     return;
@@ -441,15 +452,20 @@ public class InputElementInteractionSource : IDisposable
     private void HandlePrecisionTouchpadScroll(PointerWheelEventArgs e)
     {
         var translationDelta = new Point(
-            PositionXSourceMode is InteractionSourceMode.Disabled ? 0 : (SwapWheelDirections ? e.Delta.Y : e.Delta.X) * TouchpadDeltaScale,
-            PositionYSourceMode is InteractionSourceMode.Disabled ? 0 : (SwapWheelDirections ? e.Delta.X : e.Delta.Y) * TouchpadDeltaScale);
+            PositionXSourceMode is InteractionSourceMode.Disabled
+                ? 0
+                : (SwapWheelDirections ? e.Delta.Y : e.Delta.X) * TouchpadDeltaScale,
+            PositionYSourceMode is InteractionSourceMode.Disabled
+                ? 0
+                : (SwapWheelDirections ? e.Delta.X : e.Delta.Y) * TouchpadDeltaScale);
 
         if (translationDelta == default)
         {
             return;
         }
 
-        if (ShouldChainDuringInteraction(translationDelta) && ScaleSourceMode is not InteractionSourceMode.EnabledWithInertia)
+        if (ShouldChainDuringInteraction(translationDelta) &&
+            ScaleSourceMode is not InteractionSourceMode.EnabledWithInertia)
         {
             return;
         }
@@ -494,7 +510,8 @@ public class InputElementInteractionSource : IDisposable
             return false;
         }
 
-        if (pointerType is not PointerType.Touch and not PointerType.Pen || ScaleSourceMode is not InteractionSourceMode.Disabled)
+        if (pointerType is not PointerType.Touch and not PointerType.Pen ||
+            ScaleSourceMode is not InteractionSourceMode.Disabled)
         {
             return true;
         }
@@ -502,9 +519,11 @@ public class InputElementInteractionSource : IDisposable
         var xDistance = PositionXSourceMode is InteractionSourceMode.Disabled ? 0 : Math.Abs(delta.X);
         var yDistance = PositionYSourceMode is InteractionSourceMode.Disabled ? 0 : Math.Abs(delta.Y);
 
-        if (xDistance > 0 && IsAtBoundaryForChaining(delta.X, _tracker.Position.X, _tracker.MinPosition.X, _tracker.MaxPosition.X, PositionXChainingMode, _hasHorizontalChainingTarget))
+        if (xDistance > 0 && IsAtBoundaryForChaining(delta.X, _tracker.Position.X, _tracker.MinPosition.X,
+                _tracker.MaxPosition.X, PositionXChainingMode, _hasHorizontalChainingTarget))
             xDistance = 0;
-        if (yDistance > 0 && IsAtBoundaryForChaining(delta.Y, _tracker.Position.Y, _tracker.MinPosition.Y, _tracker.MaxPosition.Y, PositionYChainingMode, _hasVerticalChainingTarget))
+        if (yDistance > 0 && IsAtBoundaryForChaining(delta.Y, _tracker.Position.Y, _tracker.MinPosition.Y,
+                _tracker.MaxPosition.Y, PositionYChainingMode, _hasVerticalChainingTarget))
             yDistance = 0;
 
         return xDistance > _manipulationStartDistance || yDistance > _manipulationStartDistance;
@@ -541,7 +560,8 @@ public class InputElementInteractionSource : IDisposable
     /// the input to the parent. A positive <paramref name="userDelta"/> means the tracker position
     /// would decrease (toward <paramref name="min"/>); negative means it would increase (toward <paramref name="max"/>).
     /// </summary>
-    private static bool IsAtBoundaryForChaining(double userDelta, double position, double min, double max, InteractionChainingMode chainingMode, bool hasChainingTarget)
+    private static bool IsAtBoundaryForChaining(double userDelta, double position, double min, double max,
+        InteractionChainingMode chainingMode, bool hasChainingTarget)
     {
         if (!CanChain(chainingMode, hasChainingTarget))
             return false;
@@ -571,9 +591,11 @@ public class InputElementInteractionSource : IDisposable
         var yEnabled = PositionYSourceMode is not InteractionSourceMode.Disabled;
 
         var xAtBoundary = !xEnabled || fingerDelta.X == 0 ||
-            IsAtBoundaryForChaining(fingerDelta.X, _tracker.Position.X, _tracker.MinPosition.X, _tracker.MaxPosition.X, PositionXChainingMode, _hasHorizontalChainingTarget);
+                          IsAtBoundaryForChaining(fingerDelta.X, _tracker.Position.X, _tracker.MinPosition.X,
+                              _tracker.MaxPosition.X, PositionXChainingMode, _hasHorizontalChainingTarget);
         var yAtBoundary = !yEnabled || fingerDelta.Y == 0 ||
-            IsAtBoundaryForChaining(fingerDelta.Y, _tracker.Position.Y, _tracker.MinPosition.Y, _tracker.MaxPosition.Y, PositionYChainingMode, _hasVerticalChainingTarget);
+                          IsAtBoundaryForChaining(fingerDelta.Y, _tracker.Position.Y, _tracker.MinPosition.Y,
+                              _tracker.MaxPosition.Y, PositionYChainingMode, _hasVerticalChainingTarget);
 
         return xAtBoundary && yAtBoundary;
     }

@@ -7,7 +7,9 @@ public sealed class TranslateExtension : MarkupExtension
 {
     public LangKey? Key { get; set; }
 
-    public TranslateExtension() { }
+    public TranslateExtension()
+    {
+    }
 
     public TranslateExtension(LangKey key) => Key = key;
 

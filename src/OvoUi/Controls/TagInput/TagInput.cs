@@ -154,6 +154,7 @@ public class TagInput : TemplatedControl
             {
                 newObservable.CollectionChanged += OnTagsCollectionChanged;
             }
+
             CheckEmpty();
         }
     }
@@ -183,7 +184,8 @@ public class TagInput : TemplatedControl
 
         _presenter = InputTextBox.GetTemplateDescendants().OfType<TextPresenter>().FirstOrDefault();
         if (_presenter is not null)
-            ObservableExtension.Subscribe(_presenter.GetObservable(TextPresenter.PreeditTextProperty), _ => CheckEmpty());
+            ObservableExtension.Subscribe(_presenter.GetObservable(TextPresenter.PreeditTextProperty),
+                _ => CheckEmpty());
     }
 
     private void CheckEmpty()

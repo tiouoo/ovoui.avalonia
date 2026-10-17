@@ -13,20 +13,19 @@ namespace OvoUi.Test;
 public partial class MainWindow : OvoWindow
 {
     public const string CodeBehindSample = """
-        private void CreateProject(object? sender, RoutedEventArgs e)
-        {
-            // Create the project and update the preview.
-        }
-        """;
+                                           private void CreateProject(object? sender, RoutedEventArgs e)
+                                           {
+                                               // Create the project and update the preview.
+                                           }
+                                           """;
 
     public MainWindow()
     {
         InitializeComponent();
         DataContext = this;
     }
-    
-    
-    
+
+
     private void Dark(object? sender, RoutedEventArgs e)
     {
         ThemeManager.ToggleTheme(Themes.Dark);

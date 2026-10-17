@@ -119,6 +119,7 @@ internal partial class ServerInteractionTracker
 
     internal void NotifyRequestIgnored(int requestId)
         => PostToClient(client => client.RaiseRequestIgnored(requestId));
+
     private InteractionTrackerState State => _state ??= new IdleState(this, requestId: 0, isInitialIdleState: true);
 
     private void NotifyValuesChanged(Vector3D position, double scale, int requestId)
@@ -154,13 +155,16 @@ internal partial class ServerInteractionTracker
             switch (request)
             {
                 case TryUpdatePositionRequest tryUpdatePositionRequest:
-                    State.TryUpdatePosition(tryUpdatePositionRequest.Position, tryUpdatePositionRequest.ClampingOption, tryUpdatePositionRequest.RequestId);
+                    State.TryUpdatePosition(tryUpdatePositionRequest.Position, tryUpdatePositionRequest.ClampingOption,
+                        tryUpdatePositionRequest.RequestId);
                     break;
                 case TryUpdateScaleRequest tryUpdateScaleRequest:
-                    SetScale(tryUpdateScaleRequest.Scale, tryUpdateScaleRequest.CenterPoint, tryUpdateScaleRequest.RequestId);
+                    SetScale(tryUpdateScaleRequest.Scale, tryUpdateScaleRequest.CenterPoint,
+                        tryUpdateScaleRequest.RequestId);
                     break;
                 case BeginUserManipulationRequest beginUserManipulationRequest:
-                    State.BeginUserManipulation(beginUserManipulationRequest.Position, beginUserManipulationRequest.Pointer);
+                    State.BeginUserManipulation(beginUserManipulationRequest.Position,
+                        beginUserManipulationRequest.Pointer);
                     break;
                 case CompleteManipulationRequest completeManipulationRequest:
                     State.CompleteUserManipulation();
@@ -183,6 +187,7 @@ internal partial class ServerInteractionTracker
             }
         }
     }
+
     partial void OnFieldsDeserialized(InteractionTrackerChangedFields changed)
     {
         if (_detached)
@@ -197,4 +202,3 @@ internal partial class ServerInteractionTracker
         State.ReceiveBoundsUpdate();
     }
 }
-

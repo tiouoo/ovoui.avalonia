@@ -321,6 +321,7 @@ public static class WindowsSystemMenu
                 {
                     Trace.TraceError($"Windows system-menu callback failed: {exception}");
                 }
+
                 return IntPtr.Zero;
             }
         }

@@ -1,16 +1,19 @@
 <UserControl
     x:Class="OvoUi.Demo.Pages.TabWindowPage"
+    x:DataType="pages:TabWindowPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:DataType="pages:TabWindowPage">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="OvoTabHost">
         <ovo:ControlShowcase Header="Tab workspace" SourceKey="tab-workspace">
             <ovo:ControlShowcase.CodeBlocks>
                 <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding SourceCode}" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding SourceCode}"
+                    Header="C#"
+                    Language="csharp" />
             </ovo:ControlShowcase.CodeBlocks>
             <Grid RowDefinitions="Auto,Auto,420" RowSpacing="10">
                 <StackPanel Orientation="Horizontal" Spacing="8">
@@ -22,18 +25,29 @@
                     </Button>
                 </StackPanel>
                 <WrapPanel Grid.Row="1">
-                    <TextBlock Text="Detach when leaving" VerticalAlignment="Center" Margin="0,0,8,8" />
-                    <ComboBox ItemsSource="{Binding DragBoundaries}"
-                              SelectedItem="{Binding #TabHost.DetachBoundary, Mode=TwoWay}"
-                              MinWidth="120" Margin="0,0,16,8" />
-                    <TextBlock Text="Attach when entering" VerticalAlignment="Center" Margin="0,0,8,8" />
-                    <ComboBox ItemsSource="{Binding DragBoundaries}"
-                              SelectedItem="{Binding #TabHost.AttachBoundary, Mode=TwoWay}"
-                              MinWidth="120" Margin="0,0,16,8" />
-                    <CheckBox Content="Live detach and attach"
-                              IsChecked="{Binding #TabHost.IsLiveDragEnabled, Mode=TwoWay}"
-                              ToolTip.Tip="Off: drag a preview and release to open a window. On: detach and attach immediately."
-                              Margin="0,0,0,8" />
+                    <TextBlock
+                        Margin="0,0,8,8"
+                        Text="Detach when leaving"
+                        VerticalAlignment="Center" />
+                    <ComboBox
+                        ItemsSource="{Binding DragBoundaries}"
+                        Margin="0,0,16,8"
+                        MinWidth="120"
+                        SelectedItem="{Binding #TabHost.DetachBoundary, Mode=TwoWay}" />
+                    <TextBlock
+                        Margin="0,0,8,8"
+                        Text="Attach when entering"
+                        VerticalAlignment="Center" />
+                    <ComboBox
+                        ItemsSource="{Binding DragBoundaries}"
+                        Margin="0,0,16,8"
+                        MinWidth="120"
+                        SelectedItem="{Binding #TabHost.AttachBoundary, Mode=TwoWay}" />
+                    <CheckBox
+                        Content="Live detach and attach"
+                        IsChecked="{Binding #TabHost.IsLiveDragEnabled, Mode=TwoWay}"
+                        Margin="0,0,0,8"
+                        ToolTip.Tip="Off: drag a preview and release to open a window. On: detach and attach immediately." />
                 </WrapPanel>
                 <ovo:OvoTabHost
                     BorderBrush="{DynamicResource LineBrush}"

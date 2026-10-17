@@ -1,3 +1,9 @@
 namespace OvoUi.Controls;
 
-public enum MessageBoxButton { OK, OKCancel, YesNo, YesNoCancel }
+public enum MessageBoxButton
+{
+    OK,
+    OKCancel,
+    YesNo,
+    YesNoCancel
+}

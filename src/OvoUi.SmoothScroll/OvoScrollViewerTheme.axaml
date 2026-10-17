@@ -1,27 +1,33 @@
 <Styles
     x:Class="OvoUi.SmoothScroll.OvoScrollViewerTheme"
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:scroll="using:OvoUi.SmoothScroll.Controls">
+    xmlns:scroll="using:OvoUi.SmoothScroll.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
-        <ControlTheme x:Key="{x:Type ScrollViewer}" TargetType="ScrollViewer">
+        <ControlTheme TargetType="ScrollViewer" x:Key="{x:Type ScrollViewer}">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Template">
                 <ControlTemplate>
                     <Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
                         <scroll:OvoScrollPresenter
-                            Name="PART_ContentPresenter"
-                            Grid.RowSpan="2"
-                            Grid.ColumnSpan="2"
-                            Padding="{TemplateBinding Padding}"
                             Background="{TemplateBinding Background}"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="2"
                             HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
                             HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                            Name="PART_ContentPresenter"
+                            Padding="{TemplateBinding Padding}"
                             ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}"
                             VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
                             VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}" />
-                        <ScrollBar Name="PART_HorizontalScrollBar" Grid.Row="1" Orientation="Horizontal" />
-                        <ScrollBar Name="PART_VerticalScrollBar" Grid.Column="1" Orientation="Vertical" />
+                        <ScrollBar
+                            Grid.Row="1"
+                            Name="PART_HorizontalScrollBar"
+                            Orientation="Horizontal" />
+                        <ScrollBar
+                            Grid.Column="1"
+                            Name="PART_VerticalScrollBar"
+                            Orientation="Vertical" />
                     </Grid>
                 </ControlTemplate>
             </Setter>

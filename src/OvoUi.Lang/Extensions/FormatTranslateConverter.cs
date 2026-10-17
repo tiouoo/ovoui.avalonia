@@ -13,13 +13,19 @@ internal sealed class CultureSignalAdapter(IObservable<CultureInfo> source) : IO
 
     private sealed class Adapter(IObserver<CultureSignal> inner) : IObserver<CultureInfo>
     {
-        public void OnCompleted() { }
-        public void OnError(Exception error) { }
+        public void OnCompleted()
+        {
+        }
+
+        public void OnError(Exception error)
+        {
+        }
+
         public void OnNext(CultureInfo value) => inner.OnNext(new CultureSignal(value));
     }
 }
 
-public sealed class FormatTranslateConverter: IMultiValueConverter
+public sealed class FormatTranslateConverter : IMultiValueConverter
 {
     public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
     {

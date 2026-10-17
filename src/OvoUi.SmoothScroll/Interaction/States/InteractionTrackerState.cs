@@ -16,7 +16,11 @@ internal abstract class InteractionTrackerState
     }
 
     protected abstract void EnterState();
-    internal virtual void Stop() { }
+
+    internal virtual void Stop()
+    {
+    }
+
     internal abstract void BeginUserManipulation(Point position, IPointer pointer);
     internal abstract void CompleteUserManipulation();
     internal abstract void AddScaleVelocity(Point origin, double delta);
@@ -26,8 +30,8 @@ internal abstract class InteractionTrackerState
     internal abstract void ReceiveBoundsUpdate();
     internal abstract void TryUpdatePositionWithAdditionalVelocity(Vector3D velocityInPixelsPerSecond, int requestId);
     internal abstract void TryUpdatePosition(Vector3D value, InteractionTrackerClampingOption option, int requestId);
+
     internal virtual void StartAnimation(CompositionAnimation animation, Vector3D? scaleCenterPoint = null)
     {
-
     }
 }

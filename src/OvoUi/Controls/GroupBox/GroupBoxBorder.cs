@@ -42,7 +42,6 @@ public class GroupBoxBorder : Decorator
         AffectsRender<GroupBoxBorder>(BackgroundProperty, BorderBrushProperty);
         AffectsMeasure<GroupBoxBorder>(BorderThicknessProperty, PaddingProperty, HeaderSpacingProperty,
             CornerRadiusProperty);
-
     }
 
     // -------------------------------------------------------------------------
@@ -288,9 +287,10 @@ public class GroupBoxBorder : Decorator
         var outerCr = GroupBoxBorderGeometryHelper.ComputeOuterCornerRadius(cr, bt);
 
         _fillGeometry = GroupBoxBorderGeometryHelper.BuildRoundedRectGeometry(innerRect, cr, closeAtStart: true);
-        _borderGeometry = hasGap ?
-            GroupBoxBorderGeometryHelper.BuildGapBorderRing(outerRect, innerRect, outerCr, cr, gapStart, gapEnd, bt.Top) :
-            GroupBoxBorderGeometryHelper.BuildClosedBorderRing(outerRect, innerRect, outerCr, cr);
+        _borderGeometry = hasGap
+            ? GroupBoxBorderGeometryHelper.BuildGapBorderRing(outerRect, innerRect, outerCr, cr, gapStart, gapEnd,
+                bt.Top)
+            : GroupBoxBorderGeometryHelper.BuildClosedBorderRing(outerRect, innerRect, outerCr, cr);
 
         if (child is not null)
         {
@@ -338,5 +338,4 @@ public class GroupBoxBorder : Decorator
         // Thickness(left, top, right, bottom).
         context.DrawGeometry(brush, null, _borderGeometry);
     }
-
 }

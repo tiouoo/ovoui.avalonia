@@ -8,7 +8,7 @@ namespace OvoUi.Controls;
 
 public class ThemeVariantMapper : ThemeVariantScope
 {
-    protected override Type StyleKeyOverride { get; } =  typeof(ThemeVariantScope);
+    protected override Type StyleKeyOverride { get; } = typeof(ThemeVariantScope);
     private Visual? _subscribedParent;
     private readonly AvaloniaList<ThemeVariantMapping> _mappings;
 

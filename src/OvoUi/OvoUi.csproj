@@ -14,8 +14,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="12.1.4" />
-        <PackageReference Include="Avalonia.Controls.ColorPicker" Version="12.1.4" />
+        <PackageReference Include="Avalonia" Version="12.1.4"/>
+        <PackageReference Include="Avalonia.Controls.ColorPicker" Version="12.1.4"/>
         <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2"/>
         <PackageReference Include="System.Reactive" Version="7.0.0"/>
     </ItemGroup>
@@ -24,7 +24,7 @@
         <AvaloniaResource Include="..\..\assets\iconfont.ttf">
             <Link>Assets\iconfont.ttf</Link>
         </AvaloniaResource>
-        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
+        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
     <ItemGroup>

@@ -12,7 +12,8 @@ public abstract class LangManagerBase : ILangManager
     private readonly Queue<CultureInfo> _pending = new();
     private bool _updating;
 
-    protected LangManagerBase(IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> resources, string defaultCulture = "")
+    protected LangManagerBase(IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> resources,
+        string defaultCulture = "")
     {
         _resources = resources;
         CurrentCulture = CultureInfo.GetCultureInfo(defaultCulture);
@@ -56,7 +57,7 @@ public abstract class LangManagerBase : ILangManager
 
     private string? Resolve(CultureInfo culture, string key)
     {
-        for (var current = culture; ; current = current.Parent)
+        for (var current = culture;; current = current.Parent)
         {
             if (_overrides.TryGetValue(current.Name, out var runtime) && runtime.TryGetValue(key, out var custom))
                 return custom;
@@ -85,9 +86,11 @@ public abstract class LangManagerBase : ILangManager
         {
             var result = new Dictionary<CultureInfo, string>();
             foreach (var pair in _resources)
-                if (pair.Value.TryGetValue(observable.Key, out var value)) result[CultureInfo.GetCultureInfo(pair.Key)] = value;
+                if (pair.Value.TryGetValue(observable.Key, out var value))
+                    result[CultureInfo.GetCultureInfo(pair.Key)] = value;
             foreach (var pair in _overrides)
-                if (pair.Value.TryGetValue(observable.Key, out var value)) result[CultureInfo.GetCultureInfo(pair.Key)] = value;
+                if (pair.Value.TryGetValue(observable.Key, out var value))
+                    result[CultureInfo.GetCultureInfo(pair.Key)] = value;
             return result;
         }
     }

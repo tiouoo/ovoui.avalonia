@@ -10,7 +10,8 @@ namespace OvoUi.Controls;
 
 public static class OverlayDrawer
 {
-    public static void ShowStandard<TView, TViewModel>(TViewModel vm, string? hostId = null, DrawerOptions? options = null) where TView : Control, new() =>
+    public static void ShowStandard<TView, TViewModel>(TViewModel vm, string? hostId = null,
+        DrawerOptions? options = null) where TView : Control, new() =>
         ShowStandard(new TView(), vm, hostId, options);
 
     public static void ShowStandard(Control control, object? vm, string? hostId = null, DrawerOptions? options = null)
@@ -30,13 +31,19 @@ public static class OverlayDrawer
         host.AddDrawer(drawer);
     }
 
-    public static Task<DialogResult> ShowStandardAsync<TView, TViewModel>(TViewModel vm, string? hostId = null, DrawerOptions? options = null) where TView : Control, new() =>
+    public static Task<DialogResult> ShowStandardAsync<TView, TViewModel>(TViewModel vm, string? hostId = null,
+        DrawerOptions? options = null) where TView : Control, new() =>
         ShowStandardAsync(new TView(), vm, hostId, options);
 
-    public static Task<DialogResult> ShowStandardAsync(Control control, object? vm, string? hostId = null, DrawerOptions? options = null)
+    public static Task<DialogResult> ShowStandardAsync(Control control, object? vm, string? hostId = null,
+        DrawerOptions? options = null)
     {
         if (GetHost(hostId, options) is not { } host) return Task.FromResult(DialogResult.None);
-        var drawer = new StandardDrawerControl { Content = control, DataContext = vm, [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle };
+        var drawer = new StandardDrawerControl
+        {
+            Content = control, DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
         Configure(drawer, options);
         host.AddModalDrawer(drawer);
         return drawer.ShowAsync<DialogResult>();
@@ -48,7 +55,8 @@ public static class OverlayDrawer
         return ShowStandardAsync(BuildView(host, vm), vm, hostId, options);
     }
 
-    public static void ShowCustom<TView, TViewModel>(TViewModel vm, string? hostId = null, DrawerOptions? options = null) where TView : Control, new() =>
+    public static void ShowCustom<TView, TViewModel>(TViewModel vm, string? hostId = null,
+        DrawerOptions? options = null) where TView : Control, new() =>
         ShowCustom(new TView(), vm, hostId, options);
 
     public static void ShowCustom(Control control, object? vm, string? hostId = null, DrawerOptions? options = null)
@@ -67,25 +75,33 @@ public static class OverlayDrawer
         host.AddDrawer(drawer);
     }
 
-    public static Task<TResult?> ShowCustomAsync<TView, TViewModel, TResult>(TViewModel vm, string? hostId = null, DrawerOptions? options = null) where TView : Control, new() =>
+    public static Task<TResult?> ShowCustomAsync<TView, TViewModel, TResult>(TViewModel vm, string? hostId = null,
+        DrawerOptions? options = null) where TView : Control, new() =>
         ShowCustomAsync<TResult>(new TView(), vm, hostId, options);
 
-    public static Task<TResult?> ShowCustomAsync<TResult>(Control control, object? vm, string? hostId = null, DrawerOptions? options = null)
+    public static Task<TResult?> ShowCustomAsync<TResult>(Control control, object? vm, string? hostId = null,
+        DrawerOptions? options = null)
     {
         if (GetHost(hostId, options) is not { } host) return Task.FromResult(default(TResult));
-        var drawer = new CustomDrawerControl { Content = control, DataContext = vm, [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle };
+        var drawer = new CustomDrawerControl
+        {
+            Content = control, DataContext = vm,
+            [KeyboardNavigation.TabNavigationProperty] = KeyboardNavigationMode.Cycle
+        };
         Configure(drawer, options);
         host.AddModalDrawer(drawer);
         return drawer.ShowAsync<TResult?>();
     }
 
-    public static Task<TResult?> ShowCustomAsync<TResult>(object? vm, string? hostId = null, DrawerOptions? options = null)
+    public static Task<TResult?> ShowCustomAsync<TResult>(object? vm, string? hostId = null,
+        DrawerOptions? options = null)
     {
         if (GetHost(hostId, options) is not { } host) return Task.FromResult(default(TResult));
         return ShowCustomAsync<TResult>(BuildView(host, vm), vm, hostId, options);
     }
 
-    private static OverlayDialogHost? GetHost(string? hostId, DrawerOptions? options) => OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
+    private static OverlayDialogHost? GetHost(string? hostId, DrawerOptions? options) =>
+        OverlayDialogManager.GetHost(hostId, options?.TopLevelHashCode);
 
     private static Control BuildView(OverlayDialogHost host, object? vm)
     {
@@ -113,12 +129,16 @@ public static class OverlayDrawer
             if (options.MinHeight is { } min) drawer.MinHeight = min;
             if (options.MaxHeight is { } max) drawer.MaxHeight = max;
         }
+
         if (drawer is StandardDrawerControl standard)
         {
             standard.Buttons = options.Buttons;
             standard.Title = options.Title;
             standard.TitleCommand = options.TitleCommand;
         }
-        if (!string.IsNullOrWhiteSpace(options.StyleClass)) drawer.Classes.AddRange(options.StyleClass.Split(Constants.SpaceSeparator, StringSplitOptions.RemoveEmptyEntries));
+
+        if (!string.IsNullOrWhiteSpace(options.StyleClass))
+            drawer.Classes.AddRange(options.StyleClass.Split(Constants.SpaceSeparator,
+                StringSplitOptions.RemoveEmptyEntries));
     }
 }

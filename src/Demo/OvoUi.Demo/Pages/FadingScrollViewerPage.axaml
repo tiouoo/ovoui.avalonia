@@ -30,28 +30,52 @@
                     VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="0,0,8,0" Spacing="8">
                         <Border Background="#33FDF398" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 1" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 1"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#3398CDFD" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 2" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 2"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#33F6A0B5" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 3" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 3"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#33A4E0A7" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 4" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 4"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#33F2B36D" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 5" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 5"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#33A9A1F7" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 6" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 6"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#337ED6C4" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 7" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 7"
+                                VerticalAlignment="Center" />
                         </Border>
                         <Border Background="#33E58BA5" Height="72">
-                            <TextBlock HorizontalAlignment="Center" Text="Item 8" VerticalAlignment="Center" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                Text="Item 8"
+                                VerticalAlignment="Center" />
                         </Border>
                     </StackPanel>
                 </ovo:FadingScrollViewer>

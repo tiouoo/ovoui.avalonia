@@ -92,7 +92,6 @@ public class OvoAutoCompleteBox : Avalonia.Controls.AutoCompleteBox, IClearContr
 
         if (change.Property == IsDropDownOpenProperty && change.GetNewValue<bool>() == false)
         {
-
         }
     }
 
@@ -104,10 +103,12 @@ public class OvoAutoCompleteBox : Avalonia.Controls.AutoCompleteBox, IClearContr
         {
             return;
         }
+
         if (Equals(newElement, _textbox))
         {
             return;
         }
+
         SetCurrentValue(IsDropDownOpenProperty, false);
     }
 }

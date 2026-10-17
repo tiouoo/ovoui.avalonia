@@ -1,5 +1,5 @@
 <Project>
-  <ItemGroup>
-    <CompilerVisibleProperty Include="MSBuildProjectDirectory" />
-  </ItemGroup>
+    <ItemGroup>
+        <CompilerVisibleProperty Include="MSBuildProjectDirectory"/>
+    </ItemGroup>
 </Project>
