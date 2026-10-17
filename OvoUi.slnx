@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/OvoUi.Lang/">
+    <Project Path="src/OvoUi.Lang/OvoUi.Lang.csproj" />
+    <Project Path="src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj" />
+  </Folder>
   <Folder Name="/OvoUi.AvaloniaEdit/">
     <Project Path="src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj" />
     <Project Path="src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj" />

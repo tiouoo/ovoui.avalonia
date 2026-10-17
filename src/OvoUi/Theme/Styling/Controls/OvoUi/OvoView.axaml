@@ -1,16 +1,16 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="{x:Type o:OvoView}" x:Key="{x:Type o:OvoView}">
+    <ControlTheme TargetType="{x:Type ovo:OvoView}" x:Key="{x:Type ovo:OvoView}">
         <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
         <Setter Property="FontSize" Value="{DynamicResource TioFontSize}" />
         <Setter Property="FontFamily" Value="{DynamicResource TioFontFamily}" />
         <Setter Property="FontWeight" Value="{DynamicResource TioFontWeight}" />
-        <Setter Property="o:OverlayDialogHost.IsModalStatusScope" Value="True" />
+        <Setter Property="ovo:OverlayDialogHost.IsModalStatusScope" Value="True" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:OvoView">
+            <ControlTemplate TargetType="ovo:OvoView">
                 <VisualLayerManager Name="PART_VisualLayerManager">
                     <Panel>
                         <Border Background="{TemplateBinding Background}" IsHitTestVisible="False" />
@@ -22,8 +22,8 @@
                                 Margin="{TemplateBinding Padding}"
                                 Name="PART_ContentPresenter"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            <o:OverlayDialogHost
-                                HostId="{Binding $parent[o:OvoView].HostId}"
+                            <ovo:OverlayDialogHost
+                                HostId="{Binding $parent[ovo:OvoView].HostId}"
                                 IsModalStatusReporter="True"
                                 IsTopLevel="True"
                                 Name="PART_DialogHost" />

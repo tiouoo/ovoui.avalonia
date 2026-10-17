@@ -1,6 +1,6 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style Selector="Button AccessText">
         <Setter Property="Margin" Value="0,1,0,0" />
@@ -12,7 +12,7 @@
     <Style Selector="AutoCompleteBox /template/ TextBox /template/ ContentPresenter TextBlock">
         <Setter Property="Margin" Value="0,1,0,0" />
     </Style>
-    <Style Selector="o|KeyGestureInput /template/ ContentPresenter TextBlock">
+    <Style Selector="ovo|KeyGestureInput /template/ ContentPresenter TextBlock">
         <Setter Property="Margin" Value="0,1,0,0" />
     </Style>
     <Style Selector="TextBox /template/ DataValidationErrors ContentPresenter TextBlock">

@@ -2,12 +2,12 @@
     RequestedThemeVariant="Default"
     x:Class="OvoUi.Test.App"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Styles>
-        <o:OvoUiTheme />
-        <o:OvoAvaloniaEditTheme />
-        <o:OvoShowcaseTheme />
-        <o:OvoUiFont />
+        <ovo:OvoUiTheme />
+        <ovo:OvoAvaloniaEditTheme />
+        <ovo:OvoShowcaseTheme />
+        <ovo:OvoUiFont />
     </Application.Styles>
 </Application>

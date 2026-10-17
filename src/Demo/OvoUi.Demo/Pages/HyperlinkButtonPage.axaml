@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="HyperlinkButton">
-        <o:ControlShowcase Header="Basic" SourceKey="hyperlink-button-basic">
+        <ovo:ControlShowcase Header="Basic" SourceKey="hyperlink-button-basic">
             <WrapPanel
                 ItemSpacing="20"
                 LineSpacing="12"
@@ -19,9 +19,9 @@
                 <HyperlinkButton Content="Release notes" />
                 <HyperlinkButton Content="Disabled link" IsEnabled="False" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Text styles" SourceKey="hyperlink-button-text-styles">
+        <ovo:ControlShowcase Header="Text styles" SourceKey="hyperlink-button-text-styles">
             <WrapPanel
                 ItemSpacing="20"
                 LineSpacing="12"
@@ -39,9 +39,9 @@
                     Content="Deprecated destination"
                     Theme="{StaticResource BasicHyperlinkButtonTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Themes" SourceKey="hyperlink-button-themes">
+        <ovo:ControlShowcase Header="Themes" SourceKey="hyperlink-button-themes">
             <WrapPanel
                 ItemSpacing="20"
                 LineSpacing="16"
@@ -52,9 +52,9 @@
                 <HyperlinkButton Content="Underline motion" Theme="{StaticResource UnderlineMotionHyperlinkButton}" />
                 <HyperlinkButton Content="Underline fill" Theme="{StaticResource UnderlineFillHyperlinkButton}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Rich content" SourceKey="hyperlink-button-rich-content">
+        <ovo:ControlShowcase Header="Rich content" SourceKey="hyperlink-button-rich-content">
             <WrapPanel
                 ItemSpacing="20"
                 LineSpacing="12"
@@ -78,6 +78,6 @@
                     </StackPanel>
                 </HyperlinkButton>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

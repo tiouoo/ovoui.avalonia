@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.HeaderedContentPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="HeaderedContentControl">
-        <o:ControlShowcase Header="Header and content" SourceKey="layout-headered-content-basic">
+        <ovo:ControlShowcase Header="Header and content" SourceKey="layout-headered-content-basic">
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
                 <HeaderedContentControl
                     BorderBrush="{DynamicResource LineBrush}"
@@ -31,9 +31,9 @@
                     </StackPanel>
                 </HeaderedContentControl>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Card themes and classes" SourceKey="layout-headered-content-themes">
+        <ovo:ControlShowcase Header="Card themes and classes" SourceKey="layout-headered-content-themes">
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
                 <HeaderedContentControl
                     Classes="interactive"
@@ -48,6 +48,6 @@
                     <TextBlock Text="A translucent card with a persistent shadow." TextWrapping="Wrap" />
                 </HeaderedContentControl>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

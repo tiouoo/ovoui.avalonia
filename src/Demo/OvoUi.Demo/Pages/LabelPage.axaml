@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Label">
-        <o:ControlShowcase Header="Label" SourceKey="label-1">
+        <ovo:ControlShowcase Header="Label" SourceKey="label-1">
             <StackPanel Margin="10,0" Spacing="18">
                 <Label Content="Common Text" />
                 <Label Classes="h1" Content="H1 Heading" />
@@ -27,6 +27,6 @@
                 <Label Classes="error" Content="Error Text" />
                 <Label Content="Disabled Text" IsEnabled="False" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

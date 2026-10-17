@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ToggleSwitch">
-        <o:ControlShowcase Header="Standard states" SourceKey="toggle-switch-standard-states">
+        <ovo:ControlShowcase Header="Standard states" SourceKey="toggle-switch-standard-states">
             <WrapPanel
                 ItemSpacing="28"
                 LineSpacing="18"
@@ -23,9 +23,9 @@
                     IsChecked="True"
                     IsEnabled="False" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Content and state labels" SourceKey="toggle-switch-content-labels">
+        <ovo:ControlShowcase Header="Content and state labels" SourceKey="toggle-switch-content-labels">
             <StackPanel Margin="10,0" Spacing="18">
                 <ToggleSwitch
                     Content="Wi-Fi"
@@ -38,9 +38,9 @@
                     OnContent="Automatic" />
                 <ToggleSwitch Content="Content label only" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Themes" SourceKey="toggle-switch-themes">
+        <ovo:ControlShowcase Header="Themes" SourceKey="toggle-switch-themes">
             <StackPanel Margin="10,0" Spacing="20">
                 <StackPanel Spacing="10">
                     <TextBlock Classes="bodyStrong" Text="SimpleToggleSwitch" />
@@ -75,6 +75,6 @@
                     </WrapPanel>
                 </StackPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

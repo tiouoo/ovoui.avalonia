@@ -5,16 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:pages="using:OvoUi.Demo.Pages"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia">
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
     <UserControl.Styles>
-        <o:OvoScrollViewTheme />
+        <ovo:OvoScrollViewTheme />
     </UserControl.Styles>
     <demo:DemoPage Text="OvoScrollView">
-        <o:ControlShowcase Header="Pan, zoom and elastic overscroll" SourceKey="smooth-scroll-view-zoom">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ZoomCode}" />
-            </o:ControlShowcase.CodeBlocks>
+        <ovo:ControlShowcase Header="Pan, zoom and elastic overscroll" SourceKey="smooth-scroll-view-zoom">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ZoomCode}" />
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Use the wheel to zoom, drag to pan, or pinch with two fingers. Drag past an edge to feel the spring return." TextWrapping="Wrap" />
                 <WrapPanel Orientation="Horizontal">
@@ -25,7 +25,7 @@
                     <Button Margin="0,0,16,8" Content="Maximum" Tag="max" Click="Zoom_OnClick" />
                     <TextBlock VerticalAlignment="Center" Text="{Binding #ZoomView.ZoomFactor, StringFormat='Zoom: {0:P0}'}" />
                 </WrapPanel>
-                <o:OvoScrollView Name="ZoomView" Height="360" IsZoomEnabled="True"
+                <ovo:OvoScrollView Name="ZoomView" Height="360" IsZoomEnabled="True"
                                    MinZoomFactor="0.25" MaxZoomFactor="4" ContentOrientation="Both"
                                    HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <Grid Width="1200" Height="800" ColumnDefinitions="*,*" RowDefinitions="*,*">
@@ -34,18 +34,18 @@
                         <Border Grid.Row="1" Background="#33EFAD57"><TextBlock Text="Pinch" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                         <Border Grid.Row="1" Grid.Column="1" Background="#33C889DD"><TextBlock Text="Zoom" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                     </Grid>
-                </o:OvoScrollView>
+                </ovo:OvoScrollView>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Horizontal layout and independent scroll modes" SourceKey="smooth-scroll-view-orientation">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ModeCode}" />
-            </o:ControlShowcase.CodeBlocks>
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Horizontal layout and independent scroll modes" SourceKey="smooth-scroll-view-orientation">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ModeCode}" />
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="ContentOrientation controls how content grows. ScrollMode controls which axes accept input. A vertical wheel scrolls a horizontal-only view." TextWrapping="Wrap" />
                 <ToggleSwitch Name="HorizontalEnabled" Content="Enable horizontal input" IsChecked="True" />
-                <o:OvoScrollView Height="170" ContentOrientation="Horizontal" VerticalScrollMode="Disabled"
+                <ovo:OvoScrollView Height="170" ContentOrientation="Horizontal" VerticalScrollMode="Disabled"
                                    HorizontalScrollMode="{Binding #HorizontalEnabled.IsChecked, Converter={x:Static pages:ScrollViewDemoModel.ScrollModeConverter}}"
                                    HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
                     <StackPanel Orientation="Horizontal" Spacing="12">
@@ -54,31 +54,31 @@
                         <Border Width="300" Background="#33EFAD57"><TextBlock Text="Three" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                         <Border Width="300" Background="#33C889DD"><TextBlock Text="Four" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                     </StackPanel>
-                </o:OvoScrollView>
+                </ovo:OvoScrollView>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Nested scrolling and chaining" SourceKey="smooth-scroll-view-chaining">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Nested scrolling and chaining" SourceKey="smooth-scroll-view-chaining">
             <StackPanel Spacing="12">
                 <ToggleSwitch Name="ChainingEnabled" Content="Continue scrolling the parent at an inner edge" IsChecked="True" />
-                <o:OvoScrollView Height="300" IsScrollChainingEnabled="False">
+                <ovo:OvoScrollView Height="300" IsScrollChainingEnabled="False">
                     <StackPanel Spacing="16">
                         <Border Height="90" Background="#224D8DFF"><TextBlock Text="Outer view: scroll down into the inner view" Margin="16" /></Border>
-                        <o:OvoScrollView Height="180" Margin="24,0" IsScrollChainingEnabled="{Binding #ChainingEnabled.IsChecked}">
+                        <ovo:OvoScrollView Height="180" Margin="24,0" IsScrollChainingEnabled="{Binding #ChainingEnabled.IsChecked}">
                             <StackPanel Spacing="8">
                                 <Border Height="100" Background="#334FC1A5"><TextBlock Text="Inner view / top" Margin="16" /></Border>
                                 <Border Height="100" Background="#334FC1A5"><TextBlock Text="Inner view / middle" Margin="16" /></Border>
                                 <Border Height="100" Background="#334FC1A5"><TextBlock Text="Inner view / bottom" Margin="16" /></Border>
                             </StackPanel>
-                        </o:OvoScrollView>
+                        </ovo:OvoScrollView>
                         <Border Height="320" Background="#22EFAD57"><TextBlock Text="Outer view: continued" Margin="16" /></Border>
                     </StackPanel>
-                </o:OvoScrollView>
+                </ovo:OvoScrollView>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Snap points and alignment" SourceKey="smooth-scroll-view-snaps">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Snap points and alignment" SourceKey="smooth-scroll-view-snaps">
             <StackPanel Spacing="12">
                 <TextBlock Text="Scroll and release to settle on a card. Snap points also support vertical content and Near, Center or Far alignment." TextWrapping="Wrap" />
-                <o:OvoScrollView Height="200" ContentOrientation="Horizontal" VerticalScrollMode="Disabled"
+                <ovo:OvoScrollView Height="200" ContentOrientation="Horizontal" VerticalScrollMode="Disabled"
                                    HorizontalSnapPointsType="Mandatory" HorizontalSnapPointsAlignment="Center"
                                    HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                     <StackPanel Orientation="Horizontal" Spacing="16">
@@ -87,8 +87,8 @@
                         <Border Width="260" Background="#33EFAD57"><TextBlock Text="Snap / 3" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                         <Border Width="260" Background="#33C889DD"><TextBlock Text="Snap / 4" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                     </StackPanel>
-                </o:OvoScrollView>
+                </ovo:OvoScrollView>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

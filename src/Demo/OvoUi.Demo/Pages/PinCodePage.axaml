@@ -2,24 +2,24 @@
     x:Class="OvoUi.Demo.Pages.PinCodePage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="PinCode">
-        <o:ControlShowcase Header="Input modes" SourceKey="pin-code-modes">
+        <ovo:ControlShowcase Header="Input modes" SourceKey="pin-code-modes">
             <StackPanel HorizontalAlignment="Left" Spacing="18">
-                <o:PinCode Count="4" />
-                <o:PinCode Count="6" Mode="Digit" />
-                <o:PinCode Count="6" Mode="Letter" />
-                <o:PinCode Count="6" PasswordChar="•" />
+                <ovo:PinCode Count="4" />
+                <ovo:PinCode Count="6" Mode="Digit" />
+                <ovo:PinCode Count="6" Mode="Letter" />
+                <ovo:PinCode Count="6" PasswordChar="•" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Sizes and states" SourceKey="pin-code-states">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Sizes and states" SourceKey="pin-code-states">
             <StackPanel HorizontalAlignment="Left" Spacing="18">
-                <o:PinCode Classes="Small" Count="4" />
-                <o:PinCode Count="4" />
-                <o:PinCode Classes="Large" Count="4" />
-                <o:PinCode Count="4" IsEnabled="False" />
+                <ovo:PinCode Classes="Small" Count="4" />
+                <ovo:PinCode Count="4" />
+                <ovo:PinCode Classes="Large" Count="4" />
+                <ovo:PinCode Count="4" IsEnabled="False" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

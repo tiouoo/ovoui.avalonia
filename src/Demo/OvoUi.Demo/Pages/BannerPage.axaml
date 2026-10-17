@@ -5,12 +5,12 @@
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:layout="using:Avalonia.Layout"
     xmlns:notifications="using:Avalonia.Controls.Notifications"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Banner">
-        <o:ControlShowcase Header="Interactive configurator" SourceKey="shows-banner-configurator">
+        <ovo:ControlShowcase Header="Interactive configurator" SourceKey="shows-banner-configurator">
             <Grid ColumnDefinitions="2*,*" ColumnSpacing="24">
-                <o:Banner
+                <ovo:Banner
                     CanClose="{Binding #CanClose.IsChecked}"
                     Classes.Bordered="{Binding #Bordered.IsChecked}"
                     Content="{Binding #ContentText.Text}"
@@ -34,12 +34,12 @@
                         Text="Version 2.4 is now available to all users."
                         TextWrapping="Wrap" />
                     <TextBlock Text="Notification type" />
-                    <o:EnumSelector
+                    <ovo:EnumSelector
                         EnumType="{x:Type notifications:NotificationType}"
                         Name="Type"
                         Value="{x:Static notifications:NotificationType.Success}" />
                     <TextBlock Text="Content alignment" />
-                    <o:EnumSelector
+                    <ovo:EnumSelector
                         EnumType="{x:Type layout:HorizontalAlignment}"
                         Name="Alignment"
                         Value="{x:Static layout:HorizontalAlignment.Stretch}" />
@@ -63,33 +63,33 @@
                     </WrapPanel>
                 </StackPanel>
             </Grid>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Notification types" SourceKey="shows-banner-types">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Notification types" SourceKey="shows-banner-types">
             <StackPanel Spacing="12">
-                <o:Banner
+                <ovo:Banner
                     Content="A neutral product message."
                     Header="Information"
                     ShowIcon="True"
                     Type="Information" />
-                <o:Banner
+                <ovo:Banner
                     Classes="Bordered"
                     Content="The operation completed."
                     Header="Success"
                     ShowIcon="True"
                     Type="Success" />
-                <o:Banner
+                <ovo:Banner
                     Classes="Bordered"
                     Content="Review values before continuing."
                     Header="Warning"
                     ShowIcon="True"
                     Type="Warning" />
-                <o:Banner
+                <ovo:Banner
                     CanClose="True"
                     Content="The request could not be completed."
                     Header="Error"
                     ShowIcon="True"
                     Type="Error" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

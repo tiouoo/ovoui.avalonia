@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="SelectableTextBlock">
-        <o:ControlShowcase Header="SelectableTextBlock" SourceKey="selectable-text-block-1">
+        <ovo:ControlShowcase Header="SelectableTextBlock" SourceKey="selectable-text-block-1">
             <StackPanel Margin="10,0" Spacing="18">
                 <SelectableTextBlock Text="Common selectable text" />
                 <SelectableTextBlock Classes="h1" Text="H1 Heading" />
@@ -27,6 +27,6 @@
                 <SelectableTextBlock Classes="error" Text="Error Text" />
                 <SelectableTextBlock IsEnabled="False" Text="Disabled Text" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

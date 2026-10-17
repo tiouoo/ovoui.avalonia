@@ -3,18 +3,18 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ColorPicker">
-        <o:ControlShowcase Header="Picker variants" SourceKey="color-picker-variants">
+        <ovo:ControlShowcase Header="Picker variants" SourceKey="color-picker-variants">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <ColorPicker ColorSpectrumShape="Box" HsvColor="hsv(210,70%,80%)" />
                 <ColorPicker ColorSpectrumShape="Ring" HsvColor="hsv(145,65%,75%)" />
                 <ColorPicker HsvColor="hsv(25,80%,90%)" Theme="{StaticResource SimpleColorPicker}" />
                 <ColorPicker HsvColor="hsv(280,60%,85%)" Theme="{StaticResource HexSimpleColorPicker}" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Color views" SourceKey="color-view-shapes">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Color views" SourceKey="color-view-shapes">
             <WrapPanel ItemSpacing="24" LineSpacing="20">
                 <ColorView
                     ColorSpectrumShape="Box"
@@ -27,24 +27,24 @@
                     Width="320" />
                 <ColorView Width="320">
                     <ColorView.Palette>
-                        <o:OvoColorLightPalette />
+                        <ovo:OvoColorLightPalette />
                     </ColorView.Palette>
                 </ColorView>
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Palette themes" SourceKey="color-picker-palettes">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Palette themes" SourceKey="color-picker-palettes">
             <WrapPanel ItemSpacing="16">
                 <ColorPicker>
                     <ColorPicker.Palette>
-                        <o:OvoColorLightPalette />
+                        <ovo:OvoColorLightPalette />
                     </ColorPicker.Palette>
                 </ColorPicker>
                 <ColorPicker Theme="{DynamicResource HexColorPicker}">
                     <ColorPicker.Palette>
-                        <o:OvoColorDarkPalette />
+                        <ovo:OvoColorDarkPalette />
                     </ColorPicker.Palette>
                 </ColorPicker>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

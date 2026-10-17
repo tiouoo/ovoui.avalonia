@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TabControl">
-        <o:ControlShowcase Header="Default" SourceKey="tab-control-default">
+        <ovo:ControlShowcase Header="Default" SourceKey="tab-control-default">
             <TabControl Height="180" SelectedIndex="0">
                 <TabItem Header="Overview">
                     <TextBlock Margin="16" Text="Project overview content" />
@@ -21,8 +21,8 @@
                 </TabItem>
                 <TabItem Header="Disabled" IsEnabled="False" />
             </TabControl>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Line" SourceKey="tab-control-line">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Line" SourceKey="tab-control-line">
             <TabControl
                 Height="180"
                 SelectedIndex="1"
@@ -37,8 +37,8 @@
                     <TextBlock Margin="16" Text="Permissions" />
                 </TabItem>
             </TabControl>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Card" SourceKey="tab-control-card">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Card" SourceKey="tab-control-card">
             <TabControl Height="180" Theme="{StaticResource CardTabControl}">
                 <TabItem Header="Editor">
                     <TextBlock Margin="16" Text="Editor workspace" />
@@ -50,8 +50,8 @@
                     <TextBlock Margin="16" Text="Build output" />
                 </TabItem>
             </TabControl>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Placement" SourceKey="tab-control-placement">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Placement" SourceKey="tab-control-placement">
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
                 <TabControl Height="220" TabStripPlacement="Left">
                     <TabItem Header="General">
@@ -77,6 +77,6 @@
                     </TabItem>
                 </TabControl>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

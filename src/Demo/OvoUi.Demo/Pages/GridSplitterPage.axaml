@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.GridSplitterPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="GridSplitter">
-        <o:ControlShowcase Header="Resize rows" SourceKey="layout-grid-splitter-rows">
+        <ovo:ControlShowcase Header="Resize rows" SourceKey="layout-grid-splitter-rows">
             <Grid Height="300" RowDefinitions="*,Auto,*">
                 <Border Background="#223F8CFF" CornerRadius="8">
                     <TextBlock
@@ -24,9 +24,9 @@
                         VerticalAlignment="Center" />
                 </Border>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Resize columns" SourceKey="layout-grid-splitter-columns">
+        <ovo:ControlShowcase Header="Resize columns" SourceKey="layout-grid-splitter-columns">
             <Grid ColumnDefinitions="*,Auto,*" Height="260">
                 <Border Background="#229E28B3" CornerRadius="8">
                     <TextBlock
@@ -49,6 +49,6 @@
                         VerticalAlignment="Center" />
                 </Border>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -3,31 +3,31 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Rating">
-        <o:ControlShowcase Header="Values and interaction" SourceKey="rating-values">
+        <ovo:ControlShowcase Header="Values and interaction" SourceKey="rating-values">
             <StackPanel HorizontalAlignment="Left" Spacing="16">
-                <o:Rating Value="3" />
-                <o:Rating AllowHalf="True" Value="2.5" />
-                <o:Rating AllowClear="False" Value="4" />
-                <o:Rating IsEnabled="False" Value="3" />
+                <ovo:Rating Value="3" />
+                <ovo:Rating AllowHalf="True" Value="2.5" />
+                <ovo:Rating AllowClear="False" Value="4" />
+                <ovo:Rating IsEnabled="False" Value="3" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Sizes and characters" SourceKey="rating-styles">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Sizes and characters" SourceKey="rating-styles">
             <StackPanel HorizontalAlignment="Left" Spacing="16">
-                <o:Rating Classes="Small" Value="4" />
-                <o:Rating Value="4" />
-                <o:Rating
+                <ovo:Rating Classes="Small" Value="4" />
+                <ovo:Rating Value="4" />
+                <ovo:Rating
                     Count="7"
                     Size="44"
                     Value="5" />
-                <o:Rating
+                <ovo:Rating
                     Character="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                     Foreground="#E5484D"
                     Size="38"
                     Value="3" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

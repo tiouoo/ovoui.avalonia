@@ -1,15 +1,15 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel
             Margin="20"
             Orientation="Horizontal"
             Spacing="8">
-            <o:Avatar Content="AS" />
-            <o:Avatar Content="Semi" Padding="4" />
-            <o:Avatar Content="Semi" Padding="10" />
+            <ovo:Avatar Content="AS" />
+            <ovo:Avatar Content="OVOUI" Padding="4" />
+            <ovo:Avatar Content="OVOUI" Padding="10" />
         </StackPanel>
     </Design.PreviewWith>
 
@@ -74,7 +74,7 @@
             <SolidColorBrush Color="#555B61" x:Key="AvatarGreyBackground" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
-    <ControlTheme TargetType="{x:Type o:Avatar}" x:Key="{x:Type o:Avatar}">
+    <ControlTheme TargetType="{x:Type ovo:Avatar}" x:Key="{x:Type ovo:Avatar}">
         <Setter Property="Foreground" Value="{DynamicResource AvatarForeground}" />
         <Setter Property="Background" Value="{DynamicResource AvatarGreyBackground}" />
         <Setter Property="FontSize" Value="{DynamicResource AvatarMediumFontSize}" />
@@ -84,7 +84,7 @@
         <Setter Property="Height" Value="{Binding $self.Width}" />
         <Setter Property="CornerRadius" Value="{DynamicResource AvatarCircleCornerRadius}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="{x:Type o:Avatar}">
+            <ControlTemplate TargetType="{x:Type ovo:Avatar}">
                 <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
                     <Panel>
                         <Border

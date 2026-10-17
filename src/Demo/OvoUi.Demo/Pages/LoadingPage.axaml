@@ -3,35 +3,35 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Loading">
-        <o:ControlShowcase Header="Indicator sizes and styles" SourceKey="loading-indicator-sizes">
+        <ovo:ControlShowcase Header="Indicator sizes and styles" SourceKey="loading-indicator-sizes">
             <WrapPanel
                 ItemSpacing="28"
                 LineSpacing="16"
                 VerticalAlignment="Center">
-                <o:LoadingIcon Classes="small" />
-                <o:LoadingIcon />
-                <o:LoadingIcon Classes="large" />
-                <o:LoadingIcon
+                <ovo:LoadingIcon Classes="small" />
+                <ovo:LoadingIcon />
+                <ovo:LoadingIcon Classes="large" />
+                <ovo:LoadingIcon
                     Height="32"
                     Theme="{StaticResource LoadingIconTrailTheme}"
                     Width="32" />
-                <o:LoadingIcon
+                <ovo:LoadingIcon
                     Foreground="#E5484D"
                     Height="32"
                     Width="32" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Loading container" SourceKey="loading-container-overlay">
+        <ovo:ControlShowcase Header="Loading container" SourceKey="loading-container-overlay">
             <StackPanel Spacing="14">
                 <ToggleSwitch
                     Content="Loading"
                     IsChecked="True"
                     Name="IsLoading" />
-                <o:LoadingContainer
+                <ovo:LoadingContainer
                     IsLoading="{Binding #IsLoading.IsChecked}"
                     LoadingMessage="Loading project activity..."
                     MinHeight="230">
@@ -50,27 +50,27 @@
                             <Button Content="View deployment" HorizontalAlignment="Left" />
                         </StackPanel>
                     </Border>
-                </o:LoadingContainer>
+                </ovo:LoadingContainer>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Custom indicator and message" SourceKey="loading-custom-content">
-            <o:LoadingContainer IsLoading="True" MinHeight="180">
-                <o:LoadingContainer.Indicator>
-                    <o:LoadingIcon
+        <ovo:ControlShowcase Header="Custom indicator and message" SourceKey="loading-custom-content">
+            <ovo:LoadingContainer IsLoading="True" MinHeight="180">
+                <ovo:LoadingContainer.Indicator>
+                    <ovo:LoadingIcon
                         Foreground="#2F9E44"
                         Height="40"
                         Theme="{StaticResource LoadingIconTrailTheme}"
                         Width="40" />
-                </o:LoadingContainer.Indicator>
-                <o:LoadingContainer.LoadingMessage>
+                </ovo:LoadingContainer.Indicator>
+                <ovo:LoadingContainer.LoadingMessage>
                     <TextBlock
                         FontWeight="SemiBold"
                         Margin="0,10,0,0"
                         Text="Preparing preview" />
-                </o:LoadingContainer.LoadingMessage>
+                </ovo:LoadingContainer.LoadingMessage>
                 <Border Background="{DynamicResource LayerFillColorDefaultBrush}" Height="180" />
-            </o:LoadingContainer>
-        </o:ControlShowcase>
+            </ovo:LoadingContainer>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

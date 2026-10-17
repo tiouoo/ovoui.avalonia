@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Menu">
-        <o:ControlShowcase Header="Menu bar" SourceKey="menu-bar-basic">
+        <ovo:ControlShowcase Header="Menu bar" SourceKey="menu-bar-basic">
             <Menu HorizontalAlignment="Stretch">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" InputGesture="Ctrl+N">
@@ -71,9 +71,9 @@
                     <MenuItem Header="About OvoUi" />
                 </MenuItem>
             </Menu>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="ContextMenu" SourceKey="menu-context-menu">
+        <ovo:ControlShowcase Header="ContextMenu" SourceKey="menu-context-menu">
             <Border
                 Background="{DynamicResource PanelBackgroundBrush}"
                 BorderBrush="{DynamicResource LineBrush}"
@@ -105,9 +105,9 @@
                         Text="Right-click this area" />
                 </StackPanel>
             </Border>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="MenuFlyout" SourceKey="menu-flyout">
+        <ovo:ControlShowcase Header="MenuFlyout" SourceKey="menu-flyout">
             <Button Content="Export" HorizontalAlignment="Left">
                 <Button.Flyout>
                     <MenuFlyout>
@@ -125,6 +125,6 @@
                     </MenuFlyout>
                 </Button.Flyout>
             </Button>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

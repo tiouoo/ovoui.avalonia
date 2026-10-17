@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="CheckBox">
-        <o:ControlShowcase Header="Standard CheckBox" SourceKey="checkbox-standard">
+        <ovo:ControlShowcase Header="Standard CheckBox" SourceKey="checkbox-standard">
             <StackPanel Margin="10,0" Spacing="16">
                 <WrapPanel ItemSpacing="24" LineSpacing="12">
                     <CheckBox Content="Unchecked" />
@@ -25,9 +25,9 @@
                         IsEnabled="False" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Three-state CheckBox" SourceKey="checkbox-three-state">
+        <ovo:ControlShowcase Header="Three-state CheckBox" SourceKey="checkbox-three-state">
             <StackPanel Margin="10,0" Spacing="16">
                 <WrapPanel ItemSpacing="24" LineSpacing="12">
                     <CheckBox Content="Click to cycle states" IsThreeState="True" />
@@ -42,9 +42,9 @@
                         IsThreeState="True" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="BasicCheckBoxTheme" SourceKey="checkbox-basic-theme">
+        <ovo:ControlShowcase Header="BasicCheckBoxTheme" SourceKey="checkbox-basic-theme">
             <WrapPanel
                 ItemSpacing="24"
                 LineSpacing="12"
@@ -62,9 +62,9 @@
                     IsEnabled="False"
                     Theme="{StaticResource BasicCheckBoxTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="CardCheckBoxTheme" SourceKey="checkbox-card-theme">
+        <ovo:ControlShowcase Header="CardCheckBoxTheme" SourceKey="checkbox-card-theme">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
@@ -84,9 +84,9 @@
                     MinWidth="190"
                     Theme="{StaticResource CardCheckBoxTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="PureCardCheckBoxTheme" SourceKey="checkbox-pure-card-theme">
+        <ovo:ControlShowcase Header="PureCardCheckBoxTheme" SourceKey="checkbox-pure-card-theme">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
@@ -106,6 +106,6 @@
                     MinWidth="140"
                     Theme="{StaticResource PureCardCheckBoxTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

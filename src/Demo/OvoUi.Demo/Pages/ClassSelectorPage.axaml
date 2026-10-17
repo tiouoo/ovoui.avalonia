@@ -2,34 +2,34 @@
     x:Class="OvoUi.Demo.Pages.ClassSelectorPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ClassSelector">
-        <o:ControlShowcase Header="Apply style classes" SourceKey="inputs-class-selector">
+        <ovo:ControlShowcase Header="Apply style classes" SourceKey="inputs-class-selector">
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="24">
-                <o:ClassSelector
+                <ovo:ClassSelector
                     Name="Selector"
                     PlaceholderText="Choose style classes"
                     Width="300">
-                    <o:ClassSelectorGroup Header="Size">
-                        <o:ClassSelectorItem ClassName="small" Content="Small" />
-                        <o:ClassSelectorItem ClassName="large" Content="Large" />
-                    </o:ClassSelectorGroup>
-                    <o:ClassSelectorGroup Header="Appearance">
-                        <o:ClassSelectorItem ClassName="accent" Content="Accent" />
-                        <o:ClassSelectorItem ClassName="warn" Content="Warning" />
-                    </o:ClassSelectorGroup>
-                </o:ClassSelector>
+                    <ovo:ClassSelectorGroup Header="Size">
+                        <ovo:ClassSelectorItem ClassName="small" Content="Small" />
+                        <ovo:ClassSelectorItem ClassName="large" Content="Large" />
+                    </ovo:ClassSelectorGroup>
+                    <ovo:ClassSelectorGroup Header="Appearance">
+                        <ovo:ClassSelectorItem ClassName="accent" Content="Accent" />
+                        <ovo:ClassSelectorItem ClassName="warn" Content="Warning" />
+                    </ovo:ClassSelectorGroup>
+                </ovo:ClassSelector>
                 <StackPanel Grid.Column="1" Spacing="12">
                     <TextBlock Text="Target preview" />
                     <Button
                         Content="Preview button"
                         HorizontalAlignment="Left"
-                        o:ClassSelector.Source="{Binding #Selector}" />
+                        ovo:ClassSelector.Source="{Binding #Selector}" />
                     <TextBlock Text="Selected classes" />
                     <ListBox ItemsSource="{Binding #Selector.SelectedClasses}" />
                 </StackPanel>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

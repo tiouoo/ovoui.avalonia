@@ -3,17 +3,17 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ContentDialog">
-        <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-content-dialog-configurator">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-content-dialog-configurator">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <Grid
                 ColumnDefinitions="180,*"
                 ColumnSpacing="12"
@@ -86,16 +86,16 @@
                     <TextBlock Text="{Binding LastResult, StringFormat='Last result: {0}'}" VerticalAlignment="Center" />
                 </StackPanel>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Common content" SourceKey="feedback-content-dialog-content">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Common content" SourceKey="feedback-content-dialog-content">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding ContentCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
                     <Button Click="ShowDeleteConfirm" Content="Delete confirmation" />
@@ -106,20 +106,20 @@
                 </WrapPanel>
                 <TextBlock Text="{Binding PresetResult, StringFormat='Preset result: {0}'}" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Asynchronous validation" SourceKey="feedback-content-dialog-deferral">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Asynchronous validation" SourceKey="feedback-content-dialog-deferral">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding DeferralCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Orientation="Horizontal" Spacing="10">
                 <Button Click="ShowValidatedDialog" Content="Validate CONFIRM" />
                 <TextBlock Text="{Binding ValidationResult}" VerticalAlignment="Center" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

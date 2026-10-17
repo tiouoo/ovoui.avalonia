@@ -3,18 +3,18 @@
     x:DataType="pages:AspectRatioLayoutPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="AspectRatioLayout">
-        <o:ControlShowcase Header="Aspect modes" SourceKey="layout-aspect-ratio-modes">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Aspect modes" SourceKey="layout-aspect-ratio-modes">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="12" LineSpacing="8">
                     <Button Click="UseHorizontalPreset" Content="Horizontal" />
@@ -48,44 +48,44 @@
                     <TextBlock Text="{Binding #modeLayout.AspectRatioValue, StringFormat='Ratio: {0:F2}'}" VerticalAlignment="Center" />
                 </StackPanel>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <o:AspectRatioLayout
+                    <ovo:AspectRatioLayout
                         AspectRatioTolerance="{Binding #toleranceSlider.Value}"
                         Height="{Binding #heightSlider.Value}"
                         HorizontalAlignment="Left"
                         Name="modeLayout"
                         Width="{Binding #widthSlider.Value}">
-                        <o:AspectRatioLayoutItem AcceptAspectRatioMode="HorizontalRectangle">
+                        <ovo:AspectRatioLayoutItem AcceptAspectRatioMode="HorizontalRectangle">
                             <Border Background="#223F8CFF" CornerRadius="8">
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     Text="Horizontal rectangle"
                                     VerticalAlignment="Center" />
                             </Border>
-                        </o:AspectRatioLayoutItem>
-                        <o:AspectRatioLayoutItem AcceptAspectRatioMode="VerticalRectangle">
+                        </ovo:AspectRatioLayoutItem>
+                        <ovo:AspectRatioLayoutItem AcceptAspectRatioMode="VerticalRectangle">
                             <Border Background="#223BB346" CornerRadius="8">
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     Text="Vertical rectangle"
                                     VerticalAlignment="Center" />
                             </Border>
-                        </o:AspectRatioLayoutItem>
-                        <o:AspectRatioLayoutItem AcceptAspectRatioMode="Square">
+                        </ovo:AspectRatioLayoutItem>
+                        <ovo:AspectRatioLayoutItem AcceptAspectRatioMode="Square">
                             <Border Background="#22F0B114" CornerRadius="8">
                                 <TextBlock
                                     HorizontalAlignment="Center"
                                     Text="Square"
                                     VerticalAlignment="Center" />
                             </Border>
-                        </o:AspectRatioLayoutItem>
-                    </o:AspectRatioLayout>
+                        </ovo:AspectRatioLayoutItem>
+                    </ovo:AspectRatioLayout>
                 </ScrollViewer>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Custom aspect range" SourceKey="layout-aspect-ratio-range">
-            <o:AspectRatioLayout Height="240">
-                <o:AspectRatioLayoutItem EndAspectRatioValue="2.2" StartAspectRatioValue="1.8">
+        <ovo:ControlShowcase Header="Custom aspect range" SourceKey="layout-aspect-ratio-range">
+            <ovo:AspectRatioLayout Height="240">
+                <ovo:AspectRatioLayoutItem EndAspectRatioValue="2.2" StartAspectRatioValue="1.8">
                     <Border Background="#229E28B3" CornerRadius="8">
                         <StackPanel
                             HorizontalAlignment="Center"
@@ -95,26 +95,26 @@
                             <TextBlock Text="1.8 to 2.2" />
                         </StackPanel>
                     </Border>
-                </o:AspectRatioLayoutItem>
-                <o:AspectRatioLayoutItem AcceptAspectRatioMode="HorizontalRectangle">
+                </ovo:AspectRatioLayoutItem>
+                <ovo:AspectRatioLayoutItem AcceptAspectRatioMode="HorizontalRectangle">
                     <TextBlock
                         HorizontalAlignment="Center"
                         Text="Outside the custom range"
                         VerticalAlignment="Center" />
-                </o:AspectRatioLayoutItem>
-                <o:AspectRatioLayoutItem AcceptAspectRatioMode="Square">
+                </ovo:AspectRatioLayoutItem>
+                <ovo:AspectRatioLayoutItem AcceptAspectRatioMode="Square">
                     <TextBlock
                         HorizontalAlignment="Center"
                         Text="Square fallback"
                         VerticalAlignment="Center" />
-                </o:AspectRatioLayoutItem>
-                <o:AspectRatioLayoutItem AcceptAspectRatioMode="VerticalRectangle">
+                </ovo:AspectRatioLayoutItem>
+                <ovo:AspectRatioLayoutItem AcceptAspectRatioMode="VerticalRectangle">
                     <TextBlock
                         HorizontalAlignment="Center"
                         Text="Vertical fallback"
                         VerticalAlignment="Center" />
-                </o:AspectRatioLayoutItem>
-            </o:AspectRatioLayout>
-        </o:ControlShowcase>
+                </ovo:AspectRatioLayoutItem>
+            </ovo:AspectRatioLayout>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -3,59 +3,59 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="SelectionList">
-        <o:ControlShowcase Header="Horizontal selection" SourceKey="selection-list-horizontal">
-            <o:SelectionList
+        <ovo:ControlShowcase Header="Horizontal selection" SourceKey="selection-list-horizontal">
+            <ovo:SelectionList
                 HorizontalAlignment="Left"
                 SelectedIndex="1"
                 VerticalAlignment="Center">
-                <o:SelectionList.ItemsPanel>
+                <ovo:SelectionList.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal" />
                     </ItemsPanelTemplate>
-                </o:SelectionList.ItemsPanel>
-                <o:SelectionList.ItemTemplate>
+                </ovo:SelectionList.ItemsPanel>
+                <ovo:SelectionList.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Margin="16,8" Text="{Binding}" />
                     </DataTemplate>
-                </o:SelectionList.ItemTemplate>
-                <o:SelectionList.ItemsSource>
+                </ovo:SelectionList.ItemTemplate>
+                <ovo:SelectionList.ItemsSource>
                     <generic:List x:TypeArguments="system:String">
                         <system:String>Overview</system:String>
                         <system:String>Activity</system:String>
                         <system:String>Settings</system:String>
                     </generic:List>
-                </o:SelectionList.ItemsSource>
-                <o:SelectionList.Indicator>
+                </ovo:SelectionList.ItemsSource>
+                <ovo:SelectionList.Indicator>
                     <Border
                         Background="{DynamicResource SystemAccentColorOpacity03}"
                         CornerRadius="10"
                         Padding="6" />
-                </o:SelectionList.Indicator>
-            </o:SelectionList>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Vertical selection" SourceKey="selection-list-vertical">
+                </ovo:SelectionList.Indicator>
+            </ovo:SelectionList>
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Vertical selection" SourceKey="selection-list-vertical">
             <WrapPanel ItemSpacing="30">
-                <o:SelectionList SelectedIndex="0" Width="260">
-                    <o:SelectionListItem>Dashboard</o:SelectionListItem>
-                    <o:SelectionListItem>Projects</o:SelectionListItem>
-                    <o:SelectionListItem>Team</o:SelectionListItem>
-                    <o:SelectionListItem IsEnabled="False">Disabled item</o:SelectionListItem>
-                </o:SelectionList>
+                <ovo:SelectionList SelectedIndex="0" Width="260">
+                    <ovo:SelectionListItem>Dashboard</ovo:SelectionListItem>
+                    <ovo:SelectionListItem>Projects</ovo:SelectionListItem>
+                    <ovo:SelectionListItem>Team</ovo:SelectionListItem>
+                    <ovo:SelectionListItem IsEnabled="False">Disabled item</ovo:SelectionListItem>
+                </ovo:SelectionList>
                 <SplitButton Content="Selection in a flyout">
                     <SplitButton.Flyout>
                         <Flyout>
-                            <o:SelectionList SelectedIndex="0">
-                                <o:SelectionListItem>Compact</o:SelectionListItem>
-                                <o:SelectionListItem>Comfortable</o:SelectionListItem>
-                            </o:SelectionList>
+                            <ovo:SelectionList SelectedIndex="0">
+                                <ovo:SelectionListItem>Compact</ovo:SelectionListItem>
+                                <ovo:SelectionListItem>Comfortable</ovo:SelectionListItem>
+                            </ovo:SelectionList>
                         </Flyout>
                     </SplitButton.Flyout>
                 </SplitButton>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

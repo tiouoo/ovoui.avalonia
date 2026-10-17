@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.FadingScrollViewerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="FadingScrollViewer">
-        <o:ControlShowcase Header="Edge fade and scrollbar styles" SourceKey="layout-fading-scroll-viewer-styles">
+        <ovo:ControlShowcase Header="Edge fade and scrollbar styles" SourceKey="layout-fading-scroll-viewer-styles">
             <Grid ColumnDefinitions="220,*" ColumnSpacing="24">
                 <StackPanel Spacing="12">
                     <ToggleSwitch
@@ -18,7 +18,7 @@
                         Name="autoHideToggle" />
                     <ToggleSwitch Content="Flat scrollbar" Name="flatToggle" />
                 </StackPanel>
-                <o:FadingScrollViewer
+                <ovo:FadingScrollViewer
                     AllowAutoHide="{Binding #autoHideToggle.IsChecked}"
                     Classes.InsetContent="{Binding #insetToggle.IsChecked}"
                     Classes.flat="{Binding #flatToggle.IsChecked}"
@@ -54,15 +54,15 @@
                             <TextBlock HorizontalAlignment="Center" Text="Item 8" VerticalAlignment="Center" />
                         </Border>
                     </StackPanel>
-                </o:FadingScrollViewer>
+                </ovo:FadingScrollViewer>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Scrolling behavior" SourceKey="layout-fading-scroll-viewer-behavior">
+        <ovo:ControlShowcase Header="Scrolling behavior" SourceKey="layout-fading-scroll-viewer-behavior">
             <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
                 <StackPanel Spacing="8">
                     <TextBlock FontWeight="SemiBold" Text="Inertia and chaining" />
-                    <o:FadingScrollViewer
+                    <ovo:FadingScrollViewer
                         Height="180"
                         HorizontalScrollBarVisibility="Disabled"
                         IsScrollChainingEnabled="True"
@@ -76,11 +76,11 @@
                             <Button Content="Focusable item 5" />
                             <Button Content="Focusable item 6" />
                         </StackPanel>
-                    </o:FadingScrollViewer>
+                    </ovo:FadingScrollViewer>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Spacing="8">
                     <TextBlock FontWeight="SemiBold" Text="Custom content padding" />
-                    <o:FadingScrollViewer
+                    <ovo:FadingScrollViewer
                         Height="180"
                         HorizontalScrollBarVisibility="Disabled"
                         Padding="12"
@@ -91,9 +91,9 @@
                             <Border Background="#22E58BA5" Height="64" />
                             <Border Background="#22F2B36D" Height="64" />
                         </StackPanel>
-                    </o:FadingScrollViewer>
+                    </ovo:FadingScrollViewer>
                 </StackPanel>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

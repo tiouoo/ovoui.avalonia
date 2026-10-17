@@ -3,10 +3,10 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Slider">
-        <o:ControlShowcase Header="Horizontal sliders" SourceKey="slider-horizontal">
+        <ovo:ControlShowcase Header="Horizontal sliders" SourceKey="slider-horizontal">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="22"
@@ -35,8 +35,8 @@
                     Maximum="100"
                     Value="40" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Value binding" SourceKey="slider-value">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Value binding" SourceKey="slider-value">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="12"
@@ -47,8 +47,8 @@
                     x:Name="Volume" />
                 <TextBlock Text="{Binding #Volume.Value, StringFormat='Volume: {0:F0}%'}" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Vertical sliders" SourceKey="slider-vertical">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Vertical sliders" SourceKey="slider-vertical">
             <WrapPanel Height="300" ItemSpacing="34">
                 <Slider
                     Height="260"
@@ -75,6 +75,6 @@
                     Orientation="Vertical"
                     Value="40" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

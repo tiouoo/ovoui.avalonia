@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.PreviewWith>
         <StackPanel Margin="20" Spacing="20">
-            <o:Rating />
+            <ovo:Rating />
         </StackPanel>
     </Design.PreviewWith>
 
@@ -29,13 +29,13 @@
     </ResourceDictionary.ThemeDictionaries>
 
 
-    <ControlTheme TargetType="o:RatingCharacter" x:Key="{x:Type o:RatingCharacter}">
+    <ControlTheme TargetType="ovo:RatingCharacter" x:Key="{x:Type ovo:RatingCharacter}">
         <Setter Property="Character" Value="{DynamicResource RatingStarIconGlyph}" />
         <Setter Property="Background" Value="{DynamicResource RatingCharacterBackground}" />
         <Setter Property="Margin" Value="3 ,4" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:RatingCharacter">
+            <ControlTemplate TargetType="ovo:RatingCharacter">
                 <Canvas
                     Height="{TemplateBinding Size}"
                     Name="PART_Root"
@@ -49,7 +49,7 @@
                     <Border
                         ClipToBounds="True"
                         IsVisible="False"
-                        Name="{x:Static o:RatingCharacter.PART_IconBorder}">
+                        Name="{x:Static ovo:RatingCharacter.PART_IconBorder}">
                         <Path
                             Data="{TemplateBinding Character}"
                             Fill="{TemplateBinding Foreground}"
@@ -69,17 +69,17 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:Rating" x:Key="{x:Type o:Rating}">
+    <ControlTheme TargetType="ovo:Rating" x:Key="{x:Type ovo:Rating}">
         <Setter Property="Foreground" Value="{DynamicResource RatingCharacterForeground}" />
         <Setter Property="Character" Value="{DynamicResource RatingStarIconGlyph}" />
         <Setter Property="Size" Value="24" />
         <Setter Property="ItemTemplate">
             <DataTemplate>
-                <o:RatingCharacter />
+                <ovo:RatingCharacter />
             </DataTemplate>
         </Setter>
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:Rating">
+            <ControlTemplate TargetType="ovo:Rating">
                 <Border
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -92,7 +92,7 @@
                             HorizontalAlignment="Stretch"
                             ItemTemplate="{TemplateBinding ItemTemplate}"
                             ItemsSource="{TemplateBinding Items}"
-                            Name="{x:Static o:Rating.PART_ItemsControl}"
+                            Name="{x:Static ovo:Rating.PART_ItemsControl}"
                             VerticalAlignment="Top">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>

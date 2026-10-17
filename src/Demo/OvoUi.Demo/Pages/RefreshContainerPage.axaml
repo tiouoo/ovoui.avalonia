@@ -3,19 +3,19 @@
     x:DataType="pages:RefreshContainerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="RefreshContainer">
-        <o:ControlShowcase Header="Pull to refresh" SourceKey="refresh-container-pull">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Pull to refresh" SourceKey="refresh-container-pull">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="440"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Pull the list downward to request new content." />
                 <TextBlock Text="{Binding Status}" />
@@ -52,6 +52,6 @@
                     </RefreshContainer>
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

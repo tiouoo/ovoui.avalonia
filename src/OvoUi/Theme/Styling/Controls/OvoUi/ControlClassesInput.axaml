@@ -1,20 +1,20 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:ControlClassesInput" x:Key="{x:Type o:ControlClassesInput}">
+    <ControlTheme TargetType="ovo:ControlClassesInput" x:Key="{x:Type ovo:ControlClassesInput}">
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:ControlClassesInput">
-                <o:TagInput
+            <ControlTemplate TargetType="ovo:ControlClassesInput">
+                <ovo:TagInput
                     AllowDuplicates="False"
                     HorizontalAlignment="Stretch"
                     Separator="{TemplateBinding Separator}"
                     Tags="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TargetClasses, Mode=TwoWay}">
-                    <o:TagInput.Styles>
+                    <ovo:TagInput.Styles>
                         <Style Selector="TextBox">
                             <Setter Property="ContextFlyout">
                                 <MenuFlyout>
-                                    <MenuItem Command="{Binding $parent[o:ControlClassesInput].Undo}" Header="{DynamicResource Lang.Undo}">
+                                    <MenuItem Command="{Binding $parent[ovo:ControlClassesInput].Undo}" Header="{DynamicResource Lang.Undo}">
                                         <MenuItem.Icon>
                                             <PathIcon
                                                 Data="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"
@@ -22,7 +22,7 @@
                                                 Width="15" />
                                         </MenuItem.Icon>
                                     </MenuItem>
-                                    <MenuItem Command="{Binding $parent[o:ControlClassesInput].Clear}" Header="{DynamicResource Lang.Clear}">
+                                    <MenuItem Command="{Binding $parent[ovo:ControlClassesInput].Clear}" Header="{DynamicResource Lang.Clear}">
                                         <MenuItem.Icon>
                                             <PathIcon
                                                 Data="F1 M448,512z M0,0z M136.7,5.9L128,32 32,32C14.3,32 0,46.3 0,64 0,81.7 14.3,96 32,96L416,96C433.7,96 448,81.7 448,64 448,46.3 433.7,32 416,32L320,32 311.3,5.9C306.9,-7.2,294.7,-16,280.9,-16L167.1,-16C153.3,-16,141.1,-7.2,136.7,5.9z M416,144L32,144 53.1,467.1C54.7,492.4,75.7,512,101,512L347,512C372.3,512,393.3,492.4,394.9,467.1L416,144z"
@@ -107,13 +107,13 @@
                             </Setter>
                         </Style>
 
-                    </o:TagInput.Styles>
-                </o:TagInput>
+                    </ovo:TagInput.Styles>
+                </ovo:TagInput>
             </ControlTemplate>
         </Setter>
         <Setter Property="ContextFlyout">
             <MenuFlyout>
-                <MenuItem Command="{Binding $parent[o:ControlClassesInput].Undo}" Header="{DynamicResource Lang.Undo}">
+                <MenuItem Command="{Binding $parent[ovo:ControlClassesInput].Undo}" Header="{DynamicResource Lang.Undo}">
                     <MenuItem.Icon>
                         <PathIcon
                             Data="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"
@@ -121,7 +121,7 @@
                             Width="15" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="{Binding $parent[o:ControlClassesInput].Clear}" Header="{DynamicResource Lang.Clear}">
+                <MenuItem Command="{Binding $parent[ovo:ControlClassesInput].Clear}" Header="{DynamicResource Lang.Clear}">
                     <MenuItem.Icon>
                         <PathIcon
                             Data="F1 M448,512z M0,0z M136.7,5.9L128,32 32,32C14.3,32 0,46.3 0,64 0,81.7 14.3,96 32,96L416,96C433.7,96 448,81.7 448,64 448,46.3 433.7,32 416,32L320,32 311.3,5.9C306.9,-7.2,294.7,-16,280.9,-16L167.1,-16C153.3,-16,141.1,-7.2,136.7,5.9z M416,144L32,144 53.1,467.1C54.7,492.4,75.7,512,101,512L347,512C372.3,512,393.3,492.4,394.9,467.1L416,144z"

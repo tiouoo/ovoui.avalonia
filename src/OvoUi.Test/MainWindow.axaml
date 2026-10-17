@@ -1,4 +1,4 @@
-<o:OvoWindow
+<ovo:OvoWindow
     Height="780"
     Icon="avares://OvoUi.Test/Assets/icon.ico"
     MinHeight="620"
@@ -13,7 +13,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:test="clr-namespace:OvoUi.Test"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid RowDefinitions="Auto,*">
@@ -40,4 +40,4 @@
             </StackPanel>
         </ScrollViewer>
     </Grid>
-</o:OvoWindow>
+</ovo:OvoWindow>

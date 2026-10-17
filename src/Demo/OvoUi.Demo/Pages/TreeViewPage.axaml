@@ -3,17 +3,17 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TreeView">
-        <o:ControlShowcase Header="TreeView examples" SourceKey="shows-tree-view">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="TreeView examples" SourceKey="shows-tree-view">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <Grid ColumnDefinitions="*,*" ColumnSpacing="24">
                 <TreeView>
                     <TreeViewItem Header="Components" IsExpanded="True">
@@ -32,6 +32,6 @@
                     </TreeView.ItemTemplate>
                 </TreeView>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

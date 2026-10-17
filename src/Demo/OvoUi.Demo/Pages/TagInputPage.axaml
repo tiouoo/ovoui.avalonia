@@ -2,31 +2,31 @@
     x:Class="OvoUi.Demo.Pages.TagInputPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TagInput">
-        <o:ControlShowcase Header="Tag entry" SourceKey="tag-input-entry">
+        <ovo:ControlShowcase Header="Tag entry" SourceKey="tag-input-entry">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="16"
                 Width="560">
-                <o:TagInput PlaceholderText="Type a tag, then press Enter" />
-                <o:TagInput
+                <ovo:TagInput PlaceholderText="Type a tag, then press Enter" />
+                <ovo:TagInput
                     AllowDuplicates="False"
                     PlaceholderText="Comma-separated tags"
                     Separator="," />
-                <o:TagInput AllowDuplicates="True" PlaceholderText="Duplicates allowed" />
+                <ovo:TagInput AllowDuplicates="True" PlaceholderText="Duplicates allowed" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Focus behavior and states" SourceKey="tag-input-states">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Focus behavior and states" SourceKey="tag-input-states">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="16"
                 Width="560">
-                <o:TagInput LostFocusBehavior="Add" PlaceholderText="Commit value on focus loss" />
-                <o:TagInput LostFocusBehavior="Clear" PlaceholderText="Clear value on focus loss" />
-                <o:TagInput IsEnabled="False" PlaceholderText="Disabled" />
+                <ovo:TagInput LostFocusBehavior="Add" PlaceholderText="Commit value on focus loss" />
+                <ovo:TagInput LostFocusBehavior="Clear" PlaceholderText="Clear value on focus loss" />
+                <ovo:TagInput IsEnabled="False" PlaceholderText="Disabled" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

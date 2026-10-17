@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.TextBoxPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TextBox">
-        <o:ControlShowcase Header="Standard states" SourceKey="text-box-states">
+        <ovo:ControlShowcase Header="Standard states" SourceKey="text-box-states">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <TextBox PlaceholderText="Placeholder" Width="280" />
                 <TextBox Text="Editable text" Width="280" />
@@ -18,8 +18,8 @@
                     Text="Disabled"
                     Width="280" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Inline content and actions" SourceKey="text-box-content">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Inline content and actions" SourceKey="text-box-content">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <TextBox
                     InnerLeftContent="https://"
@@ -41,8 +41,8 @@
                     Text="secret"
                     Width="300" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Themes and multiline" SourceKey="text-box-themes">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Themes and multiline" SourceKey="text-box-themes">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <TextBox
                     Classes="border"
@@ -69,6 +69,6 @@
                     Theme="{StaticResource LooklessTextBoxTheme}"
                     Width="300" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -1,13 +1,13 @@
 <UserControl
     mc:Ignorable="d"
     x:Class="OvoUi.Controls.OvoTitleBar"
-    x:DataType="o:OvoTitleBar"
+    x:DataType="ovo:OvoTitleBar"
     x:Name="RootControl"
     xmlns="https://github.com/avaloniaui"
     xmlns:cdp="clr-namespace:Avalonia.Controls.Chrome;assembly=Avalonia.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Border
         Background="Transparent"
@@ -57,10 +57,10 @@
                             cdp:WindowDecorationProperties.ElementRole="User">
                             <PathIcon Name="FullScreenIcon">
                                 <PathIcon.Data>
-                                    <MultiBinding Converter="{x:Static o:WindowControlIconConverter.Instance}" ConverterParameter="FullScreen">
+                                    <MultiBinding Converter="{x:Static ovo:WindowControlIconConverter.Instance}" ConverterParameter="FullScreen">
                                         <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
-                                        <Binding Path="FullScreenButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
-                                        <Binding Path="ExitFullScreenButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                        <Binding Path="FullScreenButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
+                                        <Binding Path="ExitFullScreenButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
                                     </MultiBinding>
                                 </PathIcon.Data>
                             </PathIcon>
@@ -72,10 +72,10 @@
                             cdp:WindowDecorationProperties.ElementRole="User">
                             <PathIcon Name="PinIcon">
                                 <PathIcon.Data>
-                                    <MultiBinding Converter="{x:Static o:WindowControlIconConverter.Instance}" ConverterParameter="Pin">
+                                    <MultiBinding Converter="{x:Static ovo:WindowControlIconConverter.Instance}" ConverterParameter="Pin">
                                         <Binding Path="Topmost" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
-                                        <Binding Path="PinButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
-                                        <Binding Path="UnpinButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                        <Binding Path="PinButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
+                                        <Binding Path="UnpinButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
                                     </MultiBinding>
                                 </PathIcon.Data>
                             </PathIcon>
@@ -92,17 +92,17 @@
                             Name="MaximizeButton"
                             cdp:WindowDecorationProperties.ElementRole="MaximizeButton">
                             <Button.IsVisible>
-                                <MultiBinding Converter="{x:Static o:WindowStateVisibilityConverter.Instance}" ConverterParameter="MaximizeControl">
-                                    <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                <MultiBinding Converter="{x:Static ovo:WindowStateVisibilityConverter.Instance}" ConverterParameter="MaximizeControl">
+                                    <Binding Path="IsMaximizeButtonVisible" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
                                     <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
                                 </MultiBinding>
                             </Button.IsVisible>
                             <PathIcon Name="MaximizeIcon">
                                 <PathIcon.Data>
-                                    <MultiBinding Converter="{x:Static o:WindowControlIconConverter.Instance}" ConverterParameter="Maximize">
+                                    <MultiBinding Converter="{x:Static ovo:WindowControlIconConverter.Instance}" ConverterParameter="Maximize">
                                         <Binding Path="WindowState" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Window}" />
-                                        <Binding Path="MaximizeButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
-                                        <Binding Path="RestoreButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=o:OvoTitleBar}" />
+                                        <Binding Path="MaximizeButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
+                                        <Binding Path="RestoreButtonIcon" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ovo:OvoTitleBar}" />
                                     </MultiBinding>
                                 </PathIcon.Data>
                             </PathIcon>

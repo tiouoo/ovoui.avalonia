@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.ListBoxPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ListBox">
-        <o:ControlShowcase Header="Default ListBox" SourceKey="shows-list-box-default">
+        <ovo:ControlShowcase Header="Default ListBox" SourceKey="shows-list-box-default">
             <ListBox SelectedIndex="0" Width="280">
                 <ListBoxItem>Apple</ListBoxItem>
                 <ListBoxItem>Banana</ListBoxItem>
@@ -13,9 +13,9 @@
                 <ListBoxItem IsEnabled="False">Pear (disabled)</ListBoxItem>
                 <ListBoxItem>Grape</ListBoxItem>
             </ListBox>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Radio group" SourceKey="shows-list-box-radio">
+        <ovo:ControlShowcase Header="Radio group" SourceKey="shows-list-box-radio">
             <ListBox SelectedIndex="1" Theme="{StaticResource RadioGroupListBoxTheme}">
                 <ListBoxItem>Apple</ListBoxItem>
                 <ListBoxItem>Banana</ListBoxItem>
@@ -23,9 +23,9 @@
                 <ListBoxItem IsEnabled="False">Pear</ListBoxItem>
                 <ListBoxItem>Grape</ListBoxItem>
             </ListBox>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Button radio group sizes" SourceKey="shows-list-box-button-radio">
+        <ovo:ControlShowcase Header="Button radio group sizes" SourceKey="shows-list-box-button-radio">
             <StackPanel Spacing="12">
                 <Border HorizontalAlignment="Left" Theme="{StaticResource RadioButtonGroupBorder}">
                     <ListBox Theme="{StaticResource ButtonRadioGroupListBoxTheme}">
@@ -48,25 +48,25 @@
                     </ListBox>
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Card radio group" SourceKey="shows-list-box-card-radio">
+        <ovo:ControlShowcase Header="Card radio group" SourceKey="shows-list-box-card-radio">
             <ListBox SelectedIndex="0" Theme="{StaticResource CardRadioGroupListBoxTheme}">
                 <ListBoxItem>Starter</ListBoxItem>
                 <ListBoxItem>Professional</ListBoxItem>
                 <ListBoxItem IsEnabled="False">Enterprise (disabled)</ListBoxItem>
             </ListBox>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Border radio group" SourceKey="shows-list-box-border-radio">
+        <ovo:ControlShowcase Header="Border radio group" SourceKey="shows-list-box-border-radio">
             <ListBox SelectedIndex="1" Theme="{StaticResource BorderListBoxTheme}">
                 <ListBoxItem>One</ListBoxItem>
                 <ListBoxItem>Two</ListBoxItem>
                 <ListBoxItem>Three</ListBoxItem>
             </ListBox>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Check group" SourceKey="shows-list-box-check">
+        <ovo:ControlShowcase Header="Check group" SourceKey="shows-list-box-check">
             <ListBox SelectionMode="Multiple,Toggle" Theme="{StaticResource CheckGroupListBoxTheme}">
                 <ListBoxItem IsSelected="True">Design</ListBoxItem>
                 <ListBoxItem>Development</ListBoxItem>
@@ -74,14 +74,14 @@
                 <ListBoxItem IsEnabled="False">Documentation</ListBoxItem>
                 <ListBoxItem>Operations</ListBoxItem>
             </ListBox>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Card check group" SourceKey="shows-list-box-card-check">
+        <ovo:ControlShowcase Header="Card check group" SourceKey="shows-list-box-card-check">
             <ListBox SelectionMode="Multiple,Toggle" Theme="{StaticResource CardCheckGroupListBoxTheme}">
                 <ListBoxItem IsSelected="True">Email notifications</ListBoxItem>
                 <ListBoxItem>Desktop notifications</ListBoxItem>
                 <ListBoxItem IsSelected="True">Weekly digest</ListBoxItem>
             </ListBox>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

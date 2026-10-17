@@ -2,9 +2,8 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:converters="using:OvoUi.Tab.Converters"
     xmlns:avConverters="using:Avalonia.Data.Converters"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-    xmlns:tab="using:OvoUi.Tab"
     xmlns:internal="using:OvoUi.Tab.Internal"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
@@ -59,11 +58,11 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="tab:OvoTabHost" x:Key="{x:Type tab:OvoTabHost}">
+    <ControlTheme TargetType="ovo:OvoTabHost" x:Key="{x:Type ovo:OvoTabHost}">
         <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
         <Setter Property="Strings" Value="{DynamicResource OvoTab.Strings}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="tab:OvoTabHost">
+            <ControlTemplate TargetType="ovo:OvoTabHost">
                 <Grid
                     Background="{TemplateBinding Background}"
                     RowDefinitions="Auto,*">
@@ -91,19 +90,19 @@
                                 OpacityMask="{Binding Offset, RelativeSource={RelativeSource Self}, Converter={StaticResource OvoTabHorizontalFadeConverter}}"
                                 VerticalScrollBarVisibility="Disabled">
                                 <DockPanel>
-                                    <o:SelectionList
+                                    <ovo:SelectionList
                                         Classes="ovotab-list"
                                         Indicator="{x:Null}"
                                         ItemsSource="{TemplateBinding Tabs}"
                                         Name="PART_TabList"
                                         SelectedItem="{Binding SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                                        <o:SelectionList.ItemsPanel>
+                                        <ovo:SelectionList.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <internal:OvoTabPanel />
                                             </ItemsPanelTemplate>
-                                        </o:SelectionList.ItemsPanel>
-                                        <o:SelectionList.ItemTemplate>
-                                            <DataTemplate DataType="tab:OvoTabItem">
+                                        </ovo:SelectionList.ItemsPanel>
+                                        <ovo:SelectionList.ItemTemplate>
+                                            <DataTemplate DataType="ovo:OvoTabItem">
                                                 <Border
                                                     BorderThickness="0"
                                                     Classes="tab-root"
@@ -159,7 +158,7 @@
                                                             <Button
                                                                 Background="Transparent"
                                                                 Classes="tab-close"
-                                                                Command="{Binding $parent[tab:OvoTabHost].CloseTabCommand}"
+                                                                Command="{Binding $parent[ovo:OvoTabHost].CloseTabCommand}"
                                                                 CommandParameter="{Binding}"
                                                                 Height="28"
                                                                 HorizontalAlignment="Right"
@@ -169,7 +168,7 @@
                                                                 MinHeight="14"
                                                                 Theme="{StaticResource OvoTabChromeButtonTheme}"
                                                                 ToolTip.ShowDelay="900"
-                                                                ToolTip.Tip="{Binding $parent[tab:OvoTabHost].Strings.CloseTab}"
+                                                                ToolTip.Tip="{Binding $parent[ovo:OvoTabHost].Strings.CloseTab}"
                                                                 VerticalAlignment="Center"
                                                                 Width="20">
                                                                 <Button.Transitions>
@@ -178,7 +177,7 @@
                                                                     </Transitions>
                                                                 </Button.Transitions>
                                                                 <TextBlock
-                                                                    FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                                                    FontFamily="{x:Static ovo:OvoTabIcons.FontFamily}"
                                                                     FontSize="16"
                                                                     FontWeight="Thin"
                                                                     HorizontalAlignment="Center"
@@ -189,8 +188,8 @@
                                                     </Panel>
                                                 </Border>
                                             </DataTemplate>
-                                        </o:SelectionList.ItemTemplate>
-                                    </o:SelectionList>
+                                        </ovo:SelectionList.ItemTemplate>
+                                    </ovo:SelectionList>
                                     <Button
                                         Background="Transparent"
                                         Classes="tab-add"
@@ -205,7 +204,7 @@
                                         ToolTip.Tip="{Binding Strings.NewTab, RelativeSource={RelativeSource TemplatedParent}}"
                                         Width="30">
                                         <TextBlock
-                                            FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                            FontFamily="{x:Static ovo:OvoTabIcons.FontFamily}"
                                             FontSize="18"
                                             FontWeight="Thin"
                                             HorizontalAlignment="Center"
@@ -238,10 +237,10 @@
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="tab:OvoTabStrip" x:Key="{x:Type tab:OvoTabStrip}">
+    <ControlTheme TargetType="ovo:OvoTabStrip" x:Key="{x:Type ovo:OvoTabStrip}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="tab:OvoTabStrip">
+            <ControlTemplate TargetType="ovo:OvoTabStrip">
                 <Border
                     Background="{TemplateBinding Background}"
                     Name="PART_TabStripArea"
@@ -265,19 +264,19 @@
                             OpacityMask="{Binding Offset, RelativeSource={RelativeSource Self}, Converter={StaticResource OvoTabHorizontalFadeConverter}}"
                             VerticalScrollBarVisibility="Disabled">
                             <DockPanel>
-                                <o:SelectionList
+                                <ovo:SelectionList
                                     Classes="ovotab-list"
                                     Indicator="{x:Null}"
                                     ItemsSource="{Binding Host.Tabs, RelativeSource={RelativeSource TemplatedParent}}"
                                     Name="PART_TabList"
                                     SelectedItem="{Binding Host.SelectedTab, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                                    <o:SelectionList.ItemsPanel>
+                                    <ovo:SelectionList.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <internal:OvoTabPanel />
                                         </ItemsPanelTemplate>
-                                    </o:SelectionList.ItemsPanel>
-                                    <o:SelectionList.ItemTemplate>
-                                        <DataTemplate DataType="tab:OvoTabItem">
+                                    </ovo:SelectionList.ItemsPanel>
+                                    <ovo:SelectionList.ItemTemplate>
+                                        <DataTemplate DataType="ovo:OvoTabItem">
                                             <Border
                                                 BorderThickness="0"
                                                 Classes="tab-root"
@@ -333,7 +332,7 @@
                                                         <Button
                                                             Background="Transparent"
                                                             Classes="tab-close"
-                                                            Command="{Binding $parent[tab:OvoTabStrip].Host.CloseTabCommand}"
+                                                            Command="{Binding $parent[ovo:OvoTabStrip].Host.CloseTabCommand}"
                                                             CommandParameter="{Binding}"
                                                             Height="28"
                                                             HorizontalAlignment="Right"
@@ -343,7 +342,7 @@
                                                             MinHeight="14"
                                                             Theme="{StaticResource OvoTabChromeButtonTheme}"
                                                             ToolTip.ShowDelay="900"
-                                                            ToolTip.Tip="{Binding $parent[tab:OvoTabStrip].Host.Strings.CloseTab}"
+                                                            ToolTip.Tip="{Binding $parent[ovo:OvoTabStrip].Host.Strings.CloseTab}"
                                                             VerticalAlignment="Center"
                                                             Width="20">
                                                             <Button.Transitions>
@@ -352,7 +351,7 @@
                                                                 </Transitions>
                                                             </Button.Transitions>
                                                             <TextBlock
-                                                                FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                                                FontFamily="{x:Static ovo:OvoTabIcons.FontFamily}"
                                                                 FontSize="16"
                                                                 FontWeight="Thin"
                                                                 HorizontalAlignment="Center"
@@ -363,8 +362,8 @@
                                                 </Panel>
                                             </Border>
                                         </DataTemplate>
-                                    </o:SelectionList.ItemTemplate>
-                                </o:SelectionList>
+                                    </ovo:SelectionList.ItemTemplate>
+                                </ovo:SelectionList>
                                 <Button
                                     Background="Transparent"
                                     Classes="tab-add"
@@ -379,7 +378,7 @@
                                     ToolTip.Tip="{Binding Host.Strings.NewTab, RelativeSource={RelativeSource TemplatedParent}}"
                                     Width="30">
                                     <TextBlock
-                                        FontFamily="{x:Static tab:OvoTabIcons.FontFamily}"
+                                        FontFamily="{x:Static ovo:OvoTabIcons.FontFamily}"
                                         FontSize="18"
                                         FontWeight="Thin"
                                         HorizontalAlignment="Center"

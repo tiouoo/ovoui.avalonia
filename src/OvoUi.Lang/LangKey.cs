@@ -12,7 +12,7 @@ public sealed class LangKey
         Manager = manager ?? throw new ArgumentNullException(nameof(manager));
     }
 
-    public static implicit operator string?(LangKey? linguaKey) => linguaKey?.Key;
+    public static implicit operator string?(LangKey? langKey) => langKey?.Key;
 
     public override string ToString() => Key;
 }

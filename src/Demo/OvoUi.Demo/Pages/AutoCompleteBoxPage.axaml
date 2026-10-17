@@ -8,19 +8,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="AutoCompleteBox">
-        <o:ControlShowcase Header="AutoCompleteBox" SourceKey="auto-complete-search">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="AutoCompleteBox" SourceKey="auto-complete-search">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="430"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <AutoCompleteBox
                     ItemsSource="{Binding Cities}"
@@ -39,16 +39,16 @@
                     PlaceholderText="Contains filter, e.g. Zhou"
                     Width="300" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Content and states" SourceKey="auto-complete-states">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Content and states" SourceKey="auto-complete-states">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <AutoCompleteBox
                     InnerLeftContent="City"
@@ -65,6 +65,6 @@
                     PlaceholderText="Disabled"
                     Width="300" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

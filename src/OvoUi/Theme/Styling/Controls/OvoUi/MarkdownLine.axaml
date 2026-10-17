@@ -1,12 +1,12 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <o:MarkdownLine Margin="20" Markdown="**Bold** *italic* `code` ~~strike~~" />
+        <ovo:MarkdownLine Margin="20" Markdown="**Bold** *italic* `code` ~~strike~~" />
     </Design.PreviewWith>
 
-    <ControlTheme TargetType="{x:Type o:MarkdownLine}" x:Key="{x:Type o:MarkdownLine}">
+    <ControlTheme TargetType="{x:Type ovo:MarkdownLine}" x:Key="{x:Type ovo:MarkdownLine}">
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
         <Setter Property="Cursor" Value="Ibeam" />

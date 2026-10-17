@@ -5,6 +5,7 @@ using OvoUi.Common.Language;
 
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.AvaloniaEdit.Showcase")]
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.AvaloniaEdit.Showcase.Controls")]
+[assembly: XmlnsPrefix("https://github.com/tiouoo/ovoui.avalonia", "ovo")]
 
 namespace OvoUi.AvaloniaEdit.Showcase;
 

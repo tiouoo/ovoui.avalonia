@@ -1,19 +1,19 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Spacing="20" Width="100">
-            <o:Timeline>
-                <o:TimelineItem
+            <ovo:Timeline>
+                <ovo:TimelineItem
                     Content="Hello"
                     TimeFormat="{x:Null}"
                     Type="Success" />
-                <o:TimelineItem Content="World" Type="Default" />
-                <o:TimelineItem Content="World" Type="Error" />
-                <o:TimelineItem Content="World" Type="Ongoing" />
-                <o:TimelineItem Content="World" Type="Warning" />
-            </o:Timeline>
+                <ovo:TimelineItem Content="World" Type="Default" />
+                <ovo:TimelineItem Content="World" Type="Error" />
+                <ovo:TimelineItem Content="World" Type="Ongoing" />
+                <ovo:TimelineItem Content="World" Type="Warning" />
+            </ovo:Timeline>
         </StackPanel>
     </Design.PreviewWith>
 
@@ -26,20 +26,20 @@
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
-    <o:TimelineFormatConverter x:Key="FormatConverter" />
-    <ControlTheme TargetType="o:Timeline" x:Key="{x:Type o:Timeline}">
+    <ovo:TimelineFormatConverter x:Key="FormatConverter" />
+    <ControlTheme TargetType="ovo:Timeline" x:Key="{x:Type ovo:Timeline}">
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:Timeline">
+            <ControlTemplate TargetType="ovo:Timeline">
                 <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
             </ControlTemplate>
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:TimelineItem" x:Key="{x:Type o:TimelineItem}">
+    <ControlTheme TargetType="ovo:TimelineItem" x:Key="{x:Type ovo:TimelineItem}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:TimelineItem">
+            <ControlTemplate TargetType="ovo:TimelineItem">
                 <Grid
                     ColumnDefinitions="Auto, Auto, Auto"
                     Name="PART_RootGrid"
@@ -51,7 +51,7 @@
                         Grid.RowSpan="3"
                         Name="PART_IconAxisRoot"
                         RowDefinitions="Auto, *">
-                        <Panel Grid.Row="0" Name="{x:Static o:TimelineItem.PART_Icon}">
+                        <Panel Grid.Row="0" Name="{x:Static ovo:TimelineItem.PART_Icon}">
                             <ContentPresenter
                                 Content="{TemplateBinding Icon}"
                                 ContentTemplate="{TemplateBinding IconTemplate}"
@@ -82,7 +82,7 @@
                         Grid.Column="2"
                         Grid.Row="0"
                         Margin="8,4"
-                        Name="{x:Static o:TimelineItem.PART_Header}"
+                        Name="{x:Static ovo:TimelineItem.PART_Header}"
                         VerticalAlignment="Top" />
                     <ContentPresenter
                         Content="{TemplateBinding Content}"
@@ -90,7 +90,7 @@
                         Grid.Column="2"
                         Grid.Row="1"
                         Margin="8,2"
-                        Name="{x:Static o:TimelineItem.PART_Content}"
+                        Name="{x:Static ovo:TimelineItem.PART_Content}"
                         TextElement.FontSize="12"
                         VerticalAlignment="Top" />
                     <TextBlock
@@ -98,7 +98,7 @@
                         Grid.Column="0"
                         Grid.Row="0"
                         Margin="8,2"
-                        Name="{x:Static o:TimelineItem.PART_Time}"
+                        Name="{x:Static ovo:TimelineItem.PART_Time}"
                         TextWrapping="Wrap"
                         VerticalAlignment="Top">
                         <TextBlock.Text>

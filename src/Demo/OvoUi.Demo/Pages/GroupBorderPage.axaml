@@ -2,13 +2,13 @@
     x:Class="OvoUi.Demo.Pages.GroupBorderPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="GroupBorder">
-        <o:ControlShowcase Header="Header selection" SourceKey="layout-group-border-selection">
+        <ovo:ControlShowcase Header="Header selection" SourceKey="layout-group-border-selection">
             <StackPanel Spacing="12">
                 <ToggleSwitch Content="Make the header selectable" Name="selectableSwitch" />
-                <o:GroupBorder Header="Connection settings" IsHeaderSelectable="{Binding #selectableSwitch.IsChecked}">
+                <ovo:GroupBorder Header="Connection settings" IsHeaderSelectable="{Binding #selectableSwitch.IsChecked}">
                     <Grid
                         ColumnDefinitions="Auto,*"
                         ColumnSpacing="12"
@@ -26,18 +26,18 @@
                             Grid.Row="1"
                             Value="5432" />
                     </Grid>
-                </o:GroupBorder>
+                </ovo:GroupBorder>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Header content and states" SourceKey="layout-group-border-content-states">
+        <ovo:ControlShowcase Header="Header content and states" SourceKey="layout-group-border-content-states">
             <Grid
                 ColumnDefinitions="*,*"
                 ColumnSpacing="16"
                 RowDefinitions="Auto,Auto"
                 RowSpacing="16">
-                <o:GroupBorder>
-                    <o:GroupBorder.Header>
+                <ovo:GroupBorder>
+                    <ovo:GroupBorder.Header>
                         <StackPanel Orientation="Horizontal" Spacing="8">
                             <Ellipse
                                 Fill="#3BB346"
@@ -45,19 +45,19 @@
                                 Width="8" />
                             <TextBlock FontWeight="SemiBold" Text="Online" />
                         </StackPanel>
-                    </o:GroupBorder.Header>
+                    </ovo:GroupBorder.Header>
                     <TextBlock Text="Headers can contain arbitrary controls." TextWrapping="Wrap" />
-                </o:GroupBorder>
-                <o:GroupBorder
+                </ovo:GroupBorder>
+                <ovo:GroupBorder
                     Grid.Column="1"
                     Header="Disabled"
                     IsEnabled="False">
                     <Button Content="Unavailable action" HorizontalAlignment="Left" />
-                </o:GroupBorder>
-                <o:GroupBorder Grid.ColumnSpan="2" Grid.Row="1">
+                </ovo:GroupBorder>
+                <ovo:GroupBorder Grid.ColumnSpan="2" Grid.Row="1">
                     <TextBlock Text="A GroupBorder can also be used without a header." TextWrapping="Wrap" />
-                </o:GroupBorder>
+                </ovo:GroupBorder>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -144,7 +144,7 @@ public class SmoothScrollViewerDemoModel : ModelBase
         DataContext = new SmoothScrollViewerDemoModel();
         public string Text { get; set; } = string.Join(Environment.NewLine,
             Enumerable.Range(1, 80).Select(i => $"Line {i}: smooth scrolling keeps editing, selection and caret navigation available."));
-        // Add <o:OvoScrollViewerTheme /> to this page's UserControl.Styles.
+        // Add <ovo:OvoScrollViewerTheme /> to this page's UserControl.Styles.
         """;
 
     public string AnchorCode => """

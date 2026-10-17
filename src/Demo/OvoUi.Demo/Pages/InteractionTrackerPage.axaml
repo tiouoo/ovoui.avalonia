@@ -5,13 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:pages="using:OvoUi.Demo.Pages"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia">
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
     <demo:DemoPage Text="InteractionTracker">
-        <o:ControlShowcase Header="Composition interaction without a ScrollViewer" SourceKey="smooth-scroll-interaction-tracker">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding SourceCode}" />
-            </o:ControlShowcase.CodeBlocks>
+        <ovo:ControlShowcase Header="Composition interaction without a ScrollViewer" SourceKey="smooth-scroll-interaction-tracker">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding SourceCode}" />
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Drag or use the wheel anywhere in the canvas. The tiles follow the same tracker through composition expressions. Toggle inertia, or send position requests and a custom animation." TextWrapping="Wrap" />
                 <WrapPanel>
@@ -36,6 +36,6 @@
                     </Canvas>
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

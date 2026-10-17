@@ -5,131 +5,131 @@
     xmlns:common="using:OvoUi.Common.Enums"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:layout="using:Avalonia.Layout"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Descriptions">
-        <o:ControlShowcase Header="Interactive layout" SourceKey="shows-descriptions-configurator">
+        <ovo:ControlShowcase Header="Interactive layout" SourceKey="shows-descriptions-configurator">
             <StackPanel Spacing="16">
                 <WrapPanel ItemSpacing="18" LineSpacing="10">
                     <StackPanel Width="190">
                         <TextBlock Text="Orientation" />
-                        <o:EnumSelector
+                        <ovo:EnumSelector
                             EnumType="{x:Type layout:Orientation}"
                             Name="Orientation"
                             Value="{x:Static layout:Orientation.Vertical}" />
                     </StackPanel>
                     <StackPanel Width="190">
                         <TextBlock Text="Label position" />
-                        <o:EnumSelector
+                        <ovo:EnumSelector
                             EnumType="{x:Type common:Position}"
                             Name="LabelPosition"
                             Value="{x:Static common:Position.Left}" />
                     </StackPanel>
                     <StackPanel Width="190">
                         <TextBlock Text="Item alignment" />
-                        <o:EnumSelector
+                        <ovo:EnumSelector
                             EnumType="{x:Type common:ItemAlignment}"
                             Name="ItemAlignment"
                             Value="{x:Static common:ItemAlignment.Center}" />
                     </StackPanel>
                 </WrapPanel>
-                <o:Descriptions
+                <ovo:Descriptions
                     ItemAlignment="{Binding #ItemAlignment.Value}"
                     LabelPosition="{Binding #LabelPosition.Value}"
                     LabelWidth="150"
                     Orientation="{Binding #Orientation.Value}">
-                    <o:DescriptionsItem Label="Project">OvoUi</o:DescriptionsItem>
-                    <o:DescriptionsItem Label="Framework">Avalonia 11</o:DescriptionsItem>
-                    <o:DescriptionsItem Label="Maintainer">Community team</o:DescriptionsItem>
-                    <o:DescriptionsItem Label="Status">Active development</o:DescriptionsItem>
-                    <o:DescriptionsItem Label="Platforms">Windows, macOS, Linux</o:DescriptionsItem>
-                </o:Descriptions>
+                    <ovo:DescriptionsItem Label="Project">OvoUi</ovo:DescriptionsItem>
+                    <ovo:DescriptionsItem Label="Framework">Avalonia 11</ovo:DescriptionsItem>
+                    <ovo:DescriptionsItem Label="Maintainer">Community team</ovo:DescriptionsItem>
+                    <ovo:DescriptionsItem Label="Status">Active development</ovo:DescriptionsItem>
+                    <ovo:DescriptionsItem Label="Platforms">Windows, macOS, Linux</ovo:DescriptionsItem>
+                </ovo:Descriptions>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Bound data" SourceKey="shows-descriptions-bound-data">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Bound data" SourceKey="shows-descriptions-bound-data">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
-            <o:Descriptions
+            </ovo:ControlShowcase.CodeBlocks>
+            <ovo:Descriptions
                 DisplayMemberBinding="{Binding Value}"
                 ItemAlignment="Justify"
                 ItemsSource="{Binding ProductDetails}"
                 LabelMemberBinding="{Binding Label}"
                 LabelWidth="150" />
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Rich inline content" SourceKey="shows-descriptions-rich-content">
-            <o:Descriptions ItemAlignment="Plain" LabelWidth="150">
-                <o:DescriptionsItem Label="Monthly users">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Rich inline content" SourceKey="shows-descriptions-rich-content">
+            <ovo:Descriptions ItemAlignment="Plain" LabelWidth="150">
+                <ovo:DescriptionsItem Label="Monthly users">
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <TextBlock FontWeight="Bold" Text="1,480,000" />
                         <TextBlock Foreground="#16A34A" Text="+12.4%" />
                     </StackPanel>
-                </o:DescriptionsItem>
-                <o:DescriptionsItem Label="Retention">
+                </ovo:DescriptionsItem>
+                <ovo:DescriptionsItem Label="Retention">
                     <ProgressBar
                         Maximum="100"
                         Value="78"
                         Width="220" />
-                </o:DescriptionsItem>
-                <o:DescriptionsItem Label="Security">
+                </ovo:DescriptionsItem>
+                <ovo:DescriptionsItem Label="Security">
                     <Border
                         Background="#DCFCE7"
                         CornerRadius="4"
                         Padding="8,3">
                         <TextBlock Foreground="#166534" Text="Level 3 verified" />
                     </Border>
-                </o:DescriptionsItem>
-                <o:DescriptionsItem Label="Owner">
+                </ovo:DescriptionsItem>
+                <ovo:DescriptionsItem Label="Owner">
                     <StackPanel Orientation="Horizontal" Spacing="8">
-                        <o:Avatar Classes="small blue" Content="AL" />
+                        <ovo:Avatar Classes="small blue" Content="AL" />
                         <TextBlock Text="Alex Lee" VerticalAlignment="Center" />
                     </StackPanel>
-                </o:DescriptionsItem>
-            </o:Descriptions>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Horizontal sizes" SourceKey="shows-descriptions-horizontal-sizes">
+                </ovo:DescriptionsItem>
+            </ovo:Descriptions>
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Horizontal sizes" SourceKey="shows-descriptions-horizontal-sizes">
             <StackPanel Spacing="12">
                 <Border
                     BorderBrush="{DynamicResource LineBrush}"
                     BorderThickness="1"
                     Padding="12">
-                    <o:Descriptions
+                    <ovo:Descriptions
                         Classes="Small"
                         LabelPosition="Top"
                         Orientation="Horizontal">
-                        <o:DescriptionsItem Label="Users">1.48M</o:DescriptionsItem>
-                        <o:DescriptionsItem Label="Retention">98%</o:DescriptionsItem>
-                        <o:DescriptionsItem Label="Risk">Low</o:DescriptionsItem>
-                    </o:Descriptions>
+                        <ovo:DescriptionsItem Label="Users">1.48M</ovo:DescriptionsItem>
+                        <ovo:DescriptionsItem Label="Retention">98%</ovo:DescriptionsItem>
+                        <ovo:DescriptionsItem Label="Risk">Low</ovo:DescriptionsItem>
+                    </ovo:Descriptions>
                 </Border>
                 <Border
                     BorderBrush="{DynamicResource LineBrush}"
                     BorderThickness="1"
                     Padding="12">
-                    <o:Descriptions LabelPosition="Top" Orientation="Horizontal">
-                        <o:DescriptionsItem Label="Users">1.48M</o:DescriptionsItem>
-                        <o:DescriptionsItem Label="Retention">98%</o:DescriptionsItem>
-                        <o:DescriptionsItem Label="Risk">Low</o:DescriptionsItem>
-                    </o:Descriptions>
+                    <ovo:Descriptions LabelPosition="Top" Orientation="Horizontal">
+                        <ovo:DescriptionsItem Label="Users">1.48M</ovo:DescriptionsItem>
+                        <ovo:DescriptionsItem Label="Retention">98%</ovo:DescriptionsItem>
+                        <ovo:DescriptionsItem Label="Risk">Low</ovo:DescriptionsItem>
+                    </ovo:Descriptions>
                 </Border>
                 <Border
                     BorderBrush="{DynamicResource LineBrush}"
                     BorderThickness="1"
                     Padding="12">
-                    <o:Descriptions
+                    <ovo:Descriptions
                         Classes="Large"
                         LabelPosition="Top"
                         Orientation="Horizontal">
-                        <o:DescriptionsItem Label="Users">1.48M</o:DescriptionsItem>
-                        <o:DescriptionsItem Label="Retention">98%</o:DescriptionsItem>
-                        <o:DescriptionsItem Label="Risk">Low</o:DescriptionsItem>
-                    </o:Descriptions>
+                        <ovo:DescriptionsItem Label="Users">1.48M</ovo:DescriptionsItem>
+                        <ovo:DescriptionsItem Label="Retention">98%</ovo:DescriptionsItem>
+                        <ovo:DescriptionsItem Label="Risk">Low</ovo:DescriptionsItem>
+                    </ovo:Descriptions>
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -8,19 +8,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ScrollToButton">
-        <o:ControlShowcase Header="ScrollToButton" SourceKey="scroll-to-button">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="ScrollToButton" SourceKey="scroll-to-button">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="180"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <Grid
                 ColumnDefinitions="*, *, *, *, *"
                 MaxHeight="560"
@@ -50,7 +50,7 @@
                     Grid.Row="1"
                     HorizontalScrollBarVisibility="Disabled"
                     VerticalScrollBarVisibility="Auto"
-                    o:ScrollTo.Direction="Top">
+                    ovo:ScrollTo.Direction="Top">
                     <Border
                         Classes="Content"
                         Height="2000"
@@ -61,7 +61,7 @@
                     Grid.Row="1"
                     HorizontalScrollBarVisibility="Disabled"
                     VerticalScrollBarVisibility="Auto"
-                    o:ScrollTo.Direction="Bottom">
+                    ovo:ScrollTo.Direction="Bottom">
                     <Border
                         Classes="Content"
                         Height="2000"
@@ -72,7 +72,7 @@
                     Grid.Row="1"
                     HorizontalScrollBarVisibility="Auto"
                     VerticalScrollBarVisibility="Disabled"
-                    o:ScrollTo.Direction="Left">
+                    ovo:ScrollTo.Direction="Left">
                     <Border
                         Classes="Content"
                         VerticalAlignment="Stretch"
@@ -83,7 +83,7 @@
                     Grid.Row="1"
                     HorizontalScrollBarVisibility="Auto"
                     VerticalScrollBarVisibility="Disabled"
-                    o:ScrollTo.Direction="Right">
+                    ovo:ScrollTo.Direction="Right">
                     <Border
                         Classes="Content"
                         VerticalAlignment="Stretch"
@@ -95,8 +95,8 @@
                     ItemsSource="{Binding Items}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    o:ScrollTo.Direction="Top" />
+                    ovo:ScrollTo.Direction="Top" />
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

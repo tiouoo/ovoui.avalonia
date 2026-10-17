@@ -2,40 +2,40 @@
     x:Class="OvoUi.Demo.Pages.ElasticDecoratorPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ElasticDecorator">
-        <o:ControlShowcase Header="Buttons and sizes" SourceKey="layout-elastic-decorator-buttons">
+        <ovo:ControlShowcase Header="Buttons and sizes" SourceKey="layout-elastic-decorator-buttons">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
-                <o:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <Button Content="Small" FontSize="12" Height="32" Width="88" />
-                </o:ElasticDecorator>
-                <o:ElasticDecorator>
+                </ovo:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <Button Content="Drag me" Height="40" Width="120" />
-                </o:ElasticDecorator>
-                <o:ElasticDecorator>
+                </ovo:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <Button Classes="accent" Content="Accent" FontSize="16" Height="48" Width="152" />
-                </o:ElasticDecorator>
-                <o:ElasticDecorator>
+                </ovo:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <Button Content="+" CornerRadius="24" FontSize="24" Height="48" Width="48" />
-                </o:ElasticDecorator>
+                </ovo:ElasticDecorator>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Interactive inputs" SourceKey="layout-elastic-decorator-inputs">
+        <ovo:ControlShowcase Header="Interactive inputs" SourceKey="layout-elastic-decorator-inputs">
             <StackPanel HorizontalAlignment="Left" Spacing="12">
-                <o:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <TextBox PlaceholderText="Drag or type here" Width="260" />
-                </o:ElasticDecorator>
-                <o:ElasticDecorator>
+                </ovo:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <ToggleSwitch Content="Child controls remain interactive" IsChecked="True" />
-                </o:ElasticDecorator>
+                </ovo:ElasticDecorator>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Custom content" SourceKey="layout-elastic-decorator-custom-content">
+        <ovo:ControlShowcase Header="Custom content" SourceKey="layout-elastic-decorator-custom-content">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
-                <o:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <Border
                         Background="{DynamicResource SystemAccentColor}"
                         CornerRadius="8"
@@ -47,8 +47,8 @@
                             <TextBlock Foreground="White" Opacity="0.8" Text="Drag in any direction" />
                         </StackPanel>
                     </Border>
-                </o:ElasticDecorator>
-                <o:ElasticDecorator>
+                </ovo:ElasticDecorator>
+                <ovo:ElasticDecorator>
                     <Border
                         Background="{DynamicResource ControlBackground}"
                         BorderBrush="{DynamicResource LineBrush}"
@@ -58,8 +58,8 @@
                         Width="80">
                         <TextBlock FontSize="24" HorizontalAlignment="Center" Text="OVO" VerticalAlignment="Center" />
                     </Border>
-                </o:ElasticDecorator>
+                </ovo:ElasticDecorator>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

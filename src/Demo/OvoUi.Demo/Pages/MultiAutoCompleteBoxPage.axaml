@@ -3,58 +3,58 @@
     x:DataType="pages:MultiAutoCompleteBoxDemoViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="MultiAutoCompleteBox">
-        <o:ControlShowcase Header="Multiple suggestions" SourceKey="multi-auto-complete">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Multiple suggestions" SourceKey="multi-auto-complete">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="400"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel HorizontalAlignment="Left" Spacing="16">
-                <o:MultiAutoCompleteBox
+                <ovo:MultiAutoCompleteBox
                     ItemsSource="{Binding Items}"
                     MinimumPrefixLength="1"
                     PlaceholderText="Type to add controls"
                     SelectedItems="{Binding SelectedItems}"
                     Width="440" />
-                <o:MultiAutoCompleteBox
+                <ovo:MultiAutoCompleteBox
                     FilterMode="Contains"
                     InnerLeftContent="Controls"
                     InnerRightContent="Multiple"
                     ItemsSource="{Binding Items}"
                     Width="440" />
-                <o:MultiAutoCompleteBox
+                <ovo:MultiAutoCompleteBox
                     IsTextCompletionEnabled="True"
                     ItemsSource="{Binding Items}"
                     PlaceholderText="Text completion enabled"
                     Width="440" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="States" SourceKey="multi-auto-complete-states">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="States" SourceKey="multi-auto-complete-states">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel HorizontalAlignment="Left" Spacing="16">
-                <o:MultiAutoCompleteBox
+                <ovo:MultiAutoCompleteBox
                     Classes="clearButton"
                     ItemsSource="{Binding Items}"
                     PlaceholderText="Clearable"
                     Width="440" />
-                <o:MultiAutoCompleteBox
+                <ovo:MultiAutoCompleteBox
                     IsEnabled="False"
                     PlaceholderText="Disabled"
                     Width="440" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

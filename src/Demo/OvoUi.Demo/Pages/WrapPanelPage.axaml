@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.WrapPanelPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="WrapPanel">
-        <o:ControlShowcase Header="Automatic wrapping" SourceKey="layout-wrap-panel-flow">
+        <ovo:ControlShowcase Header="Automatic wrapping" SourceKey="layout-wrap-panel-flow">
             <StackPanel Spacing="12">
                 <TextBlock Text="Resize the window to see items move between lines." />
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
@@ -19,8 +19,8 @@
                     <Button Content="Settings" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Fixed item size" SourceKey="layout-wrap-panel-item-size">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Fixed item size" SourceKey="layout-wrap-panel-item-size">
             <WrapPanel
                 ItemHeight="72"
                 ItemSpacing="8"
@@ -32,6 +32,6 @@
                 <Border Background="#FFB74D" />
                 <Border Background="#BA68C8" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

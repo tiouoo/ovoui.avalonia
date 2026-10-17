@@ -29,7 +29,7 @@
     <CornerRadius x:Key="ColorSliderCornerRadius">6</CornerRadius>
     <CornerRadius x:Key="ColorSliderThumbCornerRadius">9999</CornerRadius>
     <x:Double x:Key="ColorPickerMinHeight">32</x:Double>
-    <x:Double x:Key="SemiWidthIconMedium">16</x:Double>
+    <x:Double x:Key="OvoWidthIconMedium">16</x:Double>
 
     <converters1:ContrastBrushConverter x:Key="ContrastBrushConverter" />
     <converters:ColorToDisplayNameConverter x:Key="ColorToDisplayNameConverter" />

@@ -3,17 +3,17 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="MessageBox">
-        <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-message-box-configurator">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-message-box-configurator">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="14">
                 <Grid
                     ColumnDefinitions="150,*"
@@ -64,16 +64,16 @@
                     <TextBlock Text="{Binding LastResult, StringFormat='Last result: {0}'}" VerticalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Message presets" SourceKey="feedback-message-box-presets">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Message presets" SourceKey="feedback-message-box-presets">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding PresetsCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <WrapPanel ItemSpacing="10" LineSpacing="10">
                     <Button Click="ShowInformation" Content="Information" />
@@ -90,21 +90,21 @@
                     <Button Click="ShowYesNoCancel" Content="Yes / No / Cancel" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Overlay and owned window" SourceKey="feedback-message-box-hosting">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Overlay and owned window" SourceKey="feedback-message-box-hosting">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding HostingCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <WrapPanel ItemSpacing="10" LineSpacing="10">
                 <Button Click="ShowOverlayMessage" Content="Overlay with full mask" />
                 <Button Click="ShowOwnedWindow" Content="Owned draggable window" />
                 <Button Click="ShowUntitledWindow" Content="Untitled window" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

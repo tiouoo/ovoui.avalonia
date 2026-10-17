@@ -1,6 +1,6 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Thickness x:Key="AnchorIndent">8,4,0,4</Thickness>
     <x:Double x:Key="AnchorPipeWidth">2</x:Double>
@@ -39,7 +39,7 @@
             <SolidColorBrush Color="#888D92" x:Key="AnchorPipeSelectedTertiaryBackground" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
-    <ControlTheme TargetType="{x:Type o:Anchor}" x:Key="{x:Type o:Anchor}">
+    <ControlTheme TargetType="{x:Type ovo:Anchor}" x:Key="{x:Type ovo:Anchor}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Template">
@@ -63,11 +63,11 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:AnchorItem" x:Key="{x:Type o:AnchorItem}">
+    <ControlTheme TargetType="ovo:AnchorItem" x:Key="{x:Type ovo:AnchorItem}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="o:ClassHelper.ClassSource" Value="{Binding $parent[o:Anchor]}" />
+        <Setter Property="ovo:ClassHelper.ClassSource" Value="{Binding $parent[ovo:Anchor]}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:AnchorItem">
+            <ControlTemplate TargetType="ovo:AnchorItem">
                 <StackPanel>
                     <Panel Background="{TemplateBinding Background}">
                         <Border
@@ -81,11 +81,11 @@
                                 Content="{TemplateBinding Header}"
                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
                                 Foreground="{DynamicResource AnchorForeground}"
-                                Name="{x:Static o:PartNames.PART_HeaderPresenter}"
+                                Name="{x:Static ovo:PartNames.PART_HeaderPresenter}"
                                 VerticalAlignment="Center">
                                 <ContentPresenter.Padding>
-                                    <MultiBinding Converter="{o:TreeLevelToPaddingConverter}">
-                                        <Binding Path="Level" RelativeSource="{RelativeSource AncestorType={x:Type o:AnchorItem}}" />
+                                    <MultiBinding Converter="{ovo:TreeLevelToPaddingConverter}">
+                                        <Binding Path="Level" RelativeSource="{RelativeSource AncestorType={x:Type ovo:AnchorItem}}" />
                                         <DynamicResource ResourceKey="AnchorIndent" />
                                     </MultiBinding>
                                 </ContentPresenter.Padding>

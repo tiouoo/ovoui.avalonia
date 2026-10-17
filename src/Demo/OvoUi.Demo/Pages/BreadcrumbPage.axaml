@@ -5,37 +5,37 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Breadcrumb">
-        <o:ControlShowcase Header="Basic" SourceKey="breadcrumb-basic">
+        <ovo:ControlShowcase Header="Basic" SourceKey="breadcrumb-basic">
             <StackPanel Spacing="20">
-                <o:Breadcrumb>
-                    <o:BreadcrumbItem Content="Home" />
-                    <o:BreadcrumbItem Content="Library" />
-                    <o:BreadcrumbItem Content="Documents" IsReadOnly="True" />
-                </o:Breadcrumb>
-                <o:Breadcrumb Separator="/">
-                    <o:BreadcrumbItem Content="Workspace" Icon="⌂" />
-                    <o:BreadcrumbItem Content="OvoUi" />
-                    <o:BreadcrumbItem Content="Navigation" IsReadOnly="True" />
-                </o:Breadcrumb>
-                <o:Breadcrumb Separator="›">
-                    <o:BreadcrumbItem Content="Root" />
-                    <o:BreadcrumbItem Content="Folder" IsEnabled="False" />
-                    <o:BreadcrumbItem Content="Current" IsReadOnly="True" />
-                </o:Breadcrumb>
+                <ovo:Breadcrumb>
+                    <ovo:BreadcrumbItem Content="Home" />
+                    <ovo:BreadcrumbItem Content="Library" />
+                    <ovo:BreadcrumbItem Content="Documents" IsReadOnly="True" />
+                </ovo:Breadcrumb>
+                <ovo:Breadcrumb Separator="/">
+                    <ovo:BreadcrumbItem Content="Workspace" Icon="⌂" />
+                    <ovo:BreadcrumbItem Content="OvoUi" />
+                    <ovo:BreadcrumbItem Content="Navigation" IsReadOnly="True" />
+                </ovo:Breadcrumb>
+                <ovo:Breadcrumb Separator="›">
+                    <ovo:BreadcrumbItem Content="Root" />
+                    <ovo:BreadcrumbItem Content="Folder" IsEnabled="False" />
+                    <ovo:BreadcrumbItem Content="Current" IsReadOnly="True" />
+                </ovo:Breadcrumb>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Custom items" SourceKey="breadcrumb-custom-items">
-            <o:Breadcrumb Separator="•">
-                <o:BreadcrumbItem Content="Dashboard" Icon="●" />
-                <o:BreadcrumbItem Content="Reports" Icon="◆" />
-                <o:BreadcrumbItem
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Custom items" SourceKey="breadcrumb-custom-items">
+            <ovo:Breadcrumb Separator="•">
+                <ovo:BreadcrumbItem Content="Dashboard" Icon="●" />
+                <ovo:BreadcrumbItem Content="Reports" Icon="◆" />
+                <ovo:BreadcrumbItem
                     Content="October"
                     Icon="■"
                     IsReadOnly="True" />
-            </o:Breadcrumb>
-        </o:ControlShowcase>
+            </ovo:Breadcrumb>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

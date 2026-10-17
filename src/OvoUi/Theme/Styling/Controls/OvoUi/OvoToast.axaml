@@ -1,8 +1,8 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:OvoToastManager" x:Key="{x:Type o:OvoToastManager}">
+    <ControlTheme TargetType="ovo:OvoToastManager" x:Key="{x:Type ovo:OvoToastManager}">
         <Setter Property="Margin" Value="0,35,0,0" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -67,14 +67,14 @@
     </ResourceDictionary.ThemeDictionaries>
 
 
-    <ControlTheme TargetType="o:OvoToastCard" x:Key="{x:Type o:OvoToastCard}">
+    <ControlTheme TargetType="ovo:OvoToastCard" x:Key="{x:Type ovo:OvoToastCard}">
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource ToastCardBackground}" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:OvoToastCard">
+            <ControlTemplate TargetType="ovo:OvoToastCard">
                 <LayoutTransformControl UseRenderTransform="True" x:Name="PART_LayoutTransformControl">
                     <Border
                         Background="{TemplateBinding Background}"
@@ -126,7 +126,7 @@
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
-                                            <DataTemplate DataType="o:OperateButtonEntry">
+                                            <DataTemplate DataType="ovo:OperateButtonEntry">
                                                 <HyperlinkButton
                                                     Command="{Binding Command}"
                                                     CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
@@ -153,7 +153,7 @@
                                             VerticalContentAlignment="Center"
                                             x:Name="PART_Content">
                                             <ContentControl.DataTemplates>
-                                                <DataTemplate DataType="o:IToast">
+                                                <DataTemplate DataType="ovo:IToast">
                                                     <TextBlock
                                                         FontWeight="600"
                                                         Foreground="{DynamicResource ToastCardContentForeground}"
@@ -181,7 +181,7 @@
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
-                                        <DataTemplate DataType="o:OperateButtonEntry">
+                                        <DataTemplate DataType="ovo:OperateButtonEntry">
                                             <HyperlinkButton
                                                 Command="{Binding Command}"
                                                 CommandParameter="{Binding RelativeSource={RelativeSource Self}}"

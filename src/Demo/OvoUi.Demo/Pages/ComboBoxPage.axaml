@@ -3,10 +3,10 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ComboBox">
-        <o:ControlShowcase Header="Standard states" SourceKey="combo-box-states">
+        <ovo:ControlShowcase Header="Standard states" SourceKey="combo-box-states">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <ComboBox PlaceholderText="Choose a framework" Width="260">
                     <ComboBoxItem>Avalonia</ComboBoxItem>
@@ -22,8 +22,8 @@
                     PlaceholderText="Disabled"
                     Width="260" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Editable and clearable" SourceKey="combo-box-editable">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Editable and clearable" SourceKey="combo-box-editable">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <ComboBox
                     IsEditable="True"
@@ -40,8 +40,8 @@
                     <ComboBoxItem>Another option</ComboBoxItem>
                 </ComboBox>
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Visual styles" SourceKey="combo-box-styles">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Visual styles" SourceKey="combo-box-styles">
             <WrapPanel ItemSpacing="16">
                 <ComboBox
                     Classes="border"
@@ -52,6 +52,6 @@
                     PlaceholderText="Bordered on focus"
                     Width="260" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

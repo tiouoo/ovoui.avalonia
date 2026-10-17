@@ -3,10 +3,10 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Skeleton">
-        <o:ControlShowcase Header="Loading and animation states" SourceKey="skeleton-loading-states">
+        <ovo:ControlShowcase Header="Loading and animation states" SourceKey="skeleton-loading-states">
             <StackPanel Spacing="16">
                 <WrapPanel ItemSpacing="20" LineSpacing="10">
                     <ToggleSwitch
@@ -22,7 +22,7 @@
                     ColumnDefinitions="96,*"
                     ColumnSpacing="16"
                     MaxWidth="620">
-                    <o:Skeleton
+                    <ovo:Skeleton
                         CornerRadius="6"
                         Height="96"
                         IsActive="{Binding #Active.IsChecked}"
@@ -33,12 +33,12 @@
                                 Text="OVO"
                                 VerticalAlignment="Center" />
                         </Border>
-                    </o:Skeleton>
+                    </ovo:Skeleton>
                     <StackPanel
                         Grid.Column="1"
                         Spacing="12"
                         VerticalAlignment="Center">
-                        <o:Skeleton
+                        <ovo:Skeleton
                             IsActive="{Binding #Active.IsChecked}"
                             IsLoading="{Binding #Loading.IsChecked}"
                             Width="260">
@@ -46,47 +46,47 @@
                                 FontSize="18"
                                 FontWeight="SemiBold"
                                 Text="Quarterly product update" />
-                        </o:Skeleton>
-                        <o:Skeleton
+                        </ovo:Skeleton>
+                        <ovo:Skeleton
                             IsActive="{Binding #Active.IsChecked}"
                             IsLoading="{Binding #Loading.IsChecked}"
                             Width="430">
                             <TextBlock Text="The content appears when loading finishes." />
-                        </o:Skeleton>
-                        <o:Skeleton
+                        </ovo:Skeleton>
+                        <ovo:Skeleton
                             IsActive="{Binding #Active.IsChecked}"
                             IsLoading="{Binding #Loading.IsChecked}"
                             Width="340">
                             <TextBlock Text="Updated a few seconds ago" />
-                        </o:Skeleton>
+                        </ovo:Skeleton>
                     </StackPanel>
                 </Grid>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Shapes and content" SourceKey="skeleton-shapes-content">
+        <ovo:ControlShowcase Header="Shapes and content" SourceKey="skeleton-shapes-content">
             <WrapPanel ItemSpacing="24" LineSpacing="18">
-                <o:Skeleton
+                <ovo:Skeleton
                     CornerRadius="36"
                     Height="72"
                     IsActive="True"
                     IsLoading="True"
                     Width="72" />
-                <o:Skeleton
+                <ovo:Skeleton
                     CornerRadius="4"
                     Height="72"
                     IsLoading="True"
                     Width="220" />
-                <o:Skeleton
+                <ovo:Skeleton
                     CornerRadius="10"
                     Height="120"
                     IsActive="True"
                     IsLoading="True"
                     Width="220" />
-                <o:Skeleton IsLoading="False">
+                <ovo:Skeleton IsLoading="False">
                     <Button Content="Loaded content" />
-                </o:Skeleton>
+                </ovo:Skeleton>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

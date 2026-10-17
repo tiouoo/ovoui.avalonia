@@ -1,15 +1,15 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel>
-            <o:Breadcrumb>
+            <ovo:Breadcrumb>
                 <TextBlock Text="Hello" />
-                <o:BreadcrumbItem Content="World" Icon="♥" />
+                <ovo:BreadcrumbItem Content="World" Icon="♥" />
                 <TextBlock Text="Avalonia" />
                 <TextBlock Text="OvoUi" />
-            </o:Breadcrumb>
+            </ovo:Breadcrumb>
         </StackPanel>
     </Design.PreviewWith>
     <ResourceDictionary.ThemeDictionaries>
@@ -42,18 +42,18 @@
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
     <FontWeight x:Key="TextBlockTitleFontWeight">600</FontWeight>
-    <ControlTheme TargetType="o:Breadcrumb" x:Key="{x:Type o:Breadcrumb}">
+    <ControlTheme TargetType="ovo:Breadcrumb" x:Key="{x:Type ovo:Breadcrumb}">
         <Setter Property="Separator" Value="/" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:Breadcrumb">
+            <ControlTemplate TargetType="ovo:Breadcrumb">
                 <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
             </ControlTemplate>
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:BreadcrumbItem" x:Key="{x:Type o:BreadcrumbItem}">
+    <ControlTheme TargetType="ovo:BreadcrumbItem" x:Key="{x:Type ovo:BreadcrumbItem}">
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:BreadcrumbItem">
+            <ControlTemplate TargetType="ovo:BreadcrumbItem">
                 <Border Background="Transparent">
                     <StackPanel Orientation="Horizontal">
                         <ContentPresenter

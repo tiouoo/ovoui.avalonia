@@ -3,18 +3,18 @@
     x:DataType="pages:ThemeVariantScopePage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ThemeVariantScope">
-        <o:ControlShowcase Header="Runtime theme scope" SourceKey="layout-theme-variant-runtime">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Runtime theme scope" SourceKey="layout-theme-variant-runtime">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="16">
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <Button Click="UseDefaultTheme" Content="Default" />
@@ -40,9 +40,9 @@
                     </Border>
                 </ThemeVariantScope>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Independent light and dark scopes" SourceKey="layout-theme-variant-independent">
+        <ovo:ControlShowcase Header="Independent light and dark scopes" SourceKey="layout-theme-variant-independent">
             <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
                 <ThemeVariantScope RequestedThemeVariant="Light">
                     <Border
@@ -67,6 +67,6 @@
                     </Border>
                 </ThemeVariantScope>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

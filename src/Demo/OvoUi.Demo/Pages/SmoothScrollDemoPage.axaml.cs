@@ -119,7 +119,7 @@ public class SmoothScrollDemoModel : ModelBase
         Enumerable.Range(1, 200).Select(i => $"Line {i}: edit this text, select across lines, or move the caret with the keyboard to scroll into view."));
 
     public string ZoomCode => """
-        // Load <o:OvoScrollViewTheme /> in the example's Styles.
+        // Load <ovo:OvoScrollViewTheme /> in the example's Styles.
         private void Zoom_OnClick(object? sender, RoutedEventArgs e) =>
             ReferenceZoom.ZoomTo(ReferenceZoom.ZoomFactor *
                 ((sender as Button)?.Tag as string == "in" ? 1.2 : 1 / 1.2));
@@ -161,7 +161,7 @@ public class SmoothScrollDemoModel : ModelBase
 
     public string TextCode => """
         // Constructor: InitializeComponent(); DataContext = new SmoothScrollDemoModel();
-        // Load <o:OvoScrollViewerTheme /> only in this example's Styles.
+        // Load <ovo:OvoScrollViewerTheme /> only in this example's Styles.
         public string Text { get; set; } = string.Join(Environment.NewLine,
             Enumerable.Range(1, 200).Select(i => $"Line {i}: edit this text, select across lines, or move the caret with the keyboard to scroll into view."));
         """;

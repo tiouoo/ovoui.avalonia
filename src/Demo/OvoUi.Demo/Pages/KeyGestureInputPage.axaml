@@ -3,42 +3,42 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="KeyGestureInput">
-        <o:ControlShowcase Header="Capture shortcuts" SourceKey="key-gesture-capture">
+        <ovo:ControlShowcase Header="Capture shortcuts" SourceKey="key-gesture-capture">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="16"
                 Width="420">
-                <o:KeyGestureInput />
-                <o:KeyGestureInput
+                <ovo:KeyGestureInput />
+                <ovo:KeyGestureInput
                     Classes="clearButton"
                     InnerLeftContent="Shortcut"
                     InnerRightContent="Press keys" />
-                <o:KeyGestureInput HorizontalContentAlignment="Left" />
-                <o:KeyGestureInput InnerLeftContent="Accept only A,B and C">
-                    <o:KeyGestureInput.AcceptableKeys>
+                <ovo:KeyGestureInput HorizontalContentAlignment="Left" />
+                <ovo:KeyGestureInput InnerLeftContent="Accept only A,B and C">
+                    <ovo:KeyGestureInput.AcceptableKeys>
                         <generic:List x:TypeArguments="Key">
                             <Key>A</Key>
                             <Key>B</Key>
                             <Key>C</Key>
                         </generic:List>
-                    </o:KeyGestureInput.AcceptableKeys>
-                </o:KeyGestureInput>
+                    </ovo:KeyGestureInput.AcceptableKeys>
+                </ovo:KeyGestureInput>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="States" SourceKey="key-gesture-states">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="States" SourceKey="key-gesture-states">
             <WrapPanel ItemSpacing="16">
-                <o:KeyGestureInput
+                <ovo:KeyGestureInput
                     Classes="clear"
                     InnerLeftContent="Clearable"
                     Width="300" />
-                <o:KeyGestureInput
+                <ovo:KeyGestureInput
                     InnerLeftContent="Disabled"
                     IsEnabled="False"
                     Width="300" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

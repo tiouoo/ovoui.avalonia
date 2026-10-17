@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
@@ -18,12 +18,12 @@
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="ClockArborStroke" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
-    <ControlTheme TargetType="o:Clock" x:Key="{x:Type o:Clock}">
+    <ControlTheme TargetType="ovo:Clock" x:Key="{x:Type ovo:Clock}">
         <Setter Property="HandBrush" Value="{DynamicResource ClockHandBrush}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:Clock">
+            <ControlTemplate TargetType="ovo:Clock">
                 <Grid>
-                    <o:ClockTicks
+                    <ovo:ClockTicks
                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                         HourTickForeground="{DynamicResource ClockHourTickForeground}"
                         MinuteTickForeground="{DynamicResource ClockMinuteTickForeground}"
@@ -33,7 +33,7 @@
                         <Border
                             Background="{TemplateBinding HandBrush}"
                             CornerRadius="8"
-                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static o:ClockHandLengthConverter.Hour}}"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static ovo:ClockHandLengthConverter.Hour}}"
                             VerticalAlignment="Bottom"
                             Width="16" />
                         <UniformGrid.RenderTransform>
@@ -44,7 +44,7 @@
                         <Border
                             Background="{TemplateBinding HandBrush}"
                             CornerRadius="4"
-                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static o:ClockHandLengthConverter.Minute}}"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static ovo:ClockHandLengthConverter.Minute}}"
                             VerticalAlignment="Bottom"
                             Width="8" />
                         <UniformGrid.RenderTransform>
@@ -55,7 +55,7 @@
                         <Border
                             Background="{TemplateBinding HandBrush}"
                             CornerRadius="4"
-                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static o:ClockHandLengthConverter.Second}}"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Bounds.Width, Converter={x:Static ovo:ClockHandLengthConverter.Second}}"
                             VerticalAlignment="Bottom"
                             Width="4" />
                         <UniformGrid.RenderTransform>

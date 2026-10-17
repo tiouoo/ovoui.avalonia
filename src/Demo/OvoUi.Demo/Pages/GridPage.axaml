@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.GridPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Grid">
-        <o:ControlShowcase Header="Rows, columns, and spanning" SourceKey="layout-grid-tracks">
+        <ovo:ControlShowcase Header="Rows, columns, and spanning" SourceKey="layout-grid-tracks">
             <Grid
                 ColumnDefinitions="160,*,Auto"
                 ColumnSpacing="10"
@@ -42,8 +42,8 @@
                     Maximum="100"
                     Value="68" />
             </Grid>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Responsive form" SourceKey="layout-grid-form">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Responsive form" SourceKey="layout-grid-form">
             <Grid
                 ColumnDefinitions="Auto,*"
                 ColumnSpacing="14"
@@ -70,6 +70,6 @@
                     Grid.Row="2"
                     HorizontalAlignment="Right" />
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.DockPanelPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="DockPanel">
-        <o:ControlShowcase Header="Docking regions" SourceKey="layout-dock-panel-regions">
+        <ovo:ControlShowcase Header="Docking regions" SourceKey="layout-dock-panel-regions">
             <DockPanel Height="300" LastChildFill="True">
                 <Border
                     Background="#2878D4"
@@ -30,6 +30,6 @@
                     <TextBlock Text="The last child fills the remaining space." TextWrapping="Wrap" />
                 </Border>
             </DockPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

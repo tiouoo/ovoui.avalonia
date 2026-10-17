@@ -1,17 +1,17 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:OverlayDialogHost" x:Key="{x:Type o:OverlayDialogHost}">
+    <ControlTheme TargetType="ovo:OverlayDialogHost" x:Key="{x:Type ovo:OverlayDialogHost}">
         <Setter Property="OverlayMaskBrush" Value="#52000000" />
     </ControlTheme>
 
-    <ControlTheme TargetType="o:CustomDialogControl" x:Key="{x:Type o:CustomDialogControl}">
+    <ControlTheme TargetType="ovo:CustomDialogControl" x:Key="{x:Type ovo:CustomDialogControl}">
         <Setter Property="MinWidth" Value="320" />
         <Setter Property="MaxWidth" Value="720" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:CustomDialogControl">
+            <ControlTemplate TargetType="ovo:CustomDialogControl">
                 <Panel>
                     <Border
                         Background="{DynamicResource PopupBackgroundBrush}"
@@ -22,7 +22,7 @@
                         Margin="10"
                         Name="PART_Border">
                         <Grid>
-                            <Panel Background="Transparent" Name="{x:Static o:DialogControlBase.PART_TitleArea}" />
+                            <Panel Background="Transparent" Name="{x:Static ovo:DialogControlBase.PART_TitleArea}" />
                             <ScrollViewer
                                 HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                 VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
@@ -34,12 +34,12 @@
                             <Button
                                 HorizontalAlignment="Right"
                                 Margin="{TemplateBinding CloseBtnMargin}"
-                                Name="{x:Static o:DialogControlBase.PART_CloseButton}"
+                                Name="{x:Static ovo:DialogControlBase.PART_CloseButton}"
                                 Theme="{DynamicResource CloseButtonTheme}"
                                 VerticalAlignment="Top" />
                         </Grid>
                     </Border>
-                    <o:DialogResizer IsVisible="{TemplateBinding CanResize}" Margin="10" ZIndex="3" />
+                    <ovo:DialogResizer IsVisible="{TemplateBinding CanResize}" Margin="10" ZIndex="3" />
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -47,17 +47,17 @@
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="Margin" Value="0" />
         </Style>
-        <Style Selector="^:full-screen /template/ o|DialogResizer">
+        <Style Selector="^:full-screen /template/ ovo|DialogResizer">
             <Setter Property="Margin" Value="0" />
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:StandardDialogControl" x:Key="{x:Type o:StandardDialogControl}">
+    <ControlTheme TargetType="ovo:StandardDialogControl" x:Key="{x:Type ovo:StandardDialogControl}">
         <Setter Property="MinWidth" Value="360" />
         <Setter Property="MaxWidth" Value="720" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:StandardDialogControl">
+            <ControlTemplate TargetType="ovo:StandardDialogControl">
                 <Panel>
                     <Border
                         Background="{DynamicResource PopupBackgroundBrush}"
@@ -68,7 +68,7 @@
                         Margin="10"
                         Name="PART_Border">
                         <Grid RowDefinitions="Auto,*,Auto">
-                            <Panel Background="Transparent" Name="{x:Static o:DialogControlBase.PART_TitleArea}" />
+                            <Panel Background="Transparent" Name="{x:Static ovo:DialogControlBase.PART_TitleArea}" />
                             <StackPanel Margin="24,20,52,0" Name="PART_DialogHeader" Orientation="Horizontal" Spacing="10">
                                 <PathIcon Height="20" Name="PART_ModeIcon" Width="20" />
                                 <TextBlock FontSize="18" FontWeight="600" Text="{TemplateBinding Title}" VerticalAlignment="Center" />
@@ -76,7 +76,7 @@
                             <Button
                                 HorizontalAlignment="Right"
                                 Margin="12"
-                                Name="{x:Static o:DialogControlBase.PART_CloseButton}"
+                                Name="{x:Static ovo:DialogControlBase.PART_CloseButton}"
                                 Theme="{DynamicResource CloseButtonTheme}" />
                             <ScrollViewer
                                 Grid.Row="1"
@@ -87,14 +87,14 @@
                                 <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
                             </ScrollViewer>
                             <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="24,0,24,20" Name="PART_DialogButtons" Orientation="Horizontal" Spacing="8">
-                                <Button Content="Cancel" Name="{x:Static o:StandardDialogControl.PART_CancelButton}" />
-                                <Button Classes="danger" Content="No" Name="{x:Static o:StandardDialogControl.PART_NoButton}" />
-                                <Button Classes="accent" Content="Yes" Name="{x:Static o:StandardDialogControl.PART_YesButton}" />
-                                <Button Classes="accent" Content="OK" Name="{x:Static o:StandardDialogControl.PART_OKButton}" />
+                                <Button Content="Cancel" Name="{x:Static ovo:StandardDialogControl.PART_CancelButton}" />
+                                <Button Classes="danger" Content="No" Name="{x:Static ovo:StandardDialogControl.PART_NoButton}" />
+                                <Button Classes="accent" Content="Yes" Name="{x:Static ovo:StandardDialogControl.PART_YesButton}" />
+                                <Button Classes="accent" Content="OK" Name="{x:Static ovo:StandardDialogControl.PART_OKButton}" />
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <o:DialogResizer IsVisible="{TemplateBinding CanResize}" Margin="10" ZIndex="3" />
+                    <ovo:DialogResizer IsVisible="{TemplateBinding CanResize}" Margin="10" ZIndex="3" />
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -126,18 +126,18 @@
             <Setter Property="CornerRadius" Value="0" />
             <Setter Property="Margin" Value="0" />
         </Style>
-        <Style Selector="^:full-screen /template/ o|DialogResizer">
+        <Style Selector="^:full-screen /template/ ovo|DialogResizer">
             <Setter Property="Margin" Value="0" />
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:CustomDialogWindow" x:Key="{x:Type o:CustomDialogWindow}">
+    <ControlTheme TargetType="ovo:CustomDialogWindow" x:Key="{x:Type ovo:CustomDialogWindow}">
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
         <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:CustomDialogWindow">
+            <ControlTemplate TargetType="ovo:CustomDialogWindow">
                 <VisualLayerManager>
                     <Panel>
                         <Border
@@ -146,19 +146,19 @@
                             BorderThickness="1"
                             CornerRadius="{DynamicResource OvoCornerRadius}">
                             <Grid>
-                                <Panel Background="Transparent" Height="44" Name="{x:Static o:CustomDialogWindow.PART_TitleArea}" VerticalAlignment="Top" ZIndex="1" />
+                                <Panel Background="Transparent" Height="44" Name="{x:Static ovo:CustomDialogWindow.PART_TitleArea}" VerticalAlignment="Top" ZIndex="1" />
                                 <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}" />
-                                <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static o:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" VerticalAlignment="Top" ZIndex="2" />
+                                <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static ovo:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" VerticalAlignment="Top" ZIndex="2" />
                             </Grid>
                         </Border>
-                        <o:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" ZIndex="3" />
+                        <ovo:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" ZIndex="3" />
                     </Panel>
                 </VisualLayerManager>
             </ControlTemplate>
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:StandardDialogWindow" x:Key="{x:Type o:StandardDialogWindow}">
+    <ControlTheme TargetType="ovo:StandardDialogWindow" x:Key="{x:Type ovo:StandardDialogWindow}">
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="Width" Value="480" />
@@ -166,7 +166,7 @@
         <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
         <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="-1" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:StandardDialogWindow">
+            <ControlTemplate TargetType="ovo:StandardDialogWindow">
                 <VisualLayerManager>
                     <Panel>
                         <Border
@@ -175,19 +175,19 @@
                             BorderThickness="1"
                             CornerRadius="{DynamicResource OvoCornerRadius}">
                             <Grid RowDefinitions="Auto,*,Auto">
-                                <Panel Background="Transparent" Height="48" Name="{x:Static o:CustomDialogWindow.PART_TitleArea}" ZIndex="1" />
+                                <Panel Background="Transparent" Height="48" Name="{x:Static ovo:CustomDialogWindow.PART_TitleArea}" ZIndex="1" />
                                 <TextBlock Margin="20,14,52,8" Text="{TemplateBinding Title}" />
-                                <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static o:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" ZIndex="2" />
+                                <Button HorizontalAlignment="Right" Margin="8" Name="{x:Static ovo:CustomDialogWindow.PART_CloseButton}" Theme="{DynamicResource CloseButtonTheme}" ZIndex="2" />
                                 <ScrollViewer Grid.Row="1" Margin="24,12"><ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" /></ScrollViewer>
                                 <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="20" Orientation="Horizontal" Spacing="8">
-                                    <Button Content="Cancel" Name="{x:Static o:StandardDialogWindow.PART_CancelButton}" />
-                                    <Button Classes="danger" Content="No" Name="{x:Static o:StandardDialogWindow.PART_NoButton}" />
-                                    <Button Classes="accent" Content="Yes" Name="{x:Static o:StandardDialogWindow.PART_YesButton}" />
-                                    <Button Classes="accent" Content="OK" Name="{x:Static o:StandardDialogWindow.PART_OKButton}" />
+                                    <Button Content="Cancel" Name="{x:Static ovo:StandardDialogWindow.PART_CancelButton}" />
+                                    <Button Classes="danger" Content="No" Name="{x:Static ovo:StandardDialogWindow.PART_NoButton}" />
+                                    <Button Classes="accent" Content="Yes" Name="{x:Static ovo:StandardDialogWindow.PART_YesButton}" />
+                                    <Button Classes="accent" Content="OK" Name="{x:Static ovo:StandardDialogWindow.PART_OKButton}" />
                                 </StackPanel>
                             </Grid>
                         </Border>
-                        <o:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" ZIndex="3" />
+                        <ovo:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" ZIndex="3" />
                     </Panel>
                 </VisualLayerManager>
             </ControlTemplate>

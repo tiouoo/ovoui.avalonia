@@ -1,13 +1,13 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:DisableContainer" x:Key="{x:Type o:DisableContainer}">
+    <ControlTheme TargetType="ovo:DisableContainer" x:Key="{x:Type ovo:DisableContainer}">
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:DisableContainer">
+            <ControlTemplate TargetType="ovo:DisableContainer">
                 <Panel>
                     <ContentPresenter Content="{TemplateBinding Content}" />
-                    <o:PureRectangle
+                    <ovo:PureRectangle
                         Background="Transparent"
                         Cursor="No"
                         IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content.IsEnabled, Converter={x:Static BoolConverters.Not}}"

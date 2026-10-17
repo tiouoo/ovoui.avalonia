@@ -3,23 +3,23 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="IPv4Box">
-        <o:ControlShowcase Header="Input modes" SourceKey="ipv4-input-modes">
+        <ovo:ControlShowcase Header="Input modes" SourceKey="ipv4-input-modes">
             <StackPanel HorizontalAlignment="Left" Spacing="16">
-                <o:IPv4Box Width="280" />
-                <o:IPv4Box InputMode="Fast" Width="280" />
-                <o:IPv4Box ShowLeadingZero="True" Width="280" />
+                <ovo:IPv4Box Width="280" />
+                <ovo:IPv4Box InputMode="Fast" Width="280" />
+                <ovo:IPv4Box ShowLeadingZero="True" Width="280" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Live address and states" SourceKey="ipv4-states">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Live address and states" SourceKey="ipv4-states">
             <StackPanel HorizontalAlignment="Left" Spacing="12">
-                <o:IPv4Box Width="280" x:Name="Address" />
+                <ovo:IPv4Box Width="280" x:Name="Address" />
                 <TextBlock Text="{Binding #Address.IPAddress, StringFormat='Address: {0}'}" />
-                <o:IPv4Box ShowLeadingZero="True" Width="280" />
-                <o:IPv4Box IsEnabled="False" Width="280" />
+                <ovo:IPv4Box ShowLeadingZero="True" Width="280" />
+                <ovo:IPv4Box IsEnabled="False" Width="280" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

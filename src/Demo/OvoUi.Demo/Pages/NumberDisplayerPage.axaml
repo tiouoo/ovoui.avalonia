@@ -3,17 +3,17 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="NumberDisplayer">
-        <o:ControlShowcase Header="NumberDisplayer examples" SourceKey="shows-number-displayer">
+        <ovo:ControlShowcase Header="NumberDisplayer examples" SourceKey="shows-number-displayer">
             <StackPanel Spacing="16">
                 <WrapPanel ItemSpacing="30">
-                    <o:Int32Displayer
+                    <ovo:Int32Displayer
                         Duration="0:0:1"
                         FontSize="32"
                         Value="{Binding #Int.Value}" />
-                    <o:DoubleDisplayer
+                    <ovo:DoubleDisplayer
                         Duration="0:0:.6"
                         FontSize="32"
                         StringFormat="F2"
@@ -28,15 +28,15 @@
                     Name="Double"
                     Value="42.5" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Change values with animation" SourceKey="shows-number-displayer-change">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Change values with animation" SourceKey="shows-number-displayer-change">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="18">
                 <Button
                     Command="{Binding ChangeCommand}"
@@ -47,14 +47,14 @@
                     RowDefinitions="Auto,Auto,Auto,Auto"
                     RowSpacing="12">
                     <TextBlock Text="Int32" />
-                    <o:Int32Displayer
+                    <ovo:Int32Displayer
                         Duration="0:0:1"
                         FontSize="28"
                         Grid.Column="1"
                         StringFormat="N0"
                         Value="{Binding Value}" />
                     <TextBlock Grid.Row="1" Text="Int64" />
-                    <o:Int64Displayer
+                    <ovo:Int64Displayer
                         Duration="0:0:1.2"
                         FontSize="28"
                         Grid.Column="1"
@@ -62,7 +62,7 @@
                         StringFormat="N0"
                         Value="{Binding LongValue}" />
                     <TextBlock Grid.Row="2" Text="Double" />
-                    <o:DoubleDisplayer
+                    <ovo:DoubleDisplayer
                         Duration="0:0:0.8"
                         FontSize="28"
                         Grid.Column="1"
@@ -70,7 +70,7 @@
                         StringFormat="N2"
                         Value="{Binding DoubleValue}" />
                     <TextBlock Grid.Row="3" Text="Date" />
-                    <o:DateDisplay
+                    <ovo:DateDisplay
                         Duration="0:0:1"
                         FontSize="24"
                         Grid.Column="1"
@@ -80,6 +80,6 @@
                 </Grid>
                 <TextBlock Text="The values interpolate to their new targets instead of jumping immediately." TextWrapping="Wrap" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

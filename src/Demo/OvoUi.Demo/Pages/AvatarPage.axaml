@@ -2,53 +2,53 @@
     x:Class="OvoUi.Demo.Pages.AvatarPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Avatar">
-        <o:ControlShowcase Header="Sizes and shapes" SourceKey="shows-avatar-sizes">
+        <ovo:ControlShowcase Header="Sizes and shapes" SourceKey="shows-avatar-sizes">
             <StackPanel Spacing="14">
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <o:Avatar Classes="extra_extra_small red" Content="2X" />
-                    <o:Avatar Classes="extra_small pink" Content="XS" />
-                    <o:Avatar Classes="small purple" Content="S" />
-                    <o:Avatar Classes="default violet" Content="D" />
-                    <o:Avatar Classes="medium indigo" Content="M" />
-                    <o:Avatar Classes="large blue" Content="L" />
-                    <o:Avatar Classes="extralarge cyan" Content="XL" />
+                    <ovo:Avatar Classes="extra_extra_small red" Content="2X" />
+                    <ovo:Avatar Classes="extra_small pink" Content="XS" />
+                    <ovo:Avatar Classes="small purple" Content="S" />
+                    <ovo:Avatar Classes="default violet" Content="D" />
+                    <ovo:Avatar Classes="medium indigo" Content="M" />
+                    <ovo:Avatar Classes="large blue" Content="L" />
+                    <ovo:Avatar Classes="extralarge cyan" Content="XL" />
                 </WrapPanel>
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <o:Avatar Classes="small square teal" Content="S" />
-                    <o:Avatar Classes="default square green" Content="D" />
-                    <o:Avatar Classes="medium square lime" Content="M" />
-                    <o:Avatar Classes="large square orange" Content="L" />
-                    <o:Avatar Classes="extralarge square grey" Content="XL" />
+                    <ovo:Avatar Classes="small square teal" Content="S" />
+                    <ovo:Avatar Classes="default square green" Content="D" />
+                    <ovo:Avatar Classes="medium square lime" Content="M" />
+                    <ovo:Avatar Classes="large square orange" Content="L" />
+                    <ovo:Avatar Classes="extralarge square grey" Content="XL" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Color palette" SourceKey="shows-avatar-colors">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Color palette" SourceKey="shows-avatar-colors">
             <WrapPanel ItemSpacing="12" LineSpacing="12">
-                <o:Avatar Classes="red" Content="R" />
-                <o:Avatar Classes="pink" Content="P" />
-                <o:Avatar Classes="purple" Content="P" />
-                <o:Avatar Classes="violet" Content="V" />
-                <o:Avatar Classes="indigo" Content="I" />
-                <o:Avatar Classes="blue" Content="B" />
-                <o:Avatar Classes="lightblue" Content="LB" />
-                <o:Avatar Classes="cyan" Content="C" />
-                <o:Avatar Classes="teal" Content="T" />
-                <o:Avatar Classes="green" Content="G" />
-                <o:Avatar Classes="lightgreen" Content="LG" />
-                <o:Avatar Classes="lime" Content="L" />
-                <o:Avatar Classes="yellow" Content="Y" />
-                <o:Avatar Classes="amber" Content="A" />
-                <o:Avatar Classes="orange" Content="O" />
-                <o:Avatar Classes="grey" Content="G" />
+                <ovo:Avatar Classes="red" Content="R" />
+                <ovo:Avatar Classes="pink" Content="P" />
+                <ovo:Avatar Classes="purple" Content="P" />
+                <ovo:Avatar Classes="violet" Content="V" />
+                <ovo:Avatar Classes="indigo" Content="I" />
+                <ovo:Avatar Classes="blue" Content="B" />
+                <ovo:Avatar Classes="lightblue" Content="LB" />
+                <ovo:Avatar Classes="cyan" Content="C" />
+                <ovo:Avatar Classes="teal" Content="T" />
+                <ovo:Avatar Classes="green" Content="G" />
+                <ovo:Avatar Classes="lightgreen" Content="LG" />
+                <ovo:Avatar Classes="lime" Content="L" />
+                <ovo:Avatar Classes="yellow" Content="Y" />
+                <ovo:Avatar Classes="amber" Content="A" />
+                <ovo:Avatar Classes="orange" Content="O" />
+                <ovo:Avatar Classes="grey" Content="G" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Hover mask and states" SourceKey="shows-avatar-interaction">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Hover mask and states" SourceKey="shows-avatar-interaction">
             <WrapPanel ItemSpacing="18" LineSpacing="12">
-                <o:Avatar Classes="large red" Content="HI">
-                    <o:Avatar.HoverMask>
+                <ovo:Avatar Classes="large red" Content="HI">
+                    <ovo:Avatar.HoverMask>
                         <Border Background="{DynamicResource SystemAccentColor}">
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <PathIcon
@@ -62,10 +62,10 @@
                                     Text="Change" />
                             </StackPanel>
                         </Border>
-                    </o:Avatar.HoverMask>
-                </o:Avatar>
-                <o:Avatar Classes="large square teal" Content="OV">
-                    <o:Avatar.HoverMask>
+                    </ovo:Avatar.HoverMask>
+                </ovo:Avatar>
+                <ovo:Avatar Classes="large square teal" Content="OV">
+                    <ovo:Avatar.HoverMask>
                         <Border Background="#A0000000">
                             <TextBlock
                                 Foreground="White"
@@ -73,13 +73,13 @@
                                 Text="Edit"
                                 VerticalAlignment="Center" />
                         </Border>
-                    </o:Avatar.HoverMask>
-                </o:Avatar>
-                <o:Avatar
+                    </ovo:Avatar.HoverMask>
+                </ovo:Avatar>
+                <ovo:Avatar
                     Classes="large grey"
                     Content="NA"
                     IsEnabled="False" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.CanvasPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Canvas">
-        <o:ControlShowcase Header="Absolute positioning" SourceKey="layout-canvas-positioning">
+        <ovo:ControlShowcase Header="Absolute positioning" SourceKey="layout-canvas-positioning">
             <Canvas Background="{DynamicResource LayerFillColorDefaultBrush}" Height="300">
                 <Border
                     Background="#E57373"
@@ -36,6 +36,6 @@
                     Canvas.Left="180"
                     Content="Bottom anchored" />
             </Canvas>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

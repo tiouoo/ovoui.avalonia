@@ -1,19 +1,19 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:ImageViewer" x:Key="{x:Type o:ImageViewer}">
+    <ControlTheme TargetType="ovo:ImageViewer" x:Key="{x:Type ovo:ImageViewer}">
         <Setter Property="Background" Value="{DynamicResource PanelBackgroundBrush}" />
         <Setter Property="Focusable" Value="True" />
 
         <Setter Property="Template">
-            <ControlTemplate TargetType="{x:Type o:ImageViewer}">
-                <VisualLayerManager Name="{x:Static o:ImageViewer.PART_Layer}">
+            <ControlTemplate TargetType="{x:Type ovo:ImageViewer}">
+                <VisualLayerManager Name="{x:Static ovo:ImageViewer.PART_Layer}">
                     <Border Background="{TemplateBinding Background}" ClipToBounds="True">
-                        <o:ImageViewerPresenter
+                        <ovo:ImageViewerPresenter
                             BlendMode="{TemplateBinding BlendMode}"
                             ClipToBounds="False"
-                            Name="{x:Static o:ImageViewer.PART_Image}"
+                            Name="{x:Static ovo:ImageViewer.PART_Image}"
                             OffsetX="{TemplateBinding OffsetX}"
                             OffsetY="{TemplateBinding OffsetY}"
                             Source="{TemplateBinding Source}"

@@ -3,10 +3,10 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ColumnWrapPanel">
-        <o:ControlShowcase Header="Column-aware wrapping" SourceKey="layout-column-wrap-panel">
+        <ovo:ControlShowcase Header="Column-aware wrapping" SourceKey="layout-column-wrap-panel">
             <StackPanel Spacing="12">
                 <Slider
                     Maximum="6"
@@ -15,7 +15,7 @@
                     TickFrequency="1"
                     Value="4" />
                 <TextBlock Text="{Binding #Columns.Value, StringFormat='Columns: {0:F0}'}" />
-                <o:ColumnWrapPanel Column="{Binding #Columns.Value}">
+                <ovo:ColumnWrapPanel Column="{Binding #Columns.Value}">
                     <Button
                         Content="Short"
                         Margin="4"
@@ -36,8 +36,8 @@
                         Content="Short"
                         Margin="4"
                         Width="120" />
-                </o:ColumnWrapPanel>
+                </ovo:ColumnWrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

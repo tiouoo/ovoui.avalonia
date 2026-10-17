@@ -1,6 +1,6 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.ThemeDictionaries>
@@ -14,11 +14,11 @@
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
-    <ControlTheme TargetType="o:ShimmerText" x:Key="{x:Type o:ShimmerText}">
+    <ControlTheme TargetType="ovo:ShimmerText" x:Key="{x:Type ovo:ShimmerText}">
         <Setter Property="BaseColor" Value="{DynamicResource ShimmerBaseColor}" />
         <Setter Property="HighlightColor" Value="{DynamicResource ShimmerHighlightColor}" />
     </ControlTheme>
-    <ControlTheme TargetType="o:ShimmerSelectableText" x:Key="{x:Type o:ShimmerSelectableText}">
+    <ControlTheme TargetType="ovo:ShimmerSelectableText" x:Key="{x:Type ovo:ShimmerSelectableText}">
         <Setter Property="BaseColor" Value="{DynamicResource ShimmerBaseColor}" />
         <Setter Property="HighlightColor" Value="{DynamicResource ShimmerHighlightColor}" />
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />

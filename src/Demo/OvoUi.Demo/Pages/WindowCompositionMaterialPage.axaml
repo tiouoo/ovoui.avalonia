@@ -3,20 +3,20 @@
     x:DataType="pages:WindowCompositionMaterialPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="WindowCompositionMaterial">
-        <o:ControlShowcase Header="Windows composition materials" SourceKey="platform-window-composition-material">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+        <ovo:ControlShowcase Header="Windows composition materials" SourceKey="platform-window-composition-material">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Open a transparent OvoWindow that displays every supported Windows composition material in a separate region." TextWrapping="Wrap" />
                 <TextBlock IsVisible="{Binding !IsWindows}" Text="This demo requires the Windows desktop host with WinUI Composition." TextWrapping="Wrap" />
                 <Button Click="OpenMaterialWindow" Content="Open composition material window" HorizontalAlignment="Left" IsEnabled="{Binding IsWindows}" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

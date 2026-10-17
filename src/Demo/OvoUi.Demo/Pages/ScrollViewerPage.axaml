@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.ScrollViewerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ScrollViewer">
-        <o:ControlShowcase Header="OvoUi scrollbar styles" SourceKey="layout-scroll-viewer-styles">
+        <ovo:ControlShowcase Header="OvoUi scrollbar styles" SourceKey="layout-scroll-viewer-styles">
             <Grid ColumnDefinitions="220,*" ColumnSpacing="24">
                 <StackPanel Spacing="12">
                     <ToggleSwitch
@@ -60,9 +60,9 @@
                     </UniformGrid>
                 </ScrollViewer>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Scrolling behavior" SourceKey="layout-scroll-viewer-behavior">
+        <ovo:ControlShowcase Header="Scrolling behavior" SourceKey="layout-scroll-viewer-behavior">
             <Grid ColumnDefinitions="*,*" ColumnSpacing="20">
                 <StackPanel Spacing="8">
                     <TextBlock FontWeight="SemiBold" Text="Inertia and chaining" />
@@ -95,6 +95,6 @@
                     </ScrollViewer>
                 </StackPanel>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

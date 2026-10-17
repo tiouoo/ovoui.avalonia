@@ -1,9 +1,9 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:OvoWindow" x:Key="{x:Type o:OvoWindow}">
+    <ControlTheme TargetType="ovo:OvoWindow" x:Key="{x:Type ovo:OvoWindow}">
         <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
         <Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource BackgroundColor}" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundColor}" />
@@ -46,7 +46,7 @@
             </OnPlatform>
         </Setter>
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:OvoWindow">
+            <ControlTemplate TargetType="ovo:OvoWindow">
                 <VisualLayerManager Name="PART_VisualLayerManager">
                     <Border
                         Background="{TemplateBinding Background}"
@@ -75,48 +75,48 @@
                                                 DockPanel.Dock="Top"
                                                 Name="PART_TitleBarAnimationHost"
                                                 RenderTransformOrigin="0%,0%">
-                                                <o:OvoTitleBar
-                                                    CloseButtonIcon="{TemplateBinding o:OvoTitleBar.CloseButtonIcon}"
-                                                    ControlButtonMargin="{TemplateBinding o:OvoTitleBar.ControlButtonMargin}"
-                                                    ExitFullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.ExitFullScreenButtonIcon}"
-                                                    FullScreenButtonIcon="{TemplateBinding o:OvoTitleBar.FullScreenButtonIcon}"
-                                                    IsCloseButtonVisible="{TemplateBinding o:OvoTitleBar.IsCloseButtonVisible}"
-                                                    IsFullScreenButtonVisible="{TemplateBinding o:OvoTitleBar.IsFullScreenButtonVisible}"
-                                                    IsMaximizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMaximizeButtonVisible}"
-                                                    IsMinimizeButtonVisible="{TemplateBinding o:OvoTitleBar.IsMinimizeButtonVisible}"
-                                                    IsPinButtonVisible="{TemplateBinding o:OvoTitleBar.IsPinButtonVisible}"
-                                                    LeadingContent="{TemplateBinding o:OvoTitleBar.LeadingContent}"
-                                                    MaximizeButtonIcon="{TemplateBinding o:OvoTitleBar.MaximizeButtonIcon}"
-                                                    MinimizeButtonIcon="{TemplateBinding o:OvoTitleBar.MinimizeButtonIcon}"
+                                                <ovo:OvoTitleBar
+                                                    CloseButtonIcon="{TemplateBinding ovo:OvoTitleBar.CloseButtonIcon}"
+                                                    ControlButtonMargin="{TemplateBinding ovo:OvoTitleBar.ControlButtonMargin}"
+                                                    ExitFullScreenButtonIcon="{TemplateBinding ovo:OvoTitleBar.ExitFullScreenButtonIcon}"
+                                                    FullScreenButtonIcon="{TemplateBinding ovo:OvoTitleBar.FullScreenButtonIcon}"
+                                                    IsCloseButtonVisible="{TemplateBinding ovo:OvoTitleBar.IsCloseButtonVisible}"
+                                                    IsFullScreenButtonVisible="{TemplateBinding ovo:OvoTitleBar.IsFullScreenButtonVisible}"
+                                                    IsMaximizeButtonVisible="{TemplateBinding ovo:OvoTitleBar.IsMaximizeButtonVisible}"
+                                                    IsMinimizeButtonVisible="{TemplateBinding ovo:OvoTitleBar.IsMinimizeButtonVisible}"
+                                                    IsPinButtonVisible="{TemplateBinding ovo:OvoTitleBar.IsPinButtonVisible}"
+                                                    LeadingContent="{TemplateBinding ovo:OvoTitleBar.LeadingContent}"
+                                                    MaximizeButtonIcon="{TemplateBinding ovo:OvoTitleBar.MaximizeButtonIcon}"
+                                                    MinimizeButtonIcon="{TemplateBinding ovo:OvoTitleBar.MinimizeButtonIcon}"
                                                     Name="PART_TitleBar"
-                                                    PinButtonIcon="{TemplateBinding o:OvoTitleBar.PinButtonIcon}"
-                                                    RestoreButtonIcon="{TemplateBinding o:OvoTitleBar.RestoreButtonIcon}"
-                                                    TitleBarHeight="{TemplateBinding o:OvoTitleBar.TitleBarHeight}"
-                                                    TitleBarMargin="{TemplateBinding o:OvoTitleBar.TitleBarMargin}"
-                                                    TitleBarPadding="{TemplateBinding o:OvoTitleBar.TitleBarPadding}"
-                                                    TrailingContent="{TemplateBinding o:OvoTitleBar.TrailingContent}"
-                                                    UnpinButtonIcon="{TemplateBinding o:OvoTitleBar.UnpinButtonIcon}" />
+                                                    PinButtonIcon="{TemplateBinding ovo:OvoTitleBar.PinButtonIcon}"
+                                                    RestoreButtonIcon="{TemplateBinding ovo:OvoTitleBar.RestoreButtonIcon}"
+                                                    TitleBarHeight="{TemplateBinding ovo:OvoTitleBar.TitleBarHeight}"
+                                                    TitleBarMargin="{TemplateBinding ovo:OvoTitleBar.TitleBarMargin}"
+                                                    TitleBarPadding="{TemplateBinding ovo:OvoTitleBar.TitleBarPadding}"
+                                                    TrailingContent="{TemplateBinding ovo:OvoTitleBar.TrailingContent}"
+                                                    UnpinButtonIcon="{TemplateBinding ovo:OvoTitleBar.UnpinButtonIcon}" />
                                             </LayoutTransformControl>
                                             <ContentPresenter
-                                                Content="{Binding $parent[o:OvoWindow].Content}"
+                                                Content="{Binding $parent[ovo:OvoWindow].Content}"
                                                 ContentTemplate="{TemplateBinding ContentTemplate}"
                                                 DockPanel.Dock="Bottom"
-                                                HorizontalContentAlignment="{Binding $parent[o:OvoWindow].HorizontalContentAlignment}"
-                                                Margin="{Binding $parent[o:OvoWindow].Padding}"
+                                                HorizontalContentAlignment="{Binding $parent[ovo:OvoWindow].HorizontalContentAlignment}"
+                                                Margin="{Binding $parent[ovo:OvoWindow].Padding}"
                                                 Name="PART_ContentPresenter"
-                                                VerticalContentAlignment="{Binding $parent[o:OvoWindow].VerticalContentAlignment}" />
+                                                VerticalContentAlignment="{Binding $parent[ovo:OvoWindow].VerticalContentAlignment}" />
                                         </DockPanel>
                                     </Border>
                                     <Panel>
-                                        <o:OverlayDialogHost
-                                            HostId="{Binding $parent[o:OvoWindow].HostId}"
+                                        <ovo:OverlayDialogHost
+                                            HostId="{Binding $parent[ovo:OvoWindow].HostId}"
                                             IsModalStatusReporter="True"
                                             IsTopLevel="True"
                                             Name="PART_DialogHost" />
                                     </Panel>
                                 </Panel>
                             </Border>
-                            <o:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" />
+                            <ovo:WindowResizer IsVisible="{TemplateBinding IsManagedResizerVisible}" />
                         </Panel>
                     </Border>
                 </VisualLayerManager>

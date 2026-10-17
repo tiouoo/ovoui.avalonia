@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
@@ -16,7 +16,7 @@
             <SolidColorBrush Color="{DynamicResource SystemAccentColor}" x:Key="TwoTonePathIconActiveStrokeBrush" />
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
-    <ControlTheme TargetType="o:TwoTonePathIcon" x:Key="{x:Type o:TwoTonePathIcon}">
+    <ControlTheme TargetType="ovo:TwoTonePathIcon" x:Key="{x:Type ovo:TwoTonePathIcon}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Height" Value="{DynamicResource IconElementThemeHeight}" />
         <Setter Property="Width" Value="{DynamicResource IconElementThemeWidth}" />
@@ -26,7 +26,7 @@
         <Setter Property="ActiveForeground" Value="{DynamicResource TwoTonePathIconActiveForeground}" />
         <Setter Property="ActiveStrokeBrush" Value="{DynamicResource TwoTonePathIconActiveStrokeBrush}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:TwoTonePathIcon">
+            <ControlTemplate TargetType="ovo:TwoTonePathIcon">
                 <Border Background="{TemplateBinding Background}">
                     <Panel>
                         <Viewbox Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">

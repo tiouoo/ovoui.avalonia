@@ -1,11 +1,11 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:PopConfirm" x:Key="{x:Type o:PopConfirm}">
+    <ControlTheme TargetType="ovo:PopConfirm" x:Key="{x:Type ovo:PopConfirm}">
         <Setter Property="Placement" Value="BottomEdgeAlignedLeft" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:PopConfirm">
+            <ControlTemplate TargetType="ovo:PopConfirm">
                 <Panel>
                     <ContentPresenter
                         Content="{TemplateBinding Content}"
@@ -14,7 +14,7 @@
                     <Popup
                         IsLightDismissEnabled="True"
                         IsOpen="{Binding IsDropdownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                        Name="{x:Static o:PopConfirm.PART_Popup}"
+                        Name="{x:Static ovo:PopConfirm.PART_Popup}"
                         OverlayInputPassThroughElement="{Binding #PART_ContentPresenter}"
                         Placement="{TemplateBinding Placement}">
                         <Border
@@ -66,7 +66,7 @@
                                     Grid.Row="0"
                                     HorizontalAlignment="Right"
                                     Margin="-2,-2,0,0"
-                                    Name="{x:Static o:PopConfirm.PART_CloseButton}"
+                                    Name="{x:Static ovo:PopConfirm.PART_CloseButton}"
                                     Theme="{StaticResource CloseButtonTheme}"
                                     VerticalAlignment="Top" />
                                 <StackPanel
@@ -81,14 +81,14 @@
                                         Command="{TemplateBinding CancelCommand}"
                                         CommandParameter="{TemplateBinding CancelCommandParameter}"
                                         Content="{DynamicResource Lang.Cancel}"
-                                        Name="{x:Static o:PopConfirm.PART_CancelButton}"
-                                        o:ClassHelper.Classes="{TemplateBinding CancelButtonClasses}" />
+                                        Name="{x:Static ovo:PopConfirm.PART_CancelButton}"
+                                        ovo:ClassHelper.Classes="{TemplateBinding CancelButtonClasses}" />
                                     <Button
                                         Command="{TemplateBinding ConfirmCommand}"
                                         CommandParameter="{TemplateBinding ConfirmCommandParameter}"
                                         Content="{DynamicResource Lang.Ok}"
-                                        Name="{x:Static o:PopConfirm.PART_ConfirmButton}"
-                                        o:ClassHelper.Classes="{TemplateBinding ConfirmButtonClasses}" />
+                                        Name="{x:Static ovo:PopConfirm.PART_ConfirmButton}"
+                                        ovo:ClassHelper.Classes="{TemplateBinding ConfirmButtonClasses}" />
                                 </StackPanel>
                             </Grid>
                         </Border>

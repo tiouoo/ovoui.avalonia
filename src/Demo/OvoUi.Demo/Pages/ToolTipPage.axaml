@@ -3,10 +3,10 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ToolTip">
-        <o:ControlShowcase Header="Basic and rich tips" SourceKey="shows-tool-tip-basic">
+        <ovo:ControlShowcase Header="Basic and rich tips" SourceKey="shows-tool-tip-basic">
             <WrapPanel ItemSpacing="14" LineSpacing="14">
                 <Border
                     Background="Transparent"
@@ -47,9 +47,9 @@
                     </ToolTip.Tip>
                 </Button>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Open state and placement" SourceKey="shows-tool-tip-open-placement">
+        <ovo:ControlShowcase Header="Open state and placement" SourceKey="shows-tool-tip-open-placement">
             <StackPanel Spacing="14">
                 <ToggleSwitch
                     Content="ToolTip open"
@@ -80,9 +80,9 @@
                     </Border>
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Placement directions" SourceKey="shows-tool-tip-directions">
+        <ovo:ControlShowcase Header="Placement directions" SourceKey="shows-tool-tip-directions">
             <WrapPanel ItemSpacing="14" LineSpacing="14">
                 <Border
                     Background="Transparent"
@@ -125,9 +125,9 @@
                     <TextBlock Text="Bottom" />
                 </Border>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Offset animation" SourceKey="shows-tool-tip-offset">
+        <ovo:ControlShowcase Header="Offset animation" SourceKey="shows-tool-tip-offset">
             <Border
                 Background="Transparent"
                 BorderBrush="{DynamicResource LineBrush}"
@@ -158,9 +158,9 @@
                 </Border.Styles>
                 <TextBlock Text="Moving offset" />
             </Border>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Tooltip inside controls" SourceKey="shows-tool-tip-controls">
+        <ovo:ControlShowcase Header="Tooltip inside controls" SourceKey="shows-tool-tip-controls">
             <WrapPanel ItemSpacing="14" LineSpacing="12">
                 <Button Content="Delete">
                     <ToolTip.Tip>
@@ -181,6 +181,6 @@
                     Value="68"
                     Width="180" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

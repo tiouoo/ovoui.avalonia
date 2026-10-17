@@ -3,10 +3,10 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ProgressBar">
-        <o:ControlShowcase Header="Determinate and indeterminate" SourceKey="shows-progress-bar-states">
+        <ovo:ControlShowcase Header="Determinate and indeterminate" SourceKey="shows-progress-bar-states">
             <StackPanel Spacing="16">
                 <Slider
                     Maximum="100"
@@ -61,8 +61,8 @@
                         Width="240" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Text placement and orientation" SourceKey="shows-progress-bar-layouts">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Text placement and orientation" SourceKey="shows-progress-bar-layouts">
             <WrapPanel ItemSpacing="20" LineSpacing="20">
                 <ProgressBar
                     Classes="Left"
@@ -108,8 +108,8 @@
                     Maximum="100"
                     Orientation="Vertical" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Progress ring" SourceKey="shows-progress-bar-rings">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Progress ring" SourceKey="shows-progress-bar-rings">
             <WrapPanel ItemSpacing="22" LineSpacing="18">
                 <ProgressBar
                     BorderThickness="6"
@@ -145,6 +145,6 @@
                     Value="90"
                     Width="96" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

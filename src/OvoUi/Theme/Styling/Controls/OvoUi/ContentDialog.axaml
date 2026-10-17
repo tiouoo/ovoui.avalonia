@@ -1,10 +1,10 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:ContentDialogHost" x:Key="{x:Type o:ContentDialogHost}">
+    <ControlTheme TargetType="ovo:ContentDialogHost" x:Key="{x:Type ovo:ContentDialogHost}">
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:ContentDialogHost">
+            <ControlTemplate TargetType="ovo:ContentDialogHost">
                 <Panel>
                     <Border Background="#66000000" />
                     <ContentPresenter
@@ -16,7 +16,7 @@
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:ContentDialog" x:Key="{x:Type o:ContentDialog}">
+    <ControlTheme TargetType="ovo:ContentDialog" x:Key="{x:Type ovo:ContentDialog}">
         <Setter Property="MinWidth" Value="320" />
         <Setter Property="MaxWidth" Value="560" />
         <Setter Property="MaxHeight" Value="720" />
@@ -31,7 +31,7 @@
             </Transitions>
         </Setter>
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:ContentDialog">
+            <ControlTemplate TargetType="ovo:ContentDialog">
                 <Border
                     Background="{DynamicResource PopupBackgroundBrush}"
                     BorderBrush="{DynamicResource LineBrush}"
@@ -71,7 +71,7 @@
                                 IsEnabled="{TemplateBinding IsSecondaryButtonEnabled}"
                                 IsVisible="False"
                                 Margin="0,0,4,0"
-                                Name="{x:Static o:ContentDialog.PART_SecondaryButton}" />
+                                Name="{x:Static ovo:ContentDialog.PART_SecondaryButton}" />
                             <Button
                                 Content="{TemplateBinding CloseButtonText}"
                                 Grid.Column="2"
@@ -79,7 +79,7 @@
                                 HorizontalAlignment="Stretch"
                                 IsVisible="False"
                                 Margin="4,0"
-                                Name="{x:Static o:ContentDialog.PART_CloseButton}" />
+                                Name="{x:Static ovo:ContentDialog.PART_CloseButton}" />
                             <Button
                                 Content="{TemplateBinding PrimaryButtonText}"
                                 Grid.Column="4"
@@ -88,7 +88,7 @@
                                 IsEnabled="{TemplateBinding IsPrimaryButtonEnabled}"
                                 IsVisible="False"
                                 Margin="4,0,0,0"
-                                Name="{x:Static o:ContentDialog.PART_PrimaryButton}" />
+                                Name="{x:Static ovo:ContentDialog.PART_PrimaryButton}" />
                         </Grid>
                     </Grid>
                 </Border>

@@ -2,17 +2,16 @@
     x:Class="OvoUi.Demo.Pages.TabWindowPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
-    xmlns:tab="using:OvoUi.Tab"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:DataType="pages:TabWindowPage">
     <demo:DemoPage Text="OvoTabHost">
-        <o:ControlShowcase Header="Tab workspace" SourceKey="tab-workspace">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding SourceCode}" />
-            </o:ControlShowcase.CodeBlocks>
+        <ovo:ControlShowcase Header="Tab workspace" SourceKey="tab-workspace">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding SourceCode}" />
+            </ovo:ControlShowcase.CodeBlocks>
             <Grid RowDefinitions="Auto,Auto,420" RowSpacing="10">
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <Button Click="OpenWindow_OnClick" Name="OpenWindowButton">
@@ -36,21 +35,21 @@
                               ToolTip.Tip="Off: drag a preview and release to open a window. On: detach and attach immediately."
                               Margin="0,0,0,8" />
                 </WrapPanel>
-                <tab:OvoTabHost
+                <ovo:OvoTabHost
                     BorderBrush="{DynamicResource LineBrush}"
                     BorderThickness="1"
                     CornerRadius="8"
                     Grid.Row="2"
                     Name="TabHost">
-                    <tab:OvoTabHost.EmptyContent>
+                    <ovo:OvoTabHost.EmptyContent>
                         <TextBlock
                             HorizontalAlignment="Center"
                             Opacity="0.65"
                             Text="No open tabs"
                             VerticalAlignment="Center" />
-                    </tab:OvoTabHost.EmptyContent>
-                </tab:OvoTabHost>
+                    </ovo:OvoTabHost.EmptyContent>
+                </ovo:OvoTabHost>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

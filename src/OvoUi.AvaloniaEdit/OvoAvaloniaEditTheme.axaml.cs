@@ -4,6 +4,7 @@ using Avalonia.Styling;
 
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.AvaloniaEdit")]
 [assembly: XmlnsDefinition("https://github.com/tiouoo/ovoui.avalonia", "OvoUi.AvaloniaEdit.Controls")]
+[assembly: XmlnsPrefix("https://github.com/tiouoo/ovoui.avalonia", "ovo")]
 
 namespace OvoUi.AvaloniaEdit;
 

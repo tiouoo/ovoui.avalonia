@@ -3,17 +3,17 @@
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Dialog">
-        <o:ControlShowcase Header="Interactive configuration" SourceKey="feedback-dialog-configurator">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-dialog-configurator">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="14">
                 <Grid
                     ColumnDefinitions="160,*"
@@ -98,19 +98,19 @@
                     ClipToBounds="True"
                     CornerRadius="{DynamicResource OvoCornerRadius}"
                     Height="280">
-                    <o:OverlayDialogHost HostId="DialogPage.Local" />
+                    <ovo:OverlayDialogHost HostId="DialogPage.Local" />
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Behavior presets" SourceKey="feedback-dialog-presets">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Behavior presets" SourceKey="feedback-dialog-presets">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding PresetsCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <WrapPanel ItemSpacing="10" LineSpacing="10">
                 <Button Click="ShowModalMask" Content="Modal mask and window drag" />
                 <Button Click="ShowLightDismiss" Content="Light dismiss" />
@@ -119,6 +119,6 @@
                 <Button Click="ShowWindowDialog" Content="Owned window" />
                 <Button Click="ShowWindowForm" Content="Custom window form" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

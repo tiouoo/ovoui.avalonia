@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.NumericUpDownPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="NumericUpDown">
-        <o:ControlShowcase Header="Ranges and increments" SourceKey="numeric-up-down-ranges">
+        <ovo:ControlShowcase Header="Ranges and increments" SourceKey="numeric-up-down-ranges">
             <StackPanel Spacing="10">
                 <TextBlock>For more style, see ButtonSpinner.</TextBlock>
                 <WrapPanel ItemSpacing="16" LineSpacing="16">
@@ -29,8 +29,8 @@
                         Width="280" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Spinner and content" SourceKey="numeric-up-down-content">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Spinner and content" SourceKey="numeric-up-down-content">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <NumericUpDown
                     ButtonSpinnerLocation="Left"
@@ -54,6 +54,6 @@
                     Value="42"
                     Width="280" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

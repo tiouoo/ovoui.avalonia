@@ -3,7 +3,7 @@
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <StackPanel Background="{DynamicResource SemiBackground0Color}" Spacing="8">
+        <StackPanel Background="{DynamicResource BackgroundBrush}" Spacing="8">
             <StackPanel Orientation="Horizontal">
                 <ToggleSwitch />
                 <ToggleSwitch IsChecked="True" />

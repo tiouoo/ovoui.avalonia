@@ -1,13 +1,13 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme TargetType="o:CustomDrawerControl" x:Key="{x:Type o:CustomDrawerControl}">
+    <ControlTheme TargetType="ovo:CustomDrawerControl" x:Key="{x:Type ovo:CustomDrawerControl}">
         <Setter Property="MinWidth" Value="280" />
         <Setter Property="MaxWidth" Value="520" />
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:CustomDrawerControl">
+            <ControlTemplate TargetType="ovo:CustomDrawerControl">
                 <Panel>
                     <Border
                         Background="{TemplateBinding Background}"
@@ -29,12 +29,12 @@
                             <Button
                                 HorizontalAlignment="Right"
                                 Margin="12"
-                                Name="{x:Static o:DrawerControlBase.PART_CloseButton}"
+                                Name="{x:Static ovo:DrawerControlBase.PART_CloseButton}"
                                 Theme="{DynamicResource CloseButtonTheme}"
                                 VerticalAlignment="Top" />
                         </Grid>
                     </Border>
-                    <o:DialogResizer
+                    <ovo:DialogResizer
                         IsVisible="{TemplateBinding CanResize}"
                         ResizeDirection="Left"
                         ZIndex="3" />
@@ -53,26 +53,26 @@
         <Style Selector="^[Position=Bottom] /template/ Border#PART_Root">
             <Setter Property="CornerRadius" Value="0,0,16,16" />
         </Style>
-        <Style Selector="^[Position=Right] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Right] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Left" />
         </Style>
-        <Style Selector="^[Position=Left] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Left] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Right" />
         </Style>
-        <Style Selector="^[Position=Top] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Top] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Bottom" />
         </Style>
-        <Style Selector="^[Position=Bottom] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Bottom] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Top" />
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:StandardDrawerControl" x:Key="{x:Type o:StandardDrawerControl}">
+    <ControlTheme TargetType="ovo:StandardDrawerControl" x:Key="{x:Type ovo:StandardDrawerControl}">
         <Setter Property="MinWidth" Value="320" />
         <Setter Property="MaxWidth" Value="520" />
         <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:StandardDrawerControl">
+            <ControlTemplate TargetType="ovo:StandardDrawerControl">
                 <Panel>
                     <Border
                         Background="{TemplateBinding Background}"
@@ -95,7 +95,7 @@
                             <Button
                                 HorizontalAlignment="Right"
                                 Margin="12"
-                                Name="{x:Static o:DrawerControlBase.PART_CloseButton}"
+                                Name="{x:Static ovo:DrawerControlBase.PART_CloseButton}"
                                 Theme="{DynamicResource CloseButtonTheme}" />
                             <ScrollViewer
                                 Grid.Row="1"
@@ -112,14 +112,14 @@
                                 Margin="20,10,20,20"
                                 Orientation="Horizontal"
                                 Spacing="8">
-                                <Button Content="Cancel" Name="{x:Static o:StandardDrawerControl.PART_CancelButton}" />
-                                <Button Classes="danger" Content="No" Name="{x:Static o:StandardDrawerControl.PART_NoButton}" />
-                                <Button Classes="accent" Content="Yes" Name="{x:Static o:StandardDrawerControl.PART_YesButton}" />
-                                <Button Classes="accent" Content="OK" Name="{x:Static o:StandardDrawerControl.PART_OKButton}" />
+                                <Button Content="Cancel" Name="{x:Static ovo:StandardDrawerControl.PART_CancelButton}" />
+                                <Button Classes="danger" Content="No" Name="{x:Static ovo:StandardDrawerControl.PART_NoButton}" />
+                                <Button Classes="accent" Content="Yes" Name="{x:Static ovo:StandardDrawerControl.PART_YesButton}" />
+                                <Button Classes="accent" Content="OK" Name="{x:Static ovo:StandardDrawerControl.PART_OKButton}" />
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <o:DialogResizer
+                    <ovo:DialogResizer
                         IsVisible="{TemplateBinding CanResize}"
                         ResizeDirection="Left"
                         ZIndex="3" />
@@ -138,16 +138,16 @@
         <Style Selector="^[Position=Bottom] /template/ Border#PART_Root">
             <Setter Property="CornerRadius" Value="0,0,16,16" />
         </Style>
-        <Style Selector="^[Position=Right] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Right] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Left" />
         </Style>
-        <Style Selector="^[Position=Left] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Left] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Right" />
         </Style>
-        <Style Selector="^[Position=Top] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Top] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Bottom" />
         </Style>
-        <Style Selector="^[Position=Bottom] /template/ o|DialogResizer">
+        <Style Selector="^[Position=Bottom] /template/ ovo|DialogResizer">
             <Setter Property="ResizeDirection" Value="Top" />
         </Style>
     </ControlTheme>

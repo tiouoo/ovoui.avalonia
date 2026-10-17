@@ -2,47 +2,47 @@
     x:Class="OvoUi.Demo.Pages.PathPickerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="PathPicker">
-        <o:ControlShowcase Header="Picker types" SourceKey="path-picker-types">
+        <ovo:ControlShowcase Header="Picker types" SourceKey="path-picker-types">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="16"
                 Width="620">
-                <o:PathPicker Title="Choose a file" UsePickerType="OpenFile" />
-                <o:PathPicker
+                <ovo:PathPicker Title="Choose a file" UsePickerType="OpenFile" />
+                <ovo:PathPicker
                     AllowMultiple="True"
                     Title="Choose multiple files"
                     UsePickerType="OpenFile" />
-                <o:PathPicker Title="Choose a folder" UsePickerType="OpenFolder" />
-                <o:PathPicker
+                <ovo:PathPicker Title="Choose a folder" UsePickerType="OpenFolder" />
+                <ovo:PathPicker
                     DefaultFileExtension="txt"
                     SuggestedFileName="document"
                     Title="Save a file"
                     UsePickerType="SaveFile" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Themes" SourceKey="path-picker-themes">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Themes" SourceKey="path-picker-themes">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="16"
                 Width="620">
-                <o:PathPicker Title="Default path picker" />
-                <o:PathPicker Theme="{DynamicResource ButtonPathPicker}" Title="Button path picker" />
-                <o:PathPicker
+                <ovo:PathPicker Title="Default path picker" />
+                <ovo:PathPicker Theme="{DynamicResource ButtonPathPicker}" Title="Button path picker" />
+                <ovo:PathPicker
                     AllowMultiple="True"
                     Theme="{DynamicResource ListPathPicker}"
                     Title="List path picker" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Custom button content" SourceKey="path-picker-content">
-            <o:PathPicker
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Custom button content" SourceKey="path-picker-content">
+            <ovo:PathPicker
                 HorizontalAlignment="Left"
                 Title="Choose an image"
                 VerticalAlignment="Center"
                 Width="620">
-                <o:PathPicker.ButtonContent>
+                <ovo:PathPicker.ButtonContent>
                     <StackPanel
                         Orientation="Horizontal"
                         Spacing="8"
@@ -53,8 +53,8 @@
                             Width="16" />
                         <TextBlock Text="Browse" />
                     </StackPanel>
-                </o:PathPicker.ButtonContent>
-            </o:PathPicker>
-        </o:ControlShowcase>
+                </ovo:PathPicker.ButtonContent>
+            </ovo:PathPicker>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

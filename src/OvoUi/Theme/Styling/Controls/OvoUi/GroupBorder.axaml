@@ -1,21 +1,21 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.PreviewWith>
         <StackPanel Margin="20" Spacing="20">
-            <o:GroupBorder Header="Header">
+            <ovo:GroupBorder Header="Header">
                 <Border
                     Background="Aquamarine"
                     Height="300"
                     Margin="20"
                     Width="400" />
-            </o:GroupBorder>
+            </ovo:GroupBorder>
         </StackPanel>
     </Design.PreviewWith>
 
-    <ControlTheme TargetType="o:GroupBorder" x:Key="{x:Type o:GroupBorder}">
+    <ControlTheme TargetType="ovo:GroupBorder" x:Key="{x:Type ovo:GroupBorder}">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
         <Setter Property="Background" Value="{DynamicResource PanelBackgroundBrush}" />
@@ -35,13 +35,13 @@
                                         <Panel>
                                             <SelectableTextBlock
                                                 Foreground="{DynamicResource ForegroundBrush}"
-                                                IsVisible="{Binding $parent[o:GroupBorder].IsHeaderSelectable}"
+                                                IsVisible="{Binding $parent[ovo:GroupBorder].IsHeaderSelectable}"
                                                 Margin="14,10"
                                                 Name="SelectableText"
                                                 Text="{Binding}" />
                                             <TextBlock
                                                 Foreground="{DynamicResource ForegroundBrush}"
-                                                IsVisible="{Binding $parent[o:GroupBorder].IsHeaderSelectable,
+                                                IsVisible="{Binding $parent[ovo:GroupBorder].IsHeaderSelectable,
                                                                      Converter={x:Static BoolConverters.Not}}"
                                                 Margin="14,10"
                                                 Name="Text"
@@ -55,7 +55,7 @@
                                 Grid.Row="1"
                                 Height="1" />
                             <ContentPresenter
-                                Content="{Binding $parent[o:GroupBorder].Content}"
+                                Content="{Binding $parent[ovo:GroupBorder].Content}"
                                 Grid.Row="2"
                                 Padding="{TemplateBinding Padding}" />
                         </Grid>

@@ -1,7 +1,7 @@
 <Styles
     x:Class="OvoUi.Tab.OvoTabTheme"
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Styles.Resources>
         <ResourceDictionary>
@@ -11,23 +11,23 @@
         </ResourceDictionary>
     </Styles.Resources>
     <StyleInclude Source="/Themes/OvoTabScrollViewer.axaml" />
-    <Style Selector="o|SelectionList.ovotab-list o|SelectionListItem Border.tab-root">
+    <Style Selector="ovo|SelectionList.ovotab-list ovo|SelectionListItem Border.tab-root">
         <Setter Property="Background" Value="{DynamicResource OvoTabBackground}" />
     </Style>
-    <Style Selector="o|SelectionList.ovotab-list o|SelectionListItem Button.tab-close">
+    <Style Selector="ovo|SelectionList.ovotab-list ovo|SelectionListItem Button.tab-close">
         <Setter Property="Opacity" Value="0" />
     </Style>
-    <Style Selector="o|SelectionList.ovotab-list o|SelectionListItem:pointerover Border.tab-root">
+    <Style Selector="ovo|SelectionList.ovotab-list ovo|SelectionListItem:pointerover Border.tab-root">
         <Setter Property="Background" Value="{DynamicResource OvoTabHover}" />
         <Setter Property="Cursor" Value="Hand" />
     </Style>
-    <Style Selector="o|SelectionList.ovotab-list o|SelectionListItem:pointerover Button.tab-close">
+    <Style Selector="ovo|SelectionList.ovotab-list ovo|SelectionListItem:pointerover Button.tab-close">
         <Setter Property="Opacity" Value="1" />
     </Style>
-    <Style Selector="o|SelectionList.ovotab-list o|SelectionListItem:selected Border.tab-root">
+    <Style Selector="ovo|SelectionList.ovotab-list ovo|SelectionListItem:selected Border.tab-root">
         <Setter Property="Background" Value="{DynamicResource OvoTabSelected}" />
     </Style>
-    <Style Selector="o|SelectionList.ovotab-list o|SelectionListItem:selected Button.tab-close">
+    <Style Selector="ovo|SelectionList.ovotab-list ovo|SelectionListItem:selected Button.tab-close">
         <Setter Property="Opacity" Value="1" />
     </Style>
 </Styles>

@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Button">
-        <o:ControlShowcase Header="BasicButtonTheme" SourceKey="button-basic-theme">
+        <ovo:ControlShowcase Header="BasicButtonTheme" SourceKey="button-basic-theme">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
@@ -21,9 +21,9 @@
                     IsEnabled="False"
                     Theme="{StaticResource BasicButtonTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="BorderButtonTheme" SourceKey="button-border-theme">
+        <ovo:ControlShowcase Header="BorderButtonTheme" SourceKey="button-border-theme">
             <StackPanel Margin="10,0" Spacing="16">
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
                     <Button Content="Default" Theme="{StaticResource BorderButtonTheme}" />
@@ -89,9 +89,9 @@
                         Theme="{StaticResource BorderButtonTheme}" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="SolidButtonTheme" SourceKey="button-solid-theme">
+        <ovo:ControlShowcase Header="SolidButtonTheme" SourceKey="button-solid-theme">
             <StackPanel Margin="10,0" Spacing="16">
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
                     <Button Content="Default" Theme="{StaticResource SolidButtonTheme}" />
@@ -157,6 +157,6 @@
                         Theme="{StaticResource SolidButtonTheme}" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

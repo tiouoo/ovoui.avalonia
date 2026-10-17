@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.CalendarDatePickerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="CalendarDatePicker">
-        <o:ControlShowcase Header="Basic and formats" SourceKey="calendar-date-picker-basic">
+        <ovo:ControlShowcase Header="Basic and formats" SourceKey="calendar-date-picker-basic">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <CalendarDatePicker PlaceholderText="Select a date" Width="240" />
                 <CalendarDatePicker
@@ -18,8 +18,8 @@
                     SelectedDateFormat="Custom"
                     Width="240" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Styles and states" SourceKey="calendar-date-picker-states">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Styles and states" SourceKey="calendar-date-picker-states">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <CalendarDatePicker
                     Classes="border"
@@ -38,6 +38,6 @@
                     PlaceholderText="Disabled"
                     Width="240" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

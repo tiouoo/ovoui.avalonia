@@ -1,25 +1,25 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Margin="20" Spacing="20">
             <Border Theme="{DynamicResource CardBorderTheme}">
-                <o:Descriptions
+                <ovo:Descriptions
                     ItemAlignment="Center"
                     LabelPosition="Top"
                     Orientation="Horizontal">
-                    <o:DescriptionsItem Content="1,480,000" Label="实际用户数量" />
-                    <o:DescriptionsItem Content="98%" Label="7天留存" />
-                    <o:DescriptionsItem Content="3级" Label="安全等级" />
-                </o:Descriptions>
+                    <ovo:DescriptionsItem Content="1,480,000" Label="实际用户数量" />
+                    <ovo:DescriptionsItem Content="98%" Label="7天留存" />
+                    <ovo:DescriptionsItem Content="3级" Label="安全等级" />
+                </ovo:Descriptions>
             </Border>
         </StackPanel>
     </Design.PreviewWith>
-    <ControlTheme TargetType="o:Descriptions" x:Key="{x:Type o:Descriptions}">
+    <ControlTheme TargetType="ovo:Descriptions" x:Key="{x:Type ovo:Descriptions}">
         <Setter Property="Grid.IsSharedSizeScope" Value="False" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:Descriptions">
+            <ControlTemplate TargetType="ovo:Descriptions">
                 <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" />
             </ControlTemplate>
         </Setter>
@@ -29,16 +29,16 @@
         <Style Selector="^[Orientation=Horizontal]">
             <Setter Property="ItemsPanel">
                 <ItemsPanelTemplate>
-                    <o:ColumnWrapPanel />
+                    <ovo:ColumnWrapPanel />
                 </ItemsPanelTemplate>
             </Setter>
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:DescriptionsItem" x:Key="{x:Type o:DescriptionsItem}">
+    <ControlTheme TargetType="ovo:DescriptionsItem" x:Key="{x:Type ovo:DescriptionsItem}">
         <Style Selector="^:horizontal">
             <Setter Property="Template">
-                <ControlTemplate TargetType="o:DescriptionsItem">
+                <ControlTemplate TargetType="ovo:DescriptionsItem">
                     <Grid Margin="0 0 0 12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition SharedSizeGroup="Label" Width="Auto" />
@@ -50,7 +50,7 @@
                             ContentTemplate="{TemplateBinding LabelTemplate}"
                             Foreground="{DynamicResource InnerForegroundBrush}"
                             Grid.Column="0"
-                            Name="{x:Static o:LabeledContentControl.PART_Label}"
+                            Name="{x:Static ovo:LabeledContentControl.PART_Label}"
                             TextBlock.LineHeight="20"
                             Width="{TemplateBinding LabelWidth}" />
                         <TextBlock
@@ -64,7 +64,7 @@
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             Foreground="{DynamicResource ForegroundBrush}"
                             Grid.Column="2"
-                            Name="{x:Static o:PartNames.PART_ContentPresenter}"
+                            Name="{x:Static ovo:PartNames.PART_ContentPresenter}"
                             TextBlock.LineHeight="20" />
                     </Grid>
                 </ControlTemplate>
@@ -113,23 +113,23 @@
             </Style>
         </Style>
         <Style Selector="^:vertical">
-            <Setter Property="o:ClassHelper.ClassSource" Value="{Binding $parent[o:Descriptions]}" />
+            <Setter Property="ovo:ClassHelper.ClassSource" Value="{Binding $parent[ovo:Descriptions]}" />
             <Setter Property="Template">
-                <ControlTemplate TargetType="o:DescriptionsItem">
+                <ControlTemplate TargetType="ovo:DescriptionsItem">
                     <StackPanel>
                         <Label
                             Content="{TemplateBinding Label}"
                             ContentTemplate="{TemplateBinding LabelTemplate}"
                             DataContext="{TemplateBinding Label}"
                             Foreground="{DynamicResource InnerForegroundBrush}"
-                            Name="{x:Static o:LabeledContentControl.PART_Label}"
+                            Name="{x:Static ovo:LabeledContentControl.PART_Label}"
                             Width="{TemplateBinding LabelWidth}" />
                         <ContentPresenter
                             Content="{TemplateBinding Content}"
                             ContentTemplate="{TemplateBinding ContentTemplate}"
                             FontWeight="600"
                             Foreground="{DynamicResource ForegroundBrush}"
-                            Name="{x:Static o:PartNames.PART_ContentPresenter}" />
+                            Name="{x:Static ovo:PartNames.PART_ContentPresenter}" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter>

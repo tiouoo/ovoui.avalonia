@@ -5,17 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:pages="using:OvoUi.Demo.Pages"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia">
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
     <demo:DemoPage Text="Smooth Scroll Demo">
         <TextBlock Text="All original sample scenarios. Each example loads only the theme it uses; the application and navigation retain their default scrolling." TextWrapping="Wrap" />
         <TabControl Name="SampleTabs">
             <TabItem Header="Zooming">
-                <o:ControlShowcase Header="Pan, pinch and zoom interactive content" SourceKey="smooth-scroll-original-zoom">
-                    <o:ControlShowcase.Styles><o:OvoScrollViewTheme /></o:ControlShowcase.Styles>
-                    <o:ControlShowcase.CodeBlocks>
-                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ZoomCode}" />
-                    </o:ControlShowcase.CodeBlocks>
+                <ovo:ControlShowcase Header="Pan, pinch and zoom interactive content" SourceKey="smooth-scroll-original-zoom">
+                    <ovo:ControlShowcase.Styles><ovo:OvoScrollViewTheme /></ovo:ControlShowcase.Styles>
+                    <ovo:ControlShowcase.CodeBlocks>
+                        <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ZoomCode}" />
+                    </ovo:ControlShowcase.CodeBlocks>
                     <StackPanel Spacing="12">
                         <TextBlock Text="Wheel or pinch to zoom; drag to pan with elastic edges. The slider inside the zoomed content remains interactive." TextWrapping="Wrap" />
                         <StackPanel Orientation="Horizontal" Spacing="12">
@@ -23,7 +23,7 @@
                             <TextBlock VerticalAlignment="Center" Text="{Binding #ReferenceZoom.ZoomFactor, StringFormat='{}{0:P1}'}" />
                             <Button Name="ReferenceZoomOut" Content="−" Tag="out" Click="Zoom_OnClick" />
                         </StackPanel>
-                        <o:OvoScrollView Name="ReferenceZoom" Height="340" IsZoomEnabled="True" ContentOrientation="Both"
+                        <ovo:OvoScrollView Name="ReferenceZoom" Height="340" IsZoomEnabled="True" ContentOrientation="Both"
                                          HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                             <Grid Width="1200" Height="800" RowDefinitions="*,*" ColumnDefinitions="*,*">
                                 <Border Background="#334D8DFF"><TextBlock Text="Zoom" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
@@ -32,17 +32,17 @@
                                 <Border Grid.Row="1" Grid.Column="1" Background="#33C889DD"><TextBlock Text="Explore" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
                                 <Slider Name="ReferenceSlider" Grid.ColumnSpan="2" Margin="24" VerticalAlignment="Top" Value="50" ZIndex="1" />
                             </Grid>
-                        </o:OvoScrollView>
+                        </ovo:OvoScrollView>
                     </StackPanel>
-                </o:ControlShowcase>
+                </ovo:ControlShowcase>
             </TabItem>
             <TabItem Header="List">
-                <o:ControlShowcase Header="Virtualization and replaceable bring-into-view animation" SourceKey="smooth-scroll-original-list">
-                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
-                    <o:ControlShowcase.CodeBlocks>
-                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ListCode}" />
-                    </o:ControlShowcase.CodeBlocks>
+                <ovo:ControlShowcase Header="Virtualization and replaceable bring-into-view animation" SourceKey="smooth-scroll-original-list">
+                    <ovo:ControlShowcase.Styles><ovo:OvoScrollViewerTheme /></ovo:ControlShowcase.Styles>
+                    <ovo:ControlShowcase.CodeBlocks>
+                        <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ListCode}" />
+                    </ovo:ControlShowcase.CodeBlocks>
                     <StackPanel Spacing="12">
                         <WrapPanel>
                             <Button Name="ReferenceBringItem" Content="Bring random item into view" Click="BringItem_OnClick" Margin="0,0,12,8" />
@@ -53,25 +53,25 @@
                             <ListBox.ItemTemplate><DataTemplate x:DataType="x:Int32"><TextBlock Margin="8" Text="{Binding}" /></DataTemplate></ListBox.ItemTemplate>
                         </ListBox>
                     </StackPanel>
-                </o:ControlShowcase>
+                </ovo:ControlShowcase>
             </TabItem>
             <TabItem Header="TextBox">
-                <o:ControlShowcase Header="Editable text, selection and caret navigation" SourceKey="smooth-scroll-original-textbox">
-                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
-                    <o:ControlShowcase.CodeBlocks>
-                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding TextCode}" />
-                    </o:ControlShowcase.CodeBlocks>
+                <ovo:ControlShowcase Header="Editable text, selection and caret navigation" SourceKey="smooth-scroll-original-textbox">
+                    <ovo:ControlShowcase.Styles><ovo:OvoScrollViewerTheme /></ovo:ControlShowcase.Styles>
+                    <ovo:ControlShowcase.CodeBlocks>
+                        <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding TextCode}" />
+                    </ovo:ControlShowcase.CodeBlocks>
                     <TextBox Name="ReferenceText" Height="380" AcceptsReturn="True" TextWrapping="Wrap" Text="{Binding Text, Mode=TwoWay}" />
-                </o:ControlShowcase>
+                </ovo:ControlShowcase>
             </TabItem>
             <TabItem Header="Chaining">
-                <o:ControlShowcase Header="Vertical and horizontal nested scrolling" SourceKey="smooth-scroll-original-chaining">
-                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
-                    <o:ControlShowcase.CodeBlocks>
-                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ChainingCode}" />
-                    </o:ControlShowcase.CodeBlocks>
+                <ovo:ControlShowcase Header="Vertical and horizontal nested scrolling" SourceKey="smooth-scroll-original-chaining">
+                    <ovo:ControlShowcase.Styles><ovo:OvoScrollViewerTheme /></ovo:ControlShowcase.Styles>
+                    <ovo:ControlShowcase.CodeBlocks>
+                        <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding ChainingCode}" />
+                    </ovo:ControlShowcase.CodeBlocks>
                     <StackPanel Spacing="12">
                         <ToggleSwitch Name="ReferenceChaining" Content="Continue scrolling the parent at an inner edge" IsChecked="True" />
                         <ScrollViewer Name="ReferenceOuter" Height="360">
@@ -90,7 +90,7 @@
                                 <ScrollViewer Name="ReferenceHorizontal" Height="160" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled"
                                               IsScrollChainingEnabled="{Binding #ReferenceChaining.IsChecked}">
                                     <ScrollViewer.Styles>
-                                        <Style Selector="o|OvoScrollPresenter">
+                                        <Style Selector="ovo|OvoScrollPresenter">
                                             <Setter Property="ContentOrientation" Value="Horizontal" />
                                         </Style>
                                     </ScrollViewer.Styles>
@@ -107,15 +107,15 @@
                             </StackPanel>
                         </ScrollViewer>
                     </StackPanel>
-                </o:ControlShowcase>
+                </ovo:ControlShowcase>
             </TabItem>
             <TabItem Header="Anchor">
-                <o:ControlShowcase Header="Anchor candidates, incremental resizing and scroll events" SourceKey="smooth-scroll-original-anchor">
-                    <o:ControlShowcase.Styles><o:OvoScrollViewerTheme /></o:ControlShowcase.Styles>
-                    <o:ControlShowcase.CodeBlocks>
-                        <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                        <o:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding AnchorCode}" />
-                    </o:ControlShowcase.CodeBlocks>
+                <ovo:ControlShowcase Header="Anchor candidates, incremental resizing and scroll events" SourceKey="smooth-scroll-original-anchor">
+                    <ovo:ControlShowcase.Styles><ovo:OvoScrollViewerTheme /></ovo:ControlShowcase.Styles>
+                    <ovo:ControlShowcase.CodeBlocks>
+                        <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                        <ovo:ShowcaseCodeBlock Header="C#" Language="csharp" Code="{Binding AnchorCode}" />
+                    </ovo:ControlShowcase.CodeBlocks>
                     <StackPanel Spacing="12">
                         <WrapPanel>
                             <Button Name="ReferenceResize" Content="Change items size" Click="Resize_OnClick" Margin="0,0,12,8" />
@@ -137,7 +137,7 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </StackPanel>
-                </o:ControlShowcase>
+                </ovo:ControlShowcase>
             </TabItem>
             <TabItem Header="InteractionTracker">
                 <pages:InteractionTrackerPage />

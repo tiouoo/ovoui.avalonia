@@ -1,26 +1,26 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <o:ClassSelector Width="300">
-            <o:ClassSelectorGroup Header="Header">
-                <o:ClassSelectorItem Content="A" />
-                <o:ClassSelectorItem Content="B" />
-            </o:ClassSelectorGroup>
-            <o:ClassSelectorGroup Header="Alignment">
-                <o:ClassSelectorItem ClassName="Left" Content="Left" />
-                <o:ClassSelectorItem ClassName="Right" Content="Right" />
-            </o:ClassSelectorGroup>
-        </o:ClassSelector>
+        <ovo:ClassSelector Width="300">
+            <ovo:ClassSelectorGroup Header="Header">
+                <ovo:ClassSelectorItem Content="A" />
+                <ovo:ClassSelectorItem Content="B" />
+            </ovo:ClassSelectorGroup>
+            <ovo:ClassSelectorGroup Header="Alignment">
+                <ovo:ClassSelectorItem ClassName="Left" Content="Left" />
+                <ovo:ClassSelectorItem ClassName="Right" Content="Right" />
+            </ovo:ClassSelectorGroup>
+        </ovo:ClassSelector>
     </Design.PreviewWith>
 
     <ControlTheme
-        BasedOn="{StaticResource {x:Type o:MultiComboBox}}"
-        TargetType="o:ClassSelector"
-        x:Key="{x:Type o:ClassSelector}" />
+        BasedOn="{StaticResource {x:Type ovo:MultiComboBox}}"
+        TargetType="ovo:ClassSelector"
+        x:Key="{x:Type ovo:ClassSelector}" />
 
-    <ControlTheme TargetType="o:ClassSelectorGroup" x:Key="{x:Type o:ClassSelectorGroup}">
+    <ControlTheme TargetType="ovo:ClassSelectorGroup" x:Key="{x:Type ovo:ClassSelectorGroup}">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="ItemsPanel">
             <ItemsPanelTemplate>
@@ -28,7 +28,7 @@
             </ItemsPanelTemplate>
         </Setter>
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:ClassSelectorGroup">
+            <ControlTemplate TargetType="ovo:ClassSelectorGroup">
                 <StackPanel Margin="0,4">
                     <ContentPresenter
                         Content="{TemplateBinding Header}"
@@ -43,7 +43,7 @@
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:ClassSelectorItem" x:Key="{x:Type o:ClassSelectorItem}">
+    <ControlTheme TargetType="ovo:ClassSelectorItem" x:Key="{x:Type ovo:ClassSelectorItem}">
         <Setter Property="Padding" Value="12 8" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -54,7 +54,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:ClassSelectorItem">
+            <ControlTemplate TargetType="ovo:ClassSelectorItem">
                 <Border
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"

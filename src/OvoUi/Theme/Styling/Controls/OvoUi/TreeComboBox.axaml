@@ -1,20 +1,20 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:converters="using:Avalonia.Controls.Converters"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel Height="300">
-            <o:TreeComboBox
+            <ovo:TreeComboBox
                 MaxHeight="200"
                 PlaceholderText="Please Select"
                 Width="300">
-                <o:TreeComboBoxItem Header="Option 1">
-                    <o:TreeComboBoxItem Header="Inner Option 1" />
-                    <o:TreeComboBoxItem Header="Inner Option 2" />
-                </o:TreeComboBoxItem>
-                <o:TreeComboBoxItem Header="Option 2" />
-            </o:TreeComboBox>
+                <ovo:TreeComboBoxItem Header="Option 1">
+                    <ovo:TreeComboBoxItem Header="Inner Option 1" />
+                    <ovo:TreeComboBoxItem Header="Inner Option 2" />
+                </ovo:TreeComboBoxItem>
+                <ovo:TreeComboBoxItem Header="Option 2" />
+            </ovo:TreeComboBox>
         </StackPanel>
     </Design.PreviewWith>
 
@@ -23,7 +23,7 @@
         Left="True"
         x:Key="LeftMarginConverter" />
 
-    <ControlTheme TargetType="o:TreeComboBox" x:Key="{x:Type o:TreeComboBox}">
+    <ControlTheme TargetType="ovo:TreeComboBox" x:Key="{x:Type ovo:TreeComboBox}">
         <Setter Property="Padding" Value="12,0,0,0" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
@@ -34,7 +34,7 @@
         <Setter Property="MaxDropDownHeight" Value="270" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:TreeComboBox">
+            <ControlTemplate TargetType="ovo:TreeComboBox">
                 <Grid ColumnDefinitions="Auto, *, Auto, Auto" MinWidth="{TemplateBinding MinHeight}">
                     <Border
                         Background="{TemplateBinding Background}"
@@ -72,7 +72,7 @@
                         VerticalAlignment="Center"
                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
                         <ContentPresenter.ContentTemplate>
-                            <MultiBinding Converter="{x:Static o:SelectionBoxTemplateConverter.Instance}">
+                            <MultiBinding Converter="{x:Static ovo:SelectionBoxTemplateConverter.Instance}">
                                 <TemplateBinding Property="SelectedItemTemplate" />
                                 <TemplateBinding Property="ItemTemplate" />
                             </MultiBinding>
@@ -88,7 +88,7 @@
                         VerticalAlignment="Center"
                         VerticalContentAlignment="Center" />
                     <Button
-                        Command="{Binding $parent[o:TreeComboBox].Clear}"
+                        Command="{Binding $parent[ovo:TreeComboBox].Clear}"
                         Grid.Column="3"
                         IsVisible="False"
                         Name="PART_ClearButton"
@@ -113,7 +113,7 @@
                         IsLightDismissEnabled="True"
                         IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                         MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                        Name="{x:Static o:PartNames.PART_Popup}"
+                        Name="{x:Static ovo:PartNames.PART_Popup}"
                         PlacementTarget="Background"
                         WindowManagerAddShadowHint="False">
                         <Border
@@ -168,10 +168,10 @@
 
         <Style Selector="^.clear">
             <Style Selector="^:pointerover /template/ Button#PART_ClearButton">
-                <Setter Property="IsVisible" Value="{Binding $parent[o:TreeComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                <Setter Property="IsVisible" Value="{Binding $parent[ovo:TreeComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
             </Style>
             <Style Selector="^:pointerover /template/ Button#DropDownGlyph">
-                <Setter Property="IsVisible" Value="{Binding $parent[o:TreeComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+                <Setter Property="IsVisible" Value="{Binding $parent[ovo:TreeComboBox].SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
             </Style>
         </Style>
 
@@ -246,7 +246,7 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:TreeComboBoxItem" x:Key="{x:Type o:TreeComboBoxItem}">
+    <ControlTheme TargetType="ovo:TreeComboBoxItem" x:Key="{x:Type ovo:TreeComboBoxItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
         <Setter Property="CornerRadius" Value="10" />
@@ -254,7 +254,7 @@
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:TreeComboBoxItem">
+            <ControlTemplate TargetType="ovo:TreeComboBoxItem">
                 <StackPanel>
                     <Border
                         Background="{TemplateBinding Background}"
@@ -295,7 +295,7 @@
                                     </Transitions>
                                 </Rectangle.Transitions>
                             </Rectangle>
-                            <Grid ColumnDefinitions="Auto, *" Name="{x:Static o:PartNames.PART_Header}">
+                            <Grid ColumnDefinitions="Auto, *" Name="{x:Static ovo:PartNames.PART_Header}">
                                 <ToggleButton
                                     Focusable="False"
                                     Grid.Column="0"
@@ -313,7 +313,7 @@
                                     Grid.Column="1"
                                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                     Margin="{TemplateBinding Padding}"
-                                    Name="{x:Static o:PartNames.PART_HeaderPresenter}"
+                                    Name="{x:Static ovo:PartNames.PART_HeaderPresenter}"
                                     Padding="0,4,8,4"
                                     VerticalAlignment="{TemplateBinding VerticalAlignment}" />
                             </Grid>
@@ -323,7 +323,7 @@
                         IsVisible="{TemplateBinding IsExpanded}"
                         ItemsPanel="{TemplateBinding ItemsPanel}"
                         Margin="0,2,0,0"
-                        Name="{x:Static o:PartNames.PART_ItemsPresenter}" />
+                        Name="{x:Static ovo:PartNames.PART_ItemsPresenter}" />
                 </StackPanel>
             </ControlTemplate>
         </Setter>

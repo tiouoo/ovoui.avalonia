@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.DatePickerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="DatePicker">
-        <o:ControlShowcase Header="Date parts" SourceKey="date-picker-parts">
+        <ovo:ControlShowcase Header="Date parts" SourceKey="date-picker-parts">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <DatePicker />
                 <DatePicker Classes="connect" />
@@ -13,14 +13,14 @@
                 <DatePicker DayVisible="False" />
                 <DatePicker MonthVisible="False" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Themes and states" SourceKey="date-picker-themes">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Themes and states" SourceKey="date-picker-themes">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <DatePicker Classes="clear" />
                 <DatePicker Theme="{StaticResource SolidDatePickerTheme}" />
                 <DatePicker Theme="{StaticResource BorderDatePickerTheme}" />
                 <DatePicker IsEnabled="False" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

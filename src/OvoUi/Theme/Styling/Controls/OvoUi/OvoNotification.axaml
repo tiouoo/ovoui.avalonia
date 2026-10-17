@@ -1,26 +1,26 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <ThemeVariantScope RequestedThemeVariant="Dark">
             <ReversibleStackPanel Orientation="Vertical" ReverseOrder="True">
-                <o:OvoNotificationCard ShowIcon="False" ShowRemoveButton="False" />
-                <o:OvoNotificationCard ShowIcon="False" />
-                <o:OvoNotificationCard NotificationType="Information">
+                <ovo:OvoNotificationCard ShowIcon="False" ShowRemoveButton="False" />
+                <ovo:OvoNotificationCard ShowIcon="False" />
+                <ovo:OvoNotificationCard NotificationType="Information">
                     Hello, OvoUi!
-                </o:OvoNotificationCard>
-                <o:OvoNotificationCard NotificationType="Success">
-                    <o:Notification Title="Welcome" />
-                </o:OvoNotificationCard>
-                <o:OvoNotificationCard NotificationType="Warning">
-                    <o:Notification Content="Hello, OvoUi!" />
-                </o:OvoNotificationCard>
-                <o:OvoNotificationCard Classes="Light" NotificationType="Error">
-                    <o:Notification Title="Welcome">
+                </ovo:OvoNotificationCard>
+                <ovo:OvoNotificationCard NotificationType="Success">
+                    <ovo:Notification Title="Welcome" />
+                </ovo:OvoNotificationCard>
+                <ovo:OvoNotificationCard NotificationType="Warning">
+                    <ovo:Notification Content="Hello, OvoUi!" />
+                </ovo:OvoNotificationCard>
+                <ovo:OvoNotificationCard Classes="Light" NotificationType="Error">
+                    <ovo:Notification Title="Welcome">
                         Hello, OvoUi!
-                    </o:Notification>
-                </o:OvoNotificationCard>
+                    </ovo:Notification>
+                </ovo:OvoNotificationCard>
             </ReversibleStackPanel>
         </ThemeVariantScope>
     </Design.PreviewWith>
@@ -79,7 +79,7 @@
     </ResourceDictionary.ThemeDictionaries>
 
 
-    <ControlTheme TargetType="o:OvoNotificationManager" x:Key="{x:Type o:OvoNotificationManager}">
+    <ControlTheme TargetType="ovo:OvoNotificationManager" x:Key="{x:Type ovo:OvoNotificationManager}">
         <Setter Property="Margin" Value="10,45,10,10" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -117,13 +117,13 @@
         </Style>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:OvoNotificationCard" x:Key="{x:Type o:OvoNotificationCard}">
+    <ControlTheme TargetType="ovo:OvoNotificationCard" x:Key="{x:Type ovo:OvoNotificationCard}">
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Background" Value="{DynamicResource NotificationCardBackground}" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:OvoNotificationCard">
+            <ControlTemplate TargetType="ovo:OvoNotificationCard">
                 <LayoutTransformControl UseRenderTransform="True" x:Name="PART_LayoutTransformControl">
                     <Border
                         Background="{TemplateBinding Background}"
@@ -176,7 +176,7 @@
                                             VerticalContentAlignment="Center"
                                             x:Name="PART_Content">
                                             <ContentControl.DataTemplates>
-                                                <DataTemplate DataType="o:INotification">
+                                                <DataTemplate DataType="ovo:INotification">
                                                     <StackPanel Spacing="4">
                                                         <SelectableTextBlock
                                                             FontSize="16"
@@ -222,7 +222,7 @@
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
-                                        <DataTemplate DataType="o:OperateButtonEntry">
+                                        <DataTemplate DataType="ovo:OperateButtonEntry">
                                             <HyperlinkButton
                                                 Command="{Binding Command}"
                                                 CommandParameter="{Binding RelativeSource={RelativeSource Self}}"

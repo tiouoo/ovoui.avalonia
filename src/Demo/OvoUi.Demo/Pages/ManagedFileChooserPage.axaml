@@ -3,19 +3,19 @@
     x:DataType="pages:ManagedFileChooserPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ManagedFileChooser">
-        <o:ControlShowcase Header="Storage picker workflows" SourceKey="managed-file-chooser-actions">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="axaml" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Storage picker workflows" SourceKey="managed-file-chooser-actions">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="500"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel HorizontalAlignment="Left" Spacing="16">
                 <WrapPanel ItemSpacing="12">
                     <Button Click="OpenFile" Content="Open files" />
@@ -35,13 +35,13 @@
                         x:Name="PickerResult" />
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="About the control" SourceKey="managed-file-chooser-info">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="About the control" SourceKey="managed-file-chooser-info">
             <TextBlock
                 HorizontalAlignment="Left"
                 MaxWidth="720"
                 Text="ManagedFileChooser is Avalonia's internal managed-dialog surface. Applications normally invoke the public StorageProvider API, demonstrated above; OvoUi supplies the visual theme used when the managed implementation is selected."
                 TextWrapping="Wrap" />
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -5,34 +5,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TabStrip">
-        <o:ControlShowcase Header="Default" SourceKey="tab-strip-default">
+        <ovo:ControlShowcase Header="Default" SourceKey="tab-strip-default">
             <TabStrip SelectedIndex="0">
                 <TabStripItem Content="Overview" />
                 <TabStripItem Content="Activity" />
                 <TabStripItem Content="Settings" />
                 <TabStripItem Content="Disabled" IsEnabled="False" />
             </TabStrip>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Line" SourceKey="tab-strip-line">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Line" SourceKey="tab-strip-line">
             <TabStrip SelectedIndex="1" Theme="{StaticResource LineTabStrip}">
                 <TabStripItem Content="Overview" />
                 <TabStripItem Content="Activity" />
                 <TabStripItem Content="Settings" />
                 <TabStripItem Content="Disabled" IsEnabled="False" />
             </TabStrip>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Card" SourceKey="tab-strip-card">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Card" SourceKey="tab-strip-card">
             <TabStrip SelectedIndex="0" Theme="{StaticResource CardTabStrip}">
                 <TabStripItem Content="Overview" />
                 <TabStripItem Content="Activity" />
                 <TabStripItem Content="Settings" />
                 <TabStripItem Content="Disabled" IsEnabled="False" />
             </TabStrip>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Button and border" SourceKey="tab-strip-button-border">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Button and border" SourceKey="tab-strip-button-border">
             <StackPanel Spacing="20">
                 <TabStrip SelectedIndex="1" Theme="{StaticResource ButtonTabStrip}">
                     <TabStripItem Content="Day" />
@@ -45,6 +45,6 @@
                     <TabStripItem Content="History" />
                 </TabStrip>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

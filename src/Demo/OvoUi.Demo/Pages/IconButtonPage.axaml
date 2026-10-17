@@ -7,119 +7,119 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Resources>
         <StreamGeometry x:Key="BellIcon">M12,2 A2,2 0 0 0 10,4 V5.1 A7,7 0 0 0 5,12 V16 L3,18 V19 H21 V18 L19,16 V12 A7,7 0 0 0 14,5.1 V4 A2,2 0 0 0 12,2 M9,21 H15 A3,3 0 0 1 9,21</StreamGeometry>
     </UserControl.Resources>
 
     <demo:DemoPage Text="IconButton">
-        <o:ControlShowcase Header="IconButton: styles and states" SourceKey="icon-button-states">
+        <ovo:ControlShowcase Header="IconButton: styles and states" SourceKey="icon-button-states">
             <StackPanel Margin="10,0" Spacing="14">
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <o:IconButton Icon="{StaticResource BellIcon}" ToolTip.Tip="Notifications" />
-                    <o:IconButton Content="Default" Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton Icon="{StaticResource BellIcon}" ToolTip.Tip="Notifications" />
+                    <ovo:IconButton Content="Default" Icon="{StaticResource BellIcon}" />
+                    <ovo:IconButton
                         Classes="float"
                         Content="Float"
                         Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="border"
                         Content="Border"
                         Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="colorless"
                         Content="Colorless"
                         Icon="{StaticResource BellIcon}" />
                 </WrapPanel>
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="accent"
                         Content="Accent"
                         Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="info"
                         Content="Info"
                         Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="success"
                         Content="Success"
                         Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="warn"
                         Content="Warning"
                         Icon="{StaticResource BellIcon}" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Classes="danger"
                         Content="Danger"
                         Icon="{StaticResource BellIcon}" />
                 </WrapPanel>
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <o:IconButton
+                    <ovo:IconButton
                         Content="Loading"
                         Icon="{StaticResource BellIcon}"
                         IsLoading="True" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Content="Disabled"
                         Icon="{StaticResource BellIcon}"
                         IsEnabled="False" />
-                    <o:IconButton
+                    <ovo:IconButton
                         Content="Loading disabled"
                         Icon="{StaticResource BellIcon}"
                         IsEnabled="False"
                         IsLoading="True" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="IconRepeatButton" SourceKey="icon-repeat-button">
+        <ovo:ControlShowcase Header="IconRepeatButton" SourceKey="icon-repeat-button">
             <StackPanel Margin="10,0" Spacing="12">
                 <TextBlock Text="Press and hold a repeat button to fire repeatedly." />
                 <WrapPanel ItemSpacing="12" LineSpacing="12">
-                    <o:IconRepeatButton
+                    <ovo:IconRepeatButton
                         Content="Repeat"
                         Delay="400"
                         Icon="{StaticResource BellIcon}"
                         Interval="100" />
-                    <o:IconRepeatButton
+                    <ovo:IconRepeatButton
                         Classes="border accent"
                         Content="Slow repeat"
                         Delay="600"
                         Icon="{StaticResource BellIcon}"
                         Interval="300" />
-                    <o:IconRepeatButton
+                    <ovo:IconRepeatButton
                         Content="Loading"
                         Icon="{StaticResource BellIcon}"
                         IsLoading="True" />
-                    <o:IconRepeatButton
+                    <ovo:IconRepeatButton
                         Content="Disabled"
                         Icon="{StaticResource BellIcon}"
                         IsEnabled="False" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="IconDropDownButton and IconSplitButton" SourceKey="icon-flyout-buttons">
+        <ovo:ControlShowcase Header="IconDropDownButton and IconSplitButton" SourceKey="icon-flyout-buttons">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
                 Margin="10,0">
-                <o:IconDropDownButton Content="Export" Icon="{StaticResource SaveIcon}">
-                    <o:IconDropDownButton.Flyout>
+                <ovo:IconDropDownButton Content="Export" Icon="{StaticResource SaveIcon}">
+                    <ovo:IconDropDownButton.Flyout>
                         <MenuFlyout Placement="BottomEdgeAlignedLeft">
                             <MenuItem Header="Export as PDF" />
                             <MenuItem Header="Export as image" />
                             <Separator />
                             <MenuItem Header="Export as text" />
                         </MenuFlyout>
-                    </o:IconDropDownButton.Flyout>
-                </o:IconDropDownButton>
-                <o:IconDropDownButton
+                    </ovo:IconDropDownButton.Flyout>
+                </ovo:IconDropDownButton>
+                <ovo:IconDropDownButton
                     Classes="border info"
                     Content="Tools"
                     Icon="{StaticResource StarIcon}"
                     IconPlacement="Right">
-                    <o:IconDropDownButton.Flyout>
+                    <ovo:IconDropDownButton.Flyout>
                         <Flyout Placement="BottomEdgeAlignedLeft">
                             <StackPanel MinWidth="220" Spacing="10">
                                 <TextBlock FontWeight="SemiBold" Text="Quick settings" />
@@ -128,44 +128,44 @@
                                 <Button Content="Apply" HorizontalAlignment="Right" />
                             </StackPanel>
                         </Flyout>
-                    </o:IconDropDownButton.Flyout>
-                </o:IconDropDownButton>
-                <o:IconSplitButton Content="Save" Icon="{StaticResource SaveIcon}">
-                    <o:IconSplitButton.Flyout>
+                    </ovo:IconDropDownButton.Flyout>
+                </ovo:IconDropDownButton>
+                <ovo:IconSplitButton Content="Save" Icon="{StaticResource SaveIcon}">
+                    <ovo:IconSplitButton.Flyout>
                         <MenuFlyout Placement="BottomEdgeAlignedLeft">
                             <MenuItem Header="Save" />
                             <MenuItem Header="Save as..." />
                             <MenuItem Header="Save a copy" />
                         </MenuFlyout>
-                    </o:IconSplitButton.Flyout>
-                </o:IconSplitButton>
-                <o:IconSplitButton
+                    </ovo:IconSplitButton.Flyout>
+                </ovo:IconSplitButton>
+                <ovo:IconSplitButton
                     Content="Unavailable"
                     Icon="{StaticResource SaveIcon}"
                     IsEnabled="False" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="IconToggleButton" SourceKey="icon-toggle-button">
+        <ovo:ControlShowcase Header="IconToggleButton" SourceKey="icon-toggle-button">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
                 Margin="10,0">
-                <o:IconToggleButton Content="Favorite" Icon="{StaticResource StarIcon}" />
-                <o:IconToggleButton
+                <ovo:IconToggleButton Content="Favorite" Icon="{StaticResource StarIcon}" />
+                <ovo:IconToggleButton
                     Classes="border accent"
                     Content="Pinned"
                     Icon="{StaticResource StarIcon}"
                     IsChecked="True" />
-                <o:IconToggleButton
+                <ovo:IconToggleButton
                     Content="Loading"
                     Icon="{StaticResource StarIcon}"
                     IsLoading="True" />
-                <o:IconToggleButton
+                <ovo:IconToggleButton
                     Content="Disabled"
                     Icon="{StaticResource StarIcon}"
                     IsEnabled="False" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

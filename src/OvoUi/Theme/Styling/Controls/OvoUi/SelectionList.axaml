@@ -1,9 +1,9 @@
 <ResourceDictionary
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <ControlTheme TargetType="o:SelectionList" x:Key="{x:Type o:SelectionList}">
+    <ControlTheme TargetType="ovo:SelectionList" x:Key="{x:Type ovo:SelectionList}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Indicator">
             <Template>
@@ -15,7 +15,7 @@
             </Template>
         </Setter>
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:SelectionList">
+            <ControlTemplate TargetType="ovo:SelectionList">
                 <Border
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -24,7 +24,7 @@
                     CornerRadius="{TemplateBinding CornerRadius}"
                     Name="border">
                     <Panel>
-                        <ContentPresenter Content="{TemplateBinding Indicator}" Name="{x:Static o:SelectionList.PART_Indicator}" />
+                        <ContentPresenter Content="{TemplateBinding Indicator}" Name="{x:Static ovo:SelectionList.PART_Indicator}" />
                         <ItemsPresenter
                             ItemsPanel="{TemplateBinding ItemsPanel}"
                             Margin="{TemplateBinding Padding}"
@@ -35,12 +35,12 @@
         </Setter>
     </ControlTheme>
 
-    <ControlTheme TargetType="o:SelectionListItem" x:Key="{x:Type o:SelectionListItem}">
+    <ControlTheme TargetType="ovo:SelectionListItem" x:Key="{x:Type ovo:SelectionListItem}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
-            <ControlTemplate TargetType="o:SelectionListItem">
+            <ControlTemplate TargetType="ovo:SelectionListItem">
                 <ContentPresenter
                     Background="{TemplateBinding Background}"
                     Content="{TemplateBinding Content}"

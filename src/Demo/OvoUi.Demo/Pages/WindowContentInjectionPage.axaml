@@ -3,15 +3,15 @@
     x:DataType="pages:WindowContentInjectionPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="WindowContentInjection">
-        <o:ControlShowcase Header="Host Avalonia content in another window" SourceKey="platform-window-content-injection">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+        <ovo:ControlShowcase Header="Host Avalonia content in another window" SourceKey="platform-window-content-injection">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+            </ovo:ControlShowcase.CodeBlocks>
             <StackPanel Spacing="12">
                 <TextBlock Text="Select a visible desktop window. The demo creates an Avalonia window, reparents it into the target client area, and keeps its size synchronized." TextWrapping="Wrap" />
                 <TextBlock IsVisible="{Binding !IsWindows}" Text="This API requires the Windows desktop host." TextWrapping="Wrap" />
@@ -24,6 +24,6 @@
                 </WrapPanel>
                 <TextBlock Name="StatusLabel" Text="Choose a window to begin." TextWrapping="Wrap" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

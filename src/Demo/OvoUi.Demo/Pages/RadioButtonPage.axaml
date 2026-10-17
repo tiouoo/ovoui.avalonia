@@ -7,10 +7,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="RadioButton">
-        <o:ControlShowcase Header="Standard states" SourceKey="radio-button-standard-states">
+        <ovo:ControlShowcase Header="Standard states" SourceKey="radio-button-standard-states">
             <StackPanel Margin="10,0" Spacing="16">
                 <WrapPanel ItemSpacing="24" LineSpacing="12">
                     <RadioButton Content="Unchecked" GroupName="StandardEnabled" />
@@ -31,9 +31,9 @@
                         IsEnabled="False" />
                 </WrapPanel>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Selection groups" SourceKey="radio-button-groups">
+        <ovo:ControlShowcase Header="Selection groups" SourceKey="radio-button-groups">
             <WrapPanel
                 ItemSpacing="48"
                 LineSpacing="20"
@@ -57,9 +57,9 @@
                     <RadioButton Content="Spacious" GroupName="Density" />
                 </StackPanel>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="ButtonRadioButtonTheme" SourceKey="radio-button-button-theme">
+        <ovo:ControlShowcase Header="ButtonRadioButtonTheme" SourceKey="radio-button-button-theme">
             <StackPanel Margin="10,0" Spacing="16">
                 <WrapPanel ItemSpacing="16" LineSpacing="12">
                     <Border Theme="{StaticResource RadioButtonGroupBorder}">
@@ -102,9 +102,9 @@
                     </StackPanel>
                 </Border>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="CardRadioButtonTheme" SourceKey="radio-button-card-theme">
+        <ovo:ControlShowcase Header="CardRadioButtonTheme" SourceKey="radio-button-card-theme">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
@@ -127,9 +127,9 @@
                     MinWidth="210"
                     Theme="{StaticResource CardRadioButtonTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="PureCardRadioButtonTheme" SourceKey="radio-button-pure-card-theme">
+        <ovo:ControlShowcase Header="PureCardRadioButtonTheme" SourceKey="radio-button-pure-card-theme">
             <WrapPanel
                 ItemSpacing="12"
                 LineSpacing="12"
@@ -152,6 +152,6 @@
                     MinWidth="150"
                     Theme="{StaticResource PureCardRadioButtonTheme}" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

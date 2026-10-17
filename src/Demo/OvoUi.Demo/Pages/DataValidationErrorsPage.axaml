@@ -2,11 +2,11 @@
     x:Class="OvoUi.Demo.Pages.DataValidationErrorsPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:system="using:System"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="DataValidationErrors">
-        <o:ControlShowcase Header="Validation states" SourceKey="data-validation-control-states">
+        <ovo:ControlShowcase Header="Validation states" SourceKey="data-validation-control-states">
             <WrapPanel ItemSpacing="20" LineSpacing="16">
                 <TextBox PlaceholderText="Default error" Width="260">
                     <DataValidationErrors.Error>
@@ -71,9 +71,9 @@
                     </DataValidationErrors.Error>
                 </CalendarDatePicker>
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Inline and tooltip presentation" SourceKey="data-validation-presentations">
+        <ovo:ControlShowcase Header="Inline and tooltip presentation" SourceKey="data-validation-presentations">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="18"
@@ -102,6 +102,6 @@
                     </DataValidationErrors.Error>
                 </TextBox>
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

@@ -2,45 +2,45 @@
     x:Class="OvoUi.Demo.Pages.MultiComboBoxPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="MultiComboBox">
-        <o:ControlShowcase Header="Multiple selection" SourceKey="multi-combo-selection">
+        <ovo:ControlShowcase Header="Multiple selection" SourceKey="multi-combo-selection">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
-                <o:MultiComboBox PlaceholderText="Choose technologies" Width="340">
-                    <o:MultiComboBoxItem>Avalonia</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>.NET</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>C#</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>Skia</o:MultiComboBoxItem>
-                </o:MultiComboBox>
-                <o:MultiComboBox
+                <ovo:MultiComboBox PlaceholderText="Choose technologies" Width="340">
+                    <ovo:MultiComboBoxItem>Avalonia</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>.NET</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>C#</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>Skia</ovo:MultiComboBoxItem>
+                </ovo:MultiComboBox>
+                <ovo:MultiComboBox
                     Classes="clearButton"
                     InnerLeftContent="Tags"
                     InnerRightContent="Optional"
                     PlaceholderText="Select values"
                     Width="340">
-                    <o:MultiComboBoxItem>Desktop</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>Mobile</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>Browser</o:MultiComboBoxItem>
-                </o:MultiComboBox>
+                    <ovo:MultiComboBoxItem>Desktop</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>Mobile</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>Browser</ovo:MultiComboBoxItem>
+                </ovo:MultiComboBox>
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Popup content and states" SourceKey="multi-combo-popup">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Popup content and states" SourceKey="multi-combo-popup">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
-                <o:MultiComboBox
+                <ovo:MultiComboBox
                     PlaceholderText="With popup header"
                     PopupInnerBottomContent="Select any number"
                     PopupInnerTopContent="Available platforms"
                     Width="340">
-                    <o:MultiComboBoxItem>Windows</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>macOS</o:MultiComboBoxItem>
-                    <o:MultiComboBoxItem>Linux</o:MultiComboBoxItem>
-                </o:MultiComboBox>
-                <o:MultiComboBox
+                    <ovo:MultiComboBoxItem>Windows</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>macOS</ovo:MultiComboBoxItem>
+                    <ovo:MultiComboBoxItem>Linux</ovo:MultiComboBoxItem>
+                </ovo:MultiComboBox>
+                <ovo:MultiComboBox
                     IsEnabled="False"
                     PlaceholderText="Disabled"
                     Width="340" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

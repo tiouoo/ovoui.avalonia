@@ -1,6 +1,6 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style Selector="UserControl">
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
@@ -12,12 +12,12 @@
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
     </Style>
-    <Style Selector="o|OvoWindow">
+    <Style Selector="ovo|OvoWindow">
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />
     </Style>
-    <Style Selector="o|OvoView">
+    <Style Selector="ovo|OvoView">
         <Setter Property="FontSize" Value="{DynamicResource OvoFontSize}" />
         <Setter Property="FontWeight" Value="{DynamicResource OvoFontWeight}" />
         <Setter Property="FontFamily" Value="{DynamicResource OvoFontFamily}" />

@@ -3,24 +3,24 @@
     x:DataType="pages:ElasticWrapPanelDemoViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:pages="clr-namespace:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <UserControl.Styles>
-        <Style Selector="o|ElasticWrapPanel.demo &gt; Border">
+        <Style Selector="ovo|ElasticWrapPanel.demo &gt; Border">
             <Setter Property="CornerRadius" Value="6" />
             <Setter Property="Padding" Value="10" />
         </Style>
     </UserControl.Styles>
     <demo:DemoPage Text="ElasticWrapPanel">
-        <o:ControlShowcase Header="Interactive layout" SourceKey="layout-elastic-wrap-interactive">
-            <o:ControlShowcase.CodeBlocks>
-                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
-                <o:ShowcaseCodeBlock
+        <ovo:ControlShowcase Header="Interactive layout" SourceKey="layout-elastic-wrap-interactive">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"
                     Language="csharp" />
-            </o:ControlShowcase.CodeBlocks>
+            </ovo:ControlShowcase.CodeBlocks>
             <Grid ColumnDefinitions="280,*" ColumnSpacing="20">
                 <ScrollViewer MaxHeight="560" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="10">
@@ -68,7 +68,7 @@
                         Height="430"
                         Padding="8">
                         <ScrollViewer HorizontalScrollBarVisibility="{Binding HorizontalVisibility}" VerticalScrollBarVisibility="{Binding VerticalVisibility}">
-                            <o:ElasticWrapPanel
+                            <ovo:ElasticWrapPanel
                                 Classes="demo"
                                 IsFillHorizontal="{Binding IsFillHorizontal}"
                                 IsFillVertical="{Binding IsFillVertical}"
@@ -120,14 +120,14 @@
                                 <Border Background="#226B7075">
                                     <TextBlock Text="Fourteen" />
                                 </Border>
-                            </o:ElasticWrapPanel>
+                            </ovo:ElasticWrapPanel>
                         </ScrollViewer>
                     </Border>
                 </StackPanel>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Interactive FixToRB" SourceKey="layout-elastic-wrap-fix-to-rb">
+        <ovo:ControlShowcase Header="Interactive FixToRB" SourceKey="layout-elastic-wrap-fix-to-rb">
             <Grid ColumnDefinitions="280,*" ColumnSpacing="20">
                 <StackPanel Spacing="10">
                     <TextBlock FontWeight="SemiBold" Text="Fixed item settings" />
@@ -159,7 +159,7 @@
                     MinHeight="300"
                     Padding="8">
                     <ScrollViewer HorizontalScrollBarVisibility="{Binding HorizontalVisibility}" VerticalScrollBarVisibility="{Binding VerticalVisibility}">
-                        <o:ElasticWrapPanel
+                        <ovo:ElasticWrapPanel
                             Classes="demo"
                             IsFillHorizontal="{Binding IsFillHorizontal}"
                             IsFillVertical="{Binding IsFillVertical}"
@@ -183,7 +183,7 @@
                                 MinWidth="100"
                                 VerticalAlignment="{Binding FixedVerticalAlignment}"
                                 Width="{Binding ItemSelfWidth}"
-                                o:ElasticWrapPanel.FixToRB="True">
+                                ovo:ElasticWrapPanel.FixToRB="True">
                                 <Button Content="Search" />
                                 <Button Content="Export" />
                             </UniformGrid>
@@ -199,18 +199,18 @@
                                 MinWidth="100"
                                 VerticalAlignment="{Binding FixedVerticalAlignment}"
                                 Width="{Binding ItemSelfWidth}"
-                                o:ElasticWrapPanel.FixToRB="True">
+                                ovo:ElasticWrapPanel.FixToRB="True">
                                 <Button Content="Cancel" />
                                 <Button Content="Apply" />
                             </UniformGrid>
-                        </o:ElasticWrapPanel>
+                        </ovo:ElasticWrapPanel>
                     </ScrollViewer>
                 </Border>
             </Grid>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
 
-        <o:ControlShowcase Header="Automatic item sizing" SourceKey="layout-elastic-wrap-auto-size">
-            <o:ElasticWrapPanel
+        <ovo:ControlShowcase Header="Automatic item sizing" SourceKey="layout-elastic-wrap-auto-size">
+            <ovo:ElasticWrapPanel
                 Classes="demo"
                 ItemSpacing="8"
                 LineSpacing="8">
@@ -229,7 +229,7 @@
                 <Border Background="#22FC8800" Width="220">
                     <TextBlock Text="Content-sized item" />
                 </Border>
-            </o:ElasticWrapPanel>
-        </o:ControlShowcase>
+            </ovo:ElasticWrapPanel>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

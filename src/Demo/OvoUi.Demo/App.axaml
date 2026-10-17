@@ -4,7 +4,6 @@
     x:Class="OvoUi.Demo.App"
     xmlns="https://github.com/avaloniaui"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
-    xmlns:tab="using:OvoUi.Tab"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -15,7 +14,7 @@
     </Application.Resources>
     <Application.Styles>
         <ovo:OvoUiTheme Language="en_us" />
-        <tab:OvoTabTheme />
+        <ovo:OvoTabTheme />
         <ovo:OvoAvaloniaEditTheme />
         <ovo:OvoShowcaseTheme />
         <ovo:OvoUiFont />

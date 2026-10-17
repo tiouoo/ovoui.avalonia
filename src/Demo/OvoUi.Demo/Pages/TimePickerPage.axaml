@@ -2,10 +2,10 @@
     x:Class="OvoUi.Demo.Pages.TimePickerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TimePicker">
-        <o:ControlShowcase Header="Clock formats" SourceKey="time-picker-formats">
+        <ovo:ControlShowcase Header="Clock formats" SourceKey="time-picker-formats">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <TimePicker ClockIdentifier="12HourClock" SelectedTime="09:30" />
                 <TimePicker
@@ -16,14 +16,14 @@
                 <TimePicker SelectedTime="13:45:30" UseSeconds="True" />
                 <TimePicker MinuteIncrement="15" SelectedTime="10:15" />
             </WrapPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Themes and states" SourceKey="time-picker-themes">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Themes and states" SourceKey="time-picker-themes">
             <WrapPanel ItemSpacing="16" LineSpacing="16">
                 <TimePicker Classes="clear" SelectedTime="13:45" />
                 <TimePicker SelectedTime="13:45" Theme="{StaticResource SolidTimePickerTheme}" />
                 <TimePicker SelectedTime="13:45" Theme="{StaticResource BorderTimePickerTheme}" />
                 <TimePicker IsEnabled="False" SelectedTime="13:45" />
             </WrapPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

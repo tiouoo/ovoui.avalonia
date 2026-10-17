@@ -2,32 +2,32 @@
     x:Class="OvoUi.Demo.Pages.NumPadPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="NumPad">
-        <o:ControlShowcase Header="Numeric input targets" SourceKey="num-pad-targets">
+        <ovo:ControlShowcase Header="Numeric input targets" SourceKey="num-pad-targets">
             <StackPanel
                 HorizontalAlignment="Left"
                 Spacing="14"
                 Width="360">
-                <TextBox PlaceholderText="Plain numeric text" o:NumPad.Attach="True" />
+                <TextBox PlaceholderText="Plain numeric text" ovo:NumPad.Attach="True" />
                 <NumericUpDown
                     Maximum="999"
                     Minimum="0"
                     PlaceholderText="Decimal value"
-                    o:NumPad.Attach="True" />
-                <o:OvoNumericIntUpDown
+                    ovo:NumPad.Attach="True" />
+                <ovo:OvoNumericIntUpDown
                     InnerLeftContent="Integer"
                     PlaceholderText="OVO numeric input"
-                    o:NumPad.Attach="True" />
-                <o:IPv4Box InputMode="Fast" o:NumPad.Attach="True" />
+                    ovo:NumPad.Attach="True" />
+                <ovo:IPv4Box InputMode="Fast" ovo:NumPad.Attach="True" />
             </StackPanel>
-        </o:ControlShowcase>
-        <o:ControlShowcase Header="Embedded NumPad" SourceKey="num-pad-embedded">
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Embedded NumPad" SourceKey="num-pad-embedded">
             <StackPanel HorizontalAlignment="Left" Spacing="12">
                 <TextBox Name="ExplicitTarget" Width="282" />
-                <o:NumPad Target="{Binding #ExplicitTarget}" />
+                <ovo:NumPad Target="{Binding #ExplicitTarget}" />
             </StackPanel>
-        </o:ControlShowcase>
+        </ovo:ControlShowcase>
     </demo:DemoPage>
 </UserControl>

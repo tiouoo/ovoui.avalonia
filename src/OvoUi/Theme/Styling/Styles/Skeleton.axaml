@@ -1,8 +1,8 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style Selector="o|Skeleton[IsActive=True][IsLoading=True] /template/ o|PureRectangle#PART_ActiveBorder">
+    <Style Selector="ovo|Skeleton[IsActive=True][IsLoading=True] /template/ ovo|PureRectangle#PART_ActiveBorder">
         <Style.Animations>
             <Animation
                 Duration="0:0:1.4"
