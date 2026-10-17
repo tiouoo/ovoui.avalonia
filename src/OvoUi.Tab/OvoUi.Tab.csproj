@@ -10,8 +10,6 @@
         <Title>OvoUi Tab</Title>
         <Description>Animated, detachable tab hosts and tab windows for Avalonia applications.</Description>
         <PackageTags>avalonia;ui;tabs;tab-window;drag-drop</PackageTags>
-        <PackageIcon>icon_256.png</PackageIcon>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>
 
@@ -21,10 +19,6 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="12.1.4" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
 </Project>
