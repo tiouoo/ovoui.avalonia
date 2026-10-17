@@ -18,11 +18,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  prepare:
+  publish:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
-      tag: ${{ steps.version.outputs.tag }}
+    environment: production
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,6 +33,22 @@ jobs:
         with:
           version: ${{ inputs.version }}
 
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.x
+
+      - name: Pack NuGet packages
+        shell: bash
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: bash .github/scripts/pack-nuget.sh
+
+      - name: Authenticate to NuGet.org with trusted publishing
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Create and push version tag
         env:
           TAG: ${{ steps.version.outputs.tag }}
@@ -45,29 +59,6 @@ jobs:
           git tag "$TAG"
           git push origin "$TAG"
 
-  publish:
-    needs: prepare
-    runs-on: ubuntu-latest
-    environment: production
-    env:
-      VERSION: ${{ needs.prepare.outputs.version }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.x
-
-      - name: Authenticate to NuGet.org with trusted publishing
-        uses: NuGet/login@v1
-        id: nuget-login
-        with:
-          user: ${{ secrets.NUGET_USER }}
-
-      - name: Pack NuGet packages
-        shell: bash
-        run: bash .github/scripts/pack-nuget.sh
-
       - name: Publish packages to NuGet.org
         uses: tiouoo/tiller/nuget@v2
         with:
@@ -77,5 +68,6 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG: ${{ needs.prepare.outputs.tag }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
         run: gh release create "$TAG" artifacts/*.nupkg --title "OvoUi $VERSION" --generate-notes
