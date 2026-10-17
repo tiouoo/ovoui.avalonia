@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "引用本项目"
+type: software
+title: "OvoUi"
+authors:
+  - name: "tiouoo"
+    website: "https://tiouo.cc"
+repository-code: "https://github.com/tiouoo/ovoui.avalonia"
+url: "https://github.com/tiouoo/ovoui.avalonia"
+license: Apache-2.0
+abstract: "基于 Avalonia 的 UI 控件库和主题。"
