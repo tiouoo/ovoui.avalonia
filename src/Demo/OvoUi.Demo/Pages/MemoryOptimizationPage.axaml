@@ -1,0 +1,27 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.MemoryOptimizationPage"
+    x:DataType="pages:MemoryOptimizationPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:o="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="MemoryOptimization">
+        <o:ControlShowcase Header="Manual memory operations" SourceKey="platform-memory-optimization">
+            <o:ControlShowcase.CodeBlocks>
+                <o:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <o:ShowcaseCodeBlock Code="{Binding SourceCode}" Header="C#" Language="csharp" />
+            </o:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Each button immediately runs one operation on the current demo process. The results show memory usage before and after that operation." TextWrapping="Wrap" />
+                <WrapPanel ItemSpacing="10" LineSpacing="10">
+                    <Button Click="TrimWorkingSet" Content="Trim working set" IsEnabled="{Binding CanTrimWorkingSet}" />
+                    <Button Classes="accent" Click="ForceGc" Content="Force GC" />
+                </WrapPanel>
+                <TextBlock IsVisible="{Binding !CanTrimWorkingSet}" Text="Working set trimming is only supported on Windows. Force GC is still available on this platform." TextWrapping="Wrap" />
+                <TextBlock Name="StatusLabel" Text="Click either button to compare memory usage." TextWrapping="Wrap" />
+                <TextBlock Name="MetricsLabel" FontFamily="monospace" TextWrapping="Wrap" />
+            </StackPanel>
+        </o:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
