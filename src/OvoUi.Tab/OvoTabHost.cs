@@ -89,6 +89,20 @@ public class OvoTabHost : TemplatedControl
         set => SetValue(DragModeProperty, value);
     }
 
+    public static readonly StyledProperty<bool> IsLiveDragEnabledProperty =
+        AvaloniaProperty.Register<OvoTabHost, bool>(nameof(IsLiveDragEnabled), true);
+
+    /// <summary>
+    /// Enables immediate window detaching and attaching while the pointer is held.
+    /// When false, dragging outside the strip shows a preview and commits the drop on release.
+    /// Tab reordering animations remain enabled in both modes.
+    /// </summary>
+    public bool IsLiveDragEnabled
+    {
+        get => GetValue(IsLiveDragEnabledProperty);
+        set => SetValue(IsLiveDragEnabledProperty, value);
+    }
+
     public static readonly StyledProperty<OvoTabDragBoundary> DetachBoundaryProperty =
         AvaloniaProperty.Register<OvoTabHost, OvoTabDragBoundary>(nameof(DetachBoundary), OvoTabDragBoundary.TabStrip);
 
@@ -112,7 +126,7 @@ public class OvoTabHost : TemplatedControl
     public static readonly StyledProperty<bool> IsTabAttachEnabledProperty =
         AvaloniaProperty.Register<OvoTabHost, bool>(nameof(IsTabAttachEnabled), true);
 
-    /// <summary>Allows tabs to attach to and leave this host during a cross-window drag.</summary>
+    /// <summary>Allows drag transfers into and out of this host. Does not disable detaching into a new window.</summary>
     public bool IsTabAttachEnabled
     {
         get => GetValue(IsTabAttachEnabledProperty);

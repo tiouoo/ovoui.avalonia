@@ -98,6 +98,7 @@ public sealed class OvoTabService
         window.TabService = this;
         var target = window.TabHost;
         target.DragMode = source.DragMode;
+        target.IsLiveDragEnabled = source.IsLiveDragEnabled;
         target.DetachBoundary = source.DetachBoundary;
         target.AttachBoundary = source.AttachBoundary;
         target.DetachDistance = source.DetachDistance;
@@ -110,9 +111,10 @@ public sealed class OvoTabService
     }
 
     internal TabDragBehavior? FindSurfaceAt(PixelPoint screenPoint, OvoTabHost excluded,
-        Window? excludedWindow = null)
+        Window? excludedWindow = null, bool liveOnly = true)
         => Hosts.OrderBy(host => (TopLevel.GetTopLevel(host) as Window)?.IsActive == true).Reverse()
             .Where(host => !ReferenceEquals(host, excluded) && host.IsTabAttachEnabled &&
+                           (!liveOnly || host.IsLiveDragEnabled) &&
                            host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach &&
                            !ReferenceEquals(TopLevel.GetTopLevel(host), excludedWindow))
             .SelectMany(host => host.DragSurfaces)

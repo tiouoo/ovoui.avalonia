@@ -19,6 +19,7 @@ internal sealed class TabDragSession
     private readonly IPointer _pointer;
     private readonly PixelPoint _start;
     private readonly double _grabOffset;
+    private readonly bool _isLiveDragEnabled;
     private readonly HashSet<OvoTabHost> _touchedHosts = [];
     private readonly Dictionary<Window, (double Opacity, bool ShowActivated, bool Topmost)> _windowSettings = [];
     private readonly DispatcherTimer _scrollTimer;
@@ -27,6 +28,11 @@ internal sealed class TabDragSession
     private Window? _floatingWindow;
     private OvoTabWindow? _reusableWindow;
     private OvoTabWindow? _createdWindow;
+    private OvoTabDragPreviewWindow? _preview;
+    private TabDragBehavior? _previewTarget;
+    private OvoTabDragState _previewState;
+    private Control? _previewSource;
+    private double _previewSourceOpacity;
     private Vector _windowGrab;
     private PixelPoint _lastPoint;
     private bool _dragging;
@@ -40,6 +46,7 @@ internal sealed class TabDragSession
     {
         Origin = _current = origin;
         _service = origin.Host.TabService;
+        _isLiveDragEnabled = origin.Host.IsLiveDragEnabled;
         _tab = tab;
         _captureRoot = window;
         _pointer = e.Pointer;
@@ -75,7 +82,7 @@ internal sealed class TabDragSession
             _tab.IsDragging = true;
             _scrollTimer.Start();
 
-            if (_current.Host.Tabs.Count == 1 && _captureRoot is OvoTabWindow
+            if (_isLiveDragEnabled && _current.Host.Tabs.Count == 1 && _captureRoot is OvoTabWindow
                 { IsTabStripWindowDragEnabled: true, WindowState: WindowState.Normal } tabWindow &&
                 ReferenceEquals(tabWindow.TabHost, _current.Host))
             {
@@ -100,6 +107,11 @@ internal sealed class TabDragSession
         }
 
         var host = _current.Host;
+        if (!_isLiveDragEnabled)
+        {
+            ContinuePreviewDrag(point);
+            return;
+        }
         if (_floatingWindow is not null)
         {
             var target = host.IsTabAttachEnabled && host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach
@@ -127,6 +139,74 @@ internal sealed class TabDragSession
             : null;
         if (attachTarget is not null && AttachTo(attachTarget, point)) return;
         if (!DetachToWindow(point)) DragInStrip(point);
+    }
+
+    private void ContinuePreviewDrag(PixelPoint point)
+    {
+        _previewTarget = null;
+        if (_current.Contains(point, OvoTabDragBoundary.TabStrip))
+        {
+            ClosePreview();
+            _previewState = OvoTabDragState.Reorder;
+            DragInStrip(point);
+            return;
+        }
+
+        var host = _current.Host;
+        if (host.EffectiveDragMode != OvoTabDragMode.ReorderAndDetach)
+        {
+            ShowPreview(point, OvoTabDragState.Blocked);
+            return;
+        }
+
+        if (host.IsTabAttachEnabled)
+            _previewTarget = _service.FindSurfaceAt(point, host, liveOnly: false);
+        if (_previewTarget is not null)
+        {
+            ShowPreview(point, OvoTabDragState.Transfer);
+            return;
+        }
+
+        if (_current.Contains(point, host.DetachBoundary, host.DetachDistance))
+        {
+            ShowPreview(point, OvoTabDragState.CurrentWindow);
+            return;
+        }
+
+        ShowPreview(point, _service.WindowFactory is null ? OvoTabDragState.Blocked : OvoTabDragState.Detach);
+    }
+
+    private void ShowPreview(PixelPoint point, OvoTabDragState state)
+    {
+        _previewState = state;
+        if (_preview is null)
+        {
+            _previewSource = _current.Container?.ContainerFromItem(_tab);
+            if (_previewSource is not null)
+            {
+                _previewSourceOpacity = _previewSource.Opacity;
+                _previewSource.Opacity = 0.35;
+            }
+            _preview = new OvoTabDragPreviewWindow();
+            _preview.UpdateTab(_tab);
+            _preview.UpdateState(state);
+            _preview.MoveTo(point);
+            _preview.Show();
+        }
+        else
+        {
+            _preview.UpdateState(state);
+            _preview.MoveTo(point);
+        }
+        SetState(state);
+    }
+
+    private void ClosePreview()
+    {
+        _preview?.Close();
+        _preview = null;
+        if (_previewSource is not null) _previewSource.Opacity = _previewSourceOpacity;
+        _previewSource = null;
     }
 
     private void DragInStrip(PixelPoint point)
@@ -263,8 +343,21 @@ internal sealed class TabDragSession
     private void OnPointerReleased(object? sender, PointerReleasedEventArgs e)
     {
         if (!ReferenceEquals(e.Pointer, _pointer) || e.InitialPressMouseButton != MouseButton.Left) return;
-        if (_dragging) ContinueDrag(ScreenPoint(e));
+        var point = ScreenPoint(e);
+        if (_dragging) ContinueDrag(point);
+        var source = _current.Host;
+        var target = _previewTarget;
+        var previewState = _previewState;
+        var commitPreview = _dragging && !_isLiveDragEnabled && !_finished;
+        // Release capture and dismiss the preview before transferring controls or closing a source window.
         Finish();
+        if (commitPreview)
+        {
+            if (previewState == OvoTabDragState.Transfer && target is not null)
+                _service.Transfer(_tab, source, target.Host, target.InsertionIndex(point), closeEmpty: true, activate: true);
+            else if (previewState == OvoTabDragState.Detach)
+                _service.Detach(_tab, source, point);
+        }
         e.Handled = true;
     }
 
@@ -286,6 +379,8 @@ internal sealed class TabDragSession
         _captureRoot.RemoveHandler(InputElement.PointerCaptureLostEvent, OnCaptureLost);
         _captureRoot.Closed -= OnCaptureWindowClosed;
         if (ReferenceEquals(_pointer.Captured, _captureRoot)) _pointer.Capture(null);
+        ClosePreview();
+        _previewTarget = null;
         CommitVisualOrder();
         _tab.IsDragging = false;
         foreach (var host in _touchedHosts) host.UpdateDragState(OvoTabDragState.None);

@@ -56,6 +56,7 @@ public partial class TabWindowPage : UserControl
             TabHost.DetachBoundary = OvoTabDragBoundary.TabStrip;
             TabHost.AttachBoundary = OvoTabDragBoundary.TabStrip;
             TabHost.DetachDistance = 24;
+            TabHost.IsLiveDragEnabled = true;
             TabHost.IsTabAttachEnabled = true;
             TabHost.AddTab(CreateTab());
             TabHost.AddTab(CreateTab(), select: false);
@@ -70,11 +71,19 @@ public partial class TabWindowPage : UserControl
             };
         }
 
-        private OvoTabWindow CreateTabWindow() => new(_tabService)
+        private OvoTabWindow CreateTabWindow()
         {
-            Title = "OvoUi Tab Workspace",
-            NewTabFactory = CreateTab
-        };
+            var window = new OvoTabWindow(_tabService)
+            {
+                Title = "OvoUi Tab Workspace",
+                NewTabFactory = CreateTab
+            };
+            window.TabHost.IsLiveDragEnabled = TabHost.IsLiveDragEnabled;
+            window.TabHost.DetachBoundary = TabHost.DetachBoundary;
+            window.TabHost.AttachBoundary = TabHost.AttachBoundary;
+            window.TabHost.IsTabAttachEnabled = TabHost.IsTabAttachEnabled;
+            return window;
+        }
 
         private void AddTabs_OnClick(object? sender, RoutedEventArgs e)
         {
@@ -174,6 +183,7 @@ public partial class TabWindowPage : UserControl
             CreateTabWhenEmpty = true
         };
         window.TabHost.DetachBoundary = TabHost.DetachBoundary;
+        window.TabHost.IsLiveDragEnabled = TabHost.IsLiveDragEnabled;
         window.TabHost.AttachBoundary = TabHost.AttachBoundary;
         window.TabHost.IsTabAttachEnabled = TabHost.IsTabAttachEnabled;
         return window;

@@ -31,8 +31,9 @@
                     <ComboBox ItemsSource="{Binding DragBoundaries}"
                               SelectedItem="{Binding #TabHost.AttachBoundary, Mode=TwoWay}"
                               MinWidth="120" Margin="0,0,16,8" />
-                    <CheckBox Content="Attach while dragging"
-                              IsChecked="{Binding #TabHost.IsTabAttachEnabled, Mode=TwoWay}"
+                    <CheckBox Content="Live detach and attach"
+                              IsChecked="{Binding #TabHost.IsLiveDragEnabled, Mode=TwoWay}"
+                              ToolTip.Tip="Off: drag a preview and release to open a window. On: detach and attach immediately."
                               Margin="0,0,0,8" />
                 </WrapPanel>
                 <tab:OvoTabHost
