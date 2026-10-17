@@ -6,6 +6,7 @@ public enum OvoTabDragState
     Reorder,
     Transfer,
     Detach,
+    CurrentWindow,
     MoveWindow,
     Blocked
 }

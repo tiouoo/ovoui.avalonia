@@ -150,6 +150,13 @@ internal sealed class TabDragBehavior(OvoTabHost host)
             return;
         }
 
+        if (TopLevel.GetTopLevel(host) is Window currentWindow &&
+            new Rect(currentWindow.ClientSize).Contains(currentWindow.PointToClient(screenPoint)))
+        {
+            SetState(OvoTabDragState.CurrentWindow);
+            return;
+        }
+
         SetState(host.EffectiveDragMode == OvoTabDragMode.ReorderAndDetach && host.TabService.WindowFactory is not null
             ? OvoTabDragState.Detach
             : OvoTabDragState.Blocked);

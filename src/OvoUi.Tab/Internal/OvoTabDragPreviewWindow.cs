@@ -50,6 +50,17 @@ internal sealed class OvoTabDragPreviewWindow : Window
             Width = 16, Height = 16, Margin = new Thickness(15, 0, 0, 0), VerticalAlignment = VerticalAlignment.Center
         };
 
+        var content = new Grid
+        {
+            ColumnDefinitions = ColumnDefinitions.Parse("Auto,*,Auto"),
+            VerticalAlignment = VerticalAlignment.Center,
+            Children = { _glyph, _icon, _header, _stateIcon }
+        };
+        Grid.SetColumn(_glyph, 0);
+        Grid.SetColumn(_icon, 0);
+        Grid.SetColumn(_header, 1);
+        Grid.SetColumn(_stateIcon, 2);
+
         _root = new Border
         {
             MinWidth = 135,
@@ -57,13 +68,7 @@ internal sealed class OvoTabDragPreviewWindow : Window
             Padding = new Thickness(8, 6),
             CornerRadius = new CornerRadius(10),
             BorderThickness = new Thickness(1),
-            HorizontalAlignment = HorizontalAlignment.Left,
-            Child = new StackPanel
-            {
-                Orientation = Orientation.Horizontal,
-                VerticalAlignment = VerticalAlignment.Center,
-                Children = { _glyph, _icon, _header, _stateIcon }
-            }
+            Child = content
         };
         Content = _root;
         ActualThemeVariantChanged += (_, _) => ApplyThemeColors();
@@ -88,6 +93,7 @@ internal sealed class OvoTabDragPreviewWindow : Window
             OvoTabDragState.Reorder => OvoTabIcons.Reorder,
             OvoTabDragState.Transfer => OvoTabIcons.Transfer,
             OvoTabDragState.Detach => OvoTabIcons.Detach,
+            OvoTabDragState.CurrentWindow => OvoTabIcons.CurrentWindow,
             _ => OvoTabIcons.Blocked
         };
     }
