@@ -122,10 +122,11 @@
                             <TextBlock Name="ReferenceAnchorStatus" VerticalAlignment="Center" Text="Anchor: none · ScrollChanged: 0" TextWrapping="Wrap" />
                         </WrapPanel>
                         <ScrollViewer Name="ReferenceAnchors" Height="340" ScrollChanged="Anchors_OnScrollChanged">
-                            <ItemsControl ItemsSource="{Binding AnchorItems}" ContainerPrepared="Anchor_Prepared" ContainerClearing="Anchor_Clearing">
+                            <ItemsControl ItemsSource="{Binding AnchorItems}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate x:DataType="pages:SmoothAnchorItem">
-                                        <Border Height="{Binding Height}" Padding="8" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" Background="{DynamicResource ControlBackground}">
+                                        <Border Height="{Binding Height}" Padding="8" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1" Background="{DynamicResource ControlBackground}"
+                                                Loaded="Anchor_Loaded" Unloaded="Anchor_Unloaded">
                                             <StackPanel Orientation="Horizontal" Spacing="16">
                                                 <TextBlock Text="{Binding Title}" />
                                                 <TextBlock Text="{Binding Height, StringFormat='Height: {0}'}" />

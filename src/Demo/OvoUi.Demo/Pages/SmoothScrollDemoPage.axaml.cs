@@ -59,8 +59,18 @@ public partial class SmoothScrollDemoPage : UserControl
         e.Animation = animation;
     }
 
-    private void Anchor_Prepared(object? sender, ContainerPreparedEventArgs e) => ReferenceAnchors.RegisterAnchorCandidate(e.Container);
-    private void Anchor_Clearing(object? sender, ContainerClearingEventArgs e) => ReferenceAnchors.UnregisterAnchorCandidate(e.Container);
+    private void Anchor_Loaded(object? sender, RoutedEventArgs e)
+    {
+        // ContainerPrepared can run before the item joins the presenter's visual tree.
+        if (sender is Control element && ReferenceAnchors.IsVisualAncestorOf(element))
+            ReferenceAnchors.RegisterAnchorCandidate(element);
+    }
+
+    private void Anchor_Unloaded(object? sender, RoutedEventArgs e)
+    {
+        if (sender is Control element)
+            ReferenceAnchors.UnregisterAnchorCandidate(element);
+    }
     private void Anchors_OnScrollChanged(object? sender, ScrollChangedEventArgs e)
     {
         _scrollChanged++;
@@ -173,8 +183,17 @@ public class SmoothScrollDemoModel : ModelBase
             public string Title { get; init; } = "Row";
             public double Height { get; set => SetField(ref field, value); } = 40;
         }
-        private void Anchor_Prepared(object? sender, ContainerPreparedEventArgs e) => ReferenceAnchors.RegisterAnchorCandidate(e.Container);
-        private void Anchor_Clearing(object? sender, ContainerClearingEventArgs e) => ReferenceAnchors.UnregisterAnchorCandidate(e.Container);
+        // The item template's Border uses Loaded / Unloaded, after visual attachment.
+        private void Anchor_Loaded(object? sender, RoutedEventArgs e)
+        {
+            if (sender is Control element && ReferenceAnchors.IsVisualAncestorOf(element))
+                ReferenceAnchors.RegisterAnchorCandidate(element);
+        }
+        private void Anchor_Unloaded(object? sender, RoutedEventArgs e)
+        {
+            if (sender is Control element)
+                ReferenceAnchors.UnregisterAnchorCandidate(element);
+        }
         private int _scrollChanged;
         private void Anchors_OnScrollChanged(object? sender, ScrollChangedEventArgs e)
         {

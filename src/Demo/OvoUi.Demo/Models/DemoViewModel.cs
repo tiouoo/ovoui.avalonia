@@ -15,7 +15,7 @@ public sealed class DemoViewModel : ModelBase
             if (page.Children is { Count: > 0 })
             {
                 Items += page.Children.Count;
-                page.Children = page.Children.OrderBy(child => child.Title).ToList();
+                page.Children = [.. page.Children.OrderBy(child => child.Title)];
             }
             else
             {
@@ -41,10 +41,10 @@ public sealed class DemoViewModel : ModelBase
         Page.Group("Menu", Menus.MenusList),
         Page.Group("Time", Times.TimesList),
         Page.Group("Show", Shows.ShowsList),
+        Page.Group("SmoothScroll", SmoothScrollNavigation.Pages),
         Page.Group("Feedback", Feedbacks.FeedbacksList),
         Page.Group("Layout", Layouts.LayoutsList),
         Page.Group("Platform", PlatformNavigation.PlatformList),
-        Page.Group("Smooth Scroll", SmoothScrollNavigation.Pages)
     ];
 
     public Page SelectedPage

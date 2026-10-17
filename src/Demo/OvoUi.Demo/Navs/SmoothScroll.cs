@@ -7,8 +7,8 @@ public static class SmoothScroll
 {
     public static readonly List<Page> Pages =
     [
-        Page.View<SmoothScrollDemoPage>("Smooth Scroll Demo"),
-        Page.View<SmoothScrollViewerPage>("Smooth ScrollViewer"),
+        Page.View<SmoothScrollDemoPage>("SmoothScroll"),
+        Page.View<SmoothScrollViewerPage>("SmoothScrollViewer"),
         Page.View<ScrollViewPage>("OvoScrollView"),
         Page.View<InteractionTrackerPage>("InteractionTracker")
     ];

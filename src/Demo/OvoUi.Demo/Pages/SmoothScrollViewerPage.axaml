@@ -51,10 +51,11 @@
                     <TextBlock Name="AnchorStatus" VerticalAlignment="Center" Text="Anchor: scroll down to select" />
                 </WrapPanel>
                 <ScrollViewer Name="AnchorViewer" Height="260" ScrollChanged="AnchorViewer_OnScrollChanged">
-                    <ItemsControl ItemsSource="{Binding AnchorItems}" ContainerPrepared="Anchor_Prepared" ContainerClearing="Anchor_Clearing">
+                    <ItemsControl ItemsSource="{Binding AnchorItems}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="pages:SmoothAnchorItem">
-                                <Border Height="{Binding Height}" Margin="0,0,0,4" Padding="12" Background="{DynamicResource ControlBackground}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1">
+                                <Border Height="{Binding Height}" Margin="0,0,0,4" Padding="12" Background="{DynamicResource ControlBackground}" BorderBrush="{DynamicResource LineBrush}" BorderThickness="1"
+                                        Loaded="Anchor_Loaded" Unloaded="Anchor_Unloaded">
                                     <TextBlock Text="{Binding Title}" />
                                 </Border>
                             </DataTemplate>

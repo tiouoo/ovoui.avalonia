@@ -54,8 +54,18 @@ public partial class SmoothScrollViewerPage : UserControl
         e.Animation = animation;
     }
 
-    private void Anchor_Prepared(object? sender, ContainerPreparedEventArgs e) => AnchorViewer.RegisterAnchorCandidate(e.Container);
-    private void Anchor_Clearing(object? sender, ContainerClearingEventArgs e) => AnchorViewer.UnregisterAnchorCandidate(e.Container);
+    private void Anchor_Loaded(object? sender, RoutedEventArgs e)
+    {
+        // ContainerPrepared can run before the item joins the presenter's visual tree.
+        if (sender is Control element && AnchorViewer.IsVisualAncestorOf(element))
+            AnchorViewer.RegisterAnchorCandidate(element);
+    }
+
+    private void Anchor_Unloaded(object? sender, RoutedEventArgs e)
+    {
+        if (sender is Control element)
+            AnchorViewer.UnregisterAnchorCandidate(element);
+    }
     private void InsertAnchor_OnClick(object? sender, RoutedEventArgs e) => Model.AnchorItems.Insert(0, new SmoothAnchorItem { Title = $"Inserted row {++Model.Inserted}" });
     private void RemoveAnchor_OnClick(object? sender, RoutedEventArgs e)
     {
@@ -147,10 +157,17 @@ public class SmoothScrollViewerDemoModel : ModelBase
             public string Title { get; init; } = "Row";
             public double Height { get; set => SetField(ref field, value); } = 56;
         }
-        private void Anchor_Prepared(object? sender, ContainerPreparedEventArgs e) =>
-            AnchorViewer.RegisterAnchorCandidate(e.Container);
-        private void Anchor_Clearing(object? sender, ContainerClearingEventArgs e) =>
-            AnchorViewer.UnregisterAnchorCandidate(e.Container);
+        // The item template's Border uses Loaded / Unloaded, after visual attachment.
+        private void Anchor_Loaded(object? sender, RoutedEventArgs e)
+        {
+            if (sender is Control element && AnchorViewer.IsVisualAncestorOf(element))
+                AnchorViewer.RegisterAnchorCandidate(element);
+        }
+        private void Anchor_Unloaded(object? sender, RoutedEventArgs e)
+        {
+            if (sender is Control element)
+                AnchorViewer.UnregisterAnchorCandidate(element);
+        }
         private SmoothScrollViewerDemoModel Model => (SmoothScrollViewerDemoModel)DataContext!;
         private void InsertAnchor_OnClick(object? sender, RoutedEventArgs e) =>
             Model.AnchorItems.Insert(0, new SmoothAnchorItem { Title = "Inserted row" });
