@@ -1,29 +1,27 @@
 <Solution>
-    <Folder Name="/OvoUi.Lang/">
-        <Project Path="src/OvoUi.Lang/OvoUi.Lang.csproj"/>
-        <Project Path="src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj"/>
-    </Folder>
-    <Folder Name="/OvoUi.AvaloniaEdit/">
-        <Project Path="src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj"/>
-        <Project Path="src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj"/>
-        <Project Path="src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj"/>
-    </Folder>
-    <Folder Name="/OvoUi.Demo/">
-        <File Path="src/Demo/Directory.Build.props"/>
-        <Project Path="src/Demo/OvoUi.Demo.Android/OvoUi.Demo.Android.csproj">
-            <Deploy/>
-        </Project>
-        <Project Path="src/Demo/OvoUi.Demo.Browser/OvoUi.Demo.Browser.csproj"/>
-        <Project Path="src/Demo/OvoUi.Demo.Desktop/OvoUi.Demo.Desktop.csproj"/>
-        <Project Path="src/Demo/OvoUi.Demo.iOS/OvoUi.Demo.iOS.csproj">
-            <Deploy/>
-        </Project>
-        <Project Path="src/Demo/OvoUi.Demo/OvoUi.Demo.csproj"/>
-    </Folder>
-    <Project Path="src/OvoUi.Platform/OvoUi.Platform.csproj"/>
-    <Project Path="src/OvoUi.SmoothScroll/OvoUi.SmoothScroll.csproj"/>
-    <Project Path="src/OvoUi.Tab/OvoUi.Tab.csproj"/>
-    <Project Path="src/OvoUi.Fonts/OvoUi.Fonts.csproj"/>
-    <Project Path="src/OvoUi.Test/OvoUi.Test.csproj"/>
-    <Project Path="src/OvoUi/OvoUi.csproj"/>
+  <Folder Name="/OvoUi.AvaloniaEdit/">
+    <Project Path="src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj" />
+    <Project Path="src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj" />
+    <Project Path="src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj" />
+  </Folder>
+  <Folder Name="/OvoUi.Demo/">
+    <File Path="src/Demo/Directory.Build.props" />
+    <Project Path="src/Demo/OvoUi.Demo.Android/OvoUi.Demo.Android.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="src/Demo/OvoUi.Demo.Browser/OvoUi.Demo.Browser.csproj" />
+    <Project Path="src/Demo/OvoUi.Demo.Desktop/OvoUi.Demo.Desktop.csproj" />
+    <Project Path="src/Demo/OvoUi.Demo.iOS/OvoUi.Demo.iOS.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="src/Demo/OvoUi.Demo/OvoUi.Demo.csproj" />
+  </Folder>
+  <Project Path="src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj" />
+  <Project Path="src/OvoUi.Lang/OvoUi.Lang.csproj" />
+  <Project Path="src/OvoUi.Platform/OvoUi.Platform.csproj" />
+  <Project Path="src/OvoUi.SmoothScroll/OvoUi.SmoothScroll.csproj" />
+  <Project Path="src/OvoUi.Tab/OvoUi.Tab.csproj" />
+  <Project Path="src/OvoUi.Fonts/OvoUi.Fonts.csproj" />
+  <Project Path="src/OvoUi.Test/OvoUi.Test.csproj" />
+  <Project Path="src/OvoUi/OvoUi.csproj" />
 </Solution>

@@ -1,4 +1,5 @@
 <Styles
+    x:Class="OvoUi.Lang.OvoCulturePicker"
     xmlns="https://github.com/avaloniaui"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -19,7 +20,7 @@
                                     <PathIcon
                                         Data="{StaticResource OvoIconLanguage}"
                                         Height="16"
-                                        Margin="0,0,4,0"
+                                        Margin="0,1,4,0"
                                         Width="16" />
                                     <TextBlock Text="{Binding SelectionDisplayText}" VerticalAlignment="Center" />
                                 </StackPanel>

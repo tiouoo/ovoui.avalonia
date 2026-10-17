@@ -18,7 +18,7 @@
         <ovo:OvoAvaloniaEditTheme />
         <ovo:OvoShowcaseTheme />
         <ovo:OvoUiFont />
-        <StyleInclude Source="avares://OvoUi.Lang/Themes/Generic.axaml" />
+        <ovo:OvoCulturePicker />
 
         <Style Selector="ovo|ControlShowcase">
             <Setter Property="HeightBehavior" Value="Animated" />
