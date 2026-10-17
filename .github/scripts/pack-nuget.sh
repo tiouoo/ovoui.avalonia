@@ -7,6 +7,8 @@ mkdir -p artifacts
 # The generator is packed first because the showcase package consumes it.
 dotnet pack src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj \
   -c Release -p:Version="$VERSION" -o artifacts
+dotnet pack src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj \
+  -c Release -p:Version="$VERSION" -o artifacts
 
 projects=(
   src/OvoUi/OvoUi.csproj
@@ -14,6 +16,7 @@ projects=(
   src/OvoUi.Platform/OvoUi.Platform.csproj
   src/OvoUi.Tab/OvoUi.Tab.csproj
   src/OvoUi.SmoothScroll/OvoUi.SmoothScroll.csproj
+  src/OvoUi.Lang/OvoUi.Lang.csproj
   src/OvoUi.AvaloniaEdit/OvoUi.AvaloniaEdit.csproj
   src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj
 )
