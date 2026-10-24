@@ -1,15 +1,13 @@
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Text;
+using System.Text.Json;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace OvoUi.Lang.Generator;
 
@@ -213,12 +211,11 @@ public sealed class LangManagerGenerator : IIncrementalGenerator
 
         var keys = resources[""].Keys.OrderBy(k => k, StringComparer.Ordinal).ToArray();
         var members = new HashSet<string>(
-            new[]
-            {
-                "Instance", "Keys", "CreateResources", "GetString", "CurrentCulture", "CultureChanges", "GetObservable",
+        [
+            "Instance", "Keys", "CreateResources", "GetString", "CurrentCulture", "CultureChanges", "GetObservable",
                 "UpdateCulture", "AddResources", "GetTranslations", "ClearRuntimeResources", "Equals",
                 "ReferenceEquals", "GetHashCode", "GetType", "ToString", "MemberwiseClone", "Finalize", symbol.Name
-            }, StringComparer.Ordinal);
+        ], StringComparer.Ordinal);
         foreach (var member in symbol.GetMembers())
             if (!member.IsImplicitlyDeclared)
                 members.Add(member.Name);
@@ -255,13 +252,10 @@ public sealed class LangManagerGenerator : IIncrementalGenerator
         var result = new Dictionary<string, string>(StringComparer.Ordinal);
         if (file.Path.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
         {
-            using var reader = new JsonTextReader(new StringReader(file.Content))
-                { DateParseHandling = DateParseHandling.None };
-            var root = JToken.Load(reader,
-                new JsonLoadSettings { DuplicatePropertyNameHandling = DuplicatePropertyNameHandling.Error });
-            if (root is not JObject obj) throw new InvalidOperationException("The JSON root must be an object.");
-            if (reader.Read()) throw new InvalidOperationException("Unexpected content after the JSON object.");
-            Flatten(obj, "", result);
+            using var document = JsonDocument.Parse(file.Content);
+            if (document.RootElement.ValueKind != JsonValueKind.Object)
+                throw new InvalidOperationException("The JSON root must be an object.");
+            Flatten(document.RootElement, "", result);
         }
         else
         {
@@ -285,13 +279,16 @@ public sealed class LangManagerGenerator : IIncrementalGenerator
         return result;
     }
 
-    private static void Flatten(JObject obj, string prefix, Dictionary<string, string> result)
+    private static void Flatten(JsonElement obj, string prefix, Dictionary<string, string> result)
     {
-        foreach (var property in obj.Properties())
+        var propertyNames = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var property in obj.EnumerateObject())
         {
+            if (!propertyNames.Add(property.Name))
+                throw new JsonException("Duplicate JSON property: " + property.Name);
             var key = prefix.Length == 0 ? property.Name : prefix + "_" + property.Name;
-            if (property.Value is JObject child) Flatten(child, key, result);
-            else if (property.Value.Type == JTokenType.String) result.Add(key, property.Value.Value<string>()!);
+            if (property.Value.ValueKind == JsonValueKind.Object) Flatten(property.Value, key, result);
+            else if (property.Value.ValueKind == JsonValueKind.String) result.Add(key, property.Value.GetString()!);
         }
     }
 
@@ -305,7 +302,7 @@ public sealed class LangManagerGenerator : IIncrementalGenerator
     }
 
     private static string Literal(string value) =>
-        Microsoft.CodeAnalysis.CSharp.SymbolDisplay.FormatLiteral(value, true);
+        SymbolDisplay.FormatLiteral(value, true);
 
     private static string Xml(string value) => value.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;")
         .Replace("\r\n", "\n").Replace('\r', '\n').Replace('\u0085', '\n').Replace('\u2028', '\n')
