@@ -227,7 +227,7 @@
         </Style>
 
         <Style Selector="^:disabled">
-            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+            <Setter Property="Opacity" Value="0.4" />
         </Style>
 
         <Style Selector="^ /template/ ContentPresenter#PART_Icon">
@@ -236,7 +236,7 @@
         </Style>
 
         <Style Selector="^:not(.Menu):disabled">
-            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+            <Setter Property="Opacity" Value="0.4" />
         </Style>
 
         <Style Selector="^:empty /template/ TextBlock#PART_RightArrow">
