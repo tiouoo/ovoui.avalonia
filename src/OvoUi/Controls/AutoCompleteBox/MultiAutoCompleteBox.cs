@@ -242,7 +242,7 @@ public partial class MultiAutoCompleteBox : TemplatedControl, IInnerContentContr
             if (_textBox != null)
             {
                 _textBoxSubscriptions =
-                    Avalonia.Controls.Utils.ObservableExtensions.Subscribe(_textBox.GetObservable(TextBox.TextProperty)
+                    ObservableExtensions.Subscribe(_textBox.GetObservable(TextBox.TextProperty)
                         .Skip(1), _ => OnTextBoxTextChanged());
                 _textBoxKeyDownSubscriptions =
                     _textBox.AddDisposableHandler(KeyDownEvent, OnTextBoxKeyDown!, RoutingStrategies.Tunnel);
