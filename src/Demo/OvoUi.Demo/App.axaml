@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="Resources/Resources.axaml" />
+                <ResourceInclude Source="avares://OvoUi/Theme/Styling/Controls/DataGrid/DataGrid.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

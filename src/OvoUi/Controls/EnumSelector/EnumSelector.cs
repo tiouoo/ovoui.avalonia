@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Avalonia;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
@@ -16,6 +17,9 @@ public class EnumSelector : TemplatedControl
     public static readonly StyledProperty<Type?> EnumTypeProperty = AvaloniaProperty.Register<EnumSelector, Type?>(
         nameof(EnumType), validate: OnTypeValidate);
 
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
+    [UnconditionalSuppressMessage("Trimming", "IL2073",
+        Justification = "The Avalonia property store holds the enum type supplied through the annotated EnumType property.")]
     public Type? EnumType
     {
         get => GetValue(EnumTypeProperty);

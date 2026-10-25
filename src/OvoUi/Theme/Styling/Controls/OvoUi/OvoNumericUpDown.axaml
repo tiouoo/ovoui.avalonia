@@ -40,7 +40,7 @@
                             <TextBox
                                 AcceptsReturn="False"
                                 CornerRadius="{TemplateBinding CornerRadius}"
-                                DataValidationErrors.Errors="{ReflectionBinding $parent[NumericUpDown].(DataValidationErrors.Errors)}"
+                                DataValidationErrors.Errors="{CompiledBinding $parent[NumericUpDown].(DataValidationErrors.Errors)}"
                                 FontSize="{TemplateBinding FontSize}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Height="{TemplateBinding Height}"

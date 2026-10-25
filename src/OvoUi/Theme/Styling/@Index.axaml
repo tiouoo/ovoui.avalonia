@@ -5,7 +5,8 @@
                 <ResourceInclude Source="Controls/OvoUi/@OvoUi.axaml" />
                 <ResourceInclude Source="Controls/Basic/@Basic.axaml" />
                 <ResourceInclude Source="Controls/ColorPicker/@ColorPicker.axaml" />
-                <ResourceInclude Source="Controls/DataGrid/DataGrid.axaml" />
+                <!-- DataGrid uses dynamic code; applications that need it can include
+                     Controls/DataGrid/DataGrid.axaml explicitly in non-AOT builds. -->
                 <ResourceInclude Source="Components/@Components.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
