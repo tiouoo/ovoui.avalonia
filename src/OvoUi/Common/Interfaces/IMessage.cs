@@ -1,4 +1,5 @@
-﻿using Avalonia.Controls.Notifications;
+﻿using System;
+using Avalonia.Controls.Notifications;
 
 namespace OvoUi.Common.Interfaces;
 

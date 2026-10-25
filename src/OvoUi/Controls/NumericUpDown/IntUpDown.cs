@@ -1,4 +1,6 @@
-﻿namespace OvoUi.Controls;
+﻿using System;
+
+namespace OvoUi.Controls;
 
 public class OvoNumericIntUpDown : OvoNumericUpDownBase<int>
 {

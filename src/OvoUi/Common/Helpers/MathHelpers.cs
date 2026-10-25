@@ -2,6 +2,7 @@
 This is a port of https://github.com/AvaloniaUI/Avalonia/blob/fc70228dc9847ed70e9cb3f3904a776017f17667/src/Avalonia.Base/Utilities/MathUtilities.cs
 */
 
+using System;
 using Avalonia;
 
 namespace OvoUi.Common.Helpers;

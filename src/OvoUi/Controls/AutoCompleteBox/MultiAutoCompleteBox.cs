@@ -2,11 +2,14 @@
 // This source is subject to the Microsoft Public License (Ms-PL) and MIT License.
 // All other rights reserved.
 
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -21,6 +24,8 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using OvoUi.Common.Contracts;
 using System.Reactive.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using OvoUi.Common.Helpers;
 
 
@@ -237,7 +242,7 @@ public partial class MultiAutoCompleteBox : TemplatedControl, IInnerContentContr
             if (_textBox != null)
             {
                 _textBoxSubscriptions =
-                    ObservableExtensions.Subscribe(_textBox.GetObservable(TextBox.TextProperty)
+                    Avalonia.Controls.Utils.ObservableExtensions.Subscribe(_textBox.GetObservable(TextBox.TextProperty)
                         .Skip(1), _ => OnTextBoxTextChanged());
                 _textBoxKeyDownSubscriptions =
                     _textBox.AddDisposableHandler(KeyDownEvent, OnTextBoxKeyDown!, RoutingStrategies.Tunnel);

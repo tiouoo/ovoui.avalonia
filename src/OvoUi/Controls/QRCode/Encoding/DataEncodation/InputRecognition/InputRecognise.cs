@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace Gma.QrCodeNet.Encoding.DataEncodation.InputRecognition;
 
 internal static class InputRecognise

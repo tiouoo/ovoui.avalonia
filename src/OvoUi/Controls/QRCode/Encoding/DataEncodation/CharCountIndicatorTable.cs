@@ -1,3 +1,5 @@
+using System;
+
 namespace Gma.QrCodeNet.Encoding.DataEncodation;
 
 internal static class CharCountIndicatorTable

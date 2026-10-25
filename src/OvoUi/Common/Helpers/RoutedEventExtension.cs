@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Avalonia.Interactivity;
 using OvoUi.Common.Classes;
 

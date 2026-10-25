@@ -1,4 +1,5 @@
-﻿using Avalonia.Reactive;
+﻿using System;
+using Avalonia.Reactive;
 
 namespace OvoUi.Common.Extension;
 

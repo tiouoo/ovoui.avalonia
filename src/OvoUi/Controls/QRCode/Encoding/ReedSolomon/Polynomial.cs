@@ -1,3 +1,5 @@
+using System;
+
 namespace Gma.QrCodeNet.Encoding.ReedSolomon;
 
 internal sealed class Polynomial

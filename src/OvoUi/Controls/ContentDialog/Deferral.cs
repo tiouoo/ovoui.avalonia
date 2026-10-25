@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+
 namespace OvoUi.Controls;
 
 public sealed class Deferral

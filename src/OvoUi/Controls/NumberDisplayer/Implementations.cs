@@ -1,4 +1,5 @@
-﻿using Avalonia.Animation;
+﻿using System;
+using Avalonia.Animation;
 
 namespace OvoUi.Controls;
 

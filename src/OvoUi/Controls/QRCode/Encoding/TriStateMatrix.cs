@@ -1,3 +1,5 @@
+using System;
+
 namespace Gma.QrCodeNet.Encoding;
 
 internal class TriStateMatrix : BitMatrixBase

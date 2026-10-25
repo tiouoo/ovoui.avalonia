@@ -1,3 +1,5 @@
+using System;
+
 namespace OvoUi.Common.Classes;
 
 public class ResultDisposable : IDisposable

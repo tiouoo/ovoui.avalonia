@@ -1,3 +1,5 @@
+using System;
+
 namespace OvoUi.Lang;
 
 public sealed class LangKey

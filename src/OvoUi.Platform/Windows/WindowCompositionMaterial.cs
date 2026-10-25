@@ -2,6 +2,9 @@
 // https://github.com/HelloWRC/CompositionMaterial.Avalonia
 // Copyright (c) 2026 HelloWRC, licensed under the MIT License.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.InteropServices;

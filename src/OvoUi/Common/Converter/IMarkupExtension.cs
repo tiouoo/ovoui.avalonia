@@ -1,4 +1,6 @@
-﻿namespace OvoUi.Common.Converter;
+﻿using System;
+
+namespace OvoUi.Common.Converter;
 
 public interface IMarkupExtension<out TReturn>
 {

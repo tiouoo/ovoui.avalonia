@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
+using System.Linq;
 using Avalonia;
 using Avalonia.Data;
 using Avalonia.Data.Converters;

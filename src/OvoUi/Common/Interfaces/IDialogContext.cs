@@ -1,3 +1,5 @@
+using System;
+
 namespace OvoUi.Common.Interfaces;
 
 public interface IDialogContext

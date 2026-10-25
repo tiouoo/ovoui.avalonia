@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Rendering.Composition;
 
 namespace OvoUi.Common.Helpers;

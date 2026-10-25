@@ -1,14 +1,19 @@
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
+using System.Threading;
+using IDisposable = System.IDisposable;
 
 namespace OvoUi.Lang;
 
-public sealed class LangFormatObservable : IObservable<string?>
+public sealed class LangFormatObservable : System.IObservable<string?>
 {
     private readonly ILangManager _manager;
-    private readonly IObservable<string?> _format;
+    private readonly System.IObservable<string?> _format;
     private readonly object?[] _currentArgs;
-    private readonly (Func<IObserver<object?>, IDisposable> Subscribe, int Index)[] _sourceArgs;
+    private readonly (System.Func<System.IObserver<object?>, IDisposable> Subscribe, int Index)[] _sourceArgs;
     private readonly (PropertyChange Change, int Index)[] _propertyArgs;
     private readonly (Func<object?> Read, int Index)[] _computedArgs;
 

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Avalonia.Controls;
 using OvoUi.Demo.Navs;
 using OvoUi.Demo.Pages;

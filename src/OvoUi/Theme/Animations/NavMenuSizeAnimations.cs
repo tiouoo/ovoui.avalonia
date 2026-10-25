@@ -1,4 +1,5 @@
-﻿using Avalonia.Animation;
+﻿using System;
+using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Media;

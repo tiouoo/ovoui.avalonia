@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Gma.QrCodeNet.Encoding.Positioning.Stencils;
 
 internal class AlignmentPattern : PatternStencilBase

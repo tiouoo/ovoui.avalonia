@@ -1,3 +1,5 @@
+using System;
+
 namespace OvoUi.Lang;
 
 internal sealed class BoxingObserver<T>(IObserver<object?> inner) : IObserver<T>

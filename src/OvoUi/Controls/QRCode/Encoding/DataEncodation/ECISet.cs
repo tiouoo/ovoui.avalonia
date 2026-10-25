@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace Gma.QrCodeNet.Encoding.DataEncodation;
 
 internal sealed class ECISet

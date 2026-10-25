@@ -1,3 +1,5 @@
+using System;
+
 namespace Gma.QrCodeNet.Encoding.Positioning.Stencils;
 
 internal class DarkDotAtLeftBottom : PatternStencilBase

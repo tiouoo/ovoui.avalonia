@@ -1,3 +1,5 @@
+using System;
+
 namespace Gma.QrCodeNet.Encoding.EncodingRegion;
 
 /// <remarks>ISO/IEC 18004:2000 Chapter 8.7.3 Page 46</remarks>
