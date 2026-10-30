@@ -1,9 +1,11 @@
 using Avalonia.Controls;
+using Avalonia.Media;
+using OvoUi.Controls;
 using OvoUi.Demo.Classic.Pages;
 
 namespace OvoUi.Demo.Classic;
 
-public partial class MainWindow : Window
+public partial class MainWindow : OvoWindow
 {
     public MainWindow()
     {
@@ -33,6 +35,18 @@ public partial class MainWindow : Window
         var exitCode = 0;
         try
         {
+            UpdateLayout();
+            if (TitleBar is null)
+                throw new InvalidOperationException("OvoWindow title bar template was not loaded.");
+            report.Add("PASS OvoWindow title bar");
+            if (this.FindResource("OvoFontFamily") is not FontFamily fontFamily)
+                throw new InvalidOperationException("OvoUi.Fonts resources were not loaded.");
+            foreach (var weight in new[] { FontWeight.Normal, FontWeight.Bold })
+            {
+                if (!FontManager.Current.TryGetGlyphTypeface(new Typeface(fontFamily, weight: weight), out var glyphTypeface))
+                    throw new InvalidOperationException($"Cannot load embedded OvoUi font ({weight}).");
+                report.Add($"PASS OvoUi.Fonts {weight}: {glyphTypeface.FamilyName}");
+            }
             for (var index = 0; index < Examples.ItemCount; index++)
             {
                 Examples.SelectedIndex = index;

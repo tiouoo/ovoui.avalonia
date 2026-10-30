@@ -1,6 +1,7 @@
-<Window x:Class="OvoUi.Demo.Classic.MainWindow"
+<ovo:OvoWindow x:Class="OvoUi.Demo.Classic.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
         Title="OvoUi Classic Demo · Managed runtime" Width="1200" Height="800"
         MinWidth="900" MinHeight="600">
   <DockPanel Margin="16">
@@ -10,4 +11,4 @@
     </StackPanel>
     <TabControl Name="Examples" />
   </DockPanel>
-</Window>
+</ovo:OvoWindow>

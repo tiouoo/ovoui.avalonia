@@ -7,5 +7,6 @@
     <ovo:OvoUiDataGridTheme />
     <ovo:OvoAvaloniaEditTheme />
     <ovo:OvoShowcaseTheme />
+    <ovo:OvoUiFont />
   </Application.Styles>
 </Application>

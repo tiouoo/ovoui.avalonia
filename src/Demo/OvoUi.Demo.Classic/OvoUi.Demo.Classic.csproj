@@ -17,6 +17,7 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
     <ProjectReference Include="..\..\OvoUi.DataGrid\OvoUi.DataGrid.csproj" />
     <ProjectReference Include="..\..\OvoUi.Platform\OvoUi.Platform.csproj" />
+    <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
     <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase\OvoUi.AvaloniaEdit.Showcase.csproj" />
     <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <AdditionalFiles Include="**\*.axaml" Exclude="bin\**;obj\**" />
