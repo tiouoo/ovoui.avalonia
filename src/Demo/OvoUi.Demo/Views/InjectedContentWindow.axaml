@@ -6,7 +6,7 @@
     TransparencyLevelHint="Transparent"
     Width="800"
     WindowDecorations="None"
-    x:Class="OvoUi.Demo.Classic.Views.InjectedContentWindow"
+    x:Class="OvoUi.Demo.Views.InjectedContentWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Background="#520B1118">

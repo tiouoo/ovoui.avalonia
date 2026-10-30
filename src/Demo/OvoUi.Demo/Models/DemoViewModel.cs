@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using OvoUi.Demo.Navs;
 using OvoUi.Demo.Pages;
 using SmoothScrollNavigation = OvoUi.Demo.Navs.SmoothScroll;
+using PlatformNavigation = OvoUi.Demo.Navs.Platform;
 
 namespace OvoUi.Demo.Models;
 
@@ -46,6 +47,7 @@ public sealed class DemoViewModel : ModelBase
         Page.Group("SmoothScroll", SmoothScrollNavigation.Pages),
         Page.Group("Feedback", Feedbacks.FeedbacksList),
         Page.Group("Layout", Layouts.LayoutsList),
+        Page.Group("Platform", PlatformNavigation.PlatformsList),
         Page.View<LangPage>("OvoUi.Lang"),
     ];
 

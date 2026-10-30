@@ -7,7 +7,7 @@
   <DockPanel Margin="16">
     <StackPanel DockPanel.Dock="Top" Spacing="6" Margin="8,0,8,16">
       <TextBlock Classes="h2" Text="OvoUi Classic Demo" />
-      <TextBlock Text="DataGrid and platform integrations · managed runtime required" />
+      <TextBlock Text="DataGrid, Jump List and composition materials · managed runtime required" />
     </StackPanel>
     <TabControl Name="Examples" />
   </DockPanel>

@@ -15,11 +15,8 @@ public partial class MainWindow : OvoWindow
         Examples.ItemsSource = new TabItem[]
         {
             Example<DataGridPage>("DataGrid"),
-            Example<MacOsWindowControlsPage>("macOS controls"),
-            Example<WindowsSystemMenuPage>("Windows menu / jump list"),
-            Example<WindowCompositionMaterialPage>("Composition material"),
-            Example<WindowContentInjectionPage>("Window injection"),
-            Example<MemoryOptimizationPage>("Memory")
+            Example<WindowsJumpListPage>("Windows Jump List"),
+            Example<WindowCompositionMaterialPage>("Composition material")
         };
     }
 

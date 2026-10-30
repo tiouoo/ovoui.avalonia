@@ -1,0 +1,41 @@
+<UserControl
+    x:Class="OvoUi.Demo.Classic.Pages.WindowsJumpListPage"
+    x:DataType="pages:WindowsJumpListPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Classic.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Classic.Pages"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="WindowsJumpList">
+        <ovo:ControlShowcase Header="Windows Jump List (taskbar right-click)" SourceKey="platform-windows-jump-list">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock
+                    Code="{Binding JumpListSourceCode}"
+                    Header="C#"
+                    Language="csharp" />
+            </ovo:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <TextBlock Text="Apply launch tasks grouped into categories, then right-click the app's taskbar icon normally to view them." TextWrapping="Wrap" />
+                <TextBlock
+                    IsVisible="{Binding !IsWindows}"
+                    Text="These controls are available when the desktop app runs on Windows."
+                    TextWrapping="Wrap" />
+                <WrapPanel
+                    IsEnabled="{Binding IsWindows}"
+                    ItemSpacing="10"
+                    LineSpacing="10">
+                    <Button
+                        Classes="accent"
+                        Click="ApplyJumpList"
+                        Content="Apply sample Jump List" />
+                    <Button Click="ClearJumpList" Content="Clear Jump List" />
+                </WrapPanel>
+                <TextBlock
+                    Name="JumpListStatusLabel"
+                    Text="Apply the sample, then right-click the taskbar icon."
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

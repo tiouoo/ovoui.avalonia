@@ -4,7 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using OvoUi.Platform;
 
-namespace OvoUi.Demo.Classic.Pages;
+namespace OvoUi.Demo.Pages;
 
 public partial class MemoryOptimizationPage : UserControl
 {

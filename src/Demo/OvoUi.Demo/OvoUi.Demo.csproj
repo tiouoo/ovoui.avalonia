@@ -40,6 +40,7 @@
         <ProjectReference Include="..\..\OvoUi.Tab\OvoUi.Tab.csproj"/>
         <ProjectReference Include="..\..\OvoUi.SmoothScroll\OvoUi.SmoothScroll.csproj"/>
         <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj"/>
+        <ProjectReference Include="..\..\OvoUi.Platform\OvoUi.Platform.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

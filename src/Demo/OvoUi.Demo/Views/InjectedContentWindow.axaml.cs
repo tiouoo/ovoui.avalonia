@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace OvoUi.Demo.Classic.Views;
+namespace OvoUi.Demo.Views;
 
 public partial class InjectedContentWindow : Window
 {

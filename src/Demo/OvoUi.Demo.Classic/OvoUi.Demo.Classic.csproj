@@ -10,13 +10,13 @@
     <PublishTrimmed>false</PublishTrimmed>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>..\..\..\assets\icon.ico</ApplicationIcon>
-    <Description>Managed desktop examples for OvoUi.DataGrid and OvoUi.Platform.</Description>
+    <Description>Managed desktop examples for OvoUi.DataGrid and OvoUi.Platform.NoAOT.</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)" />
     <ProjectReference Include="..\..\OvoUi.DataGrid\OvoUi.DataGrid.csproj" />
-    <ProjectReference Include="..\..\OvoUi.Platform\OvoUi.Platform.csproj" />
+    <ProjectReference Include="..\..\OvoUi.Platform.NoAOT\OvoUi.Platform.NoAOT.csproj" />
     <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj" />
     <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase\OvoUi.AvaloniaEdit.Showcase.csproj" />
     <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>OvoUi.Platform.NoAOT</PackageId>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsAotCompatible>false</IsAotCompatible>
+    <IsTrimmable>false</IsTrimmable>
+    <Title>OvoUi Platform NoAOT</Title>
+    <Description>Optional Windows Jump List and reflection-based composition materials. Requires the managed runtime; Native AOT and trimming are not supported.</Description>
+    <PackageTags>avalonia;ui;platform;windows;noaot</PackageTags>
+    <PackageIcon>icon_256.png</PackageIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OvoUi.Platform\OvoUi.Platform.csproj" />
+    <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

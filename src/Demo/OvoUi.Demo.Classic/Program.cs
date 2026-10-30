@@ -8,7 +8,7 @@ internal static class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        WindowsJumpList.TrySetCurrentProcessAppId("cc.tiouo.OvoUi.Demo.Classic", out _);
+        WindowsAppIdentity.TrySetCurrentProcessAppId("cc.tiouo.OvoUi.Demo.Classic", out _);
         var index = Array.IndexOf(args, "--jump-list-demo");
         if (index >= 0 && index + 1 < args.Length)
             App.JumpListLaunchTarget = args[index + 1];

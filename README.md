@@ -38,6 +38,7 @@ dotnet add package OvoUi
 ```bash
 dotnet add package OvoUi.Fonts
 dotnet add package OvoUi.Platform
+dotnet add package OvoUi.Platform.NoAOT
 dotnet add package OvoUi.DataGrid
 dotnet add package OvoUi.Tab
 dotnet add package OvoUi.SmoothScroll

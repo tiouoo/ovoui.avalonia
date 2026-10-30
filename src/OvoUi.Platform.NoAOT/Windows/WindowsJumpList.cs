@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
@@ -21,31 +22,14 @@ public sealed record WindowsJumpListItem(
 /// <summary>
 /// Creates the jump list shown when the user right-clicks an application's Windows taskbar icon.
 /// </summary>
+[RequiresDynamicCode("Windows Jump List activation uses built-in COM interop. Use OvoUi.Platform.NoAOT with the managed runtime.")]
+[RequiresUnreferencedCode("Windows Jump List activation requires COM metadata that trimming cannot preserve automatically.")]
 public static partial class WindowsJumpList
 {
     public static bool IsSupported => OperatingSystem.IsWindows();
 
     public static bool TrySetCurrentProcessAppId(string appId, out string? error)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(appId);
-        if (!IsSupported)
-        {
-            error = "Windows jump lists are only available on Windows.";
-            return false;
-        }
-
-        try
-        {
-            SetCurrentProcessExplicitAppUserModelID(appId);
-            error = null;
-            return true;
-        }
-        catch (Exception exception)
-        {
-            error = exception.Message;
-            return false;
-        }
-    }
+        => WindowsAppIdentity.TrySetCurrentProcessAppId(appId, out error);
 
     public static bool TryApply(
         string appId,
@@ -156,9 +140,6 @@ public static partial class WindowsJumpList
 
         return link;
     }
-
-    [LibraryImport("shell32.dll", StringMarshalling = StringMarshalling.Utf16)]
-    private static partial void SetCurrentProcessExplicitAppUserModelID(string appId);
 
     [LibraryImport("ole32.dll")]
     private static partial void PropVariantClear(ref PropVariant variant);

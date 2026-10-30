@@ -30,6 +30,7 @@ internal static class DemoSmokeTest
                 await Task.Delay(30);
                 report.Add($"PASS {page.Title}");
             }
+            await PlatformSmokeTest.RunAsync(window, report);
         }
         catch (Exception exception)
         {

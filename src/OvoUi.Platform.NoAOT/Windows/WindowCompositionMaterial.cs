@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
@@ -20,6 +21,8 @@ public enum WindowCompositionMaterialKind
     Mica
 }
 
+[RequiresDynamicCode("Composition materials use runtime generic COM proxy creation. Use OvoUi.Platform.NoAOT with the managed runtime.")]
+[RequiresUnreferencedCode("Composition materials access private Avalonia.Win32 members by reflection.")]
 public sealed class WindowCompositionMaterial : IDisposable
 {
     private readonly TopLevel _topLevel;
