@@ -15,6 +15,7 @@ projects=(
   src/OvoUi.DataGrid/OvoUi.DataGrid.csproj
   src/OvoUi.Fonts/OvoUi.Fonts.csproj
   src/OvoUi.Platform/OvoUi.Platform.csproj
+  src/OvoUi.Platform.NoAOT/OvoUi.Platform.NoAOT.csproj
   src/OvoUi.Tab/OvoUi.Tab.csproj
   src/OvoUi.SmoothScroll/OvoUi.SmoothScroll.csproj
   src/OvoUi.Lang/OvoUi.Lang.csproj
