@@ -27,10 +27,4 @@
         <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Compile Update="Controls\Window\OvoTitleBar.axaml.cs">
-            <DependentUpon>OvoTitleBar.axaml</DependentUpon>
-        </Compile>
-    </ItemGroup>
-
 </Project>

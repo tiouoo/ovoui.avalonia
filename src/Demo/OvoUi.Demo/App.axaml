@@ -15,6 +15,7 @@
     </Application.Resources>
     <Application.Styles>
         <ovo:OvoUiTheme Language="en_us" />
+        <ovo:OvoUiDataGridTheme />
         <ovo:OvoTabTheme />
         <ovo:OvoAvaloniaEditTheme />
         <ovo:OvoShowcaseTheme />
