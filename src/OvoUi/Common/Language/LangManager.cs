@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using Avalonia;
 using OvoUi.Common.Language.Langs;
 
@@ -63,11 +62,51 @@ public class LangManager : INotifyPropertyChanged
     {
         if (Application.Current == null) return;
 
-        var properties = typeof(ILang).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-        UpdateResources(properties.ToDictionary(
-            property => $"Lang.{property.Name}",
-            property => (object?)(property.GetValue(_current)?.ToString() ?? string.Empty)));
+        UpdateResources(new Dictionary<string, object?>
+        {
+            ["Lang.Name"] = _current.Name,
+            ["Lang.FileName"] = _current.FileName,
+            ["Lang.UpdateAt"] = _current.UpdateAt,
+            ["Lang.Type"] = _current.Type,
+            ["Lang.Size"] = _current.Size,
+            ["Lang.Cancel"] = _current.Cancel,
+            ["Lang.Close"] = _current.Close,
+            ["Lang.Confirm"] = _current.Confirm,
+            ["Lang.Ok"] = _current.Ok,
+            ["Lang.NavSwitch"] = _current.NavSwitch,
+            ["Lang.ShowHiddenFiles"] = _current.ShowHiddenFiles,
+            ["Lang.FileAlreadyExists"] = _current.FileAlreadyExists,
+            ["Lang.Day"] = _current.Day,
+            ["Lang.Month"] = _current.Month,
+            ["Lang.Year"] = _current.Year,
+            ["Lang.Hour"] = _current.Hour,
+            ["Lang.Minute"] = _current.Minute,
+            ["Lang.Second"] = _current.Second,
+            ["Lang.Undo"] = _current.Undo,
+            ["Lang.Redo"] = _current.Redo,
+            ["Lang.SelectAll"] = _current.SelectAll,
+            ["Lang.Cut"] = _current.Cut,
+            ["Lang.Copy"] = _current.Copy,
+            ["Lang.Copied"] = _current.Copied,
+            ["Lang.WordWrap"] = _current.WordWrap,
+            ["Lang.Paste"] = _current.Paste,
+            ["Lang.Clear"] = _current.Clear,
+            ["Lang.JumpTo"] = _current.JumpTo,
+            ["Lang.Page"] = _current.Page,
+            ["Lang.StartTime"] = _current.StartTime,
+            ["Lang.EndTime"] = _current.EndTime,
+            ["Lang.Yes"] = _current.Yes,
+            ["Lang.No"] = _current.No,
+            ["Lang.BringForward"] = _current.BringForward,
+            ["Lang.BringToFront"] = _current.BringToFront,
+            ["Lang.SendBackward"] = _current.SendBackward,
+            ["Lang.SendToBack"] = _current.SendToBack,
+            ["Lang.Maximum"] = _current.Maximum,
+            ["Lang.Minimum"] = _current.Minimum,
+            ["Lang.Restore"] = _current.Restore,
+            ["Lang.On"] = _current.On,
+            ["Lang.Off"] = _current.Off
+        });
 
         foreach (var provider in _resourceProviders)
             UpdateResources(provider.GetResources(_current));

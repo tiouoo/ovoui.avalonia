@@ -1,0 +1,13 @@
+<Window x:Class="OvoUi.Demo.Classic.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OvoUi Classic Demo · Managed runtime" Width="1200" Height="800"
+        MinWidth="900" MinHeight="600">
+  <DockPanel Margin="16">
+    <StackPanel DockPanel.Dock="Top" Spacing="6" Margin="8,0,8,16">
+      <TextBlock Classes="h2" Text="OvoUi Classic Demo" />
+      <TextBlock Text="DataGrid and platform integrations · managed runtime required" />
+    </StackPanel>
+    <TabControl Name="Examples" />
+  </DockPanel>
+</Window>

@@ -6,7 +6,7 @@ using Avalonia.Threading;
 using OvoUi.Controls;
 using OvoUi.Platform.Windows;
 
-namespace OvoUi.Demo.Views;
+namespace OvoUi.Demo.Classic.Views;
 
 public partial class CompositionMaterialWindow : OvoWindow
 {

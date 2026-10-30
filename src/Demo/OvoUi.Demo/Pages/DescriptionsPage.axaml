@@ -1,11 +1,12 @@
 <UserControl
+    x:DataType="pages:DescriptionsPage"
     x:Class="OvoUi.Demo.Pages.DescriptionsPage"
-    x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:common="using:OvoUi.Common.Enums"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:layout="using:Avalonia.Layout"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Descriptions">
         <ovo:ControlShowcase Header="Interactive layout" SourceKey="shows-descriptions-configurator">

@@ -1,9 +1,10 @@
 <UserControl
+    x:DataType="pages:TreeViewPage"
     x:Class="OvoUi.Demo.Pages.TreeViewPage"
-    x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="TreeView">
         <ovo:ControlShowcase Header="TreeView examples" SourceKey="shows-tree-view">

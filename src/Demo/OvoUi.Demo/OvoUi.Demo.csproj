@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Library</OutputType>
         <TargetFramework>net10.0</TargetFramework>
@@ -8,13 +8,14 @@
         <RootNamespace>OvoUi.Demo</RootNamespace>
         <AssemblyName>OvoUi.Demo</AssemblyName>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <IsAotCompatible>true</IsAotCompatible>
         <Title>OvoUi Demo</Title>
         <Description>Cross-platform demonstration application for OvoUi.</Description>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\OvoUi.Lang\OvoUi.Lang.csproj"/>
-        <ProjectReference Include="..\..\OvoUi.Lang.Generator\OvoUi.Lang.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="..\..\OvoUi.Lang.Generator\OvoUi.Lang.Generator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" GlobalPropertiesToRemove="PublishAot;RuntimeIdentifier;SelfContained"/>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
 
@@ -33,9 +34,9 @@
         <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase\OvoUi.AvaloniaEdit.Showcase.csproj"/>
         <ProjectReference Include="..\..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
                           OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"/>
+                          ReferenceOutputAssembly="false"
+                          GlobalPropertiesToRemove="PublishAot;RuntimeIdentifier;SelfContained"/>
         <ProjectReference Include="..\..\OvoUi\OvoUi.csproj"/>
-        <ProjectReference Include="..\..\OvoUi.Platform\OvoUi.Platform.csproj"/>
         <ProjectReference Include="..\..\OvoUi.Tab\OvoUi.Tab.csproj"/>
         <ProjectReference Include="..\..\OvoUi.SmoothScroll\OvoUi.SmoothScroll.csproj"/>
         <ProjectReference Include="..\..\OvoUi.Fonts\OvoUi.Fonts.csproj"/>

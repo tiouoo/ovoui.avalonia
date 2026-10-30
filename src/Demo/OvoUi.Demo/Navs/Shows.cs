@@ -23,7 +23,6 @@ public static class Shows
         Page.View<BannerPage>("Banner"),
         Page.View<BadgePage>("Badge"),
         Page.View<DescriptionsPage>("Descriptions"),
-        Page.View<DataGridPage>("DataGrid"),
         Page.View<ToolTipPage>("ToolTip"),
         Page.View<DisableContainerPage>("DisableContainer"),
         Page.View<DualBadgePage>("DualBadge"),

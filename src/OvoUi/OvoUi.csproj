@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <PackageId>OvoUi</PackageId>
@@ -7,6 +7,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <IsAotCompatible>true</IsAotCompatible>
         <Title>OvoUi</Title>
         <Description>An Avalonia UI control library and theme.</Description>
         <PackageTags>avalonia;ui;controls;theme</PackageTags>
@@ -16,7 +17,6 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="12.1.4"/>
         <PackageReference Include="Avalonia.Controls.ColorPicker" Version="12.1.4"/>
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2"/>
         <PackageReference Include="System.Reactive" Version="7.0.0"/>
     </ItemGroup>
 

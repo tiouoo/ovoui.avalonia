@@ -1,6 +1,5 @@
 <UserControl
     x:Class="OvoUi.Demo.Pages.EnumSelectorPage"
-    x:CompileBindings="False"
     x:DataType="pages:EnumSelectorDemoViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"

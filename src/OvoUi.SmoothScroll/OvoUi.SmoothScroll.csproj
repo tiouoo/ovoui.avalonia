@@ -6,6 +6,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsAotCompatible>true</IsAotCompatible>
         <LangVersion>latest</LangVersion>
         <Title>OvoUi Smooth Scroll</Title>
         <Description>Smooth scrolling, panning, multi-touch zoom, elastic overscroll and composition interaction tracking for Avalonia.</Description>

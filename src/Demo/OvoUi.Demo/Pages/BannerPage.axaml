@@ -1,11 +1,12 @@
 <UserControl
+    x:DataType="pages:BannerPage"
     x:Class="OvoUi.Demo.Pages.BannerPage"
-    x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:layout="using:Avalonia.Layout"
     xmlns:notifications="using:Avalonia.Controls.Notifications"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="Banner">
         <ovo:ControlShowcase Header="Interactive configurator" SourceKey="shows-banner-configurator">

@@ -4,6 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsAotCompatible>true</IsAotCompatible>
         <Title>OvoUi.AvaloniaEdit.Showcase</Title>
         <Description>Preview and highlighted axaml source presentation for OvoUi controls.</Description>
         <PackageTags>avalonia;avaloniaedit;control-showcase;source-generator;syntax-highlighting</PackageTags>
@@ -16,7 +17,8 @@
         <ProjectReference Include="..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj"/>
         <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
                           ReferenceOutputAssembly="false"
-                          TreatAsPackageReference="true"/>
+                          TreatAsPackageReference="true"
+                          GlobalPropertiesToRemove="PublishAot;RuntimeIdentifier;SelfContained"/>
     </ItemGroup>
 
     <ItemGroup>

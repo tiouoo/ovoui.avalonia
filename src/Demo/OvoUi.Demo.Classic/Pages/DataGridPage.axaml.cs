@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Avalonia.Controls;
 
-namespace OvoUi.Demo.Pages;
+namespace OvoUi.Demo.Classic.Pages;
 
 public partial class DataGridPage : UserControl
 {

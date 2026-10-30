@@ -2,10 +2,10 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
-using OvoUi.Demo.Views;
+using OvoUi.Demo.Classic.Views;
 using OvoUi.Platform.Windows;
 
-namespace OvoUi.Demo.Pages;
+namespace OvoUi.Demo.Classic.Pages;
 
 public partial class WindowContentInjectionPage : UserControl
 {

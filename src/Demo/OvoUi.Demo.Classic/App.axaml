@@ -1,0 +1,11 @@
+<Application x:Class="OvoUi.Demo.Classic.App"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
+  <Application.Styles>
+    <ovo:OvoUiTheme Language="en_us" />
+    <ovo:OvoUiDataGridTheme />
+    <ovo:OvoAvaloniaEditTheme />
+    <ovo:OvoShowcaseTheme />
+  </Application.Styles>
+</Application>

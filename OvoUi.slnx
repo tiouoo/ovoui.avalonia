@@ -15,6 +15,7 @@
       <Deploy />
     </Project>
     <Project Path="src/Demo/OvoUi.Demo/OvoUi.Demo.csproj" />
+    <Project Path="src/Demo/OvoUi.Demo.Classic/OvoUi.Demo.Classic.csproj" />
   </Folder>
   <Project Path="src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj" />
   <Project Path="src/OvoUi.Lang/OvoUi.Lang.csproj" />
@@ -24,4 +25,5 @@
   <Project Path="src/OvoUi.Fonts/OvoUi.Fonts.csproj" />
   <Project Path="src/OvoUi.Test/OvoUi.Test.csproj" />
   <Project Path="src/OvoUi/OvoUi.csproj" />
+  <Project Path="src/OvoUi.DataGrid/OvoUi.DataGrid.csproj" />
 </Solution>

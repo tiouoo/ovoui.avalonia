@@ -1,10 +1,10 @@
 <UserControl
-    x:Class="OvoUi.Demo.Pages.WindowCompositionMaterialPage"
+    x:Class="OvoUi.Demo.Classic.Pages.WindowCompositionMaterialPage"
     x:DataType="pages:WindowCompositionMaterialPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:demo="using:OvoUi.Demo.Classic.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
-    xmlns:pages="using:OvoUi.Demo.Pages"
+    xmlns:pages="using:OvoUi.Demo.Classic.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="WindowCompositionMaterial">
         <ovo:ControlShowcase Header="Windows composition materials" SourceKey="platform-window-composition-material">

@@ -1,9 +1,10 @@
 <UserControl
+    x:DataType="pages:ComboBoxPage"
     x:Class="OvoUi.Demo.Pages.ComboBoxPage"
-    x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ComboBox">
         <ovo:ControlShowcase Header="Standard states" SourceKey="combo-box-states">

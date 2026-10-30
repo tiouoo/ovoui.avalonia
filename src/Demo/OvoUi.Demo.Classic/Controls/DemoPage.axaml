@@ -1,0 +1,32 @@
+<UserControl
+    x:Class="OvoUi.Demo.Classic.Controls.DemoPage"
+    x:DataType="controls:DemoPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:controls="using:OvoUi.Demo.Classic.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Template>
+        <ControlTemplate>
+            <DockPanel Margin="20,10">
+                <SelectableTextBlock
+                    Classes="h2"
+                    DockPanel.Dock="Top"
+                    Margin="{TemplateBinding TitleMargin}"
+                    Text="{TemplateBinding Text}" />
+                <ovo:FadingScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    Margin="0,0,-15,0"
+                    Padding="0,0,15,0"
+                    VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding PageContent, RelativeSource={RelativeSource TemplatedParent}}" MaxWidth="1460">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Spacing="20" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ovo:FadingScrollViewer>
+            </DockPanel>
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>

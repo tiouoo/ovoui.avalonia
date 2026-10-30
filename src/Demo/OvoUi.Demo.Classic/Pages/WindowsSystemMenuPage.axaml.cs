@@ -4,11 +4,11 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using OvoUi.Platform.Windows;
 
-namespace OvoUi.Demo.Pages;
+namespace OvoUi.Demo.Classic.Pages;
 
 public partial class WindowsSystemMenuPage : UserControl
 {
-    private const string DemoAppId = "cc.tiouo.OvoUi.Demo";
+    private const string DemoAppId = "cc.tiouo.OvoUi.Demo.Classic";
     private readonly List<WindowsSystemMenuItem> _menuItems = [];
     private int _commandNumber;
 

@@ -1,9 +1,10 @@
 <UserControl
+    x:DataType="pages:ShimmerPage"
     x:Class="OvoUi.Demo.Pages.ShimmerPage"
-    x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="ShimmerText">
         <ovo:ControlShowcase Header="Animated text" SourceKey="shows-shimmer-text">

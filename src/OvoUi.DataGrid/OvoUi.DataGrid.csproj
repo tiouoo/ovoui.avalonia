@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>OvoUi.DataGrid</PackageId>
+    <Title>OvoUi DataGrid</Title>
+    <Description>Optional OvoUi DataGrid theme. Requires the managed runtime; Native AOT is not supported by the upstream DataGrid.</Description>
+    <PackageTags>avalonia;ovoui;datagrid;theme</PackageTags>
+    <IsAotCompatible>false</IsAotCompatible>
+    <IsTrimmable>false</IsTrimmable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OvoUi\OvoUi.csproj" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.1.2" />
+  </ItemGroup>
+</Project>

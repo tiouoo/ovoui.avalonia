@@ -18,7 +18,7 @@
     Width="720"
     WindowDecorations="None"
     WindowStartupLocation="CenterScreen"
-    x:Class="OvoUi.Demo.Views.CompositionMaterialWindow"
+    x:Class="OvoUi.Demo.Classic.Views.CompositionMaterialWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">

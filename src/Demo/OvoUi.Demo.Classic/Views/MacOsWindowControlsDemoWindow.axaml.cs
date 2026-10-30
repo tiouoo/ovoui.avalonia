@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using OvoUi.Platform.MacOS;
 
-namespace OvoUi.Demo.Views;
+namespace OvoUi.Demo.Classic.Views;
 
 public partial class MacOsWindowControlsDemoWindow : Window
 {

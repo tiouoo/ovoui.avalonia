@@ -1,8 +1,8 @@
 <UserControl
-    x:Class="OvoUi.Demo.Pages.DataGridPage"
+    x:Class="OvoUi.Demo.Classic.Pages.DataGridPage"
     x:CompileBindings="False"
     xmlns="https://github.com/avaloniaui"
-    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:demo="using:OvoUi.Demo.Classic.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="DataGrid">

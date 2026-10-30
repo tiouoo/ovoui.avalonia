@@ -9,7 +9,6 @@ namespace OvoUi.Demo;
 public partial class App : Application
 {
     public static IView RootView { get; private set; } = null!;
-    public static string? JumpListLaunchTarget { get; set; }
 
     public override void Initialize()
     {
@@ -26,6 +25,8 @@ public partial class App : Application
             var mainWindow = new MainWindow();
             RootView = mainWindow;
             desktop.MainWindow = mainWindow;
+            if (desktop.Args?.Contains("--smoke-test") == true)
+                mainWindow.Opened += async (_, _) => await DemoSmokeTest.RunAsync(mainWindow, desktop);
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {

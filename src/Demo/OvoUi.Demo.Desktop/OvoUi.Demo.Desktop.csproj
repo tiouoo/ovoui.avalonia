@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>net10.0</TargetFramework>
@@ -7,20 +7,15 @@
         <RootNamespace>OvoUi.Demo.Desktop</RootNamespace>
         <AssemblyName>OvoUi.Demo.Desktop</AssemblyName>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    </PropertyGroup>
-
-    <PropertyGroup>
+        <IsAotCompatible>true</IsAotCompatible>
+        <PublishAot>true</PublishAot>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>full</TrimMode>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     </PropertyGroup>
-
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="HotAvalonia" Version="3.1.5" PrivateAssets="All" Publish="True"/>
-        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" PrivateAssets="All" Publish="True"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\OvoUi.Demo\OvoUi.Demo.csproj"/>
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+        <ProjectReference Include="..\OvoUi.Demo\OvoUi.Demo.csproj" />
     </ItemGroup>
 </Project>

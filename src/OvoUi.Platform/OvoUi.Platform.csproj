@@ -5,6 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <IsAotCompatible>false</IsAotCompatible>
+        <IsTrimmable>false</IsTrimmable>
         <Title>OvoUi Platform</Title>
         <Description>Native macOS and Windows platform integrations for Avalonia applications.</Description>
         <PackageTags>avalonia;ui;platform;windows;macos</PackageTags>

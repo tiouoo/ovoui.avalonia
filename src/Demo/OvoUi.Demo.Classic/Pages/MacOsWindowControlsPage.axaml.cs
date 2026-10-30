@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using OvoUi.Demo.Views;
+using OvoUi.Demo.Classic.Views;
 
-namespace OvoUi.Demo.Pages;
+namespace OvoUi.Demo.Classic.Pages;
 
 public partial class MacOsWindowControlsPage : UserControl
 {

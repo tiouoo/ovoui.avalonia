@@ -7,6 +7,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsAotCompatible>true</IsAotCompatible>
         <Title>OvoUi Tab</Title>
         <Description>Animated, detachable tab hosts and tab windows for Avalonia applications.</Description>
         <PackageTags>avalonia;ui;tabs;tab-window;drag-drop</PackageTags>
