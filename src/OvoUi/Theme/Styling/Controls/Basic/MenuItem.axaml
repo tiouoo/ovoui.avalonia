@@ -62,7 +62,7 @@
     </Design.PreviewWith>
 
     <ControlTheme TargetType="MenuItem" x:Key="StandardMenuItemTheme">
-        <Setter Property="Background" Value="{DynamicResource PopupBackgroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="Margin" Value="0" />
