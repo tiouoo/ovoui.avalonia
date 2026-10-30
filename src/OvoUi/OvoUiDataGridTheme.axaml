@@ -2,5 +2,11 @@
     x:Class="OvoUi.OvoUiDataGridTheme"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StyleInclude Source="/Theme/Styling/Controls/DataGrid/DataGrid.axaml" />
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Theme/Styling/Controls/DataGrid/DataGrid.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
 </Styles>
