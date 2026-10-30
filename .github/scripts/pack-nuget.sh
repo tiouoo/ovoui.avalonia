@@ -12,6 +12,7 @@ dotnet pack src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj \
 
 projects=(
   src/OvoUi/OvoUi.csproj
+  src/OvoUi.DataGrid/OvoUi.DataGrid.csproj
   src/OvoUi.Fonts/OvoUi.Fonts.csproj
   src/OvoUi.Platform/OvoUi.Platform.csproj
   src/OvoUi.Tab/OvoUi.Tab.csproj
