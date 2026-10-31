@@ -29,7 +29,7 @@
                 <Style Selector="ovo|NavMenu /template/ ItemsPresenter#PART_ItemsPresenter">
                     <Setter Property="Margin" Value="0,0,6,0" />
                 </Style>
-                <Style Selector="ovo|NavMenuItem:first-level">
+                <Style Selector="ovo|NavMenuItem">
                     <Setter Property="IsVerticalCollapsed" Value="True" />
                 </Style>
                 <Style Selector="ovo|NavMenuItem:not(:first-level) TextBlock">

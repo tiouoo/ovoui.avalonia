@@ -1,0 +1,14 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.TextEditorPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="OvoTextEditor">
+        <ovo:ControlShowcase Header="Text editing, selection, and undo" SourceKey="package-text-editor">
+            <ovo:OvoTextEditor Height="240" ShowLineNumbers="True" WordWrap="True"
+                               FontFamily="{DynamicResource OvoCodeFontFamily}"
+                               Text="Hello, OvoUi!&#xA;&#xA;Type here to try editing.&#xA;Select text, then use copy, paste, undo, and redo." />
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

@@ -1,0 +1,16 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.FontsPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="OvoUi.Fonts">
+        <ovo:ControlShowcase Header="Alimama FangYuanTi" SourceKey="package-fonts">
+            <StackPanel Spacing="16">
+                <TextBlock FontFamily="{DynamicResource OvoFontFamily}" FontSize="32" Text="你好，OvoUi！" />
+                <TextBlock FontFamily="{DynamicResource OvoFontFamily}" FontSize="24" Text="The quick brown fox jumps over the lazy dog." TextWrapping="Wrap" />
+                <TextBlock FontFamily="{DynamicResource OvoFontFamily}" FontSize="20" Text="0123456789  中文字体示例" />
+            </StackPanel>
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

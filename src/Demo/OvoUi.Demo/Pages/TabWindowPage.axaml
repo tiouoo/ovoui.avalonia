@@ -47,7 +47,8 @@
                         Content="Live detach and attach"
                         IsChecked="{Binding #TabHost.IsLiveDragEnabled, Mode=TwoWay}"
                         Margin="0,0,0,8"
-                        ToolTip.Tip="Off: drag a preview and release to open a window. On: detach and attach immediately." />
+                        ToolTip.Tip="Off: drag a preview and release to open a window. On: detach and attach immediately."
+                        VerticalAlignment="Center" />
                 </WrapPanel>
                 <ovo:OvoTabHost
                     BorderBrush="{DynamicResource LineBrush}"

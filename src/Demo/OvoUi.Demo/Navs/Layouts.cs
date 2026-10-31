@@ -28,7 +28,6 @@ public static class Layouts
         Page.View<ScrollViewerPage>("ScrollViewer"),
         Page.View<FadingScrollViewerPage>("FadingScrollViewer"),
         Page.View<ThemeVariantScopePage>("ThemeVariantScope"),
-        Page.View<TabWindowPage>("OvoTabHost"),
         Page.View<HeaderedContentPage>("HeaderedContentControl"),
         Page.View<SplitViewPage>("SplitView"),
         Page.View<GroupBoxPage>("OvoGroupBox"),

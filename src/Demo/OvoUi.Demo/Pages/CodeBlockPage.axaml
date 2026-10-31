@@ -1,0 +1,19 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.CodeBlockPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="CodeBlock">
+        <ovo:ControlShowcase Header="Syntax highlighting and copy" SourceKey="package-code-block-highlight">
+            <ovo:CodeBlock Header="Hello.cs" Language="csharp"
+                           Text="using System;&#xA;&#xA;Console.WriteLine(&quot;Hello, OvoUi!&quot;);" />
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Editable code with word wrap" SourceKey="package-code-block-editable">
+            <ovo:CodeBlock Header="settings.json" Language="json"
+                           Text="{}{&#xA;  &quot;message&quot;: &quot;Edit this text and try the copy and word wrap buttons.&quot;&#xA;}"
+                           ovo:AvaloniaEditor.IsReadOnly="False"
+                           ovo:AvaloniaEditor.WordWrap="True" />
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

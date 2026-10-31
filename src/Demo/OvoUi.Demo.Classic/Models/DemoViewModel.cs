@@ -9,20 +9,7 @@ public sealed class DemoViewModel : ModelBase
 {
     public DemoViewModel()
     {
-        foreach (var page in Pages)
-        {
-            if (page.Children is { Count: > 0 })
-            {
-                Items += page.Children.Count;
-                page.Children = [.. page.Children.OrderBy(child => child.Title)];
-            }
-            else
-            {
-                Items += 1;
-            }
-        }
-
-        SelectedPage = Pages[0].Children![0];
+        SelectedPage = Pages[0];
         SearchText += $"  ({Items} items)";
     }
 
@@ -34,8 +21,8 @@ public sealed class DemoViewModel : ModelBase
 
     public static IReadOnlyList<Page> Pages { get; } =
     [
-        Page.Group("Show", [Page.View<DataGridPage>("DataGrid")]),
-        Page.Group("Platform", [Page.View<WindowCompositionMaterialPage>("WindowCompositionMaterial")]),
+        Page.View<DataGridPage>("DataGrid"),
+        Page.View<WindowCompositionMaterialPage>("WindowCompositionMaterial"),
     ];
 
     public Page SelectedPage
@@ -60,7 +47,6 @@ public sealed class Page
 
     public string Title { get; }
 
-    // Lazy<T> creates the view once on first access and returns the same instance afterwards.
     public UserControl? Content => _content?.Value;
 
     public List<Page>? Children { get; set; }

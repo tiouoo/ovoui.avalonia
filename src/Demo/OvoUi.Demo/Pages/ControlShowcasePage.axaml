@@ -1,0 +1,19 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.ControlShowcasePage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="ControlShowcase">
+        <ovo:ControlShowcase Header="Preview, generated source, and split view" SourceKey="package-showcase-preview">
+            <Button Content="Hello, OvoUi!" />
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Horizontal split view" SourceKey="package-showcase-split"
+                             SplitOrientation="Horizontal" SelectedIndex="2">
+            <StackPanel Spacing="12">
+                <TextBlock Text="The source is generated from this example." />
+                <ToggleSwitch Content="Enable feature" />
+            </StackPanel>
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>
