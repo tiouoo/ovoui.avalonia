@@ -1,4 +1,3 @@
-// Adapted from Huskui.Avalonia (MIT). See THIRD-PARTY-NOTICES.md.
 using System;
 using Avalonia;
 using Avalonia.Controls;

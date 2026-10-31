@@ -1,4 +1,3 @@
-// Adapted from Huskui.Avalonia (MIT). See THIRD-PARTY-NOTICES.md.
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -10,7 +9,6 @@ namespace OvoUi.SmoothScroll.Controls;
 namespace OvoUi.Controls;
 #endif
 
-/// <summary>A proportional content overview with click and drag viewport navigation.</summary>
 public class ZoomMinimap : Control
 {
     public static readonly StyledProperty<Size> ContentSizeProperty =

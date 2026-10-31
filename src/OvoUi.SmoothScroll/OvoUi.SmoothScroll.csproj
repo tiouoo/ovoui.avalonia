@@ -16,7 +16,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="..\Shared\Zoom\ZoomMinimap.cs" Link="Controls\ZoomMinimap.cs" />
+        <Compile Include="..\OvoUi.Shared\Zoom\ZoomMinimap.cs" Link="Controls\ZoomMinimap.cs" />
         <IgnoresAccessChecksTo Include="Avalonia.Base"/>
         <IgnoresAccessChecksTo Include="Avalonia.Controls"/>
     </ItemGroup>

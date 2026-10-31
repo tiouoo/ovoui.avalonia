@@ -15,10 +15,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Shared\Zoom\ZoomMinimap.cs" Link="Controls\ZoomView\ZoomMinimap.cs" />
+        <Compile Include="..\OvoUi.Shared\Zoom\ZoomMinimap.cs" Link="Controls\ZoomView\ZoomMinimap.cs" />
         <PackageReference Include="Avalonia" Version="12.1.4"/>
         <PackageReference Include="Avalonia.Controls.ColorPicker" Version="12.1.4"/>
         <PackageReference Include="System.Reactive" Version="7.0.0"/>
+        <PackageReference Include="DiffPlex" Version="1.9.0"/>
     </ItemGroup>
 
     <ItemGroup>

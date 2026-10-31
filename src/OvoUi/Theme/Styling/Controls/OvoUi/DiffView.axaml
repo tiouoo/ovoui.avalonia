@@ -1,0 +1,102 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
+    <ControlTheme x:Key="{x:Type ovo:DiffView}" TargetType="ovo:DiffView">
+        <Setter Property="FontFamily" Value="Cascadia Code, Menlo, Consolas, Courier New, monospace" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource LineBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" ClipToBounds="True">
+                    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,Auto">
+                        <ScrollViewer Name="PART_ScrollViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                            <ItemsControl ItemsSource="{TemplateBinding Lines}" HorizontalAlignment="Stretch">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate><VirtualizingStackPanel /></ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="ovo:DiffLineModel">
+                                        <Grid ColumnDefinitions="*,1,*" MinHeight="22">
+                                            <Grid.Styles>
+                                                <Style Selector="Grid.Added">
+                                                    <Setter Property="Background" Value="{DynamicResource SuccessColorOpacity01}" />
+                                                </Style>
+                                                <Style Selector="Grid.Removed">
+                                                    <Setter Property="Background" Value="{DynamicResource ErrorColorOpacity01}" />
+                                                </Style>
+                                                <Style Selector="Grid.Modified">
+                                                    <Setter Property="Background" Value="{DynamicResource SystemAccentColorOpacity01}" />
+                                                </Style>
+                                                <Style Selector="Grid.Empty">
+                                                    <Setter Property="Background" Value="{DynamicResource PanelBackgroundBrush}" />
+                                                </Style>
+                                                <Style Selector="Grid.Added > Border.Indicator">
+                                                    <Setter Property="Background" Value="{DynamicResource SuccessColor}" />
+                                                </Style>
+                                                <Style Selector="Grid.Removed > Border.Indicator">
+                                                    <Setter Property="Background" Value="{DynamicResource ErrorColor}" />
+                                                </Style>
+                                                <Style Selector="Grid.Modified > Border.Indicator">
+                                                    <Setter Property="Background" Value="{DynamicResource SystemAccentColor}" />
+                                                </Style>
+                                            </Grid.Styles>
+                                            <Border Grid.Column="1" Background="{DynamicResource LineBrush}" />
+                                        <Grid Grid.Column="0" ColumnDefinitions="48,*"
+                                              Classes.Added="{Binding LeftIsAdded}"
+                                              Classes.Removed="{Binding LeftIsRemoved}"
+                                              Classes.Modified="{Binding LeftIsModified}"
+                                              Classes.Empty="{Binding LeftIsEmpty}">
+                                            <Border BorderBrush="{DynamicResource LineBrush}" BorderThickness="0,0,1,0" />
+                                            <Border Classes="Indicator" Width="3" HorizontalAlignment="Left" />
+                                            <TextBlock Classes="LineNumber" Text="{Binding LeftLineNumber}" Margin="8,2"
+                                                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource DisabledForegroundBrush}" />
+                                            <Border Grid.Column="1" ClipToBounds="True">
+                                                <Border Width="{Binding $parent[ovo:DiffView].ContentWidth}" HorizontalAlignment="Left">
+                                                    <Border.RenderTransform>
+                                                        <TranslateTransform X="{Binding $parent[ovo:DiffView].HorizontalOffset}" />
+                                                    </Border.RenderTransform>
+                                                    <TextBlock Text="{Binding LeftText}" Margin="8,2" VerticalAlignment="Center" TextWrapping="NoWrap" />
+                                                </Border>
+                                            </Border>
+                                        </Grid>
+                                        <Grid Grid.Column="2" ColumnDefinitions="48,*"
+                                              Classes.Added="{Binding RightIsAdded}"
+                                              Classes.Removed="{Binding RightIsRemoved}"
+                                              Classes.Modified="{Binding RightIsModified}"
+                                              Classes.Empty="{Binding RightIsEmpty}">
+                                            <Border BorderBrush="{DynamicResource LineBrush}" BorderThickness="0,0,1,0" />
+                                            <Border Classes="Indicator" Width="3" HorizontalAlignment="Left" />
+                                            <TextBlock Classes="LineNumber" Text="{Binding RightLineNumber}" Margin="8,2"
+                                                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource DisabledForegroundBrush}" />
+                                            <Border Grid.Column="1" ClipToBounds="True">
+                                                <Border Width="{Binding $parent[ovo:DiffView].ContentWidth}" HorizontalAlignment="Left">
+                                                    <Border.RenderTransform>
+                                                        <TranslateTransform X="{Binding $parent[ovo:DiffView].HorizontalOffset}" />
+                                                    </Border.RenderTransform>
+                                                    <TextBlock Text="{Binding RightText}" Margin="8,2" VerticalAlignment="Center" TextWrapping="NoWrap" />
+                                                </Border>
+                                            </Border>
+                                        </Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        <ovo:DiffOverviewBar Name="PART_OverviewBar" Grid.Column="1" Width="20" Margin="2"
+                                             IsVisible="{TemplateBinding IsOverviewBarVisible}"
+                                             Markers="{TemplateBinding Markers}" TotalLines="{TemplateBinding TotalLineCount}"
+                                             ViewTopRatio="{TemplateBinding OverviewTopRatio}" ViewportRatio="{TemplateBinding OverviewViewportRatio}" />
+                        <ScrollBar Name="PART_HScrollBar" Grid.Row="1" Orientation="Horizontal" IsVisible="False" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

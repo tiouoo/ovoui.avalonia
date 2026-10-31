@@ -1,0 +1,88 @@
+<UserControl
+    x:Class="OvoUi.Demo.Pages.DiffViewPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:demo="using:OvoUi.Demo.Controls"
+    xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <demo:DemoPage Text="DiffView">
+        <ovo:ControlShowcase Header="Side-by-side differences" SourceKey="shows-diff-view-basic">
+            <StackPanel Spacing="12">
+                <TextBlock Text="Added lines are green, removed lines are red, and modified lines use the accent color." TextWrapping="Wrap" />
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <TextBlock Text="Original" />
+                    <TextBlock Grid.Column="1" Text="Updated" />
+                </Grid>
+                <ovo:DiffView
+                    Height="220"
+                    LeftText="using System;&#xA;&#xA;var name = &quot;TioUi&quot;;&#xA;Console.WriteLine(name);&#xA;// Legacy output&#xA;Console.WriteLine(&quot;Done&quot;);"
+                    RightText="using System;&#xA;&#xA;var name = &quot;OvoUi&quot;;&#xA;Console.WriteLine(name);&#xA;Console.WriteLine(&quot;Done&quot;);&#xA;&#xA;// New output&#xA;Console.WriteLine(DateTime.Now);" />
+            </StackPanel>
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Edit and compare" SourceKey="shows-diff-view-editable">
+            <StackPanel Spacing="12">
+                <TextBlock Text="Edit either input to update the comparison. Clear an input to compare against an empty file." TextWrapping="Wrap" />
+                <Grid
+                    ColumnDefinitions="*,*"
+                    ColumnSpacing="12"
+                    RowDefinitions="Auto,Auto"
+                    RowSpacing="8">
+                    <TextBlock Text="Original text" />
+                    <TextBlock Grid.Column="1" Text="Updated text" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        Grid.Row="1"
+                        Height="130"
+                        Name="OriginalInput"
+                        Text="{}{&#xA;  &quot;name&quot;: &quot;OvoUi&quot;,&#xA;  &quot;version&quot;: 1,&#xA;  &quot;legacy&quot;: true&#xA;}"
+                        TextWrapping="NoWrap" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Height="130"
+                        Name="UpdatedInput"
+                        Text="{}{&#xA;  &quot;name&quot;: &quot;OvoUi&quot;,&#xA;  &quot;version&quot;: 2,&#xA;  &quot;preview&quot;: true&#xA;}"
+                        TextWrapping="NoWrap" />
+                </Grid>
+                <ovo:DiffView
+                    Height="240"
+                    LeftText="{Binding #OriginalInput.Text}"
+                    Name="LiveDiff"
+                    RightText="{Binding #UpdatedInput.Text}" />
+                <WrapPanel ItemSpacing="16">
+                    <TextBlock Text="{Binding #LiveDiff.LeftLineCount, StringFormat='Original: {0} lines'}" />
+                    <TextBlock Text="{Binding #LiveDiff.RightLineCount, StringFormat='Updated: {0} lines'}" />
+                    <TextBlock Text="{Binding #LiveDiff.TotalLineCount, StringFormat='Aligned: {0} rows'}" />
+                </WrapPanel>
+            </StackPanel>
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Long files and overview navigation" SourceKey="shows-diff-view-overview">
+            <StackPanel Spacing="12">
+                <TextBlock Text="Scroll vertically, click or drag the overview to jump to changes, and use the bottom scrollbar to move both columns together." TextWrapping="Wrap" />
+                <WrapPanel ItemSpacing="12">
+                    <TextBlock Text="Overview visibility" VerticalAlignment="Center" />
+                    <ovo:EnumSelector
+                        EnumType="{x:Type ScrollBarVisibility}"
+                        Name="OverviewVisibility"
+                        Value="{x:Static ScrollBarVisibility.Auto}" />
+                </WrapPanel>
+                <ovo:DiffView
+                    Height="360"
+                    Name="LongDiff"
+                    OverviewBarVisibility="{Binding #OverviewVisibility.Value}" />
+            </StackPanel>
+        </ovo:ControlShowcase>
+        <ovo:ControlShowcase Header="Identical and empty files" SourceKey="shows-diff-view-empty">
+            <StackPanel Spacing="12">
+                <ovo:DiffView
+                    Height="100"
+                    LeftText="No changes.&#xA;Both files are identical."
+                    RightText="No changes.&#xA;Both files are identical." />
+                <ovo:DiffView
+                    Height="80"
+                    LeftText=""
+                    RightText="" />
+            </StackPanel>
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

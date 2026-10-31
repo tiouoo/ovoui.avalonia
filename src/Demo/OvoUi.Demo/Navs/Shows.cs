@@ -17,6 +17,7 @@ public static class Shows
         Page.View<QrCodePage>("QRCode"),
         Page.View<ImageViewerPage>("ImageViewer"),
         Page.View<ZoomViewPage>("ZoomView"),
+        Page.View<DiffViewPage>("DiffView"),
         Page.View<TimelinePage>("Timeline"),
         Page.View<TwoTonePathIconPage>("TwoTonePathIcon"),
         Page.View<NumberDisplayerPage>("NumberDisplayer"),
