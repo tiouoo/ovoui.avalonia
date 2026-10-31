@@ -1,5 +1,8 @@
 using System;
 using System.Windows.Input;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
 using AvaloniaEdit;
 
 namespace OvoUi.AvaloniaEdit.Controls;
@@ -17,11 +20,19 @@ public class OvoTextEditor : TextEditor
         Options.EnableEmailHyperlinks = false;
 
         SelectAllCommand = new EditorCommand(SelectAll, () => CanSelectAll);
-        CutCommand = new EditorCommand(Cut, () => CanCut);
+        CutCommand = new EditorCommand(Cut, () => !IsReadOnly && CanCut);
         CopyCommand = new EditorCommand(Copy, () => CanCopy);
-        PasteCommand = new EditorCommand(Paste, () => CanPaste);
-        UndoCommand = new EditorCommand(() => Undo(), () => CanUndo);
-        RedoCommand = new EditorCommand(() => Redo(), () => CanRedo);
+        PasteCommand = new EditorCommand(Paste, () => !IsReadOnly && CanPaste);
+        UndoCommand = new EditorCommand(() =>
+        {
+            Undo();
+            UpdateCommandStates();
+        }, () => !IsReadOnly && CanUndo);
+        RedoCommand = new EditorCommand(() =>
+        {
+            Redo();
+            UpdateCommandStates();
+        }, () => !IsReadOnly && CanRedo);
 
         _commands =
         [
@@ -35,6 +46,12 @@ public class OvoTextEditor : TextEditor
 
         TextArea.SelectionChanged += (_, _) => UpdateCommandStates();
         TextChanged += (_, _) => UpdateCommandStates();
+        PropertyChanged += (_, e) =>
+        {
+            if (e.Property == IsReadOnlyProperty)
+                UpdateCommandStates();
+        };
+        AddHandler(ContextRequestedEvent, (_, _) => UpdateCommandStates(), RoutingStrategies.Tunnel);
     }
 
     public ICommand SelectAllCommand { get; }
@@ -44,7 +61,7 @@ public class OvoTextEditor : TextEditor
     public ICommand UndoCommand { get; }
     public ICommand RedoCommand { get; }
 
-    protected override Type StyleKeyOverride { get; } = typeof(TextEditor);
+    protected override Type StyleKeyOverride { get; } = typeof(OvoTextEditor);
 
     private void UpdateCommandStates()
     {

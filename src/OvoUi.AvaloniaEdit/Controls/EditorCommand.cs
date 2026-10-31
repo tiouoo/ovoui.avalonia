@@ -9,7 +9,11 @@ internal sealed class EditorCommand(Action execute, Func<bool> canExecute) : ICo
 
     public bool CanExecute(object? parameter) => canExecute();
 
-    public void Execute(object? parameter) => execute();
+    public void Execute(object? parameter)
+    {
+        if (CanExecute(parameter))
+            execute();
+    }
 
     public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 }
