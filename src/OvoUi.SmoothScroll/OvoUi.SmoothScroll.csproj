@@ -8,6 +8,7 @@
         <Nullable>enable</Nullable>
         <IsAotCompatible>true</IsAotCompatible>
         <LangVersion>latest</LangVersion>
+        <DefineConstants>$(DefineConstants);OVO_SMOOTH_SCROLL</DefineConstants>
         <Title>OvoUi Smooth Scroll</Title>
         <Description>Smooth scrolling, panning, multi-touch zoom, elastic overscroll and composition interaction tracking for Avalonia.</Description>
         <PackageTags>avalonia;ovoui;scroll;pan;zoom;interaction;composition</PackageTags>
@@ -15,6 +16,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="..\Shared\Zoom\ZoomMinimap.cs" Link="Controls\ZoomMinimap.cs" />
         <IgnoresAccessChecksTo Include="Avalonia.Base"/>
         <IgnoresAccessChecksTo Include="Avalonia.Controls"/>
     </ItemGroup>

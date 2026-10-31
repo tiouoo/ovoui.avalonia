@@ -1,0 +1,89 @@
+<UserControl x:Class="OvoUi.Demo.Pages.ZoomViewPage"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:demo="using:OvoUi.Demo.Controls"
+             xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia">
+    <demo:DemoPage Text="ZoomView">
+        <ovo:ControlShowcase Header="ZoomView" SourceKey="shows-zoom-view">
+            <ovo:ControlShowcase.CodeBlocks>
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
+            </ovo:ControlShowcase.CodeBlocks>
+            <StackPanel Spacing="12">
+                <WrapPanel ItemSpacing="12">
+                    <ToggleSwitch Name="ShowMinimap" Content="Minimap" IsChecked="True" />
+                    <ToggleSwitch Name="NavigateMinimap" Content="Click to navigate" IsChecked="True" />
+                    <ToggleSwitch Name="DragMinimap" Content="Drag viewport" IsChecked="True" />
+                    <ToggleSwitch Name="PanContent" Content="Panning" IsChecked="True" />
+                    <ToggleSwitch Name="ZoomContent" Content="Zooming" IsChecked="True" />
+                    <ToggleSwitch Name="ShowBars" Content="Scrollbars" IsChecked="True" />
+                </WrapPanel>
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <TextBlock Text="Minimap width" VerticalAlignment="Center" />
+                    <Slider Name="MapWidth" Width="160" Minimum="100" Maximum="260" Value="180" />
+                    <TextBlock Text="Minimap height" VerticalAlignment="Center" />
+                    <Slider Name="MapHeight" Width="160" Minimum="60" Maximum="180" Value="120" />
+                </StackPanel>
+                <WrapPanel ItemSpacing="12">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Pan button" />
+                        <ComboBox Name="PanButtonChoice" SelectedIndex="0" SelectionChanged="Options_OnChanged" MinWidth="130">
+                            <ComboBoxItem Content="Left button" />
+                            <ComboBoxItem Content="Right button" />
+                            <ComboBoxItem Content="Middle button" />
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Minimap position" />
+                        <ComboBox Name="MinimapPositionChoice" SelectedIndex="3" SelectionChanged="Options_OnChanged" MinWidth="150">
+                            <ComboBoxItem Content="Top left" />
+                            <ComboBoxItem Content="Top right" />
+                            <ComboBoxItem Content="Bottom left" />
+                            <ComboBoxItem Content="Bottom right" />
+                            <ComboBoxItem Content="Top center" />
+                            <ComboBoxItem Content="Bottom center" />
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Offset X" />
+                        <NumericUpDown Name="MinimapOffsetX" Width="120" Minimum="-500" Maximum="500" Value="0" Increment="4" ValueChanged="Options_OnChanged" />
+                    </StackPanel>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="Offset Y" />
+                        <NumericUpDown Name="MinimapOffsetY" Width="120" Minimum="-500" Maximum="500" Value="0" Increment="4" ValueChanged="Options_OnChanged" />
+                    </StackPanel>
+                </WrapPanel>
+                <WrapPanel ItemSpacing="12">
+                    <Button Name="ZoomOutButton" Content="−" Tag="out" Click="Zoom_OnClick" IsEnabled="{Binding #ZoomContent.IsChecked}" />
+                    <Slider Name="ZoomSlider" Width="180" VerticalAlignment="Center"
+                            Minimum="{Binding #Viewer.EffectiveMinZoomValue}" Maximum="{Binding #Viewer.MaxZoom}"
+                            Value="{Binding #Viewer.Zoom, Mode=TwoWay}" IsEnabled="{Binding #ZoomContent.IsChecked}" />
+                    <TextBlock Text="{Binding #Viewer.Zoom, StringFormat='{}{0:P0}'}" VerticalAlignment="Center" />
+                    <Button Name="ZoomInButton" Content="+" Tag="in" Click="Zoom_OnClick" IsEnabled="{Binding #ZoomContent.IsChecked}" />
+                    <Button Name="FitButton" Content="Fit" Tag="fit" Click="Fit_OnClick" />
+                    <Button Name="FillButton" Content="Fill" Tag="fill" Click="Fit_OnClick" />
+                    <TextBlock Text="Zoom input" VerticalAlignment="Center" />
+                    <ComboBox Name="WheelZoomChoice" SelectedIndex="1" SelectionChanged="WheelMode_OnChanged" MinWidth="160">
+                        <ComboBoxItem Content="Mouse wheel" />
+                        <ComboBoxItem Content="Ctrl + mouse wheel" />
+                    </ComboBox>
+                </WrapPanel>
+                <ovo:ZoomView Name="Viewer" Height="440"
+                              IsMinimapVisible="{Binding #ShowMinimap.IsChecked}"
+                              IsMinimapNavigationEnabled="{Binding #NavigateMinimap.IsChecked}"
+                              IsMinimapDragEnabled="{Binding #DragMinimap.IsChecked}"
+                              MinimapWidth="{Binding #MapWidth.Value}" MinimapHeight="{Binding #MapHeight.Value}"
+                              IsPanEnabled="{Binding #PanContent.IsChecked}"
+                              IsZoomEnabled="{Binding #ZoomContent.IsChecked}"
+                              ShowScrollBars="{Binding #ShowBars.IsChecked}">
+                    <Grid Width="1600" Height="1000" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                        <Border Background="#554D8DFF"><TextBlock Text="Zoom" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                        <Border Grid.Column="1" Background="#554FC1A5"><TextBlock Text="Pan" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                        <Border Grid.Row="1" Background="#55EFAD57"><TextBlock Text="Overview" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                        <Border Grid.Row="1" Grid.Column="1" Background="#55C889DD"><TextBlock Text="Explore" FontSize="64" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border>
+                        <Slider Grid.ColumnSpan="2" Margin="32" VerticalAlignment="Top" Value="50" />
+                    </Grid>
+                </ovo:ZoomView>
+            </StackPanel>
+        </ovo:ControlShowcase>
+    </demo:DemoPage>
+</UserControl>

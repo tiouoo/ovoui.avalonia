@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Xml.Linq;
 using Avalonia;
+using Avalonia.Input;
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
@@ -314,6 +315,12 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
     public partial ScrollMode VerticalScrollMode { get; set; }
 
     private static bool IsValidZoomFactor(double value) => double.IsFinite(value) && value > 0;
+
+    [GeneratedStyledProperty(MouseButton.Left)]
+    public partial MouseButton PanButton { get; set; }
+
+    [GeneratedStyledProperty(KeyModifiers.None)]
+    public partial KeyModifiers WheelZoomModifiers { get; set; }
 
     private void UpdateZoomBounds()
     {
@@ -933,7 +940,7 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             ClearScrollAnimation(GetCompositionVisual());
             EnsureScrollAnimation();
         }
-        else if (change.Property == ScrollFeaturesProperty ||
+        else if (change.Property == WheelZoomModifiersProperty || change.Property == PanButtonProperty || change.Property == ScrollFeaturesProperty ||
                  change.Property == IsScrollChainingEnabledProperty ||
                  change.Property == ScrollViewer.IsScrollInertiaEnabledProperty ||
                  change.Property == CanVerticallyScrollProperty ||
@@ -1593,6 +1600,8 @@ public sealed partial class OvoScrollPresenter : ContentPresenter, IScrollable, 
             return;
 
         var features = GetScrollFeatures(this);
+        _interactionSource.PanButton = PanButton;
+        _interactionSource.WheelZoomModifiers = WheelZoomModifiers;
         _interactionSource.IsMousePanningEnabled = features.HasFlag(ScrollFeaturesEnum.MousePressedScroll);
         _interactionSource.IsMousePanningInertiaEnabled =
             features.HasFlag(ScrollFeaturesEnum.MousePressedScrollEnertia);

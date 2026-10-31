@@ -1,0 +1,52 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:ovo="using:OvoUi.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme TargetType="ovo:ZoomView" x:Key="{x:Type ovo:ZoomView}">
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="Template">
+            <ControlTemplate x:DataType="ovo:ZoomView">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    ClipToBounds="True"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <Panel>
+                        <ovo:ZoomContentPresenter
+                            Background="Transparent"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalContentAlignment="Left"
+                            Name="PART_ContentPresenter"
+                            VerticalContentAlignment="Top" />
+                        <ScrollBar
+                            Margin="0,0,16,0"
+                            Name="PART_H_SCROLL_BAR"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Bottom" />
+                        <ScrollBar
+                            HorizontalAlignment="Right"
+                            Margin="0,0,0,16"
+                            Name="PART_V_SCROLL_BAR"
+                            Orientation="Vertical" />
+                        <ovo:ZoomMinimap
+                            BorderBrush="{DynamicResource LineBrush}"
+                            ContentSize="{TemplateBinding ContentSize}"
+                            Height="{TemplateBinding MinimapHeight}"
+                            HorizontalAlignment="{TemplateBinding MinimapHorizontalAlignment}"
+                            IsDragEnabled="{TemplateBinding IsMinimapDragEnabled}"
+                            IsNavigationEnabled="{TemplateBinding IsMinimapNavigationEnabled}"
+                            IsVisible="{TemplateBinding IsMinimapVisible}"
+                            Margin="{TemplateBinding MinimapMargin}"
+                            Name="PART_MINIMAP"
+                            Offset="{TemplateBinding MinimapOffset}"
+                            VerticalAlignment="{TemplateBinding MinimapVerticalAlignment}"
+                            ViewportRect="{TemplateBinding ViewportRect}"
+                            Width="{TemplateBinding MinimapWidth}" />
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

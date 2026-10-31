@@ -15,7 +15,19 @@ namespace OvoUi.SmoothScroll.Interaction;
 
 public class InputElementInteractionSource : IDisposable
 {
+    private MouseButton _panButton = MouseButton.Left;
+    public MouseButton PanButton
+    {
+        get => _panButton;
+        set
+        {
+            if (_panButton == value) return;
+            _panButton = value;
+            if (_firstContact?.Type == PointerType.Mouse) _firstContact.Capture(null);
+        }
+    }
     public bool IsMousePanningEnabled { get; set; }
+    public KeyModifiers WheelZoomModifiers { get; set; }
     public bool IsMousePanningInertiaEnabled { get; set; }
     public bool SwapWheelDirections { get; set; }
     private const double TouchpadDeltaScale = 48;
@@ -110,14 +122,14 @@ public class InputElementInteractionSource : IDisposable
     private void OnPointerWheelChanged(object? sender, PointerWheelEventArgs e)
     {
         UpdateChainingTargets();
-        if (IsPrecisionTouchpadScroll(e))
+        var shouldZoom = ScaleSourceMode is not InteractionSourceMode.Disabled && e.KeyModifiers == WheelZoomModifiers;
+        if (IsPrecisionTouchpadScroll(e) && !(shouldZoom && WheelZoomModifiers != KeyModifiers.None))
         {
             HandlePrecisionTouchpadScroll(e);
             return;
         }
 
-        if (ScaleSourceMode is not InteractionSourceMode.Disabled &&
-            e.Delta.Y != 0)
+        if (shouldZoom && e.Delta.Y != 0)
         {
             var origin = e.GetPosition(_inputElement);
             var scaleDelta = Math.Pow(1.2, e.Delta.Y);
@@ -210,7 +222,12 @@ public class InputElementInteractionSource : IDisposable
 
     private void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        if (e.Properties.IsRightButtonPressed)
+        if (e.Pointer.Type == PointerType.Mouse && !(PanButton switch
+            {
+                MouseButton.Left => e.Properties.IsLeftButtonPressed,
+                MouseButton.Right => e.Properties.IsRightButtonPressed,
+                _ => e.Properties.IsMiddleButtonPressed
+            }))
         {
             return;
         }

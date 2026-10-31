@@ -22,25 +22,64 @@
                             Language="csharp" />
                     </ovo:ControlShowcase.CodeBlocks>
                     <StackPanel Spacing="12">
-                        <TextBlock Text="Wheel or pinch to zoom; drag to pan with elastic edges. The slider inside the zoomed content remains interactive." TextWrapping="Wrap" />
-                        <StackPanel Orientation="Horizontal" Spacing="12">
-                            <Button
-                                Click="Zoom_OnClick"
-                                Content="+"
-                                Name="ReferenceZoomIn"
-                                Tag="in" />
-                            <TextBlock Text="{Binding #ReferenceZoom.ZoomFactor, StringFormat='{}{0:P1}'}" VerticalAlignment="Center" />
-                            <Button
-                                Click="Zoom_OnClick"
-                                Content="−"
-                                Name="ReferenceZoomOut"
-                                Tag="out" />
-                        </StackPanel>
+                        <TextBlock Text="Use the controls above or the selected mouse-wheel gesture to zoom. Drag to pan with elastic edges." TextWrapping="Wrap" />
+                        <WrapPanel ItemSpacing="12">
+                            <Button Click="Zoom_OnClick" Content="−" Name="ReferenceZoomOut" Tag="out" />
+                            <Slider Name="ReferenceZoomSlider" Width="180" VerticalAlignment="Center"
+                                    Minimum="{Binding #ReferenceZoom.MinZoomFactor}" Maximum="{Binding #ReferenceZoom.MaxZoomFactor}"
+                                    Value="{Binding #ReferenceZoom.ZoomFactor, Mode=OneWay}" ValueChanged="ZoomSlider_OnChanged" />
+                            <TextBlock Text="{Binding #ReferenceZoom.ZoomFactor, StringFormat='{}{0:P0}'}" VerticalAlignment="Center" />
+                            <Button Click="Zoom_OnClick" Content="+" Name="ReferenceZoomIn" Tag="in" />
+                            <Button Name="FitButton" Content="Fit" Tag="fit" Click="Fit_OnClick" />
+                            <Button Name="FillButton" Content="Fill" Tag="fill" Click="Fit_OnClick" />
+                            <TextBlock Text="Zoom input" VerticalAlignment="Center" />
+                            <ComboBox Name="WheelZoomChoice" SelectedIndex="0" SelectionChanged="WheelMode_OnChanged" MinWidth="160">
+                                <ComboBoxItem Content="Mouse wheel" />
+                                <ComboBoxItem Content="Ctrl + mouse wheel" />
+                            </ComboBox>
+                        </WrapPanel>
+                        <WrapPanel ItemSpacing="12">
+                            <ToggleSwitch Name="ShowZoomMinimap" Content="Minimap" IsChecked="True" />
+                            <ToggleSwitch Name="NavigateZoomMinimap" Content="Click to navigate" IsChecked="True" />
+                            <ToggleSwitch Name="DragZoomMinimap" Content="Drag viewport" IsChecked="True" />
+                        </WrapPanel>
+                        <WrapPanel ItemSpacing="12">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Pan button" />
+                                <ComboBox Name="PanButtonChoice" SelectedIndex="0" SelectionChanged="Options_OnChanged" MinWidth="130">
+                                    <ComboBoxItem Content="Left button" />
+                                    <ComboBoxItem Content="Right button" />
+                                    <ComboBoxItem Content="Middle button" />
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Minimap position" />
+                                <ComboBox Name="MinimapPositionChoice" SelectedIndex="3" SelectionChanged="Options_OnChanged" MinWidth="150">
+                                    <ComboBoxItem Content="Top left" />
+                                    <ComboBoxItem Content="Top right" />
+                                    <ComboBoxItem Content="Bottom left" />
+                                    <ComboBoxItem Content="Bottom right" />
+                                    <ComboBoxItem Content="Top center" />
+                                    <ComboBoxItem Content="Bottom center" />
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Offset X" />
+                                <NumericUpDown Name="MinimapOffsetX" Width="120" Minimum="-500" Maximum="500" Value="0" Increment="4" ValueChanged="Options_OnChanged" />
+                            </StackPanel>
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Offset Y" />
+                                <NumericUpDown Name="MinimapOffsetY" Width="120" Minimum="-500" Maximum="500" Value="0" Increment="4" ValueChanged="Options_OnChanged" />
+                            </StackPanel>
+                        </WrapPanel>
                         <ovo:OvoScrollView
                             ContentOrientation="Both"
                             Height="340"
                             HorizontalScrollBarVisibility="Hidden"
                             IsZoomEnabled="True"
+                            IsMinimapVisible="{Binding #ShowZoomMinimap.IsChecked}"
+                            IsMinimapNavigationEnabled="{Binding #NavigateZoomMinimap.IsChecked}"
+                            IsMinimapDragEnabled="{Binding #DragZoomMinimap.IsChecked}"
                             Name="ReferenceZoom"
                             VerticalScrollBarVisibility="Hidden">
                             <Grid

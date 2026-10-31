@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Tests/">
+    <Project Path="tests/OvoUi.Zoom.Tests/OvoUi.Zoom.Tests.csproj" />
+  </Folder>
   <Folder Name="/OvoUi.AvaloniaEdit/">
     <Project Path="src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj" />
     <Project Path="src/OvoUi.AvaloniaEdit.Showcase/OvoUi.AvaloniaEdit.Showcase.csproj" />

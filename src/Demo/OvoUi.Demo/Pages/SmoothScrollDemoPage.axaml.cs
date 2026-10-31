@@ -8,6 +8,8 @@ using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Input;
+using Avalonia.Controls.Primitives;
 using Avalonia.VisualTree;
 using OvoUi.Demo.Models;
 using OvoUi.SmoothScroll.Controls;
@@ -26,10 +28,37 @@ public partial class SmoothScrollDemoPage : UserControl
     {
         InitializeComponent();
         DataContext = new SmoothScrollDemoModel();
+        Options_OnChanged(this, new RoutedEventArgs());
+        WheelMode_OnChanged(this, new RoutedEventArgs());
     }
+
+    private void Options_OnChanged(object? sender, RoutedEventArgs e) =>
+        ZoomDemoSettings.Apply(ReferenceZoom, PanButtonChoice, MinimapPositionChoice, MinimapOffsetX, MinimapOffsetY);
 
     private void Zoom_OnClick(object? sender, RoutedEventArgs e) =>
         ReferenceZoom.ZoomTo(ReferenceZoom.ZoomFactor * ((sender as Button)?.Tag as string == "in" ? 1.2 : 1 / 1.2));
+
+    private void WheelMode_OnChanged(object? sender, RoutedEventArgs e)
+    {
+        if (ReferenceZoom is not null && WheelZoomChoice is not null)
+            ReferenceZoom.WheelZoomModifiers = WheelZoomChoice.SelectedIndex == 0 ? KeyModifiers.None : KeyModifiers.Control;
+    }
+
+    private void ZoomSlider_OnChanged(object? sender, RangeBaseValueChangedEventArgs e)
+    {
+        if (ReferenceZoom is not null && Math.Abs(ReferenceZoom.ZoomFactor - e.NewValue) > 0.0001)
+            ReferenceZoom.ZoomTo(e.NewValue, false);
+    }
+
+    private void Fit_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var view = ReferenceZoom;
+        if (view.Extent.Width <= 0 || view.Extent.Height <= 0) return;
+        var x = view.Viewport.Width / view.Extent.Width;
+        var y = view.Viewport.Height / view.Extent.Height;
+        var ratio = (sender as Button)?.Tag as string == "fill" ? Math.Max(x, y) : Math.Min(x, y);
+        view.ZoomTo(view.ZoomFactor * ratio);
+    }
 
     private void BringItem_OnClick(object? sender, RoutedEventArgs e)
     {

@@ -22,10 +22,12 @@
                             MinZoomFactor="{TemplateBinding MinZoomFactor}"
                             Name="PART_ContentPresenter"
                             Padding="{TemplateBinding Padding}"
+                            PanButton="{TemplateBinding PanButton}"
                             ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}"
                             VerticalScrollMode="{TemplateBinding VerticalScrollMode}"
                             VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
                             VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}"
+                            WheelZoomModifiers="{TemplateBinding WheelZoomModifiers}"
                             ZoomFactor="{TemplateBinding ZoomFactor,
                                                          Mode=TwoWay}" />
                         <ScrollBar
@@ -36,6 +38,18 @@
                             Grid.Column="1"
                             Name="PART_VerticalScrollBar"
                             Orientation="Vertical" />
+                        <scroll:ZoomMinimap
+                            BorderBrush="{DynamicResource LineBrush}"
+                            Height="{TemplateBinding MinimapHeight}"
+                            HorizontalAlignment="{TemplateBinding MinimapHorizontalAlignment}"
+                            IsDragEnabled="{TemplateBinding IsMinimapDragEnabled}"
+                            IsNavigationEnabled="{TemplateBinding IsMinimapNavigationEnabled}"
+                            IsVisible="{TemplateBinding IsMinimapVisible}"
+                            Margin="{TemplateBinding MinimapMargin}"
+                            Name="PART_Minimap"
+                            Offset="{TemplateBinding MinimapOffset}"
+                            VerticalAlignment="{TemplateBinding MinimapVerticalAlignment}"
+                            Width="{TemplateBinding MinimapWidth}" />
                     </Grid>
                 </ControlTemplate>
             </Setter>
