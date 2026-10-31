@@ -2,11 +2,11 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using OvoUi.Platform.Windows;
 
-namespace OvoUi.Demo.Classic.Pages;
+namespace OvoUi.Demo.Pages;
 
 public partial class WindowsJumpListPage : UserControl
 {
-    private const string DemoAppId = "cc.tiouo.OvoUi.Demo.Classic";
+    private const string DemoAppId = "cc.tiouo.OvoUi.Demo";
 
     public WindowsJumpListPage()
     {

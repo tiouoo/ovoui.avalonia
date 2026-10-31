@@ -1,7 +1,9 @@
 using Avalonia.Controls;
 using Avalonia.Media;
 using OvoUi.Controls;
-using OvoUi.Demo.Classic.Pages;
+using OvoUi.Demo.Classic.Models;
+using OvoUi.Demo.Classic.Views;
+using Avalonia.VisualTree;
 
 namespace OvoUi.Demo.Classic;
 
@@ -10,21 +12,10 @@ public partial class MainWindow : OvoWindow
     public MainWindow()
     {
         InitializeComponent();
-        if (App.JumpListLaunchTarget is { } target)
-            Title = $"OvoUi Classic Demo - Jump List: {target}";
-        Examples.ItemsSource = new TabItem[]
-        {
-            Example<DataGridPage>("DataGrid"),
-            Example<WindowsJumpListPage>("Windows Jump List"),
-            Example<WindowCompositionMaterialPage>("Composition material")
-        };
+        TextOptions.SetTextRenderingMode(this, TextRenderingMode.Antialias);
+        TextOptions.SetTextHintingMode(this, TextHintingMode.Light);
+        TextOptions.SetBaselinePixelAlignment(this, BaselinePixelAlignment.Aligned);
     }
-
-    private static TabItem Example<T>(string title) where T : UserControl, new() => new()
-    {
-        Header = title,
-        Content = new LazyExample<T>()
-    };
 
     internal async Task SmokeTestAsync(Avalonia.Controls.ApplicationLifetimes.IClassicDesktopStyleApplicationLifetime lifetime)
     {
@@ -44,13 +35,25 @@ public partial class MainWindow : OvoWindow
                     throw new InvalidOperationException($"Cannot load embedded OvoUi font ({weight}).");
                 report.Add($"PASS OvoUi.Fonts {weight}: {glyphTypeface.FamilyName}");
             }
-            for (var index = 0; index < Examples.ItemCount; index++)
+            var view = this.GetVisualDescendants().OfType<DemoView>().Single();
+            var model = (DemoViewModel)view.DataContext!;
+            view.FindControl<TransitioningContentControl>("PagePresenter")!.PageTransition = null;
+            foreach (var page in DemoViewModel.Pages.SelectMany(group => group.Children!))
             {
-                Examples.SelectedIndex = index;
+                model.SelectedPage = page;
                 UpdateLayout();
                 await Task.Delay(30);
-                report.Add($"PASS {((TabItem)Examples.Items[index]!).Header}");
+                report.Add($"PASS {page.Title}");
             }
+            var navigation = view.FindControl<NavMenu>("NavMenu")!;
+            navigation.SearchText = "DataGrid";
+            UpdateLayout();
+            await Task.Delay(100);
+            if (!navigation.GetVisualDescendants().OfType<NavMenuItem>()
+                    .Any(item => item.IsEffectivelyVisible && item.Header?.ToString() == "DataGrid"))
+                throw new InvalidOperationException("Navigation search did not retain the matching page.");
+            report.Add("PASS navigation search");
+            navigation.SearchText = "";
         }
         catch (Exception exception)
         {
@@ -64,12 +67,4 @@ public partial class MainWindow : OvoWindow
         }
     }
 
-    private sealed class LazyExample<T> : Decorator where T : UserControl, new()
-    {
-        protected override void OnAttachedToVisualTree(Avalonia.VisualTreeAttachmentEventArgs e)
-        {
-            base.OnAttachedToVisualTree(e);
-            Child ??= new T();
-        }
-    }
 }

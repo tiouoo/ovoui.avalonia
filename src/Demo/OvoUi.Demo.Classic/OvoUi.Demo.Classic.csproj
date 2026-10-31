@@ -10,7 +10,7 @@
     <PublishTrimmed>false</PublishTrimmed>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>..\..\..\assets\icon.ico</ApplicationIcon>
-    <Description>Managed desktop examples for OvoUi.DataGrid and OvoUi.Platform.NoAOT.</Description>
+    <Description>Managed desktop examples for DataGrid and composition materials.</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />

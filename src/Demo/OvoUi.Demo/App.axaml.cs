@@ -25,8 +25,6 @@ public partial class App : Application
             var mainWindow = new MainWindow();
             RootView = mainWindow;
             desktop.MainWindow = mainWindow;
-            if (desktop.Args?.Contains("--smoke-test") == true)
-                mainWindow.Opened += async (_, _) => await DemoSmokeTest.RunAsync(mainWindow, desktop);
         }
         else if (ApplicationLifetime is IActivityApplicationLifetime singleViewFactoryApplicationLifetime)
         {

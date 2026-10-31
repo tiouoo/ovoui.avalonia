@@ -49,7 +49,7 @@
                 </DataTemplate>
             </ovo:NavMenu.ItemTemplate>
         </ovo:NavMenu>
-        <TransitioningContentControl Content="{Binding SelectedPage.Content}">
+        <TransitioningContentControl x:Name="PagePresenter" Content="{Binding SelectedPage.Content}">
             <TransitioningContentControl.PageTransition>
                 <showcase:SlideFadePageTransition EnterFromLeft="True" />
             </TransitioningContentControl.PageTransition>

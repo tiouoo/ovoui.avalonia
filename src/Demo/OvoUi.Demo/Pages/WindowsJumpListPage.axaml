@@ -1,10 +1,10 @@
 <UserControl
-    x:Class="OvoUi.Demo.Classic.Pages.WindowsJumpListPage"
+    x:Class="OvoUi.Demo.Pages.WindowsJumpListPage"
     x:DataType="pages:WindowsJumpListPage"
     xmlns="https://github.com/avaloniaui"
-    xmlns:demo="using:OvoUi.Demo.Classic.Controls"
+    xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
-    xmlns:pages="using:OvoUi.Demo.Classic.Pages"
+    xmlns:pages="using:OvoUi.Demo.Pages"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <demo:DemoPage Text="WindowsJumpList">
         <ovo:ControlShowcase Header="Windows Jump List (taskbar right-click)" SourceKey="platform-windows-jump-list">
