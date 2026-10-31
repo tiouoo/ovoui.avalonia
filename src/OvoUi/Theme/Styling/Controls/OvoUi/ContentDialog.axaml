@@ -6,7 +6,7 @@
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:ContentDialogHost">
                 <Panel>
-                    <Border Background="#66000000" />
+                    <Border Background="#66000000" Name="PART_OverlayMask" />
                     <ContentPresenter
                         Content="{TemplateBinding Content}"
                         HorizontalAlignment="Center"
@@ -22,14 +22,7 @@
         <Setter Property="MaxHeight" Value="720" />
         <Setter Property="CornerRadius" Value="{DynamicResource OvoCornerRadius}" />
         <Setter Property="Opacity" Value="0" />
-        <Setter Property="RenderTransform" Value="scale(0.96)" />
         <Setter Property="RenderTransformOrigin" Value="50%,50%" />
-        <Setter Property="Transitions">
-            <Transitions>
-                <DoubleTransition Duration="0:0:0.16" Property="Opacity" />
-                <TransformOperationsTransition Duration="0:0:0.16" Property="RenderTransform" />
-            </Transitions>
-        </Setter>
         <Setter Property="Template">
             <ControlTemplate TargetType="ovo:ContentDialog">
                 <Border
@@ -96,11 +89,9 @@
         </Setter>
         <Style Selector="^:open">
             <Setter Property="Opacity" Value="1" />
-            <Setter Property="RenderTransform" Value="scale(1)" />
         </Style>
         <Style Selector="^:hidden">
             <Setter Property="Opacity" Value="0" />
-            <Setter Property="RenderTransform" Value="scale(0.96)" />
         </Style>
         <Style Selector="^:primary /template/ Button#PART_PrimaryButton">
             <Setter Property="Grid.Column" Value="0" />

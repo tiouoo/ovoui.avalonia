@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -8,7 +9,7 @@ using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Threading;
+using Avalonia.Media;
 using Avalonia.VisualTree;
 
 namespace OvoUi.Controls;
@@ -27,6 +28,8 @@ public partial class ContentDialog : ContentControl
     private TaskCompletionSource<ContentDialogResult>? _completion;
     private ContentDialogResult _result;
     private bool _deferralActive;
+    private bool _isClosing;
+    private CancellationTokenSource? _openingAnimation;
 
     public ContentDialog()
     {
@@ -93,7 +96,7 @@ public partial class ContentDialog : ContentControl
 
     public void Hide(ContentDialogResult result)
     {
-        if (_completion is null) return;
+        if (_completion is null || _isClosing) return;
         _result = result;
         BeginClose();
     }
@@ -123,6 +126,7 @@ public partial class ContentDialog : ContentControl
 
         _completion = new TaskCompletionSource<ContentDialogResult>(TaskCreationOptions.RunContinuationsAsynchronously);
         _result = ContentDialogResult.None;
+        _isClosing = false;
         OnOpening();
         DetachFromOriginalParent();
 
@@ -133,25 +137,46 @@ public partial class ContentDialog : ContentControl
         PseudoClasses.Set(PC_Close, !string.IsNullOrWhiteSpace(CloseButtonText));
 
         _dialogHost ??= new ContentDialogHost();
+        // Loaded runs after attachment. Keep the entire layer hidden until both
+        // the mask and dialog have their opening values, including on reuse.
+        _dialogHost.SetCurrentValue(OpacityProperty, 0.0);
         _dialogHost.Content = this;
         SyncHostSize(overlayHost.Bounds.Size);
         Canvas.SetLeft(_dialogHost, 0);
         Canvas.SetTop(_dialogHost, 0);
         _hostBoundsSubscription =
             overlayHost.GetObservable(BoundsProperty).Subscribe(bounds => SyncHostSize(bounds.Size));
-        overlayHost.Children.Add(_dialogHost);
-
+        // TransformAnimator requires a ScaleTransform, rather than CSS TransformOperations.
+        RenderTransform = new ScaleTransform(0.92, 0.92);
         IsVisible = true;
         IsHitTestVisible = true;
         PseudoClasses.Set(PC_Hidden, false);
         PseudoClasses.Set(PC_Open, true);
+        SetCurrentValue(OpacityProperty, 0.0);
         Loaded += OnDialogLoaded;
+        overlayHost.Children.Add(_dialogHost);
         return _completion.Task;
     }
 
-    private void OnDialogLoaded(object? sender, RoutedEventArgs e)
+    private async void OnDialogLoaded(object? sender, RoutedEventArgs e)
     {
+        if (e.Source != this) return;
         Loaded -= OnDialogLoaded;
+        if (_completion is null || _isClosing) return;
+        var animate = _overlayHost?.IsAnimationDisabled == false;
+        SetCurrentValue(OpacityProperty, animate ? 0.0 : 1.0);
+        _dialogHost?.OverlayMask?.SetCurrentValue(OpacityProperty, animate ? 0.0 : 1.0);
+        if (!animate) RenderTransform = new ScaleTransform();
+        var openingAnimation = new CancellationTokenSource();
+        _openingAnimation = openingAnimation;
+        var animation = animate
+            ? Task.WhenAll(
+                OverlayDialogHost.DialogAppearAnimation.RunAsync(this, openingAnimation.Token),
+                _dialogHost?.OverlayMask is { } mask
+                    ? OverlayDialogHost.MaskAppearAnimation.RunAsync(mask, openingAnimation.Token)
+                    : Task.CompletedTask)
+            : Task.CompletedTask;
+        _dialogHost?.SetCurrentValue(OpacityProperty, 1.0);
         _primaryButton?.Classes.Remove("accent");
         _secondaryButton?.Classes.Remove("accent");
         _closeButton?.Classes.Remove("accent");
@@ -165,11 +190,24 @@ public partial class ContentDialog : ContentControl
         defaultButton?.Classes.Add("accent");
         (defaultButton as IInputElement ?? this).Focus();
         OnOpened();
+        try
+        {
+            await animation;
+        }
+        catch (OperationCanceledException) when (openingAnimation.IsCancellationRequested)
+        {
+            // Closing supersedes the opening animation.
+        }
+        finally
+        {
+            if (_openingAnimation == openingAnimation) _openingAnimation = null;
+            openingAnimation.Dispose();
+        }
     }
 
     private void OnButtonClick(object? sender, RoutedEventArgs? e)
     {
-        if (_deferralActive || _completion is null) return;
+        if (_deferralActive || _completion is null || _isClosing) return;
         _deferralActive = true;
         var args = new ContentDialogButtonClickEventArgs();
         args.Begin(() =>
@@ -203,7 +241,7 @@ public partial class ContentDialog : ContentControl
 
     private void BeginClose()
     {
-        if (_deferralActive || _completion is null) return;
+        if (_deferralActive || _completion is null || _isClosing) return;
         _deferralActive = true;
         var args = new ContentDialogClosingEventArgs(_result);
         args.Begin(() =>
@@ -218,11 +256,21 @@ public partial class ContentDialog : ContentControl
     private async void FinalCloseDialog()
     {
         var completion = _completion;
-        if (completion is null) return;
+        if (completion is null || _isClosing) return;
+        _isClosing = true;
+        Loaded -= OnDialogLoaded;
+        _openingAnimation?.Cancel();
         IsHitTestVisible = false;
         PseudoClasses.Set(PC_Hidden, true);
         PseudoClasses.Set(PC_Open, false);
-        await Task.Delay(160);
+        if (_overlayHost?.IsAnimationDisabled == false)
+        {
+            await Task.WhenAll(
+                OverlayDialogHost.DialogDisappearAnimation.RunAsync(this),
+                _dialogHost?.OverlayMask is { } mask
+                    ? OverlayDialogHost.MaskDisappearAnimation.RunAsync(mask)
+                    : Task.CompletedTask);
+        }
 
         _hostBoundsSubscription?.Dispose();
         _hostBoundsSubscription = null;

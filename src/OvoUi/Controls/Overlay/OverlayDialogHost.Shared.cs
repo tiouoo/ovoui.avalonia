@@ -18,10 +18,10 @@ namespace OvoUi.Controls;
 
 public partial class OverlayDialogHost : Canvas
 {
-    private static readonly Animation MaskAppearAnimation;
-    private static readonly Animation MaskDisappearAnimation;
-    private static readonly Animation DialogAppearAnimation;
-    private static readonly Animation DialogDisappearAnimation;
+    internal static readonly Animation MaskAppearAnimation;
+    internal static readonly Animation MaskDisappearAnimation;
+    internal static readonly Animation DialogAppearAnimation;
+    internal static readonly Animation DialogDisappearAnimation;
 
     public static readonly AttachedProperty<bool> IsModalStatusScopeProperty =
         AvaloniaProperty.RegisterAttached<OverlayDialogHost, Control, bool>("IsModalStatusScope");

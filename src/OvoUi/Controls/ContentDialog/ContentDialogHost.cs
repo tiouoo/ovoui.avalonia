@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
 
@@ -6,6 +7,14 @@ namespace OvoUi.Controls;
 
 internal sealed class ContentDialogHost : ContentControl
 {
+    internal Border? OverlayMask { get; private set; }
+
+    protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
+    {
+        base.OnApplyTemplate(e);
+        OverlayMask = e.NameScope.Find<Border>("PART_OverlayMask");
+    }
+
     static ContentDialogHost()
     {
         HorizontalContentAlignmentProperty.OverrideDefaultValue<ContentDialogHost>(HorizontalAlignment.Center);
