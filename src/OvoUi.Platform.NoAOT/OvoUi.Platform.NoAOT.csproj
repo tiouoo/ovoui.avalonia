@@ -10,10 +10,8 @@
     <Title>OvoUi Platform NoAOT</Title>
     <Description>Optional reflection-based composition materials. Requires the managed runtime; Native AOT and trimming are not supported.</Description>
     <PackageTags>avalonia;ui;platform;windows;noaot</PackageTags>
-    <PackageIcon>icon_256.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\OvoUi.Platform\OvoUi.Platform.csproj" />
-    <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>

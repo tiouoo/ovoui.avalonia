@@ -4,7 +4,7 @@ set -euo pipefail
 : "${VERSION:?VERSION is required}"
 mkdir -p artifacts
 
-# The generator is packed first because the showcase package consumes it.
+# Pack analyzers first so their exact release versions can be restored locally.
 dotnet pack src/OvoUi.AvaloniaEdit.Showcase.Generator/OvoUi.AvaloniaEdit.Showcase.Generator.csproj \
   -c Release -p:Version="$VERSION" -o artifacts
 dotnet pack src/OvoUi.Lang.Generator/OvoUi.Lang.Generator.csproj \

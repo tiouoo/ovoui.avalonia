@@ -12,20 +12,17 @@
 
     <ItemGroup>
         <PackageReference Include="OvoUi.AvaloniaEdit.Showcase.Generator"
-                          Version="$(Version)"
+                          Version="[$(PackageVersion)]"
+                          PrivateAssets="none"
                           Condition="'$(NuGetRelease)' == 'true'"/>
         <ProjectReference Include="..\OvoUi.AvaloniaEdit\OvoUi.AvaloniaEdit.csproj"/>
         <ProjectReference Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\OvoUi.AvaloniaEdit.Showcase.Generator.csproj"
                           ReferenceOutputAssembly="false"
-                          TreatAsPackageReference="true"
+                          PrivateAssets="all"
                           GlobalPropertiesToRemove="PublishAot;RuntimeIdentifier;SelfContained"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="..\OvoUi.AvaloniaEdit.Showcase.Generator\bin\$(Configuration)\netstandard2.0\OvoUi.AvaloniaEdit.Showcase.Generator.dll"
-              Pack="true"
-              PackagePath="analyzers/dotnet/cs"
-              Visible="false"/>
         <None Include="OvoUi.AvaloniaEdit.Showcase.props"
               Pack="true"
               PackagePath="build\;buildTransitive\"/>

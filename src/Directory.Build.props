@@ -8,5 +8,9 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/tiouoo/ovoui.avalonia</RepositoryUrl>
         <PackageProjectUrl>https://github.com/tiouoo/ovoui.avalonia</PackageProjectUrl>
+        <PackageIcon>icon_256.png</PackageIcon>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)..\assets\icon_256.png" Pack="true" PackagePath="/" Visible="false"/>
+    </ItemGroup>
 </Project>

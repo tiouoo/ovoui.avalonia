@@ -10,7 +10,6 @@
         <Title>OvoUi Platform</Title>
         <Description>AOT-compatible memory, system menu, window hosting and macOS window control helpers for Avalonia.</Description>
         <PackageTags>avalonia;ui;platform;windows;macos</PackageTags>
-        <PackageIcon>icon_256.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,7 +20,4 @@
         <PackageReference Include="Avalonia" Version="12.1.4"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <None Include="..\..\assets\icon_256.png" Pack="true" PackagePath="\"/>
-    </ItemGroup>
 </Project>

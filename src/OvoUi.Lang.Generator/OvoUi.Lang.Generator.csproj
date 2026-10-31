@@ -8,7 +8,11 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <IsRoslynComponent>true</IsRoslynComponent>
-        <IsPackable>false</IsPackable>
+        <IsPackable>true</IsPackable>
+        <PackageId>OvoUi.Lang.Generator</PackageId>
+        <Description>Source generator for strongly typed OvoUi.Lang localization resources.</Description>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <NoWarn>$(NoWarn);RS2008;RS1035</NoWarn>
@@ -20,6 +24,13 @@
     <Target Name="GetLangGeneratorDependencies" AfterTargets="GetTargetPath">
         <ItemGroup>
             <TargetPathWithTargetPlatformMoniker Include="$(PkgSystem_Text_Json)/lib/netstandard2.0/System.Text.Json.dll" IncludeRuntimeDependency="false"/>
+        </ItemGroup>
+    </Target>
+    <Target Name="PackLangGenerator" BeforeTargets="_GetPackageFiles">
+        <ItemGroup>
+            <None Include="$(OutputPath)$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs/"/>
+            <None Include="@(ReferenceCopyLocalPaths)" Exclude="@(ReferenceCopyLocalPaths->WithMetadataValue('NuGetPackageId', 'Microsoft.CodeAnalysis.Common'));@(ReferenceCopyLocalPaths->WithMetadataValue('NuGetPackageId', 'Microsoft.CodeAnalysis.CSharp'))"
+                  Pack="true" PackagePath="analyzers/dotnet/cs/"/>
         </ItemGroup>
     </Target>
 </Project>

@@ -1,0 +1,11 @@
+<Project>
+    <!-- NuGet otherwise interprets a project version as a minimum version. -->
+    <Target Name="PinOvoUiPackageDependencies" AfterTargets="_GetProjectReferenceVersions">
+        <ItemGroup>
+            <_ProjectReferencesWithVersions Update="@(_ProjectReferencesWithVersions)"
+                                            Condition="$([System.String]::Copy('%(_ProjectReferencesWithVersions.Filename)').StartsWith('OvoUi'))">
+                <ProjectVersion>[$(PackageVersion)]</ProjectVersion>
+            </_ProjectReferencesWithVersions>
+        </ItemGroup>
+    </Target>
+</Project>
