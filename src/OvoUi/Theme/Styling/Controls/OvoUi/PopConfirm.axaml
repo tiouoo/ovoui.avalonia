@@ -12,16 +12,19 @@
                         ContentTemplate="{TemplateBinding ContentTemplate}"
                         Name="PART_ContentPresenter" />
                     <Popup
+                        HorizontalOffset="6"
                         IsLightDismissEnabled="True"
                         IsOpen="{Binding IsDropdownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                         Name="{x:Static ovo:PopConfirm.PART_Popup}"
                         OverlayInputPassThroughElement="{Binding #PART_ContentPresenter}"
-                        Placement="{TemplateBinding Placement}">
+                        Placement="{TemplateBinding Placement}"
+                        VerticalOffset="6">
                         <Border
                             Background="{DynamicResource PopupBackgroundBrush}"
                             BorderBrush="{DynamicResource LineBrush}"
                             BorderThickness="1"
-                            CornerRadius="6"
+                            BoxShadow="{DynamicResource PopupBoxShadow}"
+                            CornerRadius="{DynamicResource OvoCornerRadius}"
                             Margin="4"
                             MaxWidth="400"
                             Padding="16,18,18,18">
