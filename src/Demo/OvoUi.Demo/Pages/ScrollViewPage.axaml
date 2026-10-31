@@ -12,7 +12,7 @@
     <demo:DemoPage Text="OvoScrollView">
         <ovo:ControlShowcase Header="Pan, zoom and elastic overscroll" SourceKey="smooth-scroll-view-zoom">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ZoomCode}"
                     Header="C#"
@@ -99,7 +99,7 @@
         </ovo:ControlShowcase>
         <ovo:ControlShowcase Header="Horizontal layout and independent scroll modes" SourceKey="smooth-scroll-view-orientation">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ModeCode}"
                     Header="C#"

@@ -9,7 +9,7 @@
     <demo:DemoPage Text="MacOsWindowControls">
         <ovo:ControlShowcase Header="macOS window controls" SourceKey="platform-macos-window-controls">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

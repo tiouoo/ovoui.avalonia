@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:DialogPage"
     x:Class="OvoUi.Demo.Pages.DialogPage"
+    x:DataType="pages:DialogPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="Dialog">
         <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-dialog-configurator">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
@@ -106,7 +106,7 @@
 
         <ovo:ControlShowcase Header="Behavior presets" SourceKey="feedback-dialog-presets">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding PresetsCode}"
                     Header="C#"

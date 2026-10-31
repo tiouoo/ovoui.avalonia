@@ -9,7 +9,7 @@
     <demo:DemoPage Text="PopConfirm">
         <ovo:ControlShowcase Header="Confirmation commands" SourceKey="pop-confirm-commands">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="360"
@@ -63,7 +63,7 @@
 
         <ovo:ControlShowcase Header="Asynchronous confirmation" SourceKey="pop-confirm-async-command">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="360"

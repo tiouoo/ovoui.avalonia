@@ -9,7 +9,7 @@
     <demo:DemoPage Text="VirtualizingUniformGrid">
         <ovo:ControlShowcase Header="100,000-item virtualized grid" SourceKey="layout-virtualizing-uniform-grid">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="420"

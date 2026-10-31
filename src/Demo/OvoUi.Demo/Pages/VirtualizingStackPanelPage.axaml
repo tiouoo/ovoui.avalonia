@@ -9,7 +9,7 @@
     <demo:DemoPage Text="VirtualizingStackPanel">
         <ovo:ControlShowcase Header="100,000-item virtualized list" SourceKey="layout-virtualizing-stack-panel">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

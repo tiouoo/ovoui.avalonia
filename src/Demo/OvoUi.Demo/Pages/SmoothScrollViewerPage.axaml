@@ -12,7 +12,7 @@
     <demo:DemoPage Text="Smooth ScrollViewer">
         <ovo:ControlShowcase Header="Virtualized list and custom bring-into-view animation" SourceKey="smooth-scroll-viewer-list">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ListCode}"
                     Header="C#"
@@ -44,7 +44,7 @@
         </ovo:ControlShowcase>
         <ovo:ControlShowcase Header="Text selection, caret and wheel scrolling" SourceKey="smooth-scroll-viewer-text">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding TextCode}"
                     Header="C#"
@@ -62,7 +62,7 @@
         </ovo:ControlShowcase>
         <ovo:ControlShowcase Header="Anchoring while content changes" SourceKey="smooth-scroll-viewer-anchors">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding AnchorCode}"
                     Header="C#"

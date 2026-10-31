@@ -9,7 +9,7 @@
     <demo:DemoPage Text="Clock">
         <ovo:ControlShowcase Header="Current time" SourceKey="clock-current-time">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="420"

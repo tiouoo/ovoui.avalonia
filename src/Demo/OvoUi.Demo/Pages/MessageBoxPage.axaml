@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:MessageBoxPage"
     x:Class="OvoUi.Demo.Pages.MessageBoxPage"
+    x:DataType="pages:MessageBoxPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="MessageBox">
         <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-message-box-configurator">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
@@ -69,7 +69,7 @@
 
         <ovo:ControlShowcase Header="Message presets" SourceKey="feedback-message-box-presets">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding PresetsCode}"
                     Header="C#"
@@ -95,7 +95,7 @@
 
         <ovo:ControlShowcase Header="Overlay and owned window" SourceKey="feedback-message-box-hosting">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding HostingCode}"
                     Header="C#"

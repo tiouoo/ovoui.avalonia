@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:ContentDialogPage"
     x:Class="OvoUi.Demo.Pages.ContentDialogPage"
+    x:DataType="pages:ContentDialogPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="ContentDialog">
         <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-content-dialog-configurator">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
@@ -91,7 +91,7 @@
 
         <ovo:ControlShowcase Header="Common content" SourceKey="feedback-content-dialog-content">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ContentCode}"
                     Header="C#"
@@ -111,7 +111,7 @@
 
         <ovo:ControlShowcase Header="Asynchronous validation" SourceKey="feedback-content-dialog-deferral">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding DeferralCode}"
                     Header="C#"

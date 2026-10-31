@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:TreeViewPage"
     x:Class="OvoUi.Demo.Pages.TreeViewPage"
+    x:DataType="pages:TreeViewPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="TreeView">
         <ovo:ControlShowcase Header="TreeView examples" SourceKey="shows-tree-view">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

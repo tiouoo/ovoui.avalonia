@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:DescriptionsPage"
     x:Class="OvoUi.Demo.Pages.DescriptionsPage"
+    x:DataType="pages:DescriptionsPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:common="using:OvoUi.Common.Enums"
     xmlns:demo="using:OvoUi.Demo.Controls"
@@ -49,7 +49,7 @@
         </ovo:ControlShowcase>
         <ovo:ControlShowcase Header="Bound data" SourceKey="shows-descriptions-bound-data">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

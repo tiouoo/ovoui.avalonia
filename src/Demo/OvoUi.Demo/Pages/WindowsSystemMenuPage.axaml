@@ -9,7 +9,7 @@
     <demo:DemoPage Text="WindowsSystemMenu">
         <ovo:ControlShowcase Header="Windows System Menu (window commands)" SourceKey="platform-windows-system-menu">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

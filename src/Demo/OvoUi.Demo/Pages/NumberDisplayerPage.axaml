@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:NumberDisplayerDemoViewModel"
     x:Class="OvoUi.Demo.Pages.NumberDisplayerPage"
+    x:DataType="pages:NumberDisplayerDemoViewModel"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -32,7 +32,7 @@
         </ovo:ControlShowcase>
         <ovo:ControlShowcase Header="Change values with animation" SourceKey="shows-number-displayer-change">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

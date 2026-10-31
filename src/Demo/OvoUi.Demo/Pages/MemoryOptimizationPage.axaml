@@ -9,7 +9,7 @@
     <demo:DemoPage Text="MemoryOptimization">
         <ovo:ControlShowcase Header="Manual memory operations" SourceKey="platform-memory-optimization">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

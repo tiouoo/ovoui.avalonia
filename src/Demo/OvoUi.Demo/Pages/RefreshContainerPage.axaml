@@ -9,7 +9,7 @@
     <demo:DemoPage Text="RefreshContainer">
         <ovo:ControlShowcase Header="Pull to refresh" SourceKey="refresh-container-pull">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     CodeHeight="440"

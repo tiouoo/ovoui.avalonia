@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:ImageViewerPage"
     x:Class="OvoUi.Demo.Pages.ImageViewerPage"
+    x:DataType="pages:ImageViewerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="ImageViewer">
         <ovo:ControlShowcase Header="ImageViewer examples" SourceKey="shows-image-viewer">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

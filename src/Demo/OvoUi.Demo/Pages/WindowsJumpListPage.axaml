@@ -9,7 +9,7 @@
     <demo:DemoPage Text="WindowsJumpList">
         <ovo:ControlShowcase Header="Windows Jump List (taskbar right-click)" SourceKey="platform-windows-jump-list">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding JumpListSourceCode}"
                     Header="C#"

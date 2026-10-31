@@ -15,7 +15,7 @@
     <demo:DemoPage Text="ElasticWrapPanel">
         <ovo:ControlShowcase Header="Interactive layout" SourceKey="layout-elastic-wrap-interactive">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

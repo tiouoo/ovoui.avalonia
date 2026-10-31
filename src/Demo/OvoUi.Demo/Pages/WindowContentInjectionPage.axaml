@@ -9,7 +9,7 @@
     <demo:DemoPage Text="WindowContentInjection">
         <ovo:ControlShowcase Header="Host Avalonia content in another window" SourceKey="platform-window-content-injection">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding SourceCode}"
                     Header="C#"

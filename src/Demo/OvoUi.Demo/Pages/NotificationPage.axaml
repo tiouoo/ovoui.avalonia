@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:NotificationPage"
     x:Class="OvoUi.Demo.Pages.NotificationPage"
+    x:DataType="pages:NotificationPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="Notification">
         <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-notification-configurator">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
@@ -85,7 +85,7 @@
 
         <ovo:ControlShowcase Header="Content, appearance, and actions" SourceKey="feedback-notification-presets">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding PresetsCode}"
                     Header="C#"
@@ -113,7 +113,7 @@
 
         <ovo:ControlShowcase Header="Position and lifetime" SourceKey="feedback-notification-lifetime">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding LifetimeCode}"
                     Header="C#"

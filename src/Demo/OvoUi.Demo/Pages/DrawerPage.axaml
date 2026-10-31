@@ -1,6 +1,6 @@
 <UserControl
-    x:DataType="pages:DrawerPage"
     x:Class="OvoUi.Demo.Pages.DrawerPage"
+    x:DataType="pages:DrawerPage"
     xmlns="https://github.com/avaloniaui"
     xmlns:demo="using:OvoUi.Demo.Controls"
     xmlns:ovo="https://github.com/tiouoo/ovoui.avalonia"
@@ -9,7 +9,7 @@
     <demo:DemoPage Text="Drawer">
         <ovo:ControlShowcase Header="Interactive configuration" SourceKey="feedback-drawer-configurator">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding ConfiguratorCode}"
                     Header="C#"
@@ -85,7 +85,7 @@
 
         <ovo:ControlShowcase Header="Placement and content presets" SourceKey="feedback-drawer-presets">
             <ovo:ControlShowcase.CodeBlocks>
-                <ovo:ShowcaseCodeBlock Header="AXAML" Language="axaml" />
+                <ovo:ShowcaseCodeBlock Header="axaml" Language="axaml" />
                 <ovo:ShowcaseCodeBlock
                     Code="{Binding PresetsCode}"
                     Header="C#"
