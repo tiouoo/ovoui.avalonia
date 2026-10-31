@@ -5,9 +5,9 @@ using OvoUi.Tab.Internal;
 
 namespace OvoUi.Tab;
 
-public sealed partial class OvoTabTheme : Styles
+public sealed partial class OvoUiTabTheme : Styles
 {
-    public OvoTabTheme()
+    public OvoUiTabTheme()
     {
         LangManager.RegisterResourceProvider(TabLanguageResourceProvider.Instance);
         AvaloniaXamlLoader.Load(this);
