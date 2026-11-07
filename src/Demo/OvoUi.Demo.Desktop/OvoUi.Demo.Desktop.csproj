@@ -8,9 +8,6 @@
         <AssemblyName>OvoUi.Demo.Desktop</AssemblyName>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <IsAotCompatible>true</IsAotCompatible>
-        <PublishAot>true</PublishAot>
-        <PublishTrimmed>true</PublishTrimmed>
-        <TrimMode>full</TrimMode>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     </PropertyGroup>
