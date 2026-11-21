@@ -92,7 +92,7 @@
                 <Border
                     Classes="interactive"
                     PointerPressed="OpenLink"
-                    Tag="https://ovoui.y6.nz"
+                    Tag="https://oui.chilo.top"
                     Theme="{StaticResource CardBorderTheme}">
                     <DockPanel>
                         <PathIcon
@@ -113,7 +113,7 @@
                                 Foreground="{DynamicResource InnerForegroundBrush}"
                                 TextTrimming="CharacterEllipsis"
                                 TextWrapping="NoWrap">
-                                ovoui.y6.nz
+                                oui.chilo.top
                             </TextBlock>
                         </DockPanel>
                     </DockPanel>

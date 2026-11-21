@@ -23,7 +23,7 @@
 > 本项目二次修改于 [Semi.Avalonia](https://github.com/irihitech/Semi.Avalonia) 和 [Ursa.Avalonia](https://github.com/irihitech/Ursa.Avalonia)。
 
 
-在线体验：[OvoUi Browser Demo](https://ovoui.y6.nz)
+在线体验：[OvoUi Browser Demo](https://oui.chilo.top)
 
 ## 快速开始
 
